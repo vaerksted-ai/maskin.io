@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maskin — Your team's workspace for working with AI agents</title>
+<meta name="description" content="Stop using AI alone. Maskin is the purpose-built workspace where your whole team — humans and AI agents — works together with shared memory, context, and process. Open source.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ─── TOKENS ─────────────────────────────────────────────── */
+:root {
+  --ink:        #111110;
+  --ink-2:      #5A5751;
+  --ink-3:      #9B958F;
+  --surface:    #FAFAF8;
+  --linen:      #F0EDE7;
+  --rule:       #E2DDD7;
+  --accent:     #B5311A;
+  --accent-dim: rgba(181,49,26,0.12);
+
+  --ff-display: 'Schibsted Grotesk', sans-serif;
+  --ff-serif:   'Newsreader', Georgia, serif;
+  --ff-mono:    'JetBrains Mono', monospace;
+
+  --step-0: clamp(0.8125rem, 0.79rem + 0.12vw, 0.9375rem);
+  --step-1: clamp(0.9375rem, 0.9rem + 0.2vw, 1.125rem);
+  --step-2: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  --step-3: clamp(1.5rem, 1.15rem + 1.5vw, 2.5rem);
+  --step-4: clamp(2rem, 1.4rem + 3vw, 3.75rem);
+
+  --max-w: 1120px;
+  --gap: clamp(.875rem, 3vw, 2rem);
+  --section-py: clamp(2.25rem, 5vw, 4rem);
+}
+
+/* ─── DARK MODE ──────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink:        #ECEAE4;
+    --ink-2:      #A09A93;
+    --ink-3:      #6B6560;
+    --surface:    #141412;
+    --linen:      #1C1B18;
+    --rule:       #2A2925;
+    --accent:     #D4432A;
+    --accent-dim: rgba(212,67,42,0.15);
+  }
+  /* Nav blur — dark tint */
+  .nav.scrolled {
+    background: rgba(20,20,18,.88);
+  }
+  /* Sections that invert on dark: ink section stays dark, linen gets dark linen */
+  .section--ink { background: #0D0D0B; color: var(--surface); }
+  /* Proof bar */
+  .proof-bar { background: var(--linen); border-color: var(--rule); }
+  /* Loop diagram agent pills */
+  .loop-agent { background: var(--linen); color: var(--ink); border: 1px solid var(--rule); }
+  /* Nav logo SVG — keep dark bg in dark mode (already dark, fine) */
+  /* Footer logo SVG — was ink-on-surface, flip to surface-on-ink */
+  .footer__logo-svg-bg  { fill: var(--linen); }
+  .footer__logo-svg-path { stroke: var(--ink); }
+  /* Green growth card border — desaturate slightly */
+  .mkt-card--growth { border-top-color: #2EA86A; }
+  .obj-tag--task    { color: #2EA86A; background: rgba(46,168,106,.12); }
+  .chip-dot--task   { background: #2EA86A; }
+  /* Manifesto dark section — slightly lighter dark bg */
+  .manifesto__body  { color: rgba(236,234,228,.6); }
+}
+
+/* ─── RESET ──────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--ff-display);
+  font-size:var(--step-0);
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--surface);
+  -webkit-font-smoothing:antialiased;
+}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* ─── LAYOUT ─────────────────────────────────────────────── */
+.wrap{width:100%;max-width:var(--max-w);margin-inline:auto;padding-inline:var(--gap)}
+.section{padding-block:var(--section-py)}
+.section--linen{background:var(--linen)}
+.section--ink{background:var(--ink);color:var(--surface)}
+
+/* ─── NAV ────────────────────────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  border-bottom:1px solid transparent;
+  transition:border-color .25s,background .25s,backdrop-filter .25s;
+}
+.nav.scrolled{
+  background:rgba(250,250,248,.9);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-color:var(--rule);
+}
+.nav__inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:56px;max-width:var(--max-w);margin-inline:auto;padding-inline:var(--gap);
+}
+.nav__logo{font-size:1rem;font-weight:700;letter-spacing:-.02em}
+.nav__links{display:flex;align-items:center;gap:1.75rem;list-style:none}
+.nav__links a{font-size:.875rem;font-weight:500;color:var(--ink-2);transition:color .15s}
+.nav__links a:hover{color:var(--ink)}
+.nav__cta{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.45rem 1rem;background:var(--ink);color:var(--surface)!important;
+  border-radius:6px;font-size:.875rem!important;font-weight:600!important;
+  transition:background .15s,transform .1s;
+}
+.nav__cta:hover{background:#2a2925;transform:translateY(-1px)}
+
+/* ─── BUTTONS ────────────────────────────────────────────── */
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.75rem 1.5rem;background:var(--ink);color:var(--surface);
+  border-radius:8px;font-weight:600;font-size:.9375rem;
+  border:1.5px solid var(--ink);
+  transition:background .15s,transform .1s,box-shadow .15s;
+}
+.btn-primary:hover{background:#2a2925;transform:translateY(-1px);box-shadow:0 4px 16px rgba(17,17,16,.18)}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.75rem 1.5rem;background:transparent;color:var(--ink);
+  border-radius:8px;font-weight:500;font-size:.9375rem;
+  border:1.5px solid var(--rule);
+  transition:border-color .15s,background .15s,transform .1s;
+}
+.btn-secondary:hover{border-color:var(--ink-2);background:var(--linen);transform:translateY(-1px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.875rem;font-weight:500;color:var(--ink-2);
+  transition:color .15s;
+}
+.btn-ghost:hover{color:var(--ink)}
+
+/* ─── SECTION LABELS ─────────────────────────────────────── */
+.section-tag{
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;
+}
+.section-title{
+  font-size:var(--step-3);font-weight:700;
+  letter-spacing:-.03em;line-height:1.08;
+}
+.section-title em{font-style:italic;font-weight:600}
+.section-sub{font-size:var(--step-1);color:var(--ink-2);line-height:1.55;max-width:52ch}
+
+/* ─── HERO ───────────────────────────────────────────────── */
+.hero{
+  min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding-top:72px;padding-bottom:3rem;position:relative;overflow:hidden;
+}
+.hero__glow{
+  position:absolute;top:-10%;right:-5%;width:55%;height:80%;
+  background:radial-gradient(ellipse 70% 70% at 70% 40%,rgba(181,49,26,.09) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero__grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(1.5rem,4vw,4rem);align-items:center;
+}
+.hero__eyebrow{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.7rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:1rem;
+}
+.hero__eyebrow::before{content:'';display:block;width:16px;height:2px;background:var(--accent)}
+.hero__headline{
+  font-size:var(--step-4);font-weight:700;
+  line-height:1.04;letter-spacing:-.03em;margin-bottom:1rem;
+}
+.hero__headline em{font-style:italic;font-weight:600;color:var(--accent)}
+.hero__sub{
+  font-size:var(--step-1);color:var(--ink-2);
+  line-height:1.55;max-width:44ch;margin-bottom:1.5rem;
+}
+
+/* PROMPT BOX */
+.hero__prompt-box{
+  display:flex;align-items:center;gap:.625rem;
+  border:1.5px solid var(--rule);border-radius:10px;
+  background:var(--surface);overflow:hidden;
+  padding:.625rem .625rem .625rem 1rem;
+  margin-bottom:1.75rem;
+  transition:border-color .2s,box-shadow .2s;
+}
+.hero__prompt-box:focus-within{
+  border-color:var(--ink-2);
+  box-shadow:0 2px 12px rgba(17,17,16,.07);
+}
+.hero__prompt-input{
+  flex:1;
+  font-family:var(--ff-display);font-size:.9375rem;
+  color:var(--ink);background:transparent;border:none;outline:none;
+  resize:none;line-height:1.5;min-height:24px;
+  padding:0;
+}
+.hero__prompt-input::placeholder{color:var(--ink-3)}
+
+/* ─── MARKETPLACE ────────────────────────────────────────── */
+.mkt-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+}
+.mkt-grid--3{
+  grid-template-columns:repeat(3,1fr);
+}
+.mkt-grid--3 .mkt-card--custom{
+  grid-column:1 / -1;
+  flex-direction:row;align-items:center;gap:1.75rem;
+}
+.mkt-grid--3 .mkt-card--custom .mkt-card__desc{max-width:40ch}
+.mkt-grid--3 .mkt-card--custom .mkt-card__agents{flex-direction:row}
+.mkt-grid--3 .mkt-card--custom .mkt-card__objects{margin-top:0;margin-left:auto;flex-shrink:0}
+.mkt-card{
+  padding:1.25rem;border:1.5px solid var(--rule);border-radius:12px;
+  background:var(--surface);
+  display:flex;flex-direction:column;gap:.75rem;
+  transition:border-color .2s,box-shadow .2s,transform .2s;
+}
+.mkt-card:hover{
+  border-color:var(--ink-2);
+  box-shadow:0 4px 16px rgba(17,17,16,.07);
+  transform:translateY(-2px);
+}
+.mkt-card--product{border-top:3px solid #5B8DD9}
+.mkt-card--growth {border-top:3px solid #27AE60}
+.mkt-card--sales  {border-top:3px solid #E67E22}
+.mkt-card--cs     {border-top:3px solid #2563EB}
+.mkt-card--intel  {border-top:3px solid #7C3AED}
+.mkt-card--eng    {border-top:3px solid #8E44AD}
+.mkt-card--ops    {border-top:3px solid var(--ink-3)}
+.mkt-card--custom {border-top:3px solid var(--accent);background:var(--linen)}
+.mkt-card--featured{opacity:.75}
+.mkt-card__header{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.mkt-card__role{
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
+}
+.mkt-card__badge{
+  font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--surface);background:var(--ink);
+  padding:.18rem .5rem;border-radius:10px;
+}
+.mkt-card__badge--coming{background:var(--ink-3)}
+.mkt-card__badge--ghost{color:var(--accent);background:transparent;border:1px solid var(--accent);padding:.15rem .5rem}
+.mkt-card__title{font-size:.9375rem;font-weight:700;letter-spacing:-.015em;line-height:1.3;color:var(--ink)}
+.mkt-card__desc{font-size:.8125rem;color:var(--ink-2);line-height:1.6;flex:1}
+.mkt-card__agents{display:flex;flex-wrap:wrap;gap:.4rem}
+.mkt-agent-chip{
+  font-size:.68rem;font-weight:600;color:var(--ink-2);
+  background:var(--linen);border:1px solid var(--rule);
+  padding:.2rem .5rem;border-radius:20px;
+}
+.mkt-card--custom .mkt-agent-chip{background:rgba(181,49,26,.07);border-color:rgba(181,49,26,.2);color:var(--accent)}
+.mkt-card__objects{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;margin-top:auto}
+.obj-tag{
+  font-family:var(--ff-mono);font-size:.68rem;font-weight:500;
+  padding:.2rem .5rem;border-radius:5px;
+}
+.obj-tag--insight{color:#5B8DD9;background:rgba(91,141,217,.1)}
+.obj-tag--bet    {color:#E67E22;background:rgba(230,126,34,.1)}
+.obj-tag--task   {color:#27AE60;background:rgba(39,174,96,.1)}
+.obj-tag--arrow  {color:var(--ink-3);font-family:var(--ff-display);font-size:.75rem}
+.mkt-browse-link{
+  font-size:.875rem;font-weight:600;color:var(--accent);
+  display:inline-flex;align-items:center;gap:.3rem;
+  transition:gap .15s;
+}
+.mkt-browse-link:hover{gap:.5rem}
+.hero__prompt-submit{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.4rem .9rem;background:var(--ink);color:var(--surface);
+  border-radius:6px;font-size:.8rem;font-weight:600;
+  border:none;cursor:pointer;
+  transition:background .15s,transform .1s;
+}
+.hero__prompt-submit:hover{background:#2a2925;transform:translateY(-1px)}
+.hero__prompt-submit svg{width:12px;height:12px}
+
+.hero__actions{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+
+.hero__social{
+  margin-top:1.25rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;
+}
+.hero__social-label{font-size:.75rem;color:var(--ink-3);font-weight:500}
+.hero__logos{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.hero__logo-item{
+  font-size:.75rem;font-weight:700;color:var(--ink-3);
+  letter-spacing:-.01em;transition:color .15s;
+}
+.hero__logo-item:hover{color:var(--ink-2)}
+
+/* ─── LOOP DIAGRAM ───────────────────────────────────────── */
+.loop-diagram{
+  position:relative;width:100%;
+  aspect-ratio:1/1.05;max-width:500px;margin-left:auto;
+}
+.loop-card{
+  position:absolute;background:var(--surface);
+  border:1.5px solid var(--rule);border-radius:12px;
+  padding:.875rem 1.125rem;width:196px;
+  transition:border-color .4s,box-shadow .4s;
+  box-shadow:0 1px 4px rgba(17,17,16,.05);
+}
+.loop-card.active{
+  border-color:var(--accent);
+  box-shadow:0 4px 24px rgba(181,49,26,.12);
+}
+.loop-card__label{
+  font-size:.68rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:.3rem;
+}
+.loop-card.active .loop-card__label{color:var(--accent)}
+.loop-card__title{
+  font-size:.8125rem;font-weight:600;color:var(--ink);
+  line-height:1.3;margin-bottom:.45rem;
+}
+.loop-card__actor{
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-size:.68rem;font-weight:600;color:var(--ink-2);
+  background:var(--linen);padding:.18rem .45rem;border-radius:20px;
+}
+.loop-card__actor-dot{
+  width:5px;height:5px;border-radius:50%;background:var(--ink-3);
+  transition:background .4s;
+}
+.loop-card.active .loop-card__actor-dot{
+  background:var(--accent);
+  box-shadow:0 0 0 2px rgba(181,49,26,.2);
+  animation:pulse-dot 1.2s ease-in-out infinite;
+}
+.loop-card__actors{display:flex;flex-direction:column;gap:.25rem}
+.loop-card__validation{display:none}
+.loop-card__callout{
+  display:inline-flex;align-items:center;gap:.3rem;
+  margin-top:.35rem;
+  font-size:.6rem;font-weight:600;letter-spacing:.03em;
+  color:var(--ink-2);background:var(--linen);
+  border:1px solid var(--rule);
+  padding:.18rem .45rem;border-radius:20px;
+  width:fit-content;
+}
+@keyframes pulse-dot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.6}}
+
+.loop-card--insight{top:2%;left:50%;transform:translateX(-50%)}
+.loop-card--bet{bottom:36%;left:1%}
+.loop-card--task{bottom:36%;right:1%}
+.loop-card--shipped{bottom:3%;left:50%;transform:translateX(-50%);width:176px}
+
+.loop-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.loop-path{fill:none;stroke:var(--rule);stroke-width:1.5;stroke-dasharray:5 4;transition:stroke .4s}
+.loop-path.lit{stroke:var(--accent);stroke-dasharray:none}
+
+.loop-agent{
+  position:absolute;display:flex;align-items:center;gap:.3rem;
+  background:var(--ink);color:var(--surface);
+  font-size:.63rem;font-weight:600;padding:.22rem .55rem;
+  border-radius:20px;opacity:0;transition:opacity .4s;white-space:nowrap;
+}
+.loop-agent.visible{opacity:1}
+.loop-agent--analyst{top:28%;left:-10%}
+.loop-agent--strategist{top:53%;left:50%;transform:translateX(-50%)}
+.loop-agent--dev{top:28%;right:-10%}
+.loop-agent--shipped{bottom:2%;left:50%;transform:translateX(-50%) translateY(110%)}
+.agent-icon{
+  width:13px;height:13px;background:var(--accent);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:7px;
+}
+.loop-status{
+  position:absolute;bottom:-1.25rem;left:50%;transform:translateX(-50%);
+  font-size:.63rem;font-family:var(--ff-mono);font-weight:500;
+  color:var(--ink-3);white-space:nowrap;letter-spacing:.04em;
+}
+
+/* ─── PROOF BAR ──────────────────────────────────────────── */
+.proof-bar{padding-block:1.25rem;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.proof-bar__inner{display:flex;align-items:center;gap:1.75rem;flex-wrap:wrap}
+.proof-bar__label{font-size:.75rem;color:var(--ink-3);font-weight:500;white-space:nowrap;flex-shrink:0}
+.proof-bar__divider{width:1px;height:16px;background:var(--rule);flex-shrink:0}
+.proof-bar__logos{display:flex;align-items:center;gap:1.75rem;flex-wrap:wrap}
+.proof-bar__logo{
+  font-size:.8125rem;font-weight:700;color:var(--ink-3);
+  letter-spacing:-.02em;transition:color .15s;
+}
+.proof-bar__logo:hover{color:var(--ink)}
+
+/* ─── SPLIT SECTION ──────────────────────────────────────── */
+.split{display:grid;grid-template-columns:1fr auto 1fr;gap:2.25rem;align-items:center}
+.split__col-label{
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:.875rem;
+}
+.split__col--after .split__col-label{color:var(--accent)}
+.split__col-title{
+  font-size:var(--step-2);font-weight:700;
+  letter-spacing:-.025em;line-height:1.15;margin-bottom:1rem;
+}
+.split__list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.split__list li{
+  display:flex;gap:.65rem;align-items:flex-start;
+  font-size:.9rem;color:var(--ink-2);line-height:1.5;
+}
+.split__list li::before{content:'—';color:var(--ink-3);flex-shrink:0;margin-top:.05em}
+.split__col--after .split__list li{color:var(--ink)}
+.split__col--after .split__list li::before{content:'→';color:var(--accent)}
+.split__arrow{display:flex;align-items:center;color:var(--ink-3)}
+.split__arrow svg{width:22px;height:22px}
+
+/* ─── INTEGRATION CHIP ───────────────────────────────────── */
+.obj-tag--integration{
+  color:var(--ink-3);background:transparent;
+  border:1px dashed var(--rule);
+  font-family:var(--ff-mono);
+}
+
+/* ─── SOCIAL PROOF STRIP (revised) ──────────────────────── */
+.social-strip{
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  background:var(--linen);padding-block:.75rem;
+}
+.social-strip__inner{
+  display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;
+}
+.social-item{
+  display:flex;align-items:center;gap:.35rem;
+}
+.social-item__num{
+  font-size:.875rem;font-weight:700;color:var(--ink);letter-spacing:-.02em;
+}
+.social-item__icon{font-size:.8rem;color:var(--ink-3)}
+.social-item__text{font-size:.75rem;color:var(--ink-2)}
+.social-item__gh{font-size:.75rem;font-weight:600;color:var(--ink-2);transition:color .15s}
+.social-item__gh:hover{color:var(--ink)}
+.social-divider{width:1px;height:18px;background:var(--rule);flex-shrink:0}
+
+/* ─── PRICING ────────────────────────────────────────────── */
+.pricing-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;
+  align-items:start;
+}
+.pricing-grid--4{grid-template-columns:repeat(4,1fr)}
+.pricing-card--enterprise{border-top:3px solid var(--accent)}
+.pricing-card{
+  padding:1.5rem;border:1.5px solid var(--rule);border-radius:12px;
+  background:var(--surface);
+  display:flex;flex-direction:column;gap:.875rem;
+  position:relative;
+}
+.pricing-card--featured{
+  border-color:var(--ink);
+  box-shadow:0 8px 32px rgba(17,17,16,.12);
+}
+.pricing-card__badge{
+  position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+  font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--surface);background:var(--ink);
+  padding:.2rem .75rem;border-radius:0 0 8px 8px;white-space:nowrap;
+}
+.pricing-card__header{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem}
+.pricing-card__name{font-size:.8125rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.pricing-card__price{display:flex;align-items:baseline;gap:.2rem}
+.pricing-card__amount{font-size:1.75rem;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+.pricing-card__per{font-size:.75rem;color:var(--ink-3)}
+.pricing-card__tagline{font-size:.8125rem;color:var(--ink-2);line-height:1.5}
+.pricing-card__features{
+  list-style:none;display:flex;flex-direction:column;gap:.5rem;flex:1;
+}
+.pricing-card__features li{
+  font-size:.8125rem;color:var(--ink-2);
+  padding-left:1.1rem;position:relative;
+}
+.pricing-card__features li::before{
+  content:'✓';position:absolute;left:0;
+  color:var(--accent);font-size:.7rem;font-weight:700;top:.05em;
+}
+.pricing-card--featured .pricing-card__features li{color:var(--ink)}
+.pricing-card__cta{
+  display:block;text-align:center;padding:.7rem 1rem;
+  border-radius:8px;font-weight:600;font-size:.875rem;
+  transition:background .15s,transform .1s;
+}
+.pricing-card__cta.btn-primary{background:var(--ink);color:var(--surface);border:1.5px solid var(--ink)}
+.pricing-card__cta.btn-primary:hover{background:#2a2925;transform:translateY(-1px)}
+.pricing-card__cta.btn-secondary{color:var(--ink);border:1.5px solid var(--rule)}
+.pricing-card__cta.btn-secondary:hover{border-color:var(--ink-2);transform:translateY(-1px)}
+.pricing-note{
+  margin-top:2rem;text-align:center;
+  font-size:.8125rem;color:var(--ink-3);
+}
+.pricing-note strong{color:var(--ink-2)}
+
+/* ─── DEMO VIDEO ─────────────────────────────────────────── */
+.demo-section{padding-block:clamp(3rem,7vw,6rem);background:var(--surface)}
+.demo-inner{max-width:860px;margin-inline:auto;display:flex;flex-direction:column;gap:1.25rem}
+.demo-label{
+  font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);
+}
+.demo-frame{
+  width:100%;border-radius:14px;overflow:hidden;
+  border:1.5px solid var(--rule);
+  background:var(--ink);
+  aspect-ratio:16/9;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.demo-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1.25rem;padding:3rem;width:100%;height:100%;
+  background:radial-gradient(ellipse 60% 60% at 50% 40%, rgba(181,49,26,.12) 0%, transparent 70%);
+}
+.demo-play-btn{
+  width:68px;height:68px;border-radius:50%;
+  background:rgba(250,250,248,.1);border:1.5px solid rgba(250,250,248,.2);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(250,250,248,.85);
+  cursor:pointer;
+  transition:background .2s,transform .15s;
+}
+.demo-play-btn:hover{background:rgba(250,250,248,.18);transform:scale(1.05)}
+.demo-play-btn svg{margin-left:4px}
+.demo-placeholder__text{
+  display:flex;flex-direction:column;align-items:center;gap:.35rem;text-align:center;
+}
+.demo-placeholder__title{
+  font-size:1rem;font-weight:600;color:rgba(250,250,248,.9);letter-spacing:-.01em;
+}
+.demo-placeholder__sub{font-size:.8125rem;color:rgba(250,250,248,.45)}
+.demo-placeholder__badge{
+  font-size:.65rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(250,250,248,.35);background:rgba(250,250,248,.06);
+  border:1px solid rgba(250,250,248,.1);
+  padding:.25rem .65rem;border-radius:20px;
+}
+.demo-caption{font-size:.8125rem;color:var(--ink-3);text-align:center}
+.demo-caption__link{
+  color:var(--accent);font-weight:600;
+  transition:opacity .15s;
+}
+.demo-caption__link:hover{opacity:.75}
+
+/* ─── FOUNDER NOTE ───────────────────────────────────────── */
+.cta-founder-note{
+  margin-top:1.5rem;font-size:.8125rem;color:var(--ink-3);text-align:center;
+}
+.cta-founder-note strong{color:var(--ink-2)}
+
+/* ─── HOW IT WORKS ───────────────────────────────────────── */
+.how-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+  margin-top:2.25rem;
+}
+.how-card{
+  padding:1.375rem 1.375rem 1.25rem;
+  border:1.5px solid var(--rule);border-radius:12px;
+  background:var(--surface);
+  display:flex;flex-direction:column;gap:.75rem;
+  position:relative;
+}
+.how-card__num{
+  position:absolute;top:1.125rem;right:1.125rem;
+  font-family:var(--ff-mono);font-size:.68rem;color:var(--ink-3);font-weight:500;
+}
+.how-card__icon{
+  width:34px;height:34px;border-radius:8px;
+  background:var(--linen);border:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--ink-2);
+}
+.how-card__title{font-size:.9375rem;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.how-card__body{font-size:.8rem;color:var(--ink-2);line-height:1.6;flex:1}
+.how-card__example{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto;padding-top:.375rem}
+.how-example-chip{
+  font-size:.65rem;font-weight:500;color:var(--ink-2);
+  background:var(--linen);border:1px solid var(--rule);
+  padding:.175rem .5rem;border-radius:20px;font-family:var(--ff-mono);
+}
+
+/* ─── THREE OBJECTS (legacy — keep for reference) ────────── */
+.objects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem}
+.object-card{
+  padding:1.75rem;background:var(--surface);
+  border:1.5px solid var(--rule);border-radius:12px;
+  transition:border-color .2s,box-shadow .2s;
+}
+.object-card:hover{border-color:var(--ink-2);box-shadow:0 4px 20px rgba(17,17,16,.07)}
+.object-card__num{
+  font-family:var(--ff-mono);font-size:.72rem;font-weight:500;
+  color:var(--ink-3);letter-spacing:.04em;margin-bottom:.875rem;
+}
+.object-card__title{
+  font-size:1.125rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.65rem;
+}
+.object-card__body{font-size:.875rem;color:var(--ink-2);line-height:1.6;margin-bottom:1.25rem}
+.object-chip{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-family:var(--ff-mono);font-size:.68rem;font-weight:500;
+  color:var(--ink-2);background:var(--linen);
+  padding:.28rem .65rem;border-radius:6px;border:1px solid var(--rule);
+}
+.chip-dot{width:6px;height:6px;border-radius:50%}
+.chip-dot--insight{background:#5B8DD9}
+.chip-dot--bet    {background:#E67E22}
+.chip-dot--task   {background:#27AE60}
+
+/* ─── MANIFESTO ──────────────────────────────────────────── */
+.manifesto__inner{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.manifesto__quote{
+  font-family:var(--ff-serif);font-size:var(--step-3);
+  font-style:italic;font-weight:400;line-height:1.3;
+  letter-spacing:-.01em;color:var(--surface);
+  position:relative;padding-left:1.75rem;
+}
+.manifesto__quote::before{
+  content:'';position:absolute;left:0;top:.2em;
+  width:3px;height:calc(100% - .4em);background:var(--accent);
+}
+.manifesto__body{color:rgba(250,250,248,.65);font-size:var(--step-1);line-height:1.65}
+.manifesto__body p+p{margin-top:1rem}
+.manifesto__body strong{color:var(--surface);font-weight:600}
+
+/* ─── FEATURES ───────────────────────────────────────────── */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.25rem}
+.feature-card{
+  padding:1.375rem;border:1.5px solid var(--rule);border-radius:12px;
+  background:var(--surface);transition:border-color .2s,box-shadow .2s;
+}
+.feature-card:hover{border-color:var(--ink-2);box-shadow:0 4px 16px rgba(17,17,16,.06)}
+.feature-card__title{font-size:.9375rem;font-weight:700;letter-spacing:-.015em;margin-bottom:.5rem}
+.feature-card__body{font-size:.8125rem;color:var(--ink-2);line-height:1.55}
+
+/* ─── SPEC TABLE ─────────────────────────────────────────── */
+.spec-table{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border:1.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-top:2rem;
+}
+.spec-cell{padding:1.125rem 1.375rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.spec-cell:nth-child(3n){border-right:none}
+.spec-cell:nth-last-child(-n+3){border-bottom:none}
+.spec-cell__key{
+  font-size:.65rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:.35rem;
+}
+.spec-cell__val{font-family:var(--ff-mono);font-size:.8rem;font-weight:500;color:var(--ink)}
+
+/* ─── FAQ ────────────────────────────────────────────────── */
+.faq-header{margin-bottom:2.25rem}
+.faq-header p{font-size:.8125rem;color:var(--ink-3);margin-top:.4rem;font-style:italic}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.faq-item{padding:1.25rem 1.5rem;background:var(--surface);cursor:pointer;transition:background .15s}
+.faq-item:hover{background:var(--linen)}
+.faq-item__q{
+  font-size:.875rem;font-weight:600;letter-spacing:-.01em;
+  margin-bottom:.4rem;display:flex;justify-content:space-between;
+  align-items:flex-start;gap:.875rem;
+}
+.faq-item__q-icon{
+  flex-shrink:0;width:14px;height:14px;color:var(--ink-3);
+  transition:transform .2s;margin-top:.15em;
+}
+.faq-item.open .faq-item__q-icon{transform:rotate(45deg);color:var(--accent)}
+.faq-item__a{
+  font-size:.8125rem;color:var(--ink-2);line-height:1.6;
+  max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .25s;opacity:0;
+}
+.faq-item.open .faq-item__a{max-height:300px;opacity:1}
+
+/* ─── FINAL CTA ──────────────────────────────────────────── */
+.cta-section{text-align:center}
+.cta-section .section-title{margin-bottom:.875rem}
+.cta-section .section-sub{margin:0 auto 1.75rem}
+.cta-actions{display:flex;align-items:center;justify-content:center;gap:.75rem;flex-wrap:wrap}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+.footer{padding-block:1.75rem;border-top:1px solid var(--rule)}
+.footer__logo-svg-bg  { fill: #FAFAF8; }
+.footer__logo-svg-path { stroke: #111110; }
+.footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.875rem}
+.footer__logo{font-weight:700;letter-spacing:-.02em;font-size:.875rem}
+.footer__links{display:flex;align-items:center;gap:1.5rem;list-style:none;flex-wrap:wrap}
+.footer__links a{font-size:.875rem;color:var(--ink-2);transition:color .15s}
+.footer__links a:hover{color:var(--ink)}
+.footer__copy{font-size:.78rem;color:var(--ink-3)}
+
+/* ─── SCROLL REVEALS ─────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal--d1{transition-delay:.08s}
+.reveal--d2{transition-delay:.16s}
+.reveal--d3{transition-delay:.24s}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:960px){
+  .hero__grid,.manifesto__inner{grid-template-columns:1fr}
+  .loop-diagram{max-width:420px;margin:0 auto}
+  .split{grid-template-columns:1fr}
+  .split__arrow{display:none}
+  .mkt-grid,.mkt-grid--3{grid-template-columns:1fr 1fr}
+  .mkt-grid--3 .mkt-card--custom{grid-column:auto;flex-direction:column;align-items:flex-start}
+  .mkt-grid--3 .mkt-card--custom .mkt-card__objects{margin-left:0;margin-top:.5rem}
+  .how-grid,.objects-grid,.features-grid,.pricing-grid,.pricing-grid--4{grid-template-columns:1fr}
+  .spec-table{grid-template-columns:1fr 1fr}
+  .spec-cell:nth-child(3n){border-right:1px solid var(--rule)}
+  .spec-cell:nth-child(2n){border-right:none}
+  .faq-grid{grid-template-columns:1fr}
+  .nav__links{gap:1rem}
+}
+@media(max-width:600px){
+  .mkt-grid,.mkt-grid--3{grid-template-columns:1fr}
+  .mkt-grid--3 .mkt-card--custom{grid-column:auto}
+  .spec-table{grid-template-columns:1fr}
+  .spec-cell{border-right:none!important}
+  .nav__links li:not(:last-child):not(:nth-last-child(2)){display:none}
+  .hero__prompt-box{font-size:.875rem}
+}
+
+/* ─── REDUCED MOTION ─────────────────────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  .reveal,.loop-card,.loop-path,.loop-agent,.loop-card__actor-dot{transition:none!important;animation:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="#" style="display:flex;align-items:center;gap:.5rem">
+      <svg width="28" height="28" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="80" height="80" rx="14" fill="#111110"/>
+        <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+      </svg>
+      Maskin
+    </a>
+    <ul class="nav__links">
+      <li><a href="#use-cases">Use cases</a></li>
+      <li><a href="#method">How it works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a class="nav__cta" href="https://maskin.io/docs/get-started/">Get started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════ HERO -->
+<section class="hero section">
+  <div class="hero__glow"></div>
+  <div class="wrap">
+    <div class="hero__grid">
+
+      <!-- Left: copy + prompt -->
+      <div>
+        <h1 class="hero__headline reveal reveal--d1">
+          Your team has been<br>using AI <em>alone</em>.
+        </h1>
+        <p class="hero__sub reveal reveal--d2">
+          Maskin is the workspace where your whole team — humans and AI agents — works together, with shared memory and a real process.
+        </p>
+
+        <!-- Startup prompt -->
+        <div class="hero__prompt-box reveal reveal--d2" id="promptZone">
+          <textarea
+            class="hero__prompt-input"
+            rows="1"
+            placeholder="Describe what you want your team to achieve…"
+            id="promptInput"
+          ></textarea>
+          <button class="hero__prompt-submit" onclick="handlePromptSubmit()">
+            Start
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <div class="hero__actions reveal reveal--d3">
+          <a class="btn-primary" href="https://maskin.io/docs/get-started/">Get started free</a>
+          <a class="btn-secondary" href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a demo</a>
+        </div>
+
+        <div class="hero__social reveal reveal--d3">
+          <span class="hero__social-label">Works with your stack</span>
+          <div class="hero__logos">
+            <span class="hero__logo-item">Slack</span>
+            <span class="hero__logo-item">Linear</span>
+            <span class="hero__logo-item">GitHub</span>
+            <span class="hero__logo-item">Intercom</span>
+            <span class="hero__logo-item">+ more</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: animated loop diagram -->
+      <div class="loop-diagram reveal reveal--d2" id="loopDiagram">
+        <svg class="loop-svg" viewBox="0 0 500 530" preserveAspectRatio="xMidYMid meet">
+          <path id="path-ib" class="loop-path" d="M 250 108 C 190 190, 148 210, 130 268"/>
+          <path id="path-it" class="loop-path" d="M 250 108 C 310 190, 352 210, 370 268"/>
+          <path id="path-bs" class="loop-path" d="M 130 348 C 150 408, 195 438, 248 452"/>
+          <path id="path-ts" class="loop-path" d="M 370 348 C 350 408, 305 438, 252 452"/>
+          <path id="path-si" class="loop-path" d="M 250 506 C 480 490, 490 140, 285 88"/>
+        </svg>
+
+        <div class="loop-card loop-card--insight" id="card-insight">
+          <div class="loop-card__label">Insight</div>
+          <div class="loop-card__title">Onboarding drop-off spike — week 2</div>
+          <div class="loop-card__actor"><div class="loop-card__actor-dot"></div>Product Analyst</div>
+        </div>
+        <div class="loop-card loop-card--bet" id="card-bet">
+          <div class="loop-card__label">Bet</div>
+          <div class="loop-card__title">Onboarding quiz reduces churn 15%</div>
+          <div class="loop-card__actor"><div class="loop-card__actor-dot"></div>Bet Strategist</div>
+        </div>
+        <div class="loop-card loop-card--task" id="card-task">
+          <div class="loop-card__label">Task</div>
+          <div class="loop-card__title">Design quiz flow + UI screens</div>
+          <div class="loop-card__actors">
+            <div class="loop-card__actor"><div class="loop-card__actor-dot"></div>Designer</div>
+            <div class="loop-card__actor"><div class="loop-card__actor-dot"></div>Developer</div>
+          </div>
+        </div>
+        <div class="loop-card loop-card--shipped" id="card-shipped">
+          <div class="loop-card__label">Shipped</div>
+          <div class="loop-card__title">Onboarding quiz live</div>
+          <div class="loop-card__actor"><div class="loop-card__actor-dot"></div>All agents</div>
+          <div class="loop-card__callout">
+            <svg width="9" height="9" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Bet validated · drop-off ↓18%
+          </div>
+        </div>
+
+        <div class="loop-agent loop-agent--analyst" id="agent-analyst">
+          <div class="agent-icon">⚡</div>Agent spotted this
+        </div>
+        <div class="loop-agent loop-agent--strategist" id="agent-strategist">
+          <div class="agent-icon">⚡</div>Human reviewed &amp; approved
+        </div>
+        <div class="loop-agent loop-agent--dev" id="agent-dev">
+          <div class="agent-icon">⚡</div>Agents ship it
+        </div>
+        <div class="loop-agent loop-agent--shipped" id="agent-shipped">
+          <div class="agent-icon">⚡</div>Agent validates the bet
+        </div>
+
+        <div class="loop-status" id="loopStatus">insight → bet → task → shipped → repeat</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="wrap">
+    <div class="proof-bar__inner">
+      <span class="proof-bar__label">Open source · Apache 2.0</span>
+      <div class="proof-bar__divider"></div>
+      <div class="proof-bar__logos">
+        <span class="proof-bar__logo">MCP-native</span>
+        <span class="proof-bar__logo">Bring your own model</span>
+        <span class="proof-bar__logo">Self-host or managed</span>
+        <span class="proof-bar__logo">EU &amp; US data residency</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ DEMO VIDEO -->
+<section class="section demo-section">
+  <div class="wrap">
+    <div class="demo-inner reveal">
+      <div class="demo-label">See it in action</div>
+      <div class="demo-frame" id="demoFrame">
+        <!-- Replace src with real video URL when available -->
+        <div class="demo-placeholder">
+          <button class="demo-play-btn" onclick="this.closest('.demo-placeholder').style.display='none'; document.getElementById('demoVideo').style.display='block'" aria-label="Play demo">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <div class="demo-placeholder__text">
+            <span class="demo-placeholder__title">Watch Maskin run a full workflow</span>
+            <span class="demo-placeholder__sub">From Slack message to shipped bet — under 3 minutes</span>
+          </div>
+          <div class="demo-placeholder__badge">90s demo · coming soon</div>
+        </div>
+        <video id="demoVideo" style="display:none;width:100%;border-radius:10px" controls>
+          <!-- <source src="demo.mp4" type="video/mp4"> -->
+        </video>
+      </div>
+      <p class="demo-caption">Want to see a live walkthrough instead? <a href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener" class="demo-caption__link">Book a 20-minute demo with the founders →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ SOCIAL PROOF -->
+<div class="social-strip">
+  <div class="wrap">
+    <div class="social-strip__inner">
+      <div class="social-item">
+        <span class="social-item__icon">⊙</span>
+        <span class="social-item__text">Apache 2.0 — inspect every line</span>
+      </div>
+      <div class="social-divider"></div>
+      <div class="social-item">
+        <span class="social-item__icon">◈</span>
+        <span class="social-item__text">MCP-native — built for the agent era</span>
+      </div>
+      <div class="social-divider"></div>
+      <div class="social-item">
+        <span class="social-item__icon">◎</span>
+        <span class="social-item__text">Self-host or managed — EU &amp; US</span>
+      </div>
+      <div class="social-divider"></div>
+      <div class="social-item">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="color:var(--ink-3);flex-shrink:0"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener" class="social-item__gh">Star on GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ PROBLEM → SOLUTION -->
+<section class="section section--linen">
+  <div class="wrap">
+    <div class="split reveal">
+
+      <div class="split__col split__col--before">
+        <div class="split__col-label">Today</div>
+        <h3 class="split__col-title">Too many conversations.<br>None going the same way.</h3>
+        <ul class="split__list">
+          <li>Ten people, ten AI chats — none of them visible to the rest of the team.</li>
+          <li>Decisions get made in DMs. Context lives in someone's chat history.</li>
+          <li>The AI helps one person. The organisation learns nothing.</li>
+          <li>Every new session starts from zero. Progress evaporates overnight.</li>
+        </ul>
+      </div>
+
+      <div class="split__arrow">
+        <svg viewBox="0 0 28 28" fill="none"><path d="M6 14h16M16 8l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <div class="split__col split__col--after">
+        <div class="split__col-label">With Maskin</div>
+        <h3 class="split__col-title">Humans and AI working<br>as equals, towards outcomes.</h3>
+        <ul class="split__list">
+          <li>One shared workspace — every human and agent has a role.</li>
+          <li>Persistent memory: insights, bets, tasks live across sessions.</li>
+          <li>Agents work autonomously. Humans decide what matters.</li>
+          <li>The loop closes itself. Ship, learn, repeat.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ MARKETPLACE -->
+<section class="section" id="use-cases">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">Marketplace</div>
+      <h2 class="section-title">Pick a workflow. Your agents<br>start running in minutes.</h2>
+      <p class="section-sub" style="margin-top:.875rem">Pre-built closed loops. Each one ships with the right agents, objects, and handoffs already wired.</p>
+    </div>
+
+    <div class="mkt-grid mkt-grid--3 reveal" style="margin-top:3rem">
+
+      <div class="mkt-card mkt-card--product">
+        <div class="mkt-card__header">
+          <span class="mkt-card__role">Customer feedback</span>
+          <span class="mkt-card__badge">Free</span>
+        </div>
+        <h3 class="mkt-card__title">Close the loop — all the way back to the customer</h3>
+        <p class="mkt-card__desc">A customer posts feedback. It becomes an insight, gets shaped into a bet, built and shipped — and when it goes live, the customer who asked for it is notified automatically.</p>
+        <div class="mkt-card__agents">
+          <span class="mkt-agent-chip">Feedback Monitor</span>
+          <span class="mkt-agent-chip">Bet Strategist</span>
+          <span class="mkt-agent-chip">Developer</span>
+        </div>
+        <div class="mkt-card__objects">
+          <span class="obj-tag obj-tag--integration">via Slack / Intercom</span>
+          <span class="obj-tag obj-tag--arrow">→</span>
+          <span class="obj-tag obj-tag--insight">Insight</span>
+          <span class="obj-tag obj-tag--arrow">→</span>
+          <span class="obj-tag obj-tag--bet">Bet</span>
+          <span class="obj-tag obj-tag--arrow">→</span>
+          <span class="obj-tag obj-tag--task">Shipped → Customer notified</span>
+        </div>
+      </div>
+
+      <div class="mkt-card mkt-card--growth">
+        <div class="mkt-card__header">
+          <span class="mkt-card__role">Market signals</span>
+          <span class="mkt-card__badge">Free</span>
+        </div>
+        <h3 class="mkt-card__title">Turn the internet into things worth doing</h3>
+        <p class="mkt-card__desc">Maskin monitors Reddit, X, LinkedIn and community forums. Extracts what's relevant for your team, synthesises it into insights, and creates bets to tackle the ones that matter.</p>
+        <div class="mkt-card__agents">
+          <span class="mkt-agent-chip">Signal Monitor</span>
+          <span class="mkt-agent-chip">Insight Synthesiser</span>
+          <span class="mkt-agent-chip">Bet Strategist</span>
+        </div>
+        <div class="mkt-card__objects">
+          <span class="obj-tag obj-tag--integration">via Reddit / X / LinkedIn</span>
+          <span class="obj-tag obj-tag--arrow">→</span>
+          <span class="obj-tag obj-tag--insight">Insights</span>
+          <span class="obj-tag obj-tag--arrow">→</span>
+          <span class="obj-tag obj-tag--bet">Bets</span>
+        </div>
+      </div>
+
+      <div class="mkt-card mkt-card--cs">
+        <div class="mkt-card__header">
+          <span class="mkt-card__role">Churn &amp; expansion</span>
+          <span class="mkt-card__badge">Pro</span>
+        </div>
+        <h3 class="mkt-card__title">Catch at-risk accounts before they leave</h3>
+        <p class="mkt-card__desc">Usage drops, login gaps, error spikes — the Churn Monitor watches the signals that matter. When a risk pattern fires, the right person gets an alert with full context, not a generic nudge.</p>
+        <div class="mkt-card__agents">
+          <span class="mkt-agent-chip">Churn Monitor</span>
+          <span class="mkt-agent-chip">CS Advisor</span>
+        </div>
+        <div class="mkt-card__objects">
+          <span class="obj-tag obj-tag--integration">via PostHog / HubSpot</span>
+          <span class="obj-tag obj-tag--arrow">→</span>
+          <span class="obj-tag obj-tag--insight">Risk signal</span>
+          <span class="obj-tag obj-tag--arrow">→</span>
+          <span class="obj-tag obj-tag--bet">CSM intervention</span>
+        </div>
+      </div>
+
+      <div class="mkt-card mkt-card--sales">
+        <div class="mkt-card__header">
+          <span class="mkt-card__role">Lost deals → roadmap</span>
+          <span class="mkt-card__badge">Pro</span>
+        </div>
+        <h3 class="mkt-card__title">Make lost deals work for your next win</h3>
+        <p class="mkt-card__desc">Every closed-lost reason in HubSpot gets synthesised into product insights, weighted by ARR. The Bet Strategist turns the patterns into roadmap bets — and closes the loop back to sales when they ship.</p>
+        <div class="mkt-card__agents">
+          <span class="mkt-agent-chip">Deal Analyst</span>
+          <span class="mkt-agent-chip">Bet Strategist</span>
+        </div>
+        <div class="mkt-card__objects">
+          <span class="obj-tag obj-tag--integration">via HubSpot</span>
+          <span class="obj-tag obj-tag--arrow">→</span>
+          <span class="obj-tag obj-tag--insight">Loss patterns</span>
+          <span class="obj-tag obj-tag--arrow">→</span>
+          <span class="obj-tag obj-tag--bet">Roadmap bet</span>
+        </div>
+      </div>
+
+      <div class="mkt-card mkt-card--intel">
+        <div class="mkt-card__header">
+          <span class="mkt-card__role">Competitive intelligence</span>
+          <span class="mkt-card__badge">Pro</span>
+        </div>
+        <h3 class="mkt-card__title">Know what competitors shipped before your sales team does</h3>
+        <p class="mkt-card__desc">Maskin watches competitor changelogs, pricing pages, and job postings. Filters noise from signal, routes by team — product gets the feature gaps, sales gets the battlecard update.</p>
+        <div class="mkt-card__agents">
+          <span class="mkt-agent-chip">Intel Monitor</span>
+          <span class="mkt-agent-chip">Bet Strategist</span>
+        </div>
+        <div class="mkt-card__objects">
+          <span class="obj-tag obj-tag--integration">via web / GitHub changelogs</span>
+          <span class="obj-tag obj-tag--arrow">→</span>
+          <span class="obj-tag obj-tag--insight">Signal</span>
+          <span class="obj-tag obj-tag--arrow">→</span>
+          <span class="obj-tag obj-tag--bet">Battlecard / roadmap bet</span>
+        </div>
+      </div>
+
+      <div class="mkt-card mkt-card--custom">
+        <div class="mkt-card__header">
+          <span class="mkt-card__role">Custom</span>
+          <span class="mkt-card__badge mkt-card__badge--ghost">Build your own</span>
+        </div>
+        <h3 class="mkt-card__title">Any workflow your team runs</h3>
+        <p class="mkt-card__desc">Compose your own closed loop. Add agent roles, wire the objects, define the handoffs. If your team runs it today, Maskin can run it with you tomorrow.</p>
+        <div class="mkt-card__agents">
+          <span class="mkt-agent-chip">Your agents</span>
+          <span class="mkt-agent-chip">Your objects</span>
+        </div>
+        <div class="mkt-card__objects">
+          <a class="mkt-browse-link" href="https://maskin.io/docs/get-started/">Browse the marketplace →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ HOW IT WORKS -->
+<section class="section section--linen" id="method">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">How it works</div>
+      <h2 class="section-title">Triggers, agents, and a shared<br>workspace that never forgets.</h2>
+      <p class="section-sub" style="margin-top:.875rem">Three moving parts. Every closed loop in the marketplace is built from the same primitives.</p>
+    </div>
+
+    <div class="how-grid">
+
+      <div class="how-card reveal">
+        <div class="how-card__num">01</div>
+        <div class="how-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="how-card__title">Triggers</h3>
+        <p class="how-card__body">A Slack message. A new customer complaint. A scheduled morning scan. Triggers are how work enters the system — automatically, from the tools your team already uses.</p>
+        <div class="how-card__example">
+          <span class="how-example-chip">Slack message → new insight</span>
+        </div>
+      </div>
+
+      <div class="how-card reveal reveal--d1">
+        <div class="how-card__num">02</div>
+        <div class="how-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.75"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><circle cx="19" cy="6" r="2.5" fill="currentColor" opacity=".35"/><circle cx="5" cy="6" r="2.5" fill="currentColor" opacity=".35"/></svg>
+        </div>
+        <h3 class="how-card__title">Agents</h3>
+        <p class="how-card__body">Agents have defined roles — not just prompts. The Feedback Monitor reads signals. The Bet Strategist shapes them. The Developer ships. Each agent knows what it owns and stays on the job.</p>
+        <div class="how-card__example">
+          <span class="how-example-chip">Feedback Monitor</span>
+          <span class="how-example-chip">Bet Strategist</span>
+          <span class="how-example-chip">Developer</span>
+        </div>
+      </div>
+
+      <div class="how-card reveal reveal--d2">
+        <div class="how-card__num">03</div>
+        <div class="how-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="how-card__title">Threads</h3>
+        <p class="how-card__body">Every bet, insight, and task has a thread. Humans and agents post to the same one. An agent flags a blocker. A PM replies and approves. The full history stays attached to the work — not buried in Slack.</p>
+        <div class="how-card__example">
+          <span class="how-example-chip">Agent: "Riskiest assumption flagged ↗"</span>
+          <span class="how-example-chip">PM: "Approved — ship it"</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ MANIFESTO -->
+<section class="section section--ink manifesto">
+  <div class="wrap">
+    <div class="manifesto__inner">
+      <blockquote class="manifesto__quote reveal">
+        "Every great product is a series of bets placed with taste."
+      </blockquote>
+      <div class="manifesto__body reveal reveal--d1">
+        <p>Until now, software has treated AI like a chatbot. You type, it replies, you copy-paste. The human does all the carrying.</p>
+        <p>Maskin is built for the opposite. <strong>Humans and agents share the same workspace, the same memory, the same insights and bets.</strong> An agent spots a signal cluster overnight; a PM wakes up and shapes it into a bet; another agent decomposes it into work; a designer picks up the prototype.</p>
+        <p>We're entering a world where a team of three humans and four agents outperforms a team of twenty — not because the humans work harder, but because the agents never lose context and never wait to be told what's next. <strong>Taste still decides which bet is worth making. That's the part that doesn't delegate.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ FEATURES + SPEC -->
+<section class="section section--linen">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">Built for the way work actually happens now</div>
+      <h2 class="section-title">Everything open,<br>nothing locked in.</h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-card__title">Humans &amp; agents as first-class citizens</div>
+        <div class="feature-card__body">Same API surface, persistent memory, defined roles. Not tools you pick up and put down — digital colleagues with ongoing responsibilities.</div>
+      </div>
+      <div class="feature-card reveal reveal--d1">
+        <div class="feature-card__title">You stay in control</div>
+        <div class="feature-card__body">Every agent action is visible in the shared workspace. Humans comment, review, and approve. Nothing ships without a bet — and every bet is yours to accept or close.</div>
+      </div>
+      <div class="feature-card reveal reveal--d2">
+        <div class="feature-card__title">Open &amp; extensible</div>
+        <div class="feature-card__body">Apache 2.0. Self-host on your own infrastructure or use managed hosting. Add new object types and agent roles. Bring your own model key — Anthropic, OpenAI, or local via Ollama.</div>
+      </div>
+    </div>
+
+    <div class="spec-table reveal" style="margin-top:2.5rem">
+      <div class="spec-cell"><div class="spec-cell__key">Protocol</div><div class="spec-cell__val">MCP-native</div></div>
+      <div class="spec-cell"><div class="spec-cell__key">Models</div><div class="spec-cell__val">Bring your own</div></div>
+      <div class="spec-cell"><div class="spec-cell__key">License</div><div class="spec-cell__val">Apache 2.0</div></div>
+      <div class="spec-cell"><div class="spec-cell__key">Deploy</div><div class="spec-cell__val">Self-host or managed</div></div>
+      <div class="spec-cell"><div class="spec-cell__key">Integrations</div><div class="spec-cell__val">API tokens</div></div>
+      <div class="spec-cell">
+        <div class="spec-cell__key">GitHub</div>
+        <div class="spec-cell__val"><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener" style="color:var(--accent)">★ Stars</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ FAQ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="faq-header reveal">
+      <div class="section-tag">Questions, answered</div>
+      <h2 class="section-title">The questions worth asking<br>before you sign up.</h2>
+    </div>
+
+    <div class="faq-grid reveal">
+
+      <div class="faq-item">
+        <div class="faq-item__q">How is this different from Claude Projects or ChatGPT Teams?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">Those share prompts. Maskin shares state. The insight an agent spotted overnight is the same insight you open at 9am, linked to the bet you shaped yesterday, linked to the task your designer just picked up. A chat history is not a team memory.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">What happens when an agent does something wrong?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">Every agent action is posted as a comment on the relevant object — visible to the whole team. Humans approve bets before they become active. Nothing deploys without a human in the loop. If something looks wrong, you close the bet and the agents stop. The audit trail stays.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">Do I need engineers to run this?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">No for hosted — sign up, invite the team, plug in a model key, go. Yes if you want to self-host, but it's one docker-compose file away.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">What's a "bet"?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">A scoped hypothesis with a goal, evidence, and a timeline. Borrowed from Shape Up. It's the unit where human judgment compounds — insights get noticed, tasks get executed, bets get chosen.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">What models can I use?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">Bring your own. Anthropic, OpenAI, local via Ollama — anything that speaks a standard API. Your key, your spend, your rate limits.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">Where does my data live? Does it train anything?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">Hosted: isolated tenants in EU or US regions. Self-host: wherever you put the container. Either way your prompts and context are never used as training data — they belong to you.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">What are agent credits?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">Credits are the unit we use for agent activity during your trial — each workflow run, scan, or agent action consumes a small number. Your 14-day trial includes 500 credits, which is enough to run most workflows repeatedly and see real results. On paid plans, you bring your own model key and credits are no longer a constraint.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">What does it cost?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">14-day free trial with 500 agent credits included — no credit card needed. After that: $20/seat/month (Pro), $200/workspace/month flat (Team, unlimited seats), or Enterprise with your own LLM and infrastructure. Self-host is always free under Apache 2.0.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ PRICING -->
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <div class="section-tag">Pricing</div>
+      <h2 class="section-title">Try it free. Pay when<br>your team grows into it.</h2>
+      <p class="section-sub" style="margin-top:.875rem">14-day free trial on all plans. Includes 500 agent credits. No credit card required. Bring your own model key — no markup on AI spend.</p>
+    </div>
+
+    <div class="pricing-grid pricing-grid--4 reveal" style="margin-top:3rem">
+
+      <div class="pricing-card">
+        <div class="pricing-card__header">
+          <span class="pricing-card__name">Trial</span>
+          <div class="pricing-card__price"><span class="pricing-card__amount">Free</span><span class="pricing-card__per">/14 days</span></div>
+        </div>
+        <p class="pricing-card__tagline">Full product. No credit card. 500 agent credits included.</p>
+        <ul class="pricing-card__features">
+          <li>1 workspace</li>
+          <li>Up to 5 members</li>
+          <li>Full marketplace access</li>
+          <li>500 agent credits included</li>
+          <li>Community support</li>
+        </ul>
+        <a class="pricing-card__cta btn-secondary" href="https://maskin.io/docs/get-started/">Start free trial</a>
+      </div>
+
+      <div class="pricing-card pricing-card--featured">
+        <div class="pricing-card__badge">Most popular</div>
+        <div class="pricing-card__header">
+          <span class="pricing-card__name">Pro</span>
+          <div class="pricing-card__price"><span class="pricing-card__amount">$20</span><span class="pricing-card__per">/seat/month</span></div>
+        </div>
+        <p class="pricing-card__tagline">For teams running real workflows day to day.</p>
+        <ul class="pricing-card__features">
+          <li>Unlimited workspaces</li>
+          <li>Unlimited members</li>
+          <li>Full marketplace access</li>
+          <li>Bring your own model key</li>
+          <li>Priority support</li>
+          <li>EU &amp; US data residency</li>
+        </ul>
+        <a class="pricing-card__cta btn-primary" href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Start free trial</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card__header">
+          <span class="pricing-card__name">Team</span>
+          <div class="pricing-card__price"><span class="pricing-card__amount">$200</span><span class="pricing-card__per">/workspace/month</span></div>
+        </div>
+        <p class="pricing-card__tagline">Unlimited seats. One flat rate. Everything included.</p>
+        <ul class="pricing-card__features">
+          <li>Everything in Pro</li>
+          <li>Unlimited seats — flat price</li>
+          <li>Self-host option</li>
+          <li>Bring your own model key</li>
+          <li>Dedicated onboarding</li>
+          <li>SLA &amp; invoicing</li>
+        </ul>
+        <a class="pricing-card__cta btn-secondary" href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Talk to us</a>
+      </div>
+
+      <div class="pricing-card pricing-card--enterprise">
+        <div class="pricing-card__header">
+          <span class="pricing-card__name">Enterprise</span>
+          <div class="pricing-card__price"><span class="pricing-card__amount">BYOL</span></div>
+        </div>
+        <p class="pricing-card__tagline">Bring your own LLM. Run on your own infrastructure. Full control.</p>
+        <ul class="pricing-card__features">
+          <li>Everything in Team</li>
+          <li>Bring your own model — any provider</li>
+          <li>Self-host on your infra</li>
+          <li>SSO &amp; RBAC</li>
+          <li>Custom data residency</li>
+          <li>Dedicated support &amp; SLA</li>
+        </ul>
+        <a class="pricing-card__cta btn-secondary" href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Contact us</a>
+      </div>
+
+    </div>
+
+    <p class="pricing-note reveal">14-day free trial · 500 agent credits included · no credit card required. <strong>Self-host is always free</strong> — Apache 2.0.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ FINAL CTA -->
+<section class="section cta-section section--linen">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;max-width:640px;margin-inline:auto">
+      <div class="section-tag">Get started</div>
+      <h2 class="section-title">Your team is ready<br>for a workspace that keeps up.</h2>
+      <p class="section-sub">We're onboarding design partner teams now. Get a live walkthrough with the founders, or clone the repo and self-host today.</p>
+      <div class="cta-actions" style="justify-content:center;margin-top:2rem">
+        <a class="btn-primary" href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a demo</a>
+        <a class="btn-secondary" href="https://maskin.io/docs/get-started/">Get started free</a>
+        <a class="btn-ghost" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Star on GitHub
+        </a>
+      </div>
+      <p class="cta-founder-note">Built in Copenhagen by <a href="https://vaerksted.ai" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px;opacity:.7">Værksted</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__inner">
+      <span class="footer__logo" style="display:flex;align-items:center;gap:.5rem">
+        <svg width="22" height="22" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect class="footer__logo-svg-bg" width="80" height="80" rx="14" fill="#FAFAF8"/>
+          <path class="footer__logo-svg-path" d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#111110" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+        </svg>
+        Maskin
+      </span>
+      <ul class="footer__links">
+        <li><a href="https://maskin.io/docs/get-started/" target="_blank" rel="noopener">Docs</a></li>
+        <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li>
+      </ul>
+      <span class="footer__copy">© 2026 Værksted · Apache 2.0</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── NAV scroll ────────────────────────────────── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 24);
+}, { passive: true });
+
+/* ── Scroll reveals ────────────────────────────── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ── FAQ accordion ─────────────────────────────── */
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(o => o.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+/* ── Prompt submit ─────────────────────────────── */
+function handlePromptSubmit() {
+  const val = document.getElementById('promptInput').value.trim();
+  if (!val) return;
+  window.open('https://maskin.io/docs/get-started/', '_blank');
+}
+document.getElementById('promptInput')?.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) handlePromptSubmit();
+});
+
+/* ── Loop diagram animation ────────────────────── */
+const steps = [
+  { card:'card-insight', paths:[],              agents:['agent-analyst'],    status:'Analyst surfaces a signal…' },
+  { card:'card-insight', paths:['path-ib','path-it'], agents:['agent-analyst'], status:'Insight flows to Bet Strategist and Planner…' },
+  { card:'card-bet',     paths:['path-ib'],     agents:['agent-strategist'], status:'Human reviews and shapes the bet…' },
+  { card:'card-task',    paths:['path-it'],     agents:['agent-dev'],        status:'Agents decompose and execute…' },
+  { card:'card-shipped', paths:['path-bs','path-ts'], agents:['agent-shipped'], status:'Agent validates the bet against real outcomes…' },
+  { card:'card-insight', paths:['path-si'],     agents:['agent-analyst'],    status:'Loop closes. Repeat.' }
+];
+
+const ALL_CARDS  = ['card-insight','card-bet','card-task','card-shipped'];
+const ALL_PATHS  = ['path-ib','path-it','path-bs','path-ts','path-si'];
+const ALL_AGENTS = ['agent-analyst','agent-strategist','agent-dev','agent-shipped'];
+const statusEl   = document.getElementById('loopStatus');
+let stepIdx = 0, loopInterval = null;
+
+function runStep() {
+  const s = steps[stepIdx];
+  ALL_CARDS.forEach(id  => document.getElementById(id)?.classList.remove('active'));
+  ALL_PATHS.forEach(id  => document.getElementById(id)?.classList.remove('lit'));
+  ALL_AGENTS.forEach(id => document.getElementById(id)?.classList.remove('visible'));
+  document.getElementById(s.card)?.classList.add('active');
+  s.paths.forEach(id  => document.getElementById(id)?.classList.add('lit'));
+  s.agents.forEach(id => document.getElementById(id)?.classList.add('visible'));
+  if (statusEl) statusEl.textContent = s.status;
+  stepIdx = (stepIdx + 1) % steps.length;
+}
+
+const diagramEl = document.getElementById('loopDiagram');
+if (diagramEl) {
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !loopInterval) {
+        runStep();
+        loopInterval = setInterval(runStep, 2200);
+      } else if (!e.isIntersecting && loopInterval) {
+        clearInterval(loopInterval);
+        loopInterval = null;
+      }
+    });
+  }, { threshold: 0.25 }).observe(diagramEl);
+}
+</script>
+</body>
+</html>
