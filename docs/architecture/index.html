@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architecture overview — Maskin Docs</title>
+<meta name="description" content="How Maskin is built: the monorepo and stack, the unified object model, event-sourced activity, Postgres NOTIFY→SSE real-time, unified actors, containerized agent execution, and the MCP layer.">
+
+<link rel="canonical" href="https://maskin.io/docs/architecture/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/architecture/">
+<meta property="og:title" content="Architecture overview — Maskin">
+<meta property="og:description" content="The monorepo, unified object model, real-time via Postgres NOTIFY→SSE, containerized agents, and the MCP layer.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:site_name" content="Maskin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+</head>
+<body>
+
+<nav class="docnav" id="docnav"></nav>
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+
+<div class="wrap doc-layout">
+  <aside class="doc-sidebar" id="docsidebar"></aside>
+
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Architecture</p>
+
+    <p class="eyebrow">Concepts</p>
+    <h1>Architecture overview</h1>
+    <p class="lead">A map of how Maskin fits together — useful if you're evaluating it, operating it, or contributing. The throughline: humans and agents share one data model, one API, and one real-time stream.</p>
+
+    <h2>Monorepo &amp; stack</h2>
+    <p>Maskin is a pnpm + Turborepo monorepo:</p>
+    <ul>
+      <li><code>apps/</code> — the application (backend API + the React web client).</li>
+      <li><code>packages/</code> — shared libraries, including <code>db</code> (schema + migrations), <code>mcp</code> (the tool layer), and <code>shared</code> (types, templates, utilities).</li>
+      <li><code>docker/</code> — images, including <code>agent-base</code> used for agent sessions.</li>
+    </ul>
+    <p>The stack is TypeScript end to end: <strong>Hono</strong> for the HTTP API, <strong>React + Vite</strong> for the web client, <strong>PostgreSQL 16</strong> with <strong>Drizzle ORM</strong>, <strong>S3-compatible</strong> object storage (SeaweedFS in dev), <strong>Docker</strong> for agent sandboxes, and the <strong>Claude Code</strong> CLI inside them.</p>
+
+    <h2>Data flow</h2>
+    <pre><code>Humans (web)  Agents (Claude Code)   External (Slack/GitHub/…)
+      │              │                         │
+   REST /api      MCP /mcp                webhooks /api/webhooks
+      └──────────────┴───────────┬─────────────┘
+                                 ▼
+                      Services  →  PostgreSQL ──┐
+                                 │   (Drizzle)  │ LISTEN/NOTIFY
+                                 ▼              ▼
+                         S3 storage        SSE /api/events → live UI + logs</code></pre>
+
+    <h2>Unified object model</h2>
+    <p>Insights, bets, tasks (and extension types) live in <strong>one objects table</strong> with a <code>type</code> discriminator; a separate <strong>relationships</strong> table connects them into a graph. This is why an agent and a human can operate on exactly the same records. See <a href="/docs/concepts/">Core concepts</a>.</p>
+
+    <h2>Event-sourced activity</h2>
+    <p>Every change appends to an immutable <strong>events</strong> table. That log is both the audit trail and the basis for unread tracking — state is derived, not overwritten.</p>
+
+    <h2>Real-time without a broker</h2>
+    <p>Writes emit PostgreSQL <code>NOTIFY</code>; the API <code>LISTEN</code>s and fans changes out to clients as <strong>Server-Sent Events</strong>, so the UI and live session logs update with no extra message queue. Behind a connection pooler, set <code>DATABASE_URL_DIRECT</code> to a non-pooled connection so LISTEN/NOTIFY keeps working (see <a href="/docs/troubleshooting/">Troubleshooting</a>).</p>
+
+    <h2>Actors &amp; auth</h2>
+    <p>Humans and agents are unified as <strong>actors</strong>. Requests authenticate with a bearer API key (stored as a SHA-256 hash) and carry <code>X-Workspace-Id</code>; every query is scoped to that workspace. Details on the <a href="/docs/security/">Security</a> page.</p>
+
+    <h2>Agent execution</h2>
+    <p>Each agent run is a <strong>session</strong> in an ephemeral, non-root Docker container built from <code>agent-base</code>. By default these run on the app host's Docker; set <code>AGENT_SERVERS</code> to distribute them across dedicated agent servers with a warm pool. See <a href="/docs/agents/">Agents &amp; sessions</a>.</p>
+
+    <h2>MCP layer &amp; extensions</h2>
+    <p>The <code>mcp</code> package exposes the workspace as MCP tools over <code>/mcp</code> — a thin layer over the same services the REST API uses, so both surfaces stay in lock-step (<a href="/docs/mcp-tools/">MCP tools</a> / <a href="/docs/api/">API reference</a>). <strong>Integrations</strong> add provider adapters, webhook handlers, and auto-injected MCPs; <strong>extensions/modules</strong> register new object types and routes under <code>/api/m/{extension-id}</code>.</p>
+
+    <h2>Working in the repo</h2>
+    <p>Common commands: <code>pnpm dev</code> (Docker + migrations + servers), <code>pnpm build</code>, <code>pnpm test</code>, <code>pnpm test:e2e</code>, and <code>pnpm lint</code> / <code>pnpm lint:fix</code>. The project is Apache-2.0 licensed — <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">browse the source</a>.</p>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/agents/">← Agents &amp; sessions</a>
+      <a href="/docs/mcp-tools/">MCP tools →</a>
+    </nav>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

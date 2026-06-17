@@ -7,11 +7,13 @@
   var NAV = [
     { title: "Getting started", items: [
       { label: "Get started", href: "/docs/get-started/" },
-      { label: "Self-hosted setup", href: "/docs/get-started/self-hosted/", nested: true }
+      { label: "Self-hosted setup", href: "/docs/get-started/self-hosted/", nested: true },
+      { label: "Quickstart tutorial", href: "/docs/quickstart/" }
     ]},
     { title: "Concepts", items: [
       { label: "Core concepts", href: "/docs/concepts/" },
-      { label: "Agents & sessions", href: "/docs/agents/" }
+      { label: "Agents & sessions", href: "/docs/agents/" },
+      { label: "Architecture", href: "/docs/architecture/" }
     ]},
     { title: "Reference", items: [
       { label: "MCP tools", href: "/docs/mcp-tools/" },
@@ -21,7 +23,9 @@
     ]},
     { title: "Self-hosting", items: [
       { label: "LLM & models", href: "/docs/llm/" },
-      { label: "Production deployment", href: "/docs/deployment/" }
+      { label: "Production deployment", href: "/docs/deployment/" },
+      { label: "Security", href: "/docs/security/" },
+      { label: "Troubleshooting", href: "/docs/troubleshooting/" }
     ]}
   ];
 

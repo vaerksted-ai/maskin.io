@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security — Maskin Docs</title>
+<meta name="description" content="Maskin's security model: API-key authentication, workspace isolation and roles, AES-256-GCM credential encryption, sandboxed agent execution, webhook verification, the audit log, and responsible disclosure.">
+
+<link rel="canonical" href="https://maskin.io/docs/security/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/security/">
+<meta property="og:title" content="Security — Maskin">
+<meta property="og:description" content="Authentication, workspace isolation, encrypted credentials, sandboxed agents, and responsible disclosure.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:site_name" content="Maskin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+</head>
+<body>
+
+<nav class="docnav" id="docnav"></nav>
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+
+<div class="wrap doc-layout">
+  <aside class="doc-sidebar" id="docsidebar"></aside>
+
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Security</p>
+
+    <p class="eyebrow">Self-hosting</p>
+    <h1>Security</h1>
+    <p class="lead">How Maskin protects credentials, isolates tenants, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.</p>
+
+    <h2>Authentication</h2>
+    <p>Every request authenticates with a bearer API key (prefixed <code>ank_</code>). Keys are stored only as <strong>SHA-256 hashes</strong> — the plaintext is shown once at creation and never again. Auth is <strong>stateless</strong>: no cookies or server sessions. Keys are per-actor and can be rotated with <code>regenerate_api_key</code>, which immediately invalidates the old value.</p>
+
+    <h2>Authorization &amp; tenant isolation</h2>
+    <p>Workspace-scoped requests carry an <code>X-Workspace-Id</code> header, and every query is scoped to that workspace — data does not cross tenant boundaries. Membership is role-based: <code>owner</code>, <code>member</code>, and <code>viewer</code>.</p>
+
+    <h2>Credential encryption at rest</h2>
+    <p>Integration OAuth tokens and workspace LLM API keys are encrypted with <strong>AES-256-GCM</strong> using <code>INTEGRATION_ENCRYPTION_KEY</code> (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as <code>iv:authTag:ciphertext</code>. In the UI only the last four characters are ever shown, and secrets are never written to logs or exposed in agent output.</p>
+    <div class="callout">
+      <span class="callout__icon">!</span>
+      <span class="callout__body">Set <code>INTEGRATION_ENCRYPTION_KEY</code> explicitly in production and keep it stable — rotating it makes previously stored credentials undecryptable, so connections must be re-established.</span>
+    </div>
+
+    <h2>Sandboxed agent execution</h2>
+    <p>Agent sessions run as <strong>ephemeral, non-root Docker containers</strong> (from the <code>agent-base</code> image), one per run, torn down on completion. To launch them the app uses the host Docker socket (<code>/var/run/docker.sock</code>) — treat access to that socket as root-equivalent and restrict it to the app. For stronger isolation, run sessions on dedicated <a href="/docs/agents/">agent servers</a> rather than the app host.</p>
+
+    <h2>Webhook verification</h2>
+    <p>Inbound webhooks are signature-verified per provider before processing:</p>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Provider</th><th>Verification</th></tr></thead>
+      <tbody>
+        <tr><td>Slack</td><td>HMAC-SHA256 over the raw body + timestamp (<code>x-slack-signature</code>).</td></tr>
+        <tr><td>GitHub</td><td><code>x-hub-signature-256</code> HMAC.</td></tr>
+        <tr><td>Linear</td><td><code>linear-signature</code> HMAC.</td></tr>
+        <tr><td>Gmail</td><td>Pub/Sub push with OIDC JWT verification.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Audit log</h2>
+    <p>Every change is recorded in an append-only event log (see <a href="/docs/architecture/">Architecture</a>), giving you an immutable trail of who — human or agent — did what, and when.</p>
+
+    <h2>Hardening your deployment</h2>
+    <ul>
+      <li>Terminate <strong>TLS</strong> at your proxy/load balancer in front of the app.</li>
+      <li>Set <code>CORS_ORIGIN</code> to your real frontend origin(s) only.</li>
+      <li>Set <code>TRUSTED_PROXY_CIDRS</code> to your CDN/LB ranges so <code>X-Forwarded-For</code> is honored only from trusted hops.</li>
+      <li>Restrict access to the Docker socket and your database/object-store credentials.</li>
+      <li>See the <a href="/docs/configuration/">configuration reference</a> and <a href="/docs/deployment/">production deployment</a> for the full list.</li>
+    </ul>
+
+    <h2>Reporting a vulnerability</h2>
+    <div class="callout">
+      <span class="callout__icon">!</span>
+      <span class="callout__body"><strong>Please do not open a public GitHub issue for security reports.</strong> Email <a href="mailto:magnus@meshfirm.com">magnus@meshfirm.com</a> with a description and reproduction steps. You can expect acknowledgment within <strong>48 hours</strong>, with critical fixes targeted within <strong>7 days</strong>. Responsible reporters are credited in release notes unless they prefer to stay anonymous. See <a href="https://github.com/sindre-ai/maskin/blob/main/SECURITY.md" target="_blank" rel="noopener">SECURITY.md</a> for the full policy.</span>
+    </div>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/deployment/">← Production deployment</a>
+      <a href="/docs/troubleshooting/">Troubleshooting →</a>
+    </nav>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

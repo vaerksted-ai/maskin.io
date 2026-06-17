@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quickstart tutorial — Maskin Docs</title>
+<meta name="description" content="An end-to-end Maskin walkthrough: connect Claude, seed a workspace with get_started, create your first insight and bet, then put an agent to work and watch the session.">
+
+<link rel="canonical" href="https://maskin.io/docs/quickstart/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/quickstart/">
+<meta property="og:title" content="Quickstart tutorial — Maskin">
+<meta property="og:description" content="Connect Claude, seed a workspace, create your first objects, and put an agent to work — end to end.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:site_name" content="Maskin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+</head>
+<body>
+
+<nav class="docnav" id="docnav"></nav>
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+
+<div class="wrap doc-layout">
+  <aside class="doc-sidebar" id="docsidebar"></aside>
+
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Quickstart tutorial</p>
+
+    <p class="eyebrow">Getting started</p>
+    <h1>Quickstart tutorial</h1>
+    <p class="lead">Go from an empty instance to an agent doing real work in about ten minutes — all driven from inside Claude. This is the hands-on companion to the <a href="/docs/concepts/">concepts</a>.</p>
+
+    <h2>Before you begin</h2>
+    <p>You need two things in place:</p>
+    <ul>
+      <li>A <strong>running Maskin instance</strong> with your Anthropic key saved, and</li>
+      <li><strong>Claude connected</strong> to it over MCP.</li>
+    </ul>
+    <p>Both are covered in <a href="/docs/get-started/self-hosted/">Self-hosted setup</a> — finish that first, then come back here. Quick check: ask Claude <em>"List the maskin MCP tools"</em> and confirm you get a list back.</p>
+
+    <h2>Step 1 — Seed your workspace</h2>
+    <p>Ask Claude:</p>
+    <pre><code>Use the maskin MCP to call get_started and show me the preview.</code></pre>
+    <p><code>get_started</code> runs in two phases. The first call returns a <strong>preview</strong> of a template (<strong>development</strong>, <strong>growth</strong>, or <strong>custom</strong>) plus a few tailoring questions — object types, statuses, custom fields, starter agents, and triggers. When it looks right, confirm:</p>
+    <pre><code>Apply the development template — call get_started again with confirm: true.</code></pre>
+    <p>Your workspace now has its schema and a starter set of objects and agents.</p>
+
+    <h2>Step 2 — Capture an insight and a bet</h2>
+    <p>Create two linked objects in one go:</p>
+    <pre><code>Create an insight "Trial users drop off before connecting data"
+and a bet "Add a guided data-import wizard" — link the insight so it
+informs the bet.</code></pre>
+    <p>Behind the scenes Claude calls <code>create_objects</code> and adds an <code>informs</code> relationship, so the bet carries the evidence behind it. Open your workspace in the browser and you'll see both on the <strong>Insights → Bets → Tasks</strong> pipeline.</p>
+
+    <h2>Step 3 — Put an agent to work</h2>
+    <p>Dispatch work the same way you'd ask a teammate — by commenting and mentioning an agent:</p>
+    <pre><code>On that bet, post a comment mentioning the agent and ask it to break
+the bet into 3–5 concrete tasks.</code></pre>
+    <p>Mentioning an agent in a comment (<code>create_comment</code>) spawns an agent <strong>session</strong>: Claude Code running in an isolated sandbox, working against the same objects you just created.</p>
+
+    <h2>Step 4 — Watch the session</h2>
+    <pre><code>Show me the latest session — its status and recent logs.</code></pre>
+    <p>Claude uses <code>list_sessions</code> / <code>get_session</code> to stream the run. You'll see it move <code>running → completed</code>, the tasks it created appear under the bet, and the recorded token usage and <code>totalCostUsd</code> for the run. See <a href="/docs/agents/">Agents &amp; sessions</a> for the full lifecycle.</p>
+
+    <div class="callout callout--muted">
+      <span class="callout__icon">i</span>
+      <span class="callout__body">Everything you just did by chatting maps to MCP tools — browse the full set in the <a href="/docs/mcp-tools/">MCP tools reference</a>.</span>
+    </div>
+
+    <h2>Where to go next</h2>
+    <ul>
+      <li>Automate it → create a <a href="/docs/concepts/">trigger</a> so an agent runs on a schedule or on events.</li>
+      <li>Connect your tools → <a href="/docs/integrations/">Integrations setup</a> (Slack, GitHub, Linear, Gmail, PostHog).</li>
+      <li>Understand the run model → <a href="/docs/agents/">Agents &amp; sessions</a>.</li>
+    </ul>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/get-started/self-hosted/">← Self-hosted setup</a>
+      <a href="/docs/concepts/">Core concepts →</a>
+    </nav>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

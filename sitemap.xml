@@ -25,6 +25,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://maskin.io/docs/quickstart/</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maskin.io/docs/architecture/</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maskin.io/docs/security/</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maskin.io/docs/troubleshooting/</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://maskin.io/docs/concepts/</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
