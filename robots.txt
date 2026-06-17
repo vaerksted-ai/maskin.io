@@ -1,4 +1,35 @@
+# Maskin — all crawlers welcome, including AI/LLM crawlers.
+# We want Maskin to be discoverable and understandable by LLMs.
 User-agent: *
 Allow: /
 
+# Explicitly welcome known AI crawlers.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# LLM-readable summary of this site: https://maskin.io/llms.txt
 Sitemap: https://maskin.io/sitemap.xml

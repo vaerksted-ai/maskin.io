@@ -1,7 +1,7 @@
 {
   "name": "Maskin",
   "short_name": "Maskin",
-  "description": "The workspace where humans and AI agents work together.",
+  "description": "The open-source, MCP-native agentic workspace where humans and AI agents work together.",
   "start_url": "/",
   "display": "browser",
   "background_color": "#111110",

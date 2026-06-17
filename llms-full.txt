@@ -1,0 +1,777 @@
+# Maskin — full documentation
+
+> The open-source, MCP-native agentic workspace where humans and AI agents work together. This file concatenates all Maskin documentation for full-context ingestion by LLMs. Canonical site: https://maskin.io/  ·  Source: https://github.com/sindre-ai/maskin
+
+
+---
+
+> Source: https://maskin.io/docs/get-started/
+
+# Get started with Maskin
+Maskin is an open-source workspace where your whole team — humans *and* AI agents — works together with shared memory, context, and process.
+Most AI tools are built for one person in one chat window. Maskin is built for a team: a shared place where people and agents see the same objects, follow the same process, and build on the same context over time. It's **MCP-native**, so you can drive a workspace directly from inside Claude Code or Claude Desktop.
+
+## The unified pipeline
+Everything in Maskin flows through one pipeline that the whole team — human or agent — works against:
+- **Insights** — what you're learning: signals, research, customer notes.
+- **Bets** — what you've decided to pursue, and why.
+- **Tasks** — the work that delivers a bet, executed by people and agents.
+Because agents read and write the same objects your team does, context compounds instead of getting lost in scattered chat histories. New to the model? See [Core concepts](/docs/concepts/). Everything is open source under the Apache 2.0 license.
+
+## Two ways to run it
+Pick the path that fits how you want to operate.
+> The setup guide covers the **self-hosted** version. For managed hosting, [book a meeting](http://meshfirm.com/bookmagnus) with the founders.
+
+## Next steps
+- Understand the model → [Core concepts](/docs/concepts/)
+- Set up your own instance → [Self-hosted setup](/docs/get-started/self-hosted/)
+- See what agents can do → [MCP tools](/docs/mcp-tools/) and [Agents & sessions](/docs/agents/)
+- Browse the code → [GitHub](https://github.com/sindre-ai/maskin)
+
+
+---
+
+> Source: https://maskin.io/docs/get-started/self-hosted/
+
+# Self-hosted setup
+Run your own Maskin instance and connect Claude — Code or Desktop — to it over MCP, so you can drive a workspace from inside Claude.
+> This guide is for the **self-hosted** version of Maskin — connecting Claude to a Maskin instance you run yourself. Want us to host it instead? [Book a meeting](http://meshfirm.com/bookmagnus).
+
+## Prerequisites
+- **Claude Code** or **Claude Desktop** installed.
+- An **Anthropic API key** — Maskin runs Claude Code in sandboxes and uses this key.
+- A **running Maskin instance** (set one up below).
+
+## Run your Maskin server
+Maskin self-hosts from a single docker-compose file. Clone the repo and start the stack:
+```
+git clone https://github.com/sindre-ai/maskin.git && cd maskin
+docker-compose up
+```
+This brings up the full stack — PostgreSQL, SeaweedFS, and the Maskin server — serving at `http://localhost:3000`. On first run it bootstraps a dev actor, a workspace, and an API key (printed in the startup banner). For a real deployment, put it behind your own domain (referred to below as `https://<your-maskin-host>`) and review the [configuration reference](/docs/configuration/).
+
+## Step 1 — Sign in and create a workspace
+1. Open your instance at `http://localhost:3000` (or `https://<your-maskin-host>`) and sign in.
+2. Create your first workspace when prompted.
+Once you're in, you'll see the unified pipeline view: **Insights → Bets → Tasks**.
+
+## Step 2 — Paste your Anthropic API key
+1. Open **Settings → Integrations** (or **Settings → LLM keys**).
+2. Paste your Anthropic API key and **Save**.
+Only the last four characters are shown after saving.
+
+## Step 3 — Get your Maskin API key and workspace ID
+1. Open **Settings → API keys**, click **Create key**, and copy the `ank_…` value.
+2. Open **Settings → Workspace** and copy the **Workspace ID** (a UUID).
+
+## Step 4 — Connect Claude to your Maskin MCP
+
+### Claude Code
+Register the MCP server, pointing the URL at your instance:
+```
+claude mcp add maskin \
+  --transport http \
+  --url https://<your-maskin-host>/mcp \
+  --header "Authorization: Bearer <YOUR_MASKIN_API_KEY>" \
+  --header "X-Workspace-Id: <YOUR_WORKSPACE_ID>"
+```
+Then reload plugins:
+```
+/reload-plugins
+```
+
+### Claude Desktop
+Open **Settings → Developer → Edit config** and add the `maskin` server:
+```
+{
+  "mcpServers": {
+    "maskin": {
+      "type": "http",
+      "url": "https://<your-maskin-host>/mcp",
+      "headers": {
+        "Authorization": "Bearer <YOUR_MASKIN_API_KEY>",
+        "X-Workspace-Id": "<YOUR_WORKSPACE_ID>"
+      }
+    }
+  }
+}
+```
+Save and restart Claude Desktop.
+
+## Step 5 — Make your first MCP call
+Ask Claude:
+```
+Use the maskin MCP to call get_started.
+```
+The `get_started` tool previews and applies a workspace template — **development**, **growth**, or **custom** — seeding your workspace with object types, statuses, custom fields, and an initial set of objects. See the full tool set in the [MCP tools reference](/docs/mcp-tools/).
+
+## What's next
+- Invite teammates from **Settings → Members**.
+- Wire up integrations (Slack, GitHub, Linear, Gmail, PostHog) — see [Integrations setup](/docs/integrations/).
+- Tune your deployment with the [configuration reference](/docs/configuration/).
+- Learn how agents run → [Agents & sessions](/docs/agents/).
+Questions or issues? Open an issue on [GitHub](https://github.com/sindre-ai/maskin), or read the README for the data model and agent-session details.
+
+
+---
+
+> Source: https://maskin.io/docs/quickstart/
+
+# Quickstart tutorial
+Go from an empty instance to an agent doing real work in about ten minutes — all driven from inside Claude. This is the hands-on companion to the [concepts](/docs/concepts/).
+
+## Before you begin
+You need two things in place:
+- A **running Maskin instance** with your Anthropic key saved, and
+- **Claude connected** to it over MCP.
+Both are covered in [Self-hosted setup](/docs/get-started/self-hosted/) — finish that first, then come back here. Quick check: ask Claude *"List the maskin MCP tools"* and confirm you get a list back.
+
+## Step 1 — Seed your workspace
+Ask Claude:
+```
+Use the maskin MCP to call get_started and show me the preview.
+```
+`get_started` runs in two phases. The first call returns a **preview** of a template (**development**, **growth**, or **custom**) plus a few tailoring questions — object types, statuses, custom fields, starter agents, and triggers. When it looks right, confirm:
+```
+Apply the development template — call get_started again with confirm: true.
+```
+Your workspace now has its schema and a starter set of objects and agents.
+
+## Step 2 — Capture an insight and a bet
+Create two linked objects in one go:
+```
+Create an insight "Trial users drop off before connecting data"
+and a bet "Add a guided data-import wizard" — link the insight so it
+informs the bet.
+```
+Behind the scenes Claude calls `create_objects` and adds an `informs` relationship, so the bet carries the evidence behind it. Open your workspace in the browser and you'll see both on the **Insights → Bets → Tasks** pipeline.
+
+## Step 3 — Put an agent to work
+Dispatch work the same way you'd ask a teammate — by commenting and mentioning an agent:
+```
+On that bet, post a comment mentioning the agent and ask it to break
+the bet into 3–5 concrete tasks.
+```
+Mentioning an agent in a comment (`create_comment`) spawns an agent **session**: Claude Code running in an isolated sandbox, working against the same objects you just created.
+
+## Step 4 — Watch the session
+```
+Show me the latest session — its status and recent logs.
+```
+Claude uses `list_sessions` / `get_session` to stream the run. You'll see it move `running → completed`, the tasks it created appear under the bet, and the recorded token usage and `totalCostUsd` for the run. See [Agents & sessions](/docs/agents/) for the full lifecycle.
+> Everything you just did by chatting maps to MCP tools — browse the full set in the [MCP tools reference](/docs/mcp-tools/).
+
+## Where to go next
+- Automate it → create a [trigger](/docs/concepts/) so an agent runs on a schedule or on events.
+- Connect your tools → [Integrations setup](/docs/integrations/) (Slack, GitHub, Linear, Gmail, PostHog).
+- Understand the run model → [Agents & sessions](/docs/agents/).
+
+
+---
+
+> Source: https://maskin.io/docs/concepts/
+
+# Core concepts
+A quick tour of the Maskin model so the rest of the docs — and the MCP tools — make sense. Everything below maps directly to objects you'll see in the workspace and in the API.
+
+## Actors: humans and agents
+Everyone in Maskin is an **actor** — and both people and AI agents are actors. They share the same shape: each has an identity, an API key, and a place in one or more workspaces. Agents add a **system prompt**, a **tools** configuration, optional **memory**, and an **LLM provider**. Because humans and agents are the same primitive, an agent can be assigned work, mentioned in a comment, or made the "driver" of an object exactly like a teammate.
+
+## Workspaces and members
+A **workspace** is an isolated tenant — your team's data lives inside it, and every object, file, and session is scoped to one. Membership is role-based: `owner`, `member`, or `viewer`. A workspace also carries its own **settings**: display names, the valid statuses per object type, custom field definitions, relationship types, and which extension modules are enabled. That's what makes a "development" workspace look different from a "growth" one (see [Self-hosted setup](/docs/get-started/self-hosted/) for templates).
+
+## Objects and the pipeline
+Work is represented as **objects**. There's one object model with a `type` discriminator — the three built-in types form the pipeline:
+- **Insights** — what you're learning: signals, research, customer notes.
+- **Bets** — what you've decided to pursue, and why.
+- **Tasks** — the work that delivers a bet.
+Every object has a title, content, a status, freeform metadata, and a **driver** (the actor responsible). Extensions can add more types (e.g. `company`, `contact`, `deal`).
+
+## Relationships
+Objects connect through typed **relationships**, forming a graph rather than flat lists. The built-in types are `informs`, `breaks_into`, `blocks`, `relates_to`, and `duplicates` — so an insight can *inform* a bet, a bet can *break into* tasks, and a task can *block* another.
+
+## Comments and @mentions
+Comments are the primary collaboration surface on every object — status updates, questions, findings. They're also how work gets dispatched: **@mentioning an agent** (or replying in an agent's thread) spawns an agent **session** to act on that object. Comments can carry file attachments and structured decision chips.
+
+## Triggers
+**Triggers** automate agent work. A trigger is either **cron**-based (run on a schedule) or **event**-based (fire when something happens in the workspace, e.g. a task enters a status), and it spawns a session for a target agent with an action prompt.
+
+## Sessions
+When an agent does work, it runs in a **session** — Claude Code executing in an ephemeral sandbox. Sessions have a lifecycle, stream logs, and track token usage and cost. They're covered in depth in [Agents & sessions](/docs/agents/).
+
+## Notifications
+When an agent needs a human — approval, a decision, an input — it raises a **notification**. Notifications carry structured UI (actions, options, urgency) and link back to the object or session that produced them, so humans stay in the loop without watching every run.
+
+## Skills, files, and extensions
+- **Skills** — reusable prompts, snippets, or context files stored in the workspace and attachable to agents.
+- **Files** — markdown, code, PDFs, and images stored in S3-compatible storage and attached to objects or produced by agents.
+- **Extensions / modules** — pluggable add-ons (CRM, knowledge, notetaker, work) that introduce new object types and behaviour.
+
+## Activity and real-time
+Every change is recorded in an append-only **event log**, which doubles as the audit trail and the source for unread tracking. The UI and agents stay live through a Postgres NOTIFY → Server-Sent-Events stream — no extra message broker required.
+
+
+---
+
+> Source: https://maskin.io/docs/agents/
+
+# Agents & sessions
+Agents are first-class actors in your workspace. When one does work, it runs as a **session** — Claude Code executing in an isolated sandbox, reading and writing the same objects your team does.
+
+## What an agent is
+An agent is an [actor](/docs/concepts/) with a **system prompt**, a **tools** configuration, optional **memory**, and an **LLM provider**. You can attach reusable **skills** to an agent to give it standard procedures and context. Agents are assigned work, mentioned, and held responsible for objects exactly like human teammates.
+
+## Sessions run in sandboxes
+Each run executes in an **ephemeral Docker container** built from the `agent-base` image (Node 20 with the Claude Code CLI pre-installed, running as a non-root user). The container gets the agent's prompt, the relevant workspace context, and credentials injected as environment, then runs to completion and is torn down.
+
+## Session lifecycle
+A session moves through these states:
+```
+pending → starting → running → completed
+                           ├──→ paused        (snapshot saved; can resume)
+                           ├──→ failed
+                           ├──→ timeout
+                           └──→ user_stopped
+```
+Sessions are non-blocking by default — they're created and run in the background. A blocking helper exists when you want the result inline (see `run_agent` below).
+
+## What starts a session
+- **@mention** — mentioning an agent in a comment on an object.
+- **Thread reply** — replying to an agent's own comment continues the thread in a new session.
+- **Cron trigger** — a scheduled [trigger](/docs/concepts/) fires.
+- **Event trigger** — a workspace event matches a trigger's filter (e.g. a task enters a status).
+- **Explicit MCP call** — `create_session` (non-blocking) or `run_agent` (blocking: spawns, polls to completion, returns the result with logs).
+
+## Memory and file persistence
+An agent's **skills**, **memory**, and **learnings** live in S3-compatible storage. They're pulled into the sandbox at the start of a session and pushed back when it completes, so an agent accumulates context across runs instead of starting cold each time. Any files an agent authors are stored the same way and can be attached to objects.
+
+## Observability and cost
+While a session runs, its output streams live over Server-Sent Events, and the full log is retained and paginated afterward. Each session records token usage — input, output, and cache-read/write — and a computed `totalCostUsd`, so you can see exactly what each run consumed.
+
+## Scaling beyond one host
+By default sessions run as local Docker containers on the app host. For higher throughput, set `AGENT_SERVERS` to a pool of remote agent servers: sessions are then enqueued and dispatched to the least-loaded server over HTTPS, with a warm pool to cut cold-start latency. See the [configuration reference](/docs/configuration/) for the relevant variables.
+> Which model an agent uses is resolved per run: an agent-level key, a workspace custom LLM endpoint, a Claude OAuth subscription, a workspace Anthropic key, or a system fallback — in that order.
+
+
+---
+
+> Source: https://maskin.io/docs/architecture/
+
+# Architecture overview
+A map of how Maskin fits together — useful if you're evaluating it, operating it, or contributing. The throughline: humans and agents share one data model, one API, and one real-time stream.
+
+## Monorepo & stack
+Maskin is a pnpm + Turborepo monorepo:
+- `apps/` — the application (backend API + the React web client).
+- `packages/` — shared libraries, including `db` (schema + migrations), `mcp` (the tool layer), and `shared` (types, templates, utilities).
+- `docker/` — images, including `agent-base` used for agent sessions.
+The stack is TypeScript end to end: **Hono** for the HTTP API, **React + Vite** for the web client, **PostgreSQL 16** with **Drizzle ORM**, **S3-compatible** object storage (SeaweedFS in dev), **Docker** for agent sandboxes, and the **Claude Code** CLI inside them.
+
+## Data flow
+```
+Humans (web)  Agents (Claude Code)   External (Slack/GitHub/…)
+      │              │                         │
+   REST /api      MCP /mcp                webhooks /api/webhooks
+      └──────────────┴───────────┬─────────────┘
+                                 ▼
+                      Services  →  PostgreSQL ──┐
+                                 │   (Drizzle)  │ LISTEN/NOTIFY
+                                 ▼              ▼
+                         S3 storage        SSE /api/events → live UI + logs
+```
+
+## Unified object model
+Insights, bets, tasks (and extension types) live in **one objects table** with a `type` discriminator; a separate **relationships** table connects them into a graph. This is why an agent and a human can operate on exactly the same records. See [Core concepts](/docs/concepts/).
+
+## Event-sourced activity
+Every change appends to an immutable **events** table. That log is both the audit trail and the basis for unread tracking — state is derived, not overwritten.
+
+## Real-time without a broker
+Writes emit PostgreSQL `NOTIFY`; the API `LISTEN`s and fans changes out to clients as **Server-Sent Events**, so the UI and live session logs update with no extra message queue. Behind a connection pooler, set `DATABASE_URL_DIRECT` to a non-pooled connection so LISTEN/NOTIFY keeps working (see [Troubleshooting](/docs/troubleshooting/)).
+
+## Actors & auth
+Humans and agents are unified as **actors**. Requests authenticate with a bearer API key (stored as a SHA-256 hash) and carry `X-Workspace-Id`; every query is scoped to that workspace. Details on the [Security](/docs/security/) page.
+
+## Agent execution
+Each agent run is a **session** in an ephemeral, non-root Docker container built from `agent-base`. By default these run on the app host's Docker; set `AGENT_SERVERS` to distribute them across dedicated agent servers with a warm pool. See [Agents & sessions](/docs/agents/).
+
+## MCP layer & extensions
+The `mcp` package exposes the workspace as MCP tools over `/mcp` — a thin layer over the same services the REST API uses, so both surfaces stay in lock-step ([MCP tools](/docs/mcp-tools/) / [API reference](/docs/api/)). **Integrations** add provider adapters, webhook handlers, and auto-injected MCPs; **extensions/modules** register new object types and routes under `/api/m/{extension-id}`.
+
+## Working in the repo
+Common commands: `pnpm dev` (Docker + migrations + servers), `pnpm build`, `pnpm test`, `pnpm test:e2e`, and `pnpm lint` / `pnpm lint:fix`. The project is Apache-2.0 licensed — [browse the source](https://github.com/sindre-ai/maskin).
+
+
+---
+
+> Source: https://maskin.io/docs/mcp-tools/
+
+# MCP tools reference
+Maskin is MCP-native: the entire workspace is driven through MCP tools, the same surface humans' agents and your Claude client use. This page groups the tools by domain.
+> This is a guided overview. The live, authoritative list comes from your instance — ask Claude to run `list_tools`. The set has grown over time, so your instance may expose more than is listed here.
+
+## Connecting
+The MCP endpoint is served over HTTP at `POST /mcp` and authenticates with two headers:
+```
+Authorization: Bearer <YOUR_MASKIN_API_KEY>   # ank_…
+X-Workspace-Id: <YOUR_WORKSPACE_ID>           # workspace UUID
+```
+See [Self-hosted setup](/docs/get-started/self-hosted/) for the full `claude mcp add` command and the Claude Desktop config.
+
+## Onboarding
+| Tool | What it does |
+| --- | --- |
+| get_started | Apply a workspace template (development / growth / custom) with seed objects, agents, and triggers. Two-phase: call to preview + get tailoring questions, then call again with confirm: true to apply. |
+
+## Objects
+| Tool | What it does |
+| --- | --- |
+| create_objects | Create insights, bets, and tasks (with relationships and attachments) in one atomic call. |
+| get_objects | Fetch objects with relationships, connected objects, recent activity, and files. |
+| update_objects | Update fields (title, content, status, metadata) and create relationships. |
+| delete_object | Delete an object by ID. |
+| list_objects | List objects filtered by type, status, or driver; paginated. |
+| search_objects | Full-text search over title and content with optional filters. |
+
+## Relationships
+| Tool | What it does |
+| --- | --- |
+| list_relationships | Query relationships for an object, by direction or type. |
+| delete_relationship | Delete a relationship by ID. |
+
+## Workspace schema & settings
+| Tool | What it does |
+| --- | --- |
+| get_workspace_schema | Discover statuses per type, custom field definitions, relationship types, and rendering rules. |
+| create_workspace_field · update_workspace_field · delete_workspace_field | Manage custom metadata fields on an object type. |
+| create_workspace · update_workspace · list_workspaces | Create, rename/configure, and list workspaces. |
+| create_extension · update_extension · delete_extension · list_extensions | Enable registered modules or define custom object types. |
+
+## Actors
+| Tool | What it does |
+| --- | --- |
+| create_actor | Create a human or agent actor and optionally add to a workspace with a role. |
+| get_actor · list_actors | Fetch or list actors in the workspace. |
+| update_actor | Update name, description, system prompt, tools config, memory, LLM provider, or attached skills. |
+
+## Comments & activity
+| Tool | What it does |
+| --- | --- |
+| create_comment | Post a comment (status update, question, finding). @-mentioning an agent spawns a session; supports attachments and decision chips. |
+| get_comments | Fetch comments on an object, including replies and attachments. |
+| get_events | Read the workspace activity log, filtered by entity type and action. |
+
+## Files
+| Tool | What it does |
+| --- | --- |
+| create_file | Author a file (markdown, code, PDF, image) and store it; returns a shareable URL. |
+| get_file · list_files · update_file · delete_file | Read, list, rename, and delete files. |
+
+## Skills & triggers
+| Tool | What it does |
+| --- | --- |
+| create_workspace_skill · list_workspace_skills · get_workspace_skill · update_workspace_skill · delete_workspace_skill | Manage reusable skills (prompts, snippets, context) attachable to agents. |
+| create_trigger · update_trigger · delete_trigger · list_triggers | Manage cron and event triggers that spawn agent sessions. |
+
+## Sessions
+| Tool | What it does |
+| --- | --- |
+| create_session | Spawn a containerized agent session with an action prompt (non-blocking). |
+| run_agent | Blocking: spawn a session, poll until completion, and return the result with logs. |
+| get_session · list_sessions | Fetch status/logs or list sessions. |
+| stop_session · pause_session · resume_session | Terminate, snapshot, or resume a session. |
+
+## Notifications & subscriptions
+| Tool | What it does |
+| --- | --- |
+| create_notification · list_notifications · get_notification · update_notification · delete_notification | Raise and manage structured human-input requests. |
+| subscribe · unsubscribe · list_subscribers · mark_read · list_unread | Track per-actor subscriptions and unread activity on objects. |
+
+## Integrations & LLM keys
+| Tool | What it does |
+| --- | --- |
+| list_integrations · list_integration_providers · connect_integration · disconnect_integration | List, connect (OAuth), and disconnect integrations. See Integrations setup. |
+| set_llm_api_key · get_llm_api_keys · delete_llm_api_key | Manage workspace LLM provider keys (stored encrypted; never returned in full). |
+| import_claude_subscription · get_claude_subscription_status · disconnect_claude_subscription | Use a Claude Pro/Max/Teams subscription for agent runs. |
+
+
+---
+
+> Source: https://maskin.io/docs/api/
+
+# API reference
+Maskin is API-first: the UI and agents share one HTTP surface, built with Hono and documented with OpenAPI. The [MCP tools](/docs/mcp-tools/) are a thin layer over these same endpoints.
+
+## Base URL & OpenAPI
+All routes are served under `/api` (e.g. `http://localhost:3000/api` in dev). The full, authoritative spec is generated from the code and served live:
+```
+GET /openapi.json
+```
+Point any OpenAPI viewer or client generator at that URL for the exact request/response schemas on your instance.
+
+## Authentication
+Every request carries an API key; workspace-scoped routes also carry a workspace ID:
+```
+Authorization: Bearer <YOUR_API_KEY>     # ank_…
+X-Workspace-Id: <YOUR_WORKSPACE_ID>       # workspace UUID
+```
+Keys are stored as SHA-256 hashes; auth is stateless (no cookies/sessions). A small allowlist needs no auth: `/api/health`, `/openapi.json`, signup, OAuth callbacks, and webhook ingest.
+
+## Resource groups
+| Mount | Purpose |
+| --- | --- |
+| /api/objects | CRUD + search for insights, bets, tasks. |
+| /api/graph | Atomic batch create (objects + relationships). |
+| /api/relationships | Typed edges between objects. |
+| /api/actors | Humans & agents; signup; API-key rotation. |
+| /api/workspaces | Workspaces, members, and settings. |
+| /api/sessions | Agent session lifecycle + logs. |
+| /api/triggers | Cron & event automations. |
+| /api/integrations | OAuth connect/disconnect + provider discovery. |
+| /api/webhooks/{provider} | Inbound webhook ingest (no auth; signature-verified). |
+| /api/events | Activity log + real-time SSE stream. |
+| /api/notifications · /api/subscriptions | Human alerts and unread tracking. |
+| /api/files · /api/imports | File upload/download; CSV imports. |
+| /api/claude-oauth | Claude subscription token management. |
+| /api/m/{extension-id} | Routes contributed by extension modules. |
+| /mcp | MCP over HTTP (see MCP tools). |
+
+## Representative endpoints
+
+### Objects
+```
+POST   /api/objects          # create (single or bulk)
+GET    /api/objects          # list (filter: type, status, driver)
+GET    /api/objects/search   # full-text search
+GET    /api/objects/:id      # fetch with relationships + connected objects
+PATCH  /api/objects/:id      # update title/content/status/metadata
+DELETE /api/objects/:id      # delete
+```
+
+### Sessions
+```
+POST   /api/sessions               # create & optionally auto-start
+GET    /api/sessions               # list (filter: status, actor_id)
+GET    /api/sessions/:id           # details
+POST   /api/sessions/:id/stop      # force stop
+POST   /api/sessions/:id/pause     # snapshot & pause
+POST   /api/sessions/:id/resume    # resume from snapshot
+GET    /api/sessions/:id/logs      # paginated logs
+GET    /api/sessions/:id/logs/stream  # SSE (live)
+GET    /api/sessions/usage         # bucketed cost & token usage
+```
+
+### Integrations
+```
+GET    /api/integrations                  # active integrations
+GET    /api/integrations/providers        # available providers + schema
+POST   /api/integrations/:provider/connect   # start OAuth/API-key flow
+GET    /api/integrations/:provider/callback  # OAuth redirect (no auth)
+DELETE /api/integrations/:id              # disconnect + revoke
+```
+> Endpoints evolve — treat `/openapi.json` on your instance as the source of truth, and the lists above as orientation.
+
+## Real-time (SSE)
+The activity stream and live session logs are delivered as Server-Sent Events, backed by Postgres NOTIFY. Clients can resume after a disconnect by sending the `Last-Event-ID` header — event IDs are monotonic.
+
+
+---
+
+> Source: https://maskin.io/docs/configuration/
+
+# Configuration reference
+Maskin is configured through environment variables. Only `DATABASE_URL` is strictly required to boot; everything else has sensible dev defaults and is opt-in for production and integrations.
+> In this monorepo, env vars must be declared in `turbo.json`'s `globalPassThroughEnv` or they're filtered out of builds. This page lists the runtime variables; check the repo for the current canonical list.
+
+## Core
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| DATABASE_URL | — | Required. PostgreSQL connection string. |
+| POSTGRES_URL | — | Optional override for DATABASE_URL. |
+| DATABASE_URL_DIRECT | — | Non-pooled connection for PG LISTEN/NOTIFY when you run behind a pooler. |
+| PORT | 3000 | API server port. |
+| NODE_ENV | — | Set to production for prod builds (logging, error handling). |
+| MASKIN_AUTO_BOOTSTRAP | true | Auto-create a dev actor, workspace, and API key on a fresh DB. Set false to disable. |
+
+## Object storage (S3-compatible)
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| S3_ENDPOINT | http://localhost:8333 | S3 endpoint (SeaweedFS in dev; any S3-compatible store in prod). |
+| S3_BUCKET | agent-files | Bucket name. |
+| S3_ACCESS_KEY · S3_SECRET_KEY | admin | Credentials. |
+| S3_REGION | us-east-1 | Region. |
+
+## Integrations
+| Variable | Purpose |
+| --- | --- |
+| INTEGRATION_ENCRYPTION_KEY | 32-byte hex (64 chars) for encrypting stored OAuth tokens (auto-generated by pnpm dev). |
+| GITHUB_APP_ID, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, GITHUB_APP_WEBHOOK_SECRET, GITHUB_APP_PRIVATE_KEY, GITHUB_APP_SLUG | GitHub App / OAuth credentials. |
+| SLACK_CLIENT_ID, SLACK_CLIENT_SECRET, SLACK_SIGNING_SECRET, MASKIN_MACHINE_ICON_URL | Slack OAuth + signing; optional agent avatar URL. |
+| LINEAR_CLIENT_ID, LINEAR_CLIENT_SECRET, LINEAR_WEBHOOK_SECRET | Linear OAuth + webhook signing. |
+| GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET, GMAIL_PUBSUB_TOPIC, GMAIL_PUBSUB_AUDIENCE, GMAIL_PUBSUB_SERVICE_ACCOUNT | Gmail OAuth + Pub/Sub push config. |
+Full per-provider setup is on the [Integrations setup](/docs/integrations/) page.
+
+## LLM
+The Anthropic API key and any workspace custom-LLM endpoint are configured **in the app** (Settings → Integrations / LLM keys), stored encrypted per workspace — not via environment. The environment only configures the optional *system fallback* used when a workspace has no model configured:
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| MASKIN_FALLBACK_OPENROUTER_KEY | — | Enables the OpenRouter-based fallback model. |
+| MASKIN_FALLBACK_BASE_URL | https://openrouter.ai/api | Fallback provider base URL. |
+| MASKIN_FALLBACK_MODEL · MASKIN_FALLBACK_SMALL_MODEL | deepseek/deepseek-v4-flash | Fallback main / small models. |
+| MASKIN_FALLBACK_DAILY_TOKEN_LIMIT | 550000 | Per-actor daily token cap on the fallback. |
+
+## Agent execution
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| AGENT_BASE_IMAGE | agent-base:latest | OCI image for agent sessions; use a full registry path in prod. |
+| AGENT_SERVERS | — | Comma-separated url|secret list to distribute sessions to remote agent servers. |
+| AGENT_SERVER_SECRET · MASKIN_AGENT_SERVER_PUBLIC_HOST · AGENT_SERVER_MAX_SESSIONS | — | Agent-server auth, public host, and concurrency cap. |
+| AGENT_SESSION_ROOT | — | Root directory for agent session storage. |
+| WARM_POOL_IMAGE · WARM_POOL_REFRESH_MINUTES | — | Warm-pool image and refresh interval to cut cold starts. |
+| MASKIN_BACKEND_URL | http://host.docker.internal:3000 | Backend URL injected into agent containers. |
+
+## Security & network
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| WEBHOOK_BASE_URL | — | Public base URL providers call back to (/api/webhooks/<provider>). |
+| CORS_ORIGIN | http://localhost:5173 | Comma-separated allowed origins. |
+| TRUSTED_PROXY_CIDRS | 127.0.0.1/32,::1/128 | CIDRs allowed to set X-Forwarded-For (set to your CDN/proxy in prod). |
+| FRONTEND_URL · API_BASE_URL | — | Frontend URL for redirects; backend URL for MCP agents. |
+
+## Analytics (optional)
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| POSTHOG_API_KEY · POSTHOG_HOST | · https://eu.i.posthog.com | Backend analytics (runtime telemetry). |
+| VITE_POSTHOG_KEY · VITE_POSTHOG_HOST | · https://eu.i.posthog.com | Frontend analytics (blank in dev → console only). |
+
+
+---
+
+> Source: https://maskin.io/docs/integrations/
+
+# Integrations setup
+Maskin ships with five first-class integrations — Slack, GitHub, Linear, Gmail, and PostHog. Each connects over OAuth or an API key, receives events via webhooks, and auto-injects its own MCP server so agents can act on it.
+
+## Before you start (self-hosted)
+Connecting integrations on a self-hosted instance needs two things set in your environment:
+- `INTEGRATION_ENCRYPTION_KEY` — 32-byte hex (64 chars) used to encrypt stored OAuth tokens. `pnpm dev` auto-generates one in development; set it explicitly in production.
+- `WEBHOOK_BASE_URL` — the public base URL providers call back to. Webhooks are delivered to `/api/webhooks/<provider>`.
+Then connect from the app: **Settings → Integrations → Connect**, which runs the OAuth flow. See the full env list in the [configuration reference](/docs/configuration/).
+
+## Slack
+- **What it does:** read and post messages, watch channels/DMs, react, and respond to app mentions — agents can participate in Slack threads.
+- **Auth:** OAuth2. Env vars: `SLACK_CLIENT_ID`, `SLACK_CLIENT_SECRET`, `SLACK_SIGNING_SECRET`. Optionally `MASKIN_MACHINE_ICON_URL` for the agent avatar in Slack posts.
+- **Webhook:** verified via the `x-slack-signature` header (HMAC-SHA256 with timestamp).
+- **MCP:** a Slack MCP is auto-injected for every workspace with an active Slack connection.
+> Slack also needs an app manifest and icon set up. The repo has a detailed walkthrough at [docs/integrations/slack](https://github.com/sindre-ai/maskin/tree/main/docs/integrations/slack).
+
+## GitHub
+- **What it does:** react to pull requests, issues, pushes, and reviews.
+- **Auth:** GitHub App flow. Env vars: `GITHUB_APP_ID`, `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `GITHUB_APP_WEBHOOK_SECRET`, `GITHUB_APP_PRIVATE_KEY`, `GITHUB_APP_SLUG`.
+- **Webhook:** verified via `x-hub-signature-256`; event type from `x-github-event`.
+- **MCP:** the official GitHub MCP server is run via stdio (uses a `GITHUB_TOKEN` from the connection).
+
+## Linear
+- **What it does:** work with issues, comments, projects, cycles, and labels.
+- **Auth:** OAuth2 (scopes include `read`, `write`, `issues:create`, `comments:create`). Env vars: `LINEAR_CLIENT_ID`, `LINEAR_CLIENT_SECRET`, `LINEAR_WEBHOOK_SECRET`.
+- **Webhook:** verified via the `linear-signature` header.
+- **MCP:** Linear's hosted MCP (`https://mcp.linear.app/mcp`).
+
+## Gmail
+- **What it does:** read, label, draft, and send email.
+- **Auth:** OAuth2 with PKCE + offline access (forces a refresh token). Env vars: `GMAIL_CLIENT_ID`, `GMAIL_CLIENT_SECRET`.
+- **Webhook:** Google Cloud Pub/Sub push with OIDC JWT verification. Configure `GMAIL_PUBSUB_TOPIC`, `GMAIL_PUBSUB_AUDIENCE`, and `GMAIL_PUBSUB_SERVICE_ACCOUNT`.
+- **MCP:** Google's hosted Gmail MCP.
+
+## PostHog
+- **What it does:** pull product analytics into the workspace for feedback loops.
+- **Auth:** API key (Bearer token) — no extra env vars beyond the stored token.
+- **Webhook:** none; PostHog data is pull-based via MCP.
+- **MCP:** PostHog's hosted MCP (`https://mcp.posthog.com/mcp`), auto-injected.
+> Integration credentials are encrypted at rest and never written to logs or agent output. Disconnecting revokes tokens with the provider.
+
+
+---
+
+> Source: https://maskin.io/docs/llm/
+
+# LLM & models
+Maskin defaults to Claude but lets you bring your own model. For every agent run it resolves a model through a fixed priority order, so you can set a default and override it where you need to.
+
+## Routing priority
+When a session starts, Maskin picks the first option that's configured, in this order:
+1. **Agent-level key** — an Anthropic key set directly on the agent actor.
+2. **Workspace custom LLM** — a bring-your-own endpoint configured on the workspace (OpenRouter, Ollama, vLLM, or any OpenAI-compatible API).
+3. **Claude OAuth** — a workspace-level Claude Pro / Max / Teams subscription.
+4. **Workspace Anthropic key** — an Anthropic API key saved in workspace settings.
+5. **System fallback** — the operator-configured OpenRouter fallback (with a daily token cap).
+
+## Using Claude (the default)
+Two ways to give a workspace Claude access, both set **in the app** (Settings → Integrations / LLM keys) and stored encrypted per workspace:
+- **Anthropic API key** — paste your key; usage is billed to your Anthropic account.
+- **Claude subscription** — import a Pro/Max/Teams subscription via the `import_claude_subscription` tool / Claude OAuth flow, then check it with `get_claude_subscription_status`.
+The default model is `claude-sonnet-4-6`, with a separate small/fast model for lightweight steps.
+
+## Bring your own model
+Set a **custom LLM** on the workspace to route agents to any OpenAI-compatible endpoint. The configuration carries:
+| Field | Purpose |
+| --- | --- |
+| base_url | The provider's API base (e.g. OpenRouter, a local Ollama/vLLM server). |
+| api_key | Credential for that provider (encrypted at rest). |
+| model | Main model id. |
+| small_fast_model | Cheaper model for lightweight steps. |
+This is set in workspace settings, not via environment variables.
+
+## System fallback (operator)
+For workspaces with no model configured, operators can enable a shared fallback via environment. It's off unless a key is provided, and it enforces a per-actor daily token cap:
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| MASKIN_FALLBACK_OPENROUTER_KEY | — | Enables the fallback when set. |
+| MASKIN_FALLBACK_BASE_URL | https://openrouter.ai/api | Fallback provider base URL. |
+| MASKIN_FALLBACK_MODEL · MASKIN_FALLBACK_SMALL_MODEL | deepseek/deepseek-v4-flash | Fallback main / small models. |
+| MASKIN_FALLBACK_DAILY_TOKEN_LIMIT | 550000 | Per-actor daily token cap. |
+See the [configuration reference](/docs/configuration/) for the full environment list.
+> Whatever model runs, per-session token usage and `totalCostUsd` are recorded — see [Agents & sessions](/docs/agents/).
+
+
+---
+
+> Source: https://maskin.io/docs/deployment/
+
+# Production deployment
+The [self-hosted setup](/docs/get-started/self-hosted/) gets you running locally. This page covers the differences for a real deployment — the production stack, durable data, agent execution, and networking.
+> The repo's `docker-compose.prod.yml` is the source of truth. Treat the commands here as orientation and adapt to your platform (a managed Postgres + object store is recommended over in-cluster containers).
+
+## The production stack
+The prod compose file builds on the dev services and adds an application container plus the agent base image:
+```
+docker compose -f docker-compose.prod.yml up -d --build
+```
+- **app** — runs database migrations on boot, then starts the backend. It serves the built frontend SPA from `STATIC_DIR` (e.g. `/app/apps/web/dist`), so one container answers both the UI and the API on `PORT` (3000).
+- **postgres** — PostgreSQL 16 (use a managed instance in production where possible).
+- **seaweedfs** — S3-compatible storage (or point `S3_*` at AWS S3 / MinIO).
+- **agent-base** — the image used for agent sessions; built from `docker/agent-base/`.
+To run agent sessions on the host's Docker, the app container mounts the Docker socket
+      (`/var/run/docker.sock`). Restrict access to it.
+
+## Essentials to set
+- `NODE_ENV=production`
+- `DATABASE_URL` — your Postgres connection. If you front Postgres with a pooler, also set `DATABASE_URL_DIRECT` (a non-pooled connection) so PG LISTEN/NOTIFY — and therefore real-time SSE — keeps working.
+- `S3_ENDPOINT` / `S3_BUCKET` / `S3_ACCESS_KEY` / `S3_SECRET_KEY` / `S3_REGION` — durable object storage.
+- `INTEGRATION_ENCRYPTION_KEY` — set explicitly (don't rely on the dev auto-generated key, which would invalidate stored tokens on rotation).
+- `MASKIN_AUTO_BOOTSTRAP=false` once you've created your real first workspace and key.
+Migrations run automatically on app start; you can also run `pnpm db:migrate` out of band.
+
+## Agent execution at scale
+By default sessions are local Docker containers on the app host. For throughput, run dedicated
+      [agent servers](/docs/agents/) and point the app at them:
+- `AGENT_BASE_IMAGE` — a full registry path (e.g. `yourorg/agent-base:latest`), not the local tag.
+- `AGENT_SERVERS` — comma-separated `url|secret` entries; sessions are dispatched to the least-loaded server.
+- `AGENT_SERVER_SECRET`, `MASKIN_AGENT_SERVER_PUBLIC_HOST`, `AGENT_SERVER_MAX_SESSIONS` — agent-server auth, public host, and concurrency.
+- `WARM_POOL_IMAGE` / `WARM_POOL_REFRESH_MINUTES` — optional warm pool to cut cold starts.
+
+## Networking, webhooks & security
+- `WEBHOOK_BASE_URL` — your public URL; providers deliver to `/api/webhooks/<provider>`. Required for [integrations](/docs/integrations/).
+- `CORS_ORIGIN` — set to your real frontend origin(s).
+- `TRUSTED_PROXY_CIDRS` — set to your CDN/load-balancer ranges so `X-Forwarded-For` is honored only from trusted hops.
+- `FRONTEND_URL` / `API_BASE_URL` — used for redirects and by MCP agents.
+- Terminate TLS at your proxy/load balancer in front of the app.
+
+## Pre-flight checklist
+- Durable Postgres + object storage provisioned and backed up.
+- `NODE_ENV=production`, encryption key, and S3 creds set.
+- `DATABASE_URL_DIRECT` set if using a pooler (keeps SSE alive).
+- Public `WEBHOOK_BASE_URL` + TLS; `CORS_ORIGIN` and `TRUSTED_PROXY_CIDRS` locked down.
+- Agent image pushed to a registry; `AGENT_SERVERS` configured if scaling out.
+- Optional analytics keys (`POSTHOG_*`) and integration OAuth credentials.
+Full variable list: [configuration reference](/docs/configuration/).
+
+
+---
+
+> Source: https://maskin.io/docs/security/
+
+# Security
+How Maskin protects credentials, isolates tenants, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.
+
+## Authentication
+Every request authenticates with a bearer API key (prefixed `ank_`). Keys are stored only as **SHA-256 hashes** — the plaintext is shown once at creation and never again. Auth is **stateless**: no cookies or server sessions. Keys are per-actor and can be rotated with `regenerate_api_key`, which immediately invalidates the old value.
+
+## Authorization & tenant isolation
+Workspace-scoped requests carry an `X-Workspace-Id` header, and every query is scoped to that workspace — data does not cross tenant boundaries. Membership is role-based: `owner`, `member`, and `viewer`.
+
+## Credential encryption at rest
+Integration OAuth tokens and workspace LLM API keys are encrypted with **AES-256-GCM** using `INTEGRATION_ENCRYPTION_KEY` (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as `iv:authTag:ciphertext`. In the UI only the last four characters are ever shown, and secrets are never written to logs or exposed in agent output.
+> Set `INTEGRATION_ENCRYPTION_KEY` explicitly in production and keep it stable — rotating it makes previously stored credentials undecryptable, so connections must be re-established.
+
+## Sandboxed agent execution
+Agent sessions run as **ephemeral, non-root Docker containers** (from the `agent-base` image), one per run, torn down on completion. To launch them the app uses the host Docker socket (`/var/run/docker.sock`) — treat access to that socket as root-equivalent and restrict it to the app. For stronger isolation, run sessions on dedicated [agent servers](/docs/agents/) rather than the app host.
+
+## Webhook verification
+Inbound webhooks are signature-verified per provider before processing:
+| Provider | Verification |
+| --- | --- |
+| Slack | HMAC-SHA256 over the raw body + timestamp (x-slack-signature). |
+| GitHub | x-hub-signature-256 HMAC. |
+| Linear | linear-signature HMAC. |
+| Gmail | Pub/Sub push with OIDC JWT verification. |
+
+## Audit log
+Every change is recorded in an append-only event log (see [Architecture](/docs/architecture/)), giving you an immutable trail of who — human or agent — did what, and when.
+
+## Hardening your deployment
+- Terminate **TLS** at your proxy/load balancer in front of the app.
+- Set `CORS_ORIGIN` to your real frontend origin(s) only.
+- Set `TRUSTED_PROXY_CIDRS` to your CDN/LB ranges so `X-Forwarded-For` is honored only from trusted hops.
+- Restrict access to the Docker socket and your database/object-store credentials.
+- See the [configuration reference](/docs/configuration/) and [production deployment](/docs/deployment/) for the full list.
+
+## Reporting a vulnerability
+> **Please do not open a public GitHub issue for security reports.** Email [magnus@meshfirm.com](mailto:magnus@meshfirm.com) with a description and reproduction steps. You can expect acknowledgment within **48 hours**, with critical fixes targeted within **7 days**. Responsible reporters are credited in release notes unless they prefer to stay anonymous. See [SECURITY.md](https://github.com/sindre-ai/maskin/blob/main/SECURITY.md) for the full policy.
+
+
+---
+
+> Source: https://maskin.io/docs/troubleshooting/
+
+# Troubleshooting & FAQ
+The issues people hit most when self-hosting Maskin, and how to fix them. Most come down to one missing environment variable — see the [configuration reference](/docs/configuration/) for the full list.
+
+## The UI or session logs don't update live
+Real-time updates use PostgreSQL `LISTEN/NOTIFY` streamed over SSE. Connection poolers (PgBouncer, Supabase's pooled port, etc.) break LISTEN/NOTIFY. Set `DATABASE_URL_DIRECT` to a **non-pooled** connection in addition to `DATABASE_URL`. Also make sure your proxy isn't buffering `/api/events` responses.
+
+## Agent sessions fail to start
+- **Docker socket:** the app launches sessions via `/var/run/docker.sock` — confirm it's mounted into the app container and the process can access it.
+- **Image missing:** the `agent-base` image must be built/pulled. In production, set `AGENT_BASE_IMAGE` to a full registry path (e.g. `yourorg/agent-base:latest`), not the local `:latest` tag.
+- **Scaling out:** if you use `AGENT_SERVERS`, check each server is reachable and its `AGENT_SERVER_SECRET` matches.
+
+## MCP calls return 401, or Claude sees no tools
+- Check both headers: `Authorization: Bearer ank_…` and `X-Workspace-Id: <uuid>`.
+- Confirm the URL ends in `/mcp` and points at your instance.
+- In Claude Code, run `/reload-plugins` after adding the server. See [Self-hosted setup](/docs/get-started/self-hosted/).
+
+## Integrations won't connect, or stop working
+- `INTEGRATION_ENCRYPTION_KEY` must be set. If it was **changed**, previously stored tokens can no longer be decrypted — reconnect the affected integrations.
+- OAuth redirects need a correct public `WEBHOOK_BASE_URL` / `FRONTEND_URL` and the provider's redirect URI registered. See [Integrations setup](/docs/integrations/).
+
+## Webhooks aren't being received
+Set a public `WEBHOOK_BASE_URL` reachable from the internet; providers deliver to `/api/webhooks/<provider>`. A 401/403 on delivery usually means a signing-secret mismatch — re-check the provider's secret (e.g. `SLACK_SIGNING_SECRET`, `GITHUB_APP_WEBHOOK_SECRET`, `LINEAR_WEBHOOK_SECRET`).
+
+## I can't find my API key / can't sign in on a fresh instance
+On an empty database Maskin auto-bootstraps a dev actor, workspace, and API key (controlled by `MASKIN_AUTO_BOOTSTRAP`, default `true`) and prints the key in the **startup banner**. Once you've created your real first workspace and key, set `MASKIN_AUTO_BOOTSTRAP=false`.
+
+## Database / migration errors on boot
+Migrations run automatically when the app starts. To run them out of band use `pnpm db:migrate`. Make sure `DATABASE_URL` points at a reachable PostgreSQL 16 instance and the role can create tables.
+
+## Browser console shows CORS errors
+Set `CORS_ORIGIN` to your frontend origin(s), comma-separated. The dev default is `http://localhost:5173`.
+
+## Agents error with "no model configured"
+A workspace needs a model. Add an Anthropic key or Claude subscription, or a custom LLM — Maskin resolves the model through a fixed priority order. See [LLM & models](/docs/llm/).
+
+## FAQ
+**Is Maskin open source?** Yes — Apache 2.0, on [GitHub](https://github.com/sindre-ai/maskin).
+**Can I use models other than Claude?** Yes. Point a workspace at any OpenAI-compatible endpoint (OpenRouter, Ollama, vLLM) via a custom LLM — see [LLM & models](/docs/llm/).
+**Where do I see what a run cost?** Each session records token usage and `totalCostUsd` — see [Agents & sessions](/docs/agents/).
+**Do I have to self-host?** No — managed hosting is available. [Book a meeting](http://meshfirm.com/bookmagnus).
+**Still stuck?** Open an issue on [GitHub](https://github.com/sindre-ai/maskin). For security reports, email the contact on the [Security](/docs/security/) page instead.
