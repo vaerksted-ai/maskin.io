@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-hosted setup — Maskin Docs</title>
+<meta name="description" content="Set up the self-hosted version of Maskin: run your own instance and connect Claude (Code or Desktop) to it over MCP.">
+
+<link rel="canonical" href="https://maskin.io/docs/get-started/self-hosted/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/get-started/self-hosted/">
+<meta property="og:title" content="Self-hosted setup — Maskin">
+<meta property="og:description" content="Run your own Maskin instance and connect Claude to it over MCP.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:site_name" content="Maskin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+</head>
+<body>
+
+<!-- ─── TOP BAR ─────────────────────────────────────────── -->
+<nav class="docnav" id="docnav">
+  <div class="wrap docnav__inner">
+    <a class="docnav__logo" href="/">
+      <svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="80" height="80" rx="14" fill="#111110"/>
+        <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+      </svg>
+      Maskin
+    </a>
+    <span class="docnav__tag">Docs</span>
+    <span class="docnav__spacer"></span>
+    <ul class="docnav__links">
+      <li class="docnav__hide-sm"><a href="/">Home</a></li>
+      <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+      <li class="docnav__hide-sm"><a href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li>
+      <li>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap doc-layout">
+
+  <!-- ─── SIDEBAR ───────────────────────────────────────── -->
+  <aside class="doc-sidebar">
+    <nav class="doc-sidebar__group" aria-label="Documentation">
+      <p class="doc-sidebar__title">Getting started</p>
+      <ul class="doc-sidebar__list">
+        <li><a href="/docs/get-started/">Get started</a></li>
+        <li><a class="is-nested is-active" href="/docs/get-started/self-hosted/" aria-current="page">Self-hosted setup</a></li>
+      </ul>
+    </nav>
+    <nav class="doc-sidebar__group" aria-label="Reference">
+      <p class="doc-sidebar__title">Reference</p>
+      <ul class="doc-sidebar__list">
+        <li><span class="doc-sidebar__soon">Configuration</span></li>
+        <li><span class="doc-sidebar__soon">Integrations</span></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- ─── CONTENT ───────────────────────────────────────── -->
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / <a href="/docs/get-started/">Get started</a> / Self-hosted setup</p>
+
+    <p class="eyebrow">Self-hosted</p>
+    <h1>Self-hosted setup</h1>
+    <p class="lead">Run your own Maskin instance and connect Claude — Code or Desktop — to it over MCP, so you can drive a workspace from inside Claude.</p>
+
+    <div class="callout">
+      <span class="callout__icon">!</span>
+      <span class="callout__body">This guide is for the <strong>self-hosted</strong> version of Maskin — connecting Claude to a Maskin instance you run yourself. Want us to host it instead? <a href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a>.</span>
+    </div>
+
+    <h2>Prerequisites</h2>
+    <ul>
+      <li><strong>Claude Code</strong> or <strong>Claude Desktop</strong> installed.</li>
+      <li>An <strong>Anthropic API key</strong> — Maskin runs Claude Code in sandboxes and uses this key.</li>
+      <li>A <strong>running Maskin instance</strong> (set one up below).</li>
+    </ul>
+
+    <h2>Run your Maskin server</h2>
+    <p>Maskin self-hosts from a single docker-compose file. Clone the repo and start the stack:</p>
+    <pre><code>git clone https://github.com/sindre-ai/maskin.git &amp;&amp; cd maskin
+docker-compose up</code></pre>
+    <p>This brings up the full stack — PostgreSQL, SeaweedFS, and the Maskin server — serving at <code>http://localhost:3000</code>. For a real deployment, put it behind your own domain (referred to below as <code>https://&lt;your-maskin-host&gt;</code>).</p>
+
+    <h2>Step 1 — Sign in and create a workspace</h2>
+    <ol>
+      <li>Open your instance at <code>http://localhost:3000</code> (or <code>https://&lt;your-maskin-host&gt;</code>) and sign in.</li>
+      <li>Create your first workspace when prompted.</li>
+    </ol>
+    <p>Once you're in, you'll see the unified pipeline view: <strong>Insights → Bets → Tasks</strong>.</p>
+
+    <h2>Step 2 — Paste your Anthropic API key</h2>
+    <ol>
+      <li>Open <strong>Settings → Integrations</strong> (or <strong>Settings → LLM keys</strong>).</li>
+      <li>Paste your Anthropic API key and <strong>Save</strong>.</li>
+    </ol>
+    <p>Only the last four characters are shown after saving.</p>
+
+    <h2>Step 3 — Get your Maskin API key and workspace ID</h2>
+    <ol>
+      <li>Open <strong>Settings → API keys</strong>, click <strong>Create key</strong>, and copy the <code>ank_…</code> value.</li>
+      <li>Open <strong>Settings → Workspace</strong> and copy the <strong>Workspace ID</strong> (a UUID).</li>
+    </ol>
+
+    <h2>Step 4 — Connect Claude to your Maskin MCP</h2>
+
+    <h3>Claude Code</h3>
+    <p>Register the MCP server, pointing the URL at your instance:</p>
+    <pre><code>claude mcp add maskin \
+  --transport http \
+  --url https://&lt;your-maskin-host&gt;/mcp \
+  --header "Authorization: Bearer &lt;YOUR_MASKIN_API_KEY&gt;" \
+  --header "X-Workspace-Id: &lt;YOUR_WORKSPACE_ID&gt;"</code></pre>
+    <p>Then reload plugins:</p>
+    <pre><code>/reload-plugins</code></pre>
+
+    <h3>Claude Desktop</h3>
+    <p>Open <strong>Settings → Developer → Edit config</strong> and add the <code>maskin</code> server:</p>
+    <pre><code>{
+  "mcpServers": {
+    "maskin": {
+      "type": "http",
+      "url": "https://&lt;your-maskin-host&gt;/mcp",
+      "headers": {
+        "Authorization": "Bearer &lt;YOUR_MASKIN_API_KEY&gt;",
+        "X-Workspace-Id": "&lt;YOUR_WORKSPACE_ID&gt;"
+      }
+    }
+  }
+}</code></pre>
+    <p>Save and restart Claude Desktop.</p>
+
+    <h2>Step 5 — Make your first MCP call</h2>
+    <p>Ask Claude:</p>
+    <pre><code>Use the maskin MCP to call get_started.</code></pre>
+    <p>The <code>get_started</code> tool previews and applies a workspace template — <strong>development</strong>, <strong>growth</strong>, or <strong>custom</strong> — seeding your workspace with object types, statuses, custom fields, and an initial set of objects.</p>
+
+    <h2>What's next</h2>
+    <ul>
+      <li>Invite teammates from <strong>Settings → Members</strong>.</li>
+      <li>Wire up integrations (Slack, GitHub, Google Calendar) from <strong>Settings → Integrations</strong>.</li>
+      <li>Explore the full MCP tool set — ask Claude to run <code>list_tools</code>.</li>
+    </ul>
+    <p>Questions or issues? Open an issue on <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a>, or read the README for the data model and agent-session details.</p>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/get-started/">← Get started</a>
+      <span></span>
+    </nav>
+  </main>
+
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
