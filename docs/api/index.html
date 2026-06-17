@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API reference — Maskin Docs</title>
+<meta name="description" content="Maskin's HTTP API: authentication, the OpenAPI spec, and the REST endpoints for objects, actors, workspaces, sessions, integrations, events, and more.">
+
+<link rel="canonical" href="https://maskin.io/docs/api/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/api/">
+<meta property="og:title" content="API reference — Maskin">
+<meta property="og:description" content="Maskin's HTTP API: auth, the OpenAPI spec, and the REST endpoints.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:site_name" content="Maskin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+</head>
+<body>
+
+<nav class="docnav" id="docnav"></nav>
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+
+<div class="wrap doc-layout">
+  <aside class="doc-sidebar" id="docsidebar"></aside>
+
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / API reference</p>
+
+    <p class="eyebrow">Reference</p>
+    <h1>API reference</h1>
+    <p class="lead">Maskin is API-first: the UI and agents share one HTTP surface, built with Hono and documented with OpenAPI. The <a href="/docs/mcp-tools/">MCP tools</a> are a thin layer over these same endpoints.</p>
+
+    <h2>Base URL &amp; OpenAPI</h2>
+    <p>All routes are served under <code>/api</code> (e.g. <code>http://localhost:3000/api</code> in dev). The full, authoritative spec is generated from the code and served live:</p>
+    <pre><code>GET /openapi.json</code></pre>
+    <p>Point any OpenAPI viewer or client generator at that URL for the exact request/response schemas on your instance.</p>
+
+    <h2>Authentication</h2>
+    <p>Every request carries an API key; workspace-scoped routes also carry a workspace ID:</p>
+    <pre><code>Authorization: Bearer &lt;YOUR_API_KEY&gt;     # ank_…
+X-Workspace-Id: &lt;YOUR_WORKSPACE_ID&gt;       # workspace UUID</code></pre>
+    <p>Keys are stored as SHA-256 hashes; auth is stateless (no cookies/sessions). A small allowlist needs no auth: <code>/api/health</code>, <code>/openapi.json</code>, signup, OAuth callbacks, and webhook ingest.</p>
+
+    <h2>Resource groups</h2>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Mount</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>/api/objects</code></td><td>CRUD + search for insights, bets, tasks.</td></tr>
+        <tr><td><code>/api/graph</code></td><td>Atomic batch create (objects + relationships).</td></tr>
+        <tr><td><code>/api/relationships</code></td><td>Typed edges between objects.</td></tr>
+        <tr><td><code>/api/actors</code></td><td>Humans &amp; agents; signup; API-key rotation.</td></tr>
+        <tr><td><code>/api/workspaces</code></td><td>Workspaces, members, and settings.</td></tr>
+        <tr><td><code>/api/sessions</code></td><td>Agent session lifecycle + logs.</td></tr>
+        <tr><td><code>/api/triggers</code></td><td>Cron &amp; event automations.</td></tr>
+        <tr><td><code>/api/integrations</code></td><td>OAuth connect/disconnect + provider discovery.</td></tr>
+        <tr><td><code>/api/webhooks/{provider}</code></td><td>Inbound webhook ingest (no auth; signature-verified).</td></tr>
+        <tr><td><code>/api/events</code></td><td>Activity log + real-time SSE stream.</td></tr>
+        <tr><td><code>/api/notifications</code> · <code>/api/subscriptions</code></td><td>Human alerts and unread tracking.</td></tr>
+        <tr><td><code>/api/files</code> · <code>/api/imports</code></td><td>File upload/download; CSV imports.</td></tr>
+        <tr><td><code>/api/claude-oauth</code></td><td>Claude subscription token management.</td></tr>
+        <tr><td><code>/api/m/{extension-id}</code></td><td>Routes contributed by extension modules.</td></tr>
+        <tr><td><code>/mcp</code></td><td>MCP over HTTP (see <a href="/docs/mcp-tools/">MCP tools</a>).</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Representative endpoints</h2>
+    <h3>Objects</h3>
+    <pre><code>POST   /api/objects          # create (single or bulk)
+GET    /api/objects          # list (filter: type, status, driver)
+GET    /api/objects/search   # full-text search
+GET    /api/objects/:id      # fetch with relationships + connected objects
+PATCH  /api/objects/:id      # update title/content/status/metadata
+DELETE /api/objects/:id      # delete</code></pre>
+
+    <h3>Sessions</h3>
+    <pre><code>POST   /api/sessions               # create &amp; optionally auto-start
+GET    /api/sessions               # list (filter: status, actor_id)
+GET    /api/sessions/:id           # details
+POST   /api/sessions/:id/stop      # force stop
+POST   /api/sessions/:id/pause     # snapshot &amp; pause
+POST   /api/sessions/:id/resume    # resume from snapshot
+GET    /api/sessions/:id/logs      # paginated logs
+GET    /api/sessions/:id/logs/stream  # SSE (live)
+GET    /api/sessions/usage         # bucketed cost &amp; token usage</code></pre>
+
+    <h3>Integrations</h3>
+    <pre><code>GET    /api/integrations                  # active integrations
+GET    /api/integrations/providers        # available providers + schema
+POST   /api/integrations/:provider/connect   # start OAuth/API-key flow
+GET    /api/integrations/:provider/callback  # OAuth redirect (no auth)
+DELETE /api/integrations/:id              # disconnect + revoke</code></pre>
+
+    <div class="callout callout--muted">
+      <span class="callout__icon">i</span>
+      <span class="callout__body">Endpoints evolve — treat <code>/openapi.json</code> on your instance as the source of truth, and the lists above as orientation.</span>
+    </div>
+
+    <h2>Real-time (SSE)</h2>
+    <p>The activity stream and live session logs are delivered as Server-Sent Events, backed by Postgres NOTIFY. Clients can resume after a disconnect by sending the <code>Last-Event-ID</code> header — event IDs are monotonic.</p>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/mcp-tools/">← MCP tools</a>
+      <a href="/docs/configuration/">Configuration →</a>
+    </nav>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

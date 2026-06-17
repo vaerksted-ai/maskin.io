@@ -15,13 +15,13 @@
     ]},
     { title: "Reference", items: [
       { label: "MCP tools", href: "/docs/mcp-tools/" },
+      { label: "API reference", href: "/docs/api/" },
       { label: "Configuration", href: "/docs/configuration/" },
       { label: "Integrations", href: "/docs/integrations/" }
     ]},
-    { title: "More", items: [
-      { label: "Production deployment", soon: true },
-      { label: "LLM & BYO-model", soon: true },
-      { label: "API reference", soon: true }
+    { title: "Self-hosting", items: [
+      { label: "LLM & models", href: "/docs/llm/" },
+      { label: "Production deployment", href: "/docs/deployment/" }
     ]}
   ];
 

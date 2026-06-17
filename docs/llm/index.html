@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM &amp; models — Maskin Docs</title>
+<meta name="description" content="How Maskin chooses which model runs an agent: the five-tier routing order, Claude OAuth subscriptions, workspace Anthropic keys, bring-your-own custom endpoints, and the system fallback.">
+
+<link rel="canonical" href="https://maskin.io/docs/llm/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/llm/">
+<meta property="og:title" content="LLM &amp; models — Maskin">
+<meta property="og:description" content="Maskin's five-tier model routing: Claude OAuth, workspace keys, bring-your-own endpoints, and fallback.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:site_name" content="Maskin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+</head>
+<body>
+
+<nav class="docnav" id="docnav"></nav>
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+
+<div class="wrap doc-layout">
+  <aside class="doc-sidebar" id="docsidebar"></aside>
+
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / LLM &amp; models</p>
+
+    <p class="eyebrow">Self-hosting</p>
+    <h1>LLM &amp; models</h1>
+    <p class="lead">Maskin defaults to Claude but lets you bring your own model. For every agent run it resolves a model through a fixed priority order, so you can set a default and override it where you need to.</p>
+
+    <h2>Routing priority</h2>
+    <p>When a session starts, Maskin picks the first option that's configured, in this order:</p>
+    <ol>
+      <li><strong>Agent-level key</strong> — an Anthropic key set directly on the agent actor.</li>
+      <li><strong>Workspace custom LLM</strong> — a bring-your-own endpoint configured on the workspace (OpenRouter, Ollama, vLLM, or any OpenAI-compatible API).</li>
+      <li><strong>Claude OAuth</strong> — a workspace-level Claude Pro / Max / Teams subscription.</li>
+      <li><strong>Workspace Anthropic key</strong> — an Anthropic API key saved in workspace settings.</li>
+      <li><strong>System fallback</strong> — the operator-configured OpenRouter fallback (with a daily token cap).</li>
+    </ol>
+
+    <h2>Using Claude (the default)</h2>
+    <p>Two ways to give a workspace Claude access, both set <strong>in the app</strong> (Settings → Integrations / LLM keys) and stored encrypted per workspace:</p>
+    <ul>
+      <li><strong>Anthropic API key</strong> — paste your key; usage is billed to your Anthropic account.</li>
+      <li><strong>Claude subscription</strong> — import a Pro/Max/Teams subscription via the <code>import_claude_subscription</code> tool / Claude OAuth flow, then check it with <code>get_claude_subscription_status</code>.</li>
+    </ul>
+    <p>The default model is <code>claude-sonnet-4-6</code>, with a separate small/fast model for lightweight steps.</p>
+
+    <h2>Bring your own model</h2>
+    <p>Set a <strong>custom LLM</strong> on the workspace to route agents to any OpenAI-compatible endpoint. The configuration carries:</p>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Field</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>base_url</code></td><td>The provider's API base (e.g. OpenRouter, a local Ollama/vLLM server).</td></tr>
+        <tr><td><code>api_key</code></td><td>Credential for that provider (encrypted at rest).</td></tr>
+        <tr><td><code>model</code></td><td>Main model id.</td></tr>
+        <tr><td><code>small_fast_model</code></td><td>Cheaper model for lightweight steps.</td></tr>
+      </tbody>
+    </table></div>
+    <p>This is set in workspace settings, not via environment variables.</p>
+
+    <h2>System fallback (operator)</h2>
+    <p>For workspaces with no model configured, operators can enable a shared fallback via environment. It's off unless a key is provided, and it enforces a per-actor daily token cap:</p>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Variable</th><th>Default</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>MASKIN_FALLBACK_OPENROUTER_KEY</code></td><td>—</td><td>Enables the fallback when set.</td></tr>
+        <tr><td><code>MASKIN_FALLBACK_BASE_URL</code></td><td><code>https://openrouter.ai/api</code></td><td>Fallback provider base URL.</td></tr>
+        <tr><td><code>MASKIN_FALLBACK_MODEL</code> · <code>MASKIN_FALLBACK_SMALL_MODEL</code></td><td><code>deepseek/deepseek-v4-flash</code></td><td>Fallback main / small models.</td></tr>
+        <tr><td><code>MASKIN_FALLBACK_DAILY_TOKEN_LIMIT</code></td><td><code>550000</code></td><td>Per-actor daily token cap.</td></tr>
+      </tbody>
+    </table></div>
+    <p>See the <a href="/docs/configuration/">configuration reference</a> for the full environment list.</p>
+
+    <div class="callout callout--muted">
+      <span class="callout__icon">i</span>
+      <span class="callout__body">Whatever model runs, per-session token usage and <code>totalCostUsd</code> are recorded — see <a href="/docs/agents/">Agents &amp; sessions</a>.</span>
+    </div>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/integrations/">← Integrations</a>
+      <a href="/docs/deployment/">Production deployment →</a>
+    </nav>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
