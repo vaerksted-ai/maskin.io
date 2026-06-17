@@ -26,7 +26,7 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 
 - [MCP tools](https://maskin.io/docs/mcp-tools/): The full MCP tool surface agents and Claude use to drive a workspace — objects, schema, actors, comments, files, skills, triggers, sessions, notifications, integrations, and LLM keys.
 - [API reference](https://maskin.io/docs/api/): The API-first HTTP surface under `/api`, authentication, resource groups, and real-time SSE.
-- [OpenAPI spec](https://maskin.io/openapi.json): The live, authoritative machine-readable API spec — served from each instance at `/openapi.json` (point any OpenAPI client/codegen at it).
+- [OpenAPI spec](https://maskin.io/docs/api/): Each Maskin instance serves a live, authoritative machine-readable API spec at `/openapi.json` (relative to your own instance host, not maskin.io) — point any OpenAPI client or code generator at it.
 - [Configuration](https://maskin.io/docs/configuration/): Environment variables and workspace settings.
 - [Integrations](https://maskin.io/docs/integrations/): Connect Slack, GitHub, Linear, Gmail, PostHog, and more.
 
