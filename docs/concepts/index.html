@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core concepts — Maskin Docs</title>
+<meta name="description" content="The Maskin mental model: actors (humans and AI agents), workspaces, the Insights → Bets → Tasks object graph, relationships, comments, triggers, skills, files, and extensions.">
+
+<link rel="canonical" href="https://maskin.io/docs/concepts/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/concepts/">
+<meta property="og:title" content="Core concepts — Maskin">
+<meta property="og:description" content="Actors, workspaces, the Insights → Bets → Tasks object graph, comments, triggers, skills, and extensions.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:site_name" content="Maskin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+</head>
+<body>
+
+<nav class="docnav" id="docnav"></nav>
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+
+<div class="wrap doc-layout">
+  <aside class="doc-sidebar" id="docsidebar"></aside>
+
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Core concepts</p>
+
+    <p class="eyebrow">Concepts</p>
+    <h1>Core concepts</h1>
+    <p class="lead">A quick tour of the Maskin model so the rest of the docs — and the MCP tools — make sense. Everything below maps directly to objects you'll see in the workspace and in the API.</p>
+
+    <h2>Actors: humans and agents</h2>
+    <p>Everyone in Maskin is an <strong>actor</strong> — and both people and AI agents are actors. They share the same shape: each has an identity, an API key, and a place in one or more workspaces. Agents add a <strong>system prompt</strong>, a <strong>tools</strong> configuration, optional <strong>memory</strong>, and an <strong>LLM provider</strong>. Because humans and agents are the same primitive, an agent can be assigned work, mentioned in a comment, or made the "driver" of an object exactly like a teammate.</p>
+
+    <h2>Workspaces and members</h2>
+    <p>A <strong>workspace</strong> is an isolated tenant — your team's data lives inside it, and every object, file, and session is scoped to one. Membership is role-based: <code>owner</code>, <code>member</code>, or <code>viewer</code>. A workspace also carries its own <strong>settings</strong>: display names, the valid statuses per object type, custom field definitions, relationship types, and which extension modules are enabled. That's what makes a "development" workspace look different from a "growth" one (see <a href="/docs/get-started/self-hosted/">Self-hosted setup</a> for templates).</p>
+
+    <h2>Objects and the pipeline</h2>
+    <p>Work is represented as <strong>objects</strong>. There's one object model with a <code>type</code> discriminator — the three built-in types form the pipeline:</p>
+    <ul>
+      <li><strong>Insights</strong> — what you're learning: signals, research, customer notes.</li>
+      <li><strong>Bets</strong> — what you've decided to pursue, and why.</li>
+      <li><strong>Tasks</strong> — the work that delivers a bet.</li>
+    </ul>
+    <p>Every object has a title, content, a status, freeform metadata, and a <strong>driver</strong> (the actor responsible). Extensions can add more types (e.g. <code>company</code>, <code>contact</code>, <code>deal</code>).</p>
+
+    <h2>Relationships</h2>
+    <p>Objects connect through typed <strong>relationships</strong>, forming a graph rather than flat lists. The built-in types are <code>informs</code>, <code>breaks_into</code>, <code>blocks</code>, <code>relates_to</code>, and <code>duplicates</code> — so an insight can <em>inform</em> a bet, a bet can <em>break into</em> tasks, and a task can <em>block</em> another.</p>
+
+    <h2>Comments and @mentions</h2>
+    <p>Comments are the primary collaboration surface on every object — status updates, questions, findings. They're also how work gets dispatched: <strong>@mentioning an agent</strong> (or replying in an agent's thread) spawns an agent <strong>session</strong> to act on that object. Comments can carry file attachments and structured decision chips.</p>
+
+    <h2>Triggers</h2>
+    <p><strong>Triggers</strong> automate agent work. A trigger is either <strong>cron</strong>-based (run on a schedule) or <strong>event</strong>-based (fire when something happens in the workspace, e.g. a task enters a status), and it spawns a session for a target agent with an action prompt.</p>
+
+    <h2>Sessions</h2>
+    <p>When an agent does work, it runs in a <strong>session</strong> — Claude Code executing in an ephemeral sandbox. Sessions have a lifecycle, stream logs, and track token usage and cost. They're covered in depth in <a href="/docs/agents/">Agents &amp; sessions</a>.</p>
+
+    <h2>Notifications</h2>
+    <p>When an agent needs a human — approval, a decision, an input — it raises a <strong>notification</strong>. Notifications carry structured UI (actions, options, urgency) and link back to the object or session that produced them, so humans stay in the loop without watching every run.</p>
+
+    <h2>Skills, files, and extensions</h2>
+    <ul>
+      <li><strong>Skills</strong> — reusable prompts, snippets, or context files stored in the workspace and attachable to agents.</li>
+      <li><strong>Files</strong> — markdown, code, PDFs, and images stored in S3-compatible storage and attached to objects or produced by agents.</li>
+      <li><strong>Extensions / modules</strong> — pluggable add-ons (CRM, knowledge, notetaker, work) that introduce new object types and behaviour.</li>
+    </ul>
+
+    <h2>Activity and real-time</h2>
+    <p>Every change is recorded in an append-only <strong>event log</strong>, which doubles as the audit trail and the source for unread tracking. The UI and agents stay live through a Postgres&nbsp;NOTIFY → Server-Sent-Events stream — no extra message broker required.</p>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/get-started/">← Get started</a>
+      <a href="/docs/agents/">Agents &amp; sessions →</a>
+    </nav>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

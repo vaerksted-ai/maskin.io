@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integrations setup — Maskin Docs</title>
+<meta name="description" content="Connect Maskin to Slack, GitHub, Linear, Gmail, and PostHog: OAuth env vars, webhook URLs, scopes, and how each integration auto-injects its own MCP.">
+
+<link rel="canonical" href="https://maskin.io/docs/integrations/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/integrations/">
+<meta property="og:title" content="Integrations setup — Maskin">
+<meta property="og:description" content="Connect Maskin to Slack, GitHub, Linear, Gmail, and PostHog.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:site_name" content="Maskin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+</head>
+<body>
+
+<nav class="docnav" id="docnav"></nav>
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+
+<div class="wrap doc-layout">
+  <aside class="doc-sidebar" id="docsidebar"></aside>
+
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Integrations</p>
+
+    <p class="eyebrow">Reference</p>
+    <h1>Integrations setup</h1>
+    <p class="lead">Maskin ships with five first-class integrations — Slack, GitHub, Linear, Gmail, and PostHog. Each connects over OAuth or an API key, receives events via webhooks, and auto-injects its own MCP server so agents can act on it.</p>
+
+    <h2>Before you start (self-hosted)</h2>
+    <p>Connecting integrations on a self-hosted instance needs two things set in your environment:</p>
+    <ul>
+      <li><code>INTEGRATION_ENCRYPTION_KEY</code> — 32-byte hex (64 chars) used to encrypt stored OAuth tokens. <code>pnpm dev</code> auto-generates one in development; set it explicitly in production.</li>
+      <li><code>WEBHOOK_BASE_URL</code> — the public base URL providers call back to. Webhooks are delivered to <code>/api/webhooks/&lt;provider&gt;</code>.</li>
+    </ul>
+    <p>Then connect from the app: <strong>Settings → Integrations → Connect</strong>, which runs the OAuth flow. See the full env list in the <a href="/docs/configuration/">configuration reference</a>.</p>
+
+    <h2>Slack</h2>
+    <ul>
+      <li><strong>What it does:</strong> read and post messages, watch channels/DMs, react, and respond to app mentions — agents can participate in Slack threads.</li>
+      <li><strong>Auth:</strong> OAuth2. Env vars: <code>SLACK_CLIENT_ID</code>, <code>SLACK_CLIENT_SECRET</code>, <code>SLACK_SIGNING_SECRET</code>. Optionally <code>MASKIN_MACHINE_ICON_URL</code> for the agent avatar in Slack posts.</li>
+      <li><strong>Webhook:</strong> verified via the <code>x-slack-signature</code> header (HMAC-SHA256 with timestamp).</li>
+      <li><strong>MCP:</strong> a Slack MCP is auto-injected for every workspace with an active Slack connection.</li>
+    </ul>
+    <div class="callout callout--muted">
+      <span class="callout__icon">i</span>
+      <span class="callout__body">Slack also needs an app manifest and icon set up. The repo has a detailed walkthrough at <a href="https://github.com/sindre-ai/maskin/tree/main/docs/integrations/slack" target="_blank" rel="noopener">docs/integrations/slack</a>.</span>
+    </div>
+
+    <h2>GitHub</h2>
+    <ul>
+      <li><strong>What it does:</strong> react to pull requests, issues, pushes, and reviews.</li>
+      <li><strong>Auth:</strong> GitHub App flow. Env vars: <code>GITHUB_APP_ID</code>, <code>GITHUB_CLIENT_ID</code>, <code>GITHUB_CLIENT_SECRET</code>, <code>GITHUB_APP_WEBHOOK_SECRET</code>, <code>GITHUB_APP_PRIVATE_KEY</code>, <code>GITHUB_APP_SLUG</code>.</li>
+      <li><strong>Webhook:</strong> verified via <code>x-hub-signature-256</code>; event type from <code>x-github-event</code>.</li>
+      <li><strong>MCP:</strong> the official GitHub MCP server is run via stdio (uses a <code>GITHUB_TOKEN</code> from the connection).</li>
+    </ul>
+
+    <h2>Linear</h2>
+    <ul>
+      <li><strong>What it does:</strong> work with issues, comments, projects, cycles, and labels.</li>
+      <li><strong>Auth:</strong> OAuth2 (scopes include <code>read</code>, <code>write</code>, <code>issues:create</code>, <code>comments:create</code>). Env vars: <code>LINEAR_CLIENT_ID</code>, <code>LINEAR_CLIENT_SECRET</code>, <code>LINEAR_WEBHOOK_SECRET</code>.</li>
+      <li><strong>Webhook:</strong> verified via the <code>linear-signature</code> header.</li>
+      <li><strong>MCP:</strong> Linear's hosted MCP (<code>https://mcp.linear.app/mcp</code>).</li>
+    </ul>
+
+    <h2>Gmail</h2>
+    <ul>
+      <li><strong>What it does:</strong> read, label, draft, and send email.</li>
+      <li><strong>Auth:</strong> OAuth2 with PKCE + offline access (forces a refresh token). Env vars: <code>GMAIL_CLIENT_ID</code>, <code>GMAIL_CLIENT_SECRET</code>.</li>
+      <li><strong>Webhook:</strong> Google Cloud Pub/Sub push with OIDC JWT verification. Configure <code>GMAIL_PUBSUB_TOPIC</code>, <code>GMAIL_PUBSUB_AUDIENCE</code>, and <code>GMAIL_PUBSUB_SERVICE_ACCOUNT</code>.</li>
+      <li><strong>MCP:</strong> Google's hosted Gmail MCP.</li>
+    </ul>
+
+    <h2>PostHog</h2>
+    <ul>
+      <li><strong>What it does:</strong> pull product analytics into the workspace for feedback loops.</li>
+      <li><strong>Auth:</strong> API key (Bearer token) — no extra env vars beyond the stored token.</li>
+      <li><strong>Webhook:</strong> none; PostHog data is pull-based via MCP.</li>
+      <li><strong>MCP:</strong> PostHog's hosted MCP (<code>https://mcp.posthog.com/mcp</code>), auto-injected.</li>
+    </ul>
+
+    <div class="callout callout--muted">
+      <span class="callout__icon">i</span>
+      <span class="callout__body">Integration credentials are encrypted at rest and never written to logs or agent output. Disconnecting revokes tokens with the provider.</span>
+    </div>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/mcp-tools/">← MCP tools</a>
+      <a href="/docs/configuration/">Configuration →</a>
+    </nav>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

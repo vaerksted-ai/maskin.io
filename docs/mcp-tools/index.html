@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP tools reference — Maskin Docs</title>
+<meta name="description" content="The Maskin MCP tool surface: how to connect, and the tools agents and Claude use to drive a workspace — objects, relationships, schema, actors, comments, files, skills, triggers, sessions, notifications, and integrations.">
+
+<link rel="canonical" href="https://maskin.io/docs/mcp-tools/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/mcp-tools/">
+<meta property="og:title" content="MCP tools reference — Maskin">
+<meta property="og:description" content="The Maskin MCP tool surface agents and Claude use to drive a workspace.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:site_name" content="Maskin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+</head>
+<body>
+
+<nav class="docnav" id="docnav"></nav>
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+
+<div class="wrap doc-layout">
+  <aside class="doc-sidebar" id="docsidebar"></aside>
+
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / MCP tools</p>
+
+    <p class="eyebrow">Reference</p>
+    <h1>MCP tools reference</h1>
+    <p class="lead">Maskin is MCP-native: the entire workspace is driven through MCP tools, the same surface humans' agents and your Claude client use. This page groups the tools by domain.</p>
+
+    <div class="callout callout--muted">
+      <span class="callout__icon">i</span>
+      <span class="callout__body">This is a guided overview. The live, authoritative list comes from your instance — ask Claude to run <code>list_tools</code>. The set has grown over time, so your instance may expose more than is listed here.</span>
+    </div>
+
+    <h2>Connecting</h2>
+    <p>The MCP endpoint is served over HTTP at <code>POST /mcp</code> and authenticates with two headers:</p>
+    <pre><code>Authorization: Bearer &lt;YOUR_MASKIN_API_KEY&gt;   # ank_…
+X-Workspace-Id: &lt;YOUR_WORKSPACE_ID&gt;           # workspace UUID</code></pre>
+    <p>See <a href="/docs/get-started/self-hosted/">Self-hosted setup</a> for the full <code>claude mcp add</code> command and the Claude Desktop config.</p>
+
+    <h2>Onboarding</h2>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>get_started</code></td><td>Apply a workspace template (development / growth / custom) with seed objects, agents, and triggers. Two-phase: call to preview + get tailoring questions, then call again with <code>confirm: true</code> to apply.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Objects</h2>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>create_objects</code></td><td>Create insights, bets, and tasks (with relationships and attachments) in one atomic call.</td></tr>
+        <tr><td><code>get_objects</code></td><td>Fetch objects with relationships, connected objects, recent activity, and files.</td></tr>
+        <tr><td><code>update_objects</code></td><td>Update fields (title, content, status, metadata) and create relationships.</td></tr>
+        <tr><td><code>delete_object</code></td><td>Delete an object by ID.</td></tr>
+        <tr><td><code>list_objects</code></td><td>List objects filtered by type, status, or driver; paginated.</td></tr>
+        <tr><td><code>search_objects</code></td><td>Full-text search over title and content with optional filters.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Relationships</h2>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>list_relationships</code></td><td>Query relationships for an object, by direction or type.</td></tr>
+        <tr><td><code>delete_relationship</code></td><td>Delete a relationship by ID.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Workspace schema &amp; settings</h2>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>get_workspace_schema</code></td><td>Discover statuses per type, custom field definitions, relationship types, and rendering rules.</td></tr>
+        <tr><td><code>create_workspace_field</code> · <code>update_workspace_field</code> · <code>delete_workspace_field</code></td><td>Manage custom metadata fields on an object type.</td></tr>
+        <tr><td><code>create_workspace</code> · <code>update_workspace</code> · <code>list_workspaces</code></td><td>Create, rename/configure, and list workspaces.</td></tr>
+        <tr><td><code>create_extension</code> · <code>update_extension</code> · <code>delete_extension</code> · <code>list_extensions</code></td><td>Enable registered modules or define custom object types.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Actors</h2>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>create_actor</code></td><td>Create a human or agent actor and optionally add to a workspace with a role.</td></tr>
+        <tr><td><code>get_actor</code> · <code>list_actors</code></td><td>Fetch or list actors in the workspace.</td></tr>
+        <tr><td><code>update_actor</code></td><td>Update name, description, system prompt, tools config, memory, LLM provider, or attached skills.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Comments &amp; activity</h2>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>create_comment</code></td><td>Post a comment (status update, question, finding). @-mentioning an agent spawns a session; supports attachments and decision chips.</td></tr>
+        <tr><td><code>get_comments</code></td><td>Fetch comments on an object, including replies and attachments.</td></tr>
+        <tr><td><code>get_events</code></td><td>Read the workspace activity log, filtered by entity type and action.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Files</h2>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>create_file</code></td><td>Author a file (markdown, code, PDF, image) and store it; returns a shareable URL.</td></tr>
+        <tr><td><code>get_file</code> · <code>list_files</code> · <code>update_file</code> · <code>delete_file</code></td><td>Read, list, rename, and delete files.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Skills &amp; triggers</h2>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>create_workspace_skill</code> · <code>list_workspace_skills</code> · <code>get_workspace_skill</code> · <code>update_workspace_skill</code> · <code>delete_workspace_skill</code></td><td>Manage reusable skills (prompts, snippets, context) attachable to agents.</td></tr>
+        <tr><td><code>create_trigger</code> · <code>update_trigger</code> · <code>delete_trigger</code> · <code>list_triggers</code></td><td>Manage cron and event triggers that spawn agent sessions.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Sessions</h2>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>create_session</code></td><td>Spawn a containerized agent session with an action prompt (non-blocking).</td></tr>
+        <tr><td><code>run_agent</code></td><td>Blocking: spawn a session, poll until completion, and return the result with logs.</td></tr>
+        <tr><td><code>get_session</code> · <code>list_sessions</code></td><td>Fetch status/logs or list sessions.</td></tr>
+        <tr><td><code>stop_session</code> · <code>pause_session</code> · <code>resume_session</code></td><td>Terminate, snapshot, or resume a session.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Notifications &amp; subscriptions</h2>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>create_notification</code> · <code>list_notifications</code> · <code>get_notification</code> · <code>update_notification</code> · <code>delete_notification</code></td><td>Raise and manage structured human-input requests.</td></tr>
+        <tr><td><code>subscribe</code> · <code>unsubscribe</code> · <code>list_subscribers</code> · <code>mark_read</code> · <code>list_unread</code></td><td>Track per-actor subscriptions and unread activity on objects.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Integrations &amp; LLM keys</h2>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>list_integrations</code> · <code>list_integration_providers</code> · <code>connect_integration</code> · <code>disconnect_integration</code></td><td>List, connect (OAuth), and disconnect integrations. See <a href="/docs/integrations/">Integrations setup</a>.</td></tr>
+        <tr><td><code>set_llm_api_key</code> · <code>get_llm_api_keys</code> · <code>delete_llm_api_key</code></td><td>Manage workspace LLM provider keys (stored encrypted; never returned in full).</td></tr>
+        <tr><td><code>import_claude_subscription</code> · <code>get_claude_subscription_status</code> · <code>disconnect_claude_subscription</code></td><td>Use a Claude Pro/Max/Teams subscription for agent runs.</td></tr>
+      </tbody>
+    </table></div>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/agents/">← Agents &amp; sessions</a>
+      <a href="/docs/integrations/">Integrations →</a>
+    </nav>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

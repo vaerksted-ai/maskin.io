@@ -8,7 +8,6 @@
 
 <link rel="canonical" href="https://maskin.io/docs/get-started/self-hosted/">
 
-<!-- Favicons -->
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -16,7 +15,6 @@
 <meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
 
-<!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/docs/get-started/self-hosted/">
 <meta property="og:title" content="Self-hosted setup — Maskin">
@@ -32,60 +30,12 @@
 </head>
 <body>
 
-<!-- ─── TOP BAR ─────────────────────────────────────────── -->
-<nav class="docnav" id="docnav">
-  <div class="wrap docnav__inner">
-    <a class="docnav__logo" href="/">
-      <svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="80" height="80" rx="14" fill="#111110"/>
-        <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
-      </svg>
-      Maskin
-    </a>
-    <span class="docnav__tag">Docs</span>
-    <span class="docnav__spacer"></span>
-    <ul class="docnav__links">
-      <li class="docnav__hide-sm"><a href="/">Home</a></li>
-      <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
-      <li class="docnav__hide-sm"><a href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li>
-      <li>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-          <svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-          <svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </button>
-      </li>
-    </ul>
-  </div>
-</nav>
+<nav class="docnav" id="docnav"></nav>
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
 
 <div class="wrap doc-layout">
+  <aside class="doc-sidebar" id="docsidebar"></aside>
 
-  <!-- ─── SIDEBAR ───────────────────────────────────────── -->
-  <aside class="doc-sidebar">
-    <nav class="doc-sidebar__group" aria-label="Documentation">
-      <p class="doc-sidebar__title">Getting started</p>
-      <ul class="doc-sidebar__list">
-        <li><a href="/docs/get-started/">Get started</a></li>
-        <li><a class="is-nested is-active" href="/docs/get-started/self-hosted/" aria-current="page">Self-hosted setup</a></li>
-      </ul>
-    </nav>
-    <nav class="doc-sidebar__group" aria-label="Reference">
-      <p class="doc-sidebar__title">Reference</p>
-      <ul class="doc-sidebar__list">
-        <li><span class="doc-sidebar__soon">Configuration</span></li>
-        <li><span class="doc-sidebar__soon">Integrations</span></li>
-      </ul>
-    </nav>
-  </aside>
-
-  <!-- ─── CONTENT ───────────────────────────────────────── -->
   <main class="doc-content">
     <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / <a href="/docs/get-started/">Get started</a> / Self-hosted setup</p>
 
@@ -109,7 +59,7 @@
     <p>Maskin self-hosts from a single docker-compose file. Clone the repo and start the stack:</p>
     <pre><code>git clone https://github.com/sindre-ai/maskin.git &amp;&amp; cd maskin
 docker-compose up</code></pre>
-    <p>This brings up the full stack — PostgreSQL, SeaweedFS, and the Maskin server — serving at <code>http://localhost:3000</code>. For a real deployment, put it behind your own domain (referred to below as <code>https://&lt;your-maskin-host&gt;</code>).</p>
+    <p>This brings up the full stack — PostgreSQL, SeaweedFS, and the Maskin server — serving at <code>http://localhost:3000</code>. On first run it bootstraps a dev actor, a workspace, and an API key (printed in the startup banner). For a real deployment, put it behind your own domain (referred to below as <code>https://&lt;your-maskin-host&gt;</code>) and review the <a href="/docs/configuration/">configuration reference</a>.</p>
 
     <h2>Step 1 — Sign in and create a workspace</h2>
     <ol>
@@ -162,22 +112,22 @@ docker-compose up</code></pre>
     <h2>Step 5 — Make your first MCP call</h2>
     <p>Ask Claude:</p>
     <pre><code>Use the maskin MCP to call get_started.</code></pre>
-    <p>The <code>get_started</code> tool previews and applies a workspace template — <strong>development</strong>, <strong>growth</strong>, or <strong>custom</strong> — seeding your workspace with object types, statuses, custom fields, and an initial set of objects.</p>
+    <p>The <code>get_started</code> tool previews and applies a workspace template — <strong>development</strong>, <strong>growth</strong>, or <strong>custom</strong> — seeding your workspace with object types, statuses, custom fields, and an initial set of objects. See the full tool set in the <a href="/docs/mcp-tools/">MCP tools reference</a>.</p>
 
     <h2>What's next</h2>
     <ul>
       <li>Invite teammates from <strong>Settings → Members</strong>.</li>
-      <li>Wire up integrations (Slack, GitHub, Google Calendar) from <strong>Settings → Integrations</strong>.</li>
-      <li>Explore the full MCP tool set — ask Claude to run <code>list_tools</code>.</li>
+      <li>Wire up integrations (Slack, GitHub, Linear, Gmail, PostHog) — see <a href="/docs/integrations/">Integrations setup</a>.</li>
+      <li>Tune your deployment with the <a href="/docs/configuration/">configuration reference</a>.</li>
+      <li>Learn how agents run → <a href="/docs/agents/">Agents &amp; sessions</a>.</li>
     </ul>
     <p>Questions or issues? Open an issue on <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a>, or read the README for the data model and agent-session details.</p>
 
     <nav class="doc-pagenav" aria-label="Page navigation">
       <a href="/docs/get-started/">← Get started</a>
-      <span></span>
+      <a href="/docs/concepts/">Core concepts →</a>
     </nav>
   </main>
-
 </div>
 
 <script src="/docs/docs.js"></script>

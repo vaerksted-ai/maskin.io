@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agents &amp; sessions — Maskin Docs</title>
+<meta name="description" content="How Maskin runs AI agents: Claude Code in ephemeral Docker sandboxes, the session lifecycle, what triggers a session, file persistence, observability, and scaling.">
+
+<link rel="canonical" href="https://maskin.io/docs/agents/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/agents/">
+<meta property="og:title" content="Agents &amp; sessions — Maskin">
+<meta property="og:description" content="Claude Code in ephemeral sandboxes: session lifecycle, triggers, file persistence, cost tracking, and scaling.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:site_name" content="Maskin">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+</head>
+<body>
+
+<nav class="docnav" id="docnav"></nav>
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+
+<div class="wrap doc-layout">
+  <aside class="doc-sidebar" id="docsidebar"></aside>
+
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Agents &amp; sessions</p>
+
+    <p class="eyebrow">Concepts</p>
+    <h1>Agents &amp; sessions</h1>
+    <p class="lead">Agents are first-class actors in your workspace. When one does work, it runs as a <strong>session</strong> — Claude Code executing in an isolated sandbox, reading and writing the same objects your team does.</p>
+
+    <h2>What an agent is</h2>
+    <p>An agent is an <a href="/docs/concepts/">actor</a> with a <strong>system prompt</strong>, a <strong>tools</strong> configuration, optional <strong>memory</strong>, and an <strong>LLM provider</strong>. You can attach reusable <strong>skills</strong> to an agent to give it standard procedures and context. Agents are assigned work, mentioned, and held responsible for objects exactly like human teammates.</p>
+
+    <h2>Sessions run in sandboxes</h2>
+    <p>Each run executes in an <strong>ephemeral Docker container</strong> built from the <code>agent-base</code> image (Node 20 with the Claude Code CLI pre-installed, running as a non-root user). The container gets the agent's prompt, the relevant workspace context, and credentials injected as environment, then runs to completion and is torn down.</p>
+
+    <h2>Session lifecycle</h2>
+    <p>A session moves through these states:</p>
+    <pre><code>pending → starting → running → completed
+                           ├──→ paused        (snapshot saved; can resume)
+                           ├──→ failed
+                           ├──→ timeout
+                           └──→ user_stopped</code></pre>
+    <p>Sessions are non-blocking by default — they're created and run in the background. A blocking helper exists when you want the result inline (see <code>run_agent</code> below).</p>
+
+    <h2>What starts a session</h2>
+    <ul>
+      <li><strong>@mention</strong> — mentioning an agent in a comment on an object.</li>
+      <li><strong>Thread reply</strong> — replying to an agent's own comment continues the thread in a new session.</li>
+      <li><strong>Cron trigger</strong> — a scheduled <a href="/docs/concepts/">trigger</a> fires.</li>
+      <li><strong>Event trigger</strong> — a workspace event matches a trigger's filter (e.g. a task enters a status).</li>
+      <li><strong>Explicit MCP call</strong> — <code>create_session</code> (non-blocking) or <code>run_agent</code> (blocking: spawns, polls to completion, returns the result with logs).</li>
+    </ul>
+
+    <h2>Memory and file persistence</h2>
+    <p>An agent's <strong>skills</strong>, <strong>memory</strong>, and <strong>learnings</strong> live in S3-compatible storage. They're pulled into the sandbox at the start of a session and pushed back when it completes, so an agent accumulates context across runs instead of starting cold each time. Any files an agent authors are stored the same way and can be attached to objects.</p>
+
+    <h2>Observability and cost</h2>
+    <p>While a session runs, its output streams live over Server-Sent Events, and the full log is retained and paginated afterward. Each session records token usage — input, output, and cache-read/write — and a computed <code>totalCostUsd</code>, so you can see exactly what each run consumed.</p>
+
+    <h2>Scaling beyond one host</h2>
+    <p>By default sessions run as local Docker containers on the app host. For higher throughput, set <code>AGENT_SERVERS</code> to a pool of remote agent servers: sessions are then enqueued and dispatched to the least-loaded server over HTTPS, with a warm pool to cut cold-start latency. See the <a href="/docs/configuration/">configuration reference</a> for the relevant variables.</p>
+
+    <div class="callout callout--muted">
+      <span class="callout__icon">i</span>
+      <span class="callout__body">Which model an agent uses is resolved per run: an agent-level key, a workspace custom LLM endpoint, a Claude OAuth subscription, a workspace Anthropic key, or a system fallback — in that order.</span>
+    </div>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/concepts/">← Core concepts</a>
+      <a href="/docs/mcp-tools/">MCP tools →</a>
+    </nav>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
