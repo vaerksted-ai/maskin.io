@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maskin — Your team's workspace for working with AI agents</title>
-<meta name="description" content="Stop using AI alone. Maskin is the purpose-built workspace where your whole team — humans and AI agents — works together with shared memory, context, and process. Open source.">
+<title>Maskin — The open-source, MCP-native agentic workspace</title>
+<meta name="description" content="Maskin is the open-source, MCP-native agentic workspace where your whole team — humans and AI agents — works together with shared memory, context, and process. Connect Claude over MCP and drive a workspace directly. Self-host or managed.">
 
 <!-- Canonical -->
 <link rel="canonical" href="https://maskin.io/">
@@ -876,6 +876,80 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   .reveal{opacity:1;transform:none}
 }
 </style>
+
+<!-- ─── STRUCTURED DATA (JSON-LD) ───────────────────────────
+     Machine-readable description for search engines and LLMs.
+     Keep values in sync with the meta tags above and the pricing/FAQ sections. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://maskin.io/#organization",
+      "name": "Maskin",
+      "url": "https://maskin.io/",
+      "logo": "https://maskin.io/icon-512.png",
+      "description": "Maskin is the open-source, MCP-native agentic workspace where humans and AI agents work together with shared memory, context, and process.",
+      "sameAs": [
+        "https://github.com/sindre-ai/maskin",
+        "https://x.com/maskin_io"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://maskin.io/#website",
+      "url": "https://maskin.io/",
+      "name": "Maskin",
+      "publisher": { "@id": "https://maskin.io/#organization" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://maskin.io/#software",
+      "name": "Maskin",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Agentic workspace",
+      "operatingSystem": "Web, Docker (self-hosted), Linux, macOS, Windows",
+      "url": "https://maskin.io/",
+      "downloadUrl": "https://github.com/sindre-ai/maskin",
+      "softwareHelp": "https://maskin.io/docs/",
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "isAccessibleForFree": true,
+      "description": "The open-source, MCP-native agentic workspace. Humans and AI agents share one pipeline — Insights, Bets, Tasks — with shared memory and a real process. Connect Claude Code or Claude Desktop over MCP and drive the workspace directly. Self-host with one docker-compose file, or use managed hosting.",
+      "featureList": [
+        "MCP-native — drive the workspace from Claude Code or Claude Desktop",
+        "Shared workspace for humans and AI agents",
+        "Unified pipeline: Insights → Bets → Tasks",
+        "Triggers, agents, and threads",
+        "Bring your own model (Anthropic, OpenAI, local via Ollama)",
+        "Open source under Apache 2.0",
+        "Self-host or managed, EU & US data residency"
+      ],
+      "publisher": { "@id": "https://maskin.io/#organization" },
+      "offers": [
+        { "@type": "Offer", "name": "Self-hosted", "price": "0", "priceCurrency": "USD", "description": "Open source under Apache 2.0. Always free to self-host." },
+        { "@type": "Offer", "name": "Trial", "price": "0", "priceCurrency": "USD", "description": "14-day free trial. 1 workspace, up to 5 members, 500 agent credits. No credit card." },
+        { "@type": "Offer", "name": "Pro", "price": "20", "priceCurrency": "USD", "description": "Per seat / month. Unlimited workspaces and members, bring your own model key, EU & US data residency." },
+        { "@type": "Offer", "name": "Team", "price": "200", "priceCurrency": "USD", "description": "Per workspace / month, flat. Unlimited seats, self-host option, dedicated onboarding, SLA." }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://maskin.io/#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "How is this different from Claude Projects or ChatGPT Teams?", "acceptedAnswer": { "@type": "Answer", "text": "Those share prompts. Maskin shares state. The insight an agent spotted overnight is the same insight you open at 9am, linked to the bet you shaped yesterday, linked to the task your designer just picked up. A chat history is not a team memory." } },
+        { "@type": "Question", "name": "What happens when an agent does something wrong?", "acceptedAnswer": { "@type": "Answer", "text": "Every agent action is posted as a comment on the relevant object — visible to the whole team. Humans approve bets before they become active. Nothing deploys without a human in the loop. If something looks wrong, you close the bet and the agents stop. The audit trail stays." } },
+        { "@type": "Question", "name": "Do I need engineers to run this?", "acceptedAnswer": { "@type": "Answer", "text": "No for hosted — sign up, invite the team, plug in a model key, go. Yes if you want to self-host, but it's one docker-compose file away." } },
+        { "@type": "Question", "name": "What's a \"bet\"?", "acceptedAnswer": { "@type": "Answer", "text": "A scoped hypothesis with a goal, evidence, and a timeline. Borrowed from Shape Up. It's the unit where human judgment compounds — insights get noticed, tasks get executed, bets get chosen." } },
+        { "@type": "Question", "name": "What models can I use?", "acceptedAnswer": { "@type": "Answer", "text": "Bring your own. Anthropic, OpenAI, local via Ollama — anything that speaks a standard API. Your key, your spend, your rate limits." } },
+        { "@type": "Question", "name": "Where does my data live? Does it train anything?", "acceptedAnswer": { "@type": "Answer", "text": "Hosted: isolated tenants in EU or US regions. Self-host: wherever you put the container. Either way your prompts and context are never used as training data — they belong to you." } },
+        { "@type": "Question", "name": "What does it cost?", "acceptedAnswer": { "@type": "Answer", "text": "14-day free trial with 500 agent credits included — no credit card needed. After that: $20/seat/month (Pro), $200/workspace/month flat (Team, unlimited seats), or Enterprise with your own LLM and infrastructure. Self-host is always free under Apache 2.0." } }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

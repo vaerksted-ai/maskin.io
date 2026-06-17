@@ -1,0 +1,43 @@
+# Maskin
+
+> The open-source, MCP-native agentic workspace where your whole team — humans and AI agents — works together with shared memory, context, and process. Think of it as the default workspace for setting up agentic teams: connect Claude (or any MCP client) and drive the workspace directly.
+
+Maskin gives humans and AI agents one shared place to work. Everything flows through a single pipeline — **Insights → Bets → Tasks** — that people and agents read and write together, so context compounds instead of getting lost in scattered chat histories. Maskin is MCP-native and API-first: the UI, agents, and your Claude client all drive the same HTTP surface, and the MCP tools are a thin layer over it.
+
+Run it two ways: **self-hosted** (one `docker-compose` file, free under Apache 2.0) or **managed**. Bring your own model key (Anthropic, OpenAI, or local via Ollama).
+
+Setup in one line — connect Claude to a Maskin instance over MCP, then ask Claude to call `get_started`:
+`claude mcp add maskin --transport http --url https://<your-maskin-host>/mcp --header "Authorization: Bearer <MASKIN_API_KEY>" --header "X-Workspace-Id: <WORKSPACE_ID>"`
+
+## Start here
+
+- [Documentation home](https://maskin.io/docs/): Entry point to all Maskin docs.
+- [Get started](https://maskin.io/docs/get-started/): What Maskin is, the unified pipeline, and the two ways to run it.
+- [Quickstart tutorial](https://maskin.io/docs/quickstart/): Empty instance to an agent doing real work in ~10 minutes, driven from Claude.
+- [Self-hosted setup](https://maskin.io/docs/get-started/self-hosted/): Run your own instance with docker-compose and connect Claude over MCP.
+
+## Concepts
+
+- [Core concepts](https://maskin.io/docs/concepts/): Actors (humans and agents), workspaces, the Insights → Bets → Tasks object graph, relationships, comments, triggers, sessions, notifications, skills, files, extensions.
+- [Agents & sessions](https://maskin.io/docs/agents/): How agents run — the session lifecycle, logs, token usage, and cost.
+- [Architecture](https://maskin.io/docs/architecture/): How the system fits together (server, Postgres, storage, real-time).
+
+## Reference
+
+- [MCP tools](https://maskin.io/docs/mcp-tools/): The full MCP tool surface agents and Claude use to drive a workspace — objects, schema, actors, comments, files, skills, triggers, sessions, notifications, integrations, and LLM keys.
+- [API reference](https://maskin.io/docs/api/): The API-first HTTP surface under `/api`, authentication, resource groups, and real-time SSE.
+- [OpenAPI spec](https://maskin.io/docs/api/): Each Maskin instance serves a live, authoritative machine-readable API spec at `/openapi.json` (relative to your own instance host, not maskin.io) — point any OpenAPI client or code generator at it.
+- [Configuration](https://maskin.io/docs/configuration/): Environment variables and workspace settings.
+- [Integrations](https://maskin.io/docs/integrations/): Connect Slack, GitHub, Linear, Gmail, PostHog, and more.
+
+## Self-hosting
+
+- [LLM & models](https://maskin.io/docs/llm/): Supported providers and how model keys work.
+- [Production deployment](https://maskin.io/docs/deployment/): Running Maskin beyond localhost.
+- [Security](https://maskin.io/docs/security/): Auth, data isolation, and key handling.
+- [Troubleshooting](https://maskin.io/docs/troubleshooting/): Common setup and connection issues.
+
+## Optional
+
+- [GitHub repository](https://github.com/sindre-ai/maskin): Source code, data model, and self-hosting details.
+- [llms-full.txt](https://maskin.io/llms-full.txt): All documentation concatenated into a single file for full-context ingestion.

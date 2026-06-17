@@ -48,6 +48,9 @@
   function renderTopBar() {
     var el = document.getElementById("docnav");
     if (!el) return;
+    // The top bar is now rendered statically into each page (so crawlers and
+    // no-JS clients see it). Only fall back to JS rendering if it's empty.
+    if (el.children.length) return;
     el.innerHTML =
       '<div class="wrap docnav__inner">' +
         '<a class="docnav__logo" href="/">' + LOGO + 'Maskin</a>' +
@@ -65,6 +68,10 @@
   function renderSidebar() {
     var el = document.getElementById("docsidebar");
     if (!el) return;
+    // The sidebar is now rendered statically into each page (so crawlers and
+    // no-JS clients see the full nav graph). Only fall back to JS rendering if
+    // it's empty; the active state is already baked into the static markup.
+    if (el.children.length) return;
     var here = normalize(window.location.pathname);
     var html = "";
     for (var g = 0; g < NAV.length; g++) {
