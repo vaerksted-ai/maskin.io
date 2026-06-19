@@ -11,8 +11,8 @@
   --surface:    #FAFAF8;
   --linen:      #F0EDE7;
   --rule:       #E2DDD7;
-  --accent:     #B5311A;
-  --accent-dim: rgba(181,49,26,0.12);
+  --accent:     #2563EB;
+  --accent-dim: rgba(37,99,235,0.12);
 
   --ff-display: 'Schibsted Grotesk', sans-serif;
   --ff-serif:   'Newsreader', Georgia, serif;
@@ -24,7 +24,7 @@
   --step-3: clamp(1.5rem, 1.15rem + 1.5vw, 2.5rem);
   --step-4: clamp(2rem, 1.4rem + 3vw, 3.75rem);
 
-  --max-w: 1120px;
+  --max-w: 1280px;
   --gap: clamp(1rem, 3vw, 2.5rem);
 }
 
@@ -37,8 +37,8 @@
     --surface:    #141412;
     --linen:      #1C1B18;
     --rule:       #2A2925;
-    --accent:     #D4432A;
-    --accent-dim: rgba(212,67,42,0.15);
+    --accent:     #3B74F2;
+    --accent-dim: rgba(59,116,242,0.15);
   }
   :root:not([data-theme="light"]) .docnav.scrolled { background: rgba(20,20,18,.88); }
 }
@@ -51,8 +51,8 @@
   --surface:    #141412;
   --linen:      #1C1B18;
   --rule:       #2A2925;
-  --accent:     #D4432A;
-  --accent-dim: rgba(212,67,42,0.15);
+  --accent:     #3B74F2;
+  --accent-dim: rgba(59,116,242,0.15);
 }
 [data-theme="dark"] .docnav.scrolled { background: rgba(20,20,18,.88); }
 
@@ -64,8 +64,8 @@
   --surface:    #FAFAF8;
   --linen:      #F0EDE7;
   --rule:       #E2DDD7;
-  --accent:     #B5311A;
-  --accent-dim: rgba(181,49,26,0.12);
+  --accent:     #2563EB;
+  --accent-dim: rgba(37,99,235,0.12);
 }
 
 /* ─── BASE ───────────────────────────────────────────────── */

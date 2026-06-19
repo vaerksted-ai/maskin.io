@@ -273,8 +273,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 /* ─── HERO ───────────────────────────────────────────────── */
 .hero{
-  min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-  padding-top:72px;padding-bottom:5rem;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;
+  padding-top:clamp(6.5rem,13vh,9rem);padding-bottom:clamp(3rem,7vh,5.5rem);
+  position:relative;overflow:hidden;
 }
 .hero__glow{
   position:absolute;top:-10%;right:-5%;width:55%;height:80%;
@@ -303,7 +304,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 /* ── PROMPT BAR ────────────────────────────────────────────── */
 .prompt-bar-wrap{
-  max-width:none;margin:clamp(2.5rem,5vw,4rem) 0 0;
+  max-width:820px;margin:clamp(2.5rem,5vw,4rem) auto 0;
 }
 .prompt-bar{
   position:relative;
@@ -1988,7 +1989,13 @@ function runStep() {
 }
 
 const diagramEl = document.getElementById('loopDiagram');
-if (diagramEl) {
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (diagramEl && prefersReducedMotion) {
+  // Honor reduced motion: light the full ring once, no cycling.
+  ALL_CARDS.forEach(id  => document.getElementById(id)?.classList.add('active'));
+  ALL_PATHS.forEach(id  => document.getElementById(id)?.classList.add('lit'));
+  if (statusEl) statusEl.textContent = 'insight → bet → task → knowledge → repeat';
+} else if (diagramEl) {
   new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting && !loopInterval) {
