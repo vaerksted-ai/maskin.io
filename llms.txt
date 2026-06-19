@@ -41,3 +41,8 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 
 - [GitHub repository](https://github.com/sindre-ai/maskin): Source code, data model, and self-hosting details.
 - [llms-full.txt](https://maskin.io/llms-full.txt): All documentation concatenated into a single file for full-context ingestion.
+
+## Contact
+
+- Email: ai@maskin.io — for product questions, demos, and enterprise/self-host enquiries.
+- Book a walkthrough with the founders: https://meshfirm.com/bookmagnus
