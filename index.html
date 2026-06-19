@@ -38,7 +38,18 @@
 <!-- LinkedIn (uses OG tags — no extra tags needed) -->
 
 <!-- Maskin backend base URL for the landing-page guest Bet Strategist endpoint. Override per environment. -->
-<meta name="maskin-api-base" content="https://maskin.sindre.ai" />
+<meta name="maskin-api-base" content="https://app.maskin.io" />
+
+<!-- PostHog analytics. Autocapture (CTA clicks), pageviews, and scroll depth are on by default.
+     TODO: replace the placeholder below with your Project API Key (PostHog → Settings → Project API Key). -->
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_REPLACE_WITH_YOUR_PROJECT_API_KEY', {
+    api_host: 'https://eu.i.posthog.com',
+    person_profiles: 'identified_only',
+    defaults: '2025-05-24'
+  });
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1125,7 +1136,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       "publisher": { "@id": "https://maskin.io/#organization" },
       "offers": [
         { "@type": "Offer", "name": "Self-hosted", "price": "0", "priceCurrency": "USD", "description": "Open source under Apache 2.0. Always free to self-host." },
-        { "@type": "Offer", "name": "Trial", "price": "0", "priceCurrency": "USD", "description": "14-day free trial. 1 workspace, up to 5 members, 500 agent credits. No credit card." },
+        { "@type": "Offer", "name": "Trial", "price": "0", "priceCurrency": "USD", "description": "14-day free trial. 1 workspace, up to 5 members. No credit card." },
         { "@type": "Offer", "name": "Pro", "price": "20", "priceCurrency": "USD", "description": "Per seat / month. Unlimited workspaces and members, bring your own model key, EU & US data residency." },
         { "@type": "Offer", "name": "Team", "price": "200", "priceCurrency": "USD", "description": "Per workspace / month, flat. Unlimited seats, self-host option, dedicated onboarding, SLA." }
       ]
@@ -1398,7 +1409,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           Your browser does not support the video tag.
         </video>
       </div>
-      <p class="demo-caption">Want to see a live walkthrough instead? <a href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener" class="demo-caption__link">Book a 20-minute demo with the founders →</a></p>
+      <p class="demo-caption">Want to see a live walkthrough instead? <a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener" class="demo-caption__link">Book a 20-minute demo with the founders →</a></p>
     </div>
   </div>
 </section>
@@ -1764,15 +1775,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <span class="pricing-card__name">Trial</span>
           <div class="pricing-card__price"><span class="pricing-card__amount">Free</span><span class="pricing-card__per">/14 days</span></div>
         </div>
-        <p class="pricing-card__tagline">Full product. No credit card. 500 agent credits included.</p>
+        <p class="pricing-card__tagline">Full product. No credit card. Enough usage to run real workflows.</p>
         <ul class="pricing-card__features">
           <li>1 workspace</li>
           <li>Up to 5 members</li>
           <li>Full marketplace access</li>
-          <li>500 agent credits included</li>
+          <li>Generous trial usage included</li>
           <li>Community support</li>
         </ul>
-        <a class="pricing-card__cta btn-secondary" href="https://maskin.io/docs/get-started/">Start free trial</a>
+        <a class="pricing-card__cta btn-secondary" href="https://app.maskin.io/signup">Start free trial</a>
       </div>
 
       <div class="pricing-card pricing-card--featured">
@@ -1791,7 +1802,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <li>Priority support</li>
           <li>EU &amp; US data residency</li>
         </ul>
-        <a class="pricing-card__cta btn-primary" href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Start free trial</a>
+        <a class="pricing-card__cta btn-primary" href="https://app.maskin.io/signup">Start free trial</a>
       </div>
 
       <div class="pricing-card">
@@ -1809,7 +1820,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <li>Dedicated onboarding</li>
           <li>SLA &amp; invoicing</li>
         </ul>
-        <a class="pricing-card__cta btn-secondary" href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Talk to us</a>
+        <a class="pricing-card__cta btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Talk to us</a>
       </div>
 
       <div class="pricing-card pricing-card--enterprise">
@@ -1831,7 +1842,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
     </div>
 
-    <p class="pricing-note reveal">14-day free trial · 500 agent credits included · no credit card required. <strong>Self-host is always free</strong> — Apache 2.0.</p>
+    <p class="pricing-note reveal">14-day free trial · no credit card required. <strong>Self-host is always free</strong> — Apache 2.0.</p>
   </div>
 </section>
 
@@ -1843,7 +1854,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <h2 class="section-title">Your competitors are already<br>running closed loops.</h2>
       <p class="section-sub">We're onboarding design partner teams now. Get a live walkthrough with the founders — or clone the repo and run it yourself today.</p>
       <div class="cta-actions" style="justify-content:center;margin-top:3rem">
-        <a class="btn-primary" href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a demo</a>
+        <a class="btn-primary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a demo</a>
         <a class="btn-secondary" href="https://maskin.io/docs/get-started/">Get started free</a>
         <a class="btn-ghost" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -1870,7 +1881,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <ul class="footer__links">
         <li><a href="https://maskin.io/docs/">Docs</a></li>
         <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li>
+        <li><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li>
         <li><a href="mailto:ai@maskin.io">Contact</a></li>
       </ul>
       <span class="footer__copy">© 2026 Værksted · Apache 2.0</span>
@@ -2129,6 +2140,7 @@ if (diagramEl) {
       url: kind === 'url' ? input.value.trim() : null
     };
     console.info('[maskin] prompt-submit', { kind, hasFile: !!attachedFile, len: detail.text.length });
+    if (window.posthog) posthog.capture('hero_prompt_submitted', { kind, has_file: !!attachedFile, length: detail.text.length });
     form.dispatchEvent(new CustomEvent('maskin:prompt-submit', { detail, bubbles: true }));
   });
 
@@ -2156,7 +2168,7 @@ if (diagramEl) {
     location.hostname === '::1'
   )
     ? 'http://localhost:5173/signup'
-    : 'https://maskin.sindre.ai/signup';
+    : 'https://app.maskin.io/signup';
   const promptToSignupUrl = (prompt) =>
     signupUrl + '?pending_prompt=' + encodeURIComponent(prompt);
 
@@ -2194,7 +2206,7 @@ if (diagramEl) {
    via `fetch(keepalive)` for in-page flushes. */
 (function() {
   var metaEl = document.querySelector('meta[name="maskin-api-base"]');
-  var apiBase = (metaEl && metaEl.getAttribute('content')) || 'https://maskin.sindre.ai';
+  var apiBase = (metaEl && metaEl.getAttribute('content')) || 'https://app.maskin.io';
   var ENDPOINT = apiBase + '/api/public/landing-events';
   var SIGNUP_HREF_RE = /\/(docs\/get-started|signup|sign-up|register)(\/|$)/i;
   var BATCH_MAX = 12;
