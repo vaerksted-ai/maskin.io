@@ -77,7 +77,7 @@
   --step-3: clamp(1.5rem, 1.15rem + 1.5vw, 2.5rem);
   --step-4: clamp(2rem, 1.4rem + 3vw, 3.75rem);
 
-  --max-w: 1120px;
+  --max-w: 1280px;
   --nav-bg-scrolled: rgba(250,250,248,.92);
   --gap: clamp(1rem, 3vw, 2.5rem);
   --section-py: clamp(4rem, 9vw, 8rem);
@@ -342,6 +342,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .prompt-submit:hover:not(:disabled){transform:translateY(-1px);background:#2a2925}
 .prompt-submit:disabled{opacity:.35;cursor:not-allowed}
 .prompt-submit svg{width:15px;height:15px}
+.prompt-attach{
+  flex:0 0 auto;width:38px;height:38px;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:none;border-radius:9px;
+  background:transparent;color:var(--ink-3);cursor:pointer;
+  transition:color .15s,background .15s;
+}
+.prompt-attach:hover{color:var(--ink);background:var(--linen)}
+.prompt-attach svg{width:19px;height:19px}
 .prompt-file-input{display:none}
 .prompt-route-hint{
   position:absolute;left:20px;bottom:-22px;
@@ -644,10 +653,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 @keyframes pulse-dot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.6}}
 
-.loop-card--insight{top:2%;left:50%;transform:translateX(-50%)}
-.loop-card--bet{bottom:36%;left:1%}
-.loop-card--task{bottom:36%;right:1%}
-.loop-card--shipped{bottom:3%;left:50%;transform:translateX(-50%);width:176px}
+.loop-card--insight{top:0;left:50%;transform:translateX(-50%)}
+.loop-card--bet{top:50%;right:0;transform:translateY(-50%)}
+.loop-card--task{bottom:0;left:50%;transform:translateX(-50%)}
+.loop-card--knowledge{top:50%;left:0;transform:translateY(-50%)}
 
 .loop-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .loop-path{fill:none;stroke:var(--rule);stroke-width:1.5;stroke-dasharray:5 4;transition:stroke .4s}
@@ -660,10 +669,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   border-radius:20px;opacity:0;transition:opacity .4s;white-space:nowrap;
 }
 .loop-agent.visible{opacity:1}
-.loop-agent--analyst{top:28%;left:-10%}
-.loop-agent--strategist{top:53%;left:50%;transform:translateX(-50%)}
-.loop-agent--dev{top:28%;right:-10%}
-.loop-agent--shipped{bottom:2%;left:50%;transform:translateX(-50%) translateY(110%)}
+.loop-agent--analyst{top:25%;left:50%;transform:translateX(-50%)}
+.loop-agent--strategist{top:28%;right:3%}
+.loop-agent--dev{bottom:25%;left:50%;transform:translateX(-50%)}
+.loop-agent--knowledge{top:28%;left:3%}
 .agent-icon{
   width:13px;height:13px;background:var(--accent);border-radius:50%;
   display:flex;align-items:center;justify-content:center;font-size:7px;
@@ -1054,8 +1063,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   .manifesto__body{font-size:1rem;line-height:1.7}
   /* Demo video */
   .demo-inner{gap:.875rem}
-  /* Loop diagram cards — smaller text */
-  .loop-card__title{font-size:.8rem}
+  /* Loop diagram — shrink cards so the 4-node ring fits a narrow screen */
+  .loop-diagram{max-width:340px}
+  .loop-card{width:144px;padding:.6rem .7rem}
+  .loop-card__title{font-size:.7rem;margin-bottom:.3rem}
+  .loop-card__label{font-size:.6rem;margin-bottom:.2rem}
+  .loop-card__actor{font-size:.6rem;padding:.12rem .4rem}
+  .loop-card__callout{font-size:.55rem}
+  .loop-agent{font-size:.58rem;padding:.18rem .45rem}
   /* Sections — tighter side padding */
   .wrap{padding-inline:1.125rem}
   /* Footer — stack */
@@ -1231,11 +1246,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <!-- Right: animated loop diagram -->
       <div class="loop-diagram reveal reveal--d2" id="loopDiagram">
         <svg class="loop-svg" viewBox="0 0 500 530" preserveAspectRatio="xMidYMid meet">
-          <path id="path-ib" class="loop-path" d="M 250 108 C 190 190, 148 210, 130 268"/>
-          <path id="path-it" class="loop-path" d="M 250 108 C 310 190, 352 210, 370 268"/>
-          <path id="path-bs" class="loop-path" d="M 130 348 C 150 408, 195 438, 248 452"/>
-          <path id="path-ts" class="loop-path" d="M 370 348 C 350 408, 305 438, 252 452"/>
-          <path id="path-si" class="loop-path" d="M 250 506 C 480 490, 490 140, 285 88"/>
+          <!-- Clockwise ring: Insight (top) → Bet (right) → Task (bottom) → Knowledge (left) → back -->
+          <path id="path-ib" class="loop-path" d="M 320 70 Q 445 95 430 210"/>
+          <path id="path-bt" class="loop-path" d="M 430 320 Q 445 435 320 460"/>
+          <path id="path-tk" class="loop-path" d="M 180 460 Q 55 435 70 320"/>
+          <path id="path-ki" class="loop-path" d="M 70 210 Q 55 95 180 70"/>
         </svg>
 
         <div class="loop-card loop-card--insight" id="card-insight">
@@ -1256,13 +1271,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
             <div class="loop-card__actor"><div class="loop-card__actor-dot"></div>Developer</div>
           </div>
         </div>
-        <div class="loop-card loop-card--shipped" id="card-shipped">
-          <div class="loop-card__label">Shipped</div>
-          <div class="loop-card__title">Onboarding quiz live</div>
+        <div class="loop-card loop-card--knowledge" id="card-knowledge">
+          <div class="loop-card__label">Knowledge</div>
+          <div class="loop-card__title">Shipped &amp; learned — drop-off ↓18%</div>
           <div class="loop-card__actor"><div class="loop-card__actor-dot"></div>All agents</div>
           <div class="loop-card__callout">
             <svg width="9" height="9" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Bet validated · drop-off ↓18%
+            Outcome measured · memory updated
           </div>
         </div>
 
@@ -1275,11 +1290,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="loop-agent loop-agent--dev" id="agent-dev">
           <div class="agent-icon">⚡</div>Agents ship it
         </div>
-        <div class="loop-agent loop-agent--shipped" id="agent-shipped">
-          <div class="agent-icon">⚡</div>Agent validates the bet
+        <div class="loop-agent loop-agent--knowledge" id="agent-knowledge">
+          <div class="agent-icon">⚡</div>Outcome measured &amp; learned
         </div>
 
-        <div class="loop-status" id="loopStatus">insight → bet → task → shipped → repeat</div>
+        <div class="loop-status" id="loopStatus">insight → bet → task → knowledge → repeat</div>
       </div>
 
     </div>
@@ -1296,6 +1311,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <textarea class="prompt-input" id="prompt-input" rows="1"
           placeholder="What should your team tackle?"
           aria-label="Describe your bet, paste notes, or paste a URL"></textarea>
+        <button class="prompt-attach" id="prompt-attach" type="button" aria-label="Attach a file">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+        </button>
         <button class="prompt-submit" id="prompt-submit" type="submit" aria-label="Draft my bet" disabled>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
@@ -1304,10 +1322,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="prompt-route-hint" id="prompt-route-hint"></div>
       </form>
       <div class="prompt-chips" role="group" aria-label="Ways to start">
-        <button type="button" class="prompt-chip" id="prompt-chip-file">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>
-          Drop a file
-        </button>
         <button type="button" class="prompt-chip prompt-chip--template" data-template="Build a loop that watches competitors and turns gaps into roadmap bets automatically">Competitive intel loop</button>
         <button type="button" class="prompt-chip prompt-chip--template" data-template="Build a loop that synthesises lost deals by ARR and turns loss patterns into prioritised bets">Lost deals → bets loop</button>
         <button type="button" class="prompt-chip prompt-chip--template" data-template="Build a loop that detects churn signals and routes at-risk accounts to CS before they cancel">Churn prevention loop</button>
@@ -1949,17 +1963,15 @@ document.querySelectorAll('.faq-item').forEach(item => {
 
 /* ── Loop diagram animation ────────────────────── */
 const steps = [
-  { card:'card-insight', paths:[],              agents:['agent-analyst'],    status:'Analyst surfaces a signal…' },
-  { card:'card-insight', paths:['path-ib','path-it'], agents:['agent-analyst'], status:'Insight flows to Bet Strategist and Planner…' },
-  { card:'card-bet',     paths:['path-ib'],     agents:['agent-strategist'], status:'Human reviews and shapes the bet…' },
-  { card:'card-task',    paths:['path-it'],     agents:['agent-dev'],        status:'Agents decompose and execute…' },
-  { card:'card-shipped', paths:['path-bs','path-ts'], agents:['agent-shipped'], status:'Agent validates the bet against real outcomes…' },
-  { card:'card-insight', paths:['path-si'],     agents:['agent-analyst'],    status:'Loop closes. Repeat.' }
+  { card:'card-insight',   paths:['path-ib'], agents:['agent-analyst'],    status:'Analyst surfaces a signal → insight' },
+  { card:'card-bet',       paths:['path-bt'], agents:['agent-strategist'], status:'Human shapes it into a bet' },
+  { card:'card-task',      paths:['path-tk'], agents:['agent-dev'],        status:'Agents decompose and ship the work' },
+  { card:'card-knowledge', paths:['path-ki'], agents:['agent-knowledge'],  status:'Outcome measured — the org learns, loop repeats' }
 ];
 
-const ALL_CARDS  = ['card-insight','card-bet','card-task','card-shipped'];
-const ALL_PATHS  = ['path-ib','path-it','path-bs','path-ts','path-si'];
-const ALL_AGENTS = ['agent-analyst','agent-strategist','agent-dev','agent-shipped'];
+const ALL_CARDS  = ['card-insight','card-bet','card-task','card-knowledge'];
+const ALL_PATHS  = ['path-ib','path-bt','path-tk','path-ki'];
+const ALL_AGENTS = ['agent-analyst','agent-strategist','agent-dev','agent-knowledge'];
 const statusEl   = document.getElementById('loopStatus');
 let stepIdx = 0, loopInterval = null;
 
@@ -2031,7 +2043,7 @@ if (diagramEl) {
   const input   = document.getElementById('prompt-input');
   const submit  = document.getElementById('prompt-submit');
   const fileEl  = document.getElementById('prompt-file');
-  const chipFile = document.getElementById('prompt-chip-file');
+  const attachBtn = document.getElementById('prompt-attach');
   const hint    = document.getElementById('prompt-route-hint');
   const filePill = document.getElementById('prompt-file-pill');
   const fileName = document.getElementById('prompt-file-name');
@@ -2085,7 +2097,7 @@ if (diagramEl) {
 
   input.addEventListener('input', () => { autosize(); updateRouteHint(); });
   fileEl.addEventListener('change', () => setFile(fileEl.files && fileEl.files[0]));
-  chipFile.addEventListener('click', () => fileEl.click());
+  attachBtn.addEventListener('click', () => fileEl.click());
   fileClear.addEventListener('click', () => setFile(null));
 
   // Template chips: prefill the prompt, then reuse the normal input flow.
