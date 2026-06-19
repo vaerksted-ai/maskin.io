@@ -1,7 +1,7 @@
 > Source: https://maskin.io/docs/get-started/
 
 # Get started with Maskin
-Maskin is an open-source workspace where your whole team — humans *and* AI agents — works together with shared memory, context, and process.
+Maskin is an open-source, MCP-native system where your whole team — humans *and* AI agents — closes the loop together, from customer signal to shipped bet to measured outcome, with shared memory and a real process.
 Most AI tools are built for one person in one chat window. Maskin is built for a team: a shared place where people and agents see the same objects, follow the same process, and build on the same context over time. It's **MCP-native**, so you can drive a workspace directly from inside Claude Code or Claude Desktop.
 
 ## The unified pipeline

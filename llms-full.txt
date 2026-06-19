@@ -1,6 +1,6 @@
 # Maskin — full documentation
 
-> The open-source, MCP-native agentic workspace where humans and AI agents work together. This file concatenates all Maskin documentation for full-context ingestion by LLMs. Canonical site: https://maskin.io/  ·  Source: https://github.com/sindre-ai/maskin
+> The open-source, MCP-native system where humans and AI agents close the loop together — from customer signal to shipped bet to measured outcome. This file concatenates all Maskin documentation for full-context ingestion by LLMs. Canonical site: https://maskin.io/  ·  Source: https://github.com/sindre-ai/maskin
 
 
 ---
@@ -8,7 +8,7 @@
 > Source: https://maskin.io/docs/get-started/
 
 # Get started with Maskin
-Maskin is an open-source workspace where your whole team — humans *and* AI agents — works together with shared memory, context, and process.
+Maskin is an open-source, MCP-native system where your whole team — humans *and* AI agents — closes the loop together, from customer signal to shipped bet to measured outcome, with shared memory and a real process.
 Most AI tools are built for one person in one chat window. Maskin is built for a team: a shared place where people and agents see the same objects, follow the same process, and build on the same context over time. It's **MCP-native**, so you can drive a workspace directly from inside Claude Code or Claude Desktop.
 
 ## The unified pipeline
@@ -727,7 +727,7 @@ Every change is recorded in an append-only event log (see [Architecture](/docs/a
 - See the [configuration reference](/docs/configuration/) and [production deployment](/docs/deployment/) for the full list.
 
 ## Reporting a vulnerability
-> **Please do not open a public GitHub issue for security reports.** Email [magnus@meshfirm.com](mailto:magnus@meshfirm.com) with a description and reproduction steps. You can expect acknowledgment within **48 hours**, with critical fixes targeted within **7 days**. Responsible reporters are credited in release notes unless they prefer to stay anonymous. See [SECURITY.md](https://github.com/sindre-ai/maskin/blob/main/SECURITY.md) for the full policy.
+> **Please do not open a public GitHub issue for security reports.** Email [ai@maskin.io](mailto:ai@maskin.io) with a description and reproduction steps. You can expect acknowledgment within **48 hours**, with critical fixes targeted within **7 days**. Responsible reporters are credited in release notes unless they prefer to stay anonymous. See [SECURITY.md](https://github.com/sindre-ai/maskin/blob/main/SECURITY.md) for the full policy.
 
 
 ---

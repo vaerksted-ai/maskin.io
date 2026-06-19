@@ -152,7 +152,7 @@ for path in glob.glob("docs/**/index.html", recursive=True):
 
 # assemble llms-full.txt in IA order
 parts=["# Maskin — full documentation\n",
-"> The open-source, MCP-native agentic workspace where humans and AI agents work together. This file concatenates all Maskin documentation for full-context ingestion by LLMs. Canonical site: https://maskin.io/  ·  Source: https://github.com/sindre-ai/maskin\n"]
+"> The open-source, MCP-native system where humans and AI agents close the loop together — from customer signal to shipped bet to measured outcome. This file concatenates all Maskin documentation for full-context ingestion by LLMs. Canonical site: https://maskin.io/  ·  Source: https://github.com/sindre-ai/maskin\n"]
 for path in ORDER:
     mp=md_path(path)
     if os.path.exists(mp):
