@@ -727,7 +727,7 @@ Every change is recorded in an append-only event log (see [Architecture](/docs/a
 - See the [configuration reference](/docs/configuration/) and [production deployment](/docs/deployment/) for the full list.
 
 ## Reporting a vulnerability
-> **Please do not open a public GitHub issue for security reports.** Email [magnus@meshfirm.com](mailto:magnus@meshfirm.com) with a description and reproduction steps. You can expect acknowledgment within **48 hours**, with critical fixes targeted within **7 days**. Responsible reporters are credited in release notes unless they prefer to stay anonymous. See [SECURITY.md](https://github.com/sindre-ai/maskin/blob/main/SECURITY.md) for the full policy.
+> **Please do not open a public GitHub issue for security reports.** Email [ai@maskin.io](mailto:ai@maskin.io) with a description and reproduction steps. You can expect acknowledgment within **48 hours**, with critical fixes targeted within **7 days**. Responsible reporters are credited in release notes unless they prefer to stay anonymous. See [SECURITY.md](https://github.com/sindre-ai/maskin/blob/main/SECURITY.md) for the full policy.
 
 
 ---
