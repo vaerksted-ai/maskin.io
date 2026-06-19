@@ -21,9 +21,9 @@
 
   <!-- Main headline -->
   <text font-family="'Schibsted Grotesk', 'Arial', sans-serif" font-weight="700" fill="#FAFAF8" letter-spacing="-0.03em">
-    <tspan x="80" y="255" font-size="66">Build the loops that</tspan>
-    <tspan x="80" dy="80" font-size="66">make your company</tspan>
-    <tspan x="80" dy="80" font-size="66" fill="#2563EB">AI-native.</tspan>
+    <tspan x="80" y="250" font-size="64">AI made individuals faster.</tspan>
+    <tspan x="80" dy="78" font-size="64">Maskin makes companies</tspan>
+    <tspan x="80" dy="78" font-size="64" fill="#2563EB">smarter.</tspan>
   </text>
 
   <!-- Subline -->
