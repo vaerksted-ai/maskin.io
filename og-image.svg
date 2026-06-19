@@ -13,7 +13,7 @@
   <!-- Logo mark -->
   <svg x="80" y="80" width="72" height="72" viewBox="0 0 80 80">
     <rect width="80" height="80" rx="14" fill="#1C1B18"/>
-    <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+    <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
   </svg>
 
   <!-- Wordmark -->
@@ -21,13 +21,14 @@
 
   <!-- Main headline -->
   <text font-family="'Schibsted Grotesk', 'Arial', sans-serif" font-weight="700" fill="#FAFAF8" letter-spacing="-0.03em">
-    <tspan x="80" y="310" font-size="80">Your team has been</tspan>
-    <tspan x="80" dy="96" font-size="80">using AI </tspan><tspan font-size="80" fill="#2563EB">alone.</tspan>
+    <tspan x="80" y="255" font-size="66">Build the loops that</tspan>
+    <tspan x="80" dy="80" font-size="66">make your company</tspan>
+    <tspan x="80" dy="80" font-size="66" fill="#2563EB">AI-native.</tspan>
   </text>
 
   <!-- Subline -->
-  <text x="80" y="480" font-family="'Schibsted Grotesk', 'Arial', sans-serif" font-size="28" fill="#9B958F" font-weight="400">
-    The workspace where humans and AI agents work together.
+  <text x="80" y="490" font-family="'Schibsted Grotesk', 'Arial', sans-serif" font-size="26" fill="#9B958F" font-weight="400">
+    From customer signal to shipped bet to measured outcome — automatically.
   </text>
 
   <!-- Bottom tags -->

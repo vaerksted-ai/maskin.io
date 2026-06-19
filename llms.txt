@@ -1,6 +1,6 @@
 # Maskin
 
-> The open-source, MCP-native agentic workspace where your whole team — humans and AI agents — works together with shared memory, context, and process. Think of it as the default workspace for setting up agentic teams: connect Claude (or any MCP client) and drive the workspace directly.
+> The open-source, MCP-native system where your whole team — humans and AI agents — closes the loop together, from customer signal to shipped bet to measured outcome, with shared memory and a real process. Think of it as the default system for setting up agentic teams: connect Claude (or any MCP client) and drive the workspace directly.
 
 Maskin gives humans and AI agents one shared place to work. Everything flows through a single pipeline — **Insights → Bets → Tasks** — that people and agents read and write together, so context compounds instead of getting lost in scattered chat histories. Maskin is MCP-native and API-first: the UI, agents, and your Claude client all drive the same HTTP surface, and the MCP tools are a thin layer over it.
 
