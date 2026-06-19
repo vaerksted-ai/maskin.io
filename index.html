@@ -301,7 +301,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   line-height:1.55;max-width:44ch;margin-bottom:2.25rem;
 }
 
-/* ── PROMPT BAR (ported from sindre.ai landing) ───────────── */
+/* ── PROMPT BAR ────────────────────────────────────────────── */
 .prompt-bar-wrap{
   max-width:720px;margin:0 0 2.25rem;
 }
@@ -2021,7 +2021,7 @@ if (diagramEl) {
 /* ===== Prompt bar: smart-route text vs URL vs file =====
    The submit handler dispatches a `maskin:prompt-submit` CustomEvent
    so the inline renderer and the funnel can wire in without touching
-   this module. Ported from sindre-ai.github.io. */
+   this module. */
 (function() {
   const wrap = document.getElementById('prompt-bar-wrap');
   if (!wrap) return;
