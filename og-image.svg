@@ -22,7 +22,7 @@
   <!-- Main headline -->
   <text font-family="'Schibsted Grotesk', 'Arial', sans-serif" font-weight="700" fill="#FAFAF8" letter-spacing="-0.03em">
     <tspan x="80" y="310" font-size="80">Your team has been</tspan>
-    <tspan x="80" dy="96" font-size="80">using AI </tspan><tspan font-size="80" fill="#B5311A">alone.</tspan>
+    <tspan x="80" dy="96" font-size="80">using AI </tspan><tspan font-size="80" fill="#2563EB">alone.</tspan>
   </text>
 
   <!-- Subline -->

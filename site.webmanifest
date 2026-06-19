@@ -1,7 +1,7 @@
 {
   "name": "Maskin",
   "short_name": "Maskin",
-  "description": "The open-source, MCP-native agentic workspace where humans and AI agents work together.",
+  "description": "Build the loops that make your company AI-native. From customer signal to shipped bet to measured outcome — automatically. Open source.",
   "start_url": "/",
   "display": "browser",
   "background_color": "#111110",
