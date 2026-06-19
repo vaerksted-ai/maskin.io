@@ -303,7 +303,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 /* ── PROMPT BAR ────────────────────────────────────────────── */
 .prompt-bar-wrap{
-  max-width:720px;margin:0 0 2.25rem;
+  max-width:none;margin:clamp(2.5rem,5vw,4rem) 0 0;
 }
 .prompt-bar{
   position:relative;
@@ -403,8 +403,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 /* ── INLINE DRAFT STREAM (ported) ─────────────────────────── */
 .draft-stream{
-  display:none;max-width:720px;
-  margin:1.25rem 0 1.5rem;
+  display:none;max-width:820px;
+  margin:1.25rem auto 0;
   padding:1.25rem 1.25rem 1rem;
   background:var(--surface);
   border:1.5px solid var(--rule);
@@ -1216,40 +1216,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           The system where signals become decisions, decisions become work, and work closes the loop — automatically.
         </p>
 
-        <!-- Prompt bar: paste a hunch, drop a file, or a URL -->
-        <div class="prompt-bar-wrap reveal reveal--d2" id="prompt-bar-wrap">
-          <form class="prompt-bar" id="prompt-form" novalidate aria-label="Try Maskin: paste a hunch, drop a file, or paste a URL">
-            <span class="prompt-file-pill" id="prompt-file-pill" aria-live="polite">
-              <span id="prompt-file-name"></span>
-              <button type="button" id="prompt-file-clear" aria-label="Remove file">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M6 18L18 6"/></svg>
-              </button>
-            </span>
-            <textarea class="prompt-input" id="prompt-input" rows="1"
-              placeholder="What should your team tackle?"
-              aria-label="Describe your bet, paste notes, or paste a URL"></textarea>
-            <button class="prompt-submit" id="prompt-submit" type="submit" aria-label="Draft my bet" disabled>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </button>
-            <input class="prompt-file-input" type="file" id="prompt-file"
-              accept=".txt,.md,.markdown,.pdf,.docx,.csv,.json,.html,.rtf" />
-            <div class="prompt-route-hint" id="prompt-route-hint"></div>
-          </form>
-          <div class="prompt-chips" role="group" aria-label="Ways to start">
-            <button type="button" class="prompt-chip" id="prompt-chip-file">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>
-              Drop a file
-            </button>
-            <button type="button" class="prompt-chip prompt-chip--template" data-template="Build a loop that watches competitors and turns gaps into roadmap bets automatically">Competitive intel loop</button>
-            <button type="button" class="prompt-chip prompt-chip--template" data-template="Build a loop that synthesises lost deals by ARR and turns loss patterns into prioritised bets">Lost deals → bets loop</button>
-            <button type="button" class="prompt-chip prompt-chip--template" data-template="Build a loop that detects churn signals and routes at-risk accounts to CS before they cancel">Churn prevention loop</button>
-            <button type="button" class="prompt-chip prompt-chip--template" data-template="Build a loop that takes customer feedback from Slack and closes it back to the customer who asked">Feedback → shipped loop</button>
-          </div>
-        </div>
-
-        <!-- Streaming draft renderer. Populated by the inline script on `maskin:prompt-submit`. -->
-        <section class="draft-stream" id="draft-stream" role="region" aria-live="polite" aria-atomic="false" aria-label="Bet draft"></section>
-
         <div class="hero__social reveal reveal--d3">
           <span class="hero__social-label">Works with your stack</span>
           <div class="hero__logos">
@@ -1317,6 +1283,41 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
 
     </div>
+
+    <!-- Full-width prompt bar: paste a hunch, drop a file, or a URL -->
+    <div class="prompt-bar-wrap reveal reveal--d3" id="prompt-bar-wrap">
+      <form class="prompt-bar" id="prompt-form" novalidate aria-label="Try Maskin: paste a hunch, drop a file, or paste a URL">
+        <span class="prompt-file-pill" id="prompt-file-pill" aria-live="polite">
+          <span id="prompt-file-name"></span>
+          <button type="button" id="prompt-file-clear" aria-label="Remove file">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M6 18L18 6"/></svg>
+          </button>
+        </span>
+        <textarea class="prompt-input" id="prompt-input" rows="1"
+          placeholder="What should your team tackle?"
+          aria-label="Describe your bet, paste notes, or paste a URL"></textarea>
+        <button class="prompt-submit" id="prompt-submit" type="submit" aria-label="Draft my bet" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <input class="prompt-file-input" type="file" id="prompt-file"
+          accept=".txt,.md,.markdown,.pdf,.docx,.csv,.json,.html,.rtf" />
+        <div class="prompt-route-hint" id="prompt-route-hint"></div>
+      </form>
+      <div class="prompt-chips" role="group" aria-label="Ways to start">
+        <button type="button" class="prompt-chip" id="prompt-chip-file">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>
+          Drop a file
+        </button>
+        <button type="button" class="prompt-chip prompt-chip--template" data-template="Build a loop that watches competitors and turns gaps into roadmap bets automatically">Competitive intel loop</button>
+        <button type="button" class="prompt-chip prompt-chip--template" data-template="Build a loop that synthesises lost deals by ARR and turns loss patterns into prioritised bets">Lost deals → bets loop</button>
+        <button type="button" class="prompt-chip prompt-chip--template" data-template="Build a loop that detects churn signals and routes at-risk accounts to CS before they cancel">Churn prevention loop</button>
+        <button type="button" class="prompt-chip prompt-chip--template" data-template="Build a loop that takes customer feedback from Slack and closes it back to the customer who asked">Feedback → shipped loop</button>
+      </div>
+    </div>
+
+    <!-- Streaming draft renderer. Populated by the inline script on `maskin:prompt-submit`. -->
+    <section class="draft-stream" id="draft-stream" role="region" aria-live="polite" aria-atomic="false" aria-label="Bet draft"></section>
+
   </div>
 </section>
 
