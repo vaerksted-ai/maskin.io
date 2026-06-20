@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>if(localStorage.getItem('maskin-api-key'))window.location.replace('/workspaces')</script>
 <title>Maskin — Build the loops that make your company AI-native</title>
 <meta name="description" content="Build the loops that make your company AI-native. From customer signal to shipped bet to measured outcome — automatically. Open source.">
 
@@ -38,7 +39,7 @@
 <!-- LinkedIn (uses OG tags — no extra tags needed) -->
 
 <!-- Maskin backend base URL for the landing-page guest Bet Strategist endpoint. Override per environment. -->
-<meta name="maskin-api-base" content="https://app.maskin.io" />
+<meta name="maskin-api-base" content="https://maskin.io" />
 
 <!-- PostHog analytics. Autocapture (CTA clicks), pageviews, and scroll depth are on by default.
      TODO: replace the placeholder below with your Project API Key (PostHog → Settings → Project API Key). -->
@@ -1202,11 +1203,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
-      <li><a class="nav__login" href="https://app.maskin.io/login">Log in</a></li>
-      <li><a class="nav__signup" href="https://app.maskin.io/signup">Sign up</a></li>
+      <li><a class="nav__login" href="/login">Log in</a></li>
+      <li><a class="nav__signup" href="/signup">Sign up</a></li>
     </ul>
     <div class="nav__mobile-actions">
-      <a class="nav__mobile-signup" href="https://app.maskin.io/signup">Sign up</a>
+      <a class="nav__mobile-signup" href="/signup">Sign up</a>
       <button class="nav__hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -1220,9 +1221,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <li><a href="#method">How it works</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
-    <li><a href="https://app.maskin.io/login">Log in</a></li>
+    <li><a href="/login">Log in</a></li>
   </ul>
-  <a class="nav__drawer-cta" href="https://app.maskin.io/signup">Sign up free →</a>
+  <a class="nav__drawer-cta" href="/signup">Sign up free →</a>
 </nav>
 
 <!-- ═══════════════════════════════════════════════════ HERO -->
@@ -1611,7 +1612,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <span class="mkt-agent-chip">Your objects</span>
         </div>
         <div class="mkt-card__objects">
-          <a class="mkt-browse-link" href="https://app.maskin.io/signup">Get started free →</a>
+          <a class="mkt-browse-link" href="/signup">Get started free →</a>
         </div>
       </div>
 
@@ -1848,7 +1849,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <li>Generous trial usage included</li>
           <li>Community support</li>
         </ul>
-        <a class="pricing-card__cta btn-secondary" href="https://app.maskin.io/signup">Start free trial</a>
+        <a class="pricing-card__cta btn-secondary" href="/signup">Start free trial</a>
       </div>
 
       <div class="pricing-card pricing-card--featured">
@@ -1867,7 +1868,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <li>Priority support</li>
           <li>EU &amp; US data residency</li>
         </ul>
-        <a class="pricing-card__cta btn-primary" href="https://app.maskin.io/signup">Start free trial</a>
+        <a class="pricing-card__cta btn-primary" href="/signup">Start free trial</a>
       </div>
 
       <div class="pricing-card">
@@ -1920,7 +1921,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <p class="section-sub">We're onboarding design partner teams now. Get a live walkthrough with the founders — or clone the repo and run it yourself today.</p>
       <div class="cta-actions" style="justify-content:center;margin-top:3rem">
         <a class="btn-primary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a demo</a>
-        <a class="btn-secondary" href="https://app.maskin.io/signup">Start free trial</a>
+        <a class="btn-secondary" href="/signup">Start free trial</a>
         <a class="btn-ghost" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           Star on GitHub
@@ -2292,7 +2293,7 @@ document.querySelectorAll('a[href="#try"]').forEach(link => {
     location.hostname === '::1'
   )
     ? 'http://localhost:5173/signup'
-    : 'https://app.maskin.io/signup';
+    : '/signup';
   const promptToSignupUrl = (prompt) =>
     signupUrl + '?pending_prompt=' + encodeURIComponent(prompt);
 
@@ -2330,7 +2331,7 @@ document.querySelectorAll('a[href="#try"]').forEach(link => {
    via `fetch(keepalive)` for in-page flushes. */
 (function() {
   var metaEl = document.querySelector('meta[name="maskin-api-base"]');
-  var apiBase = (metaEl && metaEl.getAttribute('content')) || 'https://app.maskin.io';
+  var apiBase = (metaEl && metaEl.getAttribute('content')) || 'https://maskin.io';
   var ENDPOINT = apiBase + '/api/public/landing-events';
   var SIGNUP_HREF_RE = /\/(docs\/get-started|signup|sign-up|register)(\/|$)/i;
   var BATCH_MAX = 12;
