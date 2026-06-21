@@ -9,8 +9,12 @@ fi
 rm -rf dist
 mkdir -p dist
 
-# Copy all static assets
-rsync -av --exclude=dist --exclude=.git --exclude=.claude --exclude=.playwright-mcp --exclude=node_modules . dist/
+# Copy static files
+cp index.html 404.html robots.txt sitemap.xml site.webmanifest dist/
+cp apple-touch-icon.png favicon.ico favicon.svg icon-192.png icon-512.png og-image.png og-image.svg dist/
+cp llms.txt llms-full.txt dist/
+cp maskin-launch.mp4 dist/
+cp -r docs dist/docs
 
 # Inject PostHog key
 sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g" dist/index.html
