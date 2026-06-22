@@ -843,6 +843,16 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 .demo-play-btn:hover{background:rgba(250,250,248,.18);transform:scale(1.05)}
 .demo-play-btn svg{margin-left:4px}
+#demoVideo{cursor:pointer}
+.demo-unmute{
+  position:absolute;bottom:14px;right:14px;z-index:3;display:none;
+  align-items:center;gap:.4rem;padding:.4rem .7rem;border-radius:20px;border:none;
+  background:rgba(17,17,16,.55);color:#fff;font-size:.72rem;font-weight:600;
+  cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  transition:background .15s;
+}
+.demo-unmute:hover{background:rgba(17,17,16,.8)}
+.demo-unmute.is-on .demo-unmute__slash{display:none}
 .demo-placeholder__text{
   display:flex;flex-direction:column;align-items:center;gap:.35rem;text-align:center;
 }
@@ -1390,7 +1400,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <div class="demo-label">See it in action</div>
       <div class="demo-frame" id="demoFrame">
         <div class="demo-placeholder">
-          <button class="demo-play-btn" onclick="var p=this.closest('.demo-placeholder'),v=document.getElementById('demoVideo');p.style.display='none';v.style.display='block';v.muted=false;v.play()" aria-label="Play demo">
+          <button class="demo-play-btn" type="button" aria-label="Play demo">
             <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8 5v14l11-7z"/></svg>
           </button>
           <div class="demo-placeholder__text">
@@ -1398,10 +1408,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
             <span class="demo-placeholder__sub">From Slack message to shipped bet — under 3 minutes</span>
           </div>
         </div>
-        <video id="demoVideo" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:10px" controls playsinline muted preload="metadata">
+        <video id="demoVideo" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:10px" playsinline muted preload="metadata">
           <source src="maskin-launch.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
+        <button class="demo-unmute" id="demoUnmute" type="button" aria-label="Turn sound on">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line class="demo-unmute__slash" x1="23" y1="9" x2="17" y2="15"/><line class="demo-unmute__slash" x1="17" y1="9" x2="23" y2="15"/></svg>
+          <span id="demoUnmuteLabel">Sound off</span>
+        </button>
       </div>
       <p class="demo-caption">Want to see a live walkthrough instead? <a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener" class="demo-caption__link">Book a 20-minute demo with the founders →</a></p>
     </div>
@@ -2086,29 +2100,66 @@ document.querySelectorAll('a[href="#try"]').forEach(link => {
   });
 });
 
-/* ── Demo video: autoplay (muted) when it scrolls into view ── */
+/* ── Demo video: clean (no native controls) — click to play/pause,
+      small button to toggle sound, muted autoplay on scroll ── */
 (function () {
   const frame = document.getElementById('demoFrame');
   const video = document.getElementById('demoVideo');
-  if (!frame || !video || prefersReducedMotion) return;
+  if (!frame || !video) return;
   const placeholder = frame.querySelector('.demo-placeholder');
+  const playBtn = frame.querySelector('.demo-play-btn');
+  const unmute = document.getElementById('demoUnmute');
+  const unmuteLabel = document.getElementById('demoUnmuteLabel');
   let revealed = false;
-  new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        if (!revealed) {
-          revealed = true;
-          if (placeholder) placeholder.style.display = 'none';
-          video.style.display = 'block';
+
+  function reveal() {
+    if (revealed) return;
+    revealed = true;
+    if (placeholder) placeholder.style.display = 'none';
+    video.style.display = 'block';
+    if (unmute) unmute.style.display = 'inline-flex';
+  }
+  function syncSound() {
+    if (!unmute) return;
+    unmute.classList.toggle('is-on', !video.muted);
+    if (unmuteLabel) unmuteLabel.textContent = video.muted ? 'Sound off' : 'Sound on';
+    unmute.setAttribute('aria-label', video.muted ? 'Turn sound on' : 'Mute');
+  }
+
+  // Click the video itself to play/pause.
+  video.addEventListener('click', () => {
+    if (video.paused) { const p = video.play(); if (p && p.catch) p.catch(() => {}); }
+    else video.pause();
+  });
+  // Sound toggle (doesn't pause the video).
+  if (unmute) unmute.addEventListener('click', (e) => {
+    e.stopPropagation();
+    video.muted = !video.muted;
+    syncSound();
+  });
+  // Manual play button (used before autoplay / under reduced motion) — start with sound.
+  if (playBtn) playBtn.addEventListener('click', () => {
+    reveal();
+    video.muted = false;
+    syncSound();
+    const p = video.play(); if (p && p.catch) p.catch(() => {});
+  });
+
+  // Autoplay muted on scroll (skip under reduced motion).
+  if (!prefersReducedMotion) {
+    new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          reveal();
+          const p = video.play();
+          if (p && p.catch) p.catch(() => {});
+          syncSound();
+        } else if (!video.paused) {
+          video.pause();
         }
-        video.muted = true;
-        const p = video.play();
-        if (p && p.catch) p.catch(() => {});
-      } else if (!video.paused) {
-        video.pause();
-      }
-    });
-  }, { threshold: 0.5 }).observe(frame);
+      });
+    }, { threshold: 0.5 }).observe(frame);
+  }
 })();
 
 /* ── Dark mode toggle ──────────────────────────── */
