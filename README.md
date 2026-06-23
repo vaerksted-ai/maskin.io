@@ -42,8 +42,9 @@ The site is built to be understood by LLMs and agents, not just search engines:
   array in `docs.js` — keep them in sync when adding pages.
 - **Structured data (JSON-LD)** — every page carries schema.org metadata: the home
   page has `Organization` + `WebSite` + `SoftwareApplication` (with `offers`) +
-  `FAQPage`; each docs page has `TechArticle` + `BreadcrumbList`. Keep JSON-LD values
-  in sync with the visible meta tags and content.
+  `VideoObject` (the demo) + `FAQPage`; each docs page has `TechArticle` (with
+  `datePublished` / `dateModified`) + `BreadcrumbList`. Keep JSON-LD values in sync
+  with the visible meta tags and content.
 - **`llms.txt` / `llms-full.txt`** — `llms.txt` is curated by hand; `llms-full.txt`
   and the per-page `.md` mirrors are generated. After editing docs HTML, run:
 
