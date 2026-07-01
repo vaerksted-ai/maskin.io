@@ -2313,7 +2313,7 @@ document.querySelectorAll('a[href="#try"]').forEach(link => {
     if (kind === 'empty') return;
     const detail = {
       kind,
-      text: input.value.trim(),
+      text: 'I want to create a new bet: ' + input.value.trim() + '. use the workspace-observer-onboarding skill to help me create it.',
       file: attachedFile,
       url: kind === 'url' ? input.value.trim() : null
     };
