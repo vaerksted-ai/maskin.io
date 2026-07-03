@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{if(localStorage.getItem('maskin-api-key'))window.location.replace('/workspaces')}catch(e){}</script>
+<title>Changelog — Maskin</title>
+<meta name="description" content="Every Maskin release, newest first. Product updates for a workspace where humans and agents work together.">
+
+<link rel="canonical" href="https://maskin.io/changelog/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maskin.io/changelog/">
+<meta property="og:title" content="Changelog — Maskin">
+<meta property="og:description" content="Every Maskin release, newest first. Product updates for a workspace where humans and agents work together.">
+<meta property="og:image" content="https://maskin.io/og-image.png?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Changelog — Maskin">
+<meta name="twitter:description" content="Every Maskin release, newest first.">
+<meta name="twitter:image" content="https://maskin.io/og-image.png?v=2">
+
+<!-- PostHog analytics. Autocapture (CTA clicks), pageviews, and scroll depth are on by default.
+     The key below is replaced at build time by the POSTHOG_PROJECT_KEY environment variable. -->
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('POSTHOG_PROJECT_KEY', {
+    api_host: 'https://eu.i.posthog.com',
+    person_profiles: 'identified_only',
+    defaults: '2025-05-24'
+  });
+  posthog.capture('changelog_page_viewed');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ─── TOKENS (mirror the site) ───────────────────────────── */
+:root {
+  --ink:        #111110;
+  --ink-2:      #5A5751;
+  --ink-3:      #9B958F;
+  --surface:    #FAFAF8;
+  --linen:      #F0EDE7;
+  --rule:       #E2DDD7;
+  --accent:     #2563EB;
+  --accent-dim: rgba(37,99,235,0.12);
+
+  --ff-display: 'Schibsted Grotesk', sans-serif;
+  --ff-serif:   'Newsreader', Georgia, serif;
+  --ff-mono:    'JetBrains Mono', monospace;
+
+  --step-0: clamp(0.8125rem, 0.79rem + 0.12vw, 0.9375rem);
+  --step-1: clamp(0.9375rem, 0.9rem + 0.2vw, 1.125rem);
+  --step-2: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  --step-3: clamp(1.5rem, 1.15rem + 1.5vw, 2.5rem);
+  --step-4: clamp(2rem, 1.4rem + 3vw, 3.75rem);
+
+  --max-w: 1280px;
+  --content-w: 720px;
+  --nav-bg-scrolled: rgba(250,250,248,.92);
+  --gap: clamp(1rem, 3vw, 2.5rem);
+  --section-py: clamp(4rem, 9vw, 8rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --nav-bg-scrolled: rgba(20,20,18,.92);
+    --ink:        #ECEAE4;
+    --ink-2:      #A09A93;
+    --ink-3:      #6B6560;
+    --surface:    #141412;
+    --linen:      #1C1B18;
+    --rule:       #2A2925;
+    --accent:     #3B74F2;
+    --accent-dim: rgba(59,116,242,0.15);
+  }
+}
+[data-theme="dark"] {
+  --nav-bg-scrolled: rgba(20,20,18,.92);
+  --ink:        #ECEAE4;
+  --ink-2:      #A09A93;
+  --ink-3:      #6B6560;
+  --surface:    #141412;
+  --linen:      #1C1B18;
+  --rule:       #2A2925;
+  --accent:     #3B74F2;
+  --accent-dim: rgba(59,116,242,0.15);
+}
+[data-theme="light"] {
+  --nav-bg-scrolled: rgba(250,250,248,.92);
+  --ink:        #111110;
+  --ink-2:      #5A5751;
+  --ink-3:      #9B958F;
+  --surface:    #FAFAF8;
+  --linen:      #F0EDE7;
+  --rule:       #E2DDD7;
+  --accent:     #2563EB;
+  --accent-dim: rgba(37,99,235,0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .footer__logo-svg-bg  { fill: #1C1B18; }
+  :root:not([data-theme="light"]) .footer__logo-svg-path { stroke: #ECEAE4; }
+  :root:not([data-theme="light"]) .release-hero { background: #1C1B18; }
+}
+[data-theme="dark"] .footer__logo-svg-bg  { fill: #1C1B18; }
+[data-theme="dark"] .footer__logo-svg-path { stroke: #ECEAE4; }
+[data-theme="dark"] .release-hero { background: #1C1B18; }
+
+/* ─── RESET ──────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--ff-display);
+  font-size:var(--step-0);
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--surface);
+  -webkit-font-smoothing:antialiased;
+}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* ─── LAYOUT ─────────────────────────────────────────────── */
+.wrap{width:100%;max-width:var(--max-w);margin-inline:auto;padding-inline:var(--gap)}
+.wrap--reading{max-width:var(--content-w);margin-inline:auto}
+
+/* ─── NAV (mirrors the site) ─────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  border-bottom:1px solid transparent;
+  transition:border-color .25s,background .25s,backdrop-filter .25s;
+}
+.nav.scrolled{
+  background:var(--nav-bg-scrolled);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-color:var(--rule);
+}
+.nav__inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:56px;max-width:var(--max-w);margin-inline:auto;padding-inline:var(--gap);
+}
+.nav__logo{font-size:1rem;font-weight:700;letter-spacing:-.02em}
+.nav__links{display:flex;align-items:center;gap:1.75rem;list-style:none}
+.nav__links a{font-size:.875rem;font-weight:500;color:var(--ink-2);transition:color .15s}
+.nav__links a:hover{color:var(--ink)}
+.nav__links a[aria-current="page"]{color:var(--ink)}
+.nav__login{font-size:.875rem;font-weight:500;color:var(--ink-2)!important;transition:color .15s}
+.nav__login:hover{color:var(--ink)!important}
+.nav__signup{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.4rem .9rem;background:var(--accent);color:#fff!important;
+  border-radius:6px;font-size:.875rem!important;font-weight:600!important;
+  transition:background .15s,transform .1s,opacity .15s;
+}
+.nav__signup:hover{opacity:.88;transform:translateY(-1px)}
+.nav__mobile-actions{display:none;align-items:center;gap:.5rem}
+.nav__mobile-signup{
+  display:inline-flex;align-items:center;
+  padding:.375rem .75rem;background:var(--accent);color:#fff;
+  border-radius:6px;font-size:.8125rem;font-weight:600;text-decoration:none;
+  transition:opacity .15s;
+}
+.nav__mobile-signup:hover{opacity:.88}
+.nav__hamburger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:36px;height:36px;background:none;border:none;
+  cursor:pointer;padding:6px;color:var(--ink);border-radius:6px;
+}
+.nav__hamburger span{
+  display:block;width:20px;height:2px;background:currentColor;
+  border-radius:2px;transition:transform .2s,opacity .2s;transform-origin:center;
+}
+.nav__hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav__hamburger.open span:nth-child(2){opacity:0}
+.nav__hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav__drawer{
+  display:none;
+  position:fixed;top:56px;left:0;right:0;bottom:0;
+  background:var(--surface);z-index:99;
+  padding:2rem var(--gap);
+  flex-direction:column;gap:0;
+  border-top:1px solid var(--rule);
+  overflow-y:auto;
+}
+.nav__drawer.open{display:flex}
+.nav__drawer li{list-style:none;border-bottom:1px solid var(--rule)}
+.nav__drawer li a{
+  display:block;padding:1rem 0;
+  font-size:1.125rem;font-weight:600;color:var(--ink);
+  text-decoration:none;transition:color .15s;
+}
+.nav__drawer li a:hover{color:var(--accent)}
+.nav__drawer .nav__drawer-cta{
+  margin-top:1.5rem;
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:.75rem 1.5rem;background:var(--ink);color:var(--surface);
+  border-radius:8px;font-weight:700;font-size:1rem;text-decoration:none;width:100%;
+}
+
+/* ─── PAGE HEADER ────────────────────────────────────────── */
+.page-header{
+  padding-top:clamp(6.5rem,13vh,9rem);
+  padding-bottom:clamp(2rem,5vh,3.5rem);
+  border-bottom:1px solid var(--rule);
+}
+.page-header__eyebrow{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.7rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:1rem;
+}
+.page-header__eyebrow::before{
+  content:'';display:block;width:16px;height:2px;background:var(--accent);
+}
+.page-header__title{
+  font-size:var(--step-4);font-weight:700;
+  line-height:1.04;letter-spacing:-.03em;margin-bottom:1rem;
+}
+.page-header__title em{font-style:italic;font-weight:600;color:var(--accent)}
+.page-header__sub{
+  font-size:var(--step-1);color:var(--ink-2);
+  line-height:1.55;max-width:52ch;
+}
+
+/* ─── RELEASE LIST ───────────────────────────────────────── */
+.release-list{
+  display:flex;flex-direction:column;
+  padding-block:clamp(2.5rem,6vw,5rem);
+}
+/* Reusable per-release block. Duplicate <article class="release"> to add a new entry. */
+.release{
+  padding-block:clamp(2.5rem,5vw,4rem);
+  border-bottom:1px solid var(--rule);
+}
+.release:last-child{border-bottom:none}
+.release__dateline{
+  display:flex;align-items:center;gap:.6rem;
+  font-family:var(--ff-mono);font-size:.75rem;letter-spacing:.02em;
+  color:var(--ink-3);text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.release__dateline::after{
+  content:'';flex:1;height:1px;background:var(--rule);
+}
+.release__headline{
+  font-size:var(--step-3);font-weight:700;
+  line-height:1.08;letter-spacing:-.03em;
+  margin-bottom:.75rem;
+}
+.release__headline em{font-style:italic;font-weight:600;color:var(--accent)}
+.release__lede{
+  font-family:var(--ff-serif);
+  font-size:var(--step-2);
+  line-height:1.45;color:var(--ink-2);
+  margin-bottom:2rem;max-width:60ch;
+}
+
+/* ─── REUSABLE HERO VISUAL ───────────────────────────────── */
+/* A typographic mark on a linen tile with an amber-accent underline.
+   Reusable across releases — swap .release-hero__mark text per entry. */
+.release-hero{
+  position:relative;
+  background:var(--linen);
+  border:1px solid var(--rule);
+  border-radius:14px;
+  padding:clamp(2.5rem,7vw,5rem) clamp(1.5rem,4vw,3rem);
+  margin-bottom:2.5rem;
+  overflow:hidden;
+  isolation:isolate;
+}
+.release-hero__grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(var(--rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+  background-size:48px 48px;
+  opacity:.35;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 50%, #000 0%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 50%, #000 0%, transparent 75%);
+  pointer-events:none;
+}
+.release-hero__mark{
+  position:relative;
+  font-family:var(--ff-serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(2.5rem, 6vw, 4.75rem);
+  line-height:1.02;
+  letter-spacing:-.02em;
+  color:var(--ink);
+  text-align:center;
+  display:inline-block;
+  width:100%;
+}
+.release-hero__mark::after{
+  content:'';display:block;
+  width:clamp(60px,10vw,120px);height:3px;
+  background:var(--accent);
+  margin:clamp(1rem,2vw,1.5rem) auto 0;
+  border-radius:2px;
+}
+.release-hero__caption{
+  position:relative;
+  margin-top:1.25rem;
+  font-family:var(--ff-mono);font-size:.75rem;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-3);text-align:center;
+}
+
+/* ─── RELEASE NARRATIVE ──────────────────────────────────── */
+.release__body{font-size:var(--step-1);line-height:1.7;color:var(--ink-2)}
+.release__body p{margin:0 0 1.1rem;max-width:60ch}
+.release__body p:last-child{margin-bottom:0}
+.release__body strong{color:var(--ink);font-weight:600}
+
+.release__section{margin-top:2.5rem}
+.release__section-title{
+  font-size:var(--step-2);font-weight:700;
+  color:var(--ink);letter-spacing:-.02em;
+  margin-bottom:.75rem;
+}
+.release__section p{color:var(--ink-2);max-width:60ch;margin:0 0 .9rem}
+
+.release__availability{
+  margin-top:2.5rem;
+  padding:1.25rem 1.35rem;
+  background:var(--linen);
+  border:1px solid var(--rule);
+  border-radius:10px;
+  display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;align-items:baseline;
+}
+.release__availability-label{
+  font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);
+}
+.release__availability-value{
+  font-size:.9375rem;color:var(--ink);
+}
+
+/* ─── EMPTY STATE (used if no releases yet) ──────────────── */
+.release-list__empty{
+  padding:clamp(3rem,8vw,6rem) 0;
+  text-align:center;color:var(--ink-2);
+  font-family:var(--ff-serif);font-style:italic;
+  font-size:var(--step-2);
+}
+
+/* ─── FOOTER (mirrors the site) ──────────────────────────── */
+.footer{padding-block:1.75rem;border-top:1px solid var(--rule)}
+.footer__logo-svg-bg  { fill: #FAFAF8; }
+.footer__logo-svg-path { stroke: #111110; }
+.footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.875rem}
+.footer__logo{font-weight:700;letter-spacing:-.02em;font-size:.875rem}
+.footer__links{display:flex;align-items:center;gap:1.5rem;list-style:none;flex-wrap:wrap}
+.footer__links a{font-size:.875rem;color:var(--ink-2);transition:color .15s}
+.footer__links a:hover{color:var(--ink)}
+.footer__copy{font-size:.78rem;color:var(--ink-3)}
+.footer__brand{display:flex;flex-direction:column;gap:.3rem}
+.footer__def{font-size:.72rem;color:var(--ink-3);font-style:italic;letter-spacing:.01em}
+
+.theme-toggle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:6px;color:var(--ink-2);
+  transition:color .15s,background .15s;
+}
+.theme-toggle:hover{color:var(--ink);background:var(--linen)}
+.theme-toggle__sun{display:none}
+.theme-toggle__moon{display:block}
+[data-theme="dark"] .theme-toggle__sun{display:block}
+[data-theme="dark"] .theme-toggle__moon{display:none}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle__sun{display:block}
+  :root:not([data-theme="light"]) .theme-toggle__moon{display:none}
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 780px) {
+  .nav__links{display:none}
+  .nav__mobile-actions{display:flex}
+  .nav__hamburger{display:flex}
+  .footer__inner{flex-direction:column;align-items:flex-start;gap:1.25rem}
+  .footer__links{gap:1rem}
+}
+
+/* ─── REDUCED MOTION ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .nav,.nav__signup,.nav__mobile-signup,.nav__hamburger span,
+  .nav__drawer,.theme-toggle,.footer__links a,.nav__links a,.nav__login{
+    transition:none!important;animation:none!important;
+  }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://maskin.io/changelog/#page",
+  "name": "Changelog",
+  "url": "https://maskin.io/changelog/",
+  "description": "Every Maskin release, newest first.",
+  "isPartOf": { "@type": "WebSite", "name": "Maskin", "url": "https://maskin.io/" }
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="/" style="display:flex;align-items:center;gap:.5rem">
+      <svg width="28" height="28" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="80" height="80" rx="14" fill="#111110"/>
+        <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+      </svg>
+      Maskin
+    </a>
+    <ul class="nav__links">
+      <li><a href="/#use-cases">Use cases</a></li>
+      <li><a href="/#method">How it works</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/changelog/" aria-current="page">Changelog</a></li>
+      <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a class="nav__login" href="/login">Log in</a></li>
+      <li><a class="nav__signup" href="/signup">Sign up</a></li>
+    </ul>
+    <div class="nav__mobile-actions">
+      <a class="nav__mobile-signup" href="/signup">Sign up</a>
+      <button class="nav__hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<nav class="nav__drawer" id="navDrawer" aria-label="Mobile navigation">
+  <ul>
+    <li><a href="/#use-cases">Use cases</a></li>
+    <li><a href="/#method">How it works</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/changelog/" aria-current="page">Changelog</a></li>
+    <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+    <li><a href="/login">Log in</a></li>
+  </ul>
+  <a class="nav__drawer-cta" href="/signup">Sign up free →</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="wrap">
+    <div class="page-header__eyebrow">Changelog</div>
+    <h1 class="page-header__title">What we <em>shipped</em>.</h1>
+    <p class="page-header__sub">Every Maskin release, newest first. Product notes from a workspace where humans and agents actually work together.</p>
+  </div>
+</header>
+
+<!--
+  RELEASE LIST — newest first.
+
+  To add a new release: copy the <article class="release">…</article> block below,
+  paste it above the previous entries, and edit its content. No rebuild required —
+  build.sh only substitutes the PostHog key. The block is entirely static HTML.
+
+  The <article> block contains, in order:
+    - <div class="release__dateline"> — release date (uppercase, mono)
+    - <h2 class="release__headline"> — headline
+    - <p class="release__lede">      — one-line lede (serif)
+    - <div class="release-hero">     — reusable hero visual (typographic mark
+                                       on a linen tile with amber underline)
+    - <div class="release__body">    — narrative + supporting sections
+    - <div class="release__availability"> — where and when it's available
+-->
+<section class="release-list">
+  <div class="wrap wrap--reading">
+
+    <!-- ═══════════════ RELEASE: Maskin is live (2026-04-14) ═══════════════ -->
+    <article class="release" id="maskin-is-live">
+      <div class="release__dateline">
+        <time datetime="2026-04-14">April 14, 2026</time>
+      </div>
+
+      <h2 class="release__headline">Maskin is <em>live</em>.</h2>
+
+      <p class="release__lede">
+        An open-source workspace where product teams and AI agents share the same insights, bets, and work.
+      </p>
+
+      <div class="release-hero" role="img" aria-label="Maskin is live — hero visual">
+        <div class="release-hero__grid" aria-hidden="true"></div>
+        <span class="release-hero__mark">Maskin is live.</span>
+        <div class="release-hero__caption">v1 · April 14, 2026</div>
+      </div>
+
+      <div class="release__body">
+        <p>
+          Maskin isn't a chatbot bolted onto a tool — it's a place where an agent spots a signal cluster overnight, a PM shapes it into a bet in the morning, another agent breaks it into tasks, and a designer picks up the prototype. Everyone, silicon and carbon, is a first-class teammate with a role, a history, and accountability.
+        </p>
+        <p>This first release is everything it took to open the doors.</p>
+
+        <div class="release__section">
+          <h3 class="release__section-title">The primitives</h3>
+          <p>
+            Insights, Bets, and Tasks are the shared objects humans and agents both read and write. Signal becomes a bet; a bet becomes work; work ships — and the whole trail stays visible to the team.
+          </p>
+        </div>
+
+        <div class="release__section">
+          <h3 class="release__section-title">Start from a template, not an empty page</h3>
+          <p>
+            Product Development, Growth, and Outbound Sales templates scaffold a workspace with pre-configured agents, triggers, and object types, so a new team goes from zero to a working setup in one prompt.
+          </p>
+        </div>
+
+        <div class="release__section">
+          <h3 class="release__section-title">Agents that run real sessions</h3>
+          <p>
+            Agent work runs in per-session microVM isolation on our own infrastructure — hypervisor-level separation, sub-second starts, and API keys that never enter the sandbox. The runtime holds up under real concurrency instead of falling over on the first credit or timeout failure.
+          </p>
+        </div>
+
+        <div class="release__section">
+          <h3 class="release__section-title">A workspace you can act from</h3>
+          <p>
+            Notifications carry direct links and actions, failed sessions can be retried, and a &ldquo;what's happening now&rdquo; view shows work in flight — so the team can see what needs them and move, instead of watching an opaque feed.
+          </p>
+        </div>
+
+        <div class="release__section">
+          <h3 class="release__section-title">Fixes &amp; polish</h3>
+          <p>
+            Launch week also closed a long list of first-impression friction: CSV import parsing, object and notification links, keyboard shortcuts, streaming indicators in chat, scroll and layout fixes across the object pages, and workspace-selector visibility.
+          </p>
+        </div>
+      </div>
+
+      <div class="release__availability">
+        <span class="release__availability-label">Availability</span>
+        <span class="release__availability-value">
+          Open-source and self-hostable today. Maskin Cloud is on the <a href="/signup" style="color:var(--accent);text-decoration:underline;text-underline-offset:2px">waitlist</a>.
+        </span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="footer__logo" style="display:flex;align-items:center;gap:.5rem">
+          <svg width="22" height="22" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect class="footer__logo-svg-bg" width="80" height="80" rx="14" fill="#FAFAF8"/>
+            <path class="footer__logo-svg-path" d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#111110" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+          </svg>
+          Maskin
+        </span>
+        <span class="footer__def"><em>Maskin</em> — Scandinavian for &ldquo;machine&rdquo;.</span>
+      </div>
+      <ul class="footer__links">
+        <li><a href="/changelog/">Changelog</a></li>
+        <li><a href="https://maskin.io/docs/">Docs</a></li>
+        <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li>
+        <li><a href="mailto:ai@maskin.io">Contact</a></li>
+      </ul>
+      <span class="footer__copy">© 2026 <a href="https://vaerksted.ai" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Værksted</a> · Apache 2.0</span>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Nav scrolled state (mirrors index.html) ─────────────── */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+window.addEventListener('scroll', onScroll, { passive:true });
+onScroll();
+
+/* ── Hamburger menu ──────────────────────────────────────── */
+const hamburger = document.getElementById('navHamburger');
+const drawer = document.getElementById('navDrawer');
+if (hamburger && drawer) {
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    drawer.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    drawer.classList.remove('open');
+    hamburger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }));
+}
+
+/* ── Theme toggle (mirrors index.html) ───────────────────── */
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+  const stored = (() => { try { return localStorage.getItem('maskin-theme'); } catch(e){ return null; } })();
+  if (stored === 'dark' || stored === 'light') {
+    document.documentElement.setAttribute('data-theme', stored);
+  }
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme')
+      || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('maskin-theme', next); } catch(e){}
+  });
+}
+</script>
+</body>
+</html>
