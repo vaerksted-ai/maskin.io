@@ -15,8 +15,10 @@ cp apple-touch-icon.png favicon.ico favicon.svg icon-192.png icon-512.png og-ima
 cp llms.txt llms-full.txt dist/
 cp maskin-launch.mp4 dist/
 cp -r docs dist/docs
+cp -r changelog dist/changelog
 
-# Inject PostHog key
+# Inject PostHog key into every generated HTML file that references the placeholder.
 sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g" dist/index.html
+sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g" dist/changelog/index.html
 
 echo "Build complete. PostHog key injected."
