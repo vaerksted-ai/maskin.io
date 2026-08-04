@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>try{if(localStorage.getItem('maskin-api-key'))window.location.replace('/workspaces')}catch(e){}</script>
-<title>Changelog — Maskin</title>
-<meta name="description" content="Every Maskin release, newest first. Product updates for a workspace where humans and agents work together.">
+<title>Privacy Policy — Maskin</title>
+<meta name="description" content="How Maskin collects, uses, and protects your data. The privacy policy for a workspace where humans and AI agents work together.">
 
-<link rel="canonical" href="https://maskin.io/changelog/">
+<link rel="canonical" href="https://maskin.io/privacy/">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -17,9 +17,9 @@
 <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://maskin.io/changelog/">
-<meta property="og:title" content="Changelog — Maskin">
-<meta property="og:description" content="Every Maskin release, newest first. Product updates for a workspace where humans and agents work together.">
+<meta property="og:url" content="https://maskin.io/privacy/">
+<meta property="og:title" content="Privacy Policy — Maskin">
+<meta property="og:description" content="How Maskin collects, uses, and protects your data.">
 <meta property="og:image" content="https://maskin.io/og-image.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -28,8 +28,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@maskin_io">
-<meta name="twitter:title" content="Changelog — Maskin">
-<meta name="twitter:description" content="Every Maskin release, newest first.">
+<meta name="twitter:title" content="Privacy Policy — Maskin">
+<meta name="twitter:description" content="How Maskin collects, uses, and protects your data.">
 <meta name="twitter:image" content="https://maskin.io/og-image.png?v=2">
 
 <!-- PostHog analytics. Autocapture (CTA clicks), pageviews, and scroll depth are on by default.
@@ -41,7 +41,7 @@
     person_profiles: 'identified_only',
     defaults: '2025-05-24'
   });
-  posthog.capture('changelog_page_viewed');
+  posthog.capture('privacy_page_viewed');
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -116,11 +116,9 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .footer__logo-svg-bg  { fill: #1C1B18; }
   :root:not([data-theme="light"]) .footer__logo-svg-path { stroke: #ECEAE4; }
-  :root:not([data-theme="light"]) .release-hero { background: #1C1B18; }
 }
 [data-theme="dark"] .footer__logo-svg-bg  { fill: #1C1B18; }
 [data-theme="dark"] .footer__logo-svg-path { stroke: #ECEAE4; }
-[data-theme="dark"] .release-hero { background: #1C1B18; }
 
 /* ─── RESET ──────────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -238,129 +236,40 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   font-size:var(--step-1);color:var(--ink-2);
   line-height:1.55;max-width:52ch;
 }
-
-/* ─── RELEASE LIST ───────────────────────────────────────── */
-.release-list{
-  display:flex;flex-direction:column;
-  padding-block:clamp(2.5rem,6vw,5rem);
-}
-/* Reusable per-release block. Duplicate <article class="release"> to add a new entry. */
-.release{
-  padding-block:clamp(2.5rem,5vw,4rem);
-  border-bottom:1px solid var(--rule);
-}
-.release:last-child{border-bottom:none}
-.release__dateline{
-  display:flex;align-items:center;gap:.6rem;
-  font-family:var(--ff-mono);font-size:.75rem;letter-spacing:.02em;
-  color:var(--ink-3);text-transform:uppercase;
-  margin-bottom:1rem;
-}
-.release__dateline::after{
-  content:'';flex:1;height:1px;background:var(--rule);
-}
-.release__headline{
-  font-size:var(--step-3);font-weight:700;
-  line-height:1.08;letter-spacing:-.03em;
-  margin-bottom:.75rem;
-}
-.release__headline em{font-style:italic;font-weight:600;color:var(--accent)}
-.release__lede{
-  font-family:var(--ff-serif);
-  font-size:var(--step-2);
-  line-height:1.45;color:var(--ink-2);
-  margin-bottom:2rem;max-width:60ch;
-}
-
-/* ─── REUSABLE HERO VISUAL ───────────────────────────────── */
-/* A typographic mark on a linen tile with an amber-accent underline.
-   Reusable across releases — swap .release-hero__mark text per entry. */
-.release-hero{
-  position:relative;
-  background:var(--linen);
-  border:1px solid var(--rule);
-  border-radius:14px;
-  padding:clamp(2.5rem,7vw,5rem) clamp(1.5rem,4vw,3rem);
-  margin-bottom:2.5rem;
-  overflow:hidden;
-  isolation:isolate;
-}
-.release-hero__grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(var(--rule) 1px, transparent 1px),
-    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
-  background-size:48px 48px;
-  opacity:.35;
-  mask-image:radial-gradient(ellipse 80% 60% at 50% 50%, #000 0%, transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 50%, #000 0%, transparent 75%);
-  pointer-events:none;
-}
-.release-hero__mark{
-  position:relative;
-  font-family:var(--ff-serif);
-  font-style:italic;
-  font-weight:400;
-  font-size:clamp(2.5rem, 6vw, 4.75rem);
-  line-height:1.02;
-  letter-spacing:-.02em;
-  color:var(--ink);
-  text-align:center;
-  display:inline-block;
-  width:100%;
-}
-.release-hero__mark::after{
-  content:'';display:block;
-  width:clamp(60px,10vw,120px);height:3px;
-  background:var(--accent);
-  margin:clamp(1rem,2vw,1.5rem) auto 0;
-  border-radius:2px;
-}
-.release-hero__caption{
-  position:relative;
+.page-header__meta{
   margin-top:1.25rem;
-  font-family:var(--ff-mono);font-size:.75rem;
-  letter-spacing:.06em;text-transform:uppercase;
-  color:var(--ink-3);text-align:center;
+  font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--ink-3);
 }
 
-/* ─── RELEASE NARRATIVE ──────────────────────────────────── */
-.release__body{font-size:var(--step-1);line-height:1.7;color:var(--ink-2)}
-.release__body p{margin:0 0 1.1rem;max-width:60ch}
-.release__body p:last-child{margin-bottom:0}
-.release__body strong{color:var(--ink);font-weight:600}
-
-.release__section{margin-top:2.5rem}
-.release__section-title{
+/* ─── POLICY / PROSE ─────────────────────────────────────── */
+.policy{padding-block:clamp(2.5rem,6vw,5rem)}
+.policy__section{margin-bottom:clamp(2rem,4vw,3rem)}
+.policy__section:last-child{margin-bottom:0}
+.policy h2{
   font-size:var(--step-2);font-weight:700;
-  color:var(--ink);letter-spacing:-.02em;
-  margin-bottom:.75rem;
+  color:var(--ink);letter-spacing:-.02em;line-height:1.15;
+  margin-bottom:.9rem;
 }
-.release__section p{color:var(--ink-2);max-width:60ch;margin:0 0 .9rem}
-
-.release__availability{
+.policy h3{
+  font-size:var(--step-1);font-weight:600;
+  color:var(--ink);margin:1.5rem 0 .6rem;
+}
+.policy p{font-size:var(--step-1);line-height:1.7;color:var(--ink-2);margin:0 0 1.1rem;max-width:64ch}
+.policy p:last-child{margin-bottom:0}
+.policy strong{color:var(--ink);font-weight:600}
+.policy a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.policy ul{margin:0 0 1.1rem 1.1rem;padding:0;max-width:64ch}
+.policy li{font-size:var(--step-1);line-height:1.65;color:var(--ink-2);margin-bottom:.5rem}
+.policy li strong{color:var(--ink)}
+.policy__contact{
   margin-top:2.5rem;
   padding:1.25rem 1.35rem;
   background:var(--linen);
   border:1px solid var(--rule);
   border-radius:10px;
-  display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;align-items:baseline;
 }
-.release__availability-label{
-  font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--ink-3);
-}
-.release__availability-value{
-  font-size:.9375rem;color:var(--ink);
-}
-
-/* ─── EMPTY STATE (used if no releases yet) ──────────────── */
-.release-list__empty{
-  padding:clamp(3rem,8vw,6rem) 0;
-  text-align:center;color:var(--ink-2);
-  font-family:var(--ff-serif);font-style:italic;
-  font-size:var(--step-2);
-}
+.policy__contact p{margin:0;color:var(--ink-2)}
 
 /* ─── FOOTER (mirrors the site) ──────────────────────────── */
 .footer{padding-block:1.75rem;border-top:1px solid var(--rule)}
@@ -412,11 +321,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "@id": "https://maskin.io/changelog/#page",
-  "name": "Changelog",
-  "url": "https://maskin.io/changelog/",
-  "description": "Every Maskin release, newest first.",
+  "@type": "WebPage",
+  "@id": "https://maskin.io/privacy/#page",
+  "name": "Privacy Policy",
+  "url": "https://maskin.io/privacy/",
+  "description": "How Maskin collects, uses, and protects your data.",
   "isPartOf": { "@type": "WebSite", "name": "Maskin", "url": "https://maskin.io/" }
 }
 </script>
@@ -437,7 +346,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <li><a href="/#use-cases">Use cases</a></li>
       <li><a href="/#method">How it works</a></li>
       <li><a href="/#pricing">Pricing</a></li>
-      <li><a href="/changelog/" aria-current="page">Changelog</a></li>
+      <li><a href="/changelog/">Changelog</a></li>
       <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
       <li><a class="nav__login" href="/login">Log in</a></li>
       <li><a class="nav__signup" href="/signup">Sign up</a></li>
@@ -455,7 +364,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <li><a href="/#use-cases">Use cases</a></li>
     <li><a href="/#method">How it works</a></li>
     <li><a href="/#pricing">Pricing</a></li>
-    <li><a href="/changelog/" aria-current="page">Changelog</a></li>
+    <li><a href="/changelog/">Changelog</a></li>
     <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
     <li><a href="/login">Log in</a></li>
   </ul>
@@ -465,101 +374,122 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 <!-- PAGE HEADER -->
 <header class="page-header">
   <div class="wrap">
-    <div class="page-header__eyebrow">Changelog</div>
-    <h1 class="page-header__title">What we <em>shipped</em>.</h1>
-    <p class="page-header__sub">Every Maskin release, newest first. Product notes from a workspace where humans and agents actually work together.</p>
+    <div class="page-header__eyebrow">Legal</div>
+    <h1 class="page-header__title">Privacy <em>Policy</em>.</h1>
+    <p class="page-header__sub">How Maskin collects, uses, and protects your data — written to be read, not just filed.</p>
+    <p class="page-header__meta">Last updated: August 4, 2026</p>
   </div>
 </header>
 
-<!--
-  RELEASE LIST — newest first.
-
-  To add a new release: copy the <article class="release">…</article> block below,
-  paste it above the previous entries, and edit its content. No rebuild required —
-  build.sh only substitutes the PostHog key. The block is entirely static HTML.
-
-  The <article> block contains, in order:
-    - <div class="release__dateline"> — release date (uppercase, mono)
-    - <h2 class="release__headline"> — headline
-    - <p class="release__lede">      — one-line lede (serif)
-    - <div class="release-hero">     — reusable hero visual (typographic mark
-                                       on a linen tile with amber underline)
-    - <div class="release__body">    — narrative + supporting sections
-    - <div class="release__availability"> — where and when it's available
--->
-<section class="release-list">
+<!-- POLICY -->
+<main class="policy">
   <div class="wrap wrap--reading">
 
-    <!-- ═══════════════ RELEASE: Maskin is live (2026-04-14) ═══════════════ -->
-    <article class="release" id="maskin-is-live">
-      <div class="release__dateline">
-        <time datetime="2026-04-14">April 14, 2026</time>
-      </div>
+    <section class="policy__section">
+      <p>
+        This Privacy Policy explains how <strong>Værksted</strong> (&ldquo;we&rdquo;, &ldquo;us&rdquo;) handles personal data in connection with the Maskin website, the Maskin Cloud service, and the open-source Maskin software (together, the &ldquo;Service&rdquo;). Maskin is a shared workspace where your team and its AI agents work together. We keep the data we collect to what the Service actually needs, and we do not sell it.
+      </p>
+      <p>
+        If you self-host the open-source software, <strong>you</strong> are the controller of the data in your own deployment — this policy then describes only the maskin.io website and Maskin Cloud, not your instance.
+      </p>
+    </section>
 
-      <h2 class="release__headline">Maskin is <em>live</em>.</h2>
+    <section class="policy__section">
+      <h2>Information we collect</h2>
+      <h3>Information you provide</h3>
+      <ul>
+        <li><strong>Account details</strong> — your name, email address, and workspace information when you sign up or request access.</li>
+        <li><strong>Workspace content</strong> — the insights, bets, tasks, comments, files, and other objects you and your agents create in the Service.</li>
+        <li><strong>Communications</strong> — messages you send us by email or through support channels.</li>
+      </ul>
+      <h3>Information collected automatically</h3>
+      <ul>
+        <li><strong>Usage &amp; device data</strong> — pages viewed, actions taken, approximate location, browser and device type, collected via privacy-focused product analytics (PostHog, hosted in the EU).</li>
+        <li><strong>Log data</strong> — IP address, timestamps, and technical events generated when you use the Service, used for security and reliability.</li>
+        <li><strong>Cookies &amp; local storage</strong> — used to keep you signed in and to remember preferences such as your light/dark theme.</li>
+      </ul>
+    </section>
 
-      <p class="release__lede">
-        An open-source workspace where product teams and AI agents share the same insights, bets, and work.
+    <section class="policy__section">
+      <h2>How we use your information</h2>
+      <ul>
+        <li>To provide, operate, and maintain the Service.</li>
+        <li>To run AI agent sessions you or your workspace initiate.</li>
+        <li>To communicate with you about your account, updates, and support requests.</li>
+        <li>To understand how the Service is used and to improve it.</li>
+        <li>To keep the Service secure and to detect, prevent, and address abuse or technical issues.</li>
+        <li>To comply with legal obligations.</li>
+      </ul>
+    </section>
+
+    <section class="policy__section">
+      <h2>AI agents and model providers</h2>
+      <p>
+        When an agent runs, the relevant workspace content is sent to the AI model provider configured for that workspace so the agent can complete its task. Agent sessions run in per-session isolation, and your API keys are handled so they are not exposed to other tenants. We do not use your workspace content to train our own models. Your chosen model provider processes data under its own terms; review those terms to understand how that provider handles data.
+      </p>
+    </section>
+
+    <section class="policy__section">
+      <h2>How we share information</h2>
+      <p>We do not sell your personal data. We share it only in these cases:</p>
+      <ul>
+        <li><strong>Service providers</strong> — infrastructure, analytics, and model providers that process data on our behalf under contract.</li>
+        <li><strong>Within your workspace</strong> — content you create is visible to other members and agents of your workspace, as the product is designed to work.</li>
+        <li><strong>Legal reasons</strong> — when required by law, or to protect the rights, safety, and security of our users and the Service.</li>
+        <li><strong>Business transfers</strong> — in connection with a merger, acquisition, or sale of assets, with notice where required.</li>
+      </ul>
+    </section>
+
+    <section class="policy__section">
+      <h2>Data retention</h2>
+      <p>
+        We keep personal data for as long as your account is active or as needed to provide the Service, and thereafter only as required to meet legal, accounting, or security obligations. You can ask us to delete your account and associated content at any time.
+      </p>
+    </section>
+
+    <section class="policy__section">
+      <h2>Your rights</h2>
+      <p>
+        Depending on where you live, you may have the right to access, correct, export, or delete your personal data, to object to or restrict certain processing, and to withdraw consent. To exercise any of these rights, contact us at the address below. If you are in the EEA or UK, you also have the right to lodge a complaint with your local data protection authority.
+      </p>
+    </section>
+
+    <section class="policy__section">
+      <h2>Security</h2>
+      <p>
+        We use technical and organizational measures — including encryption in transit, access controls, and tenant isolation for agent sessions — to protect your data. No method of transmission or storage is perfectly secure, but we work to protect your information and to respond promptly to any incident.
+      </p>
+    </section>
+
+    <section class="policy__section">
+      <h2>International transfers</h2>
+      <p>
+        We may process and store data in countries other than your own. Where we transfer personal data across borders, we rely on appropriate safeguards, such as standard contractual clauses, to protect it.
+      </p>
+    </section>
+
+    <section class="policy__section">
+      <h2>Children</h2>
+      <p>
+        The Service is not directed to children under 16, and we do not knowingly collect personal data from them. If you believe a child has provided us with personal data, please contact us and we will delete it.
+      </p>
+    </section>
+
+    <section class="policy__section">
+      <h2>Changes to this policy</h2>
+      <p>
+        We may update this policy from time to time. When we make material changes, we will update the &ldquo;Last updated&rdquo; date above and, where appropriate, notify you through the Service.
       </p>
 
-      <div class="release-hero" role="img" aria-label="Maskin is live — hero visual">
-        <div class="release-hero__grid" aria-hidden="true"></div>
-        <span class="release-hero__mark">Maskin is live.</span>
-        <div class="release-hero__caption">v1 · April 14, 2026</div>
-      </div>
-
-      <div class="release__body">
+      <div class="policy__contact">
         <p>
-          Maskin isn't a chatbot bolted onto a tool — it's a place where an agent spots a signal cluster overnight, a PM shapes it into a bet in the morning, another agent breaks it into tasks, and a designer picks up the prototype. Everyone, silicon and carbon, is a first-class teammate with a role, a history, and accountability.
+          Questions about this policy or your data? Email us at <a href="mailto:ai@maskin.io">ai@maskin.io</a>. Maskin is built by <a href="https://vaerksted.ai" target="_blank" rel="noopener">Værksted</a>.
         </p>
-        <p>This first release is everything it took to open the doors.</p>
-
-        <div class="release__section">
-          <h3 class="release__section-title">The primitives</h3>
-          <p>
-            Insights, Bets, and Tasks are the shared objects humans and agents both read and write. Signal becomes a bet; a bet becomes work; work ships — and the whole trail stays visible to the team.
-          </p>
-        </div>
-
-        <div class="release__section">
-          <h3 class="release__section-title">Start from a template, not an empty page</h3>
-          <p>
-            Product Development, Growth, and Outbound Sales templates scaffold a workspace with pre-configured agents, triggers, and object types, so a new team goes from zero to a working setup in one prompt.
-          </p>
-        </div>
-
-        <div class="release__section">
-          <h3 class="release__section-title">Agents that run real sessions</h3>
-          <p>
-            Agent work runs in per-session microVM isolation on our own infrastructure — hypervisor-level separation, sub-second starts, and API keys that never enter the sandbox. The runtime holds up under real concurrency instead of falling over on the first credit or timeout failure.
-          </p>
-        </div>
-
-        <div class="release__section">
-          <h3 class="release__section-title">A workspace you can act from</h3>
-          <p>
-            Notifications carry direct links and actions, failed sessions can be retried, and a &ldquo;what's happening now&rdquo; view shows work in flight — so the team can see what needs them and move, instead of watching an opaque feed.
-          </p>
-        </div>
-
-        <div class="release__section">
-          <h3 class="release__section-title">Fixes &amp; polish</h3>
-          <p>
-            Launch week also closed a long list of first-impression friction: CSV import parsing, object and notification links, keyboard shortcuts, streaming indicators in chat, scroll and layout fixes across the object pages, and workspace-selector visibility.
-          </p>
-        </div>
       </div>
-
-      <div class="release__availability">
-        <span class="release__availability-label">Availability</span>
-        <span class="release__availability-value">
-          Open-source and self-hostable today. Maskin Cloud is on the <a href="/signup" style="color:var(--accent);text-decoration:underline;text-underline-offset:2px">waitlist</a>.
-        </span>
-      </div>
-    </article>
+    </section>
 
   </div>
-</section>
+</main>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -578,7 +508,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <ul class="footer__links">
         <li><a href="/changelog/">Changelog</a></li>
         <li><a href="https://maskin.io/docs/">Docs</a></li>
-        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/privacy/" aria-current="page">Privacy</a></li>
         <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li>
         <li><a href="mailto:ai@maskin.io">Contact</a></li>
