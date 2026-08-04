@@ -16,9 +16,11 @@ cp llms.txt llms-full.txt dist/
 cp maskin-launch.mp4 dist/
 cp -r docs dist/docs
 cp -r changelog dist/changelog
+cp -r privacy dist/privacy
 
 # Inject PostHog key into every generated HTML file that references the placeholder.
 sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g" dist/index.html
 sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g" dist/changelog/index.html
+sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g" dist/privacy/index.html
 
 echo "Build complete. PostHog key injected."
