@@ -26,6 +26,13 @@
       { label: "Production deployment", href: "/docs/deployment/" },
       { label: "Security", href: "/docs/security/" },
       { label: "Troubleshooting", href: "/docs/troubleshooting/" }
+    ]},
+    { title: "Articles", items: [
+      { label: "What is an agentic workspace?", href: "/docs/what-is-an-agentic-workspace/" },
+      { label: "What is MCP-native?", href: "/docs/what-is-mcp-native/" },
+      { label: "AI product management tool", href: "/docs/ai-product-management-tool/" },
+      { label: "Bet-based product planning", href: "/docs/bet-based-product-planning/" },
+      { label: "Self-hosted AI workspace", href: "/docs/self-hosted-ai-workspace/" }
     ]}
   ];
 

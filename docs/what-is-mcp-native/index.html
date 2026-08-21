@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>try{if(localStorage.getItem('maskin-api-key'))window.location.replace('/workspaces')}catch(e){}</script>
-<title>Changelog — Maskin</title>
-<meta name="description" content="Every Maskin release, newest first. Product updates for a workspace where humans and agents work together.">
+<title>What is MCP-native? Maskin, built on the Model Context Protocol — Maskin</title>
+<meta name="description" content="MCP-native means the Model Context Protocol is the foundation of how an agent workspace connects models to tools and data. Here's why Maskin is built around MCP — not bolted on — and what bring-your-own-model makes possible.">
 
-<link rel="canonical" href="https://maskin.io/changelog/">
+<link rel="canonical" href="https://maskin.io/docs/what-is-mcp-native/">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -16,10 +15,10 @@
 <meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
 
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://maskin.io/changelog/">
-<meta property="og:title" content="Changelog — Maskin">
-<meta property="og:description" content="Every Maskin release, newest first. Product updates for a workspace where humans and agents work together.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/what-is-mcp-native/">
+<meta property="og:title" content="What is MCP-native? Maskin, built on the Model Context Protocol">
+<meta property="og:description" content="MCP-native means the Model Context Protocol is the foundation of how an agent workspace connects models, tools, and data — with bring-your-own-model built in.">
 <meta property="og:image" content="https://maskin.io/og-image.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -28,8 +27,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@maskin_io">
-<meta name="twitter:title" content="Changelog — Maskin">
-<meta name="twitter:description" content="Every Maskin release, newest first.">
+<meta name="twitter:title" content="What is MCP-native? Maskin, built on the Model Context Protocol">
+<meta name="twitter:description" content="MCP-native means the Model Context Protocol is the foundation of how an agent workspace connects models, tools, and data.">
 <meta name="twitter:image" content="https://maskin.io/og-image.png?v=2">
 
 <!-- PostHog analytics. Autocapture (CTA clicks), pageviews, and scroll depth are on by default.
@@ -41,7 +40,6 @@
     person_profiles: 'identified_only',
     defaults: '2025-05-24'
   });
-  posthog.capture('changelog_page_viewed');
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -116,11 +114,9 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .footer__logo-svg-bg  { fill: #1C1B18; }
   :root:not([data-theme="light"]) .footer__logo-svg-path { stroke: #ECEAE4; }
-  :root:not([data-theme="light"]) .release-hero { background: #1C1B18; }
 }
 [data-theme="dark"] .footer__logo-svg-bg  { fill: #1C1B18; }
 [data-theme="dark"] .footer__logo-svg-path { stroke: #ECEAE4; }
-[data-theme="dark"] .release-hero { background: #1C1B18; }
 
 /* ─── RESET ──────────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -215,7 +211,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   border-radius:8px;font-weight:700;font-size:1rem;text-decoration:none;width:100%;
 }
 
-/* ─── PAGE HEADER ────────────────────────────────────────── */
+/* ─── ARTICLE HERO ───────────────────────────────────────── */
 .page-header{
   padding-top:clamp(6.5rem,13vh,9rem);
   padding-bottom:clamp(2rem,5vh,3.5rem);
@@ -239,53 +235,18 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   line-height:1.55;max-width:52ch;
 }
 
-/* ─── RELEASE LIST ───────────────────────────────────────── */
-.release-list{
-  display:flex;flex-direction:column;
-  padding-block:clamp(2.5rem,6vw,5rem);
-}
-/* Reusable per-release block. Duplicate <article class="release"> to add a new entry. */
-.release{
-  padding-block:clamp(2.5rem,5vw,4rem);
-  border-bottom:1px solid var(--rule);
-}
-.release:last-child{border-bottom:none}
-.release__dateline{
-  display:flex;align-items:center;gap:.6rem;
-  font-family:var(--ff-mono);font-size:.75rem;letter-spacing:.02em;
-  color:var(--ink-3);text-transform:uppercase;
-  margin-bottom:1rem;
-}
-.release__dateline::after{
-  content:'';flex:1;height:1px;background:var(--rule);
-}
-.release__headline{
-  font-size:var(--step-3);font-weight:700;
-  line-height:1.08;letter-spacing:-.03em;
-  margin-bottom:.75rem;
-}
-.release__headline em{font-style:italic;font-weight:600;color:var(--accent)}
-.release__lede{
-  font-family:var(--ff-serif);
-  font-size:var(--step-2);
-  line-height:1.45;color:var(--ink-2);
-  margin-bottom:2rem;max-width:60ch;
-}
-
-/* ─── REUSABLE HERO VISUAL ───────────────────────────────── */
-/* A typographic mark on a linen tile with an amber-accent underline.
-   Reusable across releases — swap .release-hero__mark text per entry. */
-.release-hero{
+/* ─── HERO VISUAL ────────────────────────────────────────── */
+.article-hero{
   position:relative;
   background:var(--linen);
   border:1px solid var(--rule);
   border-radius:14px;
   padding:clamp(2.5rem,7vw,5rem) clamp(1.5rem,4vw,3rem);
-  margin-bottom:2.5rem;
+  margin:clamp(2.5rem,6vw,4rem) 0;
   overflow:hidden;
   isolation:isolate;
 }
-.release-hero__grid{
+.article-hero__grid{
   position:absolute;inset:0;
   background-image:
     linear-gradient(var(--rule) 1px, transparent 1px),
@@ -296,7 +257,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 50%, #000 0%, transparent 75%);
   pointer-events:none;
 }
-.release-hero__mark{
+.article-hero__mark{
   position:relative;
   font-family:var(--ff-serif);
   font-style:italic;
@@ -309,14 +270,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   display:inline-block;
   width:100%;
 }
-.release-hero__mark::after{
+.article-hero__mark::after{
   content:'';display:block;
   width:clamp(60px,10vw,120px);height:3px;
   background:var(--accent);
   margin:clamp(1rem,2vw,1.5rem) auto 0;
   border-radius:2px;
 }
-.release-hero__caption{
+.article-hero__caption{
   position:relative;
   margin-top:1.25rem;
   font-family:var(--ff-mono);font-size:.75rem;
@@ -324,46 +285,117 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   color:var(--ink-3);text-align:center;
 }
 
-/* ─── RELEASE NARRATIVE ──────────────────────────────────── */
-.release__body{font-size:var(--step-1);line-height:1.7;color:var(--ink-2)}
-.release__body p{margin:0 0 1.1rem;max-width:60ch}
-.release__body p:last-child{margin-bottom:0}
-.release__body strong{color:var(--ink);font-weight:600}
-
-.release__section{margin-top:2.5rem}
-.release__section-title{
+/* ─── ARTICLE BODY ───────────────────────────────────────── */
+.article{
+  padding-block:clamp(2.5rem,6vw,4.5rem);
+  font-size:var(--step-1);
+  line-height:1.7;
+  color:var(--ink-2);
+}
+.article h2{
   font-size:var(--step-2);font-weight:700;
   color:var(--ink);letter-spacing:-.02em;
-  margin-bottom:.75rem;
+  margin:3rem 0 .9rem;
 }
-.release__section p{color:var(--ink-2);max-width:60ch;margin:0 0 .9rem}
+.article h2:first-child{margin-top:0}
+.article h3{
+  font-size:1rem;font-weight:700;color:var(--ink);
+  margin:1.75rem 0 .6rem;
+}
+.article p{margin:0 0 1.1rem;max-width:65ch}
+.article p strong{color:var(--ink);font-weight:600}
+.article ul,.article ol{margin:0 0 1.1rem;padding-left:1.3rem;max-width:65ch}
+.article li{margin-bottom:.5rem}
+.article li strong{color:var(--ink);font-weight:600}
+.article a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.article a:hover{text-decoration-thickness:2px}
+.article code{
+  font-family:var(--ff-mono);font-size:.85em;
+  background:var(--linen);border:1px solid var(--rule);
+  padding:.1em .35em;border-radius:5px;
+}
+.article blockquote{
+  margin:1.75rem 0;
+  padding:1.1rem 1.4rem;
+  border-left:3px solid var(--accent);
+  background:var(--linen);
+  border-radius:0 10px 10px 0;
+  font-family:var(--ff-serif);font-size:var(--step-2);
+  font-style:italic;line-height:1.45;color:var(--ink);
+}
+.article blockquote footer{
+  margin-top:.75rem;
+  font-family:var(--ff-display);font-size:.85rem;
+  font-style:normal;color:var(--ink-3);
+}
 
-.release__availability{
-  margin-top:2.5rem;
-  padding:1.25rem 1.35rem;
+/* ─── KEY TAKEAWAYS ──────────────────────────────────────── */
+.key-takeaways{
   background:var(--linen);
   border:1px solid var(--rule);
-  border-radius:10px;
-  display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;align-items:baseline;
+  border-radius:12px;
+  padding:1.5rem 1.6rem;
+  margin:2rem 0;
 }
-.release__availability-label{
-  font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--ink-3);
+.key-takeaways__title{
+  font-family:var(--ff-mono);font-size:.7rem;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:.9rem;
 }
-.release__availability-value{
-  font-size:.9375rem;color:var(--ink);
-}
+.key-takeaways ul{margin:0;padding-left:1.15rem;color:var(--ink-2);max-width:none}
+.key-takeaways li{margin-bottom:.5rem;color:var(--ink-2)}
+.key-takeaways li:last-child{margin-bottom:0}
+.key-takeaways li::marker{color:var(--accent)}
 
-/* ─── EMPTY STATE (used if no releases yet) ──────────────── */
-.release-list__empty{
-  padding:clamp(3rem,8vw,6rem) 0;
-  text-align:center;color:var(--ink-2);
-  font-family:var(--ff-serif);font-style:italic;
-  font-size:var(--step-2);
+/* ─── FAQ ────────────────────────────────────────────────── */
+.article-faq{margin-top:3rem;border-top:1px solid var(--rule)}
+.article-faq h2{margin-top:2.5rem}
+.article-faq__item{padding:1.1rem 0;border-bottom:1px solid var(--rule)}
+.article-faq__item h3{margin:0 0 .5rem;font-size:1rem}
+.article-faq__item p{margin:0;max-width:65ch}
+
+/* ─── READ NEXT ──────────────────────────────────────────── */
+.read-next{
+  margin-top:3rem;
+  padding:1.5rem 1.6rem;
+  border:1px solid var(--rule);
+  border-radius:12px;
+  background:var(--surface);
 }
+.read-next__title{
+  font-family:var(--ff-mono);font-size:.7rem;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:1rem;
+}
+.read-next ul{list-style:none;padding:0;margin:0}
+.read-next li{margin-bottom:.85rem;padding-left:1.25rem;position:relative}
+.read-next li:last-child{margin-bottom:0}
+.read-next li::before{content:'→';position:absolute;left:0;color:var(--accent);font-weight:600}
+.read-next a{color:var(--ink);font-weight:600;text-decoration:none}
+.read-next a:hover{color:var(--accent)}
+.read-next li span{display:block;font-size:.85rem;color:var(--ink-2);font-weight:400}
+.read-next li span.soon{font-style:italic}
+
+/* ─── CTA ────────────────────────────────────────────────── */
+.article-cta{
+  margin-top:3rem;
+  padding:1.6rem 1.6rem;
+  background:var(--ink);color:var(--surface);
+  border-radius:12px;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:1.25rem;flex-wrap:wrap;
+}
+.article-cta p{color:var(--surface);margin:0;font-weight:600;font-size:1rem}
+.article-cta a{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.6rem 1.2rem;background:var(--accent);color:#fff!important;
+  border-radius:8px;font-weight:600;text-decoration:none;
+  transition:opacity .15s,transform .1s;
+}
+.article-cta a:hover{opacity:.88;transform:translateY(-1px)}
 
 /* ─── FOOTER (mirrors the site) ──────────────────────────── */
-.footer{padding-block:1.75rem;border-top:1px solid var(--rule)}
+.footer{padding-block:1.75rem;border-top:1px solid var(--rule);margin-top:clamp(4rem,9vw,7rem)}
 .footer__logo-svg-bg  { fill: #FAFAF8; }
 .footer__logo-svg-path { stroke: #111110; }
 .footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.875rem}
@@ -397,13 +429,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   .nav__hamburger{display:flex}
   .footer__inner{flex-direction:column;align-items:flex-start;gap:1.25rem}
   .footer__links{gap:1rem}
+  .article-cta{flex-direction:column;align-items:flex-start}
 }
 
 /* ─── REDUCED MOTION ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .nav,.nav__signup,.nav__mobile-signup,.nav__hamburger span,
-  .nav__drawer,.theme-toggle,.footer__links a,.nav__links a,.nav__login{
+  .nav__drawer,.theme-toggle,.footer__links a,.nav__links a,.nav__login,
+  .article-cta a{
     transition:none!important;animation:none!important;
   }
 }
@@ -412,12 +446,86 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "@id": "https://maskin.io/changelog/#page",
-  "name": "Changelog",
-  "url": "https://maskin.io/changelog/",
-  "description": "Every Maskin release, newest first.",
-  "isPartOf": { "@type": "WebSite", "name": "Maskin", "url": "https://maskin.io/" }
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/what-is-mcp-native/#post",
+      "headline": "What is MCP-native? Why Maskin is built on the Model Context Protocol",
+      "name": "What is MCP-native?",
+      "description": "MCP-native means the Model Context Protocol is the foundation of how an agent workspace connects models, tools, and data. Here's why Maskin is built around MCP — not bolted on — and what bring-your-own-model makes possible.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/what-is-mcp-native/",
+      "mainEntityOfPage": "https://maskin.io/docs/what-is-mcp-native/",
+      "image": "https://maskin.io/og-image.png",
+      "datePublished": "2026-08-21",
+      "dateModified": "2026-08-21",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "What is MCP-native?",
+          "item": "https://maskin.io/docs/what-is-mcp-native/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need to be an MCP expert to use Maskin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. MCP is how the workspace connects under the hood; admins just connect tools and pick a model."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which models work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Claude, Codex, or any model reachable over the protocol — including your own sandboxed or custom models."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is MCP tied to one vendor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — it is an open protocol, which is exactly what makes bring-your-own-model possible."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -437,7 +545,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <li><a href="/#use-cases">Use cases</a></li>
       <li><a href="/#method">How it works</a></li>
       <li><a href="/#pricing">Pricing</a></li>
-      <li><a href="/changelog/" aria-current="page">Changelog</a></li>
       <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
       <li><a class="nav__login" href="/login">Log in</a></li>
       <li><a class="nav__signup" href="/signup">Sign up</a></li>
@@ -455,111 +562,107 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <li><a href="/#use-cases">Use cases</a></li>
     <li><a href="/#method">How it works</a></li>
     <li><a href="/#pricing">Pricing</a></li>
-    <li><a href="/changelog/" aria-current="page">Changelog</a></li>
     <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
     <li><a href="/login">Log in</a></li>
   </ul>
   <a class="nav__drawer-cta" href="/signup">Sign up free →</a>
 </nav>
 
-<!-- PAGE HEADER -->
+<!-- ARTICLE HEADER -->
 <header class="page-header">
   <div class="wrap">
-    <div class="page-header__eyebrow">Changelog</div>
-    <h1 class="page-header__title">What we <em>shipped</em>.</h1>
-    <p class="page-header__sub">Every Maskin release, newest first. Product notes from a workspace where humans and agents actually work together.</p>
+    <div class="page-header__eyebrow">Learn · MCP &amp; agents</div>
+    <h1 class="page-header__title">What is <em>MCP-native</em>?</h1>
+    <p class="page-header__sub">The Model Context Protocol (MCP) is the open protocol for telling an AI model what tools and data are available. An MCP-native system is built around MCP from the start — the protocol is the foundation of how agents connect to models, tools, and memory.</p>
   </div>
 </header>
 
-<!--
-  RELEASE LIST — newest first.
+<article class="wrap wrap--reading">
 
-  To add a new release: copy the <article class="release">…</article> block below,
-  paste it above the previous entries, and edit its content. No rebuild required —
-  build.sh only substitutes the PostHog key. The block is entirely static HTML.
+  <div class="article-hero" role="img" aria-label="MCP-native — models, tools, and data connected over the Model Context Protocol">
+    <div class="article-hero__grid" aria-hidden="true"></div>
+    <span class="article-hero__mark">MCP-native.</span>
+    <div class="article-hero__caption">Model Context Protocol · Open wire protocol</div>
+  </div>
 
-  The <article> block contains, in order:
-    - <div class="release__dateline"> — release date (uppercase, mono)
-    - <h2 class="release__headline"> — headline
-    - <p class="release__lede">      — one-line lede (serif)
-    - <div class="release-hero">     — reusable hero visual (typographic mark
-                                       on a linen tile with amber underline)
-    - <div class="release__body">    — narrative + supporting sections
-    - <div class="release__availability"> — where and when it's available
--->
-<section class="release-list">
-  <div class="wrap wrap--reading">
+  <div class="article">
 
-    <!-- ═══════════════ RELEASE: Maskin is live (2026-04-14) ═══════════════ -->
-    <article class="release" id="maskin-is-live">
-      <div class="release__dateline">
-        <time datetime="2026-04-14">April 14, 2026</time>
+    <div class="key-takeaways" aria-label="Key takeaways">
+      <p class="key-takeaways__title">Key takeaways</p>
+      <ul>
+        <li>MCP is the emerging open wire protocol for AI tool calling — the standard way a model learns what it can use.</li>
+        <li>MCP-native means Maskin's agent stack and model integrations are built around it, not bolted on.</li>
+        <li>It makes bring-your-own-model real: Claude, Codex, or a custom model.</li>
+        <li>The architecture is composable infrastructure — typed objects, event-driven agents — not full company simulation.</li>
+      </ul>
+    </div>
+
+    <h2>What MCP is</h2>
+    <p>MCP standardises how models discover and call tools, and how tools feed context back. Before MCP, every AI integration was a bespoke pipe. With MCP, an agent can be handed a list of typed tools and data sources and reason over them on the same contract. That is why anything &ldquo;MCP-native&rdquo; matters: the protocol is the substrate, not the afterthought.</p>
+
+    <h2>What &ldquo;MCP-native&rdquo; means for an agent workspace</h2>
+    <p>For an agent workspace, MCP-native is a property of the whole stack:</p>
+    <ul>
+      <li><strong>Agents connect via MCP</strong> to the tools your team already uses — Slack, Linear, GitHub, Intercom, PostHog, HubSpot.</li>
+      <li><strong>The object model is typed and machine-readable</strong> — insights, bets, tasks are not free-form notes; agents can read, create, and transition them.</li>
+      <li><strong>Triggers are event-driven</strong> — work enters when a signal changes, not when someone asks.</li>
+    </ul>
+
+    <h2>Bring your own model</h2>
+    <p>Because the workspace is model-agnostic at the protocol layer, you decide which model runs your agents. Claude for reasoning-heavy shaping, Codex or a local model for constrained tasks, your fine-tuned model for domain work — all inside the same workspace, all on the same objects. Closed SaaS cannot offer this. See <a href="/docs/llm/">how model providers and keys work</a>.</p>
+
+    <h2>Typed objects and event-driven agents: the composable-infrastructure camp</h2>
+    <p>The agent-workspace market split into two camps: <strong>full company simulation</strong> (an org chart of AI employees that demos beautifully) and <strong>composable infrastructure</strong> (typed objects, event-driven triggers, agents that fire when data changes and are safe to run in production).</p>
+    <p>Maskin is built in the composable camp.</p>
+    <blockquote>
+      &ldquo;a prompt is not a job — work is a loop&rdquo;
+      <footer>— Sebastian Krumhausen, founder of Maskin</footer>
+    </blockquote>
+    <p>A prompt produces text; a loop produces shipped, validated outcomes.</p>
+
+    <h2>Why composable infrastructure wins in production</h2>
+    <ul>
+      <li><strong>Determinism</strong> — an event fires an agent; the agent acts; the outcome is a state change you can inspect.</li>
+      <li><strong>Safety</strong> — agents run in sandboxed sessions, not against your private keys.</li>
+      <li><strong>Scale</strong> — a small team runs many agents because each one owns a narrow, well-defined role.</li>
+    </ul>
+
+    <h2>Getting started</h2>
+    <p>Self-host the open-source repo (Apache 2.0), connect your model provider, and pick a marketplace loop — customer feedback, market signals, churn, lost deals, or competitive intelligence. The <a href="/docs/get-started/self-hosted/">self-hosted setup guide</a> walks through it end to end, and the <a href="/docs/mcp-tools/">MCP tools reference</a> covers the full agent surface.</p>
+
+    <div class="article-cta">
+      <p>Run the workspace on the protocol you already know.</p>
+      <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub →</a>
+    </div>
+
+    <div class="article-faq">
+      <h2>FAQ</h2>
+      <div class="article-faq__item">
+        <h3>Do I need to be an MCP expert to use Maskin?</h3>
+        <p>No. MCP is how the workspace connects under the hood; admins just connect tools and pick a model.</p>
       </div>
-
-      <h2 class="release__headline">Maskin is <em>live</em>.</h2>
-
-      <p class="release__lede">
-        An open-source workspace where product teams and AI agents share the same insights, bets, and work.
-      </p>
-
-      <div class="release-hero" role="img" aria-label="Maskin is live — hero visual">
-        <div class="release-hero__grid" aria-hidden="true"></div>
-        <span class="release-hero__mark">Maskin is live.</span>
-        <div class="release-hero__caption">v1 · April 14, 2026</div>
+      <div class="article-faq__item">
+        <h3>Which models work?</h3>
+        <p>Claude, Codex, or any model reachable over the protocol — including your own sandboxed or custom models.</p>
       </div>
-
-      <div class="release__body">
-        <p>
-          Maskin isn't a chatbot bolted onto a tool — it's a place where an agent spots a signal cluster overnight, a PM shapes it into a bet in the morning, another agent breaks it into tasks, and a designer picks up the prototype. Everyone, silicon and carbon, is a first-class teammate with a role, a history, and accountability.
-        </p>
-        <p>This first release is everything it took to open the doors.</p>
-
-        <div class="release__section">
-          <h3 class="release__section-title">The primitives</h3>
-          <p>
-            Insights, Bets, and Tasks are the shared objects humans and agents both read and write. Signal becomes a bet; a bet becomes work; work ships — and the whole trail stays visible to the team.
-          </p>
-        </div>
-
-        <div class="release__section">
-          <h3 class="release__section-title">Start from a template, not an empty page</h3>
-          <p>
-            Product Development, Growth, and Outbound Sales templates scaffold a workspace with pre-configured agents, triggers, and object types, so a new team goes from zero to a working setup in one prompt.
-          </p>
-        </div>
-
-        <div class="release__section">
-          <h3 class="release__section-title">Agents that run real sessions</h3>
-          <p>
-            Agent work runs in per-session microVM isolation on our own infrastructure — hypervisor-level separation, sub-second starts, and API keys that never enter the sandbox. The runtime holds up under real concurrency instead of falling over on the first credit or timeout failure.
-          </p>
-        </div>
-
-        <div class="release__section">
-          <h3 class="release__section-title">A workspace you can act from</h3>
-          <p>
-            Notifications carry direct links and actions, failed sessions can be retried, and a &ldquo;what's happening now&rdquo; view shows work in flight — so the team can see what needs them and move, instead of watching an opaque feed.
-          </p>
-        </div>
-
-        <div class="release__section">
-          <h3 class="release__section-title">Fixes &amp; polish</h3>
-          <p>
-            Launch week also closed a long list of first-impression friction: CSV import parsing, object and notification links, keyboard shortcuts, streaming indicators in chat, scroll and layout fixes across the object pages, and workspace-selector visibility.
-          </p>
-        </div>
+      <div class="article-faq__item">
+        <h3>Is MCP tied to one vendor?</h3>
+        <p>No — it is an open protocol, which is exactly what makes bring-your-own-model possible.</p>
       </div>
+    </div>
 
-      <div class="release__availability">
-        <span class="release__availability-label">Availability</span>
-        <span class="release__availability-value">
-          Open-source and self-hostable today. Maskin Cloud is on the <a href="/signup" style="color:var(--accent);text-decoration:underline;text-underline-offset:2px">waitlist</a>.
-        </span>
-      </div>
-    </article>
+    <nav class="read-next" aria-label="Read next">
+      <p class="read-next__title">Read next</p>
+      <ul>
+        <li><a href="/docs/what-is-an-agentic-workspace/">What is an AI-native agentic workspace?</a><span>The foundation of the category — how humans and agents share one closed loop.</span></li>
+        <li><a href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace: bring your own model</a><span>Run the loop on your own infrastructure, with your own model.</span></li>
+        <li><a href="/docs/ai-product-management-tool/">AI product management tool: not a task tracker</a><span>Why the object of work is a bet, not a ticket.</span></li>
+        <li><a href="/docs/bet-based-product-planning/">Bet-based product planning: the anti-backlog doctrine</a><span>The loop Maskin runs, mapped to Shape Up.</span></li>
+      </ul>
+    </nav>
 
   </div>
-</section>
+</article>
 
 <!-- FOOTER -->
 <footer class="footer">
