@@ -34,12 +34,7 @@
 <!-- PostHog analytics. Autocapture (CTA clicks), pageviews, and scroll depth are on by default.
      The key below is replaced at build time by the POSTHOG_PROJECT_KEY environment variable. -->
 <script>
-  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==e&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags reset get_distinct_id get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getUserSession createPersonProfile done".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__svInitTracked=!0,e.__isPostHog=!0)}(document,window.posthog||[]);
-  posthog.init('POSTHOG_PROJECT_KEY', {
-    api_host: 'https://eu.i.posthog.com',
-    person_profiles: 'identified_only',
-    defaults: '2025-05-24'
-  });
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){u=u;var e="posthog";return"posthog"!==e&&(e+="."+a),u",u.toString=function(){},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags reset get_distinct_id get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException capturePageView captureTraceMetric captureTraceFeedback".split(" "),n=0;n<o.length;n++)a="posthog",u[a]=function(){u.push([a].concat(Array.prototype.slice.call(arguments)))},u._i.push([i,s,a])},e.__SV=1,window.posthog.push=function(){u.push(arguments)}}})(document,window);
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,7 +102,7 @@
           "name": "Do I need to be an MCP expert to use Maskin?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The MCP layer is what makes it easy — the opposite of a product that demands protocol knowledge from every user. No, the answer is no."
+            "text": "No. MCP is how the workspace connects under the hood, not something you have to operate day to day. Your administrator connects the tools your team already uses and picks a model, and agents work through the unified typed backend from there."
           }
         },
         {
@@ -115,7 +110,7 @@
           "name": "Which models work with Maskin?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Claude, Codex, or any model reachable over the protocol — including a local model or your own sandboxed, custom, or fine-tuned model."
+            "text": "Claude, Codex, or any model reachable over the protocol — including a local model or your own sandboxed, custom, or fine-tuned models. Because the workspace is model-agnostic at the protocol layer, the model is a configuration choice rather than a fixed part of the product."
           }
         },
         {
@@ -123,7 +118,7 @@
           "name": "Is MCP tied to one vendor?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. MCP is an open protocol, not a proprietary API."
+            "text": "No. MCP is an open protocol, not a proprietary API. Building around an open, portable contract is the difference between a product that offers model choice as a convenience and one that structurally depends on it."
           }
         },
         {
@@ -131,7 +126,7 @@
           "name": "What is the difference between MCP-native and just using MCP?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "MCP-native means the product is constructed around the protocol from the start, not treated as a bolt-on."
+            "text": "A product can use MCP and still treat it as a bolt-on. An MCP-native product is constructed around the protocol from the start: agents, tools, triggers, and the typed object backend all assume MCP as the integration surface."
           }
         },
         {
@@ -139,7 +134,7 @@
           "name": "Is the composable-infrastructure approach safe to run in production?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, by design. The failure surface is small, narrow, and auditable."
+            "text": "Yes. The failure surface is small, narrow, and auditable, which is the property teams need before putting agents on real work."
           }
         }
       ]
@@ -151,18 +146,102 @@
 </head>
 <body>
 
-<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg></a><a class="docnav__logo-text" href="/">Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li></ul></div></nav>
 
-<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a></div></noscript>
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
 <div class="wrap doc-layout">
   <main class="doc-content">
     <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / What is MCP-native?</p>
     <p class="eyebrow">Article</p>
     <h1>What is MCP-native?</h1>
     <p class="lead">MCP-native means the Model Context Protocol is the foundation of how an agent workspace connects models, tools, and data.</p>
-    <p>Here is the body of this page.</p>
+    <p>An MCP-native workspace is built around the Model Context Protocol (MCP) from the first line of code — the protocol is the substrate on which agents connect to models, tools, and memory, not an integration bolted on afterward.</p>
+
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true"></div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul>
+          <li>MCP is the open protocol that standardizes how an AI model discovers and calls tools and data sources.</li>
+          <li>MCP-native means the protocol is the foundation of the product, not an add-on.</li>
+          <li>Maskin&rsquo;s MCP server is the connective tissue connecting agents, models, and your existing tools.</li>
+          <li>The architecture is composable: typed objects, event-driven triggers, and sandboxed agent sessions.</li>
+          <li>It&rsquo;s the anti-lock-in move — an open protocol keeps models, tools, and infrastructure portable.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>What is MCP (the Model Context Protocol)?</h2>
+    <p>MCP is an open protocol that standardizes how an AI model discovers and calls tools, and how tools feed context back. Before MCP, every AI integration was a bespoke pipe: a custom connector per tool, per vendor, per model. With MCP, an agent can be handed a list of typed tools and data sources and reason over them on a single contract. The model asks &ldquo;what can I use?&rdquo; and the protocol answers with a machine-readable description of available tools — then the agent calls them the same way, regardless of which model or which tool is on the other end.</p>
+    <p>The practical effect is that integration work collapses. Instead of N tools &times; M model connectors, you build one MCP server and any MCP-aware client can use it. That is why being &ldquo;MCP-native&rdquo; is not a cosmetic claim: when the protocol is the substrate rather than a wrapper, the whole stack inherits its portability, which is exactly what makes bring-your-own-model possible in the first place.</p>
+
+    <h2>What &ldquo;MCP-native&rdquo; means architecturally for Maskin</h2>
+    <p>For an agent workspace, MCP-native is a property of the whole stack, not a single module. In Maskin&rsquo;s case the architecture is built around it in four concrete ways:</p>
+    <ul>
+      <li><strong>Agents connect to tools over MCP.</strong> The MCP server (<code>packages/mcp</code>) speaks stdio and HTTP, and it is how teams reach tools already in play — Slack, Linear, GitHub, Intercom/HubSpot, Gmail, Google Calendar, PostHog. Your stack stays wired in.</li>
+      <li><strong>The object model is typed.</strong> Insights, bets, and tasks are all <code>objects</code> in one schema, connected by typed relationships and served to the UI and to agents through the same API. Agents don&rsquo;t parse free-form notes; they read, create, and transition first-class typed objects.</li>
+      <li><strong>Triggers are event-driven.</strong> A <code>trigger-runner</code> fires agents on cron schedules or on data changes. Work enters when a signal changes, not only when a human happens to ask.</li>
+      <li><strong>Agents run in sandboxed sessions.</strong> The runtime spawns ephemeral Docker containers running the Claude Code CLI (the default) or the Codex CLI, plus a browser-sidecar image for web tasks. Isolation is a design decision.</li>
+    </ul>
+
+    <h2>Bring your own model: the open-protocol payoff</h2>
+    <p>Because the workspace is model-agnostic at the protocol layer, the model is decoupled from the platform. You decide which model runs your agents — Claude for reasoning-heavy shaping, Codex or a local model for constrained tasks, your own fine-tuned model for domain work — all inside the same workspace, all operating on the same typed objects. See <a href="/docs/llm/">how model providers and keys work</a>.</p>
+    <p>This is the clearest way to see what an open protocol buys. A closed, vendor-hosted workspace couples the product to a single model family because the integration is bespoke. MCP-native inverts that: swapping the model under an agent is a configuration change, not a re-platforming project.</p>
+
+    <h2>Determinism, safety, and scale</h2>
+    <p>Composability maps to three production properties:</p>
+    <ul>
+      <li><strong>Determinism.</strong> An event fires an agent; the agent acts; the outcome is a state change you can inspect in the object model and the audit trail.</li>
+      <li><strong>Safety.</strong> Agents execute in isolated Docker sessions and human promote gates bound the closed loop. The protocol defines what an agent can reach; the sandbox defines how far it can go.</li>
+      <li><strong>Scale.</strong> A small team can run many agents because each one owns a narrow, well-defined role on typed objects.</li>
+    </ul>
+
+    <h2>Getting started</h2>
+    <p>Self-host the open-source repo (Apache 2.0), connect your model provider, and pick a marketplace loop. The <a href="/docs/get-started/self-hosted/">self-hosted setup guide</a> walks through it end to end.</p>
+
+    <h2>FAQ</h2>
+    <h3>Do I need to be an MCP expert to use Maskin?</h3>
+    <p>No. MCP is how the workspace connects under the hood, not something you have to operate day to day. Your administrator connects the tools the team already uses and picks a model, and agents work through the unified typed backend from there.</p>
+    <h3>Which models work with Maskin?</h3>
+    <p>Claude, Codex, or any model reachable over the protocol — including a local model or your own sandboxed, custom, or fine-tuned models.</p>
+    <h3>Is MCP tied to one vendor?</h3>
+    <p>No. MCP is an open protocol, not a proprietary API. That independence is precisely what makes bring-your-own-model possible.</p>
+    <h3>What is the difference between MCP-native and just using MCP?</h3>
+    <p>An MCP-native product is constructed around the protocol from the start: agents, tools, triggers, and the typed object backend all assume MCP as the integration surface.</p>
+    <h3>Is the composable-infrastructure approach safe to run in production?</h3>
+    <p>Yes — more so, by design, than a full-company simulation. The failure surface is small, narrow, and auditable, which is what teams need before putting agents on real work.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+          <div class="doc-card__title">What is an agentic workspace?</div>
+          <div class="doc-card__desc">How humans and agents share one closed loop foundation.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/self-hosted-ai-workspace/">
+          <div class="doc-card__title">Self-hosted AI workspace</div>
+          <div class="doc-card__desc">Run the full loop on your own infrastructure.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/ai-product-management-tool/">
+          <div class="doc-card__title">AI product management tool</div>
+          <div class="doc-card__desc">Why the primary unit of work is a bet, not a ticket.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Self-host, bring your own model</h2>
+      <p>The workspace is model-agnostic at the protocol layer. Self-host free, or take a hosted trial and pick the model that fits your team.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
   </main>
 </div>
+
 <script src="/docs/docs.js"></script>
 </body>
 </html>
