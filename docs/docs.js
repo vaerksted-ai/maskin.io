@@ -33,6 +33,7 @@
       { label: "AI product management tool", href: "/docs/ai-product-management-tool/" },
       { label: "Bet-based product planning", href: "/docs/bet-based-product-planning/" },
       { label: "How to run bet-based planning", href: "/docs/how-to-run-bet-based-planning/", nested: true },
+      { label: "Bet vs backlog", href: "/docs/bet-vs-backlog/", nested: true },
       { label: "Self-hosted AI workspace", href: "/docs/self-hosted-ai-workspace/" },
       { label: "Open source Jira alternative", href: "/docs/open-source-jira-alternative/" }    ]}
   ];
