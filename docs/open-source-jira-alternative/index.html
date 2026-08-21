@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open source Jira alternative that actually closes the loop — Maskin</title>
+<meta name="description" content="Plane, OpenProject, and Taiga are open source Jira alternatives that keep the ticket-and-backlog model. Maskin is Apache 2.0, MCP-native, and replaces the ticket with a bet — a testable hypothesis owned jointly by humans and agents.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/open-source-jira-alternative/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/open-source-jira-alternative/">
+<meta property="og:title" content="Open source Jira alternative that actually closes the loop">
+<meta property="og:description" content="Plane, OpenProject, and Taiga are open source Jira alternatives that keep the ticket model. Maskin is Apache 2.0, MCP-native, and replaces the ticket with a bet owned jointly by humans and agents.">
+<meta property="og:image" content="https://maskin.io/og-image.png?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Open source Jira alternative that actually closes the loop">
+<meta name="twitter:description" content="Plane, OpenProject, Taiga keep the ticket model. Maskin replaces the ticket with a bet owned jointly by humans and agents. Apache 2.0, MCP-native.">
+<meta name="twitter:image" content="https://maskin.io/og-image.png?v=2">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Open source Jira alternative that actually closes the loop",
+      "name": "Open source Jira alternative that actually closes the loop",
+      "description": "Plane, OpenProject, and Taiga are open source Jira alternatives that keep the ticket-and-backlog model. Maskin is Apache 2.0, MCP-native, and replaces the ticket with a bet — a testable hypothesis owned jointly by humans and agents.",
+      "url": "https://maskin.io/docs/open-source-jira-alternative/",
+      "inLanguage": "en",
+      "datePublished": "2026-08-21",
+      "dateModified": "2026-08-21",
+      "image": ["https://maskin.io/og-image.png?v=2"],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "mainEntityOfPage": "https://maskin.io/docs/open-source-jira-alternative/",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": {
+        "@type": "Product",
+        "name": "Maskin"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Open source Jira alternative",
+          "item": "https://maskin.io/docs/open-source-jira-alternative/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can Maskin replace Jira or Linear?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not as a drop-in task tracker. It uses a different object model — bets and loops instead of tickets and backlogs — and it integrates with the tools you already run rather than asking you to move everything in. If you need a ticket queue, keep your tracker. If your pain with Linear specifically is per-seat cost plus a closed AI layer, an AI-native agentic workspace sitting alongside your tracker will do more than replacing Linear with another queue."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why isn't Plane, OpenProject, or Taiga enough?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Those are solid open-source task trackers that solve cost and self-hosting around the ticket model. What they don't solve is the loop: none turns raw signal into a testable bet that a human and an agent own together, and none validates the outcome against a win criterion automatically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does open source really matter for an AI tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, more than for normal SaaS. The tool decides which agents see what, how loops are bounded, and what happens to your data. Apache 2.0 means you can read the behaviour, modify it, and run it commercially — a permissive licence, not a look-but-don't-touch one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does it cost to self-host?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nothing for the software — self-host is always free. You pay only for your own infrastructure and model usage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I try it before committing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Self-host is always free, and hosted starts at $20 per seat per month if you'd rather evaluate without running infrastructure."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="is-active" href="/docs/open-source-jira-alternative/" aria-current="page">Open source Jira alternative</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Open source Jira alternative that actually closes the loop</p>
+    <p class="eyebrow">Article · Comparison</p>
+    <h1>Open source Jira alternative that actually closes the loop</h1>
+    <p class="lead">The <strong>open source Jira alternative</strong> most teams actually want isn&rsquo;t another ticket board &mdash; it&rsquo;s a workspace where the work closes. If you&rsquo;ve searched &ldquo;open source Jira alternative,&rdquo; you&rsquo;re typically after two things at once: escaping the incumbents&rsquo; rising per-seat cost and lock-in, and getting a tool your team can run differently, not just more cheaply. The open-source options that rank for that search &mdash; <strong>Plane, OpenProject, and Taiga</strong> &mdash; deliver the first cleanly. They are self-hosted task trackers: essentially the same ticket-and-backlog object model Jira built, minus the per-seat bill. <strong>Maskin</strong> is a different kind of answer: an Apache-2.0, MCP-native workspace where the unit of work is a <strong>bet</strong> &mdash; a testable hypothesis that runs from raw signal to a shipped, validated outcome, owned jointly by a human and agents. That closed loop is what separates Maskin both from the open-source trackers and from the incumbents&rsquo; AI layers.</p>
+
+  <div class="callout callout--muted">
+    <div class="callout__icon" aria-hidden="true">&#10003;</div>
+    <div class="callout__body"><strong>Key takeaways</strong>
+      <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+        <li>Plane, OpenProject, and Taiga are capable open-source task trackers, but they preserve Jira&rsquo;s ticket-and-backlog object model.</li>
+        <li>Jira, Linear, Notion, Asana, monday, Coda, and Smartsheet bolt AI summaries and agents onto that same ticket model; none turns raw insight into a testable bet.</li>
+        <li>Maskin&rsquo;s object of work is a bet: insight &rarr; tasks &rarr; shipped &rarr; validated, owned jointly by humans and agents.</li>
+        <li>It&rsquo;s Apache 2.0, MCP-native, and self-hostable &mdash; self-host is always free.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Why &ldquo;open source alone&rdquo; isn&rsquo;t a strategy</h2>
+  <p>The alternatives that currently own the &ldquo;open source Jira alternative&rdquo; search results &mdash; Plane, OpenProject, and Taiga &mdash; are earnest, self-hostable project trackers. Their appeal is genuine: no per-seat pricing, your data on your own server, and a codebase you can audit. But they measure themselves against Jira and Linear on the same axis: how well they manage tickets. The unit of work underneath is still a ticket and a backlog &mdash; and none of them runs the closed-loop bet structure that is the actual case for switching. AI, where it exists, doesn&rsquo;t change that underlying model.</p>
+  <p>Open source is a license, not a product decision. A permissively licensed clone of a ticket queue reproduces a ticket queue&rsquo;s ceiling. The question a team should ask isn&rsquo;t &ldquo;can I self-host it?&rdquo; &mdash; it&rsquo;s &ldquo;what unit of work does the tool actually run on?&rdquo; That question is where the real fork in the road sits.</p>
+
+  <h2>The incumbents all moved toward agents &mdash; on top of tickets</h2>
+  <p>The incumbents leading the <a href="/docs/ai-product-management-tool/">AI product management tool</a> space spent 2026 moving toward agent orchestration. Atlassian opened its <strong>Teamwork Graph</strong> as an agent context layer via <strong>Rovo</strong>, reporting adoption across a large share of its enterprise cloud customer base, with agentic automations up 7x in six months (Atlassian, Team &rsquo;26, May 2026). <strong>Notion</strong> shipped Custom Agents in February 2026 and a Developer Platform in May 2026 so agents can run end-to-end across tools (Notion via TechCrunch, May 2026). <strong>Linear</strong> released Linear Agent in March 2026, grounded in roadmap, code, and issues (Linear changelog, March 2026).</p>
+  <p>This is strong external validation of the shared human-plus-AI workspace thesis &mdash; the same thesis Maskin is built on. But watch what each did not change: every one built on top of the task tracker it already owned. The object model is still the ticket. The AI describes and extrapolates from a backlog; it doesn&rsquo;t carry a decision from insight to validated outcome. That closed loop is the open space.</p>
+
+  <h2>The honest cut: a bet object, not a ticket</h2>
+  <p>Jira, Linear, and the open-source trackers model a backlog &mdash; a queue of tickets with assignees and priorities. Maskin models a learning loop, and the difference is structural, not cosmetic:</p>
+  <ol>
+    <li><strong>Signal arrives.</strong> Feedback, churn risk, market moves, and competitive shifts land continuously from Slack, Intercom, PostHog, and HubSpot.</li>
+    <li><strong>Raw signal becomes a bet.</strong> A testable hypothesis with a clear win condition, shaped from signal and owned by a human and agents together.</li>
+    <li><strong>The work runs.</strong> Tasks execute &mdash; by humans and agents &mdash; each with the context it needs.</li>
+    <li><strong>It ships and validates.</strong> When the bet closes, the outcome is measured against the win condition and the people who asked are notified.</li>
+    <li><strong>The loop rules.</strong> Validated bets inform the next set. The product of work isn&rsquo;t a ticket that dies in a backlog; it&rsquo;s a decision that earns its keep.</li>
+  </ol>
+  <p>This is the closed-loop pattern the industry now calls loop engineering &mdash; expressed in Maskin as first-class workspace objects a team configures, not code a developer wires. It&rsquo;s why agents run on triggers and events rather than sitting as a chat box next to a board: the loop is bounded by close conditions and human promote gates, not an open-ended back-and-forth (Maskin architecture, 2026). For the full doctrine behind planning in bets rather than backlogs, see the companion piece on <a href="/docs/bet-based-product-planning/">bet-based product planning</a>.</p>
+
+  <h2>How Maskin compares: a closed loop vs the open-source trackers</h2>
+  <p>Plane, OpenProject, and Taiga each keep a variant of the ticket; Maskin replaces the ticket with the bet, and treats every object in the workspace as an API endpoint. The column that matters is the object model.</p>
+  <table>
+    <thead>
+      <tr><th></th><th>Maskin</th><th>Plane</th><th>OpenProject</th><th>Taiga</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Object model</strong></td><td>Bet + loop (insight &rarr; task &rarr; validated)</td><td>Ticket / issue + backlog</td><td>Ticket / issue + backlog</td><td>User story / ticket + backlog</td></tr>
+      <tr><td><strong>Self-host</strong></td><td>Yes &mdash; self-host always free</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td><strong>License</strong></td><td>Apache 2.0</td><td>Open source</td><td>Open source</td><td>Open source</td></tr>
+      <tr><td><strong>Closed loop</strong></td><td>Yes &mdash; bounded, human-gated, with close conditions</td><td>No</td><td>No</td><td>No</td></tr>
+      <tr><td><strong>MCP-native</strong></td><td>Yes &mdash; everything is an API</td><td>No</td><td>No</td><td>No</td></tr>
+    </tbody>
+  </table>
+  <p>The choice among them comes down to whether you want to run the same shape of work more cheaply, or change the shape of the work itself. If the team&rsquo;s job is &ldquo;triage, track, and close tickets,&rdquo; you don&rsquo;t need a closed loop &mdash; you need a better ticket tool, and one of the open-source trackers is probably the answer. If the job is &ldquo;turn signal into shipped, validated outcomes with agents,&rdquo; that&rsquo;s the loop no ticket model expresses. That shape of work &mdash; where agents and humans share a typed object model &mdash; is what we call an <a href="/docs/what-is-an-agentic-workspace/">AI-native agentic workspace</a>.</p>
+
+  <h2>Where the AI layer actually sits &mdash; and why it matters for data</h2>
+  <p>In a task tracker with a summariser, the object model never changes: the AI reads history and drafts a status. In Maskin, agents are part of the loop, which changes where your data flows in a material way:</p>
+  <ul>
+    <li><strong>Triggers bring signal in</strong> &mdash; community, CRM, support, and competitor streams &mdash; on a schedule, not when a human remembers.</li>
+    <li><strong>Marketplace loops wire the agents they need</strong> &mdash; customer feedback, market signals, churn-and-expansion, lost-deals-to-roadmap, competitive intelligence.</li>
+    <li><strong>Human judgement gates decisions.</strong> Agents bring the signal; humans bring judgment. The loop stays bounded, with people pulled in only at the taste points &mdash; the vision is that a small team keeps the judgement while a fleet of agents does the closing (Maskin vision, 2026, ratified 2026-08-21).</li>
+    <li><strong>Validation is built in.</strong> When something ships, the outcome is measured and the requester is notified.</li>
+  </ul>
+  <p>Because the unit of work is a bet with a condition to measure against, auditability means something concrete: you can see what a bet claimed, what it shipped, and whether the claim held. That is a different &mdash; and stronger &mdash; answer to &ldquo;what did the AI actually do?&rdquo; than a changelog sitting next to a ticket.</p>
+
+  <h2>Open source on your terms</h2>
+  <p>Maskin is Apache 2.0, so nothing about the loop&rsquo;s behaviour is a black box: you can read the code, self-host it, and audit how agents are wired in. It is MCP-native, so the connectors aren&rsquo;t single-purpose pipes either &mdash; the UI and the agents both talk to one unified object model over one API (Maskin architecture, 2026). Self-host is always free. If you&rsquo;d rather not run infrastructure, take a hosted trial while you evaluate; hosted plans offer EU and US data residency (<a href="https://maskin.io">maskin.io</a>, 2026). For the full self-host story, see <a href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a>.</p>
+
+  <h2>Who should switch &mdash; and who shouldn&rsquo;t</h2>
+  <p>Switch to Maskin if your pain is the gap between signal in and decision out: you collect feedback and market signal, but it drowns in notebooks, inboxes, and abandoned tickets, and you want an AI tool that doesn&rsquo;t just summarise but does the work &mdash; under a licence you control. Keep Jira, Linear, or the open-source trackers if you genuinely only need a high-efficiency task board. Maskin isn&rsquo;t a ticket queue, and it won&rsquo;t turn itself into one.</p>
+
+  <h2>How big is this market anyway?</h2>
+  <p>The product-management-software market these tools compete in is large but unevenly measured. Dataintelo prices the global PM-software market at ~$8.4 billion in 2025, heading toward ~$22.7 billion by 2034 at an 11.6% CAGR (Dataintelo, 2025). The narrower native-AI product-management subset is earlier-stage: Tracxn counts roughly 60 companies, ~$500 million raised over a decade, and one unicorn, with 2026 funding through June up ~170% year over year (Tracxn, 2026). No public source separately sizes the agentic-workspace slice &mdash; a signal that the category is still forming, and that the incumbents moved in 2026 partly to claim it early.</p>
+
+  <h2>FAQ</h2>
+  <h3>Can Maskin replace Jira or Linear?</h3>
+  <p>Not as a drop-in task tracker. It uses a different object model &mdash; bets and loops instead of tickets and backlogs &mdash; and it integrates with the tools you already run rather than asking you to move everything in. If you need a ticket queue, keep your tracker. If your pain with Linear specifically is per-seat cost plus a closed AI layer, the same argument applies: an <a href="/docs/what-is-an-agentic-workspace/">AI-native agentic workspace</a> sitting alongside your tracker will do more than replacing Linear with another queue.</p>
+  <h3>Why isn&rsquo;t Plane, OpenProject, or Taiga enough?</h3>
+  <p>Those are solid open-source task trackers that solve cost and self-hosting around the ticket model. What they don&rsquo;t solve is the loop: none turns raw signal into a testable bet that a human and an agent own together, and none validates the outcome against a win criterion automatically.</p>
+  <h3>Does open source really matter for an AI tool?</h3>
+  <p>Yes, more than for normal SaaS. The tool decides which agents see what, how loops are bounded, and what happens to your data. Apache 2.0 means you can read the behaviour, modify it, and run it commercially &mdash; a permissive licence, not a look-but-don&rsquo;t-touch one.</p>
+  <h3>What does it cost to self-host?</h3>
+  <p>Nothing for the software &mdash; self-host is always free. You pay only for your own infrastructure and model usage.</p>
+  <h3>Can I try it before committing?</h3>
+  <p>Yes. Self-host is always free, and hosted starts at $20 per seat per month (<a href="https://maskin.io">maskin.io</a>, 2026) if you&rsquo;d rather evaluate without running infrastructure.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/docs/ai-product-management-tool/">
+        <div class="doc-card__title">AI product management tool</div>
+        <div class="doc-card__desc">Why AI PM tooling should close the loop, not narrate a tracker.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/bet-based-product-planning/">
+        <div class="doc-card__title">Bet-based product planning</div>
+        <div class="doc-card__desc">The anti-backlog doctrine, run as a live loop.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+        <div class="doc-card__title">What is an agentic workspace?</div>
+        <div class="doc-card__desc">The closed loop, on shared typed objects.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Getting started is free</h2>
+      <p>Self-host today, or take a hosted trial and read the <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace guide</a> while you decide.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

@@ -32,7 +32,8 @@
       { label: "What is MCP-native?", href: "/docs/what-is-mcp-native/" },
       { label: "AI product management tool", href: "/docs/ai-product-management-tool/" },
       { label: "Bet-based product planning", href: "/docs/bet-based-product-planning/" },
-      { label: "Self-hosted AI workspace", href: "/docs/self-hosted-ai-workspace/" }
+      { label: "Self-hosted AI workspace", href: "/docs/self-hosted-ai-workspace/" },
+      { label: "Open source Jira alternative", href: "/docs/open-source-jira-alternative/" }
     ]}
   ];
 
