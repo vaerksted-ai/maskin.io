@@ -42,7 +42,7 @@
   .footer__links{display:flex;flex-wrap:wrap;gap:1.25rem;list-style:none}
   .footer__links a{font-size:.875rem;color:var(--ink-2)}
   .footer__copy{font-size:.85rem;color:var(--ink-3)}
-  .article-figure{margin:2rem 0 3rem;background:var(--linen);border:1px solid var(--line);border-radius:14px;padding:1.4rem}
+  .article-figure{margin:2rem 0 3rem;background:var(--linen);border:1px solid var(--rule);border-radius:14px;padding:1.4rem}
   .related{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--rule)}
   @media (max-width:560px){.footer__links{gap:.85rem;flex-wrap:wrap}}
 </style>
@@ -55,7 +55,7 @@
       "@type": "BlogPosting",
       "headline": "What Is an Agentic Workspace?",
       "name": "What Is an Agentic Workspace?",
-      "description": "A shared, persistent environment where humans and AI agents work on the same object — instead of everyone running their own private AI chat. Maskin turns it into a closed loop: insight, bet, task, shipped, repeat.",
+      "description": "A shared, persistent environment where humans and AI agents work on the same object model — instead of everyone running their own private AI chat. Maskin turns it into a closed loop: insight, bet, task, shipped, repeat.",
       "inLanguage": "en",
       "url": "https://maskin.io/what-is-an-agentic-workspace/",
       "datePublished": "2026-08-21",
@@ -79,25 +79,125 @@
 </head>
 <body>
 
-<nav class="docs-nav" id="docs-nav"><div class="wrap docs-nav__inner"><a class="docs-nav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docs-nav__tag">Guide</span><span class="docs-nav__spacer"></span><ul class="docs-nav__links"><li class="docs-nav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/s?a-maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docs-nav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Guide</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
 <noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="/docs/">Docs</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
 
-<main class="docs-content">
+<main class="doc-content">
   <p class="eyebrow">Guide · Core Concept</p>
   <h1>What is an agentic workspace?</h1>
-  <p class="lead">An <strong>agentic workspace</strong> is a shared, persistent environment where humans and AI agents work together on the same typed objects — insights, bets, tasks — instead of each person running their own private AI chat. It is the category Maskin is built around (see <a href="/what-is-mcp-native/">MCP-native</a>, <a href="/ai-product-management-tool/">the AI product management view</a>, and <a href="/bet-based-product-planning/">bet-based planning</a> for the adjacent views).</p>
+  <p class="lead">An <strong>agentic workspace</strong> is a shared, persistent environment where humans and AI agents work together on the same typed objects — insights, bets, tasks — instead of each person running their own private AI chat. It is the category Maskin is built around (see <a href="/what-is-mcp-native/">MCP-native workspace</a> and <a href="/ai-product-management-tool/">the AI product management angle</a>, and <a href="/bet-based-product-planning/">bet-based product planning</a> for the adjacent views).</p>
+
+  <div class="article-figure" aria-label="The Maskin closed loop: insight, bet, task, shipped, repeat">
+    <svg width="100%" height="110" viewBox="0 0 760 110" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of the closed loop: insight to bet to task to shipped and repeat">
+      <g stroke-linecap="round" stroke-linejoin="miter">
+        <rect x="20" y="35" width="150" height="40" rx="8" fill="rgba(37,99,235,0.12)" stroke="#2563EB"/>
+        <rect x="210" y="35" width="150" height="40" rx="8" fill="rgba(37,99,235,0.12)" stroke="#2563EB"/>
+        <rect x="400" y="35" width="150" height="40" rx="8" fill="rgba(37,99,235,0.12)" stroke="#2563EB"/>
+        <rect x="590" y="35" width="150" height="40" rx="8" fill="rgba(37,99,235,0.12)" stroke="#2563EB"/>
+        <path d="M170 55 L210 55" stroke="#111110"/>
+        <path d="M360 55 L400 55" stroke="#111110"/>
+        <path d="M550 55 L590 55" stroke="#111110"/>
+        <path d="M740 55 C 760 55 795 55 760 95 L630 95 L595 95 M595 55 L580 95"/>
+      </g>
+      <g style="font-family:Sans-serif;font-size:16px">
+        <text x="95" y="62" fill="currentColor" text-anchor="middle">Insight</text>
+        <text x="285" y="62" fill="currentColor" text-anchor="middle">Bet</text>
+        <text x="475" y="62" fill="currentColor" text-anchor="middle">Task</text>
+        <text x="665" y="62" fill="currentColor" text-anchor="middle">Shipped</text>
+      </g>
+    </svg>
+    <p style="font-family:var(--ff-serif);font-size:.95rem;color:var(--ink-2)">Insight → bet → task → shipped → repeat. The loop closes when outcomes are measured and the customer who prompted it is notified.</p>
+  </div>
 
   <h2>Key takeaways</h2>
   <ul>
-    <li>An agentic workspace is a shared surface.</li>
-    <li>Maskin runs a closed loop.</li>
+    <li>An agentic workspace is a shared surface where people and agents co-operate on persistent, typed objects — not chatbots bolted onto a document.</li>
+    <li>Maskin runs a closed loop — insight → bet → task → shipped → repeat — on one shared object model.</li>
+    <li>Agents act autonomously and are pulled in only when a decision needs human taste.</li>
+    <li>Open source (Apache 2.0), MCP-native, self-host or managed, EU &amp; US data residency.</li>
   </ul>
 
-  <h2>Why it matters</h2>
-  <p>Ten people, ten AI chats, none visible to the rest of the team. The core failure of chat-first AI is that it helps one person and the organisation learns nothing. An agentic workspace fixes that by making the work itself the shared surface.</p>
+  <h2>The problem it solves</h2>
+  <p>Ten people, ten AI chats, none of them visible to the rest of the team. Decisions are made in DMs, context is framed in chat history, and every session starts from zero. That is the default AI workflow for many product teams in 2026 — and it is why teams adopt an agentic workspace.</p>
+  <p>The core failure of chat-first AI is that it helps one person and the organisation learns nothing. An agentic workspace fixes that by making the <em>work itself</em> the shared surface instead of the conversation.</p>
+
+  <h2>Agentic, not chatty: working until done</h2>
+  <p>A chatbot answers a question. An agentic workspace runs a closed loop: it observes, reasons, acts, and keeps going until the outcome is verified — then it reports back. This is the closed-loop distinction that separates real agents from one-shot assistants.</p>
+  <p>In Maskin, work enters through <strong>triggers</strong> — a Slack message, a new customer complaint, a scheduled morning scan. Agents with defined roles — not just prompts — pick it up. The Feedback Monitor reads signals, the Bet Strategist shapes them into a bet, the Developer ships, and an agent validates whether the bet hit its target.</p>
+
+  <h2>The closed loop: insight → bet → task → shipped → repeat</h2>
+  <p>Maskin's core loop has four moves:</p>
+  <ol>
+    <li><strong>Insight</strong> — raw signal enters the workspace (from Slack, Intercom, PostHog, HubSpot, Reddit, X, LinkedIn, competitor changelogs).</li>
+    <li><strong>Bet</strong> — the signal is shaped into a testable bet with a clear win condition.</li>
+    <li><strong>Task</strong> — the bet breaks into work the team and agents execute.</li>
+    <li><strong>Shipped + validated</strong> — when it goes live, outcomes are measured, and the customer who prompted it is notified.</li>
+  </ol>
+  <p>The loop repeats. Nothing is a one-shot session.</p>
+
+  <h2>The object model: shared objects, not shared history</h2>
+  <p>Insights, bets, and tasks are first-class typed objects owned jointly by humans and agents. They are not chat history. Memory persists across sessions, threads attach to the work (not to a Slack channel), and an agent's blocker sits next to the approval it needs on the same object.</p>
+  <p>This is the structural difference from a task tracker with a summariser bolted on: the object of work is shared, so everyone — human or agent — sees the same state.</p>
+
+  <h2>How it fits a product team</h2>
+  <p>Small teams operate many agents through an abstraction layer and get pulled in only for decisions that need human taste. Pre-built closed loops handle the rest:</p>
+  <ul>
+    <li><strong>Customer feedback</strong> — feedback from Slack/Intercom becomes an insight, then a bet, then a shipped change, with the customer notified.</li>
+    <li><strong>Market signals</strong> — Reddit, X, LinkedIn and forums are monitored, synthesised into insights, and turned into bets.</li>
+    <li><strong>Churn &amp; expansion</strong> — usage drops and error spikes are watched; at-risk accounts trigger an alert with full context.</li>
+    <li><strong>Lost deals → roadmap</strong> — closed-lost reasons are weighted by ARR and shaped into roadmap bets.</li>
+    <li><strong>Competitive intelligence</strong> — vendor changelogs and pricing pages route battlecards to sales and feature gaps to product.</li>
+  </ul>
+  <p>Each loop ships with the right agents, objects, and handoffs already wired.</p>
+
+  <h2>Agentic workspaces vs. what came before</h2>
+  <p>The field splits into three tiers:</p>
+  <ul>
+    <li><strong>Agent-native platforms</strong> — Claude Code/Cowork, OpenAI, Gemini, Grok made the agent loop a platform feature.</li>
+    <li><strong>Incumbent task suites</strong> — Notion, Asana, Jira, Linear, monday bolt AI onto trackers; the object stays a task.</li>
+    <li><strong>Knowledge spaces</strong> — Obsidian, Mem, Confluence, Raft hold notes but stop before the decision — that is why buyers increasingly search for an open-source alternative to Claude Cowork or Codex. Apache 2.0 keeps every line inspectable, and self-hosting means data never leaves your control.</li>
+  </ul>
+  <p>Maskin's edge is the loop itself, on one shared object model, MCP-native, Apache-2.0, and self-hostable.</p>
 
   <h2>Getting started</h2>
-  <p>Self-host or go managed</p>
+  <ul>
+    <li><strong>Self-host:</strong> clone the repo, follow the onboarding, and run agents in sandboxed sessions.</li>
+    <li><strong>Managed:</strong> hosted plans with EU &amp; US data residency start at $20/seat/month.</li>
+    <li><strong>Pricing:</strong> self-host is always free; Pro $20/seat/month; Team $200/workspace/month (unlimited seats); Enterprise runs on your own infrastructure.</li>
+  </ul>
+
+  <h2>FAQ</h2>
+  <p><strong>Is an agentic workspace the same as ChatGPT?</strong> No. A chatbot answers a question; an agentic workspace runs work to completion on shared objects.</p>
+  <p><strong>Do I need to run agents myself?</strong> No — hosted plans run them for you; self-host keeps everything on your infrastructure.</p>
+
+  <div class="related">
+    <div class="doc-cards">
+      <a class="doc-card" href="/what-is-mcp-native/">
+        <div class="doc-card__tag">Cluster</div>
+        <div class="doc-card__title">What is an MCP-native workspace?</div>
+        <div class="doc-card__desc">Why Model Context Protocol is Maskin's wiring for agents.</div>
+        <div class="doc-card__arrow">Read →</div>
+      </a>
+      <a class="doc-card" href="/ai-product-management-tool/">
+        <div class="doc-card__tag">Cluster</div>
+        <div class="doc-card__title">AI product management, done as work</div>
+        <div class="doc-card__desc">Where agents act until done instead of answering once.</div>
+        <div class="doc-card__arrow">Read →</div>
+      </a>
+      <a class="doc-card" href="/docs/get-started/">
+      <a class="doc-card" href="/bet-based-product-planning/">
+        <div class="doc-card__tag">Cluster</div>
+        <div class="doc-card__title">Bet-based product planning</div>
+        <div class="doc-card__desc">The anti-backlog doctrine — shaped bets with a win condition, on the same loop.</div>
+        <div class="doc-card__arrow">Read →</div>
+      </a>
+        <div class="doc-card__tag">Docs</div>
+        <div class="doc-card__title">Get started with Maskin</div>
+        <div class="doc-card__desc">The unified pipeline, the object model, and the two ways to run it.</div>
+        <div class="doc-card__arrow">Read →</div>
+      </a>
+    </div>
+  </div>
 </main>
 
 <footer class="footer">
@@ -115,7 +215,7 @@
       <li><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li>
       <li><a href="mailto:ai@maskin.io">Contact</a></li>
     </ul>
-    <span class="footer__copy">© 2026 <a href="https://bit.ly" target="_blank" rel="noopener">Værksted</a> · Apache 2.0</span>
+    <span class="footer__copy">© 2026 <a href="https://vaerksted.ai" target="_blank" rel="noopener">Værksted</a> · Apache 2.0</span>
   </div>
 </footer>
 
