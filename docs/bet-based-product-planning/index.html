@@ -98,18 +98,50 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Is Maskin a Shape Up tool?",
+          "name": "What is bet-based product planning?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It implements the loop Shape Up argues for — bets, not backlogs — on a machine-readable object model; the doctrine's specific rituals are yours to keep or not."
+            "text": "Bet-based product planning is a management doctrine that replaces the rolling backlog of tickets with a small set of shaped bets. Each bet is a bounded piece of work with an explicit win condition, run on a fixed cycle; when it ships, the outcome is measured against the win condition and the learning feeds the next cycle. The loop is insight → bet → execution → validation → repeat. It is called the anti-backlog doctrine because it removes the queue as the organising structure and replaces it with a small, validated set of commitments."
           }
         },
         {
           "@type": "Question",
-          "name": "Do bets need a win condition?",
+          "name": "Is bet-based product planning the same as Shape Up?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes — a bet without an outcome is a ticket."
+            "text": "Bet-based product planning draws its core claim — bets, not backlogs — from Shape Up, the planning methodology Basecamp published in 2019. The two are closely related but not identical. Shape Up is the full package, including specific rituals like six-week cycles, cooldowns, and a shaping vocabulary. Bet-based planning is the underlying doctrine: plan in outcome-carrying bets on a closed loop rather than a queue. Teams can adopt the doctrine with or without Shape Up’s specific ceremonies, and Maskin implements the loop rather than mandating the rituals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do backlogs fail?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Backlogs fail by accumulation. Tickets are cheap to create and expensive to delete, so the list grows toward aspiration and stops representing real intent. A ticket carries no win condition, so nothing can tell whether working it succeeded. Without an appetite or time-box, scope creeps. Because the queue never empties, the team is permanently mid-everything and never finished-anything. The anti-backlog doctrine exists to replace that accumulation with a small set of bets that are actually run and validated."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a bet and a ticket?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A ticket is a description of work without a definition of success; a bet is a bounded piece of work with a stated win condition, an appetite, and an owner. A ticket’s job is to get done; a bet’s job is to prove an outcome. Under a backlog, work enters because anyone can add it; under bet-based planning, work enters because it was shaped deliberately from insight. And materially, a bet can be a typed, machine-readable object that an agent can execute and validate, whereas a free-text ticket cannot be worked autonomously."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Maskin implement Shape Up?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Maskin implements the loop Shape Up argues for — bets, not backlogs — on a machine-readable object model, but it does not impose Shape Up’s specific rituals. In Maskin, a bet is a first-class object shaped from raw insight, carrying a win condition, and jointly owned by a human and agents. You keep whatever ceremonies you want; the doctrine’s operational core — insight to bet to validated outcome on a closed loop — is what the product provides."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do AI agents fit into bet-based planning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Agents fit by splitting the loop. They are strong at the continuous work the doctrine depends on: monitoring sources, synthesising raw signal into insight, and drafting a shaped bet. They can also carry the execution and the mechanical closure — running the bet, gathering evidence, checking the win condition. What humans keep is taste: which bets deserve the cycle and which outcomes actually matter. That is the same division of labour research shows in the 97%-gap-recovery finding — agents run, humans choose the bets (Anthropic, 2026)."
           }
         },
         {
@@ -117,7 +149,7 @@
           "name": "What happens after a bet ships?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Validation closes the loop: outcomes are measured, the requester is notified, and follow-up bets are shaped from results."
+            "text": "Validation closes the loop. When a bet ships, its outcome is measured against the win condition, the requester is notified, and the follow-up bets are shaped from what was learned. The loop does not stop at delivery — that is precisely what distinguishes the anti-backlog doctrine from a backlog, where a shipped ticket is simply closed and forgotten. A bet’s result feeds the next cycle, so the team plans from evidence rather than from aspiration."
           }
         }
       ]
@@ -137,45 +169,60 @@
     <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Bet-based product planning: the anti-backlog doctrine</p>
     <p class="eyebrow">Article · Product management</p>
     <h1>Bet-based product planning: the anti-backlog doctrine</h1>
-    <p class="lead"><strong>Bet-based product planning</strong> is the anti-backlog doctrine: instead of a growing queue of tickets, the team runs a loop &mdash; insight &rarr; bet &rarr; task &rarr; shipped &rarr; repeat. Maskin is built on this loop and makes the bet a machine-readable object that humans and agents own together (see <a href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a> for the full model).</p>
-
-  <div class="callout callout--muted">
-    <div class="callout__icon" aria-hidden="true">✓</div>
-    <div class="callout__body"><strong>Key takeaways</strong>
-      <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
-        <li>Shape Up&rsquo;s &ldquo;bets not backlogs&rdquo; stance aligns with the closed loop.</li>
-        <li>The bet is a shared, testable object held jointly by a human and an agent.</li>
-        <li>Bet-based planning remains a live niche, not enterprise consensus.</li>
-      </ul>
-    </div>
-  </div>
-
-  <h2>The anti-backlog doctrine</h2>
-  <p>Shape Up, the influential planning doctrine, argues that backlogs decay: tickets accumulate, become aspirational, and stop being decisions. Its answer is to plan in <em>shaped bets</em> &mdash; appetite-bounded chunks of work with a clear outcome &mdash; and a fixed cycle instead of a running queue.</p>
-  <p>The doctrine has a genuine following in product teams. It is also contested: it is criticised as company-specific and rigid, with teams reporting they switch back. That makes bet-based planning a documented niche rather than a settled norm.</p>
-
-  <h2>The bet as a shared, testable object</h2>
-  <p>Most planning tools treat a &ldquo;bet&rdquo; as a label on a ticket. Maskin makes the bet a first-class typed object:</p>
-  <ul>
-    <li>A bet is <strong>shaped from raw insight</strong> &mdash; a signal, not a guess.</li>
-    <li>It carries a <strong>win condition</strong> &mdash; the outcome that validates it.</li>
-    <li>It is <strong>jointly owned</strong> &mdash; agents bring the signal and the execution; humans bring taste and the approval.</li>
-  </ul>
-  <p>When a bet ships, the loop does not stop: the outcome is measured, the requester is notified, and the next bet is shaped from what was learned.</p>
-
-  <h2>Why it pairs with AI agents</h2>
-  <p>The insight-to-bet pipeline is exactly what agents are good at: monitoring sources continuously, synthesising raw signal, drafting the hypothesis. The human&rsquo;s value slides to what Shape Up always needed &mdash; taste: which bets deserve the cycle, and which outcomes actually matter.</p>
-
-  <h2>The evidence: a live niche</h2>
-  <p>Shape Up is a real movement &mdash; teams adopt it, write about it, defend it. The criticism is equally real: it can be company-specific and rigid, and teams switch back. Maskin&rsquo;s approach is not shape-up-as-a-service; it is the loop the doctrine argues for, run on typed objects that agents can work.</p>
-
-  <h2>FAQ</h2>
-  <h3>Is Maskin a Shape Up tool?</h3>
-  <p>It implements the loop Shape Up argues for &mdash; bets, not backlogs &mdash; on a machine-readable object model; the doctrine&rsquo;s specific rituals are yours to keep or not.</p>
-  <h3>Do bets need a win condition?</h3>
-  <p>Yes &mdash; a bet without an outcome is a ticket.</p>
-  <h3>What happens after a bet ships?</h3>
-  <p>Validation closes the loop: outcomes are measured, the requester is notified, and follow-up bets are shaped from results.</p>
+<p class="lead"><strong>Bet-based product planning</strong> is the anti-backlog doctrine: instead of managing a growing backlog of tickets, a team plans in a small set of shaped bets &mdash; appetite-bounded pieces of work with an explicit win condition &mdash; runs them on a fixed cycle, and validates the result before picking the next one. The idea was popularised by Shape Up, Basecamp&rsquo;s planning methodology, and its core claim is that planning should be a loop of decisions you prove out, not a queue of tasks you grind through. Bet-based product planning has a genuine and growing following, and it is just as genuinely contested &mdash; a documented niche, not a settled consensus. (see <a href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a> for the full model).</p>
+<div class="callout callout--muted"><div class="callout__icon" aria-hidden="true">&#10003;</div><div class="callout__body"><strong>Key takeaways</strong><ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)"><li><strong>Bet-based product planning means planning in shaped bets &mdash; bounded work with a clear win condition &mdash; instead of a running backlog:</strong> the loop is insight &rarr; bet &rarr; execution &rarr; validation &rarr; repeat.</li><li><strong>The doctrine comes from Shape Up (Basecamp, 2019).</strong> It is influential but contested, with critics calling it company-specific and rigid and reporting teams that switch back.</li><li><strong>In Maskin, a bet is not a label on a ticket.</strong> It is a first-class, machine-readable object shaped from raw insight, carrying a win condition, and jointly owned by a human and by agents.</li><li><strong>Bet-based planning pairs naturally with AI agents.</strong> Agents can own continuous signal capture and mechanical closure while humans keep the taste decisions.</li><li><strong>The niche is live and growing.</strong> Tracxn counts ~60 native-AI-in-product-management companies, ~$500M raised, one unicorn, with 2026 funding up ~170% year-over-year (Tracxn, 2026).</li></ul></div></div>
+<h2>What is bet-based product planning?</h2>
+<p>Bet-based product planning is a method for deciding what to build that treats work as a repeated, measurable loop rather than a queue. Instead of maintaining a backlog sorted by priority, a team commits to a small number of bets &mdash; each a bounded chunk of work with a stated outcome &mdash; and runs them inside a fixed time-box, which Shape Up calls a cycle. When a bet ships, its outcome is measured against its win condition, and what was learned feeds the next cycle&rsquo;s bets.</p>
+<p>The unit of planning shifts. Under a backlog, the artifact is a ticket whose implied job is to get done. Under bets, the artifact is a hypothesis the team actually tests, with a definition of what winning means and a finite appetite for how much time and money it is worth spending. That shift is why the doctrine is sometimes called the anti-backlog doctrine: it removes the queue as the organising structure and replaces it with a small, validated set of commitments.</p>
+<p>Bet-based planning also reframes how work is reviewed. There is no prioritisation ceremony scoring a long list against each other. Instead, a handful of shaped bets are chosen deliberately, given a real outcome, and then owned to completion. The result is a planning cadence that resembles how modern agentic systems operate &mdash; a closed loop that runs, measures, and repeats &mdash; rather than a repository that accumulates.</p>
+<h2>Where the anti-backlog doctrine came from: Shape Up</h2>
+<p>The doctrine has a specific provenance. Shape Up is a planning methodology published by Basecamp in 2019, written by Ryan Singer. Its argument is structural: backlogs decay because tickets accumulate faster than they are worked, become aspirational rather than decision-grade, and eventually stop representing anything a team intends to ship. Shape Up&rsquo;s answer is to plan in shaped bets &mdash; a piece of work bounded by an appetite (a time-box) and a clear outcome &mdash; run in six-week cycles followed by a cooldown. Work that is not shaped is not scheduled; work that does not fit an appetite is not a bet, it is noise.</p>
+<p>Two ideas from Shape Up matter for the anti-backlog doctrine beyond Basecamp itself. First, <em>shaping</em> is a distinct planning step: an idea is only ready to be a bet once someone has defined its boundaries and its definition of done. Second, the fixed cycle is intentional: it forces trade-offs &mdash; if a bet does not fit the appetite, it is not extended, it is cut or reshaped. That discipline is the mechanism that keeps bets from quietly becoming backlogged tickets with a fancier name.</p>
+<h2>Why backlogs decay</h2>
+<p>To understand why bet-based planning exists, it helps to name exactly what goes wrong with backlogs. The mechanism is accumulation. Tickets are cheap to create and expensive to delete, so a backlog grows toward aspiration: someone files every idea, every edge case, every someday task, and the list loses any signal about what matters now. Priority ordering becomes a fiction maintained in ceremonies rather than a real ranking of intent.</p>
+<p>Backlogs then stop being decisions. A ticket in a backlog is a statement of possibility, not a commitment. It carries no win condition, so nothing in the system can tell whether working it was successful. Scope creeps in because a ticket&rsquo;s boundaries are set at creation and never tightened. And because the queue never empties, focus dissipates &mdash; the team is permanently mid-everything and never finished-anything. This is the failure mode the anti-backlog doctrine is built against.</p>
+<h2>The honest critique: contested, not consensus</h2>
+<p>Bet-based planning has a real following, and it has real critics &mdash; and the criticism is worth taking seriously rather than papering over. The doctrine is often called company-specific: it was designed inside Basecamp&rsquo;s own culture, with specific rituals (six-week cycles, cooldowns, a particular shaped-marketing vocabulary) that do not transfer cleanly to every team. It has also been called rigid: a fixed cycle suits some product cadences and grinds against others, particularly teams with hard external release commitments or constant flow of small requests.</p>
+<p>Practitioners report that teams sometimes adopt the form and then switch back, because the ceremony &mdash; cycle planning, shaping sheets, appetite debates &mdash; starts to feel like overhead without the promised focus. The honest framing is that bet-based planning is a documented niche with a strong, self-consistent logic, not an enterprise consensus. Teams adopt it, defend it, and write about it; equally, they critique it, modify it, and abandon it. Understanding this is part of planning well: the doctrine&rsquo;s value is the loop it insists on, which survives even when the specific Basecamp rituals do not.</p>
+<h2>The bet as a first-class object</h2>
+<p>Most planning tools treat a bet as a label pasted onto a ticket &mdash; a status field or a tag. Maskin takes the doctrine&rsquo;s claim about the unit of work literally and makes the bet a first-class, machine-readable object, part of a unified object model in which insights, bets, and tasks are all objects connected by typed relationships (Maskin architecture, 2026). A bet in Maskin is defined by what it is, not by what it is called:</p>
+<ul><li><strong>It is shaped from raw insight.</strong> A bet begins as a signal &mdash; feedback, a market move, churn risk, a competitive shift &mdash; not a guess. The insight exists as an object before the bet does, and the bet carries the lineage back to it.</li><li><strong>It carries a win condition.</strong> A bet without an outcome is a ticket. The win condition is what makes the bet testable and what lets the loop measure whether it succeeded.</li><li><strong>It is jointly owned.</strong> Agents bring the signal and the execution; humans bring taste and the approval. The ownership is explicit on the object, not assumed.</li></ul>
+<p>The object model matters because it is what lets agents work. A bet that is a typed object with a win condition and a driver can be picked up, executed, and validated by an automated agent in a way a free-text ticket cannot be. The loop &mdash; shaped from insight, run to a win condition, closed by validation &mdash; is not a metaphor in Maskin; it is the product core, expressed as bounded, human-gated loops rather than code a developer writes (loop engineering, 2026).</p>
+<h2>Bet vs backlog: the conceptual difference</h2>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead><tr><th>Dimension</th><th>Backlog</th><th>Bet (bet-based planning)</th></tr></thead><tbody>
+<tr><td>Unit of work</td><td>Ticket</td><td>Shaped bet</td></tr>
+<tr><td>What a unit carries</td><td>Description, priority</td><td>Win condition, appetite, driver</td></tr>
+<tr><td>How it enters the system</td><td>Anyone can add</td><td>Shaped deliberately from insight</td></tr>
+<tr><td>Definition of success</td><td>Completed</td><td>Win condition met</td></tr>
+<tr><td>Organising structure</td><td>Running queue</td><td>Fixed cycle</td></tr>
+<tr><td>What the team is committed to</td><td>Long list</td><td>Small validated set</td></tr>
+<tr><td>What happens after</td><td>Ticket closes</td><td>Outcome measured, loop repeats</td></tr>
+<tr><td>Agent-friendly</td><td>No &mdash; free text</td><td>Yes &mdash; typed object</td></tr>
+</tbody></table></div>
+<p>The table is the whole argument compressed. A backlog optimises for capturing everything; a bet loop optimises for committing to little and proving it. The difference is not cosmetic &mdash; it changes what the system can do with the work, including whether an agent can autonomously run, validate, and hand back a result.</p>
+<h2>Why bet-based planning pairs with AI agents</h2>
+<p>Bet-based planning and AI agents fit together for a concrete reason: the doctrine&rsquo;s loop maps almost exactly onto what agents are good at, and it moves the human to where humans are irreplaceable. Agents are strong at continuous signal capture &mdash; monitoring sources, synthesising raw insight, drafting a hypothesis from scattered evidence. That is precisely the insight-to-bet pipeline the doctrine depends on. Under a backlog, that pipeline is manual and slow; with agents, it can run continuously.</p>
+<p>What agents are comparatively weak at is taste &mdash; judging which bets deserve the cycle and which outcomes actually matter. That is the human&rsquo;s job, and it is also exactly the role Shape Up always needed. Research illustrates the split: in a supervised research test, a Claude agent recovered roughly 97% of a human researcher&rsquo;s performance gap over about 800 cumulative hours of compute (~$18k), and the only role humans held was choosing the goal and the scoring rubric &mdash; "the bottleneck is which problems to run" (Anthropic, "When AI builds itself", 2026). Bet-based planning is the management expression of that same finding: agents do the running, humans choose the bets.</p>
+<p>This is also why bet-based planning pairs with the broader shift to loop engineering &mdash; "a prompt is not a job, work is a loop" (Addy Osmani, 2026). A backlog is a collection of prompts waiting to be prompted. A bet, shaped with a win condition and closed by validation, is a loop: something runs it, something checks it, and it stops when it is done. That is the difference between a tracker and a working loop.</p>
+<h2>The evidence it&rsquo;s a live niche</h2>
+<p>Bet-based planning is not a footnote in an old methodology book; it sits inside a market that is actively forming around it. Tracxn counts roughly sixty companies in native-AI-in-product-management &mdash; including teams explicitly built around bet- and shape-based planning &mdash; with about $500M raised over a decade, eleven at Series A or beyond, and one unicorn (Tracxn, 2026). Funding in 2026 is up about 170% year-over-year. Those numbers describe a small, young, fast-moving wedge, not a settled category.</p>
+<p>The incumbents' behaviour is the most telling signal. In 2026, Atlassian opened its Teamwork Graph as an agent context layer via Rovo and reported agentic automations up 7x in six months; Notion shipped Custom Agents and a Developer Platform; Linear released its own agent grounded in roadmap, code, and issues. Each of those moves is the big tooling players converging on the same human-plus-AI loop thesis that bet-based planning articulates &mdash; work as a closed loop over a shared model of what matters, rather than a queue of tickets. The doctrine&rsquo;s focus on a small set of jointly-owned, outcome-carrying bets is the planning layer of that same thesis.</p>
+<h2>FAQ</h2>
+<h3>What is bet-based product planning?</h3>
+<p>Bet-based product planning is a management doctrine that replaces the rolling backlog of tickets with a small set of shaped bets. Each bet is a bounded piece of work with an explicit win condition, run on a fixed cycle; when it ships, the outcome is measured against the win condition and the learning feeds the next cycle. The loop is insight &rarr; bet &rarr; execution &rarr; validation &rarr; repeat. It is called the anti-backlog doctrine because it removes the queue as the organising structure and replaces it with a small, validated set of commitments.</p>
+<h3>Is bet-based product planning the same as Shape Up?</h3>
+<p>Bet-based product planning draws its core claim &mdash; bets, not backlogs &mdash; from Shape Up, the planning methodology Basecamp published in 2019. The two are closely related but not identical. Shape Up is the full package, including specific rituals like six-week cycles, cooldowns, and a shaping vocabulary. Bet-based planning is the underlying doctrine: plan in outcome-carrying bets on a closed loop rather than a queue. Teams can adopt the doctrine with or without Shape Up&rsquo;s specific ceremonies, and Maskin implements the loop rather than mandating the rituals.</p>
+<h3>Why do backlogs fail?</h3>
+<p>Backlogs fail by accumulation. Tickets are cheap to create and expensive to delete, so the list grows toward aspiration and stops representing real intent. A ticket carries no win condition, so nothing can tell whether working it succeeded. Without an appetite or time-box, scope creeps. Because the queue never empties, the team is permanently mid-everything and never finished-anything. The anti-backlog doctrine exists to replace that accumulation with a small set of bets that are actually run and validated.</p>
+<h3>What is the difference between a bet and a ticket?</h3>
+<p>A ticket is a description of work without a definition of success; a bet is a bounded piece of work with a stated win condition, an appetite, and an owner. A ticket&rsquo;s job is to get done; a bet&rsquo;s job is to prove an outcome. Under a backlog, work enters because anyone can add it; under bet-based planning, work enters because it was shaped deliberately from insight. And materially, a bet can be a typed, machine-readable object that an agent can execute and validate, whereas a free-text ticket cannot be worked autonomously.</p>
+<h3>Does Maskin implement Shape Up?</h3>
+<p>Maskin implements the loop Shape Up argues for &mdash; bets, not backlogs &mdash; on a machine-readable object model, but it does not impose Shape Up&rsquo;s specific rituals. In Maskin, a bet is a first-class object shaped from raw insight, carrying a win condition, and jointly owned by a human and agents. You keep whatever ceremonies you want; the doctrine&rsquo;s operational core &mdash; insight to bet to validated outcome on a closed loop &mdash; is what the product provides.</p>
+<h3>How do AI agents fit into bet-based planning?</h3>
+<p>Agents fit by splitting the loop. They are strong at the continuous work the doctrine depends on: monitoring sources, synthesising raw signal into insight, and drafting a shaped bet. They can also carry the execution and the mechanical closure &mdash; running the bet, gathering evidence, checking the win condition. What humans keep is taste: which bets deserve the cycle and which outcomes actually matter. That is the same division of labour research shows in the 97%-gap-recovery finding &mdash; agents run, humans choose the bets (Anthropic, 2026).</p>
+<h3>What happens after a bet ships?</h3>
+<p>Validation closes the loop. When a bet ships, its outcome is measured against the win condition, the requester is notified, and the follow-up bets are shaped from what was learned. The loop does not stop at delivery &mdash; that is precisely what distinguishes the anti-backlog doctrine from a backlog, where a shipped ticket is simply closed and forgotten. A bet&rsquo;s result feeds the next cycle, so the team plans from evidence rather than from aspiration.</p>
     <div class="related">
       <p class="related__title">Read next</p>
       <div class="doc-cards">
