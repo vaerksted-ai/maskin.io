@@ -9,6 +9,10 @@ Run it two ways: **self-hosted** (one `docker-compose` file, free under Apache 2
 Setup in one line — connect Claude to a Maskin instance over MCP, then ask Claude to call `get_started`:
 `claude mcp add maskin --transport http --url https://<your-maskin-host>/mcp --header "Authorization: Bearer <MASKIN_API_KEY>" --header "X-Workspace-Id: <WORKSPACE_ID>"`
 
+## Articles
+
+- [What is an agentic workspace?](https://maskin.io/what-is-an-agentic-workspace/): The category Maskin is built around — a shared surface where humans and AI agents work on the same typed objects, and the closed loop (insight → bet → task → shipped → repeat) that defines it.
+
 ## Start here
 
 - [Documentation home](https://maskin.io/docs/): Entry point to all Maskin docs.
