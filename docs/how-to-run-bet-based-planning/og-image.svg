@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#111110" stroke-width="2.2"/>
+    </pattern>
+
+    <linearGradient id="flow1" gradientUnits="userSpaceOnUse" x1="0" y1="-220" x2="220" y2="0">
+      <stop offset="0%" stop-color="#111110" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#111110" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="flow2" gradientUnits="userSpaceOnUse" x1="220" y1="0" x2="0" y2="220">
+      <stop offset="0%" stop-color="#111110" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#111110" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="flow3" gradientUnits="userSpaceOnUse" x1="0" y1="220" x2="-220" y2="0">
+      <stop offset="0%" stop-color="#111110" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#111110" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="flowAccent" gradientUnits="userSpaceOnUse" x1="-220" y1="0" x2="0" y2="-220">
+      <stop offset="0%" stop-color="#2563EB" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#2563EB" stop-opacity="1"/>
+    </linearGradient>
+
+    <marker id="ah-dark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111110"/>
+    </marker>
+    <marker id="ah-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="630" fill="#F0EDE7"/>
+
+  <g stroke="#111110" stroke-opacity="0.05" stroke-width="1">
+    <line x1="0" y1="90" x2="1200" y2="90"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+    <line x1="150" y1="0" x2="150" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="1050" y1="0" x2="1050" y2="630"/>
+  </g>
+
+  <g opacity="0.9">
+    <path d="M 0 0 L 240 0 A 240 240 0 0 1 0 240 Z" fill="#2563EB" fill-opacity="0.05"/>
+    <path d="M 0 0 L 170 0 A 170 170 0 0 1 0 170 Z" fill="#2563EB" fill-opacity="0.08"/>
+    <path d="M 0 0 L 100 0 A 100 100 0 0 1 0 100 Z" fill="#2563EB" fill-opacity="0.11"/>
+  </g>
+
+  <g transform="translate(1200 630)" opacity="0.9">
+    <path d="M 0 0 L -200 0 A 200 200 0 0 0 0 -200 Z" fill="#111110" fill-opacity="0.05"/>
+    <path d="M 0 0 L -130 0 A 130 130 0 0 0 0 -130 Z" fill="#111110" fill-opacity="0.08"/>
+  </g>
+
+  <g transform="translate(600 315)">
+    <circle cx="0" cy="0" r="220" fill="none" stroke="#111110" stroke-opacity="0.10" stroke-width="1.2" stroke-dasharray="2 6"/>
+
+    <g stroke="#111110" stroke-opacity="0.22" stroke-width="1.5">
+      <line x1="0" y1="-278" x2="0" y2="-268"/>
+      <line x1="278" y1="0" x2="268" y2="0"/>
+      <line x1="0" y1="278" x2="0" y2="268"/>
+      <line x1="-278" y1="0" x2="-268" y2="0"/>
+    </g>
+    <g stroke="#111110" stroke-opacity="0.12" stroke-width="1.2">
+      <line x1="189" y1="-189" x2="197" y2="-197"/>
+      <line x1="189" y1="189" x2="197" y2="197"/>
+      <line x1="-189" y1="189" x2="-197" y2="197"/>
+      <line x1="-189" y1="-189" x2="-197" y2="-197"/>
+    </g>
+
+    <path d="M 55 -213 A 220 220 0 0 1 200 -90" fill="none" stroke="url(#flow1)" stroke-width="10" stroke-linecap="round" marker-end="url(#ah-dark)"/>
+    <path d="M 213 55 A 220 220 0 0 1 90 200" fill="none" stroke="url(#flow2)" stroke-width="10" stroke-linecap="round" marker-end="url(#ah-dark)"/>
+    <path d="M -55 213 A 220 220 0 0 1 -200 90" fill="none" stroke="url(#flow3)" stroke-width="10" stroke-linecap="round" marker-end="url(#ah-dark)"/>
+    <path d="M -213 -55 A 220 220 0 0 1 -90 -200" fill="none" stroke="url(#flowAccent)" stroke-width="10" stroke-linecap="round" marker-end="url(#ah-blue)"/>
+
+    <circle cx="0" cy="-220" r="44" fill="#F0EDE7" stroke="#111110" stroke-width="6"/>
+
+    <circle cx="220" cy="0" r="44" fill="#111110"/>
+    <circle cx="220" cy="0" r="24" fill="none" stroke="#F0EDE7" stroke-width="3"/>
+    <circle cx="220" cy="0" r="7" fill="#F0EDE7"/>
+
+    <circle cx="0" cy="220" r="44" fill="url(#hatch)" stroke="#111110" stroke-width="3"/>
+
+    <circle cx="-220" cy="0" r="44" fill="none" stroke="#111110" stroke-width="3"/>
+    <circle cx="-220" cy="0" r="29" fill="none" stroke="#111110" stroke-width="3"/>
+    <circle cx="-220" cy="0" r="15" fill="#2563EB"/>
+  </g>
+
+  <g fill="#111110" fill-opacity="0.14">
+    <circle cx="1100" cy="120" r="3"/>
+    <circle cx="1140" cy="180" r="2"/>
+    <circle cx="80" cy="500" r="3"/>
+    <circle cx="130" cy="560" r="2"/>
+  </g>
+</svg>
