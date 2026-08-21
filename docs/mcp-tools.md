@@ -1,7 +1,7 @@
 > Source: https://maskin.io/docs/mcp-tools/
 
 # MCP tools reference
-Maskin is MCP-native: the entire workspace is driven through MCP tools, the same surface humans' agents and your Claude client use. This page groups the tools by domain.
+Maskin is MCP-native: the entire workspace is driven through MCP tools, the same surface humans' agents and your Claude client use. This page groups the tools by domain. New to the protocol? Read [what MCP-native means](/what-is-mcp-native/).
 > This is a guided overview. The live, authoritative list comes from your instance — ask Claude to run `list_tools`. The set has grown over time, so your instance may expose more than is listed here.
 
 ## Connecting

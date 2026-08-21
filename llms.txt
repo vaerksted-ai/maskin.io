@@ -42,6 +42,10 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 - [Security](https://maskin.io/docs/security/): Auth, data isolation, and key handling.
 - [Troubleshooting](https://maskin.io/docs/troubleshooting/): Common setup and connection issues.
 
+## Learn
+
+- [What is MCP-native?](https://maskin.io/what-is-mcp-native/): The Model Context Protocol and why Maskin is built around it — MCP-native means the protocol is the substrate, not an afterthought, and makes bring-your-own-model real. Part of the agentic-workspace cluster (what-is-an-agentic-workspace, ai-product-management-tool, bet-based-product-planning).
+
 ## Optional
 
 - [GitHub repository](https://github.com/sindre-ai/maskin): Source code, data model, and self-hosting details.
