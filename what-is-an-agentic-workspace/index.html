@@ -20,7 +20,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/what-is-an-agentic-workspace/">
-<meta property="og:title" content="What Is an Agentic?">
+<meta property="og:title" content="What Is an Agentic Workspace?">
 <meta property="og:description" content="A shared, persistent environment where humans and AI agents work on the same typed objects — insights, bets, tasks — instead of everyone running their own private AI chat.">
 <meta property="og:image" content="https://maskin.io/og-image.png?v=2">
 <meta property="og:site_name" content="Maskin">
@@ -53,8 +53,8 @@
   "@graph": [
     {
       "@type": "BlogPosting",
-      "headline": "What Is an Agentic?",
-      "name": "What Is an Agentic?",
+      "headline": "What Is an Agentic Workspace?",
+      "name": "What Is an Agentic Workspace?",
       "description": "A shared, persistent environment where humans and AI agents work on the same object model — instead of everyone running their own private AI chat. Maskin turns it into a closed loop: insight, bet, task, shipped, repeat.",
       "inLanguage": "en",
       "url": "https://maskin.io/what-is-an-agentic-workspace/",
@@ -70,7 +70,7 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
-        { "@type": "ListItem", "position": 2, "name": "What Is an Agentic?", "item": "https://maskin.io/what-is-an-agentic-workspace/" }
+        { "@type": "ListItem", "position": 2, "name": "What Is an Agentic Workspace?", "item": "https://maskin.io/what-is-an-agentic-workspace/" }
       ]
     }
   ]
@@ -83,11 +83,11 @@
 <noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="/docs/">Docs</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
 
 <main class="doc-content">
-  <p class="eyebrow">Guide</p>
+  <p class="eyebrow">Guide · Core Concept</p>
   <h1>What is an agentic workspace?</h1>
-  <p class="lead">An <strong>agentic workspace</strong> is a shared, persistent environment where humans and AI agents work together on the same typed objects — insights, bets, tasks — instead of each person running their own private AI chat. It is the category Maskin is built around. See <a href="/what-is-mcp-native/">MCP-native workspace</a>, <a href="/ai-product-management-tool/">the AI product management perspective</a>, <a href="/bet-based-product-planning/">bet-based product planning</a>, and <a href="/self-hosted-ai-workspace/">self-hosting</a> for the adjacent views.</p>
+  <p class="lead">An <strong>agentic workspace</strong> is a shared, persistent environment where humans and AI agents work together on the same typed objects — insights, bets, tasks — instead of each person running their own private AI chat. It is the category Maskin is built around (see <a href="/what-is-mcp-native/">MCP-native workspace</a>, <a href="/ai-product-management-tool/">the AI product management angle</a>, <a href="/bet-based-product-planning/">bet-based planning</a>, and <a href="/self-hosted-ai-workspace/">self-hosting</a> for the adjacent views).</p>
 
-  <div class="article-figure" aria-label="The Maskin closed loop">
+  <div class="article-figure" aria-label="The Maskin closed loop: insight, bet, task, shipped, repeat">
     <svg width="100%" height="110" viewBox="0 0 760 110" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of the closed loop: insight to bet to task to shipped and repeat">
       <g stroke-linecap="round" stroke-linejoin="miter">
         <rect x="20" y="35" width="150" height="40" rx="8" fill="rgba(37,99,235,0.12)" stroke="#2563EB"/>
@@ -111,10 +111,10 @@
 
   <h2>Key takeaways</h2>
   <ul>
-    <li>An agentic workspace is a shared surface where people and agents work on persistent, typed objects — not chatbots bolted onto a document.</li>
+    <li>An agentic workspace is a shared surface where people and agents co-operate on persistent, typed objects — not chatbots bolted onto a document.</li>
     <li>Maskin runs a closed loop — insight → bet → task → shipped → repeat — on one shared object model.</li>
     <li>Agents act autonomously and are pulled in only when a decision needs human taste.</li>
-    <li>Open source (Apache 2.0), MCP-native, self-host or managed, with EU &amp; US data residency.</li>
+    <li>Open source (Apache 2.0), MCP-native, self-host or managed, EU &amp; US data residency.</li>
   </ul>
 
   <h2>The problem it solves</h2>
@@ -143,28 +143,24 @@
   <p>Small teams operate many agents through an abstraction layer and get pulled in only for decisions that need human taste. Pre-built closed loops handle the rest:</p>
   <ul>
     <li><strong>Customer feedback</strong> — feedback from Slack/Intercom becomes an insight, then a bet, then a shipped change, with the customer notified.</li>
-    <li><strong>Market signals</strong> — Reddit, X, LinkedIn and forums are monitored, synthesised into insights, and turned into bets.</li>
+    <li><strong>Market signals</strong> — Reddit, X, LinkedIn and forums are monitored, synthesised into bets.</li>
     <li><strong>Churn &amp; expansion</strong> — usage drops and error spikes are watched; at-risk accounts trigger an alert with full context.</li>
-    <li><strong>Lost deals → roadmap</strong> — closed-lost reasons are weighted by ARR and shaped into roadmap bets.</li>
-    <li><strong>Competitive intelligence</strong> — vendor changelogs and pricing pages route battlecards to sales and feature gaps to product.</li>
+    <li><strong>Lost wins → roadmap</strong> — closed-lost reasons are weighted by ARR and shaped into roadmap bets.</li>
+    <li><strong>Competitive intelligence</strong> — vendor changelists and pricing pages route battlecards to sales and feature gaps to product.</li>
   </ul>
   <p>Each loop ships with the right agents, objects, and handoffs already wired.</p>
 
   <h2>Agentic workspaces vs. what came before</h2>
   <p>The field splits into three tiers:</p>
   <ul>
-    <li><strong>Agent-native platforms</strong> — Claude Code/Cowork, OpenAI, Gemini, Grok made the agent loop a platform feature.</li>
-    <li><strong>Incumbent task suites</strong> — Notion, GitHub, Jira, Linear, monday bolt AI onto trackers; the object stays a task.</li>
-    <li><strong>Knowledge spaces</strong> — Obsidian, Mem, Confluence, Raft hold notes but stop before the decision — which is why buyers increasingly search for an open-source alternative to Claude Cowork or Codex. Apache 2.0 keeps every line inspectable, and self-hosting means your data never leaves your control.</li>
+    <li><strong>Agent-native platforms</strong> — Claude Code/Cowork, OpenAI, Gemini, Grok placed the agent loop as a platform feature.</li>
+    <li><strong>Incumbent task suites</strong> — Notion, Asana, Jira, Linear, and monday bolt AI onto trackers; the object stays a task.</li>
+    <li><strong>Knowledge spaces</strong> — Obsidian, Mem, Confluence, Raft hold notes but stop before the decision.</li>
   </ul>
-  <p>Maskin's edge is the loop itself, on one shared object model, MCP-native, Apache-2.0, and self-hostable.</p>
+  <p>Maskin's edge is the closed loop, on one shared object model, MCP-native, Apache-2.0, and self-hostable.</p>
 
   <h2>Getting started</h2>
-  <ul>
-    <li><strong>Community: </strong>clone the repo (Apache 2.0) and follow the self-hosting guide.</li>
-    <li><strong>Managed:</strong> hosted plans with EU &amp; US data residency start at $20/seat/month.</li>
-    <li><strong>Pricing:</strong> self-host is always free; Pro $20/seat/month; Team $200/workspace/month (unlimited seats); Enterprise runs on your own infrastructure.</li>
-  </ul>
+  <p>Self-host the open-source <a href="https://github.com/sindre-ai/maskin" rel="noopener">repo</a> (Apache 2.0) and connect your model provider, or start a hosted trial. Self-host is always free; hosted plans start at $20/seat/month.</p>
 
   <h2>FAQ</h2>
   <p><strong>Is an agentic workspace the same as ChatGPT?</strong> No. A chatbot answers a question; an agentic workspace runs work to completion on shared objects.</p>
@@ -178,10 +174,10 @@
         <div class="doc-card__desc">The anti-backlog doctrine — shaped bets, not a growing queue.</div>
         <div class="doc-card__arrow">Read →</div>
       </a>
-      <a class="doc-card" href="/what-is-mcp-native/">
+      <a class="doc-card" href="/mcp-native-workspace/">
         <div class="doc-card__tag">Cluster</div>
-        <div class="doc-card__title">What is an MCP-native workspace?</div>
-        <div class="doc-card__desc">Why Model Context Protocol is Maskin's wiring for agents.</div>
+        <div class="doc-card__title">Why Model Context Protocol</div>
+        <div class="doc-card__desc">MCP is the substrate for Maskin's agents.</div>
         <div class="doc-card__arrow">Read →</div>
       </a>
       <a class="doc-card" href="/ai-product-management-tool/">
@@ -192,14 +188,14 @@
       </a>
       <a class="doc-card" href="/self-hosted-ai-workspace/">
         <div class="doc-card__tag">Cluster</div>
-        <div class="doc-card__title">Self-hosted: bring your own model</div>
-        <div class="doc-card__desc">Data you control, model you pick — Apache 2.0 and BYO-model.</div>
+        <div class="doc-card__title">Self-hosted AI workspace</div>
+        <div class="doc-card__desc">Bring your own model — Apache 2.0.</div>
         <div class="doc-card__arrow">Read →</div>
       </a>
       <a class="doc-card" href="/docs/get-started/">
         <div class="doc-card__tag">Docs</div>
         <div class="doc-card__title">Get started with Maskin</div>
-        <div class="doc-card__desc">The unified pipeline, the object model, and the two ways to run it.</div>
+        <div class="doc-card__desc">The unified pipeline and the two ways to run it.</div>
         <div class="doc-card__arrow">Read →</div>
       </a>
     </div>
@@ -221,7 +217,7 @@
       <li><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li>
       <li><a href="mailto:ai@maskin.io">Contact</a></li>
     </ul>
-    <span class="footer__copy">© 2026 <a href="https://Værksted.ai" target="_blank" rel="noopener">Værksted</a> · Apache 2.0</span>
+    <span class="footer__copy">© 2026 <a href="https://vaerksted.ai" target="_blank" rel="noopener">Værksted</a> · Apache 2.0</span>
   </div>
 </footer>
 
