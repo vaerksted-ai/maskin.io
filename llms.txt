@@ -13,6 +13,7 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 
 - [What is an agentic workspace?](https://maskin.io/what-is-an-agentic-workspace/): The category Maskin is built around — a shared surface where humans and AI agents work on the same typed objects, and the closed loop (insight → bet → task → shipped → repeat) that defines it.
 - [AI product management tool: the loop, not a tracker](https://maskin.io/ai-product-management-tool/): Why an AI product management tool should close the loop between learning and shipping — insight becomes a testable bet, owned jointly by humans and agents — instead of bolting summaries onto a task tracker.
+- [Bet-based product planning: the anti-backlog doctrine](https://maskin.io/bet-based-product-planning/): Shape Up's anti-backlog doctrine, run as a live loop — plan in shaped bets with a win condition instead of a growing queue of tickets, with the bet a machine-readable object owned jointly by humans and agents.
 
 ## Start here
 
