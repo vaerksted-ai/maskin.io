@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Maskin</title>
+<meta http-equiv="refresh" content="0; url=/">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #111110; --surface: #FAFAF8; --accent: #B5311A; --ink-3: #9B958F; }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #ECEAE4; --surface: #141412; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    background: var(--surface); color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh; text-align: center; padding: 2rem;
+  }
+  .wrap { max-width: 400px; }
+  .logo {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: 1rem; font-weight: 700; letter-spacing: -.02em;
+    margin-bottom: 2.5rem; text-decoration: none; color: inherit;
+  }
+  h1 { font-size: 4rem; font-weight: 700; letter-spacing: -.04em; color: var(--accent); line-height: 1; }
+  p { margin-top: 1rem; color: var(--ink-3); font-size: .9375rem; }
+  a.home { display: inline-block; margin-top: 2rem; font-weight: 600; font-size: .875rem; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="logo" href="/">
+      <svg width="28" height="28" viewBox="0 0 80 80" fill="none">
+        <rect width="80" height="80" rx="14" fill="#111110"/>
+        <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+      </svg>
+      Maskin
+    </a>
+    <h1>404</h1>
+    <p>This page doesn't exist. Redirecting you home.</p>
+    <a class="home" href="/">Back to maskin.io →</a>
+  </div>
+</body>
+</html>
