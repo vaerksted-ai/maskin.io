@@ -34,8 +34,11 @@
       { label: "Bet-based product planning", href: "/docs/bet-based-product-planning/" },
       { label: "How to run bet-based planning", href: "/docs/how-to-run-bet-based-planning/", nested: true },
       { label: "Bet vs backlog", href: "/docs/bet-vs-backlog/", nested: true },
-      { label: "Self-hosted AI workspace", href: "/docs/self-hosted-ai-workspace/" },
-      { label: "Open source Jira alternative", href: "/docs/open-source-jira-alternative/" }    ]}
+      { label: "Self-hosted AI workspace", href: "/docs/self-hosted-ai-workspace/" }
+    ]},
+    { title: "Alternatives", items: [
+      { label: "Open source Jira alternative", href: "/alternatives/open-source-jira-alternative/" }
+    ]}
   ];
 
   var LOGO = '<svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
