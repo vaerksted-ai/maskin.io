@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What is MCP-native? Maskin, built on the Model Context Protocol — Maskin</title>
-<meta name="description" content="MCP-native means the Model Context Protocol is the foundation of how an agent workspace connects models to tools and data. Here's why Maskin is built around MCP — not bolted on — and what bring-your-own-model makes possible.">
+<title>Self-hosted AI workspace: bring your own model — Maskin</title>
+<meta name="description" content="Run Maskin's agentic AI workspace on your own infrastructure. Apache 2.0 and bring-your-own-model — the open-source alternative to Claude Cowork, Codex, or ChatGPT workspaces. Agents run in sandboxed sessions, never against your private keys.">
 
-<link rel="canonical" href="https://maskin.io/what-is-mcp-native/">
+<link rel="canonical" href="https://maskin.io/self-hosted-ai-workspace/">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -16,9 +16,9 @@
 <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
 
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://maskin.io/what-is-mcp-native/">
-<meta property="og:title" content="What is MCP-native? Maskin, built on the Model Context Protocol">
-<meta property="og:description" content="MCP-native means the Model Context Protocol is the foundation of how an agent workspace connects models, tools, and data — with bring-your-own-model built in.">
+<meta property="og:url" content="https://maskin.io/self-hosted-ai-workspace/">
+<meta property="og:title" content="Self-hosted AI workspace: bring your own model">
+<meta property="og:description" content="Run Maskin's agentic AI workspace on your own infrastructure. Apache 2.0, bring your own Claude, Codex, or custom model, and keep data on servers you control.">
 <meta property="og:image" content="https://maskin.io/og-image.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -27,8 +27,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@maskin_io">
-<meta name="twitter:title" content="What is MCP-native? Maskin, built on the Model Context Protocol">
-<meta name="twitter:description" content="MCP-native means the Model Context Protocol is the foundation of how an agent workspace connects models, tools, and data.">
+<meta name="twitter:title" content="Self-hosted AI workspace: bring your own model">
+<meta name="twitter:description" content="Run Maskin's agentic AI workspace on your own infrastructure. Apache 2.0, bring your own Claude, Codex, or custom model.">
 <meta name="twitter:image" content="https://maskin.io/og-image.png?v=2">
 
 <!-- PostHog analytics. Autocapture (CTA clicks), pageviews, and scroll depth are on by default.
@@ -328,6 +328,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   font-family:var(--ff-display);font-size:.85rem;
   font-style:normal;color:var(--ink-3);
 }
+.article table{
+  width:100%;border-collapse:collapse;margin:0 0 1.1rem;max-width:100%;
+  font-size:.875rem;
+}
+.article th,.article td{
+  border:1px solid var(--rule);padding:.6rem .85rem;text-align:left;vertical-align:top;
+}
+.article th{background:var(--linen);color:var(--ink);font-weight:700}
 
 /* ─── KEY TAKEAWAYS ──────────────────────────────────────── */
 .key-takeaways{
@@ -449,13 +457,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   "@graph": [
     {
       "@type": "BlogPosting",
-      "@id": "https://maskin.io/what-is-mcp-native/#post",
-      "headline": "What is MCP-native? Why Maskin is built on the Model Context Protocol",
-      "name": "What is MCP-native?",
-      "description": "MCP-native means the Model Context Protocol is the foundation of how an agent workspace connects models, tools, and data. Here's why Maskin is built around MCP — not bolted on — and what bring-your-own-model makes possible.",
+      "@id": "https://maskin.io/self-hosted-ai-workspace/#post",
+      "headline": "Self-hosted AI workspace: bring your own model",
+      "name": "Self-hosted AI workspace, bring your own model",
+      "description": "Run Maskin's agentic AI workspace on your own infrastructure. Apache 2.0 and bring-your-own-model — an open-source alternative to Claude Cowork, Codex, or ChatGPT workspaces.",
       "inLanguage": "en",
-      "url": "https://maskin.io/what-is-mcp-native/",
-      "mainEntityOfPage": "https://maskin.io/what-is-mcp-native/",
+      "url": "https://maskin.io/self-hosted-ai-workspace/",
+      "mainEntityOfPage": "https://maskin.io/self-hosted-ai-workspace/",
       "image": "https://maskin.io/og-image.png",
       "datePublished": "2026-08-21",
       "dateModified": "2026-08-21",
@@ -491,8 +499,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "What is MCP-native?",
-          "item": "https://maskin.io/what-is-mcp-native/"
+          "name": "Self-hosted AI workspace",
+          "item": "https://maskin.io/self-hosted-ai-workspace/"
         }
       ]
     },
@@ -501,26 +509,26 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Do I need to be an MCP expert to use Maskin?",
+          "name": "How hard is self-hosting?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. MCP is how the workspace connects under the hood; admins just connect tools and pick a model."
+            "text": "Clone the repo, follow the onboarding guide, connect your model provider, and agents run in sandboxed sessions out of the box."
           }
         },
         {
           "@type": "Question",
-          "name": "Which models work?",
+          "name": "Can I switch between self-hosted and managed later?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Claude, Codex, or any model reachable over the protocol — including your own sandboxed or custom models."
+            "text": "Yes. The license and object model are yours; hosted and self-hosted are the same product."
           }
         },
         {
           "@type": "Question",
-          "name": "Is MCP tied to one vendor?",
+          "name": "Is self-hosting truly free?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No — it is an open protocol, which is exactly what makes bring-your-own-model possible."
+            "text": "Yes. The open-source software is Apache 2.0; you pay for infrastructure only."
           }
         }
       ]
@@ -571,18 +579,18 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 <!-- ARTICLE HEADER -->
 <header class="page-header">
   <div class="wrap">
-    <div class="page-header__eyebrow">Learn · MCP &amp; agents</div>
-    <h1 class="page-header__title">What is <em>MCP-native</em>?</h1>
-    <p class="page-header__sub">The Model Context Protocol (MCP) is the open protocol for telling an AI model what tools and data are available. An MCP-native system is built around MCP from the start — the protocol is the foundation of how agents connect to models, tools, and memory.</p>
+    <div class="page-header__eyebrow">Learn · Self-hosting &amp; models</div>
+    <h1 class="page-header__title">Self-hosted <em>AI workspace</em> — bring your own model</h1>
+    <p class="page-header__sub">For product teams that need to control their own data and models, Maskin is fully self-hostable, Apache 2.0, and bring-your-own-model. Self-hosting is the structural answer for teams searching for an open source alternative to Claude Cowork, Codex, or ChatGPT workspaces.</p>
   </div>
 </header>
 
 <article class="wrap wrap--reading">
 
-  <div class="article-hero" role="img" aria-label="MCP-native — models, tools, and data connected over the Model Context Protocol">
+  <div class="article-hero" role="img" aria-label="Self-hosted AI workspace — run the closed loop on your own infrastructure, with your own model">
     <div class="article-hero__grid" aria-hidden="true"></div>
-    <span class="article-hero__mark">MCP-native.</span>
-    <div class="article-hero__caption">Model Context Protocol · Open wire protocol</div>
+    <span class="article-hero__mark">Self-hosted.</span>
+    <div class="article-hero__caption">Apache 2.0 · Bring your own model</div>
   </div>
 
   <div class="article">
@@ -590,74 +598,79 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <div class="key-takeaways" aria-label="Key takeaways">
       <p class="key-takeaways__title">Key takeaways</p>
       <ul>
-        <li>MCP is the emerging open wire protocol for AI tool calling — the standard way a model learns what it can use.</li>
-        <li>MCP-native means Maskin's agent stack and model integrations are built around it, not bolted on.</li>
-        <li>It makes bring-your-own-model real: Claude, Codex, or a custom model.</li>
-        <li>The architecture is composable infrastructure — typed objects, event-driven agents — not full company simulation.</li>
+        <li>Open source under Apache 2.0 — inspect every line, fork it, and run it.</li>
+        <li>Self-host is always free; managed plans offer EU &amp; US data residency.</li>
+        <li>Bring your own Claude, Codex, or custom model.</li>
+        <li>Agents run in sandboxed sessions, not against your private keys.</li>
       </ul>
     </div>
 
-    <h2>What MCP is</h2>
-    <p>MCP standardises how models discover and call tools, and how tools feed context back. Before MCP, every AI integration was a bespoke pipe. With MCP, an agent can be handed a list of typed tools and data sources and reason over them on the same contract. That is why anything &ldquo;MCP-native&rdquo; matters: the protocol is the substrate, not the afterthought.</p>
+    <h2>Why run a self-hosted AI workspace?</h2>
+    <p>Three buyers ask for self-hosting: <strong>data sovereignty</strong> (the work never leaves your infrastructure), <strong>model freedom</strong> (you choose the models, including local ones), and <strong>auditability</strong> (the code is open and inspectable). Hosted vendor workspaces cannot answer these — your data and your model choice <em>are</em> the product.</p>
+    <p>Open-core self-hosting is also a governance stance: the closed loop runs on objects you own, inside a repository you control, under a permissive license.</p>
 
-    <h2>What &ldquo;MCP-native&rdquo; means for an agent workspace</h2>
-    <p>For an agent workspace, MCP-native is a property of the whole stack:</p>
-    <ul>
-      <li><strong>Agents connect via MCP</strong> to the tools your team already uses — Slack, Linear, GitHub, Intercom, PostHog, HubSpot.</li>
-      <li><strong>The object model is typed and machine-readable</strong> — insights, bets, tasks are not free-form notes; agents can read, create, and transition them.</li>
-      <li><strong>Triggers are event-driven</strong> — work enters when a signal changes, not when someone asks.</li>
-    </ul>
+    <h2>Apache 2.0: inspect every line</h2>
+    <p>Apache 2.0 is a permissive open-source license — use it, modify it, run it commercially, keep your changes private or contribute them back. For an AI workspace, that license matters more than usual: the tool decides which agents see what, and you should be able to read how.</p>
 
     <h2>Bring your own model</h2>
-    <p>Because the workspace is model-agnostic at the protocol layer, you decide which model runs your agents. Claude for reasoning-heavy shaping, Codex or a local model for constrained tasks, your fine-tuned model for domain work — all inside the same workspace, all on the same objects. Closed SaaS cannot offer this. See <a href="/docs/llm/">how model providers and keys work</a>.</p>
+    <p>The workspace is model-agnostic at the protocol layer because it is <a href="/what-is-mcp-native/">MCP-native</a>. You decide which model runs your agents: Claude for reasoning-heavy shaping, Codex or a local model for constrained tasks, or a fine-tuned model for your domain. See <a href="/docs/llm/">how model providers and keys work</a>.</p>
 
-    <h2>Typed objects and event-driven agents: the composable-infrastructure camp</h2>
-    <p>The agent-workspace market split into two camps: <strong>full company simulation</strong> (an org chart of AI employees that demos beautifully) and <strong>composable infrastructure</strong> (typed objects, event-driven triggers, agents that fire when data changes and are safe to run in production).</p>
-    <p>Maskin is built in the composable camp.</p>
-    <blockquote>
-      &ldquo;a prompt is not a job — work is a loop&rdquo;
-      <footer>— Sebastian Krumhausen, founder of Maskin</footer>
-    </blockquote>
-    <p>A prompt produces text; a loop produces shipped, validated outcomes.</p>
+    <h2>Sandboxed agents</h2>
+    <p>Agents execute in <strong>sandboxed sessions</strong> — isolated environments that cannot touch your private keys or production state outside the workspace's authority. Autonomous operation is safe because execution is contained, and every step is inspectable. See the <a href="/docs/security/">security model</a> for auth, data isolation, and key handling.</p>
 
-    <h2>Why composable infrastructure wins in production</h2>
+    <h2>Managed vs self-hosted</h2>
+    <table>
+      <tr><th>Factor</th><th>Self-hosted</th><th>Managed</th></tr>
+      <tr><td>License</td><td>Apache 2.0</td><td>Apache 2.0 + hosted</td></tr>
+      <tr><td>Data residency</td><td>Your infrastructure</td><td>EU &amp; US</td></tr>
+      <tr><td>Model</td><td>Your choice</td><td>Your choice (BYO-model)</td></tr>
+      <tr><td>Cost</td><td>Free (you run it)</td><td>From $20/seat/month</td></tr>
+    </table>
+    <p>If you want the same loops without running infrastructure, <a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">book a hosted trial</a>. If you need the <em>work</em> to never leave your infrastructure, self-host.</p>
+
+    <h2>Pricing</h2>
     <ul>
-      <li><strong>Determinism</strong> — an event fires an agent; the agent acts; the outcome is a state change you can inspect.</li>
-      <li><strong>Safety</strong> — agents run in sandboxed sessions, not against your private keys.</li>
-      <li><strong>Scale</strong> — a small team runs many agents because each one owns a narrow, well-defined role.</li>
+      <li><strong>Self-host</strong> — always free.</li>
+      <li><strong>Pro</strong> — $20/seat/month, agent credits included.</li>
+      <li><strong>Team</strong> — $200/workspace/month, unlimited seats.</li>
+      <li><strong>Enterprise</strong> — your own LLM and infrastructure.</li>
     </ul>
 
-    <h2>Getting started</h2>
-    <p>Self-host the open-source repo (Apache 2.0), connect your model provider, and pick a marketplace loop — customer feedback, market signals, churn, lost deals, or competitive intelligence. The <a href="/docs/get-started/self-hosted/">self-hosted setup guide</a> walks through it end to end, and the <a href="/docs/mcp-tools/">MCP tools reference</a> covers the full agent surface.</p>
+    <h2>An open-source alternative to Claude Cowork / Codex</h2>
+    <p>The &ldquo;open source alternative to X&rdquo; searches are filling fast with desktop coding apps. What is missing is a closed-loop workspace for <em>product work</em>: signals in, bets shaped, tasks executed, outcomes validated — self-hostable and model-agnostic. That is the niche Maskin occupies.</p>
+    <blockquote>
+      Your data, your model, your loop.
+      <footer>&mdash; a workspace you can inspect, fork, and run</footer>
+    </blockquote>
+    <p>Start with the <a href="/docs/get-started/">get-started guide</a> or the <a href="/docs/get-started/self-hosted/">self-hosted setup guide</a> to stand up an instance on your own hardware.</p>
 
     <div class="article-cta">
-      <p>Run the workspace on the protocol you already know.</p>
+      <p>Run the closed loop on servers you control.</p>
       <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub →</a>
     </div>
 
     <div class="article-faq">
       <h2>FAQ</h2>
       <div class="article-faq__item">
-        <h3>Do I need to be an MCP expert to use Maskin?</h3>
-        <p>No. MCP is how the workspace connects under the hood; admins just connect tools and pick a model.</p>
+        <h3>How hard is self-hosting?</h3>
+        <p>Clone the repo, follow the onboarding guide, and connect your model provider — agents run in sandboxed sessions out of the box.</p>
       </div>
       <div class="article-faq__item">
-        <h3>Which models work?</h3>
-        <p>Claude, Codex, or any model reachable over the protocol — including your own sandboxed or custom models.</p>
+        <h3>Can I switch to managed later?</h3>
+        <p>Yes — the license and object model are yours. Hosted and self-hosted are the same product; a hosted deployment of the same open-source code.</p>
       </div>
       <div class="article-faq__item">
-        <h3>Is MCP tied to one vendor?</h3>
-        <p>No — it is an open protocol, which is exactly what makes bring-your-own-model possible.</p>
+        <h3>Is self-host truly free?</h3>
+        <p>Yes. The open-source software is Apache 2.0; you pay for infrastructure only.</p>
       </div>
     </div>
 
     <nav class="read-next" aria-label="Read next">
       <p class="read-next__title">Read next</p>
       <ul>
-        <li><a href="/what-is-an-agentic-workspace/">What is an AI-native agentic workspace?</a><span>The foundation of the category — how humans and agents share one closed loop.</span></li>
-        <li><a href="/self-hosted-ai-workspace/">Self-hosted AI workspace: bring your own model</a><span>Run the loop on your own infrastructure, with your own model.</span></li>
-        <li><a href="/ai-product-management-tool/">AI product management tool: not a task tracker</a><span>Why the object of work is a bet, not a ticket.</span></li>
-        <li><a href="/bet-based-product-planning/">Bet-based product planning: the anti-backlog doctrine</a><span>The loop Maskin runs, mapped to Shape Up.</span></li>
+        <li><a href="/what-is-an-agentic-workspace/">What is an AI-native agentic workspace?</a><span>The category — how humans and agents share one closed loop.</span></li>
+        <li><a href="/what-is-mcp-native/">What is MCP-native? Maskin, built on the protocol</a><span>Why bring-your-own-model is real over an open protocol.</span></li>
+        <li><a href="/ai-product-management-tool/">AI product management: not a task tracker</a><span>Why the object of work is a bet, not a ticket.</span></li>
       </ul>
     </nav>
 
