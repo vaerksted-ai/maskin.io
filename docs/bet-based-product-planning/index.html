@@ -125,113 +125,25 @@
   ]
 }
 </script>
-
-<style>
-/* SEO article chrome — reuses docs.css tokens, adds marketing footer + CTA */
-.post-wrap{
-  max-width:44rem;
-  margin-inline:auto;
-  padding:clamp(2.5rem,6vw,4.5rem) var(--gap) 5rem;
-}
-.post-breadcrumb{
-  font-family:var(--ff-mono);font-size:.78rem;color:var(--ink-3);
-  margin-bottom:1.5rem;
-}
-.post-breadcrumb a{color:var(--ink-3)}
-.post-breadcrumb a:hover{color:var(--ink)}
-.post-wrap h1{font-size:var(--step-4);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:1rem}
-.post-wrap h2{font-size:var(--step-3);font-weight:700;line-height:1.12;letter-spacing:-.02em;margin:2.75rem 0 1rem}
-.post-wrap h3{font-size:var(--step-2);font-weight:600;line-height:1.2;letter-spacing:-.01em;margin:2rem 0 .75rem}
-.post-wrap p{margin:0 0 1rem;color:var(--ink-2)}
-.post-wrap strong{color:var(--ink);font-weight:600}
-.post-wrap ul,.post-wrap ol{margin:0 0 1.25rem 1.25rem;color:var(--ink-2)}
-.post-wrap li{margin:.4rem 0}
-.post-wrap li::marker{color:var(--ink-3)}
-.lead{font-size:var(--step-2);color:var(--ink-2);line-height:1.5;margin-bottom:1.75rem}
-.lead strong{color:var(--ink)}
-.article-figure{margin:2rem 0 2.5rem;background:var(--linen);border:1px solid var(--rule);border-radius:14px;padding:1.4rem}
-.article-figure figcaption{font-family:var(--ff-serif);font-size:.95rem;color:var(--ink-2);margin-top:.75rem}
-.related{margin-top:3.25rem;padding-top:1.5rem;border-top:1px solid var(--rule)}
-
-.btn-primary{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:.75rem 1.5rem;background:var(--ink);color:var(--surface);
-  border-radius:8px;font-weight:600;font-size:.9375rem;
-  border:1.5px solid var(--ink);
-  transition:background .15s,transform .1s,box-shadow .15s;
-}
-.btn-primary:hover{background:#2a2925;transform:translateY(-1px);box-shadow:0 4px 16px rgba(17,17,16,.18);text-decoration:none;color:var(--surface)}
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:.75rem 1.5rem;background:transparent;color:var(--ink);
-  border-radius:8px;font-weight:500;font-size:.9375rem;
-  border:1.5px solid var(--rule);
-  transition:border-color .15s,background .15s,transform .1s;
-}
-.btn-secondary:hover{border-color:var(--ink-2);background:var(--linen);transform:translateY(-1px);text-decoration:none;color:var(--ink)}
-
-.post-cta{
-  margin-top:3.5rem;padding:2rem;border:1px solid var(--rule);
-  border-radius:16px;background:var(--linen);
-}
-.post-cta h2{margin-top:0;font-size:var(--step-3);line-height:1.15}
-.post-cta p{color:var(--ink-2)}
-.post-cta__actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.25rem}
-
-.footer{padding-block:1.75rem;border-top:1px solid var(--rule)}
-.footer__logo-svg-bg  { fill: #FAFAF8; }
-.footer__logo-svg-path { stroke: #111110; }
-.footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.875rem}
-.footer__brand{display:flex;flex-direction:column;gap:.3rem}
-.footer__logo{display:flex;align-items:center;gap:.5rem;font-weight:700;letter-spacing:-.02em;font-size:.875rem;color:var(--ink)}
-.footer__logo:hover{text-decoration:none}
-.footer__def{font-size:.72rem;color:var(--ink-3);font-style:italic;letter-spacing:.01em}
-.footer__links{display:flex;align-items:center;gap:1.5rem;list-style:none;flex-wrap:wrap}
-.footer__links a{font-size:.875rem;color:var(--ink-2);transition:color .15s}
-.footer__links a:hover{color:var(--ink)}
-.footer__copy{font-size:.78rem;color:var(--ink-3)}
-@media (max-width:560px){.post-cta__actions{flex-direction:column}}
-</style>
 </head>
 <body>
 
-<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Guide</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
-<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a> · <a href="https://meshfirm.com/bookmagnus">Book a meeting</a></div></noscript>
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
 
-<article class="post-wrap">
-  <p class="post-breadcrumb"><a href="/">Home</a> · Bet-based product planning</p>
-  <p style="font-family:var(--ff-mono);font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem">Product management</p>
-  <h1>Bet-based product planning: the anti-backlog doctrine</h1>
-  <p class="lead"><strong>Bet-based product planning</strong> is the anti-backlog doctrine: instead of a growing queue of tickets, the team runs a loop — insight → bet → task → shipped → repeat. Maskin is built on this loop and makes the bet a machine-readable object that humans and agents own together (see <a href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a> for the full model).</p>
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents & sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM & models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-active" href="/docs/bet-based-product-planning/" aria-current="page">Bet-based product planning</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Bet-based product planning: the anti-backlog doctrine</p>
+    <p class="eyebrow">Article · Product management</p>
+    <h1>Bet-based product planning: the anti-backlog doctrine</h1>
+    <p class="lead"><strong>Bet-based product planning</strong> is the anti-backlog doctrine: instead of a growing queue of tickets, the team runs a loop &mdash; insight &rarr; bet &rarr; task &rarr; shipped &rarr; repeat. Maskin is built on this loop and makes the bet a machine-readable object that humans and agents own together (see <a href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a> for the full model).</p>
 
-  <figure class="article-figure" aria-label="The closed loop: insight, bet, task, shipped, repeat">
-    <svg width="100%" height="110" viewBox="0 0 760 110" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of the closed loop: insight to bet to task to shipped and repeat">
-      <g stroke-linecap="round" stroke-linejoin="miter">
-        <rect x="20" y="35" width="150" height="40" rx="8" fill="rgba(37,99,235,0.12)" stroke="#2563EB"/>
-        <rect x="210" y="35" width="150" height="40" rx="8" fill="rgba(37,99,235,0.12)" stroke="#2563EB"/>
-        <rect x="400" y="35" width="150" height="40" rx="8" fill="rgba(37,99,235,0.12)" stroke="#2563EB"/>
-        <rect x="590" y="35" width="150" height="40" rx="8" fill="rgba(37,99,235,0.12)" stroke="#2563EB"/>
-        <path d="M170 55 L210 55" stroke="#111110"/>
-        <path d="M360 55 L400 55" stroke="#111110"/>
-        <path d="M550 55 L590 55" stroke="#111110"/>
-        <path d="M740 55 C 760 55 795 55 760 95 L630 95 L595 95 M595 55 L580 95"/>
-      </g>
-      <g style="font-family:Sans-serif;font-size:16px">
-        <text x="95" y="62" fill="currentColor" text-anchor="middle">Insight</text>
-        <text x="285" y="62" fill="currentColor" text-anchor="middle">Bet</text>
-        <text x="475" y="62" fill="currentColor" text-anchor="middle">Task</text>
-        <text x="665" y="62" fill="currentColor" text-anchor="middle">Shipped</text>
-      </g>
-    </svg>
-    <figcaption>Insight → bet → task → shipped → repeat. The loop closes when the bet's win condition is measured and the requester is notified.</figcaption>
-  </figure>
-
-  <div class="callout callout--muted" style="margin-bottom:2rem">
+  <div class="callout callout--muted">
     <div class="callout__icon" aria-hidden="true">✓</div>
-    <div class="callout__body">
-      <strong>Key takeaways</strong>
+    <div class="callout__body"><strong>Key takeaways</strong>
       <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
-        <li>Shape Up's "bets not backlogs" stance aligns with the closed loop.</li>
+        <li>Shape Up&rsquo;s &ldquo;bets not backlogs&rdquo; stance aligns with the closed loop.</li>
         <li>The bet is a shared, testable object held jointly by a human and an agent.</li>
         <li>Bet-based planning remains a live niche, not enterprise consensus.</li>
       </ul>
@@ -239,90 +151,59 @@
   </div>
 
   <h2>The anti-backlog doctrine</h2>
-  <p>Shape Up, the influential planning doctrine, argues that backlogs decay: tickets accumulate, become aspirational, and stop being decisions. Its answer is to plan in <em>shaped bets</em> — appetite-bounded chunks of work with a clear outcome — and a fixed cycle instead of a running queue.</p>
+  <p>Shape Up, the influential planning doctrine, argues that backlogs decay: tickets accumulate, become aspirational, and stop being decisions. Its answer is to plan in <em>shaped bets</em> &mdash; appetite-bounded chunks of work with a clear outcome &mdash; and a fixed cycle instead of a running queue.</p>
   <p>The doctrine has a genuine following in product teams. It is also contested: it is criticised as company-specific and rigid, with teams reporting they switch back. That makes bet-based planning a documented niche rather than a settled norm.</p>
 
   <h2>The bet as a shared, testable object</h2>
-  <p>Most planning tools treat a "bet" as a label on a ticket. Maskin makes the bet a first-class typed object:</p>
+  <p>Most planning tools treat a &ldquo;bet&rdquo; as a label on a ticket. Maskin makes the bet a first-class typed object:</p>
   <ul>
-    <li>A bet is <strong>shaped from raw insight</strong> — a signal, not a guess.</li>
-    <li>It carries a <strong>win condition</strong> — the outcome that validates it.</li>
-    <li>It is <strong>jointly owned</strong> — agents bring the signal and the execution; humans bring taste and the approval.</li>
+    <li>A bet is <strong>shaped from raw insight</strong> &mdash; a signal, not a guess.</li>
+    <li>It carries a <strong>win condition</strong> &mdash; the outcome that validates it.</li>
+    <li>It is <strong>jointly owned</strong> &mdash; agents bring the signal and the execution; humans bring taste and the approval.</li>
   </ul>
   <p>When a bet ships, the loop does not stop: the outcome is measured, the requester is notified, and the next bet is shaped from what was learned.</p>
 
   <h2>Why it pairs with AI agents</h2>
-  <p>The insight-to-bet pipeline is exactly what agents are good at: monitoring sources continuously, synthesising raw signal, drafting the hypothesis. The human's value slides to what Shape Up always needed — taste: which bets deserve the cycle, and which outcomes actually matter.</p>
+  <p>The insight-to-bet pipeline is exactly what agents are good at: monitoring sources continuously, synthesising raw signal, drafting the hypothesis. The human&rsquo;s value slides to what Shape Up always needed &mdash; taste: which bets deserve the cycle, and which outcomes actually matter.</p>
 
   <h2>The evidence: a live niche</h2>
-  <p>Shape Up is a real movement — teams adopt it, write about it, defend it. The criticism is equally real: it can be company-specific and rigid, and teams switch back. Maskin's approach is not shape-up-as-a-service; it is the loop the doctrine argues for, run on typed objects that agents can work.</p>
+  <p>Shape Up is a real movement &mdash; teams adopt it, write about it, defend it. The criticism is equally real: it can be company-specific and rigid, and teams switch back. Maskin&rsquo;s approach is not shape-up-as-a-service; it is the loop the doctrine argues for, run on typed objects that agents can work.</p>
 
   <h2>FAQ</h2>
   <h3>Is Maskin a Shape Up tool?</h3>
-  <p>It implements the loop Shape Up argues for — bets, not backlogs — on a machine-readable object model; the doctrine's specific rituals are yours to keep or not.</p>
+  <p>It implements the loop Shape Up argues for &mdash; bets, not backlogs &mdash; on a machine-readable object model; the doctrine&rsquo;s specific rituals are yours to keep or not.</p>
   <h3>Do bets need a win condition?</h3>
-  <p>Yes — a bet without an outcome is a ticket.</p>
+  <p>Yes &mdash; a bet without an outcome is a ticket.</p>
   <h3>What happens after a bet ships?</h3>
   <p>Validation closes the loop: outcomes are measured, the requester is notified, and follow-up bets are shaped from results.</p>
-
-  <div class="related">
-    <div class="doc-cards">
-      <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
-        <div class="doc-card__tag">Cornerstone</div>
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
         <div class="doc-card__title">What is an agentic workspace?</div>
-        <div class="doc-card__desc">The category Maskin is built around — the closed loop, on shared typed objects.</div>
-        <div class="doc-card__arrow">Read →</div>
-      </a>
-      <a class="doc-card" href="/docs/ai-product-management-tool/">
-        <div class="doc-card__tag">Cluster</div>
+        <div class="doc-card__desc">The category &mdash; the closed loop, on shared typed objects.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/ai-product-management-tool/">
         <div class="doc-card__title">AI product management tool</div>
-        <div class="doc-card__desc">The loop, not a tracker — raw insight becomes a testable bet.</div>
-        <div class="doc-card__arrow">Read →</div>
-      </a>
-      <a class="doc-card" href="/docs/concepts/">
-        <div class="doc-card__tag">Docs</div>
+        <div class="doc-card__desc">The loop, not a tracker &mdash; raw insight becomes a testable bet.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/concepts/">
         <div class="doc-card__title">Core concepts</div>
-        <div class="doc-card__desc">The Insights → Bets → Tasks object graph in detail.</div>
-        <div class="doc-card__arrow">Read →</div>
+        <div class="doc-card__desc">The Insights &rarr; Bets &rarr; Tasks object graph in detail.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
       </a>
-    </div>
-  </div>
-
-  <div class="post-cta">
-    <h2>Getting started is free</h2>
-    <p>Self-host today, or take a hosted trial and read the <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace guide</a> while you decide.</p>
-    <div class="post-cta__actions">
-      <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
-      <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
-    </div>
-  </div>
-</article>
-
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <a class="footer__logo" href="/">
-          <svg width="22" height="22" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect class="footer__logo-svg-bg" width="80" height="80" rx="14" fill="#FAFAF8"/>
-            <path class="footer__logo-svg-path" d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#111110" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
-          </svg>
-          Maskin
-        </a>
-        <span class="footer__def"><em>Maskin</em> — Scandinavian for "machine".</span>
       </div>
-      <ul class="footer__links">
-        <li><a href="/docs/ai-product-management-tool/">AI product management</a></li>
-        <li><a href="/changelog/">Changelog</a></li>
-        <li><a href="/docs/">Docs</a></li>
-        <li><a href="/privacy/">Privacy</a></li>
-        <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li>
-      </ul>
-      <span class="footer__copy">© 2026 <a href="https://vaerksted.ai" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Værksted</a> · Apache 2.0</span>
     </div>
-  </div>
-</footer>
+    <div class="post-cta">
+      <h2>Getting started is free</h2>
+      <p>Self-host today, or take a hosted trial and read the <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace guide</a> while you decide.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
 
 <script src="/docs/docs.js"></script>
 </body>
