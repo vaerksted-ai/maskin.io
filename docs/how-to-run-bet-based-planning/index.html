@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to run bet-based planning: the four-step loop — Maskin</title>
+<meta name="description" content="How to run bet-based planning in four repeatable steps: shape a bet from raw insight, give it a win condition, run it in a fixed-size cycle, and validate before picking the next one. The Shape Up-derived loop, run on a machine-readable object model humans and agents jointly own.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/how-to-run-bet-based-planning/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/how-to-run-bet-based-planning/">
+<meta property="og:title" content="How to run bet-based planning: the four-step loop">
+<meta property="og:description" content="The four repeatable steps to run bet-based planning: shape from insight, set a win condition, run a fixed cycle, close the loop on validation. Bets as machine-readable objects humans and agents jointly own. Open source, Apache 2.0, MCP-native.">
+<meta property="og:image" content="https://maskin.io/og-image.png?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="How to run bet-based planning: the four-step loop">
+<meta name="twitter:description" content="Shape a bet, give it a win condition, run a fixed cycle, close the loop on validation. Four repeatable steps &mdash; the doctrine of bets, not backlogs, in practice.">
+<meta name="twitter:image" content="https://maskin.io/og-image.png?v=2">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "How to run bet-based planning: the four-step loop",
+      "name": "How to run bet-based planning",
+      "description": "Bet-based planning is run in four steps: shape a bet from raw insight, give it a win condition, run it inside a fixed-size cycle, then close the loop by validating the outcome against that win condition and feeding what you learned into the next cycle.",
+      "url": "https://maskin.io/docs/how-to-run-bet-based-planning/",
+      "inLanguage": "en",
+      "datePublished": "2026-08-21",
+      "dateModified": "2026-08-21",
+      "image": ["https://maskin.io/og-image.png?v=2"],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "mainEntityOfPage": "https://maskin.io/docs/how-to-run-bet-based-planning/",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": {
+        "@type": "Product",
+        "name": "Maskin"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bet-based product planning",
+          "item": "https://maskin.io/docs/bet-based-product-planning/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to run bet-based planning",
+          "item": "https://maskin.io/docs/how-to-run-bet-based-planning/"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "How to run bet-based planning",
+      "description": "Run bet-based planning in four repeatable steps: shape a bet from raw insight, give it a win condition, run a fixed-size cycle, and close the loop on validation.",
+      "totalTime": "P6W",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Shape a bet from raw insight",
+          "url": "https://maskin.io/docs/how-to-run-bet-based-planning/#step-1-shape-a-bet-from-raw-insight",
+          "text": "Turn a signal into a bounded proposal. Answer four questions on paper before scheduling anything: the problem (stated plainly), the scope (what is in and out), the appetite (how much time and money this is worth), and the shape (a rough sketch of the approach)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Give it a win condition",
+          "url": "https://maskin.io/docs/how-to-run-bet-based-planning/#step-2-give-it-a-win-condition",
+          "text": "Write down what winning means &mdash; specific enough that an outside observer can say whether the bet won or lost without debate. A useful test: would you let a machine read the condition and report whether it was met?"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Run fixed-size cycles",
+          "url": "https://maskin.io/docs/how-to-run-bet-based-planning/#step-3-run-fixed-size-cycles",
+          "text": "Fix the box. If a bet does not fit the appetite, it is cut or reshaped, not extended. Shape Up prescribes six-week cycles with a cooldown; any fixed length works as long as it stays fixed. Run only a small set of bets in parallel."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Close the loop on validation",
+          "url": "https://maskin.io/docs/how-to-run-bet-based-planning/#step-4-close-the-loop-on-validation",
+          "text": "When a bet ships, measure the outcome against the Step 2 win condition, record the result on the object, notify the people who need to know, and shape follow-up bets from what was learned. Agents can run the mechanics; the taste call on whether the outcome counts stays with a human."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does a bet-based planning cycle take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The length is a team decision, not a fixed rule. Shape Up prescribes six-week cycles followed by a cooldown, but the method works on any fixed box, from two weeks to a quarter. What matters is that the box is fixed and small enough to force trade-offs &mdash; if a bet does not fit, it gets cut or reshaped rather than extended. A small set of bets runs per cycle, so the team stays committed to little and proves it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should a good win condition look like?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A good win condition is specific, observable, and falsifiable &mdash; specific enough that an outside observer can say without debate whether the bet won or lost. It is written down when the bet is shaped, not improvised when it ships. A useful test: would you let a machine read the condition and report whether it was met? If not, sharpen it. In Maskin the win condition lives on the typed bet object, which is what lets an automated agent verify it after execution."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does bet-based planning replace Scrum?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily &mdash; bet-based planning is about what you commit to and how you decide it has succeeded, while Scrum is about execution cadence. You can run bets on top of sprint delivery: the bet defines the outcome and the appetite, and the sprint structure handles the mechanics. What bet-based planning replaces is the backlog-as-planning-artifact, where a long queue sorted by priority substitutes for a small, validated set of commitments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens to ideas that are not chosen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They wait, or they are discarded on purpose. Under a backlog, every idea is captured and the list grows toward aspiration. Under bets, an idea is only scheduled once it is shaped, and unshaped or unchosen work is not tracked as if it were committed. Insight is captured and retained, but it does not sit in a queue pretending to be a commitment. When a future cycle opens, it can be shaped and proposed again with evidence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can AI agents run bet-based planning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Agents can run the parts that are mechanical and continuous &mdash; monitoring sources, synthesising raw insight, shaping a draft bet, executing the work, and gathering evidence against the win condition. What stays with a human is taste: which bets deserve the cycle and whether an outcome genuinely counts as a win. That division matches what research shows &mdash; agents run, humans choose the bets (Anthropic, 2026). In Maskin, a bet is a typed object a human and agent jointly own, which is what makes that split executable."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents & sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM & models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested is-active" href="/docs/how-to-run-bet-based-planning/" aria-current="page">How to run bet-based planning</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / <a href="/docs/bet-based-product-planning/">Bet-based product planning</a> / How to run bet-based planning</p>
+    <p class="eyebrow">Guide &middot; Product management</p>
+    <h1>How to run bet-based planning</h1>
+<p class="lead"><strong>Bet-based planning is run in four steps:</strong> shape a bet from raw insight, give it a win condition, run it inside a fixed-size cycle, then close the loop by validating the outcome against that win condition and feeding what you learned into the next cycle. The unit of work changes from a never-ending queue of tickets to a small set of time-bounded, falsifiable bets the team actually runs and proves out.</p>
+<div class="callout callout--muted"><div class="callout__icon" aria-hidden="true">&#10003;</div><div class="callout__body"><strong>Key takeaways</strong><ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)"><li>Bet-based planning replaces the backlog with a loop: <strong>insight &rarr; bet &rarr; execution &rarr; validation &rarr; repeat</strong>.</li><li>Run it in four steps: shape a bet from raw signal, give it a win condition, run it in a fixed-size cycle, and validate before picking the next one.</li><li>The doctrine comes from Shape Up (Basecamp, 2019). It is influential but contested &mdash; a documented niche, not a settled consensus.</li><li>A bet is strongest as a first-class, machine-readable object that humans and agents jointly own, so an agent can execute it and check the win condition.</li><li>The full doctrine and its trade-offs live in the cluster anchor: <a href="/docs/bet-based-product-planning/">Bet-based product planning: the anti-backlog doctrine</a>.</li></ul></div></div>
+
+<h2 id="what-bet-based-planning-actually-is">What bet-based planning actually is</h2>
+<p>Bet-based planning is a method for deciding what to build that treats work as a repeated, measurable loop instead of a queue. Instead of maintaining a backlog sorted by priority, you commit to a small number of bets &mdash; each a bounded chunk of work with a stated outcome &mdash; and run them inside a fixed time-box, which Shape Up calls a cycle. When a bet ships, its outcome is measured against its win condition, and what was learned feeds the next cycle&rsquo;s bets. The doctrine itself, the criticism against it, and where it fits in the market are covered in <a href="/docs/bet-based-product-planning/">the anti-backlog doctrine anchor</a>; this guide is the four-step how-to.</p>
+<p>The artifact at the centre changes. Under a backlog, the unit is a ticket whose implied job is to get done. Under bets, the unit is a hypothesis you actually test, with a definition of what winning means and a finite appetite for how much time and money it is worth. That shift is the whole point: it removes the queue and replaces it with a small, validated set of commitments. You run four repeatable steps &mdash; shape, win condition, cycle, validate &mdash; and the loop is what keeps bets from quietly turning back into tickets with a fancier name.</p>
+
+<h2 id="step-1-shape-a-bet-from-raw-insight">Step 1 &mdash; Shape a bet from raw insight</h2>
+<p>Shaping is a distinct planning step, not a formality. An idea is only ready to become a bet once someone has defined its boundaries and its definition of done. This is the step Shape Up introduces as its core discipline: unshaped work is not scheduled, and work without an appetite is noise, not a candidate (Shape Up, Basecamp, 2019).</p>
+<p>A bet begins as a signal, not a guess. The raw material is feedback, a market move, churn risk, a competitive shift &mdash; evidence that something is worth pursuing. Before the bet exists, the insight behind it should be captured on its own. In Maskin, this lineage is structural: the insight exists as an object before the bet, and the bet carries a reference back to it, so anyone later can trace why the work was chosen (Maskin architecture, 2026).</p>
+<p>In practice, shaping means answering four questions on paper before anything is scheduled:</p>
+<ul>
+<li><strong>The problem</strong> &mdash; what is wrong or what opportunity is open, stated plainly.</li>
+<li><strong>The scope</strong> &mdash; what is in and, at least as importantly, what is explicitly out.</li>
+<li><strong>The appetite</strong> &mdash; how much time and money this is worth, before you know how long it will take.</li>
+<li><strong>The shape</strong> &mdash; a rough sketch of the approach and the boundary it will stay inside.</li>
+</ul>
+<p>The output is not a detailed plan; it is a bounded proposal. If you cannot state the appetite, the work is not shaped yet, and it should not become a bet.</p>
+
+<h2 id="step-2-give-it-a-win-condition">Step 2 &mdash; Give it a win condition</h2>
+<p>A bet without an outcome is a ticket. The win condition is what makes the bet testable and what lets the loop measure success at the end. It should be specific enough that an outside observer can say, without debate, whether the bet won or lost &mdash; the falsifiability that separates a bet from a wish.</p>
+<p>The win condition does the heavy lifting later. When the loop closes, the outcome is compared against this statement rather than against anyone&rsquo;s memory of what was intended. That is why the condition must be written down when the bet is shaped, not improvised when it ships. In Maskin the win condition is a field on the typed bet object, which is what lets an automated agent check it after execution rather than relying on a human to reconstruct intent (<a href="/docs/architecture/">Maskin architecture</a>, 2026).</p>
+<p>A good test: would you be willing to let a machine read the win condition and report whether it was met? If you would not, sharpen it before you spend a cycle on it.</p>
+
+<h2 id="step-3-run-fixed-size-cycles">Step 3 &mdash; Run fixed-size cycles</h2>
+<p>The appetite from Step 1 becomes the time-box. The cycle is fixed and non-negotiable: if a bet does not fit the appetite, it is not extended, it is cut or reshaped. Shape Up runs six-week cycles followed by a cooldown, but the exact length is a team decision &mdash; what matters is that the box stays fixed (Shape Up, Basecamp, 2019).</p>
+<p>Fixing the box is what forces trade-offs. When a bet runs long, the pressure is to reshape the scope down to what fits, rather than to quietly slip the schedule. This is the mechanism that stops bets from decaying into backlogged tickets: a ticket can grow in place forever, but a bet that overruns its appetite is visibly failing the discipline and gets reshaped or dropped.</p>
+<p>You also run only a small set of bets in parallel. The doctrine&rsquo;s intent is that the team is committed to little and proving it, not juggling a long list. If the cycle is six weeks, pick the handful of bets that genuinely deserve it. Everything else waits for a future cycle or is discarded on purpose.</p>
+
+<h2 id="step-4-close-the-loop-on-validation">Step 4 &mdash; Close the loop on validation</h2>
+<p>When a bet ships, the loop is not finished &mdash; validation is the step that separates the method from a backlog. Measure the shipped outcome against the win condition from Step 2, record the result, notify the people who need to know, and shape follow-up bets from what was learned. A shipped ticket in a backlog is simply closed and forgotten; a shipped bet produces evidence that feeds the next cycle.</p>
+<p>Two things make validation honest. First, the win condition was fixed up front, so you are measuring against intent rather than hindsight. Second, the outcome is recorded on the object itself, so the learning is durable and can feed later bets instead of living in someone&rsquo;s head. In Maskin, closing the loop means the bet moves to a validated state and its requester is notified on the object, giving the whole chain &mdash; insight to bet to validated outcome &mdash; an auditable trail (<a href="/docs/architecture/">Maskin architecture</a>, 2026).</p>
+<p>This is also where the human stays in charge. Agents can run the execution and gather the evidence, but the call on whether the win condition is genuinely met is a taste decision worth keeping with a person. That division &mdash; agents run the loop, humans judge the outcome &mdash; is the emerging governance pattern, and it is why bet-based planning pairs with AI agents rather than competing with them.</p>
+
+<h2 id="why-the-bet-has-to-be-an-object">Why the bet has to be an object, not a label</h2>
+<p>Most planning tools treat a bet as a status field or a tag on a ticket. That misses the point. A bet only works as the engine of a closed loop if it is a first-class, machine-readable object: in Maskin, insights, bets, and tasks are all objects in one unified model connected by typed relationships (<a href="/docs/concepts/">Core concepts</a>, 2026).</p>
+<p>The practical consequence is that work can be automated end to end. A free-text ticket cannot be picked up, executed, and validated by an agent, because it carries no structured win condition and no machine-readable shape. A typed bet object can: it has a driver, a win condition, and a bounded scope, so an agent can run it and hand back a result a human judges. The loop &mdash; shaped from insight, closed by validation &mdash; is the product core, expressed as bounded, human-gated loops rather than code (loop engineering, 2026).</p>
+<p>This maps to the wider shift in how teams run agents. &ldquo;A prompt is not a job &mdash; work is a loop&rdquo; (Addy Osmani, 2026): a backlog is a collection of prompts waiting to be prompted, while a bet shaped with a win condition and closed by validation is a loop that something runs, something checks, and that stops when done. Making the bet an object is what lets agents participate in the loop at all.</p>
+
+<h2 id="why-the-loop-is-worth-running">Why the loop is worth running</h2>
+<p>The case for bet-based planning is not that the market has proven it out &mdash; it is that the alternative silently fails. A backlog can absorb any idea, and because tickets are cheap to add and expensive to delete, the list grows toward aspiration rather than intent. Nothing in a ticket queue can tell you whether the work you shipped was worth doing, because a ticket carries no definition of success. A bet closes that gap by carrying its win condition with it: the loop&rsquo;s output is evidence, not a completion count.</p>
+<p>The productivity case for pairing this discipline with agents is what makes the loop worth automating. In a supervised research test, Claude agents recovered roughly 97% of a human researcher&rsquo;s performance gap over about 800 cumulative hours of compute (~$18k), and the only role humans held was choosing the goal and the scoring rubric &mdash; &ldquo;the bottleneck is which problems to run&rdquo; (Anthropic, &ldquo;When AI builds itself&rdquo;, 2026). That is bet-based planning in miniature: agents do the running, humans choose which bets are worth the cycle. Where the doctrine and its critics stand in the wider market is covered in the <a href="/docs/bet-based-product-planning/">cluster anchor</a>.</p>
+
+<h2 id="common-failure-modes">Common failure modes to watch for</h2>
+<p>The doctrine has real critics, and knowing its failure modes keeps you honest. It is often called company-specific &mdash; it was designed inside Basecamp&rsquo;s own culture, with rituals that do not transfer cleanly. It is also called rigid: a fixed cycle grinds against teams with hard external release commitments or a constant flow of small requests. Teams sometimes adopt the form and then revert, because the ceremony starts to feel like overhead without the promised focus.</p>
+<p>The fixes are pragmatic: keep the loop and drop the ritual you do not need. If six weeks is wrong for you, run four or eight; if cooldowns feel wasteful, fold them in. What survives is the loop itself &mdash; insight to shaped bet to validated outcome &mdash; which is worth keeping even when Shape Up&rsquo;s specific ceremonies are not. Guard against proxy collapse as bets run longer, too: a long-running loop can start optimizing for its checker rather than the real outcome, which is an argument for keeping a person on the taste decision (loop engineering, ttoss, 2026).</p>
+
+<h2 id="faq">FAQ</h2>
+<h3>How long does a bet-based planning cycle take?</h3>
+<p>The length is a team decision, not a fixed rule. Shape Up prescribes six-week cycles followed by a cooldown, but the method works on any fixed box, from two weeks to a quarter. What matters is that the box is fixed and small enough to force trade-offs &mdash; if a bet does not fit, it gets cut or reshaped rather than extended. A small set of bets runs per cycle, so the team stays committed to little and proves it.</p>
+<h3>What should a good win condition look like?</h3>
+<p>A good win condition is specific, observable, and falsifiable &mdash; specific enough that an outside observer can say without debate whether the bet won or lost. It is written down when the bet is shaped, not improvised when it ships. A useful test: would you let a machine read the condition and report whether it was met? If not, sharpen it. In Maskin the win condition lives on the typed bet object, which is what lets an automated agent verify it after execution.</p>
+<h3>Does bet-based planning replace Scrum?</h3>
+<p>Not necessarily &mdash; bet-based planning is about what you commit to and how you decide it has succeeded, while Scrum is about execution cadence. You can run bets on top of sprint delivery: the bet defines the outcome and the appetite, and the sprint structure handles the mechanics. What bet-based planning replaces is the backlog-as-planning-artifact, where a long queue sorted by priority substitutes for a small, validated set of commitments. The <a href="/docs/bet-based-product-planning/">cluster anchor</a> covers the full doctrine and its trade-offs against backlog-first methods.</p>
+<h3>What happens to ideas that are not chosen?</h3>
+<p>They wait, or they are discarded on purpose. Under a backlog, every idea is captured and the list grows toward aspiration. Under bets, an idea is only scheduled once it is shaped, and unshaped or unchosen work is not tracked as if it were committed. Insight is captured and retained, but it does not sit in a queue pretending to be a commitment. When a future cycle opens, it can be shaped and proposed again with evidence.</p>
+<h3>Can AI agents run bet-based planning?</h3>
+<p>Agents can run the parts that are mechanical and continuous &mdash; monitoring sources, synthesising raw insight, shaping a draft bet, executing the work, and gathering evidence against the win condition. What stays with a human is taste: which bets deserve the cycle and whether an outcome genuinely counts as a win. That division matches what research shows &mdash; agents run, humans choose the bets (Anthropic, &ldquo;When AI builds itself&rdquo;, 2026). In Maskin, a bet is a typed object a human and agent jointly own, which is what makes that split executable.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/docs/bet-based-product-planning/">
+        <div class="doc-card__title">Bet-based product planning</div>
+        <div class="doc-card__desc">The full anti-backlog doctrine &mdash; provenance, critics, and where it fits.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+        <div class="doc-card__title">What is an agentic workspace?</div>
+        <div class="doc-card__desc">The category &mdash; the closed loop, on shared typed objects.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/ai-product-management-tool/">
+        <div class="doc-card__title">AI product management tool</div>
+        <div class="doc-card__desc">The loop, not a tracker &mdash; raw insight becomes a testable bet.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Start running bets today</h2>
+      <p>You don&rsquo;t need to buy a planning framework to start &mdash; the four steps are process, and you can run them in a shared document tonight. What Maskin adds is making the bet a machine-readable object an agent can execute and validate, so the loop runs continuously instead of on your discipline alone.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host free on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

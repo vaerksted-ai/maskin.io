@@ -32,9 +32,9 @@
       { label: "What is MCP-native?", href: "/docs/what-is-mcp-native/" },
       { label: "AI product management tool", href: "/docs/ai-product-management-tool/" },
       { label: "Bet-based product planning", href: "/docs/bet-based-product-planning/" },
+      { label: "How to run bet-based planning", href: "/docs/how-to-run-bet-based-planning/", nested: true },
       { label: "Self-hosted AI workspace", href: "/docs/self-hosted-ai-workspace/" },
-      { label: "Open source Jira alternative", href: "/docs/open-source-jira-alternative/" }
-    ]}
+      { label: "Open source Jira alternative", href: "/docs/open-source-jira-alternative/" }    ]}
   ];
 
   var LOGO = '<svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
