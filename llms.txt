@@ -12,6 +12,7 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 ## Articles
 
 - [What is an agentic workspace?](https://maskin.io/what-is-an-agentic-workspace/): The category Maskin is built around — a shared surface where humans and AI agents work on the same typed objects, and the closed loop (insight → bet → task → shipped → repeat) that defines it.
+- [AI product management tool: the loop, not a tracker](https://maskin.io/ai-product-management-tool/): Why an AI product management tool should close the loop between learning and shipping — insight becomes a testable bet, owned jointly by humans and agents — instead of bolting summaries onto a task tracker.
 
 ## Start here
 
@@ -45,10 +46,6 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 
 - [GitHub repository](https://github.com/sindre-ai/maskin): Source code, data model, and self-hosting details.
 - [llms-full.txt](https://maskin.io/llms-full.txt): All documentation concatenated into a single file for full-context ingestion.
-
-## Articles
-
-- [AI product management tool: the loop, not a tracker](https://maskin.io/ai-product-management-tool/): Why an AI product management tool should close the loop between learning and shipping — insight becomes a testable bet, owned jointly by humans and agents — instead of bolting summaries onto a task tracker.
 
 ## Contact
 
