@@ -30,6 +30,7 @@
     { title: "Articles", items: [
       { label: "What is an agentic workspace?", href: "/docs/what-is-an-agentic-workspace/" },
       { label: "What is MCP-native?", href: "/docs/what-is-mcp-native/" },
+      { label: "Ambient agent workspace", href: "/docs/ambient-agent-workspace/" },
       { label: "AI product management tool", href: "/docs/ai-product-management-tool/" },
       { label: "Bet-based product planning", href: "/docs/bet-based-product-planning/" },
       { label: "How to run bet-based planning", href: "/docs/how-to-run-bet-based-planning/", nested: true },

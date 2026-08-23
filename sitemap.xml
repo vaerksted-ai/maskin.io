@@ -49,6 +49,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://maskin.io/docs/ambient-agent-workspace/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://maskin.io/docs/</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
