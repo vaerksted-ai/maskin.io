@@ -26,8 +26,40 @@ for dir in "${CONTENT_DIRS[@]}"; do
   fi
 done
 
-# Inject PostHog key into every HTML in dist/. Any new page that carries the
-# POSTHOG_PROJECT_KEY placeholder is picked up automatically.
+# Auto-inject the PostHog snippet into any HTML in dist/ that doesn't already
+# ship it, so new pages under any CONTENT_DIR fire pageviews without a per-page
+# edit. Injection is placed just before </head>; pages that hand-roll a custom
+# snippet keep theirs and are skipped.
+if [ ! -f partials/posthog.html ]; then
+  echo "Error: partials/posthog.html missing — cannot inject PostHog snippet" >&2
+  exit 1
+fi
+find dist -type f -name '*.html' | while IFS= read -r html; do
+  if grep -q "POSTHOG_PROJECT_KEY" "$html"; then
+    continue
+  fi
+  if ! grep -q "</head>" "$html"; then
+    echo "Warning: no </head> in $html — skipping PostHog injection" >&2
+    continue
+  fi
+  awk -v snippet_file=partials/posthog.html '
+    BEGIN {
+      while ((getline line < snippet_file) > 0) {
+        snippet = (snippet == "" ? line : snippet ORS line)
+      }
+      close(snippet_file)
+    }
+    /<\/head>/ && !injected {
+      print snippet
+      injected = 1
+    }
+    { print }
+  ' "$html" > "$html.tmp" && mv "$html.tmp" "$html"
+done
+
+# Inject PostHog key into every HTML in dist/. Any page that carries the
+# POSTHOG_PROJECT_KEY placeholder (hand-rolled or auto-injected above) is
+# picked up automatically.
 find dist -type f -name '*.html' -print0 | xargs -0 sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g"
 
-echo "Build complete. PostHog key injected."
+echo "Build complete. PostHog snippet + key injected."
