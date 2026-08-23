@@ -9,22 +9,25 @@ fi
 rm -rf dist
 mkdir -p dist
 
-# Copy static files
+# Loose top-level files
 cp index.html 404.html robots.txt sitemap.xml site.webmanifest _redirects dist/
 cp apple-touch-icon.png favicon.ico favicon.svg icon-192.png icon-512.png og-image.png og-image.svg dist/
 cp llms.txt llms-full.txt dist/
 cp maskin-launch.mp4 dist/
-cp -r docs dist/docs
-cp -r changelog dist/changelog
-cp -r privacy dist/privacy
 
-# Inject PostHog key into every generated HTML file that references the placeholder.
-sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g" dist/index.html
-sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g" dist/changelog/index.html
-sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g" dist/privacy/index.html
-sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g" dist/docs/what-is-mcp-native/index.html
-sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g" dist/docs/bet-based-product-planning/index.html
-sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g" dist/docs/what-is-an-agentic-workspace/index.html
-sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g" dist/docs/self-hosted-ai-workspace/index.html
+# Top-level content subtrees. Add a new SEO cluster hub here (one line) and every
+# page under it ships automatically — no other build.sh edits required.
+CONTENT_DIRS=(docs changelog privacy alternatives)
+for dir in "${CONTENT_DIRS[@]}"; do
+  if [ -d "$dir" ]; then
+    cp -r "$dir" "dist/$dir"
+  else
+    echo "Warning: content dir '$dir' listed in CONTENT_DIRS but not found on disk" >&2
+  fi
+done
+
+# Inject PostHog key into every HTML in dist/. Any new page that carries the
+# POSTHOG_PROJECT_KEY placeholder is picked up automatically.
+find dist -type f -name '*.html' -print0 | xargs -0 sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g"
 
 echo "Build complete. PostHog key injected."
