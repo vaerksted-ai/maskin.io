@@ -20,6 +20,7 @@ ORDER = [
   "docs/deployment/index.html",
   "docs/security/index.html",
   "docs/troubleshooting/index.html",
+  "docs/ai-product-management-tool/index.html",
 ]
 
 class MD(HTMLParser):
