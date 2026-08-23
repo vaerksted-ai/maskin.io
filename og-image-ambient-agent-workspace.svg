@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <!-- Warm-dark canvas + subtle grid -->
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- ============================================================ -->
+  <!-- LEFT: compressed chat window (pull, cold, waiting)            -->
+  <!-- ============================================================ -->
+  <g id="chat">
+    <!-- container -->
+    <rect x="80" y="90" width="270" height="450" rx="14" fill="#141311" stroke="#2A2825" stroke-width="1.2"/>
+
+    <!-- title bar -->
+    <line x1="80" y1="132" x2="350" y2="132" stroke="#2A2825" stroke-width="1"/>
+    <circle cx="102" cy="112" r="4" fill="#2A2825"/>
+    <circle cx="118" cy="112" r="4" fill="#2A2825"/>
+    <circle cx="134" cy="112" r="4" fill="#2A2825"/>
+
+    <!-- messages: alternating alignment, tone fades downward = dying queue -->
+    <!-- pair 1 (assistant, flush-left) -->
+    <circle cx="108" cy="163" r="7" fill="#26241F"/>
+    <rect x="124" y="156" width="176" height="14" rx="7" fill="#26241F"/>
+    <rect x="124" y="176" width="130" height="14" rx="7" fill="#26241F"/>
+
+    <!-- pair 2 (user, flush-right) -->
+    <rect x="150" y="210" width="180" height="14" rx="7" fill="#221F1B"/>
+    <rect x="192" y="230" width="138" height="14" rx="7" fill="#221F1B"/>
+
+    <!-- pair 3 (assistant) -->
+    <circle cx="108" cy="271" r="7" fill="#1E1C18"/>
+    <rect x="124" y="264" width="160" height="14" rx="7" fill="#1E1C18"/>
+    <rect x="124" y="284" width="110" height="14" rx="7" fill="#1E1C18"/>
+    <rect x="124" y="304" width="70" height="14" rx="7" fill="#1E1C18"/>
+
+    <!-- pair 4 (user) -->
+    <rect x="170" y="338" width="160" height="14" rx="7" fill="#1B1915"/>
+
+    <!-- pair 5 (assistant, fading) -->
+    <circle cx="108" cy="379" r="7" fill="#181712"/>
+    <rect x="124" y="372" width="120" height="14" rx="7" fill="#181712"/>
+
+    <!-- pair 6 (nearly gone) -->
+    <rect x="200" y="410" width="130" height="14" rx="7" fill="#161510"/>
+    <rect x="240" y="430" width="90" height="14" rx="7" fill="#14130F"/>
+
+    <!-- input divider -->
+    <line x1="80" y1="480" x2="350" y2="480" stroke="#2A2825" stroke-width="1"/>
+
+    <!-- input row: field with blinking cursor + send arrow -->
+    <rect x="100" y="498" width="200" height="26" rx="8" fill="none" stroke="#2A2825" stroke-width="1"/>
+    <line x1="112" y1="505" x2="112" y2="519" stroke="#2563EB" stroke-width="1.6"/>
+    <circle cx="320" cy="511" r="12" fill="#1C1B18"/>
+    <path d="M 315 511 L 325 511 M 322 508 L 325 511 L 322 514" stroke="#5A5751" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Transition: threshold + dashed arrow crossing from queue - graph -->
+  <g id="threshold" opacity="0.7">
+    <line x1="395" y1="90" x2="395" y2="540" stroke="#2A2825" stroke-width="1" stroke-dasharray="1 6"/>
+    <path d="M 360 315 L 428 315" stroke="#5A5751" stroke-width="1.2" stroke-dasharray="4 5"/>
+    <path d="M 421 309 L 430 315 L 421 321" stroke="#5A5751" stroke-width="1.2" fill="none" stroke-linejoin="miter"/>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- RIGHT: typed object graph (state, live, typed relationships) -->
+  <!-- Types: circle=insight, rounded-rect=bet, square=task,        -->
+  <!--        hexagon=loop. Accent blue edges = "live" interrupts.  -->
+  <!-- ============================================================ -->
+  <g id="graph">
+    <!-- N7 insight - N1 insight  (feedback) -->
+    <line x1="500" y1="256" x2="490" y2="196" stroke="#3A3835" stroke-width="1.4"/>
+    <!-- N1 - N2 (informs) -->
+    <line x1="512" y1="182" x2="642" y2="220" stroke="#3A3835" stroke-width="1.4"/>
+    <!-- N2 - N3 (breaks_into) -->
+    <line x1="754" y1="220" x2="852" y2="180" stroke="#3A3835" stroke-width="1.4"/>
+    <!-- N3 - N4 -->
+    <line x1="885" y1="196" x2="978" y2="252" stroke="#3A3835" stroke-width="1.4"/>
+    <!-- N2 - N5 live (accent) -->
+    <line x1="712" y1="266" x2="756" y2="408" stroke="#2563EB" stroke-width="2.4"/>
+    <!-- N4 - N5 live (accent) -->
+    <line x1="1010" y1="290" x2="820" y2="422" stroke="#2563EB" stroke-width="2.4"/>
+    <!-- N5 - N6 -->
+    <line x1="720" y1="452" x2="596" y2="452" stroke="#3A3835" stroke-width="1.4"/>
+    <!-- N5 - N8 -->
+    <line x1="830" y1="452" x2="990" y2="490" stroke="#3A3835" stroke-width="1.4"/>
+
+    <!-- N1 insight: outlined circle with dot -->
+    <circle cx="480" cy="170" r="24" fill="none" stroke="#FAFAF8" stroke-width="2"/>
+    <circle cx="480" cy="170" r="6" fill="#FAFAF8"/>
+    <!-- N7 insight (smaller) -->
+    <circle cx="505" cy="270" r="15" fill="none" stroke="#FAFAF8" stroke-width="2"/>
+    <circle cx="505" cy="270" r="4" fill="#FAFAF8"/>
+    <!-- N2 bet: rounded rect with 3 internal ticks -->
+    <rect x="638" y="188" width="118" height="78" rx="12" fill="#111110" stroke="#FAFAF8" stroke-width="2"/>
+    <line x1="656" y1="212" x2="738" y2="212" stroke="#FAFAF8" stroke-width="1.6" opacity="0.55"/>
+    <line x1="656" y1="228" x2="716" y2="228" stroke="#FAFAF8" stroke-width="1.6" opacity="0.55"/>
+    <line x1="656" y1="244" x2="726" y2="244" stroke="#FAFAF8" stroke-width="1.6" opacity="0.55"/>
+    <!-- N3 task: solid square -->
+    <rect x="852" y="160" width="34" height="34" fill="#FAFAF8"/>
+    <!-- N4 loop: hexagon with center dot -->
+    <polygon points="994,222 1030,242 1030,286 994,306 958,286 958,242" fill="#111110" stroke="#FAFAF8" stroke-width="2"/>
+    <circle cx="994" cy="264" r="6" fill="#FAFAF8"/>
+    <!-- N5 bet: accent (live) with halo + accent internal ticks -->
+    <rect x="712" y="404" width="118" height="78" rx="12" fill="#111110" stroke="#2563EB" stroke-width="2.5"/>
+    <line x1="730" y1="428" x2="812" y2="428" stroke="#2563EB" stroke-width="1.8" opacity="0.75"/>
+    <line x1="730" y1="444" x2="790" y2="444" stroke="#2563EB" stroke-width="1.8" opacity="0.75"/>
+    <line x1="730" y1="460" x2="800" y2="460" stroke="#2563EB" stroke-width="1.8" opacity="0.75"/>
+    <rect x="702" y="394" width="138" height="98" rx="16" fill="none" stroke="#2563EB" stroke-width="1" opacity="0.28"/>
+    <!-- N6 task: outlined square (open) -->
+    <rect x="562" y="435" width="34" height="34" fill="none" stroke="#FAFAF8" stroke-width="2"/>
+    <!-- N8 task: solid small square -->
+    <rect x="990" y="478" width="26" height="26" fill="#FAFAF8"/>
+  </g>
+
+  <!-- Signature: Maskin M mark, bottom-right, subtle -->
+  <g transform="translate(1120, 555)">
+    <rect x="0" y="0" width="44" height="44" rx="8" fill="#1C1B18"/>
+    <path d="M9 33 L9 11 L22 25 L35 11 L35 33" stroke="#FAFAF8" stroke-width="4.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+  </g>
+</svg>
