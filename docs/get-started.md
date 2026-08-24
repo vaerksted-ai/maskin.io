@@ -13,7 +13,7 @@ Because agents read and write the same objects your team does, context compounds
 
 ## Two ways to run it
 Pick the path that fits how you want to operate.
-> The setup guide covers the **self-hosted** version. For managed hosting, [book a meeting](http://meshfirm.com/bookmagnus) with the founders.
+> The setup guide covers the **self-hosted** version. For managed hosting, [book a meeting](https://meshfirm.com/bookmagnus) with the founders.
 
 ## Next steps
 - Understand the model → [Core concepts](/docs/concepts/)

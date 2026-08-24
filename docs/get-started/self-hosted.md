@@ -2,7 +2,7 @@
 
 # Self-hosted setup
 Run your own Maskin instance and connect Claude — Code or Desktop — to it over MCP, so you can drive a workspace from inside Claude.
-> This guide is for the **self-hosted** version of Maskin — connecting Claude to a Maskin instance you run yourself. Want us to host it instead? [Book a meeting](http://meshfirm.com/bookmagnus).
+> This guide is for the **self-hosted** version of Maskin — connecting Claude to a Maskin instance you run yourself. Want us to host it instead? [Book a meeting](https://meshfirm.com/bookmagnus).
 
 ## Prerequisites
 - **Claude Code** or **Claude Desktop** installed.
