@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="substrateFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111110" stop-opacity="0"/>
+      <stop offset="60%" stop-color="#0C0C0B" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#050505" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="substrateGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2563EB" stop-opacity="0.10"/>
+      <stop offset="60%" stop-color="#2563EB" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111110" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#111110" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Warm-dark canvas + subtle grid -->
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="120" fill="url(#topFade)"/>
+
+  <!-- ============================================================ -->
+  <!-- SUBSTRATE: MCP as protocol ground plane                       -->
+  <!-- Isometric perspective grid, vanishing to (600, 430)           -->
+  <!-- ============================================================ -->
+  <g id="substrate">
+    <!-- horizon -->
+    <line x1="0" y1="430" x2="1200" y2="430" stroke="#2E2C28" stroke-width="1"/>
+
+    <!-- perspective rays from vanishing point (600, 430) to bottom edge -->
+    <g stroke="#2A2825" stroke-width="0.7" fill="none">
+      <line x1="600" y1="430" x2="-400" y2="630"/>
+      <line x1="600" y1="430" x2="-180" y2="630"/>
+      <line x1="600" y1="430" x2="0" y2="630"/>
+      <line x1="600" y1="430" x2="140" y2="630"/>
+      <line x1="600" y1="430" x2="260" y2="630"/>
+      <line x1="600" y1="430" x2="360" y2="630"/>
+      <line x1="600" y1="430" x2="440" y2="630"/>
+      <line x1="600" y1="430" x2="510" y2="630"/>
+      <line x1="600" y1="430" x2="560" y2="630"/>
+    </g>
+    <g stroke="#2E2C28" stroke-width="0.9" fill="none">
+      <line x1="600" y1="430" x2="600" y2="630"/>
+    </g>
+    <g stroke="#2A2825" stroke-width="0.7" fill="none">
+      <line x1="600" y1="430" x2="640" y2="630"/>
+      <line x1="600" y1="430" x2="690" y2="630"/>
+      <line x1="600" y1="430" x2="760" y2="630"/>
+      <line x1="600" y1="430" x2="840" y2="630"/>
+      <line x1="600" y1="430" x2="940" y2="630"/>
+      <line x1="600" y1="430" x2="1060" y2="630"/>
+      <line x1="600" y1="430" x2="1200" y2="630"/>
+      <line x1="600" y1="430" x2="1380" y2="630"/>
+      <line x1="600" y1="430" x2="1600" y2="630"/>
+    </g>
+
+    <!-- horizontal receding lines (spacing widens toward viewer = perspective) -->
+    <line x1="0" y1="446" x2="1200" y2="446" stroke="#24221E" stroke-width="0.5"/>
+    <line x1="0" y1="465" x2="1200" y2="465" stroke="#26241F" stroke-width="0.55"/>
+    <line x1="0" y1="489" x2="1200" y2="489" stroke="#292724" stroke-width="0.65"/>
+    <line x1="0" y1="520" x2="1200" y2="520" stroke="#2D2B27" stroke-width="0.75"/>
+    <line x1="0" y1="559" x2="1200" y2="559" stroke="#312F2B" stroke-width="0.9"/>
+    <line x1="0" y1="608" x2="1200" y2="608" stroke="#37342F" stroke-width="1.05"/>
+
+    <!-- lattice endpoint dots — anonymous protocol endpoints -->
+    <g fill="#3A3835">
+      <circle cx="80"   cy="465" r="1.2"/>
+      <circle cx="152"  cy="465" r="1.2"/>
+      <circle cx="240"  cy="465" r="1.2"/>
+      <circle cx="340"  cy="465" r="1.2"/>
+      <circle cx="460"  cy="465" r="1.2"/>
+      <circle cx="740"  cy="465" r="1.2"/>
+      <circle cx="860"  cy="465" r="1.2"/>
+      <circle cx="960"  cy="465" r="1.2"/>
+      <circle cx="1048" cy="465" r="1.2"/>
+      <circle cx="1120" cy="465" r="1.2"/>
+
+      <circle cx="60"   cy="489" r="1.4"/>
+      <circle cx="160"  cy="489" r="1.4"/>
+      <circle cx="290"  cy="489" r="1.4"/>
+      <circle cx="380"  cy="489" r="1.4"/>
+      <circle cx="720"  cy="489" r="1.4"/>
+      <circle cx="920"  cy="489" r="1.4"/>
+      <circle cx="1050" cy="489" r="1.4"/>
+      <circle cx="1140" cy="489" r="1.4"/>
+
+      <circle cx="40"   cy="520" r="1.6"/>
+      <circle cx="180"  cy="520" r="1.6"/>
+      <circle cx="330"  cy="520" r="1.6"/>
+      <circle cx="700"  cy="520" r="1.6"/>
+      <circle cx="880"  cy="520" r="1.6"/>
+      <circle cx="1060" cy="520" r="1.6"/>
+
+      <circle cx="20"   cy="559" r="1.9"/>
+      <circle cx="210"  cy="559" r="1.9"/>
+      <circle cx="380"  cy="559" r="1.9"/>
+      <circle cx="820"  cy="559" r="1.9"/>
+      <circle cx="1000" cy="559" r="1.9"/>
+      <circle cx="1170" cy="559" r="1.9"/>
+
+      <circle cx="90"   cy="608" r="2.3"/>
+      <circle cx="290"  cy="608" r="2.3"/>
+      <circle cx="900"  cy="608" r="2.3"/>
+      <circle cx="1110" cy="608" r="2.3"/>
+    </g>
+
+    <!-- pillar anchor points (bright, on horizon) — where the graph nodes plug into MCP -->
+    <g fill="#FAFAF8">
+      <circle cx="195" cy="430" r="2.4"/>
+      <circle cx="290" cy="430" r="1.8"/>
+      <circle cx="448" cy="430" r="2.4"/>
+      <circle cx="632" cy="430" r="2.4"/>
+      <circle cx="990" cy="430" r="2.4"/>
+      <circle cx="516" cy="430" r="1.8"/>
+    </g>
+    <!-- live anchor for B2 (accent blue) — the "live" endpoint on the protocol -->
+    <circle cx="810" cy="430" r="3.2" fill="#2563EB"/>
+    <circle cx="810" cy="430" r="6.8" fill="none" stroke="#2563EB" stroke-width="0.9" opacity="0.45"/>
+
+    <!-- substrate depth glow + fade to imply active protocol layer -->
+    <rect x="0" y="430" width="1200" height="200" fill="url(#substrateGlow)"/>
+    <rect x="0" y="490" width="1200" height="140" fill="url(#substrateFade)"/>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- PILLARS: nodes anchored into the protocol substrate           -->
+  <!-- ============================================================ -->
+  <g id="pillars" opacity="0.5">
+    <line x1="195" y1="222" x2="195" y2="430" stroke="#5A5751" stroke-width="0.8" stroke-dasharray="2 5"/>
+    <line x1="290" y1="320" x2="290" y2="430" stroke="#5A5751" stroke-width="0.8" stroke-dasharray="2 5"/>
+    <line x1="448" y1="258" x2="448" y2="430" stroke="#5A5751" stroke-width="0.8" stroke-dasharray="2 5"/>
+    <line x1="632" y1="234" x2="632" y2="430" stroke="#5A5751" stroke-width="0.8" stroke-dasharray="2 5"/>
+    <line x1="810" y1="258" x2="810" y2="430" stroke="#2563EB" stroke-width="1.0" stroke-dasharray="2 5" opacity="0.9"/>
+    <line x1="990" y1="258" x2="990" y2="430" stroke="#5A5751" stroke-width="0.8" stroke-dasharray="2 5"/>
+    <line x1="516" y1="372" x2="516" y2="430" stroke="#5A5751" stroke-width="0.8" stroke-dasharray="2 5"/>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- GRAPH: typed workspace-graph on top of the protocol substrate -->
+  <!-- Types: circle=insight, rounded-rect=bet, square=task,         -->
+  <!--        hexagon=loop. Live chain in accent blue.               -->
+  <!-- ============================================================ -->
+  <g id="graph">
+    <!-- Judgment-loop feedback: dashed curved arc from Loop back to Insight -->
+    <path d="M 990 172 C 990 60, 260 60, 175 155"
+          stroke="#5A5751" stroke-width="1.2" stroke-dasharray="5 6" fill="none" opacity="0.7"/>
+    <path d="M 180 148 L 175 155 L 183 160"
+          stroke="#5A5751" stroke-width="1.2" fill="none" stroke-linejoin="miter" opacity="0.7"/>
+
+    <!-- Edges (drawn under nodes) -->
+    <!-- I2 - B1 (muted) -->
+    <line x1="303" y1="297" x2="405" y2="253" stroke="#3A3835" stroke-width="1.4"/>
+    <!-- B1 - T2 (muted, branches downward) -->
+    <line x1="470" y1="258" x2="512" y2="342" stroke="#3A3835" stroke-width="1.4"/>
+    <!-- L - T2 curved down-back (muted) -->
+    <path d="M 962 260 Q 780 340, 548 358"
+          stroke="#3A3835" stroke-width="1.4" fill="none"/>
+
+    <!-- Accent live chain: I1 - B1 - T1 - B2 - L -->
+    <line x1="226" y1="204" x2="378" y2="212" stroke="#2563EB" stroke-width="2.4"/>
+    <line x1="518" y1="213" x2="610" y2="212" stroke="#2563EB" stroke-width="2.4"/>
+    <line x1="654" y1="212" x2="740" y2="213" stroke="#2563EB" stroke-width="2.4"/>
+    <line x1="880" y1="205" x2="943" y2="185" stroke="#2563EB" stroke-width="2.4"/>
+
+    <!-- ================= NODES ================= -->
+    <!-- I1 insight (primary): outlined circle with dot -->
+    <circle cx="195" cy="190" r="32" fill="#111110" stroke="#FAFAF8" stroke-width="2"/>
+    <circle cx="195" cy="190" r="8" fill="#FAFAF8"/>
+
+    <!-- I2 insight (satellite): smaller -->
+    <circle cx="290" cy="305" r="15" fill="#111110" stroke="#FAFAF8" stroke-width="2"/>
+    <circle cx="290" cy="305" r="4" fill="#FAFAF8"/>
+
+    <!-- B1 bet (primary): rounded rect with 3 internal ticks -->
+    <rect x="378" y="168" width="140" height="90" rx="14" fill="#111110" stroke="#FAFAF8" stroke-width="2"/>
+    <line x1="398" y1="194" x2="500" y2="194" stroke="#FAFAF8" stroke-width="1.6" opacity="0.55"/>
+    <line x1="398" y1="213" x2="474" y2="213" stroke="#FAFAF8" stroke-width="1.6" opacity="0.55"/>
+    <line x1="398" y1="232" x2="490" y2="232" stroke="#FAFAF8" stroke-width="1.6" opacity="0.55"/>
+
+    <!-- T1 task: solid square -->
+    <rect x="610" y="190" width="44" height="44" fill="#FAFAF8"/>
+
+    <!-- B2 bet (LIVE, accent): halo + accent outline + accent internal ticks -->
+    <rect x="730" y="158" width="160" height="110" rx="18" fill="none" stroke="#2563EB" stroke-width="1" opacity="0.28"/>
+    <rect x="740" y="168" width="140" height="90" rx="14" fill="#111110" stroke="#2563EB" stroke-width="2.5"/>
+    <line x1="760" y1="194" x2="862" y2="194" stroke="#2563EB" stroke-width="1.8" opacity="0.75"/>
+    <line x1="760" y1="213" x2="836" y2="213" stroke="#2563EB" stroke-width="1.8" opacity="0.75"/>
+    <line x1="760" y1="232" x2="852" y2="232" stroke="#2563EB" stroke-width="1.8" opacity="0.75"/>
+
+    <!-- L loop: hexagon with center dot -->
+    <polygon points="990,164 1032,188 1032,238 990,262 948,238 948,188"
+             fill="#111110" stroke="#FAFAF8" stroke-width="2"/>
+    <circle cx="990" cy="213" r="8" fill="#FAFAF8"/>
+
+    <!-- T2 side task: outlined small square -->
+    <rect x="500" y="342" width="32" height="32" fill="none" stroke="#FAFAF8" stroke-width="2"/>
+  </g>
+
+  <!-- Signature: Maskin M mark, bottom-right, subtle -->
+  <g transform="translate(1120, 555)">
+    <rect x="0" y="0" width="44" height="44" rx="8" fill="#1C1B18"/>
+    <path d="M9 33 L9 11 L22 25 L35 11 L35 33"
+          stroke="#FAFAF8" stroke-width="4.5"
+          stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+  </g>
+</svg>
