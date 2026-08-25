@@ -61,7 +61,7 @@
       "mainEntityOfPage": "https://maskin.io/docs/what-is-mcp-native/",
       "image": "https://maskin.io/og-image.png",
       "datePublished": "2026-08-21T00:00:00Z",
-      "dateModified": "2026-08-23T00:00:00Z",
+      "dateModified": "2026-08-25T00:00:00Z",
       "author": {
         "@type": "Organization",
         "name": "Maskin",
@@ -201,6 +201,7 @@
       <li><strong>Agents run in sandboxed sessions.</strong> The runtime spawns ephemeral Docker containers running the Claude Code CLI (the default) or the Codex CLI, plus a browser-sidecar image for web tasks. Isolation is a design decision, not a hardening afterthought &mdash; see <a href="/docs/agents/">agents &amp; sessions</a>.</li>
     </ul>
     <p>That last point is worth stressing: MCP is the protocol, and the session model is where the safety lives. The protocol decides <em>what an agent can reach</em>; the container session decides <em>how much it can touch while working</em>. Both are first-class parts of an MCP-native design.</p>
+    <p>For the workspace-scale version of these four markers &mdash; what &ldquo;MCP-native&rdquo; looks like when it&rsquo;s a property of the whole product surface, plus the marketplace-vs-category and AI21 &ldquo;workspace-as-sandbox&rdquo; disambiguations &mdash; see the definitional companion: <a href="/docs/mcp-native-workspace/">MCP-native workspace: a category, not a checkbox</a>.</p>
 
     <h2>Why does an open protocol make bring-your-own-model real?</h2>
     <p>Because the workspace is model-agnostic at the protocol layer, the model is decoupled from the platform. You decide which model runs your agents &mdash; Claude for reasoning-heavy shaping, Codex or a local model for constrained tasks, your own fine-tuned model for domain work &mdash; all inside the same workspace, all operating on the same typed objects. See <a href="/docs/llm/">how model providers and keys work</a>.</p>
@@ -262,9 +263,9 @@
           <div class="doc-card__desc">Why the primary unit of work is a bet, not a ticket.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
-        <a class="doc-card" href="/docs/mcp-tools/">
-          <div class="doc-card__title">MCP tools reference</div>
-          <div class="doc-card__desc">The typed tools every MCP-capable client can call.</div>
+        <a class="doc-card" href="/docs/mcp-native-workspace/">
+          <div class="doc-card__title">MCP-native workspace</div>
+          <div class="doc-card__desc">The category, one level up &mdash; the four markers that separate it from an app with an MCP integration.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
       </div>

@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="Maskin">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-08-23T00:00:00Z">
-<meta property="article:modified_time" content="2026-08-23T00:00:00Z">
+<meta property="article:modified_time" content="2026-08-25T00:00:00Z">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@maskin_io">
@@ -54,7 +54,7 @@
       "mainEntityOfPage": "https://maskin.io/docs/ambient-agent-workspace/",
       "image": "https://maskin.io/og-image.png",
       "datePublished": "2026-08-23T00:00:00Z",
-      "dateModified": "2026-08-23T00:00:00Z",
+      "dateModified": "2026-08-25T00:00:00Z",
       "author": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" },
       "publisher": {
         "@type": "Organization",
@@ -216,7 +216,7 @@
     <h2>What to build if you accept the frame</h2>
     <p>If the anti-chat frame lands and the workspace-graph pattern fits the shape of your team&rsquo;s work, the actual construction question splits into three:</p>
     <ul>
-      <li><strong>Pick the object model before the model.</strong> The typed objects (insight, bet, task, loop) and the typed relationships between them are the durable layer; the model call is swappable. The <a href="/docs/what-is-mcp-native/">MCP-native</a> architecture we built Maskin on is the concrete version of this &mdash; the object model is the substrate, the model is a configuration.</li>
+      <li><strong>Pick the object model before the model.</strong> The typed objects (insight, bet, task, loop) and the typed relationships between them are the durable layer; the model call is swappable. The <a href="/docs/what-is-mcp-native/">MCP-native</a> architecture we built Maskin on is the concrete version of this &mdash; the object model is the substrate, the model is a configuration. For the workspace-scale definitional companion to that argument, <a href="/docs/mcp-native-workspace/">MCP-native workspace: a category, not a checkbox</a> names the four architectural markers that separate the category from an app with an MCP integration.</li>
       <li><strong>Wire triggers on state, not on time.</strong> The most common ambient-agent bug is a cron loop that fires whether the state changed or not. Trigger on the object transition &mdash; a new insight, a bet reaching <code>signal</code>, a task closing &mdash; and let the graph do the work of remembering.</li>
       <li><strong>Make close conditions load-bearing.</strong> A loop without a close condition is a cost leak. A loop with one is the ambient equivalent of a well-scoped bet. Silence, stopping, and gates are the real design frontier &mdash; the same question this page is answering, one abstraction layer down.</li>
     </ul>
@@ -260,9 +260,9 @@
           <div class="doc-card__desc">The protocol layer under the object graph &mdash; and why bring-your-own-model is real.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
-        <a class="doc-card" href="/docs/bet-vs-backlog/">
-          <div class="doc-card__title">Bet vs backlog</div>
-          <div class="doc-card__desc">The object-model shift the workspace-graph pattern is built on.</div>
+        <a class="doc-card" href="/docs/mcp-native-workspace/">
+          <div class="doc-card__title">MCP-native workspace</div>
+          <div class="doc-card__desc">The category, one level up &mdash; four markers that separate it from an app with an MCP integration.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
         <a class="doc-card" href="/docs/self-hosted-ai-workspace/">
