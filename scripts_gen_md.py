@@ -21,6 +21,7 @@ ORDER = [
   "docs/security/index.html",
   "docs/troubleshooting/index.html",
   "docs/ai-product-management-tool/index.html",
+  "docs/mcp-native-workspace/index.html",
 ]
 
 class MD(HTMLParser):
