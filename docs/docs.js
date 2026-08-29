@@ -31,6 +31,7 @@
       { label: "What is an agentic workspace?", href: "/docs/what-is-an-agentic-workspace/" },
       { label: "What is MCP-native?", href: "/docs/what-is-mcp-native/" },
       { label: "MCP-native workspace", href: "/docs/mcp-native-workspace/", nested: true },
+      { label: "What is a stateful orchestration substrate?", href: "/docs/what-is-a-stateful-orchestration-substrate/" },
       { label: "Ambient agent workspace", href: "/docs/ambient-agent-workspace/" },
       { label: "AI product management tool", href: "/docs/ai-product-management-tool/" },
       { label: "Bet-based product planning", href: "/docs/bet-based-product-planning/" },

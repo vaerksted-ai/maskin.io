@@ -22,6 +22,7 @@ ORDER = [
   "docs/troubleshooting/index.html",
   "docs/ai-product-management-tool/index.html",
   "docs/mcp-native-workspace/index.html",
+  "docs/what-is-a-stateful-orchestration-substrate/index.html",
 ]
 
 class MD(HTMLParser):
