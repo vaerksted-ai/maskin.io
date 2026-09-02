@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <!-- Warm-dark canvas + subtle grid -->
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Title band -->
+  <text x="80" y="98" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#5A5751" letter-spacing="4">OPEN SOURCE AI SDR</text>
+  <text x="80" y="160" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">Six real GitHub repos.</text>
+  <text x="80" y="222" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">One honest loop shape.</text>
+  <text x="80" y="266" font-family="Newsreader, Georgia, serif" font-size="24" font-style="italic" fill="#8B8781">$50–$200/mo on your keys, vs $2k–$5k/mo closed SaaS</text>
+
+  <!-- Seven-step loop (numbered nodes) around a human-approval gate -->
+  <!-- Loop ring -->
+  <circle cx="820" cy="420" r="150" fill="none" stroke="#2A2825" stroke-width="1.2" stroke-dasharray="2 6"/>
+  <!-- Directional accent arc -->
+  <path d="M 820 270 A 150 150 0 0 1 970 420" fill="none" stroke="#2563EB" stroke-width="3" opacity="0.85"/>
+  <path d="M 964 411 L 972 420 L 964 429" fill="none" stroke="#2563EB" stroke-width="3" stroke-linejoin="miter"/>
+
+  <!-- Human-on-the-loop hub (center) -->
+  <rect x="770" y="382" width="100" height="76" rx="10" fill="#111110" stroke="#FAFAF8" stroke-width="2"/>
+  <text x="820" y="410" text-anchor="middle" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="12" fill="#8B8781" letter-spacing="1.5">HUMAN</text>
+  <text x="820" y="428" text-anchor="middle" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#FAFAF8">approval</text>
+  <text x="820" y="446" text-anchor="middle" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#FAFAF8">gate</text>
+
+  <!-- Step nodes: 7 around the ring -->
+  <!-- 1 Signal (top) -->
+  <circle cx="820" cy="270" r="22" fill="#111110" stroke="#FAFAF8" stroke-width="2"/>
+  <text x="820" y="276" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" font-weight="600" fill="#FAFAF8">1</text>
+  <text x="820" y="248" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">signal</text>
+
+  <!-- 2 Research (upper-right) -->
+  <circle cx="937" cy="337" r="22" fill="#111110" stroke="#FAFAF8" stroke-width="2"/>
+  <text x="937" y="343" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" font-weight="600" fill="#FAFAF8">2</text>
+  <text x="972" y="329" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">research</text>
+
+  <!-- 3 Draft (lower-right) -->
+  <circle cx="937" cy="503" r="22" fill="#111110" stroke="#FAFAF8" stroke-width="2"/>
+  <text x="937" y="509" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" font-weight="600" fill="#FAFAF8">3</text>
+  <text x="972" y="509" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">draft</text>
+
+  <!-- 4 Approval (bottom, accented — this is the gate) -->
+  <circle cx="820" cy="570" r="24" fill="#111110" stroke="#2563EB" stroke-width="2.5"/>
+  <text x="820" y="576" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" font-weight="700" fill="#2563EB">4</text>
+  <text x="820" y="604" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#2563EB">approval</text>
+
+  <!-- 5 Send (lower-left) -->
+  <circle cx="703" cy="503" r="22" fill="#111110" stroke="#FAFAF8" stroke-width="2"/>
+  <text x="703" y="509" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" font-weight="600" fill="#FAFAF8">5</text>
+  <text x="668" y="509" text-anchor="end" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">send</text>
+
+  <!-- 6 Reply routing (upper-left) -->
+  <circle cx="703" cy="337" r="22" fill="#111110" stroke="#FAFAF8" stroke-width="2"/>
+  <text x="703" y="343" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" font-weight="600" fill="#FAFAF8">6</text>
+  <text x="668" y="329" text-anchor="end" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">route replies</text>
+
+  <!-- 7 Close (small badge above node 1) -->
+  <circle cx="820" cy="200" r="16" fill="#FAFAF8"/>
+  <text x="820" y="205" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" font-weight="700" fill="#111110">7</text>
+  <text x="820" y="184" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">close condition</text>
+
+  <!-- Left panel: six repo squares (typed nodes) -->
+  <g transform="translate(80, 340)">
+    <text x="0" y="0" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" fill="#8B8781" letter-spacing="2">SIX REAL REPOS</text>
+
+    <!-- Row 1 -->
+    <rect x="0" y="22" width="150" height="56" rx="8" fill="#141311" stroke="#2A2825" stroke-width="1.2"/>
+    <text x="14" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="#FAFAF8">MatthewDailey/</text>
+    <text x="14" y="64" font-family="JetBrains Mono, monospace" font-size="12" fill="#FAFAF8">open-sdr</text>
+
+    <rect x="160" y="22" width="150" height="56" rx="8" fill="#141311" stroke="#2A2825" stroke-width="1.2"/>
+    <text x="174" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="#FAFAF8">OpenOutreach</text>
+    <text x="174" y="64" font-family="JetBrains Mono, monospace" font-size="11" fill="#8B8781">GPLv3 · CLI</text>
+
+    <rect x="320" y="22" width="150" height="56" rx="8" fill="#141311" stroke="#2A2825" stroke-width="1.2"/>
+    <text x="334" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="#FAFAF8">ZeroGTM</text>
+    <text x="334" y="64" font-family="JetBrains Mono, monospace" font-size="11" fill="#8B8781">MIT · n8n</text>
+
+    <!-- Row 2 -->
+    <rect x="0" y="90" width="150" height="56" rx="8" fill="#141311" stroke="#2A2825" stroke-width="1.2"/>
+    <text x="14" y="114" font-family="JetBrains Mono, monospace" font-size="12" fill="#FAFAF8">Signal</text>
+    <text x="14" y="132" font-family="JetBrains Mono, monospace" font-size="11" fill="#8B8781">Supabase · Anthropic</text>
+
+    <rect x="160" y="90" width="150" height="56" rx="8" fill="#141311" stroke="#2A2825" stroke-width="1.2"/>
+    <text x="174" y="114" font-family="JetBrains Mono, monospace" font-size="12" fill="#FAFAF8">revenue-os</text>
+    <text x="174" y="132" font-family="JetBrains Mono, monospace" font-size="11" fill="#8B8781">personize · trigger.dev</text>
+
+    <rect x="320" y="90" width="150" height="56" rx="8" fill="#141311" stroke="#2A2825" stroke-width="1.2"/>
+    <text x="334" y="114" font-family="JetBrains Mono, monospace" font-size="12" fill="#FAFAF8">ai-sdr-agent</text>
+    <text x="334" y="132" font-family="JetBrains Mono, monospace" font-size="11" fill="#8B8781">Flask · HITL UI</text>
+  </g>
+
+  <!-- Footer strip: maskin wordmark + URL -->
+  <g transform="translate(80, 550)">
+    <rect x="0" y="0" width="34" height="34" rx="7" fill="#1C1B18"/>
+    <path d="M7 26 L7 9 L17 19 L27 9 L27 26" stroke="#FAFAF8" stroke-width="3.6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+    <text x="46" y="24" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">Maskin</text>
+    <text x="46" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="#5A5751">maskin.io/alternatives/open-source-ai-sdr</text>
+  </g>
+</svg>
