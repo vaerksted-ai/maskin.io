@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Source AI SDR: The Six Real Repos, and the Loop Shape That Works</title>
+<meta name="description" content="Open source AI SDR: honest map of the six GitHub repos, the $50-200/mo vs $2k-5k/mo cost split, and the loop shape (human-on-the-loop) that makes outbound actually work.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/alternatives/open-source-ai-sdr/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/alternatives/open-source-ai-sdr/">
+<meta property="og:title" content="Open Source AI SDR: The Six Real Repos, and the Loop Shape That Works">
+<meta property="og:description" content="Six OSS AI SDR repos on GitHub, the $50-200/mo vs $2k-5k/mo cost split, and the human-on-the-loop shape that makes outbound actually work.">
+<meta property="og:image" content="https://maskin.io/og-image-open-source-ai-sdr.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Open Source AI SDR: The Six Real Repos, and the Loop Shape That Works">
+<meta name="twitter:description" content="OSS AI SDR: six GitHub repos, cost split vs closed SaaS, and the human-on-the-loop shape that makes outbound work.">
+<meta name="twitter:image" content="https://maskin.io/og-image-open-source-ai-sdr.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Open Source AI SDR: The Six Real Repos, and the Loop Shape That Works",
+      "name": "Open Source AI SDR: The Six Real Repos, and the Loop Shape That Works",
+      "description": "Open source AI SDR: honest map of the six GitHub repos, the $50-200/mo vs $2k-5k/mo cost split, and the loop shape (human-on-the-loop) that makes outbound actually work.",
+      "url": "https://maskin.io/alternatives/open-source-ai-sdr/",
+      "inLanguage": "en",
+      "datePublished": "2026-09-02T00:00:00Z",
+      "dateModified": "2026-09-02T00:00:00Z",
+      "image": ["https://maskin.io/og-image-open-source-ai-sdr.svg"],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "mainEntityOfPage": "https://maskin.io/alternatives/open-source-ai-sdr/",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": {
+        "@type": "Product",
+        "name": "Maskin"
+      },
+      "keywords": "open source ai sdr, ai sdr, open source sales agent, ai sdr alternative"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Alternatives",
+          "item": "https://maskin.io/alternatives/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Open source AI SDR",
+          "item": "https://maskin.io/alternatives/open-source-ai-sdr/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an open source AI SDR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An open source AI SDR is a self-hostable agent stack that automates outbound sales — prospect research, message drafting, sequenced follow-up, reply routing — using components you can read, fork, and run on your own model keys. Unlike closed SaaS AI SDRs (11x, Artisan, Qualified, SalesForge, AiSDR), the code, licence, and API bill are yours. Six live repos on GitHub in 2026 span from single-file CLI (OpenOutreach) to full HITL dashboards (kandksolvefast/ai-sdr-agent) to composed stacks with memory and governance (personizeai/revenue-os)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there really no AI SDR on the top-ranking SERP that's open source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On the head term `ai sdr`, effectively none — the top fifteen results are closed-SaaS listicles, vendor pages, and one Reddit thread. On the long-tail `open source ai sdr`, GitHub's MatthewDailey/open-sdr ranks at position 2 (largely on GitHub's domain authority), and OSS-oriented listicles (eigent.ai, nimblox.com) rank at positions 9-10. The category is being claimed on GitHub without the corresponding SEO footprint most closed vendors have built."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does an open source AI SDR actually cost to run?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Direct API costs (LLM + enrichment) run roughly $50-$200/mo at typical OSS-stack volume, per personizeai/revenue-os's public comparison. That excludes the operational cost of owning deliverability, sender-reputation management, CRM integration, and prompt tuning — costs closed SaaS bundles into its $2,000-$5,000/mo bill. The true comparison depends on whether your team already has the GTM-engineering capacity to own those surfaces."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which open source AI SDR repo should I start with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depends on your existing stack. If you already run n8n, start with ZeroGTM. If you want a composed, closed-SaaS-shaped alternative with a clear cost story, personizeai/revenue-os is the closest analogue. If you want the most legible reference of the loop shape, MatthewDailey/open-sdr or Signal are the readable starting points. If you want an out-of-the-box HITL dashboard, kandksolvefast/ai-sdr-agent ships one. If licence copyleft matters, OpenOutreach's GPLv3 is the strongest guarantee that forks stay open."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a human approval gate on outbound?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, on outbound of any consequence. The failure mode of an AI SDR without a real approval gate isn't a bad message — it's your domain landing on a blacklist because one prompt regression sent 500 off-tone messages to a segment. Human-on-the-loop with a measurable override rate is the operational difference between a working AI SDR loop and a demo. You can sample the approval (review 10% of drafts rather than 100%) once the override rate has stabilised at a healthy middle band, but sending unreviewed at day one is how OSS AI SDRs earn a bad reputation they don't deserve."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the wedge for open source AI SDR vs closed SaaS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cost by roughly one order of magnitude, and legibility: the code is on GitHub, the model call is on your keys, the state is in a database you can query, the audit trail is auditable. The trade-off is that OSS pushes deliverability, activation, and prompt-quality tuning onto the buyer. If your team has the engineering to own those, OSS wins. If not, the closed bill is real work you'd otherwise have to do yourself."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Alternatives</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="is-active" href="/alternatives/open-source-ai-sdr/" aria-current="page">Open source AI SDR</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/alternatives/open-source-jira-alternative/">Alternatives</a> / Open source AI SDR</p>
+    <p class="eyebrow">Comparison</p>
+    <h1>Open source AI SDR: the honest map of what&rsquo;s on GitHub, and how to actually run outbound on your own keys</h1>
+    <p class="lead">An <strong>open source AI SDR</strong> is a self-hostable agent stack that runs the same outbound sales work a $2,000-$5,000/mo AI SDR SaaS runs &mdash; prospecting, research, sequenced messaging, reply handling &mdash; on your own infrastructure, your own model keys, and a codebase you can read and fork. <strong>Six real repos exist on GitHub in 2026</strong> (MatthewDailey/open-sdr, OpenOutreach, ZeroGTM, Signal, personizeai/revenue-os, kandksolvefast/ai-sdr-agent), spanning licenses from MIT to GPLv3 and stacks from single-file CLI to n8n workflows and full HITL dashboards. This page is the honest map: what each repo actually does, where they beat closed SaaS on cost and legibility, where they don&rsquo;t yet beat it on activation, and how to think about running one as a <em>loop</em> &mdash; human-on-the-loop, approval-gated, tied into your CRM &mdash; rather than a product you buy.</p>
+
+  <div class="callout callout--muted">
+    <div class="callout__icon" aria-hidden="true">&#10003;</div>
+    <div class="callout__body"><strong>Key takeaways</strong>
+      <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+        <li><strong>Six OSS AI SDR repos ship in 2026</strong>: MatthewDailey/open-sdr (the one currently ranking on the SERP), OpenOutreach (GPLv3 CLI), ZeroGTM (MIT + n8n), Signal (Supabase + Anthropic), personizeai/revenue-os (memory + governance layer), and kandksolvefast/ai-sdr-agent (Python/Flask with HITL dashboard).</li>
+        <li><strong>Cost gap is roughly one order of magnitude.</strong> Closed AI SDR incumbents (11x&rsquo;s Alice, Artisan&rsquo;s Ava, Qualified&rsquo;s Piper, SalesForge, AiSDR) price at $2,000-$5,000/mo per seat or per contact tier; OSS stacks with equivalent LLM + enrichment volume run $50-$200/mo in API costs, per personizeai/revenue-os&rsquo;s own comparison table.</li>
+        <li><strong>The Reddit thread ranking #3 for `ai sdr`</strong> is literally titled &ldquo;Has anyone found an AI SDR that actually works?&rdquo; &mdash; signal that closed SaaS hasn&rsquo;t converged on a trusted answer, which is why the OSS question is being asked in the first place.</li>
+        <li><strong>The honest counter-frame is real.</strong> OSS AI SDR stacks push activation cost (deliverability, sender reputation, CRM plumbing, ICP research) onto the buyer. If you don&rsquo;t have the GTM engineering capacity to own that surface, the closed SaaS bill is a service contract, not a rip-off.</li>
+        <li><strong>The load-bearing design decision is the loop shape, not the repo.</strong> An AI SDR that ships without a human approval gate on outbound is one bad prompt away from your domain being blacklisted. Human-on-the-loop with a watched override rate is the operational difference between a working AI SDR and a demo.</li>
+        <li><strong>Companion how-to</strong>: once you accept the loop framing, <a href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop in Maskin (MCP + Unipile, HITL approval on outbound)</a> is the concrete build walk-through.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>What an open source AI SDR is (and isn&rsquo;t)</h2>
+  <p>An AI SDR &mdash; sales development representative &mdash; is an agent that runs the top-of-funnel outbound motion: finds accounts and contacts that fit an ICP, researches them, drafts a personalised opening message, sequences follow-ups, and hands warm replies to a human closer. The closed SaaS version has been productised as named agents (11x&rsquo;s Alice, Artisan&rsquo;s Ava, Qualified&rsquo;s Piper, plus SalesForge, AiSDR, Saleshandy, ColdReach, Fin.ai) that abstract the whole stack behind a per-seat or per-contact price.</p>
+  <p>An <em>open source</em> AI SDR runs the same motion, but the stack is components you assemble: an LLM you route to (Anthropic, OpenAI, a local model), an enrichment layer (Apollo, Clay, Tavily, a home-grown scraper), a durable execution runtime (Trigger.dev, n8n, or a workspace&rsquo;s built-in triggers), and a sender (a LinkedIn account via Unipile, an email domain you warm, or both). The code is on GitHub, the licence lets you fork, and the API-cost bill goes to you, not through a vendor&rsquo;s markup.</p>
+  <p>What it <em>isn&rsquo;t</em>: a drop-in replacement for the polished onboarding a closed SaaS ships. The OSS repos are, without exception, projects that assume you have the engineering and GTM capacity to wire them into your stack. That&rsquo;s the real trade-off &mdash; not the licence.</p>
+
+  <h2>Why the SERP looks the way it does</h2>
+  <p>Search <code>ai sdr</code> and the top fifteen results are almost entirely closed-SaaS listicles and vendor pages: SalesForge, AiSDR, Qualified, Saleshandy, Artisan, Zoominfo, Salesforce, IBM, Fin.ai, G2&rsquo;s category page. Position 3 is a Reddit r/SaaS thread titled &ldquo;Has anyone found an AI SDR that actually works?&rdquo; and the top-of-page result is an AI overview that summarises the listicles. It&rsquo;s a SERP shape that tells you two things at once: the category has enough commercial gravity to make CPCs one of the highest in B2B software ($65+ on the head term as of September 2026), and the buyer isn&rsquo;t convinced the listicle answer is right.</p>
+  <p>Drop to the long-tail <code>open source ai sdr</code> and the SERP changes character. Position 2 is a live GitHub repo (MatthewDailey/open-sdr, DA 96 by virtue of GitHub itself). Position 3 is another Reddit thread asking the same question through the OSS lens (&ldquo;Looking for Open Source or Commercial AI SDR Agents&rdquo;). Positions 6, 9, 10 and 13 are OSS-adjacent listicles and a YouTube deploy-in-3-minutes video. There&rsquo;s also a contrarian piece at position 8 &mdash; marketbetter.ai&rsquo;s &ldquo;Why Open Source GTM Agents Won&rsquo;t Replace Your SDR Platform&rdquo; &mdash; arguing that closed SaaS wins on activation and reliability. That contrarian frame is worth engaging on the merits; skipping it is what makes most OSS-alt pages read like marketing.</p>
+
+  <h2>The six OSS AI SDR repos, honestly compared</h2>
+  <p>The repos live at different points on the assembly curve. Here&rsquo;s the honest map, based on what each one actually ships in-repo as of September 2026:</p>
+
+  <h3>1. MatthewDailey/open-sdr</h3>
+  <p>Currently the top-ranking OSS repo on the <code>open source ai sdr</code> SERP (GitHub position 2). Framed as &ldquo;Automate research and outbound.&rdquo; A pragmatic starting point for a team that wants a single-repo reference of what the loop looks like before deciding whether to compose their own stack. Read the README first; the repo&rsquo;s shape tells you whether it fits your existing tools or asks you to adopt new ones.</p>
+
+  <h3>2. OpenOutreach (eracle)</h3>
+  <p>GPLv3 CLI. The GPLv3 licence is load-bearing: forks and derivative products have to stay open, which is a deliberate choice by the maintainer to keep the project from being quietly re-wrapped as a closed SaaS. CLI-first means it&rsquo;s a good fit for a solo operator or a small team wiring outreach into a scripted flow, and a poor fit for a team that wants a web UI as the primary surface.</p>
+
+  <h3>3. ZeroGTM (man0l)</h3>
+  <p>MIT-licensed and built on n8n. Good if your team already runs n8n for workflow automation; the AI SDR flow is a set of n8n nodes you can inspect and modify visually. The MIT licence keeps re-use permissive. The trade-off against a purpose-built repo is that n8n is a general workflow engine &mdash; the SDR-specific plumbing is what you&rsquo;re getting, not the workflow substrate itself.</p>
+
+  <h3>4. Signal (jay-sahnan)</h3>
+  <p>OSS stack built on Supabase and Anthropic. The interesting design choice here is a clean split between the durable state layer (Supabase Postgres) and the model call (Anthropic). That split is what makes an AI SDR auditable &mdash; every prospect, every generated message, every reply is a row you can query, not a log line lost in a vendor dashboard.</p>
+
+  <h3>5. personizeai/revenue-os</h3>
+  <p>The repo that most explicitly positions itself as &ldquo;Open-source alternative to HubSpot Prospecting Agent, Artisan, 11x, and AI SDRs &mdash; with full customizability at a fraction of the cost.&rdquo; Their public comparison table pegs closed SaaS at $2,000+/mo and their own stack at $50-$200/mo in API costs &mdash; the numbers that drive the cost-gap claim earlier on this page. Stack: Personize (memory + governance) + Trigger.dev (durable workflows) + Apollo.io (enrichment) + Tavily (research) + HeyReach (LinkedIn). The most-assembled of the six, and the closest analogue in shape to what a paying customer of a closed AI SDR gets.</p>
+
+  <h3>6. kandksolvefast/ai-sdr-agent</h3>
+  <p>Python/Flask with a built-in human-in-the-loop dashboard. The dashboard is the differentiator: this is the repo that most concretely acknowledges that outbound at scale needs a review surface, not just a send button. Best fit for a team that wants a self-contained artefact to demo internally before deciding on the production stack.</p>
+
+  <p>The honest read across the six: none is a turnkey product, and picking between them is mostly a question of which stack you already run and which licence you can live with. Any of them will get you to a working prospect-research-and-draft loop in a few days if you have the engineering capacity. None will get you to a working <em>sent-and-replying</em> loop without the deliverability, sender-reputation, and CRM work that closed SaaS front-loads for you.</p>
+
+  <h2>What the $2,000-$5,000/mo actually pays for</h2>
+  <p>The cost gap between OSS and closed SaaS looks damning until you separate it into the pieces the SaaS bill is actually buying:</p>
+  <ul>
+    <li><strong>LLM + enrichment API costs.</strong> The direct-cost lane. Roughly $50-$200/mo at OSS-stack volume, per personizeai/revenue-os&rsquo;s public comparison. This is what the vendor marks up.</li>
+    <li><strong>Deliverability and sender reputation.</strong> Warmed domains, IP pool management, DMARC/SPF hygiene, bounce handling. Get this wrong and your primary domain lands on a blacklist. This is what a mature closed SaaS quietly does for you.</li>
+    <li><strong>ICP research and prompt-tuning as a service.</strong> The closed vendors employ SDR-adjacent operators who tune the prompts and message templates against real reply-rate data across many customers. You&rsquo;re buying that A/B history.</li>
+    <li><strong>CRM integrations and reply-routing.</strong> Hooking replies into Salesforce or HubSpot, deduping against existing contacts, tagging warm leads for the account owner &mdash; this is glue code that closed SaaS ships day one and OSS asks you to write.</li>
+    <li><strong>Compliance surface.</strong> GDPR / CAN-SPAM / CCPA opt-out handling; unsubscribe honouring; suppression lists. Not glamorous, and expensive to get wrong.</li>
+  </ul>
+  <p>The honest framing is that the closed SaaS bill is roughly split: maybe 10-15% API cost markup, maybe 40% activation-and-plumbing services, maybe 45% brand insulation for the fact that no one has yet stood up an OSS AI SDR that a mid-market GTM leader trusts to run unsupervised. If your team can own the activation-and-plumbing lane, OSS wins on cost and legibility. If not, the closed bill is a service contract, not a rip-off.</p>
+
+  <h2>The honest counter-frame: when closed SaaS is the right call</h2>
+  <p>The marketbetter.ai piece at SERP position 8 argues that OSS GTM agents won&rsquo;t replace SDR platforms. Steel-manning that argument: the deep moat of a closed AI SDR isn&rsquo;t the LLM, it&rsquo;s the deliverability infrastructure, the reply-rate benchmarks, the seat-of-the-pants prompt-tuning against a large multi-tenant dataset, and the customer success motion that gets a new team from &ldquo;installed&rdquo; to &ldquo;first meeting booked.&rdquo; An OSS stack drops all of that onto the buyer.</p>
+  <p>That&rsquo;s true, and it&rsquo;s why the choice between OSS and closed AI SDR shouldn&rsquo;t be framed as ideological. It&rsquo;s operational. The right question is: does your team have the GTM-engineering capacity to own deliverability, reply-routing, and message quality &mdash; or would you rather rent it? Teams that are already running their own outbound stack (n8n, Trigger.dev, custom Clay flows) are on the OSS side of the line; teams whose GTM function is one head-of-sales and a Salesforce seat are on the closed side of it. Both answers are defensible, and pretending otherwise is what makes most OSS-alt content read as sales copy.</p>
+
+  <h2>AI SDR is a loop, not a product</h2>
+  <p>The deeper reframe underneath the OSS-vs-closed question: an AI SDR is a <em>loop</em>, not a product. The loop shape:</p>
+  <ol>
+    <li><strong>Signal.</strong> A prospect matches the ICP, or a triggered event fires (a job change, a funding round, a competitor&rsquo;s customer showing account activity).</li>
+    <li><strong>Research.</strong> An agent enriches the account and contact, pulls the last 90 days of public signal, drafts a hypothesis on why now.</li>
+    <li><strong>Draft.</strong> An agent writes a first-touch message calibrated to the researched signal, in the sender&rsquo;s voice.</li>
+    <li><strong>Approval gate.</strong> A human reviews the draft &mdash; or a sampled fraction of drafts, if the volume warrants &mdash; before it sends. The override rate is measured and watched.</li>
+    <li><strong>Send.</strong> The message goes out through the sender lane (LinkedIn via Unipile, or a warmed email domain).</li>
+    <li><strong>Reply routing.</strong> Replies are classified: warm (route to the account owner as a booked-conversation candidate), objection (route back to the agent for the follow-up sequence), unsubscribe (honour and suppress).</li>
+    <li><strong>Close condition.</strong> A meeting booked, or the sequence exits without conversion after N touches. The outcome updates the loop&rsquo;s win-rate metrics.</li>
+  </ol>
+  <p>The loop is what closes; the <em>product</em> is just the surface where the loop&rsquo;s state lives. This is why we frame the answer around the <a href="/docs/ambient-agent-workspace/">ambient agent workspace</a> pattern: the loop runs on triggers, the agent drafts, the human keeps taste on the approval gate, and the shared object graph carries state across the seven steps. The alternative &mdash; running an AI SDR as a chatbot you prompt &mdash; is exactly the shape the Reddit thread at SERP #3 is complaining about.</p>
+  <p>The <a href="/docs/learn/human-in-the-loop-ai/">human-on-the-loop</a> piece gives the honest metric for whether the approval gate is real: override rate. Stuck at 0% and the reviewer is rubber-stamping &mdash; one bad prompt from a domain blacklist. Stuck above 20% and the model is broken and the human is doing the model&rsquo;s job under an AI SDR banner. Real approval sits in the middle band and is watched over time.</p>
+
+  <h2>What Maskin adds to the OSS AI SDR question</h2>
+  <p>Maskin isn&rsquo;t a repo on the list above, and we&rsquo;re not pitching it as an 11th AI SDR vendor. Where Maskin fits: it&rsquo;s an open-source, MCP-native, self-hostable workspace where the <em>loop</em> &mdash; the seven steps above &mdash; is the object of work, not a product feature. The AI SDR loop runs on the same typed object model as every other loop in the workspace: signal, research, draft, approval, send, reply routing, close condition are typed objects with typed relationships, so a human can walk the graph and audit any step without leaving the workspace.</p>
+  <p>In September 2026, Maskin is running this exact loop for its own outbound: LinkedIn via Unipile&rsquo;s MCP as the sender lane, workspace triggers as the signal layer, human approval gates on every outbound send, replies routed as typed events. The dogfooded build is described end-to-end in the companion how-to: <a href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop in Maskin (MCP + Unipile, HITL approval on outbound)</a>.</p>
+  <p>That&rsquo;s the honest position. If you want a shipped product to buy, one of the closed AI SDRs at $2k-$5k/mo is the right answer, and the ones already named on this page are the shortlist. If you want to compose one from OSS repos, the six above are the real map. If you want the workspace substrate that turns whichever repos or connectors you pick into a shared, auditable, loop-shaped operation, that&rsquo;s what Maskin is aimed at.</p>
+
+  <h2>FAQ</h2>
+
+  <h3>What is an open source AI SDR?</h3>
+  <p>An open source AI SDR is a self-hostable agent stack that automates outbound sales &mdash; prospect research, message drafting, sequenced follow-up, reply routing &mdash; using components you can read, fork, and run on your own model keys. Unlike closed SaaS AI SDRs (11x, Artisan, Qualified, SalesForge, AiSDR), the code, licence, and API bill are yours. Six live repos on GitHub in 2026 span from single-file CLI (OpenOutreach) to full HITL dashboards (kandksolvefast/ai-sdr-agent) to composed stacks with memory and governance (personizeai/revenue-os).</p>
+
+  <h3>Is there really no AI SDR on the top-ranking SERP that&rsquo;s open source?</h3>
+  <p>On the head term <code>ai sdr</code>, effectively none &mdash; the top fifteen results are closed-SaaS listicles, vendor pages, and one Reddit thread. On the long-tail <code>open source ai sdr</code>, GitHub&rsquo;s MatthewDailey/open-sdr ranks at position 2 (largely on GitHub&rsquo;s domain authority), and OSS-oriented listicles (eigent.ai, nimblox.com) rank at positions 9-10. The category is being claimed on GitHub without the corresponding SEO footprint most closed vendors have built.</p>
+
+  <h3>How much does an open source AI SDR actually cost to run?</h3>
+  <p>Direct API costs (LLM + enrichment) run roughly $50-$200/mo at typical OSS-stack volume, per personizeai/revenue-os&rsquo;s public comparison. That excludes the operational cost of owning deliverability, sender-reputation management, CRM integration, and prompt tuning &mdash; costs closed SaaS bundles into its $2,000-$5,000/mo bill. The true comparison depends on whether your team already has the GTM-engineering capacity to own those surfaces.</p>
+
+  <h3>Which open source AI SDR repo should I start with?</h3>
+  <p>Depends on your existing stack. If you already run n8n, start with ZeroGTM. If you want a composed, closed-SaaS-shaped alternative with a clear cost story, personizeai/revenue-os is the closest analogue. If you want the most legible reference of the loop shape, MatthewDailey/open-sdr or Signal are the readable starting points. If you want an out-of-the-box HITL dashboard, kandksolvefast/ai-sdr-agent ships one. If licence copyleft matters, OpenOutreach&rsquo;s GPLv3 is the strongest guarantee that forks stay open.</p>
+
+  <h3>Do I need a human approval gate on outbound?</h3>
+  <p>Yes, on outbound of any consequence. The failure mode of an AI SDR without a real approval gate isn&rsquo;t a bad message &mdash; it&rsquo;s your domain landing on a blacklist because one prompt regression sent 500 off-tone messages to a segment. Human-on-the-loop with a measurable <a href="/docs/learn/human-in-the-loop-ai/">override rate</a> is the operational difference between a working AI SDR loop and a demo. You can sample the approval (review 10% of drafts rather than 100%) once the override rate has stabilised at a healthy middle band, but sending unreviewed at day one is how OSS AI SDRs earn a bad reputation they don&rsquo;t deserve.</p>
+
+  <h3>What&rsquo;s the wedge for open source AI SDR vs closed SaaS?</h3>
+  <p>Cost by roughly one order of magnitude, and legibility: the code is on GitHub, the model call is on your keys, the state is in a database you can query, the audit trail is auditable. The trade-off is that OSS pushes deliverability, activation, and prompt-quality tuning onto the buyer. If your team has the engineering to own those, OSS wins. If not, the closed bill is real work you&rsquo;d otherwise have to do yourself.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/docs/ambient-agent-workspace/">
+        <div class="doc-card__title">Ambient agent workspace</div>
+        <div class="doc-card__desc">The workspace-graph pattern where AI SDR loops actually live.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/learn/human-in-the-loop-ai/">
+        <div class="doc-card__title">Human in the loop AI</div>
+        <div class="doc-card__desc">Override rate is the honest metric for whether the approval gate is real.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/alternatives/open-source-jira-alternative/">
+        <div class="doc-card__title">Open source Jira alternative</div>
+        <div class="doc-card__desc">Companion comparison: Plane, OpenProject, Taiga, and the bet-based alternative.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Run outbound as a loop, on your own keys</h2>
+      <p>An AI SDR is a loop, not a product. If the OSS repos above fit your stack, the composed answer is real and cheap. If the loop shape itself is what you want &mdash; signal, research, draft, human-approval, send, reply, close &mdash; Maskin is the open-source, MCP-native workspace where that loop lives on a typed object graph you can audit end-to-end. Self-host free forever under Apache 2.0, or start a hosted trial with EU/US data residency.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
