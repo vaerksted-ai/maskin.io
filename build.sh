@@ -12,6 +12,13 @@ mkdir -p dist
 # Loose top-level files
 cp index.html 404.html robots.txt sitemap.xml site.webmanifest _redirects dist/
 cp apple-touch-icon.png favicon.ico favicon.svg icon-192.png icon-512.png og-image.png og-image.svg dist/
+# Per-page OG images: any og-image-<slug>.svg / .png at root ships automatically.
+# Nullglob so we don't crash if a category is momentarily empty.
+shopt -s nullglob
+for f in og-image-*.svg og-image-*.png; do
+  cp "$f" dist/
+done
+shopt -u nullglob
 cp llms.txt llms-full.txt dist/
 cp maskin-launch.mp4 dist/
 
