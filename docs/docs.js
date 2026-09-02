@@ -3,7 +3,7 @@
 (function () {
   "use strict";
 
-  // ── Navigation model (the docs IA) ──────────────────────────────
+  // ── Navigation model (the docs IA) ──────────────────
   var NAV = [
     { title: "Getting started", items: [
       { label: "Get started", href: "/docs/get-started/" },
@@ -41,7 +41,8 @@
       { label: "Self-hosted AI workspace", href: "/docs/self-hosted-ai-workspace/" }
     ]},
     { title: "Alternatives", items: [
-      { label: "Open source Jira alternative", href: "/alternatives/open-source-jira-alternative/" }
+      { label: "Open source Jira alternative", href: "/alternatives/open-source-jira-alternative/" },
+      { label: "Open source AI SDR", href: "/alternatives/open-source-ai-sdr/" }
     ]}
   ];
 
