@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <text x="80" y="98" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="20" fill="#5A5751" letter-spacing="4">SELF-HOSTED AI AGENT CONTROL PLANE</text>
+  <text x="80" y="160" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="48" font-weight="700" fill="#FAFAF8">Twelve for the coding fleet.</text>
+  <text x="80" y="216" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="48" font-weight="700" fill="#FAFAF8">One for the knowledge-work loop.</text>
+  <text x="80" y="258" font-family="Newsreader, Georgia, serif" font-size="22" font-style="italic" fill="#8B8781">Apache 2.0 &middot; MCP-native &middot; approval-first &middot; self-host free forever</text>
+
+  <!-- Left side: the twelve, uniform kanban-shaped -->
+  <g transform="translate(80, 320)">
+    <text x="0" y="0" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" fill="#8B8781" letter-spacing="2">THE FIELD (12)</text>
+    <text x="0" y="22" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" fill="#5A5751">coding task &rarr; PR merged</text>
+
+    <!-- 12 identical tiles in a 4x3 grid -->
+    <g transform="translate(0, 46)">
+      <rect x="0"   y="0"  width="98" height="42" rx="6" fill="#141311" stroke="#2A2825" stroke-width="1"/>
+      <text x="49"  y="26" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">amux</text>
+
+      <rect x="108" y="0"  width="98" height="42" rx="6" fill="#141311" stroke="#2A2825" stroke-width="1"/>
+      <text x="157" y="26" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">Crewship</text>
+
+      <rect x="216" y="0"  width="98" height="42" rx="6" fill="#141311" stroke="#2A2825" stroke-width="1"/>
+      <text x="265" y="26" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">Preloop</text>
+
+      <rect x="324" y="0"  width="98" height="42" rx="6" fill="#141311" stroke="#2A2825" stroke-width="1"/>
+      <text x="373" y="26" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">Nora</text>
+
+      <rect x="0"   y="52" width="98" height="42" rx="6" fill="#141311" stroke="#2A2825" stroke-width="1"/>
+      <text x="49"  y="78" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">Musematic</text>
+
+      <rect x="108" y="52" width="98" height="42" rx="6" fill="#141311" stroke="#2A2825" stroke-width="1"/>
+      <text x="157" y="78" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="11" fill="#8B8781">Mission Control</text>
+
+      <rect x="216" y="52" width="98" height="42" rx="6" fill="#141311" stroke="#2A2825" stroke-width="1"/>
+      <text x="265" y="78" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">Clawix</text>
+
+      <rect x="324" y="52" width="98" height="42" rx="6" fill="#141311" stroke="#2A2825" stroke-width="1"/>
+      <text x="373" y="78" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">Vornik</text>
+
+      <rect x="0"   y="104" width="98" height="42" rx="6" fill="#141311" stroke="#2A2825" stroke-width="1"/>
+      <text x="49"  y="130" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">Zoink</text>
+
+      <rect x="108" y="104" width="98" height="42" rx="6" fill="#141311" stroke="#2A2825" stroke-width="1"/>
+      <text x="157" y="130" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">herdctl</text>
+
+      <rect x="216" y="104" width="98" height="42" rx="6" fill="#141311" stroke="#2A2825" stroke-width="1"/>
+      <text x="265" y="130" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">fleet</text>
+
+      <rect x="324" y="104" width="98" height="42" rx="6" fill="#141311" stroke="#2A2825" stroke-width="1"/>
+      <text x="373" y="130" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="12" fill="#8B8781">VNX</text>
+    </g>
+
+    <text x="0" y="212" font-family="Newsreader, Georgia, serif" font-size="14" font-style="italic" fill="#5A5751">same shape, different runtimes</text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="565" y1="330" x2="565" y2="540" stroke="#2A2825" stroke-width="1" stroke-dasharray="3 6"/>
+
+  <!-- Right side: Maskin's loop -->
+  <g transform="translate(605, 320)">
+    <text x="0" y="0" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" fill="#8B8781" letter-spacing="2">MASKIN</text>
+    <text x="0" y="22" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" fill="#FAFAF8">insight &rarr; bet &rarr; task &rarr; loop closes on outcome</text>
+
+    <rect x="0"   y="46" width="100" height="46" rx="8" fill="#141311" stroke="#FAFAF8" stroke-width="1.2"/>
+    <text x="50"  y="66" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" fill="#FAFAF8">insight</text>
+    <text x="50"  y="82" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#5A5751">signal in</text>
+
+    <path d="M 106 69 L 138 69" stroke="#FAFAF8" stroke-width="1.5"/>
+    <path d="M 132 64 L 140 69 L 132 74" fill="none" stroke="#FAFAF8" stroke-width="1.5" stroke-linejoin="miter"/>
+
+    <rect x="146" y="46" width="100" height="46" rx="8" fill="#141311" stroke="#FAFAF8" stroke-width="1.2"/>
+    <text x="196" y="66" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" fill="#FAFAF8">bet</text>
+    <text x="196" y="82" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#5A5751">win condition</text>
+
+    <path d="M 252 69 L 284 69" stroke="#FAFAF8" stroke-width="1.5"/>
+    <path d="M 278 64 L 286 69 L 278 74" fill="none" stroke="#FAFAF8" stroke-width="1.5" stroke-linejoin="miter"/>
+
+    <rect x="292" y="46" width="82" height="46" rx="8" fill="#141311" stroke="#FAFAF8" stroke-width="1.2"/>
+    <text x="333" y="66" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" fill="#FAFAF8">task</text>
+    <text x="333" y="82" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#5A5751">executes</text>
+
+    <path d="M 380 69 L 412 69" stroke="#2563EB" stroke-width="2"/>
+    <path d="M 406 63 L 414 69 L 406 75" fill="none" stroke="#2563EB" stroke-width="2" stroke-linejoin="miter"/>
+
+    <rect x="420" y="42" width="118" height="56" rx="8" fill="#111110" stroke="#2563EB" stroke-width="2.5"/>
+    <text x="479" y="66" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" font-weight="700" fill="#2563EB">validated</text>
+    <text x="479" y="82" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" font-weight="700" fill="#2563EB">outcome</text>
+    <text x="479" y="96" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#2563EB">loop closes here</text>
+
+    <text x="0" y="140" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" fill="#8B8781">typed relationships:</text>
+    <text x="0" y="162" font-family="JetBrains Mono, monospace" font-size="12" fill="#FAFAF8">informs &middot; breaks_into &middot; blocks &middot; supersedes</text>
+
+    <text x="0" y="212" font-family="Newsreader, Georgia, serif" font-size="14" font-style="italic" fill="#FAFAF8">a graph, not a kanban</text>
+  </g>
+
+  <g transform="translate(80, 570)">
+    <rect x="0" y="0" width="34" height="34" rx="7" fill="#1C1B18"/>
+    <path d="M7 26 L7 9 L17 19 L27 9 L27 26" stroke="#FAFAF8" stroke-width="3.6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+    <text x="46" y="24" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">Maskin</text>
+    <text x="46" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="#5A5751">maskin.io/alternatives/self-hosted-ai-agent-control-plane</text>
+  </g>
+</svg>

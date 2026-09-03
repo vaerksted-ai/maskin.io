@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-hosted AI agent control plane for knowledge work &mdash; Maskin</title>
+<meta name="description" content="Twelve open-source self-hosted AI agent control planes shipped Feb-Aug 2026, all built for coding-agent fleets on a kanban of tasks. Maskin diverges on the object model &mdash; loop on typed objects (insight &rarr; bet &rarr; task &rarr; validated), not a kanban of coding tasks.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/alternatives/self-hosted-ai-agent-control-plane/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/alternatives/self-hosted-ai-agent-control-plane/">
+<meta property="og:title" content="Self-hosted AI agent control plane for knowledge work">
+<meta property="og:description" content="Twelve open-source self-hosted control planes shipped in six months, all built for coding-agent fleets. Maskin diverges on the object model &mdash; loop on typed objects, not kanban of coding tasks. Apache 2.0, MCP-native, self-hostable.">
+<meta property="og:image" content="https://maskin.io/og-image-self-hosted-ai-agent-control-plane.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Self-hosted AI agent control plane for knowledge work">
+<meta name="twitter:description" content="Twelve open-source self-hosted control planes shipped in six months, all built for coding-agent fleets. Maskin diverges on the object model &mdash; loop on typed objects, not kanban of coding tasks.">
+<meta name="twitter:image" content="https://maskin.io/og-image-self-hosted-ai-agent-control-plane.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Self-hosted AI agent control plane for knowledge work (not coding tasks)",
+      "name": "Self-hosted AI agent control plane for knowledge work (not coding tasks)",
+      "description": "Twelve open-source self-hosted AI agent control planes shipped Feb-Aug 2026, all built for coding-agent fleets on a kanban of tasks. Maskin diverges on the object model &mdash; loop on typed objects (insight &rarr; bet &rarr; task &rarr; validated), not a kanban of coding tasks. Apache 2.0, MCP-native, self-hostable.",
+      "url": "https://maskin.io/alternatives/self-hosted-ai-agent-control-plane/",
+      "inLanguage": "en",
+      "datePublished": "2026-09-03T00:00:00Z",
+      "dateModified": "2026-09-03T00:00:00Z",
+      "image": ["https://maskin.io/og-image-self-hosted-ai-agent-control-plane.svg"],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "mainEntityOfPage": "https://maskin.io/alternatives/self-hosted-ai-agent-control-plane/",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": {
+        "@type": "Product",
+        "name": "Maskin"
+      },
+      "keywords": "self-hosted AI agent control plane, open source agent control plane, MCP-native control plane, agent orchestration, self-hostable agent workspace"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Alternatives",
+          "item": "https://maskin.io/alternatives/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Self-hosted AI agent control plane",
+          "item": "https://maskin.io/alternatives/self-hosted-ai-agent-control-plane/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an AI agent control plane?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The dashboard, approval queue, and audit layer that sits above your agent runtimes and answers who owns which task, what shipped, where the spend went, and where a human needs to step in. In 2026 the term stabilised on that four-piece shape (dashboard, approvals, audit, container harness) and the twelve open-source products above all implement variants of it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is a control plane different from an agent framework?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A framework (LangChain, LlamaIndex, Autogen) is the library you use to build an agent. A control plane is the operations layer you install above one or more agents to run them in production &mdash; the queue, the log, the sandbox, the approval surface. Every one of the twelve entrants above assumes you have chosen the framework or CLI already; they orchestrate the runtime, they don't replace it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is self-hosting really free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For the twelve open-source entrants above and for Maskin, the software cost is zero &mdash; self-host is free forever under the license. You pay for the underlying infrastructure (Docker host, K8s cluster, storage) and for the model calls the agents make. Van Deth's cost breakdown ($2,847/month at eleven agents before optimisation, $370/month after) is the most concrete public number on real-world model spend at that scale."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need MCP support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If your agents call multiple tools, yes &mdash; MCP is the standard the industry converged on in 2026 for tool interop, and Preloop, Nora, and Maskin all treat it as first-class. If your agents only call one CLI (e.g. Claude Code with its own tool set), MCP support is less urgent. It is a commodity table-stake on the SERP, though; if a product on the list doesn't ship it, that's the outlier."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is Maskin different from Preloop, since both are MCP-native and Apache-2.0?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Preloop is a control plane above coding agents, with an MCP firewall and model gateway as the headline surfaces. The object model is a coding task; the close condition is a PR merged with policy pass. Maskin is a control plane above knowledge-work agents, with a typed object graph (insight to bet to task to loop) as the substrate. The close condition is on the loop, not on any single task. Both are legitimate; they optimise for different shapes of work."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Maskin mature enough to bet on?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Early and honestly so. Public traction is modest &mdash; the project is Apache-2.0 with a small maintainer team and an actively-shipped roadmap. What Maskin offers today is the architectural position (loop-on-typed-objects, MCP-native, self-hostable, approval-first) rather than the maturity of a vendor-hosted incumbent. If your evaluation criterion is a proven track record, weigh that against your appetite for shaping the category. If your evaluation criterion is the shape of the object model, that value holds regardless of star count."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know if my work is coding-shaped or product-shaped?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A rough test: if every task in your queue ends in a merged PR, your work is coding-shaped and any of the twelve fits. If your tasks end in a decision, a shipped feature that needs measurement, a customer notified, or an insight validated against outcome data, the shape is product work &mdash; and the object model beneath the queue matters more than the queue itself."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Alternatives</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="is-active" href="/alternatives/self-hosted-ai-agent-control-plane/" aria-current="page">Self-hosted AI agent control plane</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/alternatives/open-source-jira-alternative/">Alternatives</a> / Self-hosted AI agent control plane for knowledge work</p>
+    <p class="eyebrow">Comparison</p>
+    <h1>Self-hosted AI agent control plane for knowledge work (not coding tasks)</h1>
+    <p class="lead"><strong>A self-hosted AI agent control plane is the dashboard, approval queue, and audit layer that sits above your agent runtimes &mdash; Claude Code, Codex, OpenClaw, Hermes &mdash; and answers the operator's question: who owns this task, what shipped, where did the spend go, and where does the human step in.</strong> Between February and August 2026, at least twelve open-source products shipped under that exact category vocabulary, and every one is built for coding-agent fleets on a kanban of tasks that closes when a PR merges. This page names that crowding honestly, points you at whichever of the twelve fits if the shape of your work is coding, and makes the case for a different object model &mdash; loop-on-typed-objects &mdash; when the shape of your work is product decisions rather than commits.</p>
+
+  <div class="callout callout--muted">
+    <div class="callout__icon" aria-hidden="true">&#10003;</div>
+    <div class="callout__body"><strong>Key takeaways</strong>
+      <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+        <li><strong>The category is crowded.</strong> Twelve named self-hosted control planes shipped in six months &mdash; amux, Crewship, Preloop, Nora, Musematic, Mission Control, Clawix, Vornik, Zoink, herdctl, danrex/fleet, and VNX &mdash; all Docker/Podman/K8s, all with approval queues, most MCP-native.</li>
+        <li><strong>Self-host, MCP-native, and approval-first are table stakes now.</strong> Preloop pitches explicitly as an open-source AWS Bedrock AgentCore alternative with an MCP firewall as the headline. Anyone claiming those as differentiators is repeating the field.</li>
+        <li><strong>The object model beneath every entrant is the same:</strong> tasks on a kanban, closed when a PR merges. That fits coding agents. It doesn't fit the shape of a product decision that runs from an insight to a validated outcome.</li>
+        <li><strong>Maskin is the odd one out</strong> &mdash; the unit of work is a <code>loop</code> on typed objects (<code>insight</code> &rarr; <code>bet</code> &rarr; <code>task</code> &rarr; validated), not a coding task. Same self-hosting, same MCP-native, same approval-first plumbing; a fundamentally different shape of work.</li>
+        <li><strong>At true solo scale, <a href="https://vincentvandeth.nl" rel="noopener">Vincent van Deth</a>'s chat-as-primary read is a legitimate counter</strong> &mdash; the graph earns its keep when multiple humans need to see the same state, loops span hours or days, or the queue itself becomes untriageable.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>What a self-hosted AI agent control plane actually is</h2>
+  <p>A year ago, &ldquo;agent control plane&rdquo; was vendor-brochure vocabulary. In 2026 it named a real product shape, and the SERP now supplies twelve open-source implementations of the same picture. The shared surface, across every entrant, has four pieces:</p>
+  <ol>
+    <li><strong>A dashboard</strong> that shows which agents are running, on what, and with what budget left.</li>
+    <li><strong>An approval queue</strong> &mdash; the human-on-the-loop interrupt surface, sometimes called an inbox, sometimes a review pane.</li>
+    <li><strong>An audit log</strong> &mdash; an append-only record of what the agents did, so a failed run is a visible state rather than silence.</li>
+    <li><strong>A runtime harness</strong> &mdash; Docker, Podman, or Kubernetes containers that host the underlying agent CLIs (Claude Code, Codex, OpenClaw, Hermes) with sandbox isolation and secrets injection.</li>
+  </ol>
+  <p>That is the whole shape. Every product on the list ships it, differing mostly on which runtime they treat as primary, how heavy the container model is, and whether they hide the plumbing behind a web UI or a TUI. If your buying question is &ldquo;which one of these dashboards do I install?&rdquo; the honest answer is that any of them will do the job at a similar quality bar. Pick on the runtime you already run, the license that matches your compliance, and the maintainer velocity you trust.</p>
+
+  <h2>The twelve open-source entrants, by shape</h2>
+  <p>Here is the full 2026 field, grouped by the shape they optimise for. Every one is self-hostable and open-source; every one converges on the same vocabulary. Source and license notes are compiled from a validated internal survey of the twelve entrants, last checked 2026-09-02.</p>
+
+  <p><strong>Coding-agent fleet managers (multi-CLI, container-per-agent):</strong></p>
+  <ul>
+    <li><strong><a href="https://crewship.ai" target="_blank" rel="noopener">Crewship</a></strong> &mdash; Apache-2.0, Docker-per-crew, Go binary, targets Claude Code / Codex / Gemini / OpenCode / Ollama.</li>
+    <li><strong><a href="https://amux.io" target="_blank" rel="noopener">amux</a></strong> &mdash; Rust binary, kanban + REST API + iOS PWA, positions explicitly as &ldquo;the agent control plane.&rdquo;</li>
+    <li><strong><a href="https://nora.solomontsao.com" target="_blank" rel="noopener">Nora</a></strong> &mdash; Apache-2.0, targets OpenClaw + Hermes on Docker/K8s, ships its own MCP server.</li>
+    <li><strong><a href="https://zoink.dev" target="_blank" rel="noopener">Zoink</a></strong> &mdash; multi-framework swarms with TUI + web dashboard, mixes OpenClaw and Hermes.</li>
+    <li><strong><a href="https://herdctl.dev" target="_blank" rel="noopener">herdctl</a></strong> &mdash; Claude Code fleet manager with cron triggers and Slack/Discord chat.</li>
+    <li><strong><a href="https://github.com/danrex/fleet" target="_blank" rel="noopener">danrex/fleet</a></strong> &mdash; bash + Docker + git, coordinator-free, one branch per task.</li>
+  </ul>
+
+  <p><strong>Enterprise-shaped platforms (MCP firewalls, model gateways, RBAC):</strong></p>
+  <ul>
+    <li><strong><a href="https://preloop.ai" target="_blank" rel="noopener">Preloop</a></strong> &mdash; Apache-2.0, MCP firewall + model gateway + human approvals + observability, pitched as &ldquo;the open-source alternative to AWS Bedrock AgentCore.&rdquo;</li>
+    <li><strong><a href="https://github.com/clawixai/clawix" target="_blank" rel="noopener">Clawix</a></strong> &mdash; Docker-isolated agents, swarm DAGs, RBAC, multi-channel (Telegram / WhatsApp / Slack).</li>
+    <li><strong><a href="https://github.com/gntik-ai/musematic" target="_blank" rel="noopener">Musematic</a></strong> &mdash; Kubernetes-native, Python control plane with Go satellites.</li>
+  </ul>
+
+  <p><strong>Local-first / air-gapped:</strong></p>
+  <ul>
+    <li><strong><a href="https://github.com/grinco/vornik" target="_blank" rel="noopener">Vornik</a></strong> &mdash; AGPL-3, local-first daemon, air-gapped, Podman containers.</li>
+    <li><strong><a href="https://github.com/builderz-labs/mission-control" target="_blank" rel="noopener">Mission Control</a></strong> &mdash; SQLite-backed, task inbox with an &ldquo;Aegis&rdquo; quality gate.</li>
+  </ul>
+
+  <p><strong>Solopreneur / one-operator design language:</strong></p>
+  <ul>
+    <li><strong><a href="https://vincentvandeth.nl/blog/2026-05-29-agentic-os-design-solopreneur" target="_blank" rel="noopener">VNX</a></strong> &mdash; Vincent van Deth's open-source governance layer: human approval gates, append-only audit trails, evidence-based task closure. Explicitly rejects enterprise-multi-tenant patterns.</li>
+  </ul>
+
+  <p>Every one of these is a legitimate answer to &ldquo;install a control plane above my coding agents.&rdquo; If that is the shape of your work, click through, read the readme, pick the one whose runtime and license fit your setup, and stop reading here.</p>
+
+  <h2>What every entrant assumes (and where that assumption breaks)</h2>
+  <p>Read the twelve readmes side by side and one assumption is invariant: <strong>the unit of work is a coding task, and the loop closes when a pull request merges.</strong> The dashboards look different, the container models differ, the license notices are Apache-2.0 or AGPL, but the object model beneath is uniformly a kanban of coding tasks, ordered by priority, executed by a coding-agent CLI, closed by a merged commit.</p>
+  <p>That fits the SERP that produced them. The demand behind &ldquo;self-hosted AI agent control plane&rdquo; is heavily developer-led, and coding agents are the runtime with the clearest per-task boundary &mdash; the model runs, the diff appears, CI passes or fails, the human approves the PR, the task closes. It is a legible loop.</p>
+  <p>It is not the only loop teams run. Product work has a different shape:</p>
+  <ul>
+    <li><strong>The trigger is not a Jira ticket</strong> &mdash; it is a customer message, a churn signal, a competitor move, a stalled deal, a metric drifting. The signal enters continuously and needs to be captured as a first-class object, not as a note that gets pasted into a task title.</li>
+    <li><strong>The task graph is not flat.</strong> An insight informs a bet; a bet breaks into tasks; a task blocks or unblocks another; a shipped outcome either validates or contradicts the insight that seeded it. Kanban lanes flatten that graph into columns, which is what a lane view is for and why it fails at this.</li>
+    <li><strong>The close condition is not a PR merge.</strong> A product bet closes when the outcome is measured against the hypothesis. &ldquo;Shipped&rdquo; is a milestone, not the terminus.</li>
+    <li><strong>The audit trail is not a list of commits.</strong> It is the trace from insight to validated outcome &mdash; what was learned, what was decided, what was tried, what held.</li>
+  </ul>
+  <p>If your team is one engineer running four coding agents against a repo, none of that matters. If your team is running the loop from customer signal to shipped-and-validated outcome, the whole surface &mdash; dashboard, approval queue, audit log &mdash; needs to sit above a different object model. That is the split the SERP does not yet name.</p>
+
+  <h2>The wedge: loop-on-typed-objects, not kanban-of-coding-tasks</h2>
+  <p><a href="https://maskin.io">Maskin</a> sits in the same category on the four table-stakes commodities &mdash; Apache-2.0, self-hostable, MCP-native, approval-first &mdash; and diverges on the object model. Concretely:</p>
+  <ul>
+    <li>The <strong><code>insight</code></strong> is the first-class capture of a signal. It has a source, a confidence, and a status (raw, clustered, validated). Agents raise insights on triggers; humans reshape them.</li>
+    <li>The <strong><code>bet</code></strong> is a testable hypothesis, jointly owned by a human and agents, with a close condition and a promote gate. A bet knows the insight that seeded it, the tasks that break it down, and the outcome that resolved it.</li>
+    <li>The <strong><code>task</code></strong> is the execution unit &mdash; the level at which a coding-agent CLI, an integration call, or a human hand-off happens. Same shape as the kanban card in every other product on the list, but attached to the bet that motivates it and the insight that motivates that.</li>
+    <li>The <strong><code>loop</code></strong> is the closed thread from signal to validated outcome &mdash; the object that closes, not the task. The <code>close_condition</code> lives on the loop, not on any single task.</li>
+    <li><strong>Typed relationships</strong> (<code>informs</code>, <code>breaks_into</code>, <code>blocks</code>, <code>supersedes</code>, <code>contradicts</code>) carry context between objects, so an agent reading a task sees the bet it belongs to and the insight that motivated it without extra prompting. That is what a graph does that a kanban cannot.</li>
+  </ul>
+  <p>The practical result is that the approval queue is a queue of <em>bets to promote</em> and <em>outcomes to validate</em>, not a queue of tasks to unblock; the audit log is the graph's own history; the dashboard is a workspace surface, not a lane view. Agents mutate the graph, humans reshape it &mdash; the companion piece on agentic workspace vs knowledge space walks the same object-model split against note-taking tools.</p>
+  <p>One caveat, said honestly: this distinction is architecturally real but the SERP does not yet name it. Every one of the twelve entrants above is delivering value inside the shape they chose; Maskin is delivering it in a different shape. Readers won't infer the split from a shared feature list &mdash; this page's job is to make the split legible, not to claim superiority on the table-stakes commodities.</p>
+
+  <h2>The chat-as-primary counter-frame (worth taking seriously)</h2>
+  <p>The strongest case <em>against</em> the workspace-graph pattern isn't from any of the enterprise entrants &mdash; it's from <a href="https://vincentvandeth.nl" target="_blank" rel="noopener">Vincent van Deth</a>, the current authority voice on the solopreneur / one-operator sub-JTBD. Van Deth built <a href="https://vincentvandeth.nl/blog/2026-05-29-agentic-os-design-solopreneur" target="_blank" rel="noopener">VNX</a> after his combined agent LLM bill hit $2,847/month for eleven agents, rebuilt for $370/month, and published five design principles in the process: <strong>chat as primary interface, receipts as canonical state, asymmetric autonomy, two-path human approval, context rotation as architecture.</strong></p>
+  <p>His chat-as-primary read is the honest challenge. At n=1 with a handful of agents, a well-designed chat that speaks to every agent is more legible than a dashboard-per-workflow. The whole point of a shared typed object model is that it scales work across humans and parallel loops; n=1 doesn't need that scaling, and the coordination overhead of a shared graph doesn't pay off until you have more than one human on the taste gates or enough loops that the queue itself becomes the bottleneck.</p>
+  <p>The graph earns its keep on three signals, all absent at true solo scale:</p>
+  <ol>
+    <li><strong>Multiple humans need to see the same state</strong> &mdash; product, engineering, and support looking at the same bet.</li>
+    <li><strong>A single loop spans hours to days</strong> and hands off between agents (customer feedback &rarr; clustered insight &rarr; shaped bet &rarr; executed tasks &rarr; validated outcome).</li>
+    <li><strong>The number of parallel loops crosses the point where a queue becomes untriageable</strong> &mdash; thirty open bets across five product areas is not a queue you scroll through.</li>
+  </ol>
+  <p>If you're one person shipping features with two or three coding agents, van Deth is likely right for you: chat-as-primary plus receipts-as-state is the smaller, cleaner stack. If your team is more than one person shipping <em>outcomes</em>, or one person coordinating enough parallel loops that triage is now the work, the graph starts to pay for itself. Neither pattern is universal, and the honest frame is which condition holds at your scale.</p>
+
+  <h2>How the shapes actually compare</h2>
+  <p>Because the twelve entrants are so uniform on the commodities, the comparison that matters is on the object model &mdash; which is the only row that separates the field.</p>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th><strong>Maskin</strong></th>
+        <th>Coding-agent fleet managers (Crewship, amux, Nora, Zoink, herdctl, fleet)</th>
+        <th>Enterprise platforms (Preloop, Clawix, Musematic)</th>
+        <th>Local-first / air-gapped (Vornik, Mission Control)</th>
+        <th>Solopreneur (VNX)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Object model</strong></td><td><code>insight &rarr; bet &rarr; task &rarr; loop</code>, typed relationships</td><td>Coding task on kanban</td><td>Coding task + policy/RBAC layer</td><td>Coding task + append-only log</td><td>Receipts + chat threads</td></tr>
+      <tr><td><strong>Close condition</strong></td><td>On the loop (outcome validated)</td><td>PR merged</td><td>PR merged + policy pass</td><td>PR merged</td><td>Task done, evidence attached</td></tr>
+      <tr><td><strong>Self-host</strong></td><td>Yes, free forever</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td><strong>License</strong></td><td>Apache 2.0</td><td>Apache-2.0 (mostly)</td><td>Apache-2.0</td><td>AGPL-3 / MIT</td><td>Open source</td></tr>
+      <tr><td><strong>MCP-native</strong></td><td>Yes</td><td>Some (Nora, Preloop most aggressively)</td><td>Yes (Preloop headline)</td><td>Partial</td><td>Partial</td></tr>
+      <tr><td><strong>Approval queue</strong></td><td>Bets to promote, outcomes to validate</td><td>Tasks to unblock</td><td>Tasks + policy exceptions</td><td>Tasks</td><td>Two-path approval</td></tr>
+      <tr><td><strong>Fits when</strong></td><td>Team runs a knowledge-work loop</td><td>Team runs a coding-agent fleet</td><td>Enterprise policy + audit weight is heavy</td><td>Compliance/air-gap is the constraint</td><td>One operator with a handful of agents</td></tr>
+    </tbody>
+  </table>
+  <p>Every row above the last is a real difference. The last row is the buying question: which shape is your work?</p>
+
+  <h2>Which of the twelve (or the thirteenth) should you pick?</h2>
+  <ul>
+    <li><strong>If the work is coding and the team is small</strong>, pick a coding-agent fleet manager whose runtime matches yours. Crewship if you're multi-CLI. amux if you want a Rust binary and REST API. herdctl if you're all-in on Claude Code. danrex/fleet if you want the lightest possible thing.</li>
+    <li><strong>If the work is coding and the compliance/policy weight is heavy</strong>, pick an enterprise-shaped platform. Preloop if you want the MCP firewall and model gateway shape most aligned to the AgentCore-style reference. Clawix if you need RBAC and multi-channel escalation. Musematic if you're Kubernetes-native and want the Python control plane.</li>
+    <li><strong>If the constraint is air-gap or compliance</strong>, Vornik (AGPL-3, Podman) is the cleanest local-first pick. Mission Control if you want SQLite-backed and self-contained.</li>
+    <li><strong>If you're one operator with a handful of agents</strong>, VNX plus Van Deth's design language is the honest fit &mdash; chat-as-primary earns its keep at solo scale, and the receipts-as-state pattern is battle-tested at that N.</li>
+    <li><strong>If the work is a product-decision loop that carries state across humans and hand-offs</strong>, none of the twelve is the shape. <a href="https://maskin.io">Maskin</a> is what a control plane looks like when the object model is a loop on typed objects rather than a kanban of coding tasks. The <a href="/docs/ambient-agent-workspace/">ambient agent workspace</a> page covers the UX shape of the same object model.</li>
+  </ul>
+  <p>For the adjacent &ldquo;which self-hosted coding-agent platform do I install?&rdquo; question specifically, see the <a href="/alternatives/open-source-alternative-to-codex/">open source Codex alternative</a> page. For the tracker question underneath &mdash; Jira, Linear &mdash; see the <a href="/alternatives/open-source-jira-alternative/">open source Jira alternative</a> page.</p>
+
+  <h2>FAQ</h2>
+  <h3>What is an AI agent control plane?</h3>
+  <p>The dashboard, approval queue, and audit layer that sits above your agent runtimes and answers who owns which task, what shipped, where the spend went, and where a human needs to step in. In 2026 the term stabilised on that four-piece shape (dashboard, approvals, audit, container harness) and the twelve open-source products above all implement variants of it.</p>
+
+  <h3>How is a control plane different from an agent framework?</h3>
+  <p>A framework (LangChain, LlamaIndex, Autogen) is the library you use to build an agent. A control plane is the operations layer you install <em>above</em> one or more agents to run them in production &mdash; the queue, the log, the sandbox, the approval surface. Every one of the twelve entrants above assumes you have chosen the framework or CLI already; they orchestrate the runtime, they don't replace it.</p>
+
+  <h3>Is self-hosting really free?</h3>
+  <p>For the twelve open-source entrants above and for Maskin, the software cost is zero &mdash; self-host is free forever under the license. You pay for the underlying infrastructure (Docker host, K8s cluster, storage) and for the model calls the agents make. Van Deth's cost breakdown ($2,847/month at eleven agents before optimisation, $370/month after) is the most concrete public number on real-world model spend at that scale.</p>
+
+  <h3>Do I need MCP support?</h3>
+  <p>If your agents call multiple tools, yes &mdash; MCP is the standard the industry converged on in 2026 for tool interop, and Preloop, Nora, and Maskin all treat it as first-class. If your agents only call one CLI (e.g. Claude Code with its own tool set), MCP support is less urgent. It is a commodity table-stake on the SERP, though; if a product on the list <em>doesn't</em> ship it, that's the outlier.</p>
+
+  <h3>How is Maskin different from Preloop, since both are MCP-native and Apache-2.0?</h3>
+  <p>Preloop is a control plane above coding agents, with an MCP firewall and model gateway as the headline surfaces. The object model is a coding task; the close condition is a PR merged with policy pass. Maskin is a control plane above knowledge-work agents, with a typed object graph (insight &rarr; bet &rarr; task &rarr; loop) as the substrate. The close condition is on the loop, not on any single task. Both are legitimate; they optimise for different shapes of work.</p>
+
+  <h3>Is Maskin mature enough to bet on?</h3>
+  <p>Early and honestly so. Public traction is modest &mdash; the project is Apache-2.0 with a small maintainer team and an actively-shipped roadmap. What Maskin offers today is the architectural position (loop-on-typed-objects, MCP-native, self-hostable, approval-first) rather than the maturity of a vendor-hosted incumbent. If your evaluation criterion is a proven track record, weigh that against your appetite for shaping the category. If your evaluation criterion is the shape of the object model, that value holds regardless of star count.</p>
+
+  <h3>How do I know if my work is coding-shaped or product-shaped?</h3>
+  <p>A rough test: if every task in your queue ends in a merged PR, your work is coding-shaped and any of the twelve fits. If your tasks end in a decision, a shipped feature that needs measurement, a customer notified, or an insight validated against outcome data, the shape is product work &mdash; and the object model beneath the queue matters more than the queue itself.</p>
+
+  <h2>Own the loop, not the coding-task queue</h2>
+  <p>If your team's work is a coding-agent fleet, one of the twelve open-source control planes above is the right answer and this page is not for you. If your team's work is a product-decision loop that runs from customer signal to validated outcome, the control plane you need sits above a different object model &mdash; typed insights, bets, tasks, and loops instead of a kanban of coding tasks. That's what <a href="https://maskin.io">Maskin</a> is: open-source under Apache 2.0, self-hostable free forever, MCP-native, approval-first &mdash; same commodities the field has settled on, a fundamentally different shape of work.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/alternatives/open-source-alternative-to-codex/">
+          <div class="doc-card__title">Open source Codex alternative</div>
+          <div class="doc-card__desc">The loop past the merge, for the OpenAI-side buyer whose work isn't &ldquo;a coding ticket closed.&rdquo;</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/ambient-agent-workspace/">
+          <div class="doc-card__title">Ambient agent workspace</div>
+          <div class="doc-card__desc">The UX shape of the same object model &mdash; workspace-graph-as-inbox for background agents.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/self-hosted-ai-workspace/">
+          <div class="doc-card__title">Self-hosted AI workspace</div>
+          <div class="doc-card__desc">Bring your own model &mdash; the self-host story for the same closed loop.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Getting started is free</h2>
+      <p>Self-host today under Apache 2.0, or take a hosted trial while you evaluate. Read <a href="/docs/what-is-an-agentic-workspace/">what is an agentic workspace?</a> for the object-model background.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+
+    <hr>
+
+    <h2>Sources</h2>
+    <ol>
+      <li>Validated internal survey of the twelve entrants &mdash; full list with primary sources per project, last validated 2026-09-02.</li>
+      <li>Preloop &mdash; <a href="https://preloop.ai" target="_blank" rel="noopener">preloop.ai</a> and <a href="https://github.com/preloop/preloop" target="_blank" rel="noopener">github.com/preloop/preloop</a>. Apache-2.0, MCP firewall + model gateway + human approvals, pitched explicitly as &ldquo;open-source alternative to AWS Bedrock AgentCore.&rdquo;</li>
+      <li>Vincent van Deth &mdash; <a href="https://vincentvandeth.nl/blog/2026-05-29-agentic-os-design-solopreneur" target="_blank" rel="noopener">Designing an Agentic OS for Solopreneurs</a> (May 2026) and <a href="https://vincentvandeth.nl" target="_blank" rel="noopener">The Real Cost of AI Agents in Production</a> (March 2026). The five-principle framing (chat as primary, receipts as canonical state, asymmetric autonomy, two-path approval, context rotation) and the $2,847 &rarr; $370/month rebuild are from those pieces.</li>
+    </ol>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
