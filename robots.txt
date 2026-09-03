@@ -2,34 +2,45 @@
 # We want Maskin to be discoverable and understandable by LLMs.
 User-agent: *
 Allow: /
+# Auth pages (workspace SPA routes) — not meant to rank, no crawlable content.
+Disallow: /login
 
 # Explicitly welcome known AI crawlers.
 User-agent: GPTBot
 Allow: /
+Disallow: /login
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /login
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /login
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /login
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /login
 
 User-agent: Claude-SearchBot
 Allow: /
+Disallow: /login
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /login
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /login
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /login
 
 # LLM-readable summary of this site: https://maskin.io/llms.txt
 Sitemap: https://maskin.io/sitemap.xml
