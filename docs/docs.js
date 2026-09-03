@@ -39,7 +39,8 @@
       { label: "Bet-based product planning", href: "/docs/bet-based-product-planning/" },
       { label: "How to run bet-based planning", href: "/docs/how-to-run-bet-based-planning/", nested: true },
       { label: "Bet vs backlog", href: "/docs/bet-vs-backlog/", nested: true },
-      { label: "Self-hosted AI workspace", href: "/docs/self-hosted-ai-workspace/" }
+      { label: "Self-hosted AI workspace", href: "/docs/self-hosted-ai-workspace/" },
+      { label: "How to build an AI SDR loop", href: "/docs/how-to-build-ai-sdr-loop/" }
     ]},
     { title: "Alternatives", items: [
       { label: "Open source Jira alternative", href: "/alternatives/open-source-jira-alternative/" },

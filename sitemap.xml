@@ -25,6 +25,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://maskin.io/docs/how-to-build-ai-sdr-loop/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://maskin.io/docs/bet-vs-backlog/</loc>
     <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -179,12 +185,6 @@
     <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://maskin.io/alternatives/</loc>
-    <lastmod>2026-09-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://maskin.io/alternatives/open-source-jira-alternative/</loc>

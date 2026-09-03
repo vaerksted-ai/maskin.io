@@ -25,6 +25,7 @@ ORDER = [
   "docs/what-is-a-stateful-orchestration-substrate/index.html",
   "docs/learn/human-in-the-loop-ai/index.html",
   "docs/agent-inbox/index.html",
+  "docs/how-to-build-ai-sdr-loop/index.html",
 ]
 
 class MD(HTMLParser):
