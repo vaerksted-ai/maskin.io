@@ -42,7 +42,8 @@
     ]},
     { title: "Alternatives", items: [
       { label: "Open source Jira alternative", href: "/alternatives/open-source-jira-alternative/" },
-      { label: "Open source AI SDR", href: "/alternatives/open-source-ai-sdr/" }
+      { label: "Open source AI SDR", href: "/alternatives/open-source-ai-sdr/" },
+      { label: "Open source Codex alternative", href: "/alternatives/open-source-alternative-to-codex/" }
     ]}
   ];
 

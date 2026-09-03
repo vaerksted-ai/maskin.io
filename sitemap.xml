@@ -187,8 +187,14 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://maskin.io/alternatives/open-source-alternative-to-codex/</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://maskin.io/llms.txt</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
