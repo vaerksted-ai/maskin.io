@@ -33,6 +33,7 @@
       { label: "MCP-native workspace", href: "/docs/mcp-native-workspace/", nested: true },
       { label: "What is a stateful orchestration substrate?", href: "/docs/what-is-a-stateful-orchestration-substrate/" },
       { label: "Ambient agent workspace", href: "/docs/ambient-agent-workspace/" },
+      { label: "Agent Inbox", href: "/docs/agent-inbox/", nested: true },
       { label: "Human in the loop AI", href: "/docs/learn/human-in-the-loop-ai/" },
       { label: "AI product management tool", href: "/docs/ai-product-management-tool/" },
       { label: "Bet-based product planning", href: "/docs/bet-based-product-planning/" },

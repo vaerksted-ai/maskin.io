@@ -24,6 +24,7 @@ ORDER = [
   "docs/mcp-native-workspace/index.html",
   "docs/what-is-a-stateful-orchestration-substrate/index.html",
   "docs/learn/human-in-the-loop-ai/index.html",
+  "docs/agent-inbox/index.html",
 ]
 
 class MD(HTMLParser):

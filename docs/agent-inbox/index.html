@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is an Agent Inbox? LangChain's ambient-agent UX pattern | Maskin</title>
+<meta name="description" content="An Agent Inbox is the queue pattern Harrison Chase named at LangChain for ambient AI agents — notify, question, review interrupts replacing chat as the primary surface. Definitional citations, three interrupt types, and when a workspace-graph beats the flat queue.">
+
+<link rel="canonical" href="https://maskin.io/docs/agent-inbox/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/agent-inbox/">
+<meta property="og:title" content="What is an Agent Inbox? LangChain's ambient-agent UX pattern">
+<meta property="og:description" content="Harrison Chase's Agent Inbox at LangChain: a queue where a background agent posts notify, question, and review interrupts to a human — replacing chat as the primary surface. When the flat queue holds up, and when a workspace-graph beats it.">
+<meta property="og:image" content="https://maskin.io/og-image.png?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-09-03T00:00:00Z">
+<meta property="article:modified_time" content="2026-09-03T00:00:00Z">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="What is an Agent Inbox? LangChain's ambient-agent UX pattern">
+<meta name="twitter:description" content="A queue where an ambient AI agent posts notify, question, and review interrupts to a human — Chase's definition, the open-source LangGraph reference UI, and when a workspace-graph beats the flat queue.">
+<meta name="twitter:image" content="https://maskin.io/og-image.png?v=2">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/agent-inbox/#post",
+      "headline": "What is an Agent Inbox? (LangChain's ambient-agent UX pattern, and when a workspace-graph beats it)",
+      "name": "What is an Agent Inbox?",
+      "description": "An Agent Inbox is the UX pattern Harrison Chase named at LangChain for ambient AI agents: a queue where a background agent posts three types of interrupts — notify, question, review — to a human, instead of running a chat conversation. Definitional citations, the LangGraph reference UI, and when a workspace-graph beats the flat queue.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/agent-inbox/",
+      "mainEntityOfPage": "https://maskin.io/docs/agent-inbox/",
+      "image": "https://maskin.io/og-image.png",
+      "datePublished": "2026-09-03T00:00:00Z",
+      "dateModified": "2026-09-03T00:00:00Z",
+      "author": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": { "@type": "ImageObject", "url": "https://maskin.io/icon-512.png" }
+      },
+      "isPartOf": { "@type": "WebSite", "name": "Maskin", "url": "https://maskin.io/" },
+      "about": [
+        { "@type": "Thing", "name": "Agent Inbox" },
+        { "@type": "Thing", "name": "Ambient agents" },
+        { "@type": "Thing", "name": "LangChain" },
+        { "@type": "Thing", "name": "LangGraph" },
+        { "@type": "Thing", "name": "Human-on-the-loop" },
+        { "@type": "Thing", "name": "Post-chat UX patterns" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://maskin.io/docs/" },
+        { "@type": "ListItem", "position": 3, "name": "Agent Inbox", "item": "https://maskin.io/docs/agent-inbox/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an Agent Inbox in one sentence?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An Agent Inbox is a queue where an ambient AI agent posts three types of interrupts — notify, question, and review — to a human, replacing the chat window as the primary interaction surface for agents that run on events rather than user prompts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Agent Inbox open source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. LangChain maintains an open-source reference implementation at github.com/langchain-ai/agent-inbox, designed to consume typed interrupts raised by LangGraph runtimes. Cloudflare ships a related email-flavored variant at github.com/cloudflare/agentic-inbox."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the Agent Inbox work with LangGraph?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A LangGraph node raises a typed interrupt (notify, question, or review). The Agent Inbox UI subscribes to those interrupts, renders them as rows, and posts the human's resolution back into the graph as the next node's input — letting the human sit on the loop rather than in it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between an Agent Inbox and a workspace-graph?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An Agent Inbox is a flat queue of interrupts a single agent raises. A workspace-graph is a shared typed object graph (insights, bets, tasks, loops) where interrupts are attached to the objects they belong to. The queue fits atomic, one-agent decisions; the graph fits state that spans many loops, agents, and humans."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I still need chat if I have an Agent Inbox?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Often yes — for quick synchronous questions, verb-surface commands, and solo-operator flows at n=1. The Agent Inbox replaces chat as the default for background work; it doesn't remove chat as an option for sync cases. A serious product usually has both."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Chase's notify / question / review vocabulary stable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stable enough that renaming is a mistake. Every 2026 piece on ambient-agent UX cites Chase's LangChain post as the definitional source, and downstream implementations — including Superhuman's shipped features and the reference UI on GitHub — use the same three names."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested is-active" href="/docs/agent-inbox/" aria-current="page">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/open-source-jira-alternative/">Open source Jira alternative</a></li></ul></nav></aside>  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Agent Inbox</p>
+    <p class="eyebrow">Article · Category vocabulary</p>
+    <h1>What is an Agent Inbox? (LangChain's ambient-agent UX pattern, and when a workspace-graph beats it)</h1>
+    <p class="lead"><strong>An Agent Inbox is the UX pattern Harrison Chase named at LangChain for ambient AI agents: a queue where a background agent posts interrupts to a human &mdash; <code>notify</code>, <code>question</code>, <code>review</code> &mdash; instead of running a chat conversation.</strong> The pattern replaces the chat window as the primary surface for agents that fire on events rather than prompts and take longer than a spinner&rsquo;s worth of time to finish.<sup><a href="#fn1" id="fnref1">1</a></sup> This page defines the term the way Chase defined it, walks the three interrupt types with concrete examples, points to the open-source reference implementation on GitHub, and contrasts inbox-as-queue with the <strong>workspace-graph-as-inbox</strong> shape it starts to buckle into once you&rsquo;re supervising many parallel loops.</p>
+
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">✓</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+          <li><strong>Definitional citation:</strong> Harrison Chase, LangChain, January 2025 &mdash; <em>Introducing Ambient Agents</em>. The Agent Inbox is the UX half of the ambient-agent pattern.<sup><a href="#fn1" id="fnref1b">1</a></sup></li>
+          <li><strong>Three interrupt types:</strong> <code>notify</code> (something happened, no response needed), <code>question</code> (I need input to continue), <code>review</code> (I drafted this, approve or edit).<sup><a href="#fn1" id="fnref1c">1</a></sup></li>
+          <li><strong>Design shift:</strong> human-<strong>on</strong>-the-loop, not human-<strong>in</strong>-the-loop &mdash; the human sets the autonomy dial and answers interrupts on their own schedule instead of sitting in front of a chat.</li>
+          <li><strong>Reference implementation:</strong> open-source at <a href="https://github.com/langchain-ai/agent-inbox" target="_blank" rel="noopener nofollow">github.com/langchain-ai/agent-inbox</a>, designed to plug into LangGraph runtimes.</li>
+          <li><strong>The queue holds up</strong> for one-agent, atomic-decision flows (Superhuman-style email triage is the canonical case<sup><a href="#fn2" id="fnref2">2</a></sup>) and starts to buckle when many parallel loops need to carry state between agents and humans.</li>
+          <li><strong>The fifth pattern</strong> &mdash; workspace-graph-as-inbox &mdash; treats the human&rsquo;s review surface as a typed object graph rather than a flat queue. Same intent, different substrate; see the <a href="/docs/ambient-agent-workspace/">ambient agent workspace explainer</a> for the full spine.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>What is an Agent Inbox? (Chase&rsquo;s definition, plainly)</h2>
+    <p>Chase gave the Agent Inbox its working definition in his January 2025 LangChain post <em>Introducing Ambient Agents</em> and expanded it on the Sequoia <em>Training Data</em> podcast that followed.<sup><a href="#fn1" id="fnref1d">1</a></sup> The claim is small and precise: if an agent runs continuously against a stream of events, it needs a place to reach the human that is <em>not</em> a chat window. That place is an inbox.</p>
+    <p>The inbox does three things at once. It is a <strong>queue</strong> of interrupts the agent has raised, a <strong>decision surface</strong> where the human resolves each with minimal context-switching, and a <strong>contract</strong> that says, in effect: &ldquo;I run on my own; I interrupt you only in these named ways; you don&rsquo;t have to be watching for me to keep working.&rdquo;</p>
+    <p>In a chat, the human is the trigger &mdash; you type, the model waits. In an ambient system, an <em>event</em> is the trigger &mdash; a new email, a metric moving, a scheduled scan &mdash; and the human enters only when the agent decides taste is required. Chase names the shift precisely: <strong>human-on-the-loop</strong>, not human-in-the-loop.<sup><a href="#fn1" id="fnref1e">1</a></sup> In-the-loop makes the human a required step on every action; on-the-loop lets the agent act autonomously within a defined envelope and pull the human in only at named checkpoints. The Agent Inbox is the UI that makes on-the-loop legible. The companion piece on <a href="/docs/learn/human-in-the-loop-ai/">human in the loop AI</a> walks the HITL/HOTL failure modes and the override-rate test in detail.</p>
+
+    <h2>The three interrupt types: notify, question, review</h2>
+    <p>Chase&rsquo;s inbox exposes three interrupt types the agent can raise. Every reasonable ambient-agent product ends up implementing at least two of them, and the vocabulary is stable enough now that treating it as your own local nomenclature is a mistake &mdash; use Chase&rsquo;s names.</p>
+
+    <h3>Notify</h3>
+    <p><code>notify</code> is an interrupt with no expected response. The agent completed a task, ran into a soft edge, or observed something the human should know about &mdash; and the human doesn&rsquo;t need to reply for the loop to continue. In an email agent, a <code>notify</code> might read: <em>&ldquo;I archived 12 newsletters matching your usual pattern; here&rsquo;s the list.&rdquo;</em> In a monitoring agent: <em>&ldquo;P95 latency crossed 800ms at 14:03 and recovered at 14:07 without intervention.&rdquo;</em> The point of <code>notify</code> is not to demand attention &mdash; it is to make agent activity <strong>auditable without forcing a decision</strong>. Without a <code>notify</code> channel, ambient agents drift into what Tianpan calls &ldquo;invisible failures&rdquo;: the agent is doing things, but the human has no surface to see it doing them.<sup><a href="#fn3" id="fnref3">3</a></sup></p>
+
+    <h3>Question</h3>
+    <p><code>question</code> is the interrupt that blocks. The agent needs input it can&rsquo;t infer from the current state &mdash; a preference, a fact, a piece of context &mdash; and the loop is paused until the human answers. <em>&ldquo;Reply to this vendor with your usual 30-day terms, or the new 45-day terms you agreed with two vendors last week?&rdquo;</em> A well-shaped <code>question</code> interrupt has three properties: it is answerable in one interaction, it names the specific decision, and it carries enough context that the human can decide without opening five other tabs. When teams complain that their ambient agent feels &ldquo;chatty,&rdquo; the usual cause is <code>question</code> interrupts that should have been <code>review</code> interrupts &mdash; they are asking for permission when they should be showing draft work.</p>
+
+    <h3>Review</h3>
+    <p><code>review</code> is the highest-value interrupt in the pattern. The agent drafted an artefact &mdash; an email reply, a JIRA ticket, a code change, a customer response &mdash; and is asking the human to approve, edit, or reject it. The human sees the drafted output alongside the reasoning, and the resolution is one of <em>accept</em>, <em>edit-and-accept</em>, or <em>reject-with-note</em>. This is the interrupt that makes ambient agents genuinely useful in high-stakes flows: the agent does the work, the human owns the judgment, and both are legible in the audit trail. Superhuman&rsquo;s AI features are the reference example shipped in production on the Agent Inbox pattern; LangChain publishes the collaboration as a Breakout Agents case study.<sup><a href="#fn2" id="fnref2b">2</a></sup></p>
+
+    <h2>Where the Agent Inbox lives: LangGraph, the open-source UI, GitHub</h2>
+    <p>The Agent Inbox is not just a design pattern &mdash; it ships as running code. LangChain maintains a reference UI at <a href="https://github.com/langchain-ai/agent-inbox" target="_blank" rel="noopener nofollow">github.com/langchain-ai/agent-inbox</a> that consumes interrupts raised by <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener nofollow">LangGraph</a> runtimes. The wiring is small: the graph raises typed interrupts, the UI subscribes, and the human&rsquo;s resolution posts back to the graph as the next node&rsquo;s input.</p>
+    <p>The pattern is portable in spirit &mdash; a queue of typed interrupts works against any runtime &mdash; but the <em>reference implementation</em> is LangGraph-shaped. Teams outside the LangChain stack usually either re-implement the inbox against their own runtime, or adopt LangGraph for the ambient half of their product to get the inbox UI for free. Cloudflare&rsquo;s <a href="https://github.com/cloudflare/agentic-inbox" target="_blank" rel="noopener nofollow">agentic-inbox</a> is a different flavor of the same shape applied to email specifically: an inbox of interrupts wired to a background email agent, self-hosted on Cloudflare Workers.</p>
+    <p>The Agent Inbox is an open, inspectable reference UX. If you are evaluating ambient-agent products, this is the code to read to see what the interaction actually feels like, and the <code>notify</code> / <code>question</code> / <code>review</code> vocabulary is what to expect the market to standardize on.</p>
+
+    <h2>When the inbox pattern holds up &mdash; and when it starts to buckle</h2>
+    <p>The inbox is an excellent shape when three conditions hold: the interrupts are <strong>atomic</strong> (one decision, resolvable in one interaction), the loops are <strong>shallow</strong> (one agent, one artefact, one review), and the volume is <strong>triageable</strong> (a human can walk the queue on their own cadence). Email triage is the canonical case, and Superhuman&rsquo;s shipped implementation lives inside exactly those bounds.<sup><a href="#fn2" id="fnref2c">2</a></sup></p>
+    <p>The inbox starts to buckle when the work is shaped differently, and it is worth naming the three conditions because most teams hit at least one within a quarter of shipping:</p>
+    <ul>
+      <li><strong>Deep hand-offs.</strong> A loop that spans multiple agents (research &rarr; draft &rarr; fact-check &rarr; publish) raises interrupts at each hop. In a flat inbox they arrive as unrelated rows; the human loses the thread of which review is downstream of which question they answered yesterday.</li>
+      <li><strong>Many parallel loops.</strong> At a dozen agents raising two-to-five interrupts a day, the queue itself becomes the bottleneck. Triage is now the work &mdash; and a flat queue can&rsquo;t weight interrupts by which loop, bet, or downstream commitment they belong to.</li>
+      <li><strong>Multiple humans on the taste gates.</strong> A shared inbox needs concepts the flat model doesn&rsquo;t carry: assignment, hand-off, &ldquo;I have context on this,&rdquo; &ldquo;this is blocked on legal.&rdquo; Slack spent 15 years learning those; a fresh interrupt queue rediscovers them the hard way.</li>
+    </ul>
+    <p>None of this is an argument that the Agent Inbox is wrong. A queue is the right shape <em>for the interrupts a single agent raises about atomic decisions</em>; a different shape is right for <em>state that many agents and humans share across loops</em>. The two aren&rsquo;t in conflict &mdash; the second includes the first.</p>
+
+    <h2>The fifth pattern: workspace-graph-as-inbox</h2>
+    <p>The shape most 2026 taxonomies don&rsquo;t yet name is <strong>a shared typed object graph where the human&rsquo;s &ldquo;inbox&rdquo; is the state model itself.</strong> The Agent Inbox is a queue of discrete decisions &mdash; one interrupt per row, resolve and move on. A workspace graph is different: it is state, and state carries context across many parallel loops. It is what shows up as the fifth pattern in the <a href="/docs/ambient-agent-workspace/">ambient agent workspace explainer</a> alongside Nilesh Barla&rsquo;s four (verb surface, generative canvas, delegated agent, ambient capture) and Chase&rsquo;s inbox.</p>
+    <p>The distinction matters because a serious ambient-agent system doesn&rsquo;t run one loop, it runs dozens. In the workspace-graph pattern:</p>
+    <ul>
+      <li>The <strong>object</strong> is the unit of review &mdash; an insight, a bet, a task, a loop &mdash; not a message or an approval row.</li>
+      <li><strong>Typed relationships</strong> carry context between objects (<code>informs</code>, <code>breaks_into</code>, <code>blocks</code>, <code>supersedes</code>), so an agent reading a task can see the bet it belongs to and the insight that motivated it without extra prompting.</li>
+      <li><strong>Close conditions live on the object</strong>, so a loop terminates when the outcome is verified rather than when the human remembers to close it.</li>
+      <li><strong>Agents mutate the graph, humans reshape it.</strong> The audit trail is the graph&rsquo;s own history, not a separate log.</li>
+    </ul>
+    <p>A workspace-graph pattern still has interrupts &mdash; Chase&rsquo;s three types are as useful here as in the queue &mdash; but the interrupts are attached to typed objects that already carry the loop context. You aren&rsquo;t triaging unrelated rows; you&rsquo;re walking a graph where each interrupt is anchored to the bet, insight, or task it belongs to. The inbox becomes a view on the graph rather than the graph&rsquo;s replacement. This is the pattern <a href="/">Maskin</a> is built on, and it is why the <a href="/docs/what-is-an-agentic-workspace/">agentic workspace cornerstone</a> opens with &ldquo;the object of work is the workspace, not the chat.&rdquo;</p>
+
+    <h2>Which shape should you build?</h2>
+    <p>Ship the Agent Inbox if your work is <em>one agent, one artefact, atomic interrupts, one human on the taste gate</em> &mdash; the Superhuman shape. The LangChain reference implementation will save you months of UI work.</p>
+    <p>Ship a workspace-graph if any of three signals are true: loops <strong>hand off between multiple agents</strong> and the human needs to see the thread; <strong>multiple humans</strong> share the same review state; or you run <strong>enough parallel loops that triage is now the primary work</strong>. In that case the queue is a data-structure mismatch, and shoehorning a graph-shaped problem into an inbox produces the &ldquo;which-review-is-this-again&rdquo; thrash teams describe six months after shipping.</p>
+    <p>Both shapes share the same primitives: event-driven triggers, <code>notify</code>/<code>question</code>/<code>review</code> interrupts, an explicit autonomy dial, audit logs as first-class UI. The choice is about <strong>what the human&rsquo;s review surface is a view onto</strong> &mdash; a flat queue or a typed graph.</p>
+
+    <h2>FAQ</h2>
+    <h3>What is an Agent Inbox in one sentence?</h3>
+    <p>An Agent Inbox is a queue where an ambient AI agent posts three types of interrupts &mdash; <code>notify</code>, <code>question</code>, and <code>review</code> &mdash; to a human, replacing the chat window as the primary interaction surface for agents that run on events rather than user prompts.<sup><a href="#fn1" id="fnref1f">1</a></sup></p>
+
+    <h3>Is Agent Inbox open source?</h3>
+    <p>Yes. LangChain maintains an open-source reference implementation at <a href="https://github.com/langchain-ai/agent-inbox" target="_blank" rel="noopener nofollow">github.com/langchain-ai/agent-inbox</a>, designed to consume typed interrupts raised by LangGraph runtimes. Cloudflare ships a related email-flavored variant at <a href="https://github.com/cloudflare/agentic-inbox" target="_blank" rel="noopener nofollow">github.com/cloudflare/agentic-inbox</a>.</p>
+
+    <h3>How does the Agent Inbox work with LangGraph?</h3>
+    <p>A LangGraph node raises a typed interrupt (<code>notify</code>, <code>question</code>, or <code>review</code>). The Agent Inbox UI subscribes to those interrupts, renders them as rows, and posts the human&rsquo;s resolution back into the graph as the next node&rsquo;s input &mdash; letting the human sit <em>on</em> the loop rather than <em>in</em> it.<sup><a href="#fn1" id="fnref1g">1</a></sup></p>
+
+    <h3>What&rsquo;s the difference between an Agent Inbox and a workspace-graph?</h3>
+    <p>An Agent Inbox is a flat queue of interrupts a single agent raises. A workspace-graph is a shared typed object graph (insights, bets, tasks, loops) where interrupts are attached to the objects they belong to. The queue fits atomic, one-agent decisions; the graph fits state that spans many loops, agents, and humans. See the <a href="/docs/ambient-agent-workspace/">ambient agent workspace explainer</a> for the full contrast.</p>
+
+    <h3>Do I still need chat if I have an Agent Inbox?</h3>
+    <p>Often yes &mdash; for quick synchronous questions, verb-surface commands, and solo-operator flows at n=1. The Agent Inbox replaces chat as the <em>default</em> for background work; it doesn&rsquo;t remove chat as an option for sync cases. A serious product usually has both.</p>
+
+    <h3>Is Chase&rsquo;s <code>notify</code> / <code>question</code> / <code>review</code> vocabulary stable?</h3>
+    <p>Stable enough that renaming is a mistake. Every 2026 piece on ambient-agent UX cites Chase&rsquo;s LangChain post as the definitional source, and downstream implementations &mdash; including Superhuman&rsquo;s shipped features<sup><a href="#fn2" id="fnref2d">2</a></sup> and the reference UI on GitHub &mdash; use the same three names.</p>
+
+    <h2>Own the interrupts, not the chat</h2>
+    <p>If your agents run on events and your team supervises more than one loop at a time, the shape of the UX is an inbox, a workspace-graph, or both &mdash; not a chat window. <a href="/">Maskin</a> is the open-source, <a href="/docs/mcp-native-workspace/">MCP-native</a>, self-hostable workspace-graph. If Claude Cowork is the vendor-hosted answer, Maskin is the open-source alternative where the object model, the model, and the loop all live inside your own boundary. Self-host free forever under Apache 2.0, or start a hosted trial with EU/US data residency.</p>
+
+    <h2 id="sources">Sources</h2>
+    <ol class="sources">
+      <li id="fn1"><strong>Harrison Chase / LangChain</strong>, <em>Introducing Ambient Agents</em> (Jan 2025). <a href="https://www.langchain.com/blog/introducing-ambient-agents" target="_blank" rel="noopener nofollow">langchain.com/blog/introducing-ambient-agents</a>. Plus the Sequoia <em>Training Data</em> podcast appearance on <em>Ambient Agents and the Agent Inbox</em>, <a href="https://sequoiacap.com/podcast/training-data-harrison-chase-2" target="_blank" rel="noopener nofollow">sequoiacap.com/podcast/training-data-harrison-chase-2</a>. Definitional citations for the Agent Inbox, the three interrupt types (<code>notify</code>, <code>question</code>, <code>review</code>), and the human-on-the-loop vs human-in-the-loop shift. <a href="#fnref1">↩</a></li>
+      <li id="fn2"><strong>LangChain</strong>, <em>Superhuman</em> (Breakout Agents case study). <a href="https://www.langchain.com/breakoutagents/superhuman" target="_blank" rel="noopener nofollow">langchain.com/breakoutagents/superhuman</a>. Concrete shipped-in-production example of an ambient-agent pattern running against email &mdash; the canonical atomic-decision, single-agent case teams point to when defending the flat-queue shape. <a href="#fnref2">↩</a></li>
+      <li id="fn3"><strong>Tianpan</strong>, <em>Async Agents Need an Inbox, Not a Chat</em> (2026-04-23) and <em>Ambient AI Design: When the Chat Interface Is the Wrong Abstraction</em> (2026-04-15). <a href="https://tianpan.co/blog/2026-04-23-async-agents-inbox-not-chat" target="_blank" rel="noopener nofollow">tianpan.co/blog/2026-04-23-async-agents-inbox-not-chat</a> and <a href="https://tianpan.co/blog/2026-04-15-ambient-ai-design-chat-interface" target="_blank" rel="noopener nofollow">tianpan.co/blog/2026-04-15-ambient-ai-design-chat-interface</a>. Names the four failure modes of ambient agents, including &ldquo;invisible failures,&rdquo; which motivates the <code>notify</code> interrupt channel. <a href="#fnref3">↩</a></li>
+    </ol>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/ambient-agent-workspace/">
+          <div class="doc-card__title">Ambient agent workspace</div>
+          <div class="doc-card__desc">The fifth pattern in full &mdash; where the workspace-graph beats the flat inbox for state that spans many loops.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/learn/human-in-the-loop-ai/">
+          <div class="doc-card__title">Human in the loop AI</div>
+          <div class="doc-card__desc">HITL vs HOTL, the override-rate test, and why &ldquo;in the loop&rdquo; doesn&rsquo;t guarantee real oversight.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+          <div class="doc-card__title">What is an agentic workspace?</div>
+          <div class="doc-card__desc">The cornerstone &mdash; the object of work is the workspace, not the chat.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/mcp-native-workspace/">
+          <div class="doc-card__title">MCP-native workspace</div>
+          <div class="doc-card__desc">The protocol layer under the workspace-graph &mdash; and the four markers of the category.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Self-host the ambient loop</h2>
+      <p>Own the object graph, own the model, own the loop. Apache 2.0, MCP-native, EU/US data residency.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
