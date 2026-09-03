@@ -4,43 +4,53 @@ User-agent: *
 Allow: /
 # Auth pages (workspace SPA routes) — not meant to rank, no crawlable content.
 Disallow: /login
+Disallow: /signup
 
 # Explicitly welcome known AI crawlers.
 User-agent: GPTBot
 Allow: /
 Disallow: /login
+Disallow: /signup
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /login
+Disallow: /signup
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /login
+Disallow: /signup
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /login
+Disallow: /signup
 
 User-agent: Claude-Web
 Allow: /
 Disallow: /login
+Disallow: /signup
 
 User-agent: Claude-SearchBot
 Allow: /
 Disallow: /login
+Disallow: /signup
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /login
+Disallow: /signup
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /login
+Disallow: /signup
 
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /login
+Disallow: /signup
 
 # LLM-readable summary of this site: https://maskin.io/llms.txt
 Sitemap: https://maskin.io/sitemap.xml
