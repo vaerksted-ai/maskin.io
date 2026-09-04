@@ -26,7 +26,7 @@ An AI product workspace is one tier up from the coding-agent runtime. The object
 
 The distinction is not marketing. The object model beneath a workspace is structurally different from a task kanban: insights, bets, tasks, and validated outcomes are all typed objects connected by typed relationships, so the same data that carries a bet's win condition also carries the lineage that lets agents work it end-to-end. The bet's terminal event — outcome measured against win condition — is a first-class row in the data, not a comment on a ticket. That difference is what lets the workspace answer the diagnostic that the coding-agent tier cannot.
 
-The companion piece on the notes tier ([agentic workspace vs knowledge space](/docs/agentic-workspace-vs-knowledge-space/)) runs the same argument against knowledge spaces like Obsidian, Mem, and Confluence — the object of work is a note, so the loop cannot close on an outcome. The [companion piece on the tracker tier](/docs/ai-product-management-tool/) runs it against Jira, Linear, and Notion with AI summaries bolted on — the object of work is a ticket, so the loop still cannot close on an outcome. This page is the third leg: the object of work in a coding agent is a code task, so the loop closes on a merge, not on a validated outcome.
+The companion piece on the notes tier (agentic workspace vs knowledge space) runs the same argument against knowledge spaces like Obsidian, Mem, and Confluence — the object of work is a note, so the loop cannot close on an outcome. The [companion piece on the tracker tier](/docs/ai-product-management-tool/) runs it against Jira, Linear, and Notion with AI summaries bolted on — the object of work is a ticket, so the loop still cannot close on an outcome. This page is the third leg: the object of work in a coding agent is a code task, so the loop closes on a merge, not on a validated outcome.
 
 ## The diagnostic: what does the system have to see to call the work done?
 
@@ -48,7 +48,7 @@ What none of them is is a knowledge-work workspace where the object of work is a
 
 ## The object of work, compared
 
-The difference is the object model. The row spine below is the same one the [notes-tier companion](/docs/agentic-workspace-vs-knowledge-space/) and [tracker-tier companion](/docs/ai-product-management-tool/) use, with the coding-agent tier swapped in.
+The difference is the object model. The row spine below is the same one the notes-tier companion and [tracker-tier companion](/docs/ai-product-management-tool/) use, with the coding-agent tier swapped in.
 
 | Capability | AI coding agent + control plane (Claude Code, Codex, Cursor; amux, Crewship, Preloop, Nora, etc.) | AI product workspace (Maskin) |
 | --- | --- | --- |
@@ -108,7 +108,7 @@ Not in the head-to-head sense. Cursor and Claude Code are coding-agent runtimes;
 
 ## Where to go next
 
-If you are evaluating the tier above the code, the three companion wedge pieces are worth reading side by side. The [notes-tier companion](/docs/agentic-workspace-vs-knowledge-space/) runs the same diagnostic against Obsidian, Mem, and Confluence. The [tracker-tier companion](/docs/ai-product-management-tool/) runs it against Jira, Linear, and Notion. The [cornerstone on agentic workspaces](/docs/what-is-an-agentic-workspace/) walks the full shape end to end.
+If you are evaluating the tier above the code, the three companion wedge pieces are worth reading side by side. The notes-tier companion runs the same diagnostic against Obsidian, Mem, and Confluence. The [tracker-tier companion](/docs/ai-product-management-tool/) runs it against Jira, Linear, and Notion. The [cornerstone on agentic workspaces](/docs/what-is-an-agentic-workspace/) walks the full shape end to end.
 
 Maskin is open source under Apache 2.0. Self-hosting is free — clone the repo and run the loop on your own infrastructure. Hosted Pro is $20/seat/month with agent credits included; Team is $200/workspace/month with unlimited seats. The coding agent ships the PR; the AI product workspace turns the shipped change into a validated outcome.
 
