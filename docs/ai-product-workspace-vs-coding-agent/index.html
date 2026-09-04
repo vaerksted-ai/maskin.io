@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI product workspace vs AI coding agent — Maskin</title>
+<meta name="description" content="An AI product workspace and an AI coding agent occupy two different tiers of the stack. The coding agent's terminal event is a merged PR; the workspace's is a validated outcome. Both are agentic, and most teams that build software will run both.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/ai-product-workspace-vs-coding-agent/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/ai-product-workspace-vs-coding-agent/">
+<meta property="og:title" content="AI product workspace vs AI coding agent">
+<meta property="og:description" content="Two agentic tiers: a coding agent terminates on a merged PR, an AI product workspace terminates on a validated outcome. The diagnostic that separates them, and why most teams run both.">
+<meta property="og:image" content="https://maskin.io/docs/ai-product-workspace-vs-coding-agent/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="AI product workspace vs AI coding agent">
+<meta name="twitter:description" content="Coding agent = merged PR. AI product workspace = validated outcome. Different tiers, both useful, and most teams run both.">
+<meta name="twitter:image" content="https://maskin.io/docs/ai-product-workspace-vs-coding-agent/og-image.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "AI product workspace vs AI coding agent",
+      "name": "AI product workspace vs AI coding agent",
+      "description": "An AI product workspace and an AI coding agent occupy two different tiers of the stack. The coding agent's terminal event is a merged PR; the workspace's is a validated outcome. Both are agentic, and most teams that build software will run both.",
+      "url": "https://maskin.io/docs/ai-product-workspace-vs-coding-agent/",
+      "inLanguage": "en",
+      "datePublished": "2026-09-04T00:00:00Z",
+      "dateModified": "2026-09-04T00:00:00Z",
+      "image": ["https://maskin.io/docs/ai-product-workspace-vs-coding-agent/og-image.svg"],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "mainEntityOfPage": "https://maskin.io/docs/ai-product-workspace-vs-coding-agent/",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": {
+        "@type": "Product",
+        "name": "Maskin"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI product workspace vs AI coding agent",
+          "item": "https://maskin.io/docs/ai-product-workspace-vs-coding-agent/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an AI coding agent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An AI coding agent is a runtime whose object of work is a coding task. Claude Code, Codex, Cursor, OpenClaw, and Hermes are the current reference examples. The agent accepts a natural-language task, plans a diff against a codebase, and produces a pull request or a commit. The terminal event of the loop is \"the PR merged.\" What the agent does well is turn a task into shipped code; what it does not do is carry the bet or the outcome above the task, because those live one tier up in the stack."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is an AI product workspace a rebrand of an AI coding agent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The two tools occupy structurally different tiers. A coding agent's object of work is a task and its terminal event is a merged PR. An AI product workspace's object of work is a bet with a win condition and its terminal event is a validated outcome. The two can share infrastructure (self-hosting, MCP, approval queues) and often ship alongside each other, but they are not substitutes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is an AI coding agent different from an AI coding assistant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The assistant/agent distinction inside the coding-agent tier is a scope call, not a tier call. A coding assistant (Copilot, older Cursor modes) suggests completions and edits inline; a coding agent (Claude Code, Codex, autonomous Cursor, Devin) runs a task end-to-end from description to PR. Both operate on the same object of work (a code change) and both terminate on the same event (a merge). Neither is an AI product workspace — that tier is above both."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I still need a coding agent if I run an AI product workspace?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, if you ship software. The AI product workspace shapes bets and closes loops on outcomes; the coding agent turns the coding tasks inside those bets into PRs. Running one does not replace the other. Most teams that build software will end up with a coding agent on the code and an AI product workspace on the decisions the code is working under."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about the wave of self-hosted, MCP-native agent control planes — aren't those AI product workspaces?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Between February and August 2026 at least eleven named open-source coding-agent control planes shipped (amux, Crewship, Preloop, Nora, Musematic, Mission Control, Clawix, Vornik, Zoink, herdctl, danrex/fleet), all converging on the same vocabulary and all built around a kanban of coding tasks that terminates on a merged PR. That is the coding-agent tier with a dashboard on top. An AI product workspace models insight → bet → task → validated outcome and closes the loop on the outcome. Both are legitimate tools; they are not the same category."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Maskin a Cursor alternative or a Claude Code alternative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not in the head-to-head sense. Cursor and Claude Code are coding-agent runtimes; Maskin is an AI product workspace one tier up. A team that runs Cursor or Claude Code on the code and Maskin on the decisions is a common stack, not a conflicted one. The open-source Codex alternative and self-hosted control plane for knowledge work companion pages walk the positioning cut in more detail for each of those buyer questions."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-active" href="/docs/ai-product-workspace-vs-coding-agent/" aria-current="page">AI product workspace vs AI coding agent</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li></ul></nav></aside>  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / AI product workspace vs AI coding agent</p>
+    <p class="eyebrow">Article &middot; Positioning</p>
+    <h1>AI product workspace vs AI coding agent</h1>
+<p class="lead">An <strong>AI product workspace</strong> and an <strong>AI coding agent</strong> occupy two different tiers of the stack, and telling them apart is the difference between choosing the right tool and buying the wrong one twice. A coding agent &mdash; Claude Code, Codex, Cursor, OpenClaw, Hermes &mdash; is a runtime that turns a task into a change request and terminates when a pull request merges. An AI product workspace is a control plane one tier up: the unit of work is a shaped bet with a win condition, and the loop terminates when a shipped change is measured against the outcome it was meant to move. Both are agentic, both are useful, and picking correctly comes down to a single diagnostic: what does the system have to see to call the work done?</p>
+
+<div class="callout callout--muted"><div class="callout__icon" aria-hidden="true">&#10003;</div><div class="callout__body"><strong>Key takeaways</strong><ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+<li><strong>A coding agent&rsquo;s unit of work is a task; its terminal event is a merged PR.</strong> The object model is a ticket, and &ldquo;done&rdquo; is code shipped, whether or not the shipped code moved anything.</li>
+<li><strong>An AI product workspace&rsquo;s unit of work is a shaped bet with a win condition; its terminal event is a validated outcome.</strong> The object model is insight &rarr; bet &rarr; task &rarr; validated outcome, and &ldquo;done&rdquo; is a shipped change measured against the outcome it targeted.</li>
+<li><strong>The category of coding-agent control planes has already crowded.</strong> Between February and August 2026, at least eleven named open-source or self-hosted coding-agent control planes shipped &mdash; amux, Crewship, Preloop, Nora, Musematic, Mission Control, Clawix, Vornik, Zoink, herdctl, danrex/fleet &mdash; all converging on identical vocabulary and all built around a kanban of coding tasks.</li>
+<li><strong>Self-hosting, MCP support, and approval queues are now table stakes on both tiers</strong>, so those are the wrong things to compare on. The honest differentiator is the object model beneath the dashboard.</li>
+<li><strong>Most teams that build software will end up running both.</strong> A coding agent on the code, an AI product workspace on the decisions. The pieces do not fight; they cover different tiers.</li>
+</ul></div></div>
+
+<h2>What an AI coding agent actually is</h2>
+<p>An AI coding agent is a runtime whose object of work is a coding task. Claude Code, Codex, Cursor, OpenClaw, Hermes, Jules, Devin, and their peers all differ in the surface area they present &mdash; terminal, IDE, chat, IDE-plus-chat, autonomous background worker &mdash; but they share the same shape. A task comes in as a natural-language description, the agent plans a diff against a codebase, the diff turns into a pull request or a commit, and the terminal event is &ldquo;the PR merged.&rdquo; That is the loop, and the loop is what the tool exists to run.</p>
+<p>That shape is genuinely useful. The volume of AI-coding-agent search demand &mdash; 12,100 monthly searches on the bare phrase, thousands more on comparison and vendor-specific queries &mdash; reflects a category with real buyers and real installs. The 2026 SERP is filling in with vendor-specific detail: &ldquo;open source AI coding agent&rdquo; (2,900/mo), &ldquo;cursor AI coding agent&rdquo; (1,600/mo), &ldquo;claude AI coding agent&rdquo; (880/mo), &ldquo;AI coding agent comparison&rdquo; (210/mo). Coding agents work, teams pay for them, and the category is competitive on features that make coding faster and safer.</p>
+<p>Where the shape stops is the tier above the code. A coding agent knows a task was described, planned, executed, and merged. It does not know whether the merged change moved the outcome the change was meant to move &mdash; because the outcome was never in the object model. The ticket said &ldquo;do X&rdquo;; the agent did X; the PR merged; the loop closed. Whether X was the right X, or whether X actually moved anything a human would recognize as a business result, is a question the coding-agent tier does not carry the data to answer.</p>
+
+<h2>What an AI product workspace actually is</h2>
+<p>An AI product workspace is one tier up from the coding-agent runtime. The object of work is not a task; it is a shaped bet &mdash; a testable hypothesis with a win condition, an appetite, and lineage back to the insight it was shaped from. Humans keep the taste calls (which bets deserve the cycle, which outcomes count as won). Agents run the mechanical parts of the loop: capture signal from connected sources, synthesize raw insight, draft candidate bets, execute the shaped work, and gather evidence for validation. When a bet ships, its outcome is measured against the win condition, the requester is notified, and the loop terminates.</p>
+<p>The distinction is not marketing. The object model beneath a workspace is structurally different from a task kanban: insights, bets, tasks, and validated outcomes are all typed objects connected by typed relationships, so the same data that carries a bet&rsquo;s win condition also carries the lineage that lets agents work it end-to-end. The bet&rsquo;s terminal event &mdash; outcome measured against win condition &mdash; is a first-class row in the data, not a comment on a ticket. That difference is what lets the workspace answer the diagnostic that the coding-agent tier cannot.</p>
+<p>The companion piece on the notes tier (<a href="/docs/agentic-workspace-vs-knowledge-space/">agentic workspace vs knowledge space</a>) runs the same argument against knowledge spaces like Obsidian, Mem, and Confluence &mdash; the object of work is a note, so the loop cannot close on an outcome. The <a href="/docs/ai-product-management-tool/">companion piece on the tracker tier</a> runs it against Jira, Linear, and Notion with AI summaries bolted on &mdash; the object of work is a ticket, so the loop still cannot close on an outcome. This page is the third leg: the object of work in a coding agent is a code task, so the loop closes on a merge, not on a validated outcome.</p>
+
+<h2>The diagnostic: what does the system have to see to call the work done?</h2>
+<p>There is a single diagnostic that separates a coding agent from an AI product workspace, and it is the same one that separates a knowledge space or a task tracker from an AI product workspace. Ask the tool: what does the system have to see to call the work done?</p>
+<p>A coding agent has to see a merged pull request. The task description was the input, the diff was the plan, the PR is the artifact, and &ldquo;merged&rdquo; is the terminal event. Everything upstream of the task (why the task existed, what outcome it was meant to move) and everything downstream of the merge (whether the merged change actually moved anything) lives outside the object model. That is not a defect &mdash; it is the honest scope of what a coding-agent runtime carries data for.</p>
+<p>An AI product workspace has to see a validated outcome. A bet was shaped from an insight, carrying a win condition. Tasks under the bet may involve code, or research, or writing, or a decision that ships without any code at all. When the bet&rsquo;s work completes, the workspace measures the outcome against the win condition it carried from the start, notifies the requester, and closes the loop. &ldquo;Merged&rdquo; is a step; &ldquo;outcome validated&rdquo; is the terminal event. The workspace can answer the diagnostic because the outcome was in the object model from the start.</p>
+<p>This is why the two tools are complements more often than competitors. A coding agent that ships a PR against a bet&rsquo;s coding task is doing exactly what a coding agent should do; the workspace above it does what a coding agent cannot, which is carry the bet&rsquo;s outcome forward and close the loop on it.</p>
+
+<h2>The category of coding-agent control planes has crowded, and it is not the same category</h2>
+<p>Per Maskin&rsquo;s public SERP crowding sweep (August 2026), at least eleven named open-source or self-hosted &ldquo;AI agent control plane&rdquo; products shipped between February and August 2026, all converging on identical vocabulary and all built around a coding-agent runtime as the primary object. amux ships as a Rust binary billed as &ldquo;the agent control plane&rdquo;; Crewship (Apache-2.0, February 2026) ships one Docker container per crew and speaks to Claude Code, Codex, Gemini, OpenCode, and Ollama; Preloop (Apache-2.0) pitches explicitly as &ldquo;an open-source alternative to AWS Bedrock AgentCore&rdquo; with an MCP firewall and human approvals; Nora (Apache-2.0, March 2026) runs OpenClaw and Hermes fleets on Docker or Kubernetes; Musematic runs a Python control plane with Go satellites on Kubernetes; Mission Control (February 2026) ships an SQLite-backed task inbox with a quality gate; Clawix (April 2026) runs Docker-isolated agents with swarm DAGs and RBAC; Vornik (AGPL-3) runs an air-gapped Podman local daemon; Zoink runs multi-framework swarms with a TUI and a web dashboard; herdctl runs Claude Code fleets with cron triggers; danrex/fleet (April 2026) is bash, Docker, and git with one branch per task.</p>
+<p>The crowding is a positioning signal, not a warning. Every one of those products is a control plane above a coding-agent fleet, and every one&rsquo;s object model is tasks on a kanban that terminates when a PR merges. Self-hosting is table stakes across the cluster. MCP support is table stakes &mdash; Preloop leads with an MCP firewall, Nora ships an MCP server. Approval queues are table stakes &mdash; every entrant ships one. The features that felt premium a year ago have commoditized in six months.</p>
+<p>What none of them is is a knowledge-work workspace where the object of work is a bet with a win condition and the loop terminates on a validated outcome. The category of coding-agent control planes and the category of AI product workspaces look adjacent from a marketing slide and are structurally different tools. Confusing them is what makes a team install a coding-agent control plane and then wonder why the decision loop still runs in Slack threads and Notion docs. The <a href="/alternatives/self-hosted-ai-agent-control-plane/">self-hosted AI agent control plane comparison</a> walks the twelve entrants in detail; the <a href="/alternatives/open-source-alternative-to-codex/">open-source Codex alternative</a> mirrors the same argument for the OpenAI-side buyer.</p>
+
+<h2>The object of work, compared</h2>
+<p>The difference is the object model. The row spine below is the same one the <a href="/docs/agentic-workspace-vs-knowledge-space/">notes-tier companion</a> and <a href="/docs/ai-product-management-tool/">tracker-tier companion</a> use, with the coding-agent tier swapped in.</p>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead><tr><th>Capability</th><th>AI coding agent + control plane (Claude Code, Codex, Cursor; amux, Crewship, Preloop, Nora, etc.)</th><th>AI product workspace (Maskin)</th></tr></thead>
+<tbody>
+<tr><td>Object of work</td><td>Coding task on a kanban</td><td>Bet (win condition + appetite + lineage)</td></tr>
+<tr><td>Signal capture</td><td>Task description written by a human</td><td>Event-driven triggers from connected sources</td></tr>
+<tr><td>Decisions</td><td>Which task the agent picks up next</td><td>Which bet the team commits to this cycle</td></tr>
+<tr><td>Execution</td><td>Coding agent produces a diff and a PR</td><td>Humans and agents on shared typed objects</td></tr>
+<tr><td>Validation</td><td>PR merged</td><td>Outcome measured against win condition</td></tr>
+<tr><td>Terminal event</td><td>&ldquo;Done&rdquo; = merged</td><td>&ldquo;Done&rdquo; = validated</td></tr>
+<tr><td>Runtime scope</td><td>Code changes only</td><td>Code, decisions, research, writing &mdash; anything with an outcome</td></tr>
+<tr><td>Human role</td><td>Reviewer of the diff</td><td>Judge of the outcome</td></tr>
+<tr><td>Open source</td><td>Sometimes (many entrants Apache-2.0 or AGPL)</td><td>Apache 2.0, self-hostable</td></tr>
+</tbody>
+</table></div>
+<p>Read the two columns as tiers, not as a scoreboard. The coding-agent column is correct for what a coding agent is for. The AI product workspace column is what the tier above the code looks like when the object of work carries a win condition instead of a task description.</p>
+
+<h2>Where the two tiers overlap and where they don&rsquo;t</h2>
+<p>The two tiers overlap on infrastructure. Self-hosting, MCP support, approval queues, audit logs, cost governance &mdash; these are shared assumptions across both tiers now, and any tool at either tier that does not ship them is behind. Comparing an AI coding agent to an AI product workspace on &ldquo;is it self-hostable&rdquo; or &ldquo;does it speak MCP&rdquo; is comparing on rows where both columns already say yes.</p>
+<p>The two tiers do not overlap on the object of work. A coding agent&rsquo;s kanban of tasks cannot carry a bet&rsquo;s win condition because a task description was never designed to. A control plane above a coding-agent fleet inherits the same limit: the dashboard is one level higher, but the object underneath is still a task and the terminal event is still a merge. Nothing in the vertical stack of coding-agent runtime plus coding-agent control plane models an insight becoming a bet becoming a validated outcome, because that model is not what those tools are for.</p>
+<p>The practical implication for a team choosing between them: if the pain is &ldquo;I have five coding agents and no dashboard to run the fleet,&rdquo; a coding-agent control plane is the right tool. If the pain is &ldquo;we ship a lot and nobody can tell whether any of it moved anything,&rdquo; a coding-agent control plane will not fix that &mdash; the object of work has to change tier for the loop to close on an outcome.</p>
+
+<h2>The honest case for running both</h2>
+<p>Most teams that build software will run both, and that is the right answer. A coding agent (or a coding-agent control plane above several of them) on the code, an AI product workspace on the decisions the code is meant to serve. The coding agent ships PRs; the workspace shapes the bets those PRs are working under, validates the outcomes, and closes the loop.</p>
+<p>Where the tiers collide is when a team tries to run a decision loop out of a coding-agent control plane alone &mdash; the kanban is the roadmap, the PR is the outcome, and the team narrates the results in a weekly meeting. That works up to the point where signal starts arriving from more sources than a human can reduce to task descriptions on the same day, or where a shipped PR that nobody measured leaves the team unable to tell whether the last cycle was a win. Beyond that point, the coding-agent tier is being asked to be a workspace, and the diagnostic bites: no win condition on the task, no outcome measured against it, no loop that terminates on a business result.</p>
+<p>The right move is not to demand more of the coding-agent tier. It is to put the decision loop on a tier that models it, and let the coding agent do what a coding agent does well.</p>
+
+<h2>FAQ</h2>
+<h3>What is an AI coding agent?</h3>
+<p>An AI coding agent is a runtime whose object of work is a coding task. Claude Code, Codex, Cursor, OpenClaw, and Hermes are the current reference examples. The agent accepts a natural-language task, plans a diff against a codebase, and produces a pull request or a commit. The terminal event of the loop is &ldquo;the PR merged.&rdquo; What the agent does well is turn a task into shipped code; what it does not do is carry the bet or the outcome above the task, because those live one tier up in the stack.</p>
+
+<h3>Is an AI product workspace a rebrand of an AI coding agent?</h3>
+<p>No. The two tools occupy structurally different tiers. A coding agent&rsquo;s object of work is a task and its terminal event is a merged PR. An AI product workspace&rsquo;s object of work is a bet with a win condition and its terminal event is a validated outcome. The two can share infrastructure (self-hosting, MCP, approval queues) and often ship alongside each other, but they are not substitutes.</p>
+
+<h3>How is an AI coding agent different from an AI coding assistant?</h3>
+<p>The assistant/agent distinction inside the coding-agent tier is a scope call, not a tier call. A coding assistant (Copilot, older Cursor modes) suggests completions and edits inline; a coding agent (Claude Code, Codex, autonomous Cursor, Devin) runs a task end-to-end from description to PR. Both operate on the same object of work (a code change) and both terminate on the same event (a merge). Neither is an AI product workspace &mdash; that tier is above both.</p>
+
+<h3>Do I still need a coding agent if I run an AI product workspace?</h3>
+<p>Yes, if you ship software. The AI product workspace shapes bets and closes loops on outcomes; the coding agent turns the coding tasks inside those bets into PRs. Running one does not replace the other. Most teams that build software will end up with a coding agent on the code and an AI product workspace on the decisions the code is working under.</p>
+
+<h3>What about the wave of self-hosted, MCP-native &ldquo;agent control planes&rdquo; &mdash; aren&rsquo;t those AI product workspaces?</h3>
+<p>No. Between February and August 2026 at least eleven named open-source coding-agent control planes shipped (amux, Crewship, Preloop, Nora, Musematic, Mission Control, Clawix, Vornik, Zoink, herdctl, danrex/fleet), all converging on the same vocabulary and all built around a kanban of coding tasks that terminates on a merged PR. That is the coding-agent tier with a dashboard on top. An AI product workspace models insight &rarr; bet &rarr; task &rarr; validated outcome and closes the loop on the outcome. Both are legitimate tools; they are not the same category.</p>
+
+<h3>Is Maskin a Cursor alternative or a Claude Code alternative?</h3>
+<p>Not in the head-to-head sense. Cursor and Claude Code are coding-agent runtimes; Maskin is an AI product workspace one tier up. A team that runs Cursor or Claude Code on the code and Maskin on the decisions is a common stack, not a conflicted one. The <a href="/alternatives/open-source-alternative-to-codex/">open-source Codex alternative</a> and <a href="/alternatives/self-hosted-ai-agent-control-plane/">self-hosted control plane for knowledge work</a> companion pages walk the positioning cut in more detail for each of those buyer questions.</p>
+
+<h2>Where to go next</h2>
+<p>If you are evaluating the tier above the code, the three companion wedge pieces are worth reading side by side. The <a href="/docs/agentic-workspace-vs-knowledge-space/">notes-tier companion</a> runs the same diagnostic against Obsidian, Mem, and Confluence. The <a href="/docs/ai-product-management-tool/">tracker-tier companion</a> runs it against Jira, Linear, and Notion. The <a href="/docs/what-is-an-agentic-workspace/">cornerstone on agentic workspaces</a> walks the full shape end to end.</p>
+<p>Maskin is open source under Apache 2.0. Self-hosting is free &mdash; clone the repo and run the loop on your own infrastructure. Hosted Pro is $20/seat/month with agent credits included; Team is $200/workspace/month with unlimited seats. The coding agent ships the PR; the AI product workspace turns the shipped change into a validated outcome.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+        <div class="doc-card__title">What is an agentic workspace?</div>
+        <div class="doc-card__desc">The cornerstone: the closed loop on shared typed objects.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/ai-product-management-tool/">
+        <div class="doc-card__title">AI product management tool</div>
+        <div class="doc-card__desc">The tracker-tier companion &mdash; the same diagnostic, one tier over.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/alternatives/self-hosted-ai-agent-control-plane/">
+        <div class="doc-card__title">Self-hosted AI agent control plane</div>
+        <div class="doc-card__desc">The twelve coding-agent control planes, mapped and compared.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Getting started is free</h2>
+      <p>Self-host Maskin today, or take a hosted trial. Pair it with your favourite coding agent &mdash; Claude Code, Codex, Cursor &mdash; and let each tier do what it is built for. The <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace cornerstone</a> and the <a href="/docs/bet-based-product-planning/">bet-based product planning</a> guide are the two best next reads.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
