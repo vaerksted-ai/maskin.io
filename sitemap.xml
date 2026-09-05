@@ -55,6 +55,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://maskin.io/docs/agentic-workspace-vs-knowledge-space/</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://maskin.io/docs/what-is-mcp-native/</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -92,7 +98,7 @@
   </url>
   <url>
     <loc>https://maskin.io/docs/</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -224,13 +230,13 @@
   </url>
   <url>
     <loc>https://maskin.io/llms.txt</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://maskin.io/llms-full.txt</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

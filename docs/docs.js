@@ -37,6 +37,7 @@
       { label: "Human in the loop AI", href: "/docs/learn/human-in-the-loop-ai/" },
       { label: "AI product management tool", href: "/docs/ai-product-management-tool/" },
       { label: "AI product workspace vs AI coding agent", href: "/docs/ai-product-workspace-vs-coding-agent/" },
+      { label: "Agentic workspace vs knowledge space", href: "/docs/agentic-workspace-vs-knowledge-space/" },
       { label: "Bet-based product planning", href: "/docs/bet-based-product-planning/" },
       { label: "How to run bet-based planning", href: "/docs/how-to-run-bet-based-planning/", nested: true },
       { label: "Bet vs backlog", href: "/docs/bet-vs-backlog/", nested: true },
