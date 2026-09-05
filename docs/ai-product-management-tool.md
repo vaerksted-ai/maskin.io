@@ -2,6 +2,7 @@
 
 # AI product management tool: not a task tracker
 An **AI product management tool** is only worth adopting if it closes the loop between what you learn and what you ship. Most installed tools do not — they bolt generative-AI summaries onto the same task tracker and call it done. An AI product management tool that answers “what does the AI do?” with “it writes summaries” is a tracker with a narrator, not a loop. Maskin is built the other way: raw insight becomes a testable bet, jointly owned by humans and agents, and the loop closes when it ships. If you want AI that captures signal, decides what matters, runs the work, and validates the outcome — not AI that summarises your old backlog — this is what to look for.
+This piece is the tier-2 leg of the [three tiers of AI-native work](/docs/three-tiers-ai-native-work/) framework — the tier whose object of work is a ticket and whose terminal event is a status column moving to done.
 > ✓
 > **Key takeaways**
 > **Product teams run on a learning loop** — signal capture, decision, execution, validation. An AI product management tool earns its place by closing that loop, not by narrating it.
