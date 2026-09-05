@@ -1035,7 +1035,9 @@ Self-host Maskin today, or take a hosted trial. The three tier-comparison spokes
 
 # AI product workspace vs AI coding agent
 
-An **AI product workspace** and an **AI coding agent** occupy two different tiers of the stack, and telling them apart is the difference between choosing the right tool and buying the wrong one twice. A coding agent — Claude Code, Codex, Cursor, OpenClaw, Hermes — is a runtime that turns a task into a change request and terminates when a pull request merges. An AI product workspace is a control plane one tier up: the unit of work is a shaped bet with a win condition, and the loop terminates when a shipped change is measured against the outcome it was meant to move. Both are agentic, both are useful, and picking correctly comes down to a single diagnostic: what does the system have to see to call the work done?
+An AI product workspace and an AI coding agent occupy two different tiers of the stack, and telling them apart is the difference between choosing the right tool and buying the wrong one twice. A coding agent — Claude Code, Codex, Cursor, OpenClaw, Hermes — is a runtime that turns a task into a change request and terminates when a pull request merges. An AI product workspace is a control plane one tier up: the unit of work is a shaped bet with a win condition, and the loop terminates when a shipped change is measured against the outcome it was meant to move. Both are agentic, both are useful, and picking correctly comes down to a single diagnostic: what does the system have to see to call the work done?
+
+This piece is the tier-1 leg of the [three tiers of AI-native work](/docs/three-tiers-ai-native-work/) framework — the tier whose object of work is a coding task and whose terminal event is a merged PR.
 
 **Key takeaways**
 
@@ -1077,7 +1079,7 @@ Per Maskin's public SERP crowding sweep (August 2026), at least eleven named ope
 
 The crowding is a positioning signal, not a warning. Every one of those products is a control plane above a coding-agent fleet, and every one's object model is tasks on a kanban that terminates when a PR merges. Self-hosting is table stakes across the cluster. MCP support is table stakes — Preloop leads with an MCP firewall, Nora ships an MCP server. Approval queues are table stakes — every entrant ships one. The features that felt premium a year ago have commoditized in six months.
 
-What none of them is is a knowledge-work workspace where the object of work is a bet with a win condition and the loop terminates on a validated outcome. The category of coding-agent control planes and the category of AI product workspaces look adjacent from a marketing slide and are structurally different tools. Confusing them is what makes a team install a coding-agent control plane and then wonder why the decision loop still runs in Slack threads and Notion docs. The [self-hosted AI agent control plane comparison](/alternatives/self-hosted-ai-agent-control-plane/) walks the twelve entrants in detail; the [open-source Codex alternative](/alternatives/open-source-alternative-to-codex/) mirrors the same argument for the OpenAI-side buyer.
+What none of them is is a knowledge-work workspace where the object of work is a bet with a win condition and the loop terminates on a validated outcome. The category of coding-agent control planes and the category of AI product workspaces look adjacent from a marketing slide and are structurally different tools. Confusing them is what makes a team install a coding-agent control plane and then wonder why the decision loop still runs in Slack threads and Notion docs.
 
 ## The object of work, compared
 
