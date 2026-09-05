@@ -1,3 +1,5 @@
+> Source: https://maskin.io/docs/agentic-workspace-vs-knowledge-space/
+
 # Agentic workspace vs knowledge space: why Obsidian, Mem, and Confluence stop before the bet
 
 An agentic workspace and a knowledge space look adjacent on a category slide and are actually two different tiers of tool. A knowledge space — Obsidian, Mem, Confluence, Raft — owns capture and retrieval. It stores what you know: notes, pages, and a linked graph of them, made searchable so future-you can find them. An agentic workspace sits downstream of that. The object of work is not a note — it is an insight that becomes a shaped bet with a win condition, and closes on a validated outcome. Both tiers are real, both are useful, and picking the right one depends on the honest answer to the closure diagnostic: can the tool tell you whether the work succeeded?
