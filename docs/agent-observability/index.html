@@ -1,1 +1,372 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent observability: when the workspace is the trace | Maskin</title>
+<meta name="description" content="Agent observability is the discipline of tracing, evaluating, and monitoring what an AI agent does across a multi-step task — a tier above LLM observability. Here's what it is, how it differs from LLM obs and monitoring, the current open-source tools, and why a typed workspace graph is itself the trace substrate.">
+
+<link rel="canonical" href="https://maskin.io/docs/agent-observability/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/agent-observability/">
+<meta property="og:title" content="Agent observability: when the workspace is the trace">
+<meta property="og:description" content="LLM observability is call-level, agent observability is task-level, and the workspace is the trace layer both need. When the substrate is a typed object graph, the trace is a side effect of the work.">
+<meta property="og:image" content="https://maskin.io/og-image-agent-observability.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Agent observability: when the workspace is the trace">
+<meta name="twitter:description" content="Agent observability is the tier above LLM observability. On a typed workspace graph, the trace is already the substrate.">
+<meta name="twitter:image" content="https://maskin.io/og-image-agent-observability.png">
+
+<!-- PostHog analytics. Autocapture (CTA clicks), pageviews, and scroll depth are on by default.
+     The key below is replaced at build time by the POSTHOG_PROJECT_KEY environment variable. -->
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('POSTHOG_PROJECT_KEY', {
+    api_host: 'https://eu.i.posthog.com',
+    person_profiles: 'identified_only',
+    defaults: '2025-05-24'
+  });
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:oper,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/agent-observability/#post",
+      "headline": "Agent observability: when the workspace is the trace",
+      "name": "Agent observability",
+      "description": "Agent observability is the discipline of tracing, evaluating, and monitoring what an AI agent does across a multi-step task — a tier above LLM observability, where the trace unit is a task with tool calls, decisions, and state rather than a single model call. On a typed workspace graph, the audit trail is a side effect of the work rather than a second telemetry system.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/agent-observability/",
+      "mainEntityOfPage": "https://maskin.io/docs/agent-observability/",
+      "image": "https://maskin.io/og-image-agent-observability.png",
+      "datePublished": "2026-09-09T00:00:00Z",
+      "dateModified": "2026-09-09T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        { "@type": "Thing", "name": "Agent observability" },
+        { "@type": "Thing", "name": "LLM observability" },
+        { "@type": "Thing", "name": "AI agent monitoring" },
+        { "@type": "Thing", "name": "AI agent evaluation" },
+        { "@type": "Thing", "name": "OpenTelemetry GenAI" },
+        { "@type": "Thing", "name": "Model Context Protocol" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Agent observability",
+          "item": "https://maskin.io/docs/agent-observability/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is agent observability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Agent observability is the practice of making an AI agent's multi-step behavior legible: tracing what the agent did across a task, evaluating whether the outcome met a definition of done, and monitoring cost, quality, and drift across the fleet. It is the tier above LLM observability, where the trace unit is a task with tool calls and decisions rather than a single model call."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between LLM observability and agent observability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "LLM observability is call-level: prompt, response, tokens, cost, latency, quality score for a single completion. Agent observability is task-level: the multi-span decision path an agent takes across many calls and tool invocations, with evals scored against a task-level definition of done. Both are useful, and any team running production agents will end up instrumenting both layers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is agent observability the same as agent monitoring?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Monitoring is a subset of observability. Agent monitoring covers the always-on read — cost, latency, error rate, quality drift — across the fleet. Agent observability additionally covers traces (reconstructing what the agent did) and evals (judging whether it was good). If your problem is 'we can't tell what's happening right now,' you probably want monitoring. If your problem is 'we can't reconstruct what an agent did last Tuesday and why the decision path failed,' you want observability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need agent observability if I already have LLM observability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. LLM obs sees the calls inside an agent's loop, not the loop itself. The multi-span decision path, the tool-use accuracy, the state transitions, and the task-level evals are all invisible to a call-level observer. Every team running a real production agent runs both layers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the best open-source agent observability tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Langfuse (Apache-2.0) and Arize Phoenix (Apache-2.0) are the most-cited open-source options for structured traces and evals at both the LLM-call and agent layers. LangChain's ecosystem ships LangSmith (closed) paired with an OSS runtime. OpenTelemetry's GenAI semantic conventions are the emerging cross-vendor standard for span shapes and are worth instrumenting for regardless of which observability backend you land on."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does agent observability relate to agent evaluation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evals are one of the three primitives observability platforms ship. Pre-deploy agent evaluation — Anthropic's framing — runs judges over a dataset before shipping. Continuous evaluation runs the same judges on live state transitions as they happen, so drift and regressions surface without waiting for the next CI run. On a workspace of typed objects, a continuous evaluator is itself just another agent that fires on transitions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I do agent observability without a separate trace pipeline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, when your substrate is a typed workspace graph. Every state transition is already a durable, addressable object, so the trace is a side effect of the work rather than a second system to instrument. You may still want LLM-call-level obs (Langfuse or Phoenix) under the runtime for token-cost visibility, but the agent-level trace does not require a separate pipeline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does OpenTelemetry work for agent observability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, with caveats. OTel GenAI semantic conventions define span shapes for LLM calls and tool invocations that most observability backends now understand. What OTel does not standardize is the higher-level object model of the work — that lives at the substrate layer, above the span layer OTel covers. A common pattern is OTel spans emitted from the runtime, joined against the workspace object graph for the substrate view."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about multi-agent observability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multi-agent adds the coordination layer: which agent triggered which, on what state, with what hand-off. On a shared typed object graph this collapses back to the substrate — hand-offs are relationships between objects and are visible in the same trace as any single agent's decisions. On a persona-based or chat-log-based stack it becomes a real observability challenge, because the causal edges live in message threads rather than in typed state."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/docs/docs.css">
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="is-active" href="/docs/agent-observability/" aria-current="page">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li></ul></nav></aside>  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Agent observability</p>
+    <p class="eyebrow">Article</p>
+    <h1>Agent observability: when the workspace is the trace</h1>
+    <p class="lead"><strong>Agent observability is the discipline of tracing, evaluating, and monitoring what an AI agent does across a multi-step task &mdash; a tier above LLM observability, where the trace unit is a task with tool calls, decisions, and state, not a single model call.</strong> LLM observability is call-level, agent observability is task-level, and the workspace is the trace layer both need. On most stacks, agent observability requires a new trace pipeline. On a workspace of typed objects &mdash; insights, tasks, comments, state transitions &mdash; the trace is already the substrate.</p>
+
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true"></div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul>
+          <li><strong>LLM observability is call-level. Agent observability is task-level.</strong> Same three primitives &mdash; traces, evals, monitoring &mdash; but the unit of interest moves from a single completion to a task that spans multiple calls, tool invocations, and decisions.</li>
+          <li><strong>The trace unit for an agent is a decision path across steps, not a prompt.</strong> A single LLM span tells you what the model said; an agent trace has to tell you what the agent did, why, and what state it changed on the way.</li>
+          <li><strong>Every SERP-facing vendor names the primitives; nobody names the substrate.</strong> Datadog, Monte Carlo, Arize, Braintrust, and Confident-AI all frame agent observability as &ldquo;traces + evals + monitoring.&rdquo; What the framing hides is where the trace lives &mdash; a separate pipeline you have to build, or the object model the agent already writes to.</li>
+          <li><strong>A typed workspace graph <em>is</em> the trace.</strong> When every insight, task, comment, and status transition is a durable, addressable object, the audit trail is a side effect of the work, not a second telemetry system to keep in sync.</li>
+          <li><strong>Continuous evaluation &mdash; eval-as-a-loop &mdash; is the tier the definitional SERP does not cover.</strong> Anthropic&rsquo;s canonical framing stops at pre-deploy evals; production judgment as an always-on loop lives one layer up.</li>
+          <li><strong>Open source is available at every tier.</strong> Langfuse, Arize Phoenix, LangChain&rsquo;s ecosystem, Braintrust&rsquo;s OSS pieces, and OpenTelemetry&rsquo;s GenAI conventions all ship free options; the question is which layer of the stack you&rsquo;re instrumenting, not whether an OSS option exists.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>What agent observability actually is</h2>
+    <p>Agent observability is the practice of making an AI agent&rsquo;s behavior legible &mdash; traceable, evaluable, and monitorable &mdash; across the multi-step work the agent performs. The definition tracks the shape of the thing you&rsquo;re watching. When the unit of work was a single LLM call, LLM observability was enough: log the prompt, the response, the tokens, the latency, the cost, add a judge for quality, and you had a working picture. When the unit of work became a task an agent runs to completion &mdash; reading files, calling tools, deciding what to do next, mutating state &mdash; that picture ran out of resolution. Agent observability is the vocabulary the market has settled on for the higher-resolution one.</p>
+    <p>The three primitives every serious vendor names are the same three you already know from software observability: <strong>traces, evals, and monitoring.</strong> A trace records what the agent did, step by step, with structured spans for every tool call and model call. Evals score the output &mdash; LLM-as-a-judge scorers, rule-based checks, human review &mdash; against a definition of quality. Monitoring is the always-on read on cost, latency, error rate, and quality drift across the fleet.</p>
+    <p>What changes when you move from LLM obs to agent obs is not the vocabulary. It is the trace unit. The trace unit for a call is a prompt and a response. The trace unit for an agent is a decision path &mdash; an entry state, a sequence of tool calls and model calls and control-flow choices, and an exit state. If you can&rsquo;t reconstruct that path from your telemetry, you don&rsquo;t have agent observability; you have LLM observability on the calls inside an agent&rsquo;s loop, which is a different, smaller thing.</p>
+
+    <h2>LLM observability vs agent observability: the vocabulary bridge</h2>
+    <p><code>llm observability vs agent observability</code> is now an actual Google autocomplete suggestion, which is the market&rsquo;s own signal that the vocab has bifurcated and buyers are trying to reconcile it. The reconciliation is easier once you notice the two terms describe different layers of the same stack rather than competing categories.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>LLM observability</th>
+          <th>Agent observability</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Unit of interest</strong></td>
+          <td>A single model call</td>
+          <td>A task that spans many steps</td>
+        </tr>
+        <tr>
+          <td><strong>Trace primitive</strong></td>
+          <td>Prompt &rarr; response span with tokens and cost</td>
+          <td>Multi-span decision path with tool calls and state</td>
+        </tr>
+        <tr>
+          <td><strong>Eval frame</strong></td>
+          <td>Score the response against a rubric</td>
+          <td>Score the outcome against a task-level definition of done</td>
+        </tr>
+        <tr>
+          <td><strong>Monitoring dimensions</strong></td>
+          <td>Latency, tokens, cost, hallucination rate</td>
+          <td>Task success rate, tool-use accuracy, loop cost, drift</td>
+        </tr>
+        <tr>
+          <td><strong>What &ldquo;fixed&rdquo; looks like</strong></td>
+          <td>Prompt/model swap, retry logic, cache</td>
+          <td>Re-shape the tools, gates, or state model the agent runs on</td>
+        </tr>
+        <tr>
+          <td><strong>Canonical vendors</strong></td>
+          <td>Langfuse, Arize Phoenix, Helicone, WhyLabs</td>
+          <td>Datadog Agent Obs, Braintrust, Monte Carlo, Arize agent handbook</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Both layers matter, and neither replaces the other. LLM obs stays useful even when you have agent obs &mdash; the call-level view is still where you see a model regression, a token-cost spike, a specific prompt failure. Agent obs is what tells you that a specific decision path started failing after Tuesday&rsquo;s tool change, or that the loop is entering a state a human should have gated. The stack is layered, and any team running a real production agent will end up instrumenting both.</p>
+
+    <h2>Why the workspace <em>is</em> the trace</h2>
+    <p>Now the load-bearing frame the SERP does not name. Every vendor page currently ranking for <code>agent observability</code> &mdash; Datadog at pos-2 (DA 64), Google Cloud docs at pos-3 (DA 92), Monte Carlo, Arize, Braintrust, Confident-AI &mdash; frames the answer the same way: traces + evals + monitoring, on a separate trace pipeline you install and instrument. That is the honest shape of what an APM vendor sells. It is not the only shape agent observability can take.</p>
+    <p>Consider what an agent is actually doing on a typed workspace like Maskin. When an agent fires on a trigger, it produces state &mdash; a new insight object, a comment on a task, a status transition on a bet, a relationship between two objects. Every one of those state changes is a durable row in the object graph, addressable by ID, timestamped, attributable to the actor that produced it, and reachable via a public MCP-native API. The workspace is not describing what the agent did in a separate telemetry system; the workspace <em>is</em> what the agent did.</p>
+    <p>The consequence is that the trace layer is already built when the substrate is a typed object graph. The steps of the agent&rsquo;s loop are objects. The tool calls are events on those objects. The decisions are status transitions with actor attribution. The relationships between objects are the causal edges of the trace &mdash; an insight informs a task, a task blocks another task, a comment references an object, and the graph carries the lineage. You do not have to build a parallel trace pipeline to reconstruct the agent&rsquo;s work; you read the object graph, and the trace is right there.</p>
+    <p>That is the sentence the SERP does not name: <strong>the typed workspace graph is the agent-level trace.</strong> Not a bolted-on APM. Not a separate telemetry pipeline. The substrate the agent works on doubles as the substrate you observe it through. The blast radius of every agent action is bounded by the objects it can touch. The audit trail is a side effect of the work, not a second system you have to install and pay to keep in sync.</p>
+    <p>This does not remove the need for LLM-call-level observability inside that shape &mdash; the token cost of every model call still matters, and Langfuse or Arize Phoenix under the workspace agent runtime is a reasonable stack to run for that layer. It removes the need for a <em>second</em> pipeline to reconstruct the <em>agent</em> level. The workspace already has that.</p>
+
+    <h2>Continuous evaluation: the wedge the definitional SERP does not cover</h2>
+    <p>Anthropic Engineering&rsquo;s blog is currently the pos-2 result for <code>ai agent evaluation</code> (roughly 117 estimated monthly clicks, hard to displace), and its framing is the market&rsquo;s default: agent evals are unit tests you run before deploy &mdash; a dataset, a judge, a scorecard, run in CI-style batches. That framing is correct as far as it goes, and it stops one step short of the harder question a team running agents in production actually asks.</p>
+    <p>The harder question is: how do you evaluate an agent continuously, <em>while the loop runs</em>, not as a pre-deploy gate? The answer the SERP does not name is what continuous evaluation looks like when the workspace is the substrate.</p>
+    <p>On a typed-object graph, an evaluator is just another agent. It fires on state transitions the way any other agent does. When a task moves to <code>in_review</code>, an eval agent judges it against the task&rsquo;s win condition and posts a scored comment. When an insight is proposed by a synthesis agent, an eval agent scores the citations against the source objects and gates promotion on the score. When an outcome is validated, an eval agent scores the outcome against the bet&rsquo;s original win condition and either closes the loop or files a fix. The continuous loop is what makes it different from Anthropic&rsquo;s pre-deploy batch: the judgment fires in the same shape as the work, not as a separate CI job that has to be re-run to catch drift.</p>
+    <p>This is the second-half payload of agent observability. Traces answer &ldquo;what did the agent do?&rdquo; Evals answer &ldquo;was it good?&rdquo; Continuous evals answer &ldquo;is it still good, right now, on the last transition?&rdquo; &mdash; and that answer only makes sense when the eval runs on the same substrate the work runs on. On a workspace of typed objects, that substrate is already there.</p>
+
+    <h2>Where the vocab maps to layers of the stack</h2>
+    <p>The clean way to hold the three vocabularies in one head is as three layers of the same stack, each with its own trace unit and its own tools.</p>
+    <ul>
+      <li><strong>Model tier &mdash; LLM observability.</strong> Unit: a single call. Data: prompt, response, tokens, cost, latency, hallucination score. Tools: Langfuse, Arize Phoenix, Helicone, Datadog LLM Obs, OpenTelemetry GenAI conventions. This is where you find a prompt regression, a token-cost spike, a specific completion that broke.</li>
+      <li><strong>Loop tier &mdash; agent observability.</strong> Unit: a task&rsquo;s decision path. Data: multi-span traces with tool calls and control-flow choices, task-level evals, per-loop cost, tool-use success rate. Tools: Datadog Agent Obs, Braintrust, Monte Carlo agent tracing, Arize agent handbook, Langfuse traces. This is where you find a decision path that started failing after a tool change, or a state the agent should not be entering.</li>
+      <li><strong>Substrate tier &mdash; the workspace graph.</strong> Unit: an object transition. Data: every insight, task, comment, and status change as a durable, addressable row. This is where the loop-tier trace already lives, because the work and the trace are the same thing.</li>
+    </ul>
+    <p>Reading the layers as a stack rather than as competitors is what makes the SERP&rsquo;s confusion legible. When a vendor talks about &ldquo;unifying LLM obs and agent obs&rdquo; (Datadog merged its two product pages into one for exactly this reason), they are describing a single UI on top of two different layers of trace data. When someone asks &ldquo;do I need agent obs if I already have LLM obs?&rdquo; the honest answer is yes &mdash; the LLM obs layer does not see the agent-level decision path &mdash; but the harder answer is that the <em>substrate</em> under both is where an audit obligation is actually satisfied, and that substrate is a question separate from your APM vendor.</p>
+
+    <h2>Agent observability tools: the current shape of the market</h2>
+    <p>The <code>agent observability tools</code> SERP resolves into three camps, and any team shopping this tier is choosing which camp fits its stack.</p>
+    <ul>
+      <li><strong>Purpose-built agent observability platforms.</strong> Langfuse, LangSmith, Arize Phoenix, Braintrust, Monte Carlo, Confident-AI. These ship SDKs to wrap agent runtimes and produce structured, multi-span traces plus a judge-runner and a dashboard. Open source is available at this tier &mdash; Langfuse and Phoenix are Apache-licensed, LangSmith is closed but paired with LangChain&rsquo;s OSS runtime. The <code>agent observability langfuse</code> and <code>agent observability langsmith</code> autocomplete queries reflect real demand for the OSS options.</li>
+      <li><strong>APM-first entrants extending into agents.</strong> Datadog, Dynatrace, New Relic, Splunk, Sentry. These sit on top of an existing metrics-and-tracing platform and add agent-shaped span types on top. The trade is coverage: they give you agents inside the same UI as the rest of your infrastructure, at the cost of coupling your agent obs to a specific APM vendor.</li>
+      <li><strong>Teaching-oriented references.</strong> HuggingFace&rsquo;s course explicitly frames agent observability as a discipline you learn (Bonus Unit 2: <em>AI Agent Observability and Evaluation</em>, DA 85, currently pos-4 on the primary SERP). A reference framing ranking at pos-4 signals that the market is still coining vocabulary rather than closing on a single tool.</li>
+    </ul>
+    <p>None of the three camps names the substrate question. Any of them can be run on top of a typed-object workspace; the workspace does not replace them, and they do not replace the workspace. The stack that shows up in practice is a workspace of typed objects for the substrate, an OSS LLM-obs SDK (Langfuse or Phoenix) at the model tier, and &mdash; if the fleet is large enough &mdash; an agent-observability platform or APM extension for cross-cutting dashboards. Any two of those three layers can be run without the third and still get you real production leverage.</p>
+
+    <h2>FAQ</h2>
+    <h3>What is agent observability?</h3>
+    <p>Agent observability is the practice of making an AI agent&rsquo;s multi-step behavior legible: tracing what the agent did across a task, evaluating whether the outcome met a definition of done, and monitoring cost, quality, and drift across the fleet. It is the tier above LLM observability, where the trace unit is a task with tool calls and decisions rather than a single model call.</p>
+    <h3>What&rsquo;s the difference between LLM observability and agent observability?</h3>
+    <p>LLM observability is call-level: prompt, response, tokens, cost, latency, quality score for a single completion. Agent observability is task-level: the multi-span decision path an agent takes across many calls and tool invocations, with evals scored against a task-level definition of done. Both are useful, and any team running production agents will end up instrumenting both layers.</p>
+    <h3>Is agent observability the same as agent monitoring?</h3>
+    <p>Monitoring is a subset of observability. Agent monitoring covers the always-on read &mdash; cost, latency, error rate, quality drift &mdash; across the fleet. Agent observability additionally covers traces (reconstructing what the agent did) and evals (judging whether it was good). If your problem is &ldquo;we can&rsquo;t tell what&rsquo;s happening right now,&rdquo; you probably want monitoring. If your problem is &ldquo;we can&rsquo;t reconstruct what an agent did last Tuesday and why the decision path failed,&rdquo; you want observability.</p>
+    <h3>Do I need agent observability if I already have LLM observability?</h3>
+    <p>Yes. LLM obs sees the calls inside an agent&rsquo;s loop, not the loop itself. The multi-span decision path, the tool-use accuracy, the state transitions, and the task-level evals are all invisible to a call-level observer. Every team running a real production agent runs both layers.</p>
+    <h3>What are the best open-source agent observability tools?</h3>
+    <p>Langfuse (Apache-2.0) and Arize Phoenix (Apache-2.0) are the most-cited open-source options for structured traces and evals at both the LLM-call and agent layers. LangChain&rsquo;s ecosystem ships LangSmith (closed) paired with an OSS runtime. OpenTelemetry&rsquo;s GenAI semantic conventions are the emerging cross-vendor standard for span shapes and are worth instrumenting for regardless of which observability backend you land on.</p>
+    <h3>How does agent observability relate to agent evaluation?</h3>
+    <p>Evals are one of the three primitives observability platforms ship. Pre-deploy agent evaluation &mdash; Anthropic&rsquo;s framing &mdash; runs judges over a dataset before shipping. Continuous evaluation runs the same judges on live state transitions as they happen, so drift and regressions surface without waiting for the next CI run. On a workspace of typed objects, a continuous evaluator is itself just another agent that fires on transitions.</p>
+    <h3>Can I do agent observability without a separate trace pipeline?</h3>
+    <p>Yes, when your substrate is a typed workspace graph. Every state transition is already a durable, addressable object, so the trace is a side effect of the work rather than a second system to instrument. You may still want LLM-call-level obs (Langfuse or Phoenix) under the runtime for token-cost visibility, but the agent-level trace does not require a separate pipeline.</p>
+    <h3>Does OpenTelemetry work for agent observability?</h3>
+    <p>Yes, with caveats. OTel GenAI semantic conventions define span shapes for LLM calls and tool invocations that most observability backends now understand. What OTel does not standardize is the higher-level object model of the work &mdash; that lives at the substrate layer, above the span layer OTel covers. A common pattern is OTel spans emitted from the runtime, joined against the workspace object graph for the substrate view.</p>
+    <h3>What about multi-agent observability?</h3>
+    <p>Multi-agent adds the coordination layer: which agent triggered which, on what state, with what hand-off. On a shared typed object graph this collapses back to the substrate &mdash; hand-offs are relationships between objects and are visible in the same trace as any single agent&rsquo;s decisions. On a persona-based or chat-log-based stack it becomes a real observability challenge, because the causal edges live in message threads rather than in typed state. The <a href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a> piece walks the composable-infrastructure-vs-AI-employees cut in more detail.</p>
+    <h3>Where does this fit alongside Maskin&rsquo;s other reference pieces?</h3>
+    <p>The cornerstone <a href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace</a> covers the full object model. The <a href="/docs/what-is-mcp-native/">MCP-native workspace</a> piece covers why the protocol layer matters. The <a href="/docs/agentic-workspace-vs-knowledge-space/">agentic workspace vs knowledge space</a> piece covers why note-taking substrates stop before the bet &mdash; the same closure argument from a different angle. This page is the observability leg: the audit trail the substrate carries by default.</p>
+
+    <h2>Own the substrate, not the telemetry</h2>
+    <p>Agent observability is not going to resolve into one vendor over the next cycle. The purpose-built platforms will keep sharpening their traces and evals; the APM incumbents will keep extending their agent-span coverage; OpenTelemetry conventions will keep hardening. Any of those choices is compatible with a workspace-graph substrate. What the substrate gives you is the one thing none of the vendor tiers can: an audit trail that is not a separate system to keep in sync with the work, because it <em>is</em> the work.</p>
+    <p>Maskin is the open-source, MCP-native, Apache-2.0 version of that substrate. Self-host free forever, or start a hosted trial with EU/US data residency. The workspace is the trace layer.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+          <div class="doc-card__title">What is an agentic workspace?</div>
+          <div class="doc-card__desc">The cornerstone &mdash; how humans and agents share one closed loop on the same typed objects.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-a-stateful-orchestration-substrate/">
+          <div class="doc-card__title">Stateful orchestration substrate</div>
+          <div class="doc-card__desc">The shared, typed store that carries state between stateless agents &mdash; the same primitive from the pipeline angle.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-mcp-native/">
+          <div class="doc-card__title">What is MCP-native?</div>
+          <div class="doc-card__desc">Why the protocol layer under the workspace matters &mdash; the wire the observed agents share.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/agentic-workspace-vs-knowledge-space/">
+          <div class="doc-card__title">Agentic workspace vs knowledge space</div>
+          <div class="doc-card__desc">The closure argument at the notes tier &mdash; why a page view is not a validated outcome.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Own the substrate, not the telemetry</h2>
+      <p>Maskin is the open-source, MCP-native, Apache-2.0 version of the workspace-graph substrate. Self-host free forever, or take a hosted trial with EU/US data residency.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

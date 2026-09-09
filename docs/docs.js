@@ -32,6 +32,7 @@
       { label: "What is MCP-native?", href: "/docs/what-is-mcp-native/" },
       { label: "MCP-native workspace", href: "/docs/mcp-native-workspace/", nested: true },
       { label: "What is a stateful orchestration substrate?", href: "/docs/what-is-a-stateful-orchestration-substrate/" },
+      { label: "Agent observability", href: "/docs/agent-observability/" },
       { label: "Ambient agent workspace", href: "/docs/ambient-agent-workspace/" },
       { label: "Agent Inbox", href: "/docs/agent-inbox/", nested: true },
       { label: "Human in the loop AI", href: "/docs/learn/human-in-the-loop-ai/" },
