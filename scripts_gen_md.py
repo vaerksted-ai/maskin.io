@@ -25,6 +25,7 @@ ORDER = [
   "docs/three-tiers-ai-native-work/index.html",
   "docs/ai-product-workspace-vs-coding-agent/index.html",
   "docs/agentic-workspace-vs-knowledge-space/index.html",
+  "docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/index.html",
   "docs/mcp-native-workspace/index.html",
   "docs/what-is-a-stateful-orchestration-substrate/index.html",
   "docs/agent-observability/index.html",

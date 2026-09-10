@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111110" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#111110" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bottomFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111110" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#050505" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="layerGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2563EB" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#2563EB" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="120" fill="url(#topFade)"/>
+  <rect width="1200" height="120" y="510" fill="url(#bottomFade)"/>
+
+  <text x="80" y="86" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="13" letter-spacing="4" fill="#8A8780">AGENT SKILLS · MCP · RULES · WORKFLOWS</text>
+
+  <text x="80" y="164" font-family="'Newsreader', 'Times New Roman', serif" font-size="56" font-weight="500" fill="#FAFAF8">Four different layers,</text>
+  <text x="80" y="222" font-family="'Newsreader', 'Times New Roman', serif" font-size="56" font-style="italic" font-weight="400" fill="#FAFAF8">not</text>
+  <text x="192" y="222" font-family="'Newsreader', 'Times New Roman', serif" font-size="56" font-weight="500" fill="#FAFAF8">a two-way fight.</text>
+
+  <!-- Layer stack -->
+  <g id="stack" transform="translate(80, 288)">
+    <!-- Layer 4 (top): Workflows — orchestration -->
+    <rect x="0"    y="0"   width="1040" height="52" rx="8" fill="#181715" stroke="#7A7770" stroke-width="1.2"/>
+    <text x="24"   y="34"  font-family="'JetBrains Mono', ui-monospace, monospace" font-size="14" letter-spacing="2" fill="#FAFAF8">WORKFLOWS</text>
+    <text x="220"  y="34"  font-family="'JetBrains Mono', ui-monospace, monospace" font-size="13" fill="#8A8780">who runs, in what order, on which trigger</text>
+
+    <!-- Layer 3: Rules — behavioral directives -->
+    <rect x="0"    y="60"  width="1040" height="52" rx="8" fill="#181715" stroke="#7A7770" stroke-width="1.2"/>
+    <text x="24"   y="94"  font-family="'JetBrains Mono', ui-monospace, monospace" font-size="14" letter-spacing="2" fill="#FAFAF8">CURSOR RULES / AGENTS.MD</text>
+    <text x="360"  y="94"  font-family="'JetBrains Mono', ui-monospace, monospace" font-size="13" fill="#8A8780">how the agent acts inside a repo</text>
+
+    <!-- Layer 2 (accent, live): Agent skills — packaged capability -->
+    <rect x="-6"   y="114" width="1052" height="64" rx="12" fill="none" stroke="#2563EB" stroke-width="1" opacity="0.32"/>
+    <rect x="0"    y="120" width="1040" height="52" rx="8" fill="#181715" stroke="#2563EB" stroke-width="2.4"/>
+    <text x="24"   y="154" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="14" letter-spacing="2" fill="#FAFAF8">AGENT SKILLS</text>
+    <text x="220"  y="154" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="13" fill="#2563EB">what to invoke when a use case matches</text>
+
+    <!-- Layer 1 (bottom, substrate): MCP — protocol -->
+    <rect x="0"    y="180" width="1040" height="52" rx="8" fill="#181715" stroke="#7A7770" stroke-width="1.2"/>
+    <text x="24"   y="214" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="14" letter-spacing="2" fill="#FAFAF8">MCP</text>
+    <text x="220"  y="214" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="13" fill="#8A8780">what the agent can reach</text>
+  </g>
+
+  <!-- Accent glow across the skills layer -->
+  <rect x="80" y="402" width="1040" height="70" fill="url(#layerGlow)"/>
+
+  <!-- Vertical connector: shows the stack composes -->
+  <g id="composes">
+    <line x1="80"   y1="288" x2="80"   y2="524" stroke="#3A3835" stroke-width="1"/>
+    <line x1="1120" y1="288" x2="1120" y2="524" stroke="#3A3835" stroke-width="1"/>
+  </g>
+
+  <text x="80" y="580" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="14" letter-spacing="2" fill="#8A8780">maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/</text>
+
+  <g transform="translate(1120, 555)">
+    <rect x="0" y="0" width="44" height="44" rx="8" fill="#1C1B18"/>
+    <path d="M9 33 L9 11 L22 25 L35 11 L35 33"
+          stroke="#FAFAF8" stroke-width="4.5"
+          stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+  </g>
+</svg>

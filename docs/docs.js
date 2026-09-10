@@ -40,6 +40,7 @@
       { label: "AI product management tool", href: "/docs/ai-product-management-tool/", nested: true },
       { label: "AI product workspace vs AI coding agent", href: "/docs/ai-product-workspace-vs-coding-agent/", nested: true },
       { label: "Agentic workspace vs knowledge space", href: "/docs/agentic-workspace-vs-knowledge-space/", nested: true },
+      { label: "Agent skills vs MCP vs cursor rules vs workflows", href: "/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/" },
       { label: "Bet-based product planning", href: "/docs/bet-based-product-planning/" },
       { label: "How to run bet-based planning", href: "/docs/how-to-run-bet-based-planning/", nested: true },
       { label: "Bet vs backlog", href: "/docs/bet-vs-backlog/", nested: true },
