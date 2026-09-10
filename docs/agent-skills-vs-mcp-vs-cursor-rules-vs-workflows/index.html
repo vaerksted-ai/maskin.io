@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent skills vs MCP vs cursor rules vs workflows — Maskin</title>
+<meta name="description" content="Agent skills, MCP, Cursor rules, and workflows sit at four different layers — protocol, packaged capability, behavioral directives, and orchestration. Pick between them the way you pick between HTTP, a library, a linter, and a scheduler: you don't. You stack them.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">
+<meta property="og:title" content="Agent skills vs MCP vs cursor rules vs workflows: what each layer solves">
+<meta property="og:description" content="The 'agent skills vs MCP' SERP debate is a category mistake. Skills, MCP, Cursor rules, and workflows answer different questions — reach, capability, conduct, composition — and most real capabilities ship all four.">
+<meta property="og:image" content="https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Agent skills vs MCP vs cursor rules vs workflows: what each layer solves">
+<meta name="twitter:description" content="Four layers, not a two-way fight. MCP is what an agent can reach; skills are what it invokes; rules constrain how it acts; workflows decide who runs when.">
+<meta name="twitter:image" content="https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/og-image.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/#post",
+      "headline": "Agent skills vs MCP vs cursor rules vs workflows: what each layer solves",
+      "name": "Agent skills vs MCP vs cursor rules vs workflows",
+      "description": "Agent skills, MCP, Cursor rules, and workflows sit at four different layers — protocol, packaged capability, behavioral directives, and orchestration. Most real capabilities ship all four, and the two-way SERP debate is a category mistake.",
+      "url": "https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/",
+      "mainEntityOfPage": "https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/",
+      "inLanguage": "en",
+      "datePublished": "2026-09-10T00:00:00Z",
+      "dateModified": "2026-09-10T00:00:00Z",
+      "image": ["https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/og-image.svg"],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        { "@type": "Thing", "name": "Agent skills" },
+        { "@type": "Thing", "name": "Model Context Protocol" },
+        { "@type": "Thing", "name": "Cursor rules" },
+        { "@type": "Thing", "name": "AGENTS.md" },
+        { "@type": "Thing", "name": "Agent workflows" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Agent skills vs MCP vs cursor rules vs workflows",
+          "item": "https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is agent skills vs MCP a real choice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not usually. They sit at different layers — MCP is a protocol for reaching tools; skills package the capability the agent invokes. Most non-trivial skills call MCP-exposed tools. The one case where you might pick: a capability that's a single tool call and doesn't need a SKILL.md wrapper. Even then, the wrapper is what makes the model pick reliably."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is agent skills vs cursor rules a real choice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Different jobs. Skills add capability the agent didn't have. Rules constrain how the agent behaves inside a specific repo. Ship the skill when you're teaching the agent something new; ship the rule when you're setting local defaults."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is agent skills vs workflows a real choice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Different layers. A skill is one agent invocation's capability. A workflow orchestrates multiple invocations across triggers and state. You use workflows to fire skills at the right moment, not instead of skills."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is agent skills vs subagents a real choice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Subagents are a runtime primitive (a spawned agent with its own context). Skills are a packaging primitive (a capability the agent loads). A subagent invokes skills."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a skill a plugin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Close but not identical. Anthropic's plugin.json bundles one or more skills into a distribution unit. A skill is one capability; a plugin is a versioned bundle of skills you install as a group. All plugins contain skills; not all skills ship as plugins."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where do skills fit relative to workspace state?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The canonical framing assumes a developer-typed-prompt trigger. The extension the current writeups do not cover: skills that fire on typed workspace state — an object entering a status, a field changing, an event on a graph. Same skill format, different invocation surface. Useful when the agent work is knowledge-work rather than code, and no human sits in the loop for every trigger."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="is-active" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/" aria-current="page">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li></ul></nav></aside>  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Agent skills vs MCP vs cursor rules vs workflows</p>
+    <p class="eyebrow">Article &middot; Category framing</p>
+    <h1>Agent skills vs MCP vs cursor rules vs workflows: what each layer solves</h1>
+    <p class="lead"><strong>Agent skills, MCP, Cursor rules, and workflows are not four names for the same thing.</strong> They sit at four different layers &mdash; protocol, packaged capability, behavioral directives, and orchestration. The <code>agent skills vs MCP</code> SERP debate is a category mistake; most real capabilities ship all four.</p>
+
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul>
+          <li><strong>MCP</strong> is a protocol: what an agent can <em>reach</em> &mdash; typed tool contracts to external systems.</li>
+          <li><strong>Agent skills</strong> are packaged capability: what an agent <em>invokes</em> when a use case matches &mdash; a <code>SKILL.md</code> folder, optional scripts, an optional <code>plugin.json</code> bundle.</li>
+          <li><strong>Cursor rules / AGENTS.md</strong> are behavioral directives: how an agent <em>acts</em> in a repo &mdash; guardrails, style, path allowlists.</li>
+          <li><strong>Workflows</strong> are orchestration: who runs, in what order, on which trigger.</li>
+          <li>The <code>agent skills vs MCP</code> debate is a category mistake. They sit at different layers. Most real capabilities ship both.</li>
+          <li>The unclaimed slot beneath the whole conversation: skills that fire against typed workspace state, not against a git repo.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>The four-layer picture</h2>
+    <p>Every agent that does real work touches four different concerns, and most of the confusion online comes from collapsing them into a two-way fight. Here is the layering the rest of this piece unpacks:</p>
+
+    <table>
+      <thead>
+        <tr><th>Layer</th><th>Answers</th><th>Concrete example</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>MCP (protocol)</strong></td><td>What can I reach?</td><td>An MCP server exposing <code>stripe.subscription.cancel(...)</code></td></tr>
+        <tr><td><strong>Agent skills (packaged capability)</strong></td><td>What do I invoke when a use case shows up?</td><td>A <code>SKILL.md</code> for <em>refund a subscription</em> that composes Stripe + audit-log tools</td></tr>
+        <tr><td><strong>Cursor rules / AGENTS.md (behavioral directives)</strong></td><td>How should I act in this context?</td><td><em>Never touch files under <code>/vendor/</code>; prefer <code>pnpm</code> over <code>npm</code></em></td></tr>
+        <tr><td><strong>Workflows (orchestration)</strong></td><td>Who runs, in what order, on which trigger?</td><td>On <code>refund_request.status = approved</code>, run RefundAgent then NotifyAgent</td></tr>
+      </tbody>
+    </table>
+
+    <p>These layers do not compete; they stack. A working knowledge-work agent almost always uses all four.</p>
+
+    <h2>Definitions, one paragraph each</h2>
+
+    <h3>MCP</h3>
+    <p>Model Context Protocol is Anthropic&rsquo;s open standard for how an agent talks to external systems. Each MCP server exposes typed tools (JSON Schema in, JSON out), resources, and prompts. The agent doesn&rsquo;t know or care whether the tool is a Postgres query, a Stripe endpoint, or a Slack message &mdash; the protocol normalizes it. MCP is the substrate: it defines the surface an agent can touch. It says nothing about <em>when</em> to touch it. For the protocol layer specifically, we&rsquo;ve written that up in <a href="/docs/what-is-mcp-native/">What is MCP-native?</a> &mdash; the short version is that MCP is to agents what HTTP is to browsers.</p>
+
+    <h3>Agent skills</h3>
+    <p>An <em>agent skill</em>, in Anthropic&rsquo;s Skills framing (adopted across Claude, Cursor, Codex, VS Code), is a packaged capability the model loads when it recognizes a matching use case. Concretely: a folder with a <code>SKILL.md</code> file (YAML frontmatter describing when to invoke), optional scripts, and often a <code>plugin.json</code> bundling multiple skills into an installable unit. Anthropic&rsquo;s docs formalized the format; Addy Osmani&rsquo;s <code>agent-skills</code> repo &mdash; the top-ranking result on the head term today &mdash; turned it into shared vocabulary. A skill is <em>not</em> a tool. It&rsquo;s a capability packaging that may compose several tools, prompt fragments, and scripts into one thing the model can pattern-match against.</p>
+
+    <h3>Cursor rules / AGENTS.md</h3>
+    <p>Cursor rules (<code>.cursor/rules/*.mdc</code>) and their cross-editor cousin <code>AGENTS.md</code> are behavioral directives scoped to a repo (or a path inside a repo). They tell the agent <em>how to act</em>: which conventions to follow, which paths to avoid, which tooling to prefer. Rules don&rsquo;t add capability &mdash; the agent could already do the thing. Rules constrain style, safety, and defaults so the agent behaves like the team behind the repo. In Anthropic&rsquo;s own documentation these overlap with <em>policies</em>; in Cursor they surface as rule files the editor injects into every prompt.</p>
+
+    <h3>Workflows</h3>
+    <p>A workflow is the composition layer: multiple agents (or one agent across multiple steps) coordinated by triggers, state transitions, and hand-offs. Some frameworks call these <em>chains</em> (LangChain), <em>graphs</em> (LangGraph), <em>flows</em> (CrewAI), or <em>orchestrations</em> (Temporal-shaped). The common thread: something outside any single agent invocation decides who runs, in what order, and on which event. Workflows answer <em>who runs when</em>, not <em>what any one agent can do</em>.</p>
+
+    <h2>Why the two-way SERP debate is a false frame</h2>
+    <p>Every top result on <code>agent skills vs mcp</code> today &mdash; <a href="https://www.llamaindex.ai/blog/skills-vs-mcp-tools-for-agents-when-to-use-what" target="_blank" rel="noopener">LlamaIndex</a>, <a href="https://developers.redhat.com/articles/2026/05/25/mcp-servers-vs-skills-choosing-right-context-your-ai" target="_blank" rel="noopener">Red Hat Developers</a>, the Reddit thread, <a href="https://blog.bytebytego.com/p/ep165-ai-agent-versus-mcp" target="_blank" rel="noopener">ByteByteGo</a>, and the <a href="https://medium.com/@alonisser/mcp-is-dead-or-mcp-vs-skills-revisited-daaa51b9a519" target="_blank" rel="noopener"><em>MCP is dead</em> Medium hot-take</a> &mdash; pits MCP and skills against each other and picks a winner. That framing is the mistake.</p>
+    <ul>
+      <li>MCP answers <strong>reach</strong>: I can call this tool.</li>
+      <li>Skills answer <strong>trigger + capability</strong>: when this use case shows up, invoke this bundle of tools, prompts, and scripts.</li>
+      <li>Rules answer <strong>conduct</strong>: while acting, stay inside these lines.</li>
+      <li>Workflows answer <strong>composition</strong>: run these agents in this order on this event.</li>
+    </ul>
+    <p>You don&rsquo;t pick between them. A skill for <em>refund a customer</em> almost certainly calls tools exposed over MCP. Cursor rules govern <em>how</em> the skill executes when it&rsquo;s a code-writing skill. Workflows fire the skill when a business event says it should. Every layer sits above the one below it and answers a question the one below cannot.</p>
+
+    <h2><code>agent skills vs MCP</code> &mdash; protocol vs packaged capability</h2>
+    <p>The core question the SERP keeps mis-answering: <em>do I ship an MCP server or an agent skill?</em> The honest answer is <em>usually both, and they&rsquo;re not the same thing.</em></p>
+    <p><strong>MCP is a protocol between the agent and the outside world.</strong> It&rsquo;s what makes <code>stripe.subscription.cancel</code> callable at all. When you ship an MCP server, you&rsquo;re publishing typed tool contracts. Any MCP-capable agent (Claude, Cursor, Codex, VS Code, and now most harnesses) can wire the server in and use the tools. The unit of shipping is <em>the tool interface</em>.</p>
+    <p><strong>A skill is a bundle the agent loads when a use case matches.</strong> It composes zero or more tools (often over MCP), prompt fragments, scripts, and a <code>SKILL.md</code> describing the trigger. The unit of shipping is <em>the capability package</em>. Skills are how you get the agent to reliably use the <em>right combination</em> of tools you&rsquo;ve exposed.</p>
+    <p>Concrete example. You want an agent that can refund a Stripe subscription and log to your audit trail.</p>
+    <ul>
+      <li><strong>MCP layer:</strong> <code>stripe-mcp</code> exposes <code>stripe.subscription.cancel</code> and <code>stripe.credit_note.create</code>. <code>audit-mcp</code> exposes <code>audit.log.write</code>.</li>
+      <li><strong>Skill layer:</strong> a <code>refund-subscription</code> skill with a <code>SKILL.md</code> saying <em>invoke when the user asks to refund a subscription</em>, plus a short script that cancels, credits, and writes the audit line.</li>
+    </ul>
+    <p>Without MCP, the skill has nothing to call. Without the skill, the agent has to re-derive the sequence every time. Ship both.</p>
+    <p>Where the confusion becomes real: some capabilities are just one tool call. In that case a skill is thin &mdash; a <code>SKILL.md</code> pointing at a single MCP tool with a good description. That&rsquo;s still a legitimate skill; it&rsquo;s how you get the model to pick that tool reliably when it matches. But the two layers remain distinct.</p>
+
+    <h2><code>agent skills vs cursor rules</code> &mdash; capability vs conduct</h2>
+    <p>Cursor rules and skills look adjacent because both live near the agent and both influence what happens. They answer different questions.</p>
+    <p><strong>Rules constrain behavior</strong>: which conventions to follow, which files to avoid, which tools to prefer, how to format output. Rules never add capability. A repo rule that says <em>always use <code>pnpm</code></em> doesn&rsquo;t teach the agent about pnpm &mdash; the agent already knows. The rule just makes the agent&rsquo;s default reliable in this repo.</p>
+    <p><strong>Skills package capability</strong>: a bundle the agent loads when a use case shows up. A skill for <em>generate a database migration</em> carries the recipe &mdash; which command, which naming convention, which template to fill in. Without the skill, the agent either doesn&rsquo;t know or guesses.</p>
+    <p>Practical decision: if you&rsquo;re teaching the agent something it doesn&rsquo;t already know how to do, that&rsquo;s a skill. If you&rsquo;re constraining or defaulting how it does something it already knows, that&rsquo;s a rule. Overlap happens in the middle &mdash; Anthropic&rsquo;s own docs blur skills that carry heavy prompt instructions with policies &mdash; but the mental model above holds up under most decisions.</p>
+    <p>Rules ride <em>with the repo</em>. Skills ride <em>with the agent</em> &mdash; installable, sharable, versioned separately. That distinction matters for distribution: rules ship with your codebase; skills ship as their own artifact.</p>
+
+    <h2><code>agent skills vs workflows</code> &mdash; capability vs orchestration</h2>
+    <p>The <code>agent skills vs workflows</code> autocomplete gets confused because both feel like <em>the agent doing multiple things</em>. They live at different layers.</p>
+    <p><strong>A skill is what one agent invocation is capable of.</strong> It might contain a script that does five API calls in sequence. That sequence is internal to the skill. From outside, the agent invoked one skill.</p>
+    <p><strong>A workflow decides who runs when.</strong> It&rsquo;s the orchestration layer above the agent. On a trigger &mdash; a webhook, a state change, a schedule &mdash; it kicks off one or more agents, hands their outputs to the next, and manages state between them. This is the layer LangGraph, CrewAI, Temporal-style orchestrators, and object-graph substrates operate on. We&rsquo;ve written the substrate framing in <a href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a> &mdash; the workflow layer&rsquo;s job is to keep composition legible when many agents share state.</p>
+    <p>The pragmatic split: if all the work happens inside one agent&rsquo;s turn, it&rsquo;s a skill. If work crosses agent turns, waits on an event, or hands off between agents, it&rsquo;s a workflow.</p>
+
+    <h2><code>agent skills vs subagents</code> &mdash; one more the SERP conflates</h2>
+    <p>Subagents (Anthropic&rsquo;s Claude Code term, mirrored in other harnesses) are separate agent invocations spawned from a parent agent, each with its own context window. They&rsquo;re a <em>runtime primitive</em>, not a packaging primitive. A subagent might load skills. A subagent runs inside a workflow. But the subagent itself is neither.</p>
+    <p>Rule of thumb: <strong>skills are what you author. Subagents are what you spawn. Workflows are what you compose. MCP is what you call.</strong></p>
+
+    <h2>The unclaimed slot: skills that fire against typed workspace state</h2>
+    <p>Every canonical writeup on agent skills &mdash; Anthropic&rsquo;s docs, Addy Osmani&rsquo;s essay, the LlamaIndex piece, Red Hat, Sysdig, Elastic, NVIDIA&rsquo;s glossary &mdash; assumes the skill lives in a repo and gets invoked when a developer prompts a coding agent. That&rsquo;s one shape of agent work. It&rsquo;s not the shape most knowledge-work agents have.</p>
+    <p>The unclaimed frame: <strong>skills that fire against typed workspace state, not against a git repo.</strong> The invocation trigger isn&rsquo;t <em>a developer typed a prompt in Cursor</em>; it&rsquo;s <em>an object of type <code>insight</code> just entered status <code>clustered</code></em>. The skill runs against a typed graph the whole team can inspect, comment on, and re-run.</p>
+    <p>In Maskin &mdash; the workspace this piece was written in &mdash; that primitive is <code>workspace_skill</code>. A skill declares how it should be invoked and subscribes to state transitions on the typed object graph: an object entering a status, a field changing, an <code>@mention</code> landing on an object. The skill itself is still a <code>SKILL.md</code> plus scripts plus prompt fragments &mdash; the same shape as an Anthropic skill. What changes is <em>what the skill is watching</em>.</p>
+    <p>Concrete example. A <em>Signal Analyst</em> skill fires when an <code>insight</code> object enters status <code>clustered</code>. It reads the insight&rsquo;s content and its <code>informs</code> edges, checks whether the cluster crosses a threshold, and either drafts a proposal object or posts a comment back to the researcher. No developer had to type <em>run signal analyst</em> anywhere. The workspace state was the trigger.</p>
+    <p>This isn&rsquo;t a rejection of the coding-agent framing &mdash; coding is real work, and the <code>SKILL.md</code> format is genuinely useful there. It&rsquo;s an extension. The same skill primitive, once the trigger surface moves from a repo to a typed state graph, unlocks a category of agent work that most current writing on skills doesn&rsquo;t address. This is the shape <a href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a> points at: composable pieces of capability that a team stitches into their own operating shape, rather than a monolithic <em>AI employee</em> persona.</p>
+
+    <h2>Deciding what to reach for</h2>
+    <p>A rough decision table when you&rsquo;re building something and asking which of these you need:</p>
+
+    <table>
+      <thead>
+        <tr><th>You want to&hellip;</th><th>Reach for</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Expose a new external system to the agent</td><td>MCP server</td></tr>
+        <tr><td>Teach the agent a repeatable capability it can pick up when a use case matches</td><td>Agent skill</td></tr>
+        <tr><td>Constrain how the agent acts inside a specific repo</td><td>Cursor rules / AGENTS.md</td></tr>
+        <tr><td>Trigger agents on state changes or hand off between them</td><td>Workflow (or a stateful substrate)</td></tr>
+        <tr><td>Fan out work into isolated agent contexts</td><td>Subagents</td></tr>
+      </tbody>
+    </table>
+
+    <p>You will usually reach for several. Shipping a real capability at knowledge-work scale looks like: expose two or three MCP tools, package them behind one skill, gate the skill&rsquo;s invocation with a workflow that fires on a state change, and (if the skill also writes code) apply the repo&rsquo;s rules.</p>
+
+    <h2>FAQ</h2>
+    <h3>Is <code>agent skills vs MCP</code> a real choice?</h3>
+    <p>Not usually. They sit at different layers &mdash; MCP is a protocol for reaching tools; skills package the capability the agent invokes. Most non-trivial skills call MCP-exposed tools. The one case where you might pick: a capability that&rsquo;s a single tool call and doesn&rsquo;t need a <code>SKILL.md</code> wrapper. Even then, the wrapper is what makes the model pick reliably.</p>
+    <h3>Is <code>agent skills vs cursor rules</code> a real choice?</h3>
+    <p>Different jobs. Skills add capability the agent didn&rsquo;t have. Rules constrain how the agent behaves inside a specific repo. Ship the skill when you&rsquo;re teaching the agent something new; ship the rule when you&rsquo;re setting local defaults.</p>
+    <h3>Is <code>agent skills vs workflows</code> a real choice?</h3>
+    <p>Different layers. A skill is one agent invocation&rsquo;s capability. A workflow orchestrates multiple invocations across triggers and state. You use workflows to fire skills at the right moment, not instead of skills.</p>
+    <h3>Is <code>agent skills vs subagents</code> a real choice?</h3>
+    <p>No. Subagents are a runtime primitive (a spawned agent with its own context). Skills are a packaging primitive (a capability the agent loads). A subagent invokes skills.</p>
+    <h3>Is a skill a plugin?</h3>
+    <p>Close but not identical. Anthropic&rsquo;s <code>plugin.json</code> bundles one or more skills into a distribution unit. A skill is one capability; a plugin is a versioned bundle of skills you install as a group. All plugins contain skills; not all skills ship as plugins.</p>
+    <h3>Where do skills fit relative to workspace state?</h3>
+    <p>The canonical framing assumes a developer-typed-prompt trigger. The extension the current writeups don&rsquo;t cover: skills that fire on typed workspace state &mdash; an object entering a status, a field changing, an event on a graph. Same skill format, different invocation surface. Useful when the agent work is knowledge-work rather than code, and no human sits in the loop for every trigger.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/what-is-mcp-native/">
+          <div class="doc-card__title">What is MCP-native?</div>
+          <div class="doc-card__desc">The protocol layer &mdash; how Maskin treats MCP as the substrate, not a bolt-on.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-a-stateful-orchestration-substrate/">
+          <div class="doc-card__title">What is a stateful orchestration substrate?</div>
+          <div class="doc-card__desc">The workflow layer, one level up &mdash; typed state that carries hand-offs between agents.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/ai-product-workspace-vs-coding-agent/">
+          <div class="doc-card__title">AI product workspace vs AI coding agent</div>
+          <div class="doc-card__desc">Skills that fire on typed workspace state vs skills that fire in a repo &mdash; the two tiers, side by side.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+          <div class="doc-card__title">What is an agentic workspace?</div>
+          <div class="doc-card__desc">The cornerstone &mdash; the closed loop humans and agents share on one typed object graph.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Build skills against typed state, not just repos</h2>
+      <p>Maskin runs the same <code>SKILL.md</code> format Anthropic ships &mdash; against a typed workspace graph instead of a filesystem. Open source under Apache 2.0. Self-host free, bring your own model.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
