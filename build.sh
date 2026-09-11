@@ -1,10 +1,11 @@
 #!/bin/bash
 set -e
 
-if [ -z "$POSTHOG_PROJECT_KEY" ]; then
-  echo "Error: POSTHOG_PROJECT_KEY environment variable is not set" >&2
-  exit 1
-fi
+# Site-side PostHog write key for the workspace's canonical Maskin Project (id 191282).
+# Public, browser-visible, write-only — safe to inline. Previously read from
+# $POSTHOG_PROJECT_KEY, but that Cloudflare env var pointed at a different project and
+# silently mis-routed on-site telemetry away from the workspace MCP.
+POSTHOG_PROJECT_KEY="phc_tfrEvZMAfNvPzmof6dHMndPEDuLe4wNdPDBTUJA66Zww"
 
 rm -rf dist
 mkdir -p dist
