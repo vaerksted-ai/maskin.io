@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The LLM knowledge wiki workflow &mdash; Maskin</title>
+<meta name="description" content="Turn every meeting, chat, and doc into an evergreen, agent-citable wiki that stays current on its own &mdash; typed objects, linked context, one shared surface both your team and your agents can read and write. A workflow you can run on Maskin.">
+
+<link rel="canonical" href="https://maskin.io/workflows/llm-knowledge-wiki/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maskin.io/workflows/llm-knowledge-wiki/">
+<meta property="og:title" content="The LLM knowledge wiki workflow">
+<meta property="og:description" content="Turn every meeting, chat, and doc into an evergreen, agent-citable wiki that stays current on its own &mdash; typed objects, linked context, one shared surface for humans and agents.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="The LLM knowledge wiki workflow">
+<meta name="twitter:description" content="Meetings, chat, docs in. An evergreen wiki your team and your agents cite, out. No stale pages.">
+<meta name="twitter:image" content="https://maskin.io/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+<style>
+.wf-hero{margin-bottom:2rem}
+.wf-video{margin:1.5rem 0 1.75rem;border:1px solid var(--rule);border-radius:14px;overflow:hidden;background:var(--linen);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.5rem}
+.wf-video__inner{max-width:32rem}
+.wf-video__tag{font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+.wf-video__label{font-size:1.05rem;color:var(--ink);font-weight:600;margin-bottom:.35rem}
+.wf-video__desc{font-size:.9rem;color:var(--ink-2);line-height:1.5}
+.wf-capture{margin:1.5rem 0 2rem;padding:clamp(1.25rem,3vw,1.75rem);border:1px solid var(--rule);border-radius:14px;background:var(--linen)}
+.wf-capture__title{font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:.35rem;letter-spacing:-.01em}
+.wf-capture__desc{font-size:.9rem;color:var(--ink-2);margin-bottom:1rem;line-height:1.5}
+.wf-capture__form{display:flex;gap:.6rem;flex-wrap:wrap}
+.wf-capture__input{flex:1;min-width:14rem;padding:.7rem .9rem;border:1.5px solid var(--rule);border-radius:8px;background:var(--surface);color:var(--ink);font-family:var(--ff-display);font-size:.95rem}
+.wf-capture__input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-dim)}
+.wf-capture__submit{padding:.7rem 1.2rem;background:var(--ink);color:var(--surface);border:1.5px solid var(--ink);border-radius:8px;font-weight:600;font-size:.9375rem;cursor:pointer;font-family:var(--ff-display);transition:background .15s,transform .1s}
+.wf-capture__submit:hover{background:#2a2925;transform:translateY(-1px)}
+.wf-capture__meta{font-size:.8rem;color:var(--ink-3);margin-top:.7rem;font-family:var(--ff-mono)}
+.wf-primitives{margin:0 0 1.25rem 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}
+.wf-primitives li{padding:.75rem .9rem;border:1px solid var(--rule);border-radius:10px;background:var(--surface)}
+.wf-primitives__kind{font-family:var(--ff-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+.wf-primitives__name{font-weight:600;color:var(--ink);font-size:.9rem;margin-bottom:.1rem}
+.wf-primitives__desc{font-size:.82rem;color:var(--ink-2);line-height:1.4}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "The LLM knowledge wiki workflow",
+      "headline": "The LLM knowledge wiki workflow",
+      "description": "Turn every meeting, chat, and doc into an evergreen, agent-citable wiki that stays current on its own — typed objects, linked context, one shared surface both your team and your agents can read and write. A workflow you can run on Maskin.",
+      "url": "https://maskin.io/workflows/llm-knowledge-wiki/",
+      "inLanguage": "en",
+      "image": ["https://maskin.io/og-image.png"],
+      "isPartOf": { "@type": "WebSite", "name": "Maskin", "url": "https://maskin.io/" },
+      "about": { "@type": "Product", "name": "Maskin" },
+      "publisher": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Workflows", "item": "https://maskin.io/workflows/" },
+        { "@type": "ListItem", "position": 3, "name": "The LLM knowledge wiki workflow", "item": "https://maskin.io/workflows/llm-knowledge-wiki/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What does the LLM knowledge wiki workflow do?", "acceptedAnswer": { "@type": "Answer", "text": "It captures raw context from the places your team already works — meeting transcripts, Slack threads, docs, PRs, CRM notes — and turns them into typed, linked wiki entries on a shared object graph. Entries stay current because the same triggers that captured them re-run when the source updates. Both your team and your agents read and write the same wiki via the same MCP surface, so citations stay live instead of decaying into stale pages." } },
+        { "@type": "Question", "name": "Who is this workflow for?", "acceptedAnswer": { "@type": "Answer", "text": "Chiefs of staff, founders, and any team drowning in scattered context — meetings in one tool, chat in another, decisions buried in threads. It is for the team that wants a single evergreen source of truth their agents can cite without hallucinating and their humans can trust without spelunking." } },
+        { "@type": "Question", "name": "How is this different from Notion AI or an Obsidian vault?", "acceptedAnswer": { "@type": "Answer", "text": "Notion AI and Obsidian vaults are page-and-database or note-and-graph models where the primary object is a document written for humans to read. The knowledge wiki workflow builds on a typed object graph designed for agents and humans to both read and write, with typed relationships that let an agent reason across entries. The tier-comparison piece agentic workspace vs knowledge space walks the closure diagnostic across those tools; this workflow is what the closure looks like in practice on the notes tier." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Workflows"><p class="doc-sidebar__title">Workflows</p><ul class="doc-sidebar__list"><li><a class="" href="/workflows/">All workflows</a></li><li><a class="is-nested" href="/workflows/seo-publisher/">The SEO publisher workflow</a></li><li><a class="is-nested" href="/workflows/sales-loop/">The sales loop workflow</a></li><li><a class="is-nested is-active" href="/workflows/llm-knowledge-wiki/" aria-current="page">The LLM knowledge wiki workflow</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="is-nested" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="" href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane</a></li><li><a class="" href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/workflows/">Workflows</a> / The LLM knowledge wiki workflow</p>
+    <p class="eyebrow">Workflow &middot; Knowledge</p>
+    <h1>The LLM knowledge wiki workflow</h1>
+    <div class="wf-hero">
+      <p class="lead"><strong>Meetings, chat, and docs in. An evergreen wiki your team and your agents both cite, out.</strong> Typed objects, linked context, one shared surface &mdash; entries stay current because the triggers that captured them re-run when the source updates. No stale pages, no scattered context, no hallucinated citations.</p>
+    </div>
+
+    <div class="wf-video" aria-label="Video walkthrough">
+      <div class="wf-video__inner">
+        <p class="wf-video__tag">Video walkthrough</p>
+        <p class="wf-video__label">Dropping this week</p>
+        <p class="wf-video__desc">A 4-minute walkthrough of the workflow, from a Zoom transcript to a linked wiki entry an agent can cite in-context. Email us below to get it when it lands.</p>
+      </div>
+    </div>
+
+    <div class="wf-capture">
+      <p class="wf-capture__title">Get the workflow when it drops</p>
+      <p class="wf-capture__desc">We'll send the video walkthrough plus the template bet you can copy into your own workspace to run this yourself.</p>
+      <form class="wf-capture__form" action="mailto:ai@maskin.io" method="POST" enctype="text/plain">
+        <input type="hidden" name="workflow" value="llm-knowledge-wiki">
+        <label class="visuallyhidden" for="wf-email">Your email</label>
+        <input class="wf-capture__input" type="email" id="wf-email" name="email" placeholder="you@company.com" required>
+        <button class="wf-capture__submit" type="submit">Notify me</button>
+      </form>
+      <p class="wf-capture__meta">Or <a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">book a 20-minute walkthrough</a> with the founder.</p>
+    </div>
+
+    <h2>What it does</h2>
+    <p>The LLM knowledge wiki workflow captures the raw context your team already produces &mdash; meeting transcripts from Zoom or Gong, Slack threads, doc updates, PR merges, CRM notes &mdash; and turns each stream into typed, linked entries on a shared object graph. A librarian agent reads new signal, decides whether it belongs on an existing entry or deserves a new one, drafts the update, and files it. Because entries are typed and linked (not just tagged), an agent asked "what did we decide about &lt;topic&gt;?" can walk the graph in one call rather than search-and-summarise across many. And because the triggers that captured an entry re-run when the source changes, the wiki stays current without a page-refresh party every quarter.</p>
+
+    <h2>Who it's for</h2>
+    <p>Chiefs of staff, founders, and any team whose institutional knowledge is scattered across five tools and one long-tenured senior. The workflow is built for the team that wants a single evergreen source of truth their agents can cite in-context without hallucinating and their humans can trust without spelunking through last quarter's Slack. If you already have a place where meetings, chat, and docs happen, this workflow sits above them and gives the outputs a graph.</p>
+
+    <h2>What closes the loop</h2>
+    <p>The loop closes when an entry is cited &mdash; by a human or an agent &mdash; and the citation resolves against a live entry that is still true. The metric is coverage: what share of "what do we know about X?" questions asked in the workspace resolve to a linked wiki entry within one hop, versus falling back to a full-text search or a hallucination. That number goes up as the wiki grows and stays up because the triggers keep the entries current. Stale entries fall in coverage and get proposed for refresh automatically.</p>
+
+    <h2 id="how-it-works">How it works (below the fold)</h2>
+    <p>The workflow is composed from four primitives that ship in Maskin. If you're evaluating it as a system to run on your own instance, this is the shape of what's underneath.</p>
+    <ul class="wf-primitives">
+      <li>
+        <p class="wf-primitives__kind">Loop</p>
+        <p class="wf-primitives__name">Knowledge wiki loop</p>
+        <p class="wf-primitives__desc">Steps: capture &rarr; classify &rarr; file &rarr; link &rarr; refresh. Runs continuously; humans stay on curate + trust.</p>
+      </li>
+      <li>
+        <p class="wf-primitives__kind">Agent</p>
+        <p class="wf-primitives__name">Librarian</p>
+        <p class="wf-primitives__desc">Decides whether new signal updates an existing entry or deserves a new one; drafts the update and files it.</p>
+      </li>
+      <li>
+        <p class="wf-primitives__kind">Agent</p>
+        <p class="wf-primitives__name">Meeting Summariser</p>
+        <p class="wf-primitives__desc">Reads transcripts (Zoom, Gong, Fathom), pulls decisions and open questions, hands them to the librarian.</p>
+      </li>
+      <li>
+        <p class="wf-primitives__kind">MCP</p>
+        <p class="wf-primitives__name">Slack + Gong + Notion + GitHub</p>
+        <p class="wf-primitives__desc">Capture surface. Read-scoped by default; write access is opt-in per source. All auditable in the workspace.</p>
+      </li>
+      <li>
+        <p class="wf-primitives__kind">Substrate</p>
+        <p class="wf-primitives__name">Typed object graph</p>
+        <p class="wf-primitives__desc">The wiki lives as typed objects with typed relationships, not as free text. Agents traverse the graph in one call.</p>
+      </li>
+      <li>
+        <p class="wf-primitives__kind">Trigger</p>
+        <p class="wf-primitives__name">Freshness sweep</p>
+        <p class="wf-primitives__desc">Weekly walk over entries; proposes refresh tasks on any entry whose source has changed since it was last written.</p>
+      </li>
+    </ul>
+
+    <div class="callout callout--muted"><div class="callout__icon" aria-hidden="true">&#10003;</div><div class="callout__body"><strong>Where this sits in the landscape.</strong> The tier comparison across Notion AI, Obsidian, Mem, and Confluence lives at <a href="/docs/agentic-workspace-vs-knowledge-space/">agentic workspace vs knowledge space</a>. The typed-object-graph substrate the wiki runs on is the same one described in <a href="/docs/what-is-a-stateful-orchestration-substrate/">what is a stateful orchestration substrate</a>.</div></div>
+
+    <div class="related">
+      <p class="related__title">Other workflows</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/workflows/seo-publisher/">
+          <div class="doc-card__title">The SEO publisher workflow</div>
+          <div class="doc-card__desc">One shaped SEO bet in, one indexed, snippet-eligible article out. Human-approved, tracked, closed on rank.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/workflows/sales-loop/">
+          <div class="doc-card__title">The sales loop workflow</div>
+          <div class="doc-card__desc">Cold prospects in, approved outreach and routed replies out. Human on the loop for every send.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/workflows/">
+          <div class="doc-card__title">All workflows</div>
+          <div class="doc-card__desc">The full list of workflows you can run on Maskin, outcome-first.</div>
+          <div class="doc-card__arrow">Browse &rarr;</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="post-cta">
+      <h2>Run this on your own workspace</h2>
+      <p>Self-host Maskin under Apache 2.0 and copy the knowledge wiki workflow into your instance, or take a hosted trial and we'll wire it up.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
