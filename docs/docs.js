@@ -53,8 +53,8 @@
       { label: "Open source Notion alternative", href: "/alternatives/open-source-notion-alternative/" },
       { label: "Open source AI SDR", href: "/alternatives/open-source-ai-sdr/" },
       { label: "Open source Codex alternative", href: "/alternatives/open-source-alternative-to-codex/" },
-      { label: "Self-hosted AI agent control plane", href: "/alternatives/self-hosted-ai-agent-control-plane/" },
-      { label: "Self-hosted AI agents", href: "/alternatives/self-hosted-ai-agents/" }
+      { label: "Self-hosted AI agents", href: "/alternatives/self-hosted-ai-agents/" },
+      { label: "Self-hosted AI agent control plane", href: "/alternatives/self-hosted-ai-agent-control-plane/" }
     ]}
   ];
 
