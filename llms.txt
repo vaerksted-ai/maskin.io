@@ -16,6 +16,10 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 - [Workflows](https://maskin.io/workflows/): Outcome-first workflows you can run on Maskin — the SEO publisher workflow, the sales loop workflow, the LLM knowledge wiki workflow. Each closes the loop on an outcome (page ranked, reply landed, citation resolved), with humans on the gate and agents on the mechanics.
 - [Alternatives](https://maskin.io/alternatives/open-source-jira-alternative/): Head-to-head comparisons with existing tools — currently the open-source Jira alternative, more comparison pages landing on the same path.
 
+## Marketplace
+
+- [The product discovery loop](https://maskin.io/marketplace/product-discovery/): Customer signal to shipped bet, on Maskin's typed object graph. Interviews, tickets, and reviews land as typed insight on the same graph as the bets you're already shipping; agents cluster themes and draft candidate bets; a human gates the read-through and the shaping; after ship, the loop re-checks the signal so you know whether the bet actually retired the pain. Loop closes on a shipped bet mapped back to the signal that motivated it, not on an interview scheduled.
+
 ## Workflows
 
 - [The SEO publisher workflow](https://maskin.io/workflows/seo-publisher/): One shaped SEO bet in, one indexed, snippet-eligible article on your site out. Research → draft → human approval → publish (HTML + JSON-LD + canonical + per-page og-image + sitemap and llms.txt registration) → weekly rank tracking. Loop closes on a ranked page, not on a written draft. Composed from the SEO content loop plus the Ubersuggest + GitHub MCPs.
