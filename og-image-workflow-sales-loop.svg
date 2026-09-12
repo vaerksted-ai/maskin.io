@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="The sales loop workflow">
+  <defs>
+    <pattern id="grid-sales" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FAFAF8" stroke-width="1" opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid-sales)"/>
+  <g font-family="'Schibsted Grotesk', system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+    <text x="80" y="130" font-size="24" font-weight="500" fill="#8B8781" letter-spacing="0.14em">WORKFLOW &#183; SALES</text>
+    <text x="80" y="240" font-size="84" font-weight="700" fill="#FAFAF8">The sales loop</text>
+    <text x="80" y="330" font-size="84" font-weight="700" fill="#FAFAF8">workflow.</text>
+  </g>
+  <g font-family="'Newsreader', Georgia, serif" font-style="italic">
+    <text x="80" y="410" font-size="28" fill="#8B8781">Signal, research, draft, human approval, send, reply routing, close.</text>
+    <text x="80" y="448" font-size="28" fill="#8B8781">$50&#8211;200/mo on your own keys, not $2&#8211;5k/mo on a closed SaaS.</text>
+  </g>
+  <g transform="translate(80, 510)" font-family="'JetBrains Mono', monospace" font-size="15" fill="#FAFAF8">
+    <g>
+      <rect x="0" y="0" width="130" height="42" rx="6" fill="#141311" stroke="#2A2825"/>
+      <text x="12" y="27">signal</text>
+    </g>
+    <g transform="translate(145, 0)">
+      <rect x="0" y="0" width="130" height="42" rx="6" fill="#141311" stroke="#2A2825"/>
+      <text x="12" y="27">research</text>
+    </g>
+    <g transform="translate(290, 0)">
+      <rect x="0" y="0" width="130" height="42" rx="6" fill="#141311" stroke="#2A2825"/>
+      <text x="12" y="27">draft</text>
+    </g>
+    <g transform="translate(435, 0)">
+      <rect x="0" y="0" width="130" height="42" rx="6" fill="#141311" stroke="#2563EB" stroke-width="2"/>
+      <text x="12" y="27">approve</text>
+    </g>
+    <g transform="translate(580, 0)">
+      <rect x="0" y="0" width="130" height="42" rx="6" fill="#141311" stroke="#2A2825"/>
+      <text x="12" y="27">send</text>
+    </g>
+    <g transform="translate(725, 0)">
+      <rect x="0" y="0" width="130" height="42" rx="6" fill="#141311" stroke="#2A2825"/>
+      <text x="12" y="27">route</text>
+    </g>
+    <g transform="translate(870, 0)">
+      <rect x="0" y="0" width="130" height="42" rx="6" fill="#141311" stroke="#2A2825"/>
+      <text x="12" y="27">close</text>
+    </g>
+  </g>
+  <g transform="translate(1030, 100)">
+    <rect x="0" y="0" width="100" height="100" rx="18" fill="#FAFAF8"/>
+    <path d="M25 80 L25 25 L50 55 L75 25 L75 80" stroke="#111110" stroke-width="10" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+  </g>
+  <text x="1120" y="220" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="15" fill="#5A5751">maskin.io/workflows/sales-loop</text>
+</svg>
