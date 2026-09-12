@@ -37,7 +37,7 @@
       { label: "Agent Inbox", href: "/docs/agent-inbox/", nested: true },
       { label: "Human in the loop AI", href: "/docs/learn/human-in-the-loop-ai/" },
       { label: "Three tiers of AI-native work", href: "/docs/three-tiers-ai-native-work/" },
-      { label: "The closed-loop workspace", href: "/docs/closed-loop-workspace/", nested: true },
+      { label: "Closed-loop workspace", href: "/docs/closed-loop-workspace/", nested: true },
       { label: "AI product management tool", href: "/docs/ai-product-management-tool/", nested: true },
       { label: "AI product workspace vs AI coding agent", href: "/docs/ai-product-workspace-vs-coding-agent/", nested: true },
       { label: "Agentic workspace vs knowledge space", href: "/docs/agentic-workspace-vs-knowledge-space/", nested: true },
@@ -53,8 +53,8 @@
       { label: "Open source Notion alternative", href: "/alternatives/open-source-notion-alternative/" },
       { label: "Open source AI SDR", href: "/alternatives/open-source-ai-sdr/" },
       { label: "Open source Codex alternative", href: "/alternatives/open-source-alternative-to-codex/" },
-      { label: "Self-hosted AI agents", href: "/alternatives/self-hosted-ai-agents/" },
-      { label: "Self-hosted AI agent control plane", href: "/alternatives/self-hosted-ai-agent-control-plane/" }
+      { label: "Self-hosted AI agent control plane", href: "/alternatives/self-hosted-ai-agent-control-plane/" },
+      { label: "Self-hosted AI agents", href: "/alternatives/self-hosted-ai-agents/" }
     ]}
   ];
 
