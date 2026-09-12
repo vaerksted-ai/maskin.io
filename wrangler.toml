@@ -1,0 +1,18 @@
+# Cloudflare Pages Functions config. maskin.io is a static Pages project;
+# this file declares the runtime bindings the /functions/api/* handlers need.
+#
+# Environment variables (RESEND_API_KEY, RESEND_FROM, TURNSTILE_SITEKEY,
+# TURNSTILE_SECRET) live in the Cloudflare Pages dashboard, not here — plaintext
+# secrets should never land in the repo.
+
+name = "maskin-io"
+pages_build_output_dir = "dist"
+compatibility_date = "2025-06-01"
+
+# KV namespace used by /api/marketplace-email-capture for the sha256(email)
+# dedupe entry. Bind IDs are placeholders until Infra & DevOps provisions the
+# namespace in the Cloudflare account (see PR body — mention Infra & DevOps).
+[[kv_namespaces]]
+binding = "MARKETPLACE_CAPTURE_KV"
+id = "REPLACE_WITH_PRODUCTION_KV_ID"
+preview_id = "REPLACE_WITH_PREVIEW_KV_ID"
