@@ -110,6 +110,12 @@
       .waitlist__submit:hover { background: var(--ink-2); }
       .waitlist__status { flex: 1 1 100%; margin: .5rem 0 0; font-family: var(--ff-mono); font-size: .82rem; color: var(--ink-3); min-height: 1.2em; }
       .waitlist__fallback { font-size: .85rem; color: var(--ink-3); margin: 0 0 2rem; }
+      .waitlist__challenge { flex: 1 1 100%; margin: .25rem 0 0; min-height: 65px; }
+      .waitlist__consent { flex: 1 1 100%; display: flex; gap: .55rem; align-items: flex-start; font-size: .88rem; color: var(--ink-2); margin: .25rem 0 0; line-height: 1.4; }
+      .waitlist__consent input[type=checkbox] { margin-top: .25rem; accent-color: var(--accent); flex: 0 0 auto; }
+      .waitlist__consent a { color: inherit; text-decoration: underline; }
+      .waitlist__status[data-tone=error] { color: var(--accent, #b04747); }
+      .waitlist__status[data-tone=success] { color: var(--ink); }
     </style>
 
     <div class="video-embed" role="figure" aria-label="LLM knowledge wiki workflow video, dropping this week">
@@ -119,10 +125,15 @@
       </div>
     </div>
 
-    <form class="waitlist" data-workflow="llm-knowledge-wiki" novalidate>
-      <label class="visually-hidden" for="wl-email-wiki">Your work email</label>
-      <input class="waitlist__input" id="wl-email-wiki" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
+    <form class="waitlist" data-loop-slug="knowledge-wiki" novalidate>
+      <label class="visually-hidden" for="wl-email-knowledge-wiki">Your work email</label>
+      <input class="waitlist__input" id="wl-email-knowledge-wiki" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
       <button class="waitlist__submit" type="submit">Notify me when the video drops</button>
+      <div class="waitlist__challenge cf-turnstile" data-sitekey="TURNSTILE_SITEKEY_PLACEHOLDER" data-theme="auto" data-appearance="always"></div>
+      <label class="waitlist__consent">
+        <input type="checkbox" name="consent" required>
+        <span>I agree to receive the LLM knowledge wiki guide and occasional Maskin updates. Unsubscribe any time.</span>
+      </label>
       <p class="waitlist__status" role="status" aria-live="polite"></p>
     </form>
     <p class="waitlist__fallback">Or email <a href="mailto:ai@maskin.io?subject=Waitlist:%20LLM%20knowledge%20wiki%20workflow">ai@maskin.io</a> with subject &ldquo;Waitlist: LLM knowledge wiki workflow&rdquo; and we&rsquo;ll send the video the moment it drops.</p>
@@ -192,36 +203,7 @@
 </div>
 
 <script src="/docs/docs.js"></script>
-<script>
-(function () {
-  var form = document.querySelector('form.waitlist');
-  if (!form) return;
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var status = form.querySelector('.waitlist__status');
-    var input = form.querySelector('input[name="email"]');
-    var email = (input.value || '').trim();
-    if (!email || email.indexOf('@') < 1) {
-      status.textContent = 'Please enter a valid email address.';
-      return;
-    }
-    status.textContent = 'Adding you to the list\u2026';
-    fetch('/api/waitlist', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ email: email, workflow: form.dataset.workflow, source: location.pathname })
-    }).then(function (r) {
-      if (r.ok) {
-        status.textContent = "You\u2019re on the list. We\u2019ll email you when the video is live.";
-        input.value = '';
-      } else {
-        status.textContent = "Something went wrong \u2014 please email ai@maskin.io directly.";
-      }
-    }).catch(function () {
-      status.textContent = "Network error \u2014 please email ai@maskin.io directly.";
-    });
-  });
-})();
-</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="/marketplace-events.js" defer></script>
 </body>
 </html>
