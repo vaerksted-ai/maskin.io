@@ -25,7 +25,7 @@ cp maskin-launch.mp4 dist/
 
 # Top-level content subtrees. Add a new SEO cluster hub here (one line) and every
 # page under it ships automatically — no other build.sh edits required.
-CONTENT_DIRS=(docs changelog privacy alternatives)
+CONTENT_DIRS=(docs changelog privacy alternatives marketplace)
 for dir in "${CONTENT_DIRS[@]}"; do
   if [ -d "$dir" ]; then
     cp -r "$dir" "dist/$dir"
