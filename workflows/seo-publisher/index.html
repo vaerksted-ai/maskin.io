@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The SEO publisher workflow &mdash; Maskin</title>
-<meta name="description" content="Turn one shaped SEO bet into a live, indexed, snippet-eligible article on your site &mdash; researched, drafted, human-approved, and published, with the loop closing on a ranked page. A workflow you can run on Maskin.">
+<title>The SEO publisher workflow &mdash; insight to indexed page on Maskin</title>
+<meta name="description" content="The SEO publisher workflow on Maskin: keyword insight to live, indexed page on your own site, without a human writing HTML or hand-registering sitemap entries. Video walkthrough drops this week.">
 
+<!-- Canonical -->
 <link rel="canonical" href="https://maskin.io/workflows/seo-publisher/">
 
+<!-- Favicons -->
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -15,65 +17,61 @@
 <meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
 
-<meta property="og:type" content="website">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/workflows/seo-publisher/">
-<meta property="og:title" content="The SEO publisher workflow">
-<meta property="og:description" content="Turn one shaped SEO bet into a live, indexed, snippet-eligible article on your site &mdash; researched, drafted, human-approved, and published, with the loop closing on a ranked page.">
-<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:title" content="The SEO publisher workflow &mdash; insight to indexed page on Maskin">
+<meta property="og:description" content="Keyword insight to live indexed page, without a human writing HTML by hand. The Maskin SEO publisher loop &mdash; video walkthrough dropping this week.">
+<meta property="og:image" content="https://maskin.io/og-image-workflow-seo-publisher.svg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Maskin">
 <meta property="og:locale" content="en_US">
 
+<!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@maskin_io">
 <meta name="twitter:title" content="The SEO publisher workflow">
-<meta name="twitter:description" content="One shaped SEO bet in, one indexed, snippet-eligible article out. Researched, drafted, human-approved, published, tracked.">
-<meta name="twitter:image" content="https://maskin.io/og-image.png">
+<meta name="twitter:description" content="Insight to indexed page on your own site, without hand-writing HTML. Video walkthrough dropping this week.">
+<meta name="twitter:image" content="https://maskin.io/og-image-workflow-seo-publisher.svg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/docs/docs.css">
-<style>
-.wf-hero{margin-bottom:2rem}
-.wf-video{margin:1.5rem 0 1.75rem;border:1px solid var(--rule);border-radius:14px;overflow:hidden;background:var(--linen);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.5rem}
-.wf-video__inner{max-width:32rem}
-.wf-video__tag{font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
-.wf-video__label{font-size:1.05rem;color:var(--ink);font-weight:600;margin-bottom:.35rem}
-.wf-video__desc{font-size:.9rem;color:var(--ink-2);line-height:1.5}
-.wf-capture{margin:1.5rem 0 2rem;padding:clamp(1.25rem,3vw,1.75rem);border:1px solid var(--rule);border-radius:14px;background:var(--linen)}
-.wf-capture__title{font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:.35rem;letter-spacing:-.01em}
-.wf-capture__desc{font-size:.9rem;color:var(--ink-2);margin-bottom:1rem;line-height:1.5}
-.wf-capture__form{display:flex;gap:.6rem;flex-wrap:wrap}
-.wf-capture__input{flex:1;min-width:14rem;padding:.7rem .9rem;border:1.5px solid var(--rule);border-radius:8px;background:var(--surface);color:var(--ink);font-family:var(--ff-display);font-size:.95rem}
-.wf-capture__input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-dim)}
-.wf-capture__submit{padding:.7rem 1.2rem;background:var(--ink);color:var(--surface);border:1.5px solid var(--ink);border-radius:8px;font-weight:600;font-size:.9375rem;cursor:pointer;font-family:var(--ff-display);transition:background .15s,transform .1s}
-.wf-capture__submit:hover{background:#2a2925;transform:translateY(-1px)}
-.wf-capture__meta{font-size:.8rem;color:var(--ink-3);margin-top:.7rem;font-family:var(--ff-mono)}
-.wf-primitives{margin:0 0 1.25rem 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}
-.wf-primitives li{padding:.75rem .9rem;border:1px solid var(--rule);border-radius:10px;background:var(--surface)}
-.wf-primitives__kind{font-family:var(--ff-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
-.wf-primitives__name{font-weight:600;color:var(--ink);font-size:.9rem;margin-bottom:.1rem}
-.wf-primitives__desc{font-size:.82rem;color:var(--ink-2);line-height:1.4}
-</style>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "WebPage",
-      "name": "The SEO publisher workflow",
+      "@type": "Article",
       "headline": "The SEO publisher workflow",
-      "description": "Turn one shaped SEO bet into a live, indexed, snippet-eligible article on your site — researched, drafted, human-approved, and published, with the loop closing on a ranked page. A workflow you can run on Maskin.",
+      "name": "The SEO publisher workflow",
+      "description": "The SEO publisher workflow on Maskin: keyword insight to live indexed page, without hand-writing HTML or hand-registering sitemap entries.",
       "url": "https://maskin.io/workflows/seo-publisher/",
       "inLanguage": "en",
-      "image": ["https://maskin.io/og-image.png"],
-      "isPartOf": { "@type": "WebSite", "name": "Maskin", "url": "https://maskin.io/" },
-      "about": { "@type": "Product", "name": "Maskin" },
-      "publisher": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" }
+      "datePublished": "2026-09-12T00:00:00Z",
+      "dateModified": "2026-09-12T00:00:00Z",
+      "image": ["https://maskin.io/og-image-workflow-seo-publisher.svg"],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "mainEntityOfPage": "https://maskin.io/workflows/seo-publisher/",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "keywords": "seo workflow, seo publishing workflow, ai seo publisher, automated seo publishing, seo loop"
     },
     {
       "@type": "BreadcrumbList",
@@ -82,14 +80,6 @@
         { "@type": "ListItem", "position": 2, "name": "Workflows", "item": "https://maskin.io/workflows/" },
         { "@type": "ListItem", "position": 3, "name": "The SEO publisher workflow", "item": "https://maskin.io/workflows/seo-publisher/" }
       ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "What does the SEO publisher workflow do?", "acceptedAnswer": { "@type": "Answer", "text": "It runs one shaped SEO bet end to end: researches the target keyword, drafts the article, waits for a human to approve, publishes the page to your static site with schema and canonical tags, registers it in the sitemap and llms.txt, and tracks whether the page actually ranks. The loop closes when the page is indexed and hitting the target position — not when the draft is written." } },
-        { "@type": "Question", "name": "Who is this workflow for?", "acceptedAnswer": { "@type": "Answer", "text": "Product teams that treat SEO as a channel and want the mechanical parts of ranking (research, drafting, publishing, tracking) run by agents while a human keeps taste on which bets to run and whether a draft is worth shipping. If you already have a static site and a keyword universe, this workflow slots in above it." } },
-        { "@type": "Question", "name": "What does 'human-approved' mean in practice?", "acceptedAnswer": { "@type": "Answer", "text": "The workflow drafts a content object and moves it to a review status. A named human reviews the draft, decides whether to publish, and either flips the status to approved or comments with the changes wanted. Only approved objects get published. The agent does not push copy to your live site without that gate." } }
-      ]
     }
   ]
 }
@@ -97,118 +87,143 @@
 </head>
 <body>
 
-<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Workflows</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
 
 <noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
-
 <div class="wrap doc-layout">
-<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Workflows"><p class="doc-sidebar__title">Workflows</p><ul class="doc-sidebar__list"><li><a class="" href="/workflows/">All workflows</a></li><li><a class="is-nested is-active" href="/workflows/seo-publisher/" aria-current="page">The SEO publisher workflow</a></li><li><a class="is-nested" href="/workflows/sales-loop/">The sales loop workflow</a></li><li><a class="is-nested" href="/workflows/llm-knowledge-wiki/">The LLM knowledge wiki workflow</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="is-nested" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="" href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane</a></li><li><a class="" href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents</a></li></ul></nav></aside>
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Workflows"><p class="doc-sidebar__title">Workflows</p><ul class="doc-sidebar__list"><li><a class="" href="/workflows/">All workflows</a></li><li><a class="is-active" href="/workflows/seo-publisher/" aria-current="page">The SEO publisher workflow</a></li><li><a class="" href="/workflows/sales-loop/">The sales loop workflow</a></li><li><a class="" href="/workflows/llm-knowledge-wiki/">The LLM knowledge wiki workflow</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs workflows</a></li></ul></nav></aside>
   <main class="doc-content">
     <p class="doc-breadcrumb"><a href="/workflows/">Workflows</a> / The SEO publisher workflow</p>
-    <p class="eyebrow">Workflow &middot; SEO</p>
+    <p class="eyebrow">Workflow &middot; Content</p>
     <h1>The SEO publisher workflow</h1>
-    <div class="wf-hero">
-      <p class="lead"><strong>One shaped SEO bet in, one indexed, snippet-eligible article out.</strong> Research, draft, human approval, publish to your static site, sitemap and llms.txt registration, ranking tracked &mdash; the loop closes on a ranked page, not on a written draft.</p>
-    </div>
+    <p class="lead">Publish SEO articles end-to-end &mdash; from keyword insight to live, indexed page on your own site &mdash; without a human writing HTML by hand or manually updating sitemap and llms.txt entries. The video walkthrough below drops this week; the loop shape and the honest capture math live on this page today.</p>
 
-    <div class="wf-video" aria-label="Video walkthrough">
-      <div class="wf-video__inner">
-        <p class="wf-video__tag">Video walkthrough</p>
-        <p class="wf-video__label">Dropping this week</p>
-        <p class="wf-video__desc">A 4-minute walkthrough of the workflow, from a raw keyword bet to a live, tracked page on maskin.io. Email us below to get it when it lands.</p>
+    <style>
+      .video-embed { position: relative; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: var(--linen); border: 1px solid var(--rule); margin: 1.5rem 0 2rem; display: flex; align-items: center; justify-content: center; text-align: center; }
+      .video-embed__placeholder { padding: 2rem; color: var(--ink-2); font-family: var(--ff-serif); font-style: italic; }
+      .video-embed__badge { display: inline-block; font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); padding: .3rem .55rem; border: 1px solid var(--accent); border-radius: 6px; margin-bottom: .8rem; }
+      .video-embed__label { font-size: 1.05rem; }
+      .waitlist { display: flex; gap: .6rem; flex-wrap: wrap; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin: 0 0 .5rem; }
+      .waitlist__input { flex: 1 1 240px; padding: .7rem .9rem; border: 1px solid var(--rule); border-radius: 8px; font: inherit; background: var(--linen); color: var(--ink); }
+      .waitlist__input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+      .waitlist__submit { padding: .7rem 1.1rem; border-radius: 8px; border: 0; background: var(--ink); color: var(--linen); font-family: var(--ff-display); font-weight: 600; cursor: pointer; }
+      .waitlist__submit:hover { background: var(--ink-2); }
+      .waitlist__status { flex: 1 1 100%; margin: .5rem 0 0; font-family: var(--ff-mono); font-size: .82rem; color: var(--ink-3); min-height: 1.2em; }
+      .waitlist__fallback { font-size: .85rem; color: var(--ink-3); margin: 0 0 2rem; }
+    </style>
+
+    <div class="video-embed" role="figure" aria-label="SEO publisher workflow video, dropping this week">
+      <div class="video-embed__placeholder">
+        <div class="video-embed__badge">Video drops this week</div>
+        <p class="video-embed__label">Full walkthrough of the SEO publisher loop &mdash; keyword insight to live indexed page on maskin.io.<br>Sign up below to get it in your inbox the moment it&rsquo;s live.</p>
       </div>
     </div>
 
-    <div class="wf-capture">
-      <p class="wf-capture__title">Get the workflow when it drops</p>
-      <p class="wf-capture__desc">We'll send the video walkthrough plus the template bet you can copy into your own workspace to run this yourself.</p>
-      <form class="wf-capture__form" action="mailto:ai@maskin.io" method="POST" enctype="text/plain">
-        <input type="hidden" name="workflow" value="seo-publisher">
-        <label class="visuallyhidden" for="wf-email">Your email</label>
-        <input class="wf-capture__input" type="email" id="wf-email" name="email" placeholder="you@company.com" required>
-        <button class="wf-capture__submit" type="submit">Notify me</button>
-      </form>
-      <p class="wf-capture__meta">Or <a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">book a 20-minute walkthrough</a> with the founder.</p>
-    </div>
+    <form class="waitlist" data-workflow="seo-publisher" novalidate>
+      <label class="visually-hidden" for="wl-email-seo">Your work email</label>
+      <input class="waitlist__input" id="wl-email-seo" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
+      <button class="waitlist__submit" type="submit">Notify me when the video drops</button>
+      <p class="waitlist__status" role="status" aria-live="polite"></p>
+    </form>
+    <p class="waitlist__fallback">Or email <a href="mailto:ai@maskin.io?subject=Waitlist:%20SEO%20publisher%20workflow">ai@maskin.io</a> with subject &ldquo;Waitlist: SEO publisher workflow&rdquo; and we&rsquo;ll send the video the moment it drops.</p>
 
-    <h2>What it does</h2>
-    <p>The SEO publisher workflow takes a single shaped bet &mdash; "own the SERP for &lt;keyword&gt; with a page that ranks by &lt;date&gt;" &mdash; and runs the whole arc without you babysitting the middle. It reads the current SERP and picks the anti-frame that isn't yet claimed. It drafts an outline against that frame, then a full article, and posts it to your workspace as a content object with a proposed status. A human reviewer skims, either approves or comments, and the workflow only continues when it's approved. On approval, the workflow builds the HTML page against your static-site conventions, bakes in JSON-LD, canonical, Open Graph, and per-page og-image, commits it to your site repo, and updates sitemap.xml and llms.txt so crawlers and agents both know it exists. Then it tracks ranking against the target keyword weekly and reports back when the bet is won &mdash; or when it needs a rewrite.</p>
-
-    <h2>Who it's for</h2>
-    <p>Product teams that treat SEO as a growth channel, not a content-marketing side quest. The workflow is built for the person who already has a static site, a shortlist of keywords they want to own, and a bar for what "good" looks like &mdash; and wants the mechanical parts (research, drafting, publishing, sitemap-hygiene, tracking) run by agents while they keep taste on the calls that need judgment (which bets, which drafts, which rewrites). If you're a growth lead or a founder-operator running SEO in-house, this is the workflow that removes the busywork without removing the taste.</p>
-
-    <h2>What closes the loop</h2>
-    <p>The bet closes when the page is indexed and hitting its target rank &mdash; not when the draft is written and not when the commit lands. Every other event in the middle is a step; the win condition is on the bet itself. When the target is hit, the bet flips to won and the outcome is logged against the workflow. If the target isn't hit within the appetite, the workflow proposes a rewrite bet from what it learned in the SERP data. Nothing gets stuck in "draft complete" without a decision.</p>
-
-    <h2 id="how-it-works">How it works (below the fold)</h2>
-    <p>The workflow is composed from four primitives that ship in Maskin. If you're evaluating it as a system to run on your own instance, this is the shape of what's underneath.</p>
-    <ul class="wf-primitives">
-      <li>
-        <p class="wf-primitives__kind">Loop</p>
-        <p class="wf-primitives__name">SEO content loop</p>
-        <p class="wf-primitives__desc">Steps: research &rarr; draft &rarr; human approval &rarr; publish &rarr; track. Each step is an agent; the human sits on the approval gate.</p>
-      </li>
-      <li>
-        <p class="wf-primitives__kind">Agent</p>
-        <p class="wf-primitives__name">SEO Researcher</p>
-        <p class="wf-primitives__desc">Pulls SERP data, competitor pages, and keyword volume via the Ubersuggest MCP; picks the anti-frame that isn't claimed.</p>
-      </li>
-      <li>
-        <p class="wf-primitives__kind">Agent</p>
-        <p class="wf-primitives__name">SEO Writer</p>
-        <p class="wf-primitives__desc">Drafts the article as a content object with primary_keyword and content_type, ready for human review before publish.</p>
-      </li>
-      <li>
-        <p class="wf-primitives__kind">Agent</p>
-        <p class="wf-primitives__name">SEO Publisher</p>
-        <p class="wf-primitives__desc">Builds the HTML page, JSON-LD, canonical, per-page og-image, and commits to your static-site repo via the GitHub MCP.</p>
-      </li>
-      <li>
-        <p class="wf-primitives__kind">MCP</p>
-        <p class="wf-primitives__name">Ubersuggest + GitHub</p>
-        <p class="wf-primitives__desc">Read-only for keyword and audit data; commit access to your site repo for the publish step. Both scoped, both reversible.</p>
-      </li>
-      <li>
-        <p class="wf-primitives__kind">Trigger</p>
-        <p class="wf-primitives__name">Weekly rank check</p>
-        <p class="wf-primitives__desc">Re-audits published pages against their target rank; fires a fix task when a page slips or when a bet's appetite has burned.</p>
-      </li>
+    <h2>What this workflow gets you</h2>
+    <p>The SEO publisher workflow closes the loop between &ldquo;we should write about X&rdquo; and &ldquo;X is a live, indexed, snippet-eligible page on our site.&rdquo; It runs continuously, so weekly audit findings, keyword whitespace, and shipped-in-public changelog entries all end up as real pages without a human touching HTML.</p>
+    <ul>
+      <li><strong>Keyword insight becomes a shaped brief.</strong> A researcher walks the SERP, names the anti-frame the incumbents haven&rsquo;t claimed, and shapes a brief instead of dumping a keyword list.</li>
+      <li><strong>The brief becomes an approved draft.</strong> A writer produces markdown against the brief; a human approves before it moves to publish. Override rate is measurable and watched.</li>
+      <li><strong>The approved draft becomes a live page.</strong> HTML is built with the correct docs shell, JSON-LD schema, canonical, per-page OG image, and interlinking. Sitemap, llms.txt, and llms-full.txt are updated in the same commit.</li>
+      <li><strong>The live page gets measured.</strong> An analyst tracks indexation, snippet eligibility, and traffic against the bet checkpoints; flagged audit issues (thin content, broken schema, CWV regressions) route back into the loop as tasks.</li>
     </ul>
+    <p>The result: pages ship on a cadence a human editor can supervise but not personally execute. The wedge over &ldquo;prompt ChatGPT for a blog post&rdquo; is the loop shape &mdash; approval gate, live registration checklist, measured close &mdash; not the generation.</p>
 
-    <div class="callout callout--muted"><div class="callout__icon" aria-hidden="true">&#10003;</div><div class="callout__body"><strong>Where this workflow lives.</strong> The workflow runs inside a Maskin workspace. The <a href="/docs/what-is-an-agentic-workspace/">agentic workspace primer</a> covers the full object graph the workflow reads and writes. If you want to see how the primitives above (loops, agents, MCPs, triggers) fit together in general, the <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">agent skills vs MCP vs cursor rules vs workflows</a> piece maps them.</div></div>
+    <h2>The seven-step loop the video walks through</h2>
+    <ol>
+      <li><strong>Signal.</strong> A keyword-whitespace insight or a weekly Ubersuggest audit finding fires. The insight becomes a typed object with a testable frame.</li>
+      <li><strong>Research.</strong> An agent walks the top 10-20 SERP results, extracts the anti-frame, and drafts a brief. A human approves the brief before writing starts.</li>
+      <li><strong>Draft.</strong> An agent writes the markdown content object against the approved brief, in the site&rsquo;s voice.</li>
+      <li><strong>Human approval.</strong> An editor reads the draft, edits inline, and moves status to <code>published</code>. Override rate is the honest metric that the approval gate is real.</li>
+      <li><strong>Publish.</strong> An agent builds the HTML page with the correct docs shell, JSON-LD, canonical, per-page OG image, interlinking, and registers it in sitemap.xml, docs.js nav, llms.txt, and llms-full.txt in a single commit.</li>
+      <li><strong>Measure.</strong> An analyst tracks indexation, snippet eligibility, and traffic against the bet&rsquo;s checkpoints; flagged audit issues fire as tasks routed back to the publisher.</li>
+      <li><strong>Close.</strong> A page counts as shipped only once it is indexed, snippet-eligible, AND being tracked. Publishing without measurement is noise.</li>
+    </ol>
+
+    <h2>What this workflow runs on</h2>
+    <p>Below the fold on purpose: the loop is what closes, the primitives are just the parts. Naming them here so you can copy the shape.</p>
+    <ul>
+      <li><strong>Loop:</strong> the SEO content loop &mdash; a persistent Maskin loop that carries state across the seven steps above.</li>
+      <li><strong>Agents:</strong> SEO Researcher, SEO Writer, SEO Publisher, SEO Analyst &mdash; each is a scoped agent actor with a system prompt, tools, and a clear handoff to the next.</li>
+      <li><strong>MCPs:</strong> Ubersuggest (audit + SERP), the site&rsquo;s GitHub repo (for HTML commits), PostHog (for indexation and traffic checkpoints).</li>
+      <li><strong>Skills:</strong> weekly audit skill, publish-page skill, close-flagged-issue skill &mdash; the composable, human-approved recipes each agent invokes.</li>
+    </ul>
+    <p>Full concept map: <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a> explains where each layer belongs.</p>
+
+    <h2>Why publish it this way instead of prompting ChatGPT</h2>
+    <p>Prompting a chat model for a blog post gets you a page. Running the loop gets you a page that&rsquo;s indexed, snippet-eligible, tracked, and re-audited weekly by an agent that already knows the site&rsquo;s conventions. The gap between the two shows up around week six, when the chat-model pages are quietly de-indexed for thin content and the loop-shaped pages are pulling traffic that compounds. The <a href="/docs/learn/human-in-the-loop-ai/">override rate</a> at the approval gate is the only honest signal that the loop is real and not theatre.</p>
 
     <div class="related">
-      <p class="related__title">Other workflows</p>
+      <p class="related__title">Read next</p>
       <div class="doc-cards">
         <a class="doc-card" href="/workflows/sales-loop/">
           <div class="doc-card__title">The sales loop workflow</div>
-          <div class="doc-card__desc">Turn a cold prospect list into approved outreach and reply-routed conversations, human on the loop.</div>
+          <div class="doc-card__desc">Signal &rarr; research &rarr; draft &rarr; approval &rarr; send &rarr; reply routing &rarr; close, on your own keys.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
         <a class="doc-card" href="/workflows/llm-knowledge-wiki/">
           <div class="doc-card__title">The LLM knowledge wiki workflow</div>
-          <div class="doc-card__desc">Turn meetings, chat, and docs into an evergreen, agent-citable wiki that stays current on its own.</div>
+          <div class="doc-card__desc">Turn scattered team knowledge into an LLM-native wiki agents cite instead of hallucinate.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
-        <a class="doc-card" href="/workflows/">
-          <div class="doc-card__title">All workflows</div>
-          <div class="doc-card__desc">The full list of workflows you can run on Maskin, outcome-first.</div>
-          <div class="doc-card__arrow">Browse &rarr;</div>
+        <a class="doc-card" href="/docs/ambient-agent-workspace/">
+          <div class="doc-card__title">Ambient agent workspace</div>
+          <div class="doc-card__desc">The workspace-graph substrate every Maskin workflow runs on.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
         </a>
       </div>
     </div>
 
     <div class="post-cta">
-      <h2>Run this on your own workspace</h2>
-      <p>Self-host Maskin under Apache 2.0 and copy the SEO publisher workflow into your instance, or take a hosted trial and we'll wire it up.</p>
+      <h2>Run the SEO publisher loop on your own workspace</h2>
+      <p>Maskin is open-source, MCP-native, and self-hostable under Apache 2.0. Copy the loop into your own workspace, or book a walkthrough and we&rsquo;ll help you shape it around your team&rsquo;s content cadence.</p>
       <div class="post-cta__actions">
         <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
-        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a>
       </div>
     </div>
   </main>
 </div>
 
 <script src="/docs/docs.js"></script>
+<script>
+(function () {
+  var form = document.querySelector('form.waitlist');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var status = form.querySelector('.waitlist__status');
+    var input = form.querySelector('input[name="email"]');
+    var email = (input.value || '').trim();
+    if (!email || email.indexOf('@') < 1) {
+      status.textContent = 'Please enter a valid email address.';
+      return;
+    }
+    status.textContent = 'Adding you to the list\u2026';
+    fetch('/api/waitlist', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ email: email, workflow: form.dataset.workflow, source: location.pathname })
+    }).then(function (r) {
+      if (r.ok) {
+        status.textContent = "You\u2019re on the list. We\u2019ll email you when the video is live.";
+        input.value = '';
+      } else {
+        status.textContent = "Something went wrong \u2014 please email ai@maskin.io directly.";
+      }
+    }).catch(function () {
+      status.textContent = "Network error \u2014 please email ai@maskin.io directly.";
+    });
+  });
+})();
+</script>
 </body>
 </html>
