@@ -7,6 +7,12 @@ set -e
 # silently mis-routed on-site telemetry away from the workspace MCP.
 POSTHOG_PROJECT_KEY="phc_tfrEvZMAfNvPzmof6dHMndPEDuLe4wNdPDBTUJA66Zww"
 
+# Cloudflare Turnstile client sitekey (public, browser-visible). Read from the
+# TURNSTILE_SITEKEY env var so Cloudflare Pages can rotate it without a repo
+# change. Falls back to the Cloudflare public test key (always-pass) so preview
+# and local builds work before Infra & DevOps sets the production key.
+TURNSTILE_SITEKEY_VALUE="${TURNSTILE_SITEKEY:-1x00000000000000000000AA}"
+
 rm -rf dist
 mkdir -p dist
 
@@ -22,6 +28,13 @@ done
 shopt -u nullglob
 cp llms.txt llms-full.txt dist/
 cp maskin-launch.mp4 dist/
+
+# Shared client wiring for /marketplace/<slug>/ loop pages — page-view event,
+# form-submit handler, Turnstile token forwarding. Kept as a single source of
+# truth so all 4 loop pages behave identically (spec §Analytics).
+if [ -f partials/marketplace-events.js ]; then
+  cp partials/marketplace-events.js dist/marketplace-events.js
+fi
 
 # Top-level content subtrees. Add a new SEO cluster hub here (one line) and every
 # page under it ships automatically — no other build.sh edits required.
@@ -70,4 +83,7 @@ done
 # picked up automatically.
 find dist -type f -name '*.html' -print0 | xargs -0 sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g"
 
-echo "Build complete. PostHog snippet + key injected."
+# Substitute the Turnstile sitekey placeholder on every page that references it.
+find dist -type f -name '*.html' -print0 | xargs -0 sed -i "s/TURNSTILE_SITEKEY_PLACEHOLDER/$TURNSTILE_SITEKEY_VALUE/g"
+
+echo "Build complete. PostHog + Turnstile keys injected."
