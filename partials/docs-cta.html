@@ -1,0 +1,38 @@
+<!--
+Docs-shell CTA partial. Three sections, each demarcated by START/END comment
+markers so build.sh can extract them independently and inject at different
+points in every dist/docs/**/*.html:
+
+  DOCS_CTA_HEADER  → an <li> inserted into .docnav__links, right before the
+                      theme-toggle <li>. Renders as a filled Sign up button.
+  DOCS_CTA_CARD    → the end-of-article "Try Maskin" card, inserted just before
+                      the related-articles nav (or before </main> if absent).
+  DOCS_CTA_STRIP   → the thin "Try Maskin free" band, inserted right below the
+                      card, above related-articles nav.
+
+House-style guardrail: CTA copy stays "Sign up" or "Try Maskin free". Never
+"Get started" for a /signup link — that label is reserved for the walkthrough
+entry (/docs/get-started/) so the two funnel paths don't collapse.
+-->
+
+<!-- DOCS_CTA_HEADER_START -->
+<li class="docnav__cta-wrap"><a class="docnav__cta" href="/signup">Sign up</a></li>
+<!-- DOCS_CTA_HEADER_END -->
+
+<!-- DOCS_CTA_CARD_START -->
+<aside class="docs-cta" aria-label="Try Maskin">
+  <h2 class="docs-cta__title">Try Maskin</h2>
+  <p class="docs-cta__hook">Open-source, MCP-native workspace where humans and AI agents close the loop together. Self-host or managed.</p>
+  <div class="docs-cta__actions">
+    <a class="docs-cta__primary" href="/signup">Sign up</a>
+    <a class="docs-cta__secondary" href="/docs/get-started/">See how it works &rarr;</a>
+  </div>
+</aside>
+<!-- DOCS_CTA_CARD_END -->
+
+<!-- DOCS_CTA_STRIP_START -->
+<div class="docs-cta-strip">
+  <p class="docs-cta-strip__text">Ready to run the loop on your own workspace?</p>
+  <a class="docs-cta-strip__link" href="/signup">Try Maskin free</a>
+</div>
+<!-- DOCS_CTA_STRIP_END -->
