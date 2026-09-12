@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="The product discovery loop — Maskin Marketplace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111110"/>
+      <stop offset="1" stop-color="#2A2A26"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g transform="translate(80,80)">
+    <rect width="48" height="48" rx="10" fill="#FAFAF8"/>
+    <path d="M14 38 L14 12 L24 24 L34 12 L34 38" stroke="#111110" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+  </g>
+  <text x="146" y="116" fill="#FAFAF8" font-family="'Schibsted Grotesk', system-ui, sans-serif" font-weight="700" font-size="30">Maskin Marketplace</text>
+  <text x="80" y="200" fill="#EA5A00" font-family="'JetBrains Mono', monospace" font-size="20" letter-spacing="3">LOOP / PRODUCT</text>
+  <text x="80" y="330" fill="#FAFAF8" font-family="'Schibsted Grotesk', system-ui, sans-serif" font-weight="600" font-size="64">The product discovery loop</text>
+  <text x="80" y="420" fill="#B8B8AE" font-family="'Newsreader', Georgia, serif" font-style="italic" font-size="30">Close the loop from customer signal to shipped bet.</text>
+  <text x="80" y="565" fill="#8A8A80" font-family="'JetBrains Mono', monospace" font-size="14">Placeholder — Visual Designer replaces before first video drops</text>
+  <text x="1120" y="565" fill="#FAFAF8" font-family="'Schibsted Grotesk', system-ui, sans-serif" font-weight="700" font-size="18" text-anchor="end">maskin.io</text>
+</svg>
