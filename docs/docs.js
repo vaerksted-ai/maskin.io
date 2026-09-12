@@ -10,6 +10,12 @@
       { label: "Self-hosted setup", href: "/docs/get-started/self-hosted/", nested: true },
       { label: "Quickstart tutorial", href: "/docs/quickstart/" }
     ]},
+    { title: "Workflows", items: [
+      { label: "All workflows", href: "/workflows/" },
+      { label: "The SEO publisher workflow", href: "/workflows/seo-publisher/", nested: true },
+      { label: "The sales loop workflow", href: "/workflows/sales-loop/", nested: true },
+      { label: "The LLM knowledge wiki workflow", href: "/workflows/llm-knowledge-wiki/", nested: true }
+    ]},
     { title: "Concepts", items: [
       { label: "Core concepts", href: "/docs/concepts/" },
       { label: "Agents & sessions", href: "/docs/agents/" },
