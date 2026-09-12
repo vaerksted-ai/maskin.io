@@ -23,6 +23,7 @@ ORDER = [
   "docs/ai-product-management-tool/index.html",
   "docs/what-is-an-agentic-workspace/index.html",
   "docs/three-tiers-ai-native-work/index.html",
+  "docs/closed-loop-workspace/index.html",
   "docs/ai-product-workspace-vs-coding-agent/index.html",
   "docs/agentic-workspace-vs-knowledge-space/index.html",
   "docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/index.html",
