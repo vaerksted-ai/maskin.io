@@ -1,21 +1,18 @@
 > Source: https://maskin.io/docs/closed-loop-workspace/
 
-[Docs](/docs/) / The closed-loop workspace
-
-Article · Cornerstone
-
 # The closed-loop workspace: what tier 4 of AI-native work actually is
 
-**A closed-loop workspace is the fourth tier of AI-native work: the tier where the object of work is a shaped bet with a win condition, and the terminal event is a shipped change measured against that condition. The three lower tiers close on artifacts — a merged PR, a status column moving to done, a page being opened. A closed-loop workspace closes on an outcome. That single change to the object model is what lets the tool answer the question a product team actually needs answered: did the work succeed?**
+A closed-loop workspace is the fourth tier of AI-native work: the tier where the object of work is a shaped bet with a win condition, and the terminal event is a shipped change measured against that condition. The three lower tiers close on artifacts — a merged PR, a status column moving to done, a page being opened. A closed-loop workspace closes on an outcome. That single change to the object model is what lets the tool answer the question a product team actually needs answered: did the work succeed?
 
 The [trilogy hub](/docs/three-tiers-ai-native-work/) runs the closure diagnostic across the three tiers of AI-native work in the negative direction — what each tier does not close. The [tier-1 spoke](/docs/ai-product-workspace-vs-coding-agent/), the [tier-2 spoke](/docs/ai-product-management-tool/), and the [tier-3 spoke](/docs/agentic-workspace-vs-knowledge-space/) each pick up one tier's negative case. This piece is the fourth spoke: the affirmative case. What does a tool built to answer "did the work succeed?" actually look like — object model, terminal event, human split.
 
-> **Key takeaways**
-> - **A closed-loop workspace is a fourth tier**, not a rebrand of any of the first three. The object of work is a shaped bet with a win condition; the loop terminates on a validated outcome.
-> - **The tier is defined by what closes the loop**, not by which features it ships. If the terminal event is "outcome measured against win condition," you are on tier 4. If it is a merge, a status change, or a page view, you are on one of the tiers below.
-> - **The human split is deliberate**: agents do the closing, humans keep the taste. The workspace is bounded and human-gated by design, because the decisions that need judgment are the ones that should not be automated.
-> - **The vocabulary is early and contested**. "Closed-loop workspace," "agentic workspace," "closed-loop agentic AI," and "decision engine" all name adjacent shapes, and none of them is settled. This piece uses "closed-loop workspace" because it is the affirmative name for what the closure diagnostic identifies.
-> - **Most teams will run a closed-loop workspace on top of the other three tiers**, not instead of them. A coding agent, a tracker, and a knowledge space each do the job of their tier well; a closed-loop workspace does the job the other three tiers cannot. Two shapes of tier-4 workspace already ship as OSS: SDLC-scoped ([Closedloop.ai](https://www.closedloop.ai)) and broader knowledge-work-scoped ([Maskin](https://maskin.io)) — the scope of your loop decides which one you need.
+## Key takeaways
+
+- A closed-loop workspace is a fourth tier, not a rebrand of any of the first three. The object of work is a shaped bet with a win condition; the loop terminates on a validated outcome.
+- The tier is defined by what closes the loop, not by which features it ships. If the terminal event is "outcome measured against win condition," you are on tier 4. If it is a merge, a status change, or a page view, you are on one of the tiers below.
+- The human split is deliberate: agents do the closing, humans keep the taste. The workspace is bounded and human-gated by design, because the decisions that need judgment are the ones that should not be automated.
+- The vocabulary is early and contested. "Closed-loop workspace," "agentic workspace," "closed-loop agentic AI," and "decision engine" all name adjacent shapes, and none of them is settled. This piece uses "closed-loop workspace" because it is the affirmative name for what the closure diagnostic identifies.
+- Most teams will run a closed-loop workspace on top of the other three tiers, not instead of them. A coding agent, a tracker, and a knowledge space each do the job of their tier well; a closed-loop workspace does the job the other three tiers cannot. Two shapes of tier-4 workspace already ship as OSS: SDLC-scoped ([Closedloop.ai](https://www.closedloop.ai)) and broader knowledge-work-scoped ([Maskin](https://maskin.io)) — the scope of your loop decides which one you need.
 
 ## What the closure diagnostic asks, run affirmatively
 
@@ -94,7 +91,5 @@ Almost always yes. Most product teams that run a closed-loop workspace also run 
 The full shape of a closed-loop workspace — the loop mechanics, the bounded-and-human-gated safety model, the shared typed object graph agents and humans work, the pricing — is in the [cornerstone on agentic workspaces](/docs/what-is-an-agentic-workspace/). This spoke is the diagnostic-frame entry point; the cornerstone is the end-to-end walk.
 
 The three sibling spokes complete the trilogy: [tier 1 on coding agents](/docs/ai-product-workspace-vs-coding-agent/), [tier 2 on task trackers](/docs/ai-product-management-tool/), [tier 3 on knowledge spaces](/docs/agentic-workspace-vs-knowledge-space/). Read together, they run the closure diagnostic in both directions across the full stack.
-
----
 
 *Maskin is open source under Apache 2.0. Self-hosting is free; hosted Pro is $20/seat/month; Team is $200/workspace/month with unlimited seats.*
