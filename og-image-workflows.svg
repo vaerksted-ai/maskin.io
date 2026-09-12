@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Maskin workflows — outcomes you can run">
+  <defs>
+    <pattern id="grid-w" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FAFAF8" stroke-width="1" opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid-w)"/>
+  <g font-family="'Schibsted Grotesk', system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+    <text x="80" y="130" font-size="24" font-weight="500" fill="#8B8781" letter-spacing="0.14em">MASKIN &#8594; WORKFLOWS</text>
+    <text x="80" y="240" font-size="78" font-weight="700" fill="#FAFAF8">Outcomes</text>
+    <text x="80" y="330" font-size="78" font-weight="700" fill="#FAFAF8">you can run.</text>
+  </g>
+  <g font-family="'Newsreader', Georgia, serif" font-style="italic">
+    <text x="80" y="420" font-size="30" fill="#8B8781">SEO publishing &#183; sales loop &#183; LLM knowledge wiki</text>
+    <text x="80" y="460" font-size="30" fill="#8B8781">&#8212; the loops teams are already running on Maskin.</text>
+  </g>
+  <g transform="translate(80, 540)">
+    <rect x="0" y="0" width="180" height="46" rx="6" fill="#141311" stroke="#2A2825" stroke-width="1"/>
+    <text x="14" y="30" font-family="'JetBrains Mono', monospace" font-size="16" fill="#FAFAF8">/workflows/</text>
+  </g>
+  <g transform="translate(1030, 500)">
+    <rect x="0" y="0" width="100" height="100" rx="18" fill="#FAFAF8"/>
+    <path d="M25 80 L25 25 L50 55 L75 25 L75 80" stroke="#111110" stroke-width="10" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+  </g>
+  <text x="1080" y="128" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="16" fill="#5A5751">maskin.io</text>
+</svg>
