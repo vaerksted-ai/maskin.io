@@ -22,6 +22,13 @@ done
 shopt -u nullglob
 cp llms.txt llms-full.txt dist/
 cp maskin-launch.mp4 dist/
+# IndexNow key file(s): served at https://maskin.io/<key>.txt so api.indexnow.org
+# can verify ownership before accepting a URL submission.
+shopt -s nullglob
+for f in [0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]*.txt; do
+  cp "$f" dist/
+done
+shopt -u nullglob
 
 # Top-level content subtrees. Add a new SEO cluster hub here (one line) and every
 # page under it ships automatically — no other build.sh edits required.
