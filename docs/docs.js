@@ -93,6 +93,7 @@
         '<span class="docnav__spacer"></span>' +
         '<ul class="docnav__links">' +
           '<li class="docnav__hide-sm"><a href="/">Home</a></li>' +
+          '<li><a href="/docs/">Docs</a></li>' +
           '<li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>' +
           '<li class="docnav__hide-sm"><a href="http://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li>' +
           '<li>' + TOGGLE + '</li>' +
