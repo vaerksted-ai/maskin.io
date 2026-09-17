@@ -5,7 +5,7 @@
 // Events (spec §Analytics; PostHog must never see the legacy `workflow_slug` /
 // `marketplace_workflow_page_view` names):
 //   marketplace_loop_page_view   { loop_slug, referrer_source }              on load
-//   marketplace_email_capture    { loop_slug, referrer_source, email_domain } on submit 200
+//   marketplace_email_capture    { loop_slug, referrer_source, email_domain } on non-dedupe submit 200
 //
 // PII: no raw email in event payloads — only email_domain.
 //
@@ -185,15 +185,15 @@
                 "You're on the list. We'll email you when the video is live.",
                 "success",
               );
+              if (window.posthog && window.posthog.capture) {
+                window.posthog.capture("marketplace_email_capture", {
+                  loop_slug: loop_slug,
+                  referrer_source: normalizeReferrer(document.referrer),
+                  email_domain: emailDomainOf(email),
+                });
+              }
             }
             if (input) input.value = "";
-            if (window.posthog && window.posthog.capture) {
-              window.posthog.capture("marketplace_email_capture", {
-                loop_slug: loop_slug,
-                referrer_source: normalizeReferrer(document.referrer),
-                email_domain: emailDomainOf(email),
-              });
-            }
             if (window.turnstile && window.turnstile.reset) {
               try {
                 window.turnstile.reset();
