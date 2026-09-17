@@ -13,12 +13,15 @@
 //   <form class="waitlist" data-loop-slug="<slug>" ...>
 //     <input name="email" type="email" required>
 //     <input type="checkbox" name="consent" required>
-//     <div class="cf-turnstile" data-sitekey="..." data-callback="onTurnstileToken"></div>
+//     <div class="cf-turnstile" data-sitekey="..."></div>
 //     <button type="submit">...</button>
 //     <p class="waitlist__status" role="status" aria-live="polite"></p>
 //   </form>
 //   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 //   <script src="/marketplace-events.js" defer></script>
+//
+// No data-callback is needed: Turnstile injects its own cf-turnstile-response
+// hidden input into the enclosing form, and that is what the submit handler reads.
 
 (function () {
   "use strict";
