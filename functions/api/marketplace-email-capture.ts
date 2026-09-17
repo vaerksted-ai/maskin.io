@@ -26,6 +26,7 @@ interface Env {
   RESEND_FROM?: string;
   TURNSTILE_SECRET?: string;
   MARKETPLACE_CAPTURE_ALLOW_INSECURE?: string;
+  CF_PAGES_BRANCH?: string;
 }
 
 interface KVNamespace {
@@ -56,7 +57,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return json({ ok: false, error: "consent_required" }, 400);
   }
 
-  const allowInsecure = context.env.MARKETPLACE_CAPTURE_ALLOW_INSECURE === "1";
+  const allowInsecure = insecureBypassAllowed(context.request, context.env);
 
   const turnstileOk = await verifyTurnstile(
     turnstile_token,
@@ -108,6 +109,19 @@ export const onRequestOptions: PagesFunction = async () =>
       "access-control-allow-headers": "content-type",
     },
   });
+
+const PRODUCTION_HOSTS = new Set(["maskin.io", "www.maskin.io"]);
+
+// Fail closed. The insecure bypass exists for local dev and preview deployments
+// only (Turnstile siteverify and the Resend key are both absent there). It is
+// inert on the production host and on the production branch even when the env
+// var is set, so a stray MARKETPLACE_CAPTURE_ALLOW_INSECURE=1 in the Pages
+// config can never let an unverified Turnstile / keyless Resend call through.
+function insecureBypassAllowed(request: Request, env: Env): boolean {
+  if (env.MARKETPLACE_CAPTURE_ALLOW_INSECURE !== "1") return false;
+  if ((env.CF_PAGES_BRANCH || "") === "main") return false;
+  return !PRODUCTION_HOSTS.has(new URL(request.url).hostname.toLowerCase());
+}
 
 async function verifyTurnstile(
   token: string,
