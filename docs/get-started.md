@@ -16,6 +16,7 @@ Pick the path that fits how you want to operate.
 > The setup guide covers the **self-hosted** version. For managed hosting, [book a meeting](https://meshfirm.com/bookmagnus) with the founders.
 
 ## Next steps
+- Prefer a hands-on walkthrough? → [Quickstart tutorial](/docs/quickstart/) — empty instance to an agent doing real work in about ten minutes, all driven from Claude
 - Understand the model → [Core concepts](/docs/concepts/)
 - Set up your own instance → [Self-hosted setup](/docs/get-started/self-hosted/)
 - See what agents can do → [MCP tools](/docs/mcp-tools/) and [Agents & sessions](/docs/agents/)
