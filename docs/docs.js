@@ -14,7 +14,8 @@
       { label: "All loops", href: "/marketplace/" },
       { label: "The SEO publishing loop", href: "/marketplace/seo-publishing/", nested: true },
       { label: "The outbound loop", href: "/marketplace/outbound/", nested: true },
-      { label: "The LLM knowledge wiki loop", href: "/marketplace/knowledge-wiki/", nested: true }
+      { label: "The LLM knowledge wiki loop", href: "/marketplace/knowledge-wiki/", nested: true },
+      { label: "The product discovery loop", href: "/marketplace/product-discovery/", nested: true }
     ]},
     { title: "Concepts", items: [
       { label: "Core concepts", href: "/docs/concepts/" },
