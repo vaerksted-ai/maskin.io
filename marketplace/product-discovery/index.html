@@ -18,7 +18,7 @@
 <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
 
 <!-- Open Graph -->
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://maskin.io/marketplace/product-discovery/">
 <meta property="og:title" content="Close the loop from customer signal to shipped bet.">
 <meta property="og:description" content="Interviews, tickets, and reviews land as typed insight — the loop closes when a shaped bet ships against them.">
@@ -112,6 +112,9 @@
   .waitlist__submit { padding: .7rem 1.1rem; border-radius: 8px; border: 0; background: var(--ink); color: var(--linen); font-family: var(--ff-display); font-weight: 600; cursor: pointer; }
   .waitlist__submit:hover { background: var(--ink-2); }
   .waitlist__status { font-family: var(--ff-mono); font-size: .8rem; color: var(--ink-3); min-height: 1.2em; margin: 0; }
+  .waitlist__challenge { min-height: 65px; }
+  .waitlist__status[data-tone=error] { color: var(--accent, #b04747); }
+  .waitlist__status[data-tone=success] { color: var(--ink); }
   .waitlist__fallback { font-size: .8rem; color: var(--ink-3); margin: .75rem 0 0; }
   .positioning-line { font-family: var(--ff-serif); font-size: 1.15rem; font-style: italic; color: var(--ink-2); margin: 1.75rem 0 2.5rem; border-left: 3px solid var(--accent); padding: .25rem 0 .25rem 1rem; }
   .primitives { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.5rem 0 3rem; }
@@ -147,10 +150,11 @@
       <aside class="cta-card">
         <p class="cta-card__title">Get the loop when it ships.</p>
         <p class="cta-card__lede">Full walkthrough, plus the guide when the video drops.</p>
-        <form class="waitlist" data-loop="product-discovery" data-form-position="hero" novalidate>
+        <form class="waitlist" data-loop-slug="product-discovery" data-form-position="hero" novalidate>
           <label class="waitlist__label" for="wl-email-pd-hero">Your work email</label>
           <input class="waitlist__input" id="wl-email-pd-hero" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
           <label class="waitlist__consent" for="wl-consent-pd-hero"><input type="checkbox" name="consent" id="wl-consent-pd-hero"> <span>I agree to receive the product discovery guide and occasional Maskin updates. Unsubscribe any time.</span></label>
+          <div class="waitlist__challenge cf-turnstile" data-sitekey="TURNSTILE_SITEKEY_PLACEHOLDER" data-theme="auto" data-appearance="always"></div>
           <button class="waitlist__submit" type="submit">Get the loop when it ships</button>
           <p class="waitlist__status" role="status" aria-live="polite"></p>
         </form>
@@ -190,10 +194,11 @@
     <aside class="secondary-cta">
       <p class="cta-card__title">Get the loop when it ships.</p>
       <p class="cta-card__lede">Same form, second chance &mdash; if you scrolled past the top one.</p>
-      <form class="waitlist" data-loop="product-discovery" data-form-position="footer" novalidate>
+      <form class="waitlist" data-loop-slug="product-discovery" data-form-position="footer" novalidate>
         <label class="waitlist__label" for="wl-email-pd-bottom">Your work email</label>
         <input class="waitlist__input" id="wl-email-pd-bottom" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
         <label class="waitlist__consent" for="wl-consent-pd-bottom"><input type="checkbox" name="consent" id="wl-consent-pd-bottom"> <span>I agree to receive the product discovery guide and occasional Maskin updates. Unsubscribe any time.</span></label>
+        <div class="waitlist__challenge cf-turnstile" data-sitekey="TURNSTILE_SITEKEY_PLACEHOLDER" data-theme="auto" data-appearance="always"></div>
         <button class="waitlist__submit" type="submit">Get the loop when it ships</button>
         <p class="waitlist__status" role="status" aria-live="polite"></p>
       </form>
@@ -212,55 +217,7 @@
 </div>
 
 <script src="/docs/docs.js"></script>
-<script>
-(function () {
-  var forms = document.querySelectorAll('form.waitlist');
-  if (!forms.length) return;
-  forms.forEach(function (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var status = form.querySelector('.waitlist__status');
-      var input = form.querySelector('input[name="email"]');
-      var consent = form.querySelector('input[name="consent"]');
-      var email = (input.value || '').trim();
-      if (!email || email.indexOf('@') < 1) {
-        status.textContent = 'Please enter a valid email address.';
-        return;
-      }
-      if (!consent.checked) {
-        status.textContent = 'Please tick the consent box to continue.';
-        return;
-      }
-      status.textContent = 'Adding you to the list\u2026';
-      // NOTE: Task 3 rewires this to /api/marketplace-email-capture with Turnstile + KV dedupe + Resend.
-      // For now we post the same shape the existing 3 loop pages post, plus loop_slug + consent.
-      fetch('/api/waitlist', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({
-          email: email,
-          workflow: form.dataset.loop,
-          loop: form.dataset.loop,
-          consent: consent.checked,
-          source: location.pathname,
-          position: form.dataset.formPosition
-        })
-      }).then(function (r) {
-        if (r.ok) {
-          status.textContent = "You\u2019re on the list. We\u2019ll email you when the video is live.";
-          input.value = '';
-          consent.checked = false;
-        } else if (r.status === 409) {
-          status.textContent = "You\u2019re already on the list \u2014 we\u2019ll email when the video drops.";
-        } else {
-          status.textContent = "Something went wrong \u2014 please email ai@maskin.io directly.";
-        }
-      }).catch(function () {
-        status.textContent = "Network error \u2014 please email ai@maskin.io directly.";
-      });
-    });
-  });
-})();
-</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="/marketplace-events.js" defer></script>
 </body>
 </html>
