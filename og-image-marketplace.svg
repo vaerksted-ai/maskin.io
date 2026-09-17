@@ -1,27 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Maskin workflows — outcomes you can run">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Maskin marketplace — outcome-first loops you can run">
   <defs>
-    <pattern id="grid-w" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FAFAF8" stroke-width="1" opacity="0.05"/>
+    <pattern id="grid-loop-hub" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FAFAF8" stroke-width="1" opacity="0.04"/>
     </pattern>
   </defs>
   <rect width="1200" height="630" fill="#111110"/>
-  <rect width="1200" height="630" fill="url(#grid-w)"/>
-  <g font-family="'Schibsted Grotesk', system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
-    <text x="80" y="130" font-size="24" font-weight="500" fill="#8B8781" letter-spacing="0.14em">MASKIN &#8594; WORKFLOWS</text>
-    <text x="80" y="240" font-size="78" font-weight="700" fill="#FAFAF8">Outcomes</text>
-    <text x="80" y="330" font-size="78" font-weight="700" fill="#FAFAF8">you can run.</text>
+  <rect width="1200" height="630" fill="url(#grid-loop-hub)"/>
+  <text x="80" y="112" font-family="'JetBrains Mono'" font-size="20" font-weight="500" fill="#2563EB" letter-spacing="0.18em">MARKETPLACE</text>
+  <path d="M 80 150 L 660 150" stroke="#2A2825" stroke-width="1"/>
+  <text x="80" y="252" font-family="'Schibsted Grotesk'" font-size="54" font-weight="600" fill="#FAFAF8" letter-spacing="-0.015em">Maskin marketplace &#8212;</text>
+  <text x="80" y="315" font-family="'Schibsted Grotesk'" font-size="54" font-weight="600" fill="#FAFAF8" letter-spacing="-0.015em">outcome-first loops you can run</text>
+  <text x="80" y="374.64" font-family="'Newsreader'" font-style="italic" font-size="27" fill="#8B8781">The loops teams are already running on Maskin</text>
+  <path d="M 297.00 414.00 L 349.00 414.00 A 32 32 0 0 1 381.00 446.00 L 381.00 494.00 A 32 32 0 0 1 349.00 526.00 L 245.00 526.00 A 32 32 0 0 1 213.00 494.00 L 213.00 446.00 A 32 32 0 0 1 245.00 414.00 L 296.99 414.00" fill="none" stroke="#46433E" stroke-width="2"/>
+    <path d="M 213.00 470.00 L 213.00 446.00 A 32 32 0 0 1 245.00 414.00 L 296.99 414.00" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round"/>
+    <rect x="291.00" y="408.00" width="12" height="12" fill="#FAFAF8" transform="rotate(0 297.00 414.00)"/>
+    <rect x="377.50" y="466.50" width="7" height="7" fill="#8B8781" transform="rotate(90 381.00 470.00)"/>
+    <rect x="293.50" y="522.50" width="7" height="7" fill="#8B8781" transform="rotate(180 297.00 526.00)"/>
+    <rect x="209.50" y="466.50" width="7" height="7" fill="#8B8781" transform="rotate(-90 213.00 470.00)"/>
+    <text x="297" y="566" text-anchor="middle" font-family="'JetBrains Mono'" font-size="13" letter-spacing="0.16em" fill="#5A5751">CONTENT</text>
+  <path d="M 499.00 414.00 L 551.00 414.00 A 32 32 0 0 1 583.00 446.00 L 583.00 494.00 A 32 32 0 0 1 551.00 526.00 L 447.00 526.00 A 32 32 0 0 1 415.00 494.00 L 415.00 446.00 A 32 32 0 0 1 447.00 414.00 L 498.99 414.00" fill="none" stroke="#46433E" stroke-width="2"/>
+    <path d="M 415.00 470.00 L 415.00 446.00 A 32 32 0 0 1 447.00 414.00 L 498.99 414.00" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round"/>
+    <rect x="493.00" y="408.00" width="12" height="12" fill="#FAFAF8" transform="rotate(0 499.00 414.00)"/>
+    <rect x="579.50" y="466.50" width="7" height="7" fill="#8B8781" transform="rotate(90 583.00 470.00)"/>
+    <rect x="495.50" y="522.50" width="7" height="7" fill="#8B8781" transform="rotate(180 499.00 526.00)"/>
+    <rect x="411.50" y="466.50" width="7" height="7" fill="#8B8781" transform="rotate(-90 415.00 470.00)"/>
+    <text x="499" y="566" text-anchor="middle" font-family="'JetBrains Mono'" font-size="13" letter-spacing="0.16em" fill="#5A5751">SALES</text>
+  <path d="M 701.00 414.00 L 753.00 414.00 A 32 32 0 0 1 785.00 446.00 L 785.00 494.00 A 32 32 0 0 1 753.00 526.00 L 649.00 526.00 A 32 32 0 0 1 617.00 494.00 L 617.00 446.00 A 32 32 0 0 1 649.00 414.00 L 700.99 414.00" fill="none" stroke="#46433E" stroke-width="2"/>
+    <path d="M 617.00 470.00 L 617.00 446.00 A 32 32 0 0 1 649.00 414.00 L 700.99 414.00" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round"/>
+    <rect x="695.00" y="408.00" width="12" height="12" fill="#FAFAF8" transform="rotate(0 701.00 414.00)"/>
+    <rect x="781.50" y="466.50" width="7" height="7" fill="#8B8781" transform="rotate(90 785.00 470.00)"/>
+    <rect x="697.50" y="522.50" width="7" height="7" fill="#8B8781" transform="rotate(180 701.00 526.00)"/>
+    <rect x="613.50" y="466.50" width="7" height="7" fill="#8B8781" transform="rotate(-90 617.00 470.00)"/>
+    <text x="701" y="566" text-anchor="middle" font-family="'JetBrains Mono'" font-size="13" letter-spacing="0.16em" fill="#5A5751">KNOWLEDGE</text>
+  <path d="M 903.00 414.00 L 955.00 414.00 A 32 32 0 0 1 987.00 446.00 L 987.00 494.00 A 32 32 0 0 1 955.00 526.00 L 851.00 526.00 A 32 32 0 0 1 819.00 494.00 L 819.00 446.00 A 32 32 0 0 1 851.00 414.00 L 902.99 414.00" fill="none" stroke="#46433E" stroke-width="2"/>
+    <path d="M 819.00 470.00 L 819.00 446.00 A 32 32 0 0 1 851.00 414.00 L 902.99 414.00" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round"/>
+    <rect x="897.00" y="408.00" width="12" height="12" fill="#FAFAF8" transform="rotate(0 903.00 414.00)"/>
+    <rect x="983.50" y="466.50" width="7" height="7" fill="#8B8781" transform="rotate(90 987.00 470.00)"/>
+    <rect x="899.50" y="522.50" width="7" height="7" fill="#8B8781" transform="rotate(180 903.00 526.00)"/>
+    <rect x="815.50" y="466.50" width="7" height="7" fill="#8B8781" transform="rotate(-90 819.00 470.00)"/>
+    <text x="903" y="566" text-anchor="middle" font-family="'JetBrains Mono'" font-size="13" letter-spacing="0.16em" fill="#5A5751">PRODUCT</text>
+  <g transform="translate(1068 78) scale(0.65)">
+    <rect width="80" height="80" rx="14" fill="#FAFAF8"/>
+    <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#111110" stroke-width="10" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
   </g>
-  <g font-family="'Newsreader', Georgia, serif" font-style="italic">
-    <text x="80" y="420" font-size="30" fill="#8B8781">SEO publishing &#183; sales loop &#183; LLM knowledge wiki</text>
-    <text x="80" y="460" font-size="30" fill="#8B8781">&#8212; the loops teams are already running on Maskin.</text>
-  </g>
-  <g transform="translate(80, 540)">
-    <rect x="0" y="0" width="180" height="46" rx="6" fill="#141311" stroke="#2A2825" stroke-width="1"/>
-    <text x="14" y="30" font-family="'JetBrains Mono', monospace" font-size="16" fill="#FAFAF8">/workflows/</text>
-  </g>
-  <g transform="translate(1030, 500)">
-    <rect x="0" y="0" width="100" height="100" rx="18" fill="#FAFAF8"/>
-    <path d="M25 80 L25 25 L50 55 L75 25 L75 80" stroke="#111110" stroke-width="10" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
-  </g>
-  <text x="1080" y="128" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="16" fill="#5A5751">maskin.io</text>
+  <text x="1120" y="610" text-anchor="end" font-family="'JetBrains Mono'" font-size="16" fill="#5A5751">maskin.io/marketplace</text>
 </svg>

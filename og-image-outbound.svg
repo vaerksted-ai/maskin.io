@@ -1,53 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="The sales loop workflow">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="The outbound loop">
   <defs>
-    <pattern id="grid-sales" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FAFAF8" stroke-width="1" opacity="0.05"/>
+    <pattern id="grid-loop-out" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FAFAF8" stroke-width="1" opacity="0.04"/>
     </pattern>
   </defs>
   <rect width="1200" height="630" fill="#111110"/>
-  <rect width="1200" height="630" fill="url(#grid-sales)"/>
-  <g font-family="'Schibsted Grotesk', system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
-    <text x="80" y="130" font-size="24" font-weight="500" fill="#8B8781" letter-spacing="0.14em">WORKFLOW &#183; SALES</text>
-    <text x="80" y="240" font-size="84" font-weight="700" fill="#FAFAF8">The sales loop</text>
-    <text x="80" y="330" font-size="84" font-weight="700" fill="#FAFAF8">workflow.</text>
+  <rect width="1200" height="630" fill="url(#grid-loop-out)"/>
+  <text x="80" y="112" font-family="'JetBrains Mono'" font-size="20" font-weight="500" fill="#2563EB" letter-spacing="0.18em">LOOP &#183; SALES</text>
+  <path d="M 80 150 L 660 150" stroke="#2A2825" stroke-width="1"/>
+  <text x="80" y="250" font-family="'Schibsted Grotesk'" font-size="51" font-weight="600" fill="#FAFAF8" letter-spacing="-0.015em">Run outbound that</text>
+  <text x="80" y="309" font-family="'Schibsted Grotesk'" font-size="51" font-weight="600" fill="#FAFAF8" letter-spacing="-0.015em">closes on a booked call,</text>
+  <text x="80" y="368" font-family="'Schibsted Grotesk'" font-size="51" font-weight="600" fill="#FAFAF8" letter-spacing="-0.015em">not a queue drained.</text>
+  <text x="80" y="432" font-family="'Newsreader'" font-style="italic" font-size="27" fill="#8B8781">The outbound loop</text>
+  <path d="M 900.00 192.00 L 1016.00 192.00 A 84 84 0 0 1 1100.00 276.00 L 1100.00 428.00 A 84 84 0 0 1 1016.00 512.00 L 784.00 512.00 A 84 84 0 0 1 700.00 428.00 L 700.00 276.00 A 84 84 0 0 1 784.00 192.00 L 899.99 192.00" fill="none" stroke="#46433E" stroke-width="2.5"/>
+    <path d="M 722.43 218.86 A 84 84 0 0 1 784.00 192.00 L 899.99 192.00" fill="none" stroke="#2563EB" stroke-width="3.5" stroke-linecap="round"/>
+    <g transform="translate(866.00 192.00) rotate(0)"><path d="M -15 -9 L -1 0 L -15 9" fill="none" stroke="#2563EB" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <rect x="892.00" y="184.00" width="16" height="16" fill="#FAFAF8" transform="rotate(0 900.00 192.00)"/>
+    <rect x="1072.57" y="213.86" width="10" height="10" fill="#8B8781" transform="rotate(90 1077.57 218.86)"/>
+    <rect x="1095.00" y="393.28" width="10" height="10" fill="#8B8781" transform="rotate(90 1100.00 398.28)"/>
+    <rect x="987.56" y="507.00" width="10" height="10" fill="#8B8781" transform="rotate(180 992.56 512.00)"/>
+    <rect x="802.44" y="507.00" width="10" height="10" fill="#8B8781" transform="rotate(180 807.44 512.00)"/>
+    <rect x="695.00" y="393.28" width="10" height="10" fill="#8B8781" transform="rotate(-90 700.00 398.28)"/>
+    <rect x="717.43" y="213.86" width="10" height="10" fill="#8B8781" transform="rotate(270 722.43 218.86)"/>
+  <text x="900" y="556" text-anchor="middle" font-family="'JetBrains Mono'" font-size="16" letter-spacing="0.16em" fill="#5A5751">07 STEPS</text>
+  <g transform="translate(1068 78) scale(0.65)">
+    <rect width="80" height="80" rx="14" fill="#FAFAF8"/>
+    <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#111110" stroke-width="10" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
   </g>
-  <g font-family="'Newsreader', Georgia, serif" font-style="italic">
-    <text x="80" y="410" font-size="28" fill="#8B8781">Signal, research, draft, human approval, send, reply routing, close.</text>
-    <text x="80" y="448" font-size="28" fill="#8B8781">$50&#8211;200/mo on your own keys, not $2&#8211;5k/mo on a closed SaaS.</text>
-  </g>
-  <g transform="translate(80, 510)" font-family="'JetBrains Mono', monospace" font-size="15" fill="#FAFAF8">
-    <g>
-      <rect x="0" y="0" width="130" height="42" rx="6" fill="#141311" stroke="#2A2825"/>
-      <text x="12" y="27">signal</text>
-    </g>
-    <g transform="translate(145, 0)">
-      <rect x="0" y="0" width="130" height="42" rx="6" fill="#141311" stroke="#2A2825"/>
-      <text x="12" y="27">research</text>
-    </g>
-    <g transform="translate(290, 0)">
-      <rect x="0" y="0" width="130" height="42" rx="6" fill="#141311" stroke="#2A2825"/>
-      <text x="12" y="27">draft</text>
-    </g>
-    <g transform="translate(435, 0)">
-      <rect x="0" y="0" width="130" height="42" rx="6" fill="#141311" stroke="#2563EB" stroke-width="2"/>
-      <text x="12" y="27">approve</text>
-    </g>
-    <g transform="translate(580, 0)">
-      <rect x="0" y="0" width="130" height="42" rx="6" fill="#141311" stroke="#2A2825"/>
-      <text x="12" y="27">send</text>
-    </g>
-    <g transform="translate(725, 0)">
-      <rect x="0" y="0" width="130" height="42" rx="6" fill="#141311" stroke="#2A2825"/>
-      <text x="12" y="27">route</text>
-    </g>
-    <g transform="translate(870, 0)">
-      <rect x="0" y="0" width="130" height="42" rx="6" fill="#141311" stroke="#2A2825"/>
-      <text x="12" y="27">close</text>
-    </g>
-  </g>
-  <g transform="translate(1030, 100)">
-    <rect x="0" y="0" width="100" height="100" rx="18" fill="#FAFAF8"/>
-    <path d="M25 80 L25 25 L50 55 L75 25 L75 80" stroke="#111110" stroke-width="10" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
-  </g>
-  <text x="1120" y="220" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="15" fill="#5A5751">maskin.io/workflows/sales-loop</text>
+  <text x="80" y="582" text-anchor="start" font-family="'JetBrains Mono'" font-size="16" fill="#5A5751">maskin.io/marketplace/outbound</text>
 </svg>
