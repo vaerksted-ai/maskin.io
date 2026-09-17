@@ -15,3 +15,23 @@
 /bet-vs-backlog/                /docs/bet-vs-backlog/                301
 /bet-vs-backlog                 /docs/bet-vs-backlog/                301
 /og-image-agent-observability.png  /og-image-agent-observability.svg  302
+
+# Marketplace / Loop vocabulary reshape (bet 6957): every legacy /workflows/*
+# URL redirects to its /marketplace/* counterpart with a permanent 301 so link
+# equity and any early index carries over. Both the shipped legacy slugs
+# (seo-publisher, sales-loop, llm-knowledge-wiki) and the /marketplace/-aligned
+# outcome-verb slugs (seo-publishing, outbound, knowledge-wiki) are covered.
+/workflows/seo-publisher/       /marketplace/seo-publishing/  301
+/workflows/seo-publisher        /marketplace/seo-publishing/  301
+/workflows/sales-loop/          /marketplace/outbound/        301
+/workflows/sales-loop           /marketplace/outbound/        301
+/workflows/llm-knowledge-wiki/  /marketplace/knowledge-wiki/  301
+/workflows/llm-knowledge-wiki   /marketplace/knowledge-wiki/  301
+/workflows/seo-publishing/      /marketplace/seo-publishing/  301
+/workflows/seo-publishing       /marketplace/seo-publishing/  301
+/workflows/outbound/            /marketplace/outbound/        301
+/workflows/outbound             /marketplace/outbound/        301
+/workflows/knowledge-wiki/      /marketplace/knowledge-wiki/  301
+/workflows/knowledge-wiki       /marketplace/knowledge-wiki/  301
+/workflows/                     /marketplace/                 301
+/workflows                      /marketplace/                 301
