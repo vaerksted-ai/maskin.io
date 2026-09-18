@@ -58,6 +58,8 @@ One point of vocabulary hygiene worth flagging. In agent-lifecycle research, [jp
 
 Closure changes what the tool is for. A coding agent is an execution runtime; a tracker with a narrator is a reading surface; a knowledge space is a filing cabinet. A closed loop on a bet is a decision engine — the object of work is the decision, and the terminal event is that the decision was measured. That is a different job, not a bigger version of the other three.
 
+If the diagnostic puts your team at tier 2 or 3, the way up is [the AI-Native Loop Sprint](/sprint/): half a day to a day of setup, then a sprint window where every loop starts in dry run and graduates to semi- or fully autonomous only once its quality holds against its close condition. Same closure question, run against your own stack.
+
 ## Where this sits in the Maskin cornerstone
 
 The tier-comparison trilogy is one arm of Maskin's category argument. The other arm is the positive definition: what an AI-native agentic workspace is when you build the object model around a bet and a validated outcome instead of a note, a ticket, or a task. If you have read the tier pieces and want the full shape end to end — the closed loop of insight → bet → task → shipped → validated, the bounded-and-human-gated safety model, the shared typed object graph agents and humans work — the cornerstone walks it: [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/).
