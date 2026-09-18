@@ -41,6 +41,10 @@
 
 <link rel="stylesheet" href="/docs/docs.css">
 
+<!-- lite-youtube-embed facade: thumbnail on load, iframe on click. Zero-cost until user clicks. -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.css">
+<script src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.js" defer></script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -74,6 +78,20 @@
       "keywords": "seo loop, seo publishing loop, ai seo publisher, automated seo publishing, indexed rank"
     },
     {
+      "@type": "VideoObject",
+      "name": "How 6 AI agents run our whole SEO strategy - Maskin.io",
+      "description": "Walkthrough of Maskin's SEO publishing loop: keyword bracket to indexed rank. Signal, research, draft, human approval, publish, measure, close.",
+      "thumbnailUrl": ["https://maskin.io/og-image-seo-publishing.png"],
+      "uploadDate": "2026-09-16",
+      "embedUrl": "https://www.youtube.com/embed/qwcBG6K6GyE",
+      "contentUrl": "https://www.youtube.com/watch?v=qwcBG6K6GyE",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      }
+    },
+    {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
@@ -103,10 +121,8 @@
     <p class="positioning-line">For product teams who own their own growth pages and are done losing weeks to <em>draft in Notion, publish somewhere else, forget who owns rank checks</em>.</p>
 
     <style>
-      .video-embed { position: relative; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: var(--linen); border: 1px solid var(--rule); margin: 1.5rem 0 2rem; display: flex; align-items: center; justify-content: center; text-align: center; }
-      .video-embed__placeholder { padding: 2rem; color: var(--ink-2); font-family: var(--ff-serif); font-style: italic; }
-      .video-embed__badge { display: inline-block; font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); padding: .3rem .55rem; border: 1px solid var(--accent); border-radius: 6px; margin-bottom: .8rem; }
-      .video-embed__label { font-size: 1.05rem; }
+      .video-embed { aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: var(--linen); border: 1px solid var(--rule); margin: 1.5rem 0 2rem; }
+      .video-embed lite-youtube { width: 100%; height: 100%; border-radius: 14px; display: block; }
       .waitlist { display: flex; gap: .6rem; flex-wrap: wrap; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin: 0 0 .5rem; }
       .waitlist__input { flex: 1 1 240px; padding: .7rem .9rem; border: 1px solid var(--rule); border-radius: 8px; font: inherit; background: var(--linen); color: var(--ink); }
       .waitlist__input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
@@ -128,11 +144,8 @@
       .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
     </style>
 
-    <div class="video-embed" role="figure" aria-label="SEO publishing loop video, dropping this week">
-      <div class="video-embed__placeholder">
-        <div class="video-embed__badge">Video drops this week</div>
-        <p class="video-embed__label">Full walkthrough of the SEO publishing loop &mdash; keyword bracket to indexed rank.<br>Sign up below to get it in your inbox the moment it&rsquo;s live.</p>
-      </div>
+    <div class="video-embed" role="figure" aria-label="Video: How 6 AI agents run our whole SEO strategy">
+      <lite-youtube videoid="qwcBG6K6GyE" playlabel="Play: How 6 AI agents run our whole SEO strategy"></lite-youtube>
     </div>
 
     <form class="waitlist" data-loop-slug="seo-publishing" novalidate>
