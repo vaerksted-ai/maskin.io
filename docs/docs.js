@@ -15,7 +15,10 @@
       { label: "The SEO publishing loop", href: "/marketplace/seo-publishing/", nested: true },
       { label: "The outbound loop", href: "/marketplace/outbound/", nested: true },
       { label: "The LLM knowledge wiki loop", href: "/marketplace/knowledge-wiki/", nested: true },
-      { label: "The product discovery loop", href: "/marketplace/product-discovery/", nested: true }
+      // TEMP-SWAP (task 9bf88671): /marketplace/product-discovery/ + "The product discovery loop"
+      // is published-not-live in the Public Marketplace bet. Mirrors commits 512b1f1 / 2a327bd's
+      // Related-loops treatment. Revert to product-discovery in the same push that flips it live.
+      { label: "Agentic workspace vs knowledge space", href: "/docs/agentic-workspace-vs-knowledge-space/", nested: true }
     ]},
     { title: "Concepts", items: [
       { label: "Core concepts", href: "/docs/concepts/" },
