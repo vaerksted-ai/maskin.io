@@ -40,6 +40,7 @@ The three questions to run through when you set the dial for a given action clas
 - **Blast radius.** How many downstream systems, customers, or dollars does the wrong action touch? A wrong tag on one internal document is small; a wrong bulk email to a segment is large. Blast radius is the second axis of the same decision.
 - **Frequency and review capacity.** If an action class fires a thousand times a day, HITL collapses to 0% override rate within a week — the queue is too deep to review meaningfully. Either tighten the model or split the class and gate only the high-stakes fraction.
 The failure mode a tiered policy avoids is the “uniform HITL everywhere” pattern that destroys agent value without buying safety. The failure it introduces is under-specification: an action class not explicitly assigned to a tier defaults to whatever autonomy the agent has, which is often more than the operator would have chosen. Name the classes and their tiers up front, before the agent ships. Enforce the policy at a governance layer, not in agent code — an agent that decides its own oversight is a self-signed certificate.
+Putting that policy into practice is what the AI-Native Loop Sprint is for: [loops that graduate from dry run to semi- or fully autonomous](/sprint/) earn their tier on evidence — with a human gate on every material call.
 
 ## What real HOTL looks like in a workspace
 Real human-on-the-loop is a set of visible artefacts, not a slogan. In a production workspace, four things are load-bearing:

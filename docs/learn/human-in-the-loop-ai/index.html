@@ -184,6 +184,7 @@
       <li><strong>Frequency and review capacity.</strong> If an action class fires a thousand times a day, HITL collapses to 0% override rate within a week &mdash; the queue is too deep to review meaningfully. Either tighten the model or split the class and gate only the high-stakes fraction.</li>
     </ul>
     <p>The failure mode a tiered policy avoids is the &ldquo;uniform HITL everywhere&rdquo; pattern that destroys agent value without buying safety. The failure it introduces is under-specification: an action class not explicitly assigned to a tier defaults to whatever autonomy the agent has, which is often more than the operator would have chosen. Name the classes and their tiers up front, before the agent ships. Enforce the policy at a governance layer, not in agent code &mdash; an agent that decides its own oversight is a self-signed certificate.</p>
+    <p>Putting that policy into practice is what the AI-Native Loop Sprint is for: <a href="/sprint/">loops that graduate from dry run to semi- or fully autonomous</a> earn their tier on evidence &mdash; with a human gate on every material call.</p>
 
     <h2>What real HOTL looks like in a workspace</h2>
     <p>Real human-on-the-loop is a set of visible artefacts, not a slogan. In a production workspace, four things are load-bearing:</p>
