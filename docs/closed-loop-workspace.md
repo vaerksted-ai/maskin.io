@@ -50,6 +50,8 @@ Where the tier changes is at the object of work. Tier 4 is not a bigger coding a
 
 The three spoke pieces walk each tier's negative case in detail. The tier-1 companion [AI product workspace vs AI coding agent](/docs/ai-product-workspace-vs-coding-agent/) argues that a coding-agent control plane, no matter how sophisticated, is still closing on a merge. The tier-2 companion [AI product management tool: not a task tracker](/docs/ai-product-management-tool/) argues that a tracker with AI summaries is a reading surface, not a loop. The tier-3 companion [agentic workspace vs knowledge space](/docs/agentic-workspace-vs-knowledge-space/) argues that AI-native retrieval does not close the gap between captured insight and shipped decision. Together with this piece, the four spokes span the closure diagnostic in both directions.
 
+Getting that arc running is what the AI-Native Loop Sprint is for: [set up your first closed loop in a day](/sprint/) on your own stack, then let it graduate on evidence rather than on a demo.
+
 ## One vocabulary note
 
 The vocabulary for tier 4 is early and contested. "Agentic workspace," "closed-loop workspace," "closed-loop agentic AI," and "decision engine" all name adjacent shapes. "Decision engine" is a busy phrase in credit and lending (Provenir, Zoot, Blaze, FICO) and does not translate cleanly to the product-team job the tier serves. "Agentic workspace" is the buyer-facing head term the Maskin cornerstone uses; "closed-loop workspace" is the diagnostic-frame name this piece uses because it is the affirmative complement to the closure diagnostic.
