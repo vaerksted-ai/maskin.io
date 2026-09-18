@@ -15,7 +15,8 @@
       { label: "The SEO publishing loop", href: "/marketplace/seo-publishing/", nested: true },
       { label: "The outbound loop", href: "/marketplace/outbound/", nested: true },
       { label: "The LLM knowledge wiki loop", href: "/marketplace/knowledge-wiki/", nested: true },
-      { label: "The product discovery loop", href: "/marketplace/product-discovery/", nested: true }
+      // Temp-swap while /marketplace/product-discovery/ is `published` not `live`; flip back to product-discovery in the same push it goes live.
+      { label: "Agentic workspace vs knowledge space", href: "/docs/agentic-workspace-vs-knowledge-space/", nested: true }
     ]},
     { title: "Concepts", items: [
       { label: "Core concepts", href: "/docs/concepts/" },
