@@ -23,6 +23,7 @@ Pick the path that fits how you want to operate.
 > The setup guide covers the **self-hosted** version. For managed hosting, [book a meeting](https://meshfirm.com/bookmagnus) with the founders.
 
 ## Next steps
+- Prefer a hands-on walkthrough? → [Quickstart tutorial](/docs/quickstart/) — empty instance to an agent doing real work in about ten minutes, all driven from Claude
 - Understand the model → [Core concepts](/docs/concepts/)
 - Set up your own instance → [Self-hosted setup](/docs/get-started/self-hosted/)
 - See what agents can do → [MCP tools](/docs/mcp-tools/) and [Agents & sessions](/docs/agents/)
@@ -106,6 +107,7 @@ Use the maskin MCP to call get_started.
 The `get_started` tool previews and applies a workspace template — **development**, **growth**, or **custom** — seeding your workspace with object types, statuses, custom fields, and an initial set of objects. See the full tool set in the [MCP tools reference](/docs/mcp-tools/).
 
 ## What's next
+- Take the tour → [Quickstart tutorial](/docs/quickstart/) — seed a workspace, create your first insight and bet, and put an agent to work end-to-end.
 - Invite teammates from **Settings → Members**.
 - Wire up integrations (Slack, GitHub, Linear, Gmail, PostHog) — see [Integrations setup](/docs/integrations/).
 - Tune your deployment with the [configuration reference](/docs/configuration/).

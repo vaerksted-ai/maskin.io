@@ -107,6 +107,22 @@ a:hover{text-decoration:underline}
 .docnav__links a{font-size:.875rem;color:var(--ink-2);transition:color .15s}
 .docnav__links a:hover{color:var(--ink);text-decoration:none}
 
+/* Header Sign up button — filled, stands out from the plain text links. */
+.docnav__cta{
+  display:inline-flex;align-items:center;
+  padding:.4rem .9rem;background:var(--ink);color:var(--surface)!important;
+  border-radius:8px;font-size:.85rem;font-weight:600;letter-spacing:-.005em;
+  border:1.5px solid var(--ink);
+  transition:background .15s,transform .1s,box-shadow .15s;
+}
+.docnav__cta:hover{background:#2a2925;transform:translateY(-1px);box-shadow:0 4px 12px rgba(17,17,16,.18);text-decoration:none;color:var(--surface)!important}
+[data-theme="dark"] .docnav__cta{background:var(--ink);color:var(--surface)!important;border-color:var(--ink)}
+[data-theme="dark"] .docnav__cta:hover{background:#f5f2eb}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .docnav__cta{background:var(--ink);color:var(--surface)!important;border-color:var(--ink)}
+  :root:not([data-theme="light"]) .docnav__cta:hover{background:#f5f2eb}
+}
+
 .theme-toggle{
   display:inline-flex;align-items:center;justify-content:center;
   width:32px;height:32px;border-radius:8px;
@@ -269,6 +285,50 @@ a:hover{text-decoration:underline}
 }
 .btn-secondary:hover{border-color:var(--ink-2);background:var(--linen);transform:translateY(-1px);text-decoration:none;color:var(--ink)}
 
+/* ─── DOCS-SHELL SIGNUP CTAs ─────────────────────────────
+   Injected by build.sh from partials/docs-cta.html into every
+   dist/docs/**/*.html. Card = end-of-article "Try Maskin"; strip =
+   the thin band above related-articles nav. Header button is styled
+   above under TOP BAR (.docnav__cta). */
+.docs-cta{
+  margin-top:3rem;padding:clamp(1.5rem,4vw,2rem);
+  border:1px solid var(--rule);border-radius:16px;background:var(--linen);
+  display:flex;flex-direction:column;gap:.6rem;
+}
+.docs-cta__title{margin:0;font-size:var(--step-3);line-height:1.15;color:var(--ink);font-weight:700;letter-spacing:-.02em}
+.docs-cta__hook{margin:0;color:var(--ink-2)}
+.docs-cta__actions{display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap;margin-top:.75rem}
+.docs-cta__primary{
+  display:inline-flex;align-items:center;
+  padding:.75rem 1.5rem;background:var(--ink);color:var(--surface)!important;
+  border-radius:8px;font-weight:600;font-size:.9375rem;
+  border:1.5px solid var(--ink);
+  transition:background .15s,transform .1s,box-shadow .15s;
+}
+.docs-cta__primary:hover{background:#2a2925;transform:translateY(-1px);box-shadow:0 4px 16px rgba(17,17,16,.18);text-decoration:none;color:var(--surface)!important}
+[data-theme="dark"] .docs-cta__primary{background:var(--ink);color:var(--surface)!important;border-color:var(--ink)}
+[data-theme="dark"] .docs-cta__primary:hover{background:#f5f2eb}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .docs-cta__primary{background:var(--ink);color:var(--surface)!important;border-color:var(--ink)}
+  :root:not([data-theme="light"]) .docs-cta__primary:hover{background:#f5f2eb}
+}
+.docs-cta__secondary{color:var(--ink-2);font-size:.9rem;font-weight:500}
+.docs-cta__secondary:hover{color:var(--ink);text-decoration:none}
+
+.docs-cta-strip{
+  margin-top:1.25rem;padding:.9rem 1.15rem;
+  border:1px solid var(--rule);border-radius:12px;background:transparent;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
+}
+.docs-cta-strip__text{margin:0;color:var(--ink);font-size:.95rem;font-weight:600}
+.docs-cta-strip__link{
+  display:inline-flex;align-items:center;
+  padding:.5rem 1rem;background:var(--accent);color:#fff!important;border-radius:8px;
+  font-weight:600;font-size:.875rem;border:1.5px solid var(--accent);
+  transition:transform .1s,box-shadow .15s;
+}
+.docs-cta-strip__link:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,.24);text-decoration:none;color:#fff!important}
+
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width:860px){
   .doc-layout{grid-template-columns:1fr}
@@ -282,6 +342,10 @@ a:hover{text-decoration:underline}
   .docnav__links{gap:.85rem}
   .docnav__links .docnav__hide-sm{display:none}
   .post-cta__actions{flex-direction:column}
+  .docs-cta__actions{flex-direction:column;align-items:stretch}
+  .docs-cta__primary{justify-content:center}
+  .docs-cta-strip{flex-direction:column;align-items:stretch;text-align:center}
+  .docs-cta-strip__link{justify-content:center}
 }
 
 @media (prefers-reduced-motion:reduce){
