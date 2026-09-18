@@ -33,6 +33,10 @@ ORDER = [
   "docs/learn/human-in-the-loop-ai/index.html",
   "docs/agent-inbox/index.html",
   "docs/how-to-build-ai-sdr-loop/index.html",
+  "marketplace/seo-publishing/index.html",
+  "marketplace/outbound/index.html",
+  "marketplace/knowledge-wiki/index.html",
+  "marketplace/product-discovery/index.html",
 ]
 
 class MD(HTMLParser):
@@ -154,14 +158,15 @@ def md_path(path):
     return d+".md"
 
 made=[]
-for path in glob.glob("docs/**/index.html", recursive=True):
-    if path=="docs/index.html": continue
-    text=convert(path)
-    if text is None: continue
-    url="https://maskin.io/"+os.path.dirname(path)+"/"
-    body="> Source: %s\n\n%s"%(url,text)
-    open(md_path(path),"w",encoding="utf-8").write(body)
-    made.append(md_path(path))
+for pattern in ("docs/**/index.html", "marketplace/**/index.html"):
+    for path in glob.glob(pattern, recursive=True):
+        if path in ("docs/index.html", "marketplace/index.html"): continue
+        text=convert(path)
+        if text is None: continue
+        url="https://maskin.io/"+os.path.dirname(path)+"/"
+        body="> Source: %s\n\n%s"%(url,text)
+        open(md_path(path),"w",encoding="utf-8").write(body)
+        made.append(md_path(path))
 
 # assemble llms-full.txt in IA order
 parts=["# Maskin — full documentation\n",
