@@ -41,10 +41,6 @@
 
 <link rel="stylesheet" href="/docs/docs.css">
 
-<!-- lite-youtube-embed facade: thumbnail on load, iframe on click. Zero-cost until user clicks. -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.css">
-<script src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.js" defer></script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -79,15 +75,6 @@
         { "@type": "ListItem", "position": 2, "name": "Marketplace", "item": "https://maskin.io/marketplace/" },
         { "@type": "ListItem", "position": 3, "name": "The product discovery loop", "item": "https://maskin.io/marketplace/product-discovery/" }
       ]
-    },
-    {
-      "@type": "VideoObject",
-      "name": "The product discovery loop — Maskin walkthrough",
-      "description": "Walkthrough of Maskin's product discovery loop — from customer signal to shipped bet, with typed insight on a shared graph.",
-      "thumbnailUrl": ["https://maskin.io/og-image-product-discovery.png"],
-      "uploadDate": "2026-09-12",
-      "embedUrl": "https://www.youtube.com/embed/M7lc1UVf-VE",
-      "contentUrl": "https://www.youtube.com/watch?v=M7lc1UVf-VE"
     }
   ]
 }
@@ -98,8 +85,10 @@
   .hero-visual { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--rule); margin: 1.5rem 0 2rem; }
   .video-cta-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr); gap: 1.25rem; margin: 1.5rem 0 2.5rem; align-items: start; }
   @media (max-width: 780px) { .video-cta-grid { grid-template-columns: 1fr; } }
-  .video-embed { aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: var(--linen); border: 1px solid var(--rule); }
-  .video-embed lite-youtube { width: 100%; height: 100%; border-radius: 14px; display: block; }
+  .video-embed { aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: var(--linen); border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; text-align: center; }
+  .video-embed__placeholder { padding: 2rem; color: var(--ink-2); font-family: var(--ff-serif); font-style: italic; }
+  .video-embed__badge { display: inline-block; font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); padding: .3rem .55rem; border: 1px solid var(--accent); border-radius: 6px; margin-bottom: .8rem; }
+  .video-embed__label { font-size: 1.05rem; }
   .cta-card { padding: 1.5rem; border: 1px solid var(--rule); border-radius: 14px; background: var(--surface); }
   .cta-card__title { font-family: var(--ff-display); font-weight: 600; font-size: 1.15rem; margin: 0 0 .5rem; }
   .cta-card__lede { color: var(--ink-2); font-size: .9rem; margin: 0 0 1rem; }
@@ -141,11 +130,13 @@
     <p class="lead">Interviews, tickets, and reviews land as typed insight &mdash; the loop closes when a shaped bet ships against them.</p>
     <img class="hero-visual" src="/og-image-product-discovery.png" alt="The product discovery loop &mdash; customer signal, typed insight, shaped bet, shipped and re-checked against the signal." width="1200" height="630">
 
-    <!-- VIDEO EMBED (lite-youtube-embed facade) + RIGHT-SIDE CTA CARD on desktop / stacked on mobile -->
+    <!-- VIDEO SLOT (non-clickable placeholder; no walkthrough video exists in this loop's series) + RIGHT-SIDE CTA CARD on desktop / stacked on mobile -->
     <div class="video-cta-grid">
-      <div class="video-embed" role="figure" aria-label="The product discovery loop — Maskin walkthrough">
-        <!-- Placeholder YouTube ID; PMM/HoG supply the real one before first video drops (spec allows). -->
-        <lite-youtube videoid="M7lc1UVf-VE" playlabel="Play: The product discovery loop — Maskin walkthrough"></lite-youtube>
+      <div class="video-embed" role="figure" aria-label="Product discovery loop walkthrough, coming soon">
+        <div class="video-embed__placeholder">
+          <div class="video-embed__badge">Walkthrough coming soon</div>
+          <p class="video-embed__label">A full walkthrough of the product discovery loop &mdash; customer signal to shipped bet.<br>Sign up to get it the moment it&rsquo;s live.</p>
+        </div>
       </div>
       <aside class="cta-card">
         <p class="cta-card__title">Get the loop when it ships.</p>
