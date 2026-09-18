@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="The AI-Native Loop Sprint">
+  <defs>
+    <pattern id="grid-sprint" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FAFAF8" stroke-width="1" opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid-sprint)"/>
+  <g font-family="'Schibsted Grotesk', system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+    <text x="80" y="130" font-size="24" font-weight="500" fill="#8B8781" letter-spacing="0.14em">SPRINT &#183; AI-NATIVE LOOP SPRINT</text>
+    <text x="80" y="240" font-size="84" font-weight="700" fill="#FAFAF8">AI agents running</text>
+    <text x="80" y="330" font-size="84" font-weight="700" fill="#FAFAF8">self-learning loops.</text>
+  </g>
+  <g font-family="'Newsreader', Georgia, serif" font-style="italic">
+    <text x="80" y="410" font-size="28" fill="#8B8781">Outcomes, not prompts.</text>
+    <text x="80" y="448" font-size="28" fill="#8B8781">Every loop earns its own trust level.</text>
+  </g>
+  <g transform="translate(80, 510)" font-family="'JetBrains Mono', monospace" font-size="15" fill="#FAFAF8">
+    <g>
+      <rect x="0" y="0" width="90" height="42" rx="6" fill="#141311" stroke="#2A2825"/>
+      <text x="12" y="27">dry run</text>
+    </g>
+    <g transform="translate(105, 0)">
+      <rect x="0" y="0" width="172" height="42" rx="6" fill="#141311" stroke="#2A2825"/>
+      <text x="12" y="27">semi-autonomous</text>
+    </g>
+    <g transform="translate(292, 0)">
+      <rect x="0" y="0" width="180" height="42" rx="6" fill="#141311" stroke="#2563EB" stroke-width="2"/>
+      <text x="12" y="27" fill="#FAFAF8">fully autonomous</text>
+    </g>
+  </g>
+  <g transform="translate(1030, 100)">
+    <rect x="0" y="0" width="100" height="100" rx="18" fill="#FAFAF8"/>
+    <path d="M25 80 L25 25 L50 55 L75 25 L75 80" stroke="#111110" stroke-width="10" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+  </g>
+  <text x="1120" y="220" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="15" fill="#5A5751">maskin.io/sprint</text>
+</svg>
