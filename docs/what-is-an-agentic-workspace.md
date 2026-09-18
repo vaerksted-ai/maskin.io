@@ -23,7 +23,7 @@ Maskin’s core loop has four moves:
 2. **Bet** — the signal is shaped into a testable bet with a clear win condition.
 3. **Task** — the bet breaks into work the team and agents execute.
 4. **Shipped + validated** — when it goes live the loop closes: outcomes are measured and the customer or requester who prompted it is notified.
-The loop repeats. Nothing is a one-shot session.
+The loop repeats. Nothing is a one-shot session. Teams that want to stand this loop up on their own work start with [the AI-Native Loop Sprint](/sprint/) — first self-learning loops in half a day, then run alongside our team.
 
 ## The object model: humans and agents share the same objects
 Insights, bets, and tasks are first-class typed objects owned jointly by humans and agents — not chat history. Memory persists across sessions, threads attach to the work (not to a Slack channel), and an agent’s blocker sits next to the approval needed on the same object.
