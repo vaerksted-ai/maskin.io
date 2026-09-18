@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Run outbound that closes on a booked call &mdash; Maskin</title>
+<meta name="description" content="Prospect research, personalized draft, reply-handling as one loop &mdash; humans gate the send, agents wire the rest.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/marketplace/outbound/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maskin.io/marketplace/outbound/">
+<meta property="og:title" content="Run outbound that closes on a booked call, not a queue drained.">
+<meta property="og:description" content="Prospect research, personalized draft, reply-handling as one loop &mdash; humans gate the send, agents wire the rest.">
+<meta property="og:image" content="https://maskin.io/og-image-outbound.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Run outbound that closes on a booked call, not a queue drained.">
+<meta name="twitter:description" content="Prospect research, personalized draft, reply-handling as one loop &mdash; humans gate the send, agents wire the rest.">
+<meta name="twitter:image" content="https://maskin.io/og-image-outbound.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,300;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "headline": "Run outbound that closes on a booked call, not a queue drained.",
+      "name": "Run outbound that closes on a booked call, not a queue drained.",
+      "description": "Prospect research, personalized draft, reply-handling as one loop — humans gate the send, agents wire the rest.",
+      "url": "https://maskin.io/marketplace/outbound/",
+      "inLanguage": "en",
+      "datePublished": "2026-09-12T00:00:00Z",
+      "dateModified": "2026-09-12T00:00:00Z",
+      "image": ["https://maskin.io/og-image-outbound.png"],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "mainEntityOfPage": "https://maskin.io/marketplace/outbound/",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "keywords": "sales loop, ai sdr loop, outbound sales loop, open source ai sdr, hitl sales"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Marketplace", "item": "https://maskin.io/marketplace/" },
+        { "@type": "ListItem", "position": 3, "name": "The outbound loop", "item": "https://maskin.io/marketplace/outbound/" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Marketplace</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All loops</a></li><li><a class="" href="/marketplace/seo-publishing/">The SEO publishing loop</a></li><li><a class="is-active" href="/marketplace/outbound/" aria-current="page">The outbound loop</a></li><li><a class="" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki loop</a></li><li><a class="" href="/marketplace/product-discovery/">The product discovery loop</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/marketplace/">Marketplace</a> / The outbound loop</p>
+    <p class="eyebrow">Loop &middot; Sales</p>
+    <h1>Run outbound that closes on a booked call, not a queue drained.</h1>
+    <p class="lead">Prospect research, personalized draft, reply-handling as one loop &mdash; humans gate the send, agents wire the rest.</p>
+
+    <p>The outbound loop closes on the outcome (call booked, or a clean disqualify), not the activity (emails queued). A signal fires it &mdash; an in-ICP hire, a funding round, a jobs post. Agents research the account, draft the sequence, wait for a human send-gate, track replies, and either book or archive. Every touchpoint stays typed against the same account object, so nothing is retyped between the enrichment tool, the sender, and the CRM.</p>
+
+    <p class="positioning-line">For product-led teams whose first sales motion is founder-run or PM-run and can&rsquo;t afford a rep-shaped stack yet.</p>
+
+    <style>
+      .video-embed { position: relative; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: var(--linen); border: 1px solid var(--rule); margin: 1.5rem 0 2rem; display: flex; align-items: center; justify-content: center; text-align: center; }
+      .video-embed__placeholder { padding: 2rem; color: var(--ink-2); font-family: var(--ff-serif); font-style: italic; }
+      .video-embed__badge { display: inline-block; font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); padding: .3rem .55rem; border: 1px solid var(--accent); border-radius: 6px; margin-bottom: .8rem; }
+      .video-embed__label { font-size: 1.05rem; }
+      .waitlist { display: flex; gap: .6rem; flex-wrap: wrap; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin: 0 0 .5rem; }
+      .waitlist__input { flex: 1 1 240px; padding: .7rem .9rem; border: 1px solid var(--rule); border-radius: 8px; font: inherit; background: var(--linen); color: var(--ink); }
+      .waitlist__input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+      .waitlist__submit { padding: .7rem 1.1rem; border-radius: 8px; border: 0; background: var(--ink); color: var(--linen); font-family: var(--ff-display); font-weight: 600; cursor: pointer; }
+      .waitlist__submit:hover { background: var(--ink-2); }
+      .waitlist__status { flex: 1 1 100%; margin: .5rem 0 0; font-family: var(--ff-mono); font-size: .82rem; color: var(--ink-3); min-height: 1.2em; }
+      .waitlist__fallback { font-size: .85rem; color: var(--ink-3); margin: 0 0 2rem; }
+      .waitlist__challenge { flex: 1 1 100%; margin: .25rem 0 0; min-height: 65px; }
+      .waitlist__consent { flex: 1 1 100%; display: flex; gap: .55rem; align-items: flex-start; font-size: .88rem; color: var(--ink-2); margin: .25rem 0 0; line-height: 1.4; }
+      .waitlist__consent input[type=checkbox] { margin-top: .25rem; accent-color: var(--accent); flex: 0 0 auto; }
+      .waitlist__consent a { color: inherit; text-decoration: underline; }
+      .waitlist__status[data-tone=error] { color: var(--accent, #b04747); }
+      .waitlist__status[data-tone=success] { color: var(--ink); }
+      .positioning-line { font-family: var(--ff-serif); font-size: 1.15rem; font-style: italic; color: var(--ink-2); margin: 1.75rem 0 2.5rem; border-left: 3px solid var(--accent); padding: .25rem 0 .25rem 1rem; }
+      .primitives { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.5rem 0 3rem; }
+      .primitive { padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+      .primitive__name { font-family: var(--ff-display); font-weight: 600; font-size: 1.05rem; margin: 0 0 .5rem; color: var(--ink); }
+      .primitive__def { font-size: .9rem; color: var(--ink-2); margin: 0; line-height: 1.55; }
+      .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+    </style>
+
+    <div class="video-embed" role="figure" aria-label="Outbound loop video, dropping this week">
+      <div class="video-embed__placeholder">
+        <div class="video-embed__badge">Video drops this week</div>
+        <p class="video-embed__label">Full walkthrough of the outbound loop &mdash; signal to booked call on your own stack.<br>Sign up below to get it in your inbox the moment it&rsquo;s live.</p>
+      </div>
+    </div>
+
+    <form class="waitlist" data-loop-slug="outbound" novalidate>
+      <label class="visually-hidden" for="wl-email-outbound">Your work email</label>
+      <input class="waitlist__input" id="wl-email-outbound" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
+      <button class="waitlist__submit" type="submit">Get the loop when it ships</button>
+      <div class="waitlist__challenge cf-turnstile" data-sitekey="TURNSTILE_SITEKEY_PLACEHOLDER" data-theme="auto" data-appearance="always"></div>
+      <label class="waitlist__consent">
+        <input type="checkbox" name="consent" required>
+        <span>I agree to receive the outbound guide and occasional Maskin updates. Unsubscribe any time.</span>
+      </label>
+      <p class="waitlist__status" role="status" aria-live="polite"></p>
+    </form>
+    <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20Outbound%20loop">ai@maskin.io</a><!--/email_off--> with subject &ldquo;Waitlist: Outbound loop&rdquo; and we&rsquo;ll send it the moment it drops.</p>
+
+    <h2>What this loop gets you</h2>
+    <p>The outbound loop closes the gap between &ldquo;this account matched our ICP&rdquo; and &ldquo;a warm reply is in the account owner&rsquo;s inbox.&rdquo; It runs continuously against a signal feed, drafts personalised messages, sends only what a human has approved, and routes replies back to the humans who can close them. The wedge over closed AI SDR SaaS isn&rsquo;t the model &mdash; it&rsquo;s the loop shape and the audit trail.</p>
+    <ul>
+      <li><strong>Direct API costs run $50&ndash;200/mo</strong> at typical OSS-stack volume; the closed SaaS bill is $2,000&ndash;5,000/mo per seat, and the honest split is roughly 10&ndash;15% API markup, 40% activation-and-plumbing services, 45% brand insulation.</li>
+      <li><strong>Every prospect, message, and reply is a queryable row.</strong> The state lives on Maskin&rsquo;s typed object graph, not a vendor dashboard. That&rsquo;s the audit trail your GTM leader wants.</li>
+      <li><strong>Human-on-the-loop with a measured <a href="/docs/learn/human-in-the-loop-ai/">override rate</a></strong> is the operational difference between a working loop and a demo. Stuck at 0% is rubber-stamping; above 20% is a broken model; the real gate sits in the middle band.</li>
+      <li><strong>The sender lane is your own.</strong> LinkedIn via Unipile&rsquo;s MCP, or a warmed email domain via Postmark or Resend &mdash; not a shared pool that gets your primary domain blacklisted when one prompt regression fires.</li>
+    </ul>
+
+    <h2>The seven-step loop the video walks through</h2>
+    <ol>
+      <li><strong>Signal.</strong> A prospect matches the ICP or a triggered event fires &mdash; a job change, a funding round, a competitor&rsquo;s customer showing account activity.</li>
+      <li><strong>Research.</strong> An agent enriches the account and contact, pulls the last 90 days of public signal, drafts a hypothesis on why now.</li>
+      <li><strong>Draft.</strong> An agent writes a first-touch message calibrated to the researched signal, in the sender&rsquo;s voice.</li>
+      <li><strong>Human approval.</strong> A human reviews the draft &mdash; or a sampled fraction of drafts, if the volume warrants &mdash; before it sends. The override rate is measured and watched over time.</li>
+      <li><strong>Send.</strong> The message goes out through the sender lane (LinkedIn via Unipile, or a warmed email domain via Postmark or Resend).</li>
+      <li><strong>Reply routing.</strong> Replies are classified as warm (route to the account owner as a booked-conversation candidate), objection (route back to the agent for the follow-up sequence), or unsubscribe (honour and suppress).</li>
+      <li><strong>Close.</strong> A meeting booked, or the sequence exits without conversion after N touches. The outcome updates the loop&rsquo;s win-rate metrics.</li>
+    </ol>
+
+    <h2>What this loop is built with</h2>
+    <p>Named the same on every loop page so the shape is portable. Below the fold on purpose &mdash; the loop is what closes; the primitives are just the parts. Inside a loop listing, agents / MCPs / skills appear as &ldquo;built with&rdquo; components of the loop, never as top-level marketplace sections of their own.</p>
+    <div class="primitives">
+      <div class="primitive">
+        <p class="primitive__name">Loop</p>
+        <p class="primitive__def">A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome &mdash; not on <em>done for now</em>. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.</p>
+      </div>
+      <div class="primitive">
+        <p class="primitive__name">Agent</p>
+        <p class="primitive__def">A named role a model performs &mdash; an SEO analyst, a discovery synthesizer, an outbound writer. Not an <em>AI teammate</em>: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.</p>
+      </div>
+      <div class="primitive">
+        <p class="primitive__name">MCP</p>
+        <p class="primitive__def">The wire an agent uses to reach the tools your team already uses &mdash; the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.</p>
+      </div>
+      <div class="primitive">
+        <p class="primitive__name">Skill</p>
+        <p class="primitive__def">A packaged capability you attach to an agent &mdash; <em>draft a follow-up in our voice</em>, <em>summarize a customer call against our discovery template</em>. Skills are the reusable pieces of judgment your team is already building without realising it.</p>
+      </div>
+    </div>
+    <p>Full concept map: <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a> explains where each layer belongs. Concrete step-by-step build: <a href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop in Maskin</a>. Honest OSS landscape: <a href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a>.</p>
+
+    <h2>When the closed AI SDR SaaS is still the right answer</h2>
+    <p>An AI SDR without a human approval gate is one bad prompt away from your domain being blacklisted. If your team doesn&rsquo;t have the GTM engineering to own deliverability, sender-reputation, and prompt-quality tuning, the closed bill is a service contract, not a rip-off &mdash; and 11x, Artisan, Qualified, SalesForge, and AiSDR are all reasonable answers. The loop wins when the team already runs its own outbound stack and would rather own the state than rent it. Both answers are defensible; pretending otherwise is what makes most OSS-alt content read as sales copy.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/how-to-build-ai-sdr-loop/">
+          <div class="doc-card__title">How to build an AI SDR loop</div>
+          <div class="doc-card__desc">The seven-step concrete build for running an AI SDR loop on Maskin's typed object graph.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/alternatives/open-source-ai-sdr/">
+          <div class="doc-card__title">Open source AI SDR</div>
+          <div class="doc-card__desc">Honest map of the six OSS AI SDR repos and the cost split against closed SaaS.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/marketplace/seo-publishing/">
+          <div class="doc-card__title">The SEO publishing loop</div>
+          <div class="doc-card__desc">Keyword bracket to indexed rank on your own site, without hand-writing HTML.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="post-cta">
+      <h2>Run the outbound loop on your own workspace</h2>
+      <p>Maskin is open-source, MCP-native, and self-hostable under Apache 2.0. Copy the loop into your own workspace, or book a walkthrough and we&rsquo;ll help you shape it around your team&rsquo;s ICP and sender lane.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="/marketplace-events.js" defer></script>
+</body>
+</html>

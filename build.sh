@@ -7,6 +7,12 @@ set -e
 # silently mis-routed on-site telemetry away from the workspace MCP.
 POSTHOG_PROJECT_KEY="phc_tfrEvZMAfNvPzmof6dHMndPEDuLe4wNdPDBTUJA66Zww"
 
+# Cloudflare Turnstile client sitekey (public, browser-visible). Read from the
+# TURNSTILE_SITEKEY env var so Cloudflare Pages can rotate it without a repo
+# change. Falls back to the Cloudflare public test key (always-pass) so preview
+# and local builds work before Infra & DevOps sets the production key.
+TURNSTILE_SITEKEY_VALUE="${TURNSTILE_SITEKEY:-1x00000000000000000000AA}"
+
 rm -rf dist
 mkdir -p dist
 
@@ -30,9 +36,16 @@ for f in [0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f
 done
 shopt -u nullglob
 
+# Shared client wiring for /marketplace/<slug>/ loop pages — page-view event,
+# form-submit handler, Turnstile token forwarding. Kept as a single source of
+# truth so all 4 loop pages behave identically (spec §Analytics).
+if [ -f partials/marketplace-events.js ]; then
+  cp partials/marketplace-events.js dist/marketplace-events.js
+fi
+
 # Top-level content subtrees. Add a new SEO cluster hub here (one line) and every
 # page under it ships automatically — no other build.sh edits required.
-CONTENT_DIRS=(docs changelog privacy alternatives workflows sprint)
+CONTENT_DIRS=(docs changelog privacy alternatives marketplace sprint)
 for dir in "${CONTENT_DIRS[@]}"; do
   if [ -d "$dir" ]; then
     cp -r "$dir" "dist/$dir"
@@ -76,6 +89,9 @@ done
 # POSTHOG_PROJECT_KEY placeholder (hand-rolled or auto-injected above) is
 # picked up automatically.
 find dist -type f -name '*.html' -print0 | xargs -0 sed -i "s/POSTHOG_PROJECT_KEY/$POSTHOG_PROJECT_KEY/g"
+
+# Substitute the Turnstile sitekey placeholder on every page that references it.
+find dist -type f -name '*.html' -print0 | xargs -0 sed -i "s/TURNSTILE_SITEKEY_PLACEHOLDER/$TURNSTILE_SITEKEY_VALUE/g"
 
 # Auto-inject docs-shell signup CTAs into every HTML under dist/docs/ that
 # doesn't already ship them. Three insertions per page: a "Sign up" <li> in the
@@ -127,4 +143,4 @@ find dist/docs -type f -name '*.html' | while IFS= read -r html; do
   ' "$html" > "$html.tmp" && mv "$html.tmp" "$html"
 done
 
-echo "Build complete. PostHog snippet + key + docs-shell CTAs injected."
+echo "Build complete. PostHog + Turnstile keys + docs-shell CTAs injected."
