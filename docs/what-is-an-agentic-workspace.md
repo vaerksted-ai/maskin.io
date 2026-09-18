@@ -36,6 +36,7 @@ Small teams operate many agents through an abstraction layer and get pulled in o
 - **Churn & expansion** — usage drops and error spikes are watched; at-risk accounts trigger an alert with full context.
 - **Lost deals → roadmap** — closed-lost reasons are weighted by ARR and shaped into roadmap bets.
 - **Competitive intelligence** — vendor changelogs and pricing pages route battlecards to sales and feature gaps to product.
+- **Team knowledge** — [a wiki your agents read before they answer](/marketplace/knowledge-wiki/) compiles closed bets and shipped decisions into a living record every future agent picks up on the same graph.
 
 ## Agentic workspaces vs. what came before
 The field splits into three tiers:

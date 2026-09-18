@@ -40,6 +40,8 @@ The MCP server is the single integration surface, which is what turns “MCP-nat
 - **PostHog** — product analytics surface as signals that can trigger a loop when a metric moves.
 The result is that an agent doesn’t need special permission slips for each tool, because it only ever acts through the one typed contract. And because triggers are event-driven on top of that same backbone, a change in any connected source — a spike in PostHog, a support thread in Intercom, a pushed branch in GitHub — can enter the loop without anyone asking.
 
+The same substrate holds for compiled team memory: [the wiki lives in one place, agents reach it over MCP](/marketplace/knowledge-wiki/), and a coding agent, a research agent, and a support agent all read the same pages under the same gates without anyone copying content between products.
+
 ## How does composable infrastructure deliver determinism, safety, and scale?
 Composability isn’t a philosophy; it maps to three concrete production properties that matter to any team running agents on real work:
 - **Determinism.** An event fires an agent; the agent acts; the outcome is a state change you can inspect in the object model and the event-sourced audit trail. Every transition is recorded, so behavior is explainable and auditable rather than opaque.

@@ -77,6 +77,8 @@ In Maskin — the workspace this piece was written in — that primitive is `wor
 Concrete example. A *Signal Analyst* skill fires when an `insight` object enters status `clustered`. It reads the insight’s content and its `informs` edges, checks whether the cluster crosses a threshold, and either drafts a proposal object or posts a comment back to the researcher. No developer had to type *run signal analyst* anywhere. The workspace state was the trigger.
 This isn’t a rejection of the coding-agent framing — coding is real work, and the `SKILL.md` format is genuinely useful there. It’s an extension. The same skill primitive, once the trigger surface moves from a repo to a typed state graph, unlocks a category of agent work that most current writing on skills doesn’t address. This is the shape [AI product workspace vs AI coding agent](/docs/ai-product-workspace-vs-coding-agent/) points at: composable pieces of capability that a team stitches into their own operating shape, rather than a monolithic *AI employee* persona.
 
+The durable-knowledge sibling of a workspace skill — where compiled team memory sits so every skill reads the same thing before it acts — is [the compiled knowledge layer agents read first](/marketplace/knowledge-wiki/): closed bets and shipped decisions written as typed pages agents pick up on the same graph they already run on.
+
 ## Deciding what to reach for
 A rough decision table when you’re building something and asking which of these you need:
 | You want to… | Reach for |
