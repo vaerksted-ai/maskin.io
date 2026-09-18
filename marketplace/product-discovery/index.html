@@ -81,36 +81,30 @@
 </script>
 
 <style>
-  /* Product discovery loop page: hero visual, video + right-side CTA card, primitives grid, positioning line, secondary CTA. */
+  /* Product discovery loop page: hero visual, non-clickable video placeholder, plain waitlist shell (matches shell used on seo-publishing / outbound / knowledge-wiki), primitives grid, positioning line. */
   .hero-visual { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--rule); margin: 1.5rem 0 2rem; }
-  .video-cta-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr); gap: 1.25rem; margin: 1.5rem 0 2.5rem; align-items: start; }
-  @media (max-width: 780px) { .video-cta-grid { grid-template-columns: 1fr; } }
-  .video-embed { aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: var(--linen); border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; text-align: center; }
+  .video-embed { aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: var(--linen); border: 1px solid var(--rule); margin: 1.5rem 0 2rem; display: flex; align-items: center; justify-content: center; text-align: center; }
   .video-embed__placeholder { padding: 2rem; color: var(--ink-2); font-family: var(--ff-serif); font-style: italic; }
   .video-embed__badge { display: inline-block; font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); padding: .3rem .55rem; border: 1px solid var(--accent); border-radius: 6px; margin-bottom: .8rem; }
   .video-embed__label { font-size: 1.05rem; }
-  .cta-card { padding: 1.5rem; border: 1px solid var(--rule); border-radius: 14px; background: var(--surface); }
-  .cta-card__title { font-family: var(--ff-display); font-weight: 600; font-size: 1.15rem; margin: 0 0 .5rem; }
-  .cta-card__lede { color: var(--ink-2); font-size: .9rem; margin: 0 0 1rem; }
-  .waitlist { display: flex; flex-direction: column; gap: .6rem; margin: 0; }
-  .waitlist__label { font-size: .82rem; color: var(--ink-2); }
-  .waitlist__input { padding: .7rem .9rem; border: 1px solid var(--rule); border-radius: 8px; font: inherit; background: var(--linen); color: var(--ink); }
+  .waitlist { display: flex; gap: .6rem; flex-wrap: wrap; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin: 0 0 .5rem; }
+  .waitlist__input { flex: 1 1 240px; padding: .7rem .9rem; border: 1px solid var(--rule); border-radius: 8px; font: inherit; background: var(--linen); color: var(--ink); }
   .waitlist__input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
-  .waitlist__consent { display: flex; gap: .5rem; align-items: flex-start; font-size: .8rem; color: var(--ink-2); line-height: 1.4; }
-  .waitlist__consent input { margin-top: 3px; flex-shrink: 0; }
   .waitlist__submit { padding: .7rem 1.1rem; border-radius: 8px; border: 0; background: var(--ink); color: var(--linen); font-family: var(--ff-display); font-weight: 600; cursor: pointer; }
   .waitlist__submit:hover { background: var(--ink-2); }
-  .waitlist__status { font-family: var(--ff-mono); font-size: .8rem; color: var(--ink-3); min-height: 1.2em; margin: 0; }
-  .waitlist__challenge { min-height: 65px; }
+  .waitlist__status { flex: 1 1 100%; margin: .5rem 0 0; font-family: var(--ff-mono); font-size: .82rem; color: var(--ink-3); min-height: 1.2em; }
+  .waitlist__fallback { font-size: .85rem; color: var(--ink-3); margin: 0 0 2rem; }
+  .waitlist__challenge { flex: 1 1 100%; margin: .25rem 0 0; min-height: 65px; }
+  .waitlist__consent { flex: 1 1 100%; display: flex; gap: .55rem; align-items: flex-start; font-size: .88rem; color: var(--ink-2); margin: .25rem 0 0; line-height: 1.4; }
+  .waitlist__consent input[type=checkbox] { margin-top: .25rem; accent-color: var(--accent); flex: 0 0 auto; }
+  .waitlist__consent a { color: inherit; text-decoration: underline; }
   .waitlist__status[data-tone=error] { color: var(--accent, #b04747); }
   .waitlist__status[data-tone=success] { color: var(--ink); }
-  .waitlist__fallback { font-size: .8rem; color: var(--ink-3); margin: .75rem 0 0; }
   .positioning-line { font-family: var(--ff-serif); font-size: 1.15rem; font-style: italic; color: var(--ink-2); margin: 1.75rem 0 2.5rem; border-left: 3px solid var(--accent); padding: .25rem 0 .25rem 1rem; }
   .primitives { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.5rem 0 3rem; }
   .primitive { padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
   .primitive__name { font-family: var(--ff-display); font-weight: 600; font-size: 1.05rem; margin: 0 0 .5rem; color: var(--ink); }
   .primitive__def { font-size: .9rem; color: var(--ink-2); margin: 0; line-height: 1.55; }
-  .secondary-cta { padding: 1.75rem; border: 1px solid var(--rule); border-radius: 14px; background: var(--linen); margin: 2rem 0; }
   .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
 </style>
 </head>
@@ -130,34 +124,33 @@
     <p class="lead">Interviews, tickets, and reviews land as typed insight &mdash; the loop closes when a shaped bet ships against them.</p>
     <img class="hero-visual" src="/og-image-product-discovery.png" alt="The product discovery loop &mdash; customer signal, typed insight, shaped bet, shipped and re-checked against the signal." width="1200" height="630">
 
-    <!-- VIDEO SLOT (non-clickable placeholder; no walkthrough video exists in this loop's series) + RIGHT-SIDE CTA CARD on desktop / stacked on mobile -->
-    <div class="video-cta-grid">
-      <div class="video-embed" role="figure" aria-label="Product discovery loop walkthrough, coming soon">
-        <div class="video-embed__placeholder">
-          <div class="video-embed__badge">Walkthrough coming soon</div>
-          <p class="video-embed__label">A full walkthrough of the product discovery loop &mdash; customer signal to shipped bet.<br>Sign up to get it the moment it&rsquo;s live.</p>
-        </div>
-      </div>
-      <aside class="cta-card">
-        <p class="cta-card__title">Get the loop when it ships.</p>
-        <p class="cta-card__lede">Full walkthrough, plus the guide when the video drops.</p>
-        <form class="waitlist" data-loop-slug="product-discovery" data-form-position="hero" novalidate>
-          <label class="waitlist__label" for="wl-email-pd-hero">Your work email</label>
-          <input class="waitlist__input" id="wl-email-pd-hero" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
-          <label class="waitlist__consent" for="wl-consent-pd-hero"><input type="checkbox" name="consent" id="wl-consent-pd-hero" required> <span>I agree to receive the product discovery guide and occasional Maskin updates. Unsubscribe any time.</span></label>
-          <div class="waitlist__challenge cf-turnstile" data-sitekey="TURNSTILE_SITEKEY_PLACEHOLDER" data-theme="auto" data-appearance="always"></div>
-          <button class="waitlist__submit" type="submit">Get the loop when it ships</button>
-          <p class="waitlist__status" role="status" aria-live="polite"></p>
-        </form>
-        <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20product%20discovery%20loop">ai@maskin.io</a><!--/email_off--> and we&rsquo;ll send it the moment it drops. <a href="/privacy/">Privacy policy</a>.</p>
-      </aside>
-    </div>
-
     <!-- HERO BODY (3-4 sentences, verbatim from PMM copy deck section 4) -->
     <p>The discovery loop closes on the outcome (a shipped bet mapped back to the signal that motivated it), not the activity (an interview scheduled). Every call transcript, support ticket, and review lands as a typed insight on the same graph as the bets you&rsquo;re already shipping. Agents cluster themes and draft candidate bets; a human gates the read-through and the shaping. After ship, the loop re-checks the signal so you know whether the bet actually retired the pain.</p>
 
     <!-- POSITIONING LINE (verbatim from PMM copy deck section 4) -->
     <p class="positioning-line">For product teams whose research folder never quite makes it into the roadmap.</p>
+
+    <!-- VIDEO SLOT (non-clickable placeholder; no walkthrough video exists in this loop's series) -->
+    <div class="video-embed" role="figure" aria-label="Product discovery loop walkthrough, coming soon">
+      <div class="video-embed__placeholder">
+        <div class="video-embed__badge">Walkthrough coming soon</div>
+        <p class="video-embed__label">A full walkthrough of the product discovery loop &mdash; customer signal to shipped bet.<br>Sign up to get it the moment it&rsquo;s live.</p>
+      </div>
+    </div>
+
+    <!-- WAITLIST FORM (plain shell, matches shell used on seo-publishing / outbound / knowledge-wiki) -->
+    <form class="waitlist" data-loop-slug="product-discovery" novalidate>
+      <label class="visually-hidden" for="wl-email-product-discovery">Your work email</label>
+      <input class="waitlist__input" id="wl-email-product-discovery" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
+      <button class="waitlist__submit" type="submit">Get the loop when it ships</button>
+      <div class="waitlist__challenge cf-turnstile" data-sitekey="TURNSTILE_SITEKEY_PLACEHOLDER" data-theme="auto" data-appearance="always"></div>
+      <label class="waitlist__consent">
+        <input type="checkbox" name="consent" required>
+        <span>I agree to receive the product discovery guide and occasional Maskin updates. Unsubscribe any time.</span>
+      </label>
+      <p class="waitlist__status" role="status" aria-live="polite"></p>
+    </form>
+    <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20product%20discovery%20loop">ai@maskin.io</a><!--/email_off--> with subject &ldquo;Waitlist: product discovery loop&rdquo; and we&rsquo;ll send it the moment it drops.</p>
 
     <!-- PRIMITIVES BELOW THE FOLD: identical on every loop page (from PMM copy deck section 6) -->
     <h2>What this loop is built with</h2>
@@ -178,30 +171,6 @@
       <div class="primitive">
         <p class="primitive__name">Skill</p>
         <p class="primitive__def">A packaged capability you attach to an agent &mdash; <em>draft a follow-up in our voice</em>, <em>summarize a customer call against our discovery template</em>. Skills are the reusable pieces of judgment your team is already building without realising it.</p>
-      </div>
-    </div>
-
-    <!-- SECONDARY CTA (repeat email capture) -->
-    <aside class="secondary-cta">
-      <p class="cta-card__title">Get the loop when it ships.</p>
-      <p class="cta-card__lede">Same form, second chance &mdash; if you scrolled past the top one.</p>
-      <form class="waitlist" data-loop-slug="product-discovery" data-form-position="footer" novalidate>
-        <label class="waitlist__label" for="wl-email-pd-bottom">Your work email</label>
-        <input class="waitlist__input" id="wl-email-pd-bottom" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
-        <label class="waitlist__consent" for="wl-consent-pd-bottom"><input type="checkbox" name="consent" id="wl-consent-pd-bottom" required> <span>I agree to receive the product discovery guide and occasional Maskin updates. Unsubscribe any time.</span></label>
-        <div class="waitlist__challenge cf-turnstile" data-sitekey="TURNSTILE_SITEKEY_PLACEHOLDER" data-theme="auto" data-appearance="always"></div>
-        <button class="waitlist__submit" type="submit">Get the loop when it ships</button>
-        <p class="waitlist__status" role="status" aria-live="polite"></p>
-      </form>
-      <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20product%20discovery%20loop">ai@maskin.io</a><!--/email_off-->. <a href="/privacy/">Privacy policy</a>.</p>
-    </aside>
-
-    <div class="post-cta">
-      <h2>Run the product discovery loop on your own workspace</h2>
-      <p>Maskin is open-source, MCP-native, and self-hostable under Apache 2.0. Copy the loop into your own workspace, or book a walkthrough and we&rsquo;ll help you shape it around your team&rsquo;s actual research cadence.</p>
-      <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
-        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a>
       </div>
     </div>
   </main>
