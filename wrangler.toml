@@ -10,9 +10,9 @@ pages_build_output_dir = "dist"
 compatibility_date = "2025-06-01"
 
 # KV namespace used by /api/marketplace-email-capture for the sha256(email)
-# dedupe entry. Bind IDs are placeholders until Magnus provisions the
-# namespace in the Cloudflare account (see PR body for the full env list).
+# dedupe entry. Same id in both fields — this is a dedupe cache, no need to
+# isolate preview from production.
 [[kv_namespaces]]
 binding = "MARKETPLACE_CAPTURE_KV"
-id = "REPLACE_WITH_PRODUCTION_KV_ID"
-preview_id = "REPLACE_WITH_PREVIEW_KV_ID"
+id = "17cbf98f2bba499a8db5129ea4d4fbeb"
+preview_id = "17cbf98f2bba499a8db5129ea4d4fbeb"
