@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A wiki your agents read before they answer &mdash; Maskin</title>
+<title>LLM wiki &mdash; a wiki your agents read before they answer</title>
 <meta name="description" content="Team memory that new hires and new agents bootstrap from &mdash; indexed, typed, MCP-native.">
 
 <!-- Canonical -->
@@ -47,13 +47,13 @@
   "@graph": [
     {
       "@type": "WebPage",
-      "headline": "A wiki your agents read before they answer.",
       "name": "A wiki your agents read before they answer.",
+      "headline": "A wiki your agents read before they answer.",
       "description": "Team memory that new hires and new agents bootstrap from — indexed, typed, MCP-native.",
       "url": "https://maskin.io/marketplace/knowledge-wiki/",
       "inLanguage": "en",
-      "datePublished": "2026-09-12T00:00:00Z",
-      "dateModified": "2026-09-12T00:00:00Z",
+      "datePublished": "2026-09-18T00:00:00Z",
+      "dateModified": "2026-09-18T00:00:00Z",
       "image": ["https://maskin.io/og-image-knowledge-wiki.png"],
       "author": {
         "@type": "Organization",
@@ -71,7 +71,7 @@
         "name": "Maskin",
         "url": "https://maskin.io/"
       },
-      "keywords": "llm knowledge wiki, llm-native wiki, agent citations, grounded ai knowledge base, workspace-graph wiki"
+      "keywords": "llm wiki, llm wiki for teams, llm wiki mcp, llm wiki vs rag, llm wiki pattern, llm wiki knowledge base"
     },
     {
       "@type": "BreadcrumbList",
@@ -80,10 +80,108 @@
         { "@type": "ListItem", "position": 2, "name": "Marketplace", "item": "https://maskin.io/marketplace/" },
         { "@type": "ListItem", "position": 3, "name": "The LLM knowledge wiki loop", "item": "https://maskin.io/marketplace/knowledge-wiki/" }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an LLM wiki?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An LLM wiki is a knowledge base an LLM compiles from your own sources into interlinked pages that agents read before they answer. Andrej Karpathy named the pattern in April 2026 as an alternative to per-agent memory and query-time RAG. The point is a compiled, human-auditable artifact: the agent reads a stable page instead of retrieving a fresh set of fragments for every question."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is an LLM wiki a RAG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A RAG system embeds raw sources and retrieves fragments at query time, so the answer is assembled fresh on every request. An LLM wiki compiles those sources into interlinked pages ahead of time and stores them as a durable artifact. The wiki can feed a retrieval pipeline, but the wiki itself is the compiled knowledge, not the retrieval mechanism that reads from it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is an LLM wiki better than RAG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They solve different problems, so the honest answer is that most teams end up with both. RAG retrieves fragments from raw sources at query time and is good at open-ended recall over a large corpus. An LLM wiki compiles sources into interlinked pages ahead of time and is good at stable, citeable answers a human can check. Use the wiki for what your team has already learned and wants to keep answering the same way."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does an LLM wiki work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An LLM reads your sources, extracts the durable claims, and writes them into interlinked pages with links back to the object each claim came from. Agents then read those pages before they answer, instead of searching raw documents. The compile runs on a schedule or when a source changes, so the wiki stays a maintained artifact rather than a one-time export."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you run an LLM wiki for a team?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Running one for a team is an upkeep problem more than a build problem. The build is straightforward: point an LLM at your sources, compile interlinked pages, let agents read them. The hard part is keeping pages current once the person who wrote them changes roles. The fix is to make writing a byproduct of work that already closes, and reading a byproduct of work that already starts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you scale an LLM wiki?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Scaling is a linking and ownership problem, not a storage problem. Past a few hundred pages the failure is orphaned and stale entries, not volume. Give every page a type, an owner, and a link to the object it describes, and re-check the ones whose source object changed. That is what keeps a large wiki trustworthy where a flat folder of markdown stops being."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is an LLM wiki open source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Karpathy published the pattern as a public gist, so the approach itself is open, and implementations range from a personal Obsidian vault to a cross-platform desktop app to a shared substrate inside a workspace. What differs is who reads it. A personal vault serves one person; a team wiki has to serve every agent the team spawns, which changes how it is indexed and linked."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does an LLM wiki connect to MCP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MCP is the wire. The wiki lives in one place and agents reach it through an MCP server, the same way they reach the CRM or the repo. That matters because it keeps the wiki out of any single tool. A coding agent, a research agent, and a support agent can all read the same pages under the same gates, without anyone copying the content between products."
+          }
+        }
+      ]
     }
   ]
 }
 </script>
+
+<style>
+  /* LLM knowledge wiki loop page: hero visual, non-clickable video placeholder, plain waitlist shell (matches shell used on seo-publishing / outbound / product-discovery), primitives grid, positioning line. */
+  .hero-visual { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--rule); margin: 1.5rem 0 2rem; }
+  .video-embed { position: relative; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: var(--linen); border: 1px solid var(--rule); margin: 1.5rem 0 2rem; display: flex; align-items: center; justify-content: center; text-align: center; }
+  .video-embed__placeholder { padding: 2rem; color: var(--ink-2); font-family: var(--ff-serif); font-style: italic; }
+  .video-embed__badge { display: inline-block; font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); padding: .3rem .55rem; border: 1px solid var(--accent); border-radius: 6px; margin-bottom: .8rem; }
+  .video-embed__label { font-size: 1.05rem; }
+  .waitlist { display: flex; gap: .6rem; flex-wrap: wrap; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin: 0 0 .5rem; }
+  .waitlist__input { flex: 1 1 240px; padding: .7rem .9rem; border: 1px solid var(--rule); border-radius: 8px; font: inherit; background: var(--linen); color: var(--ink); }
+  .waitlist__input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .waitlist__submit { padding: .7rem 1.1rem; border-radius: 8px; border: 0; background: var(--ink); color: var(--linen); font-family: var(--ff-display); font-weight: 600; cursor: pointer; }
+  .waitlist__submit:hover { background: var(--ink-2); }
+  .waitlist__status { flex: 1 1 100%; margin: .5rem 0 0; font-family: var(--ff-mono); font-size: .82rem; color: var(--ink-3); min-height: 1.2em; }
+  .waitlist__fallback { font-size: .85rem; color: var(--ink-3); margin: 0 0 2rem; }
+  .waitlist__challenge { flex: 1 1 100%; margin: .25rem 0 0; min-height: 65px; }
+  .waitlist__consent { flex: 1 1 100%; display: flex; gap: .55rem; align-items: flex-start; font-size: .88rem; color: var(--ink-2); margin: .25rem 0 0; line-height: 1.4; }
+  .waitlist__consent input[type=checkbox] { margin-top: .25rem; accent-color: var(--accent); flex: 0 0 auto; }
+  .waitlist__consent a { color: inherit; text-decoration: underline; }
+  .waitlist__status[data-tone=error] { color: var(--accent, #b04747); }
+  .waitlist__status[data-tone=success] { color: var(--ink); }
+  .positioning-line { font-family: var(--ff-serif); font-size: 1.15rem; font-style: italic; color: var(--ink-2); margin: 1.75rem 0 2.5rem; border-left: 3px solid var(--accent); padding: .25rem 0 .25rem 1rem; }
+  .primitives { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.5rem 0 3rem; }
+  .primitive { padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+  .primitive__name { font-family: var(--ff-display); font-weight: 600; font-size: 1.05rem; margin: 0 0 .5rem; color: var(--ink); }
+  .primitive__def { font-size: .9rem; color: var(--ink-2); margin: 0; line-height: 1.55; }
+  .primitive__def + .primitive__def { margin-top: .6rem; }
+  .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+</style>
 </head>
 <body>
 
@@ -95,46 +193,26 @@
   <main class="doc-content">
     <p class="doc-breadcrumb"><a href="/marketplace/">Marketplace</a> / The LLM knowledge wiki loop</p>
     <p class="eyebrow">Loop &middot; Knowledge</p>
+
+    <!-- HERO: H1 + subhead + hero visual -->
     <h1>A wiki your agents read before they answer.</h1>
     <p class="lead">Team memory that new hires and new agents bootstrap from &mdash; indexed, typed, MCP-native.</p>
+    <img class="hero-visual" src="/og-image-knowledge-wiki.png" alt="The LLM knowledge wiki loop &mdash; a closed bet becomes a typed, interlinked wiki page that agents read before they answer." width="1200" height="630">
 
+    <!-- HERO BODY (verbatim from the approved content object) -->
     <p>The knowledge wiki loop keeps a living, agent-readable record of every decision your team ships. A closed bet fires the loop; agents write the verdict, index the artifacts, and link them to the object they came from; a human gates the taste-sensitive summaries. Every future agent your team spawns reads from the same graph before it answers &mdash; so the wiki isn&rsquo;t a Notion side-project that rots the moment its author changes roles, it&rsquo;s the same substrate the rest of your team already operates on.</p>
 
     <p class="positioning-line">For product teams tired of re-answering the same question because the last answer lived in someone&rsquo;s DMs.</p>
 
-    <style>
-      .video-embed { position: relative; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: var(--linen); border: 1px solid var(--rule); margin: 1.5rem 0 2rem; display: flex; align-items: center; justify-content: center; text-align: center; }
-      .video-embed__placeholder { padding: 2rem; color: var(--ink-2); font-family: var(--ff-serif); font-style: italic; }
-      .video-embed__badge { display: inline-block; font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); padding: .3rem .55rem; border: 1px solid var(--accent); border-radius: 6px; margin-bottom: .8rem; }
-      .video-embed__label { font-size: 1.05rem; }
-      .waitlist { display: flex; gap: .6rem; flex-wrap: wrap; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin: 0 0 .5rem; }
-      .waitlist__input { flex: 1 1 240px; padding: .7rem .9rem; border: 1px solid var(--rule); border-radius: 8px; font: inherit; background: var(--linen); color: var(--ink); }
-      .waitlist__input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
-      .waitlist__submit { padding: .7rem 1.1rem; border-radius: 8px; border: 0; background: var(--ink); color: var(--linen); font-family: var(--ff-display); font-weight: 600; cursor: pointer; }
-      .waitlist__submit:hover { background: var(--ink-2); }
-      .waitlist__status { flex: 1 1 100%; margin: .5rem 0 0; font-family: var(--ff-mono); font-size: .82rem; color: var(--ink-3); min-height: 1.2em; }
-      .waitlist__fallback { font-size: .85rem; color: var(--ink-3); margin: 0 0 2rem; }
-      .waitlist__challenge { flex: 1 1 100%; margin: .25rem 0 0; min-height: 65px; }
-      .waitlist__consent { flex: 1 1 100%; display: flex; gap: .55rem; align-items: flex-start; font-size: .88rem; color: var(--ink-2); margin: .25rem 0 0; line-height: 1.4; }
-      .waitlist__consent input[type=checkbox] { margin-top: .25rem; accent-color: var(--accent); flex: 0 0 auto; }
-      .waitlist__consent a { color: inherit; text-decoration: underline; }
-      .waitlist__status[data-tone=error] { color: var(--accent, #b04747); }
-      .waitlist__status[data-tone=success] { color: var(--ink); }
-      .positioning-line { font-family: var(--ff-serif); font-size: 1.15rem; font-style: italic; color: var(--ink-2); margin: 1.75rem 0 2.5rem; border-left: 3px solid var(--accent); padding: .25rem 0 .25rem 1rem; }
-      .primitives { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.5rem 0 3rem; }
-      .primitive { padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
-      .primitive__name { font-family: var(--ff-display); font-weight: 600; font-size: 1.05rem; margin: 0 0 .5rem; color: var(--ink); }
-      .primitive__def { font-size: .9rem; color: var(--ink-2); margin: 0; line-height: 1.55; }
-      .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
-    </style>
-
-    <div class="video-embed" role="figure" aria-label="LLM knowledge wiki loop video, dropping this week">
+    <!-- VIDEO SLOT (non-clickable placeholder; no walkthrough video exists yet) -->
+    <div class="video-embed" role="figure" aria-label="LLM knowledge wiki loop walkthrough, coming soon">
       <div class="video-embed__placeholder">
-        <div class="video-embed__badge">Video drops this week</div>
-        <p class="video-embed__label">Full walkthrough of the LLM knowledge wiki loop &mdash; capture, structure, index, cite, verify, retire.<br>Sign up below to get it in your inbox the moment it&rsquo;s live.</p>
+        <div class="video-embed__badge">Walkthrough coming soon</div>
+        <p class="video-embed__label">A full walkthrough of the LLM knowledge wiki loop &mdash; how a closed bet becomes a citable page your agents read before they answer.<br>Sign up below to get it in your inbox the moment it&rsquo;s live.</p>
       </div>
     </div>
 
+    <!-- WAITLIST FORM (plain shell, matches shell used on seo-publishing / outbound / product-discovery) -->
     <form class="waitlist" data-loop-slug="knowledge-wiki" novalidate>
       <label class="visually-hidden" for="wl-email-knowledge-wiki">Your work email</label>
       <input class="waitlist__input" id="wl-email-knowledge-wiki" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
@@ -148,31 +226,50 @@
     </form>
     <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20LLM%20knowledge%20wiki%20loop">ai@maskin.io</a><!--/email_off--> with subject &ldquo;Waitlist: LLM knowledge wiki loop&rdquo; and we&rsquo;ll send it the moment it drops.</p>
 
-    <h2>What this loop gets you</h2>
-    <p>The LLM knowledge wiki loop closes the gap between &ldquo;we know this internally&rdquo; and &ldquo;every agent in the workspace knows this the moment it&rsquo;s written.&rdquo; A knowledge space like Notion or Obsidian is a good place for humans to write; it stops before the bet, because a page is not the object of work &mdash; it&rsquo;s a note about the work. This loop takes the note, links it to the decision it supports, and makes it part of the citable substrate.</p>
+    <h2>Key takeaways</h2>
     <ul>
-      <li><strong>Answers are grounded, with citations.</strong> When an agent responds using the wiki, the source is a typed object in the graph you can open, not a paraphrase from a black box.</li>
-      <li><strong>The wiki is queryable, not just readable.</strong> Every entry is a first-class object with typed relationships &mdash; who wrote it, which bet it supports, which decisions it contradicts, when it was last verified.</li>
-      <li><strong>Stale entries surface themselves.</strong> The <a href="/docs/agent-observability/">observability</a> layer flags when an agent cites an entry that hasn&rsquo;t been touched in six months and the underlying decision has shifted. Curators get a task; the wiki self-audits.</li>
-      <li><strong>It composes with every other loop.</strong> Because the wiki is on the same typed object graph as the SEO loop and the outbound loop, agents in those loops cite it natively; you don&rsquo;t maintain three separate knowledge stores.</li>
+      <li>An LLM wiki is a knowledge base an LLM compiles from your own sources into interlinked pages that agents read before they answer. Andrej Karpathy named the pattern in April 2026 as the alternative to per-agent memory files and query-time RAG.</li>
+      <li>This loop keeps that base alive: a closed bet fires it, agents write the verdict and index the artifact, and a human gates the taste-sensitive summaries.</li>
+      <li>Team memory is the unit here, not personal memory. Most of the head volume on the search term is Karpathy-navigational; the unclaimed slice is how a team actually runs one.</li>
+      <li>Every entry is typed and linked to the bet, insight, or decision it came from, so a reader walks back to the source instead of trusting a summary.</li>
+      <li>New hires and new agents bootstrap from the same graph, so onboarding stops being a separate doc that drifts from the work.</li>
     </ul>
 
-    <h2>The six-step loop the video walks through</h2>
-    <ol>
-      <li><strong>Capture.</strong> Knowledge lands from Slack threads, shipped bets, decision comments, or a human writing directly into the workspace. Each becomes a typed knowledge object with an author and a linked context.</li>
-      <li><strong>Structure.</strong> A curator agent proposes a shape &mdash; canonical entry, related-to links, contradicted-by links, verify-by-date &mdash; and a human approves before it lands in the wiki.</li>
-      <li><strong>Index.</strong> The entry is embedded and its relationships written to the graph. It&rsquo;s immediately citable by every MCP-connected agent in the workspace.</li>
-      <li><strong>Cite.</strong> When an agent answers a question &mdash; in a comment, a session, an outbound draft &mdash; it cites the specific entry it drew from, linked in the response. Answers without a citation are visibly ungrounded, so the pattern surfaces its own gaps.</li>
-      <li><strong>Verify.</strong> Curators periodically re-open aged entries; a task fires when an entry&rsquo;s verify-by date lapses or a downstream decision contradicts it.</li>
-      <li><strong>Retire.</strong> Superseded entries are marked, not deleted &mdash; the graph keeps the history, and agents can walk the supersession chain when the reason matters.</li>
-    </ol>
+    <h2>What an LLM wiki is, and what it is not</h2>
+    <p>An LLM wiki is a knowledge base an LLM compiles from your own material into interlinked pages that other agents read before they answer. Andrej Karpathy published the pattern in April 2026 as a public gist, framing it as the alternative to two things teams were already doing: stuffing per-agent memory files, and bolting a retrieval layer onto raw documents. The wiki is compiled ahead of time, so the agent reads a stable artifact a human can audit, rather than a fresh pile of retrieved fragments.</p>
+    <p>It is worth separating the wiki from its neighbours. A RAG index embeds your sources and retrieves pieces at query time; an LLM wiki compiles the sources into pages once and links them, so the same question tends to return the same answer. A Notion or Confluence space is written for humans and searched by humans; an LLM wiki is written to be read by an agent, and it cites the object each claim came from. Both are a durable, interlinked record, but the reader is different, and that changes how the record has to be maintained.</p>
+    <p>The failure mode is not the compile step. It is the upkeep. A wiki that only gets written when someone remembers to write it decays into a folder of half-true pages inside a quarter.</p>
 
-    <h2>What this loop is built with</h2>
-    <p>Named the same on every loop page so the shape is portable. Below the fold on purpose &mdash; the loop is what closes; the primitives are just the parts. Inside a loop listing, agents / MCPs / skills appear as &ldquo;built with&rdquo; components of the loop, never as top-level marketplace sections of their own.</p>
+    <h2>How the loop closes</h2>
+    <ul>
+      <li><strong>Fires when</strong> a bet closes, a decision ships, or a piece of work ends with a verdict worth keeping.</li>
+      <li><strong>Writes the verdict</strong> &mdash; an agent captures what was decided, why, and what it displaced, in the voice and format the team already reads.</li>
+      <li><strong>Indexes and links</strong> &mdash; the entry is attached to the bet, insight, or object it came from, so the graph stays walkable in both directions.</li>
+      <li><strong>Human gates</strong> the taste-sensitive summaries: positioning, customer-facing language, anything that states a fact about the company rather than about the work.</li>
+      <li><strong>Closes on</strong> a page a new hire or a new agent can read to answer a question without asking a person.</li>
+    </ul>
+    <p>That last line is the close condition. The loop is not done when the page is written. It is done when someone, or something, reads it and stops needing to ask.</p>
+
+    <h2>Why team wikis rot, and why this one does not</h2>
+    <p>Every team has tried the shared wiki. The pattern is always the same: a burst of writing at the start, a slow drift, and a final state where the newest pages are the least accurate and nobody trusts any of it. The cause is not laziness. It is that writing to the wiki is a separate job from doing the work, and separate jobs lose.</p>
+    <p>This loop removes the separate job. Writing to the wiki is a byproduct of closing a bet, which the team is already doing. Reading from the wiki is a byproduct of starting work, because the agent reads it before it answers. Nobody has to remember the wiki exists, because it sits on the path of work the team already runs.</p>
+    <p>The typed graph is what makes that possible. A page is not a floating document; it is attached to the object it describes. When the object changes, the link tells you which page to revisit. When a new agent joins, it does not read a stale onboarding doc. It reads the same graph the rest of the team operates on.</p>
+
+    <h2>Built with</h2>
+    <ul>
+      <li><strong>Signal sources</strong> &mdash; closed bets, shipped decisions, customer calls, and the object graph the team already works on.</li>
+      <li><strong>Agents</strong> &mdash; verdict writer, artifact indexer, link resolver, staleness checker.</li>
+      <li><strong>MCPs</strong> &mdash; the docs tool, the chat tool, the repo, and the analytics your team already logs into.</li>
+      <li><strong>Skills</strong> &mdash; <em>write the verdict in our voice</em>, <em>summarize a decision against our template</em>.</li>
+      <li><strong>Human gates</strong> &mdash; the person who owns the summary when it states something customer-facing or company-level.</li>
+    </ul>
+
+    <h2>What&rsquo;s inside the loop</h2>
     <div class="primitives">
       <div class="primitive">
         <p class="primitive__name">Loop</p>
-        <p class="primitive__def">A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome &mdash; not on <em>done for now</em>. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.</p>
+        <p class="primitive__def">A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome &mdash; not on <em>done for now</em>. Every listing on the Marketplace is a loop.</p>
+        <p class="primitive__def"><strong>Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.</strong></p>
       </div>
       <div class="primitive">
         <p class="primitive__name">Agent</p>
@@ -187,38 +284,52 @@
         <p class="primitive__def">A packaged capability you attach to an agent &mdash; <em>draft a follow-up in our voice</em>, <em>summarize a customer call against our discovery template</em>. Skills are the reusable pieces of judgment your team is already building without realising it.</p>
       </div>
     </div>
-    <p>Full concept map: <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a> explains where each layer belongs. The category argument: <a href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a>.</p>
+    <p>Inside a loop listing, agents / MCPs / skills appear as &ldquo;built with&rdquo; components of the loop, never as top-level marketplace sections of their own.</p>
 
-    <h2>Why this beats a knowledge space with an LLM plugin</h2>
-    <p>Obsidian, Mem, Confluence, and their siblings own capture and retrieval; they stop before the bet. The failure mode of &ldquo;knowledge space + AI plugin&rdquo; isn&rsquo;t retrieval &mdash; it&rsquo;s that the page has no win condition and no relationship to the decisions it should support, so the AI plugin generates plausible-sounding paraphrases with no way to close the loop when the underlying decision changes. This loop lives in the workspace-graph tier: every entry is linked to the bet, task, or decision it supports, and staleness surfaces itself. Read the tier comparison for the full argument: <a href="/docs/three-tiers-ai-native-work/">The three tiers of AI-native work</a>.</p>
+    <h2>FAQ</h2>
+
+    <h3>What is an LLM wiki?</h3>
+    <p>An LLM wiki is a knowledge base an LLM compiles from your own sources into interlinked pages that agents read before they answer. Andrej Karpathy named the pattern in April 2026 as an alternative to per-agent memory and query-time RAG. The point is a compiled, human-auditable artifact: the agent reads a stable page instead of retrieving a fresh set of fragments for every question.</p>
+
+    <h3>Is an LLM wiki a RAG?</h3>
+    <p>No. A RAG system embeds raw sources and retrieves fragments at query time, so the answer is assembled fresh on every request. An LLM wiki compiles those sources into interlinked pages ahead of time and stores them as a durable artifact. The wiki can feed a retrieval pipeline, but the wiki itself is the compiled knowledge, not the retrieval mechanism that reads from it.</p>
+
+    <h3>Is an LLM wiki better than RAG?</h3>
+    <p>They solve different problems, so the honest answer is that most teams end up with both. RAG retrieves fragments from raw sources at query time and is good at open-ended recall over a large corpus. An LLM wiki compiles sources into interlinked pages ahead of time and is good at stable, citeable answers a human can check. Use the wiki for what your team has already learned and wants to keep answering the same way.</p>
+
+    <h3>How does an LLM wiki work?</h3>
+    <p>An LLM reads your sources, extracts the durable claims, and writes them into interlinked pages with links back to the object each claim came from. Agents then read those pages before they answer, instead of searching raw documents. The compile runs on a schedule or when a source changes, so the wiki stays a maintained artifact rather than a one-time export.</p>
+
+    <h3>How do you run an LLM wiki for a team?</h3>
+    <p>Running one for a team is an upkeep problem more than a build problem. The build is straightforward: point an LLM at your sources, compile interlinked pages, let agents read them. The hard part is keeping pages current once the person who wrote them changes roles. The fix is to make writing a byproduct of work that already closes, and reading a byproduct of work that already starts.</p>
+
+    <h3>How do you scale an LLM wiki?</h3>
+    <p>Scaling is a linking and ownership problem, not a storage problem. Past a few hundred pages the failure is orphaned and stale entries, not volume. Give every page a type, an owner, and a link to the object it describes, and re-check the ones whose source object changed. That is what keeps a large wiki trustworthy where a flat folder of markdown stops being.</p>
+
+    <h3>Is an LLM wiki open source?</h3>
+    <p>Karpathy published the pattern as a public gist, so the approach itself is open, and implementations range from a personal Obsidian vault to a cross-platform desktop app to a shared substrate inside a workspace. What differs is who reads it. A personal vault serves one person; a team wiki has to serve every agent the team spawns, which changes how it is indexed and linked.</p>
+
+    <h3>How does an LLM wiki connect to MCP?</h3>
+    <p>MCP is the wire. The wiki lives in one place and agents reach it through an MCP server, the same way they reach the CRM or the repo. That matters because it keeps the wiki out of any single tool. A coding agent, a research agent, and a support agent can all read the same pages under the same gates, without anyone copying the content between products.</p>
 
     <div class="related">
-      <p class="related__title">Read next</p>
+      <p class="related__title">Related loops on the marketplace</p>
       <div class="doc-cards">
-        <a class="doc-card" href="/docs/agentic-workspace-vs-knowledge-space/">
-          <div class="doc-card__title">Agentic workspace vs knowledge space</div>
-          <div class="doc-card__desc">Why Obsidian, Mem, and Confluence stop before the bet &mdash; and how the workspace-graph closes the loop.</div>
+        <a class="doc-card" href="/marketplace/product-discovery/">
+          <div class="doc-card__title">Close the loop from customer signal to shipped bet</div>
+          <div class="doc-card__desc">The sibling loop, and the one that feeds this wiki its verdicts.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
-        <a class="doc-card" href="/docs/what-is-a-stateful-orchestration-substrate/">
-          <div class="doc-card__title">Stateful orchestration substrate</div>
-          <div class="doc-card__desc">The shared typed store that carries state between stateless AI agents so a pipeline stays coherent.</div>
+        <a class="doc-card" href="/marketplace/competitive-intelligence/">
+          <div class="doc-card__title">Run competitor intelligence as one loop, not five dashboards</div>
+          <div class="doc-card__desc">Market signal shaped into bets, on the same graph.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
-        <a class="doc-card" href="/marketplace/seo-publishing/">
-          <div class="doc-card__title">The SEO publishing loop</div>
-          <div class="doc-card__desc">The wiki also grounds the SEO publisher's citations &mdash; same substrate, different loop.</div>
+        <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+          <div class="doc-card__title">What is an agentic workspace?</div>
+          <div class="doc-card__desc">The cornerstone read on how the loops fit together.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
-      </div>
-    </div>
-
-    <div class="post-cta">
-      <h2>Run the knowledge wiki loop on your own workspace</h2>
-      <p>Maskin is open-source, MCP-native, and self-hostable under Apache 2.0. Copy the loop into your own workspace, or book a walkthrough and we&rsquo;ll help you shape it around your team&rsquo;s knowledge-capture cadence.</p>
-      <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
-        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a>
       </div>
     </div>
   </main>
