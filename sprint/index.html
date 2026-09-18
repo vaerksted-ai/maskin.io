@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{if(localStorage.getItem('maskin-api-key'))window.location.replace('/workspaces')}catch(e){}</script>
+<title>AI-Native Loop Sprint — Maskin</title>
+<meta name="description" content="Set up AI agents in self-learning loops in a day. Your team transitions from prompting to building. Loops graduate to semi- or fully autonomous.">
+
+<link rel="canonical" href="https://maskin.io/sprint/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maskin.io/sprint/">
+<meta property="og:title" content="AI-Native Loop Sprint — built with you">
+<meta property="og:description" content="Your team stops prompting one message at a time. You build loops where agents run, learn, and deliver outcomes — in the same workspace as the humans who guide them.">
+<meta property="og:image" content="https://maskin.io/og-image-sprint.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="AI-Native Loop Sprint — built with you">
+<meta name="twitter:description" content="Set up AI agents in self-learning loops in a day. Loops graduate to semi- or fully autonomous.">
+<meta name="twitter:image" content="https://maskin.io/og-image-sprint.png">
+
+<!-- PostHog analytics. Autocapture (CTA clicks), pageviews, and scroll depth are on by default.
+     The key below is replaced at build time by the POSTHOG_PROJECT_KEY environment variable. -->
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('POSTHOG_PROJECT_KEY', {
+    api_host: 'https://eu.i.posthog.com',
+    person_profiles: 'identified_only',
+    defaults: '2025-05-24'
+  });
+  posthog.capture('sprint_page_viewed');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ─── TOKENS (mirror the site) ───────────────────────────── */
+:root {
+  --ink:        #111110;
+  --ink-2:      #5A5751;
+  --ink-3:      #9B958F;
+  --surface:    #FAFAF8;
+  --linen:      #F0EDE7;
+  --rule:       #E2DDD7;
+  --accent:     #2563EB;
+  --accent-dim: rgba(37,99,235,0.12);
+
+  --ff-display: 'Schibsted Grotesk', sans-serif;
+  --ff-serif:   'Newsreader', Georgia, serif;
+  --ff-mono:    'JetBrains Mono', monospace;
+
+  --step-0: clamp(0.8125rem, 0.79rem + 0.12vw, 0.9375rem);
+  --step-1: clamp(0.9375rem, 0.9rem + 0.2vw, 1.125rem);
+  --step-2: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  --step-3: clamp(1.5rem, 1.15rem + 1.5vw, 2.5rem);
+  --step-4: clamp(2rem, 1.4rem + 3vw, 3.75rem);
+
+  --max-w: 1280px;
+  --content-w: 720px;
+  --nav-bg-scrolled: rgba(250,250,248,.92);
+  --gap: clamp(1rem, 3vw, 2.5rem);
+  --section-py: clamp(4rem, 9vw, 8rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --nav-bg-scrolled: rgba(20,20,18,.92);
+    --ink:        #ECEAE4;
+    --ink-2:      #A09A93;
+    --ink-3:      #6B6560;
+    --surface:    #141412;
+    --linen:      #1C1B18;
+    --rule:       #2A2925;
+    --accent:     #3B74F2;
+    --accent-dim: rgba(59,116,242,0.15);
+  }
+}
+[data-theme="dark"] {
+  --nav-bg-scrolled: rgba(20,20,18,.92);
+  --ink:        #ECEAE4;
+  --ink-2:      #A09A93;
+  --ink-3:      #6B6560;
+  --surface:    #141412;
+  --linen:      #1C1B18;
+  --rule:       #2A2925;
+  --accent:     #3B74F2;
+  --accent-dim: rgba(59,116,242,0.15);
+}
+[data-theme="light"] {
+  --nav-bg-scrolled: rgba(250,250,248,.92);
+  --ink:        #111110;
+  --ink-2:      #5A5751;
+  --ink-3:      #9B958F;
+  --surface:    #FAFAF8;
+  --linen:      #F0EDE7;
+  --rule:       #E2DDD7;
+  --accent:     #2563EB;
+  --accent-dim: rgba(37,99,235,0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .footer__logo-svg-bg  { fill: #1C1B18; }
+  :root:not([data-theme="light"]) .footer__logo-svg-path { stroke: #ECEAE4; }
+  :root:not([data-theme="light"]) .hero__trace { background: #1C1B18; }
+}
+[data-theme="dark"] .footer__logo-svg-bg  { fill: #1C1B18; }
+[data-theme="dark"] .footer__logo-svg-path { stroke: #ECEAE4; }
+[data-theme="dark"] .hero__trace { background: #1C1B18; }
+
+/* ─── RESET ──────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--ff-display);
+  font-size:var(--step-0);
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--surface);
+  -webkit-font-smoothing:antialiased;
+}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* ─── LAYOUT ─────────────────────────────────────────────── */
+.wrap{width:100%;max-width:var(--max-w);margin-inline:auto;padding-inline:var(--gap)}
+.wrap--reading{max-width:var(--content-w);margin-inline:auto}
+
+/* ─── NAV (mirrors the site) ─────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  border-bottom:1px solid transparent;
+  transition:border-color .25s,background .25s,backdrop-filter .25s;
+}
+.nav.scrolled{
+  background:var(--nav-bg-scrolled);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-color:var(--rule);
+}
+.nav__inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:56px;max-width:var(--max-w);margin-inline:auto;padding-inline:var(--gap);
+}
+.nav__logo{font-size:1rem;font-weight:700;letter-spacing:-.02em}
+.nav__links{display:flex;align-items:center;gap:1.75rem;list-style:none}
+.nav__links a{font-size:.875rem;font-weight:500;color:var(--ink-2);transition:color .15s}
+.nav__links a:hover{color:var(--ink)}
+.nav__links a[aria-current="page"]{color:var(--ink)}
+.nav__login{font-size:.875rem;font-weight:500;color:var(--ink-2)!important;transition:color .15s}
+.nav__login:hover{color:var(--ink)!important}
+.nav__signup{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.4rem .9rem;background:var(--accent);color:#fff!important;
+  border-radius:6px;font-size:.875rem!important;font-weight:600!important;
+  transition:background .15s,transform .1s,opacity .15s;
+}
+.nav__signup:hover{opacity:.88;transform:translateY(-1px)}
+.nav__mobile-actions{display:none;align-items:center;gap:.5rem}
+.nav__mobile-signup{
+  display:inline-flex;align-items:center;
+  padding:.375rem .75rem;background:var(--accent);color:#fff;
+  border-radius:6px;font-size:.8125rem;font-weight:600;text-decoration:none;
+  transition:opacity .15s;
+}
+.nav__mobile-signup:hover{opacity:.88}
+.nav__hamburger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:36px;height:36px;background:none;border:none;
+  cursor:pointer;padding:6px;color:var(--ink);border-radius:6px;
+}
+.nav__hamburger span{
+  display:block;width:20px;height:2px;background:currentColor;
+  border-radius:2px;transition:transform .2s,opacity .2s;transform-origin:center;
+}
+.nav__hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav__hamburger.open span:nth-child(2){opacity:0}
+.nav__hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav__drawer{
+  display:none;
+  position:fixed;top:56px;left:0;right:0;bottom:0;
+  background:var(--surface);z-index:99;
+  padding:2rem var(--gap);
+  flex-direction:column;gap:0;
+  border-top:1px solid var(--rule);
+  overflow-y:auto;
+}
+.nav__drawer.open{display:flex}
+.nav__drawer li{list-style:none;border-bottom:1px solid var(--rule)}
+.nav__drawer li a{
+  display:block;padding:1rem 0;
+  font-size:1.125rem;font-weight:600;color:var(--ink);
+  text-decoration:none;transition:color .15s;
+}
+.nav__drawer li a:hover{color:var(--accent)}
+.nav__drawer .nav__drawer-cta{
+  margin-top:1.5rem;
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:.75rem 1.5rem;background:var(--ink);color:var(--surface);
+  border-radius:8px;font-weight:700;font-size:1rem;text-decoration:none;width:100%;
+}
+
+/* ─── BUTTONS ────────────────────────────────────────────── */
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.75rem 1.5rem;background:var(--ink);color:var(--surface);
+  border-radius:8px;font-weight:600;font-size:.9375rem;
+  border:1.5px solid var(--ink);
+  transition:background .15s,transform .1s,box-shadow .15s;
+}
+.btn-primary:hover{background:#2a2925;transform:translateY(-1px);box-shadow:0 4px 16px rgba(17,17,16,.18)}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.75rem 1.5rem;background:transparent;color:var(--ink);
+  border-radius:8px;font-weight:500;font-size:.9375rem;
+  border:1.5px solid var(--rule);
+  transition:border-color .15s,background .15s,transform .1s;
+}
+.btn-secondary:hover{border-color:var(--ink-2);background:var(--linen);transform:translateY(-1px)}
+.hero__actions,.cta-actions{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.cta-section .cta-actions{justify-content:center}
+
+/* ─── HERO ───────────────────────────────────────────────── */
+.hero{
+  position:relative;overflow:hidden;
+  padding-top:clamp(6.5rem,13vh,9rem);
+  padding-bottom:clamp(3rem,7vh,5rem);
+}
+.hero__glow{
+  position:absolute;top:-10%;right:-5%;width:55%;height:80%;
+  background:radial-gradient(ellipse 70% 70% at 70% 40%,rgba(37,99,235,.09) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero__eyebrow{
+  position:relative;
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.7rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:1rem;
+}
+.hero__eyebrow::before{content:'';display:block;width:16px;height:2px;background:var(--accent)}
+.hero__title{
+  position:relative;
+  font-size:var(--step-4);font-weight:700;
+  line-height:1.04;letter-spacing:-.03em;
+  margin-bottom:1.25rem;max-width:30ch;
+}
+.hero__title em{font-style:italic;font-weight:600;color:var(--accent)}
+.hero__sub{
+  position:relative;
+  font-size:var(--step-1);color:var(--ink-2);
+  line-height:1.6;max-width:56ch;margin-bottom:1.5rem;
+}
+.hero__body{
+  position:relative;
+  font-size:var(--step-1);line-height:1.7;color:var(--ink-2);
+  max-width:62ch;margin-bottom:2rem;
+}
+.hero__body strong{color:var(--ink);font-weight:600}
+.hero__trace{
+  position:relative;
+  margin-top:2.75rem;
+  background:var(--linen);
+  border:1px solid var(--rule);
+  border-radius:14px;
+  padding:clamp(1.25rem,3vw,2rem) clamp(1.25rem,3vw,2rem);
+  overflow:hidden;isolation:isolate;
+}
+.hero__trace-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(var(--rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+  background-size:48px 48px;opacity:.35;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 50%, #000 0%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 50%, #000 0%, transparent 75%);
+  pointer-events:none;
+}
+.hero__trace-label{
+  position:relative;
+  font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:1rem;
+}
+.hero__trace-chips{
+  position:relative;
+  display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;
+}
+.trace-chip{
+  font-family:var(--ff-mono);font-size:.8125rem;
+  padding:.6rem 1rem;border-radius:6px;
+  background:var(--surface);border:1px solid var(--rule);color:var(--ink);
+  white-space:nowrap;
+}
+.trace-chip--gate{border-color:var(--accent);border-width:2px;color:var(--accent);font-weight:500}
+.trace-arrow{font-family:var(--ff-mono);font-size:.9rem;color:var(--ink-3)}
+
+/* ─── SECTIONS ───────────────────────────────────────────── */
+.section{padding-block:var(--section-py);border-top:1px solid var(--rule)}
+.section--linen{background:var(--linen)}
+.section__head{max-width:60ch;margin-bottom:clamp(2rem,4vw,3rem)}
+.section-tag{
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;
+}
+.section-title{
+  font-size:var(--step-3);font-weight:700;
+  letter-spacing:-.03em;line-height:1.08;
+}
+.section-title em{font-style:italic;font-weight:600}
+.section-sub{font-size:var(--step-1);color:var(--ink-2);line-height:1.55;max-width:52ch;margin-top:.875rem}
+
+/* ─── GETS: 4 bullets ────────────────────────────────────── */
+.gets{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.25rem,3vw,2rem)}
+.get{
+  padding:1.5rem 1.5rem 1.4rem;
+  border:1px solid var(--rule);border-radius:14px;background:var(--surface);
+}
+.get__title{font-size:var(--step-2);font-weight:600;letter-spacing:-.02em;margin-bottom:.6rem;line-height:1.2}
+.get__body{color:var(--ink-2);font-size:.9375rem;line-height:1.65}
+.get__body strong{color:var(--ink);font-weight:600}
+
+/* ─── LOOPS: 11 one-liners ───────────────────────────────── */
+.loop-list{list-style:none;border-top:1px solid var(--rule)}
+.loop-row{
+  display:grid;grid-template-columns:minmax(180px,240px) 1fr;
+  gap:.35rem 2rem;align-items:baseline;
+  padding:1rem 0;border-bottom:1px solid var(--rule);
+}
+.loop-row__name{font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.loop-row__desc{color:var(--ink-2);font-size:.9375rem;line-height:1.6}
+.loop-note{
+  margin-top:1.75rem;font-family:var(--ff-serif);font-style:italic;
+  font-size:var(--step-1);color:var(--ink-2);max-width:56ch;
+}
+
+/* ─── STEPS ──────────────────────────────────────────────── */
+.steps{list-style:none;counter-reset:step}
+.step{
+  counter-increment:step;
+  display:grid;grid-template-columns:auto 1fr;gap:0 1.5rem;
+  padding:1.75rem 0;border-bottom:1px solid var(--rule);
+}
+.step:last-child{border-bottom:none}
+.step::before{
+  content:counter(step,decimal-leading-zero);
+  font-family:var(--ff-mono);font-size:.8125rem;
+  color:var(--accent);padding-top:.35rem;
+}
+.step__title{font-size:var(--step-2);font-weight:600;letter-spacing:-.02em;margin-bottom:.4rem}
+.step__body{color:var(--ink-2);font-size:.9375rem;line-height:1.65;max-width:62ch}
+.step__body strong{color:var(--ink);font-weight:600}
+
+/* ─── GRADUATION ─────────────────────────────────────────── */
+.trust{max-width:62ch}
+.trust__lead{font-size:var(--step-1);color:var(--ink-2);line-height:1.65;margin-bottom:1.5rem}
+.trust__lead strong{color:var(--ink);font-weight:600}
+.trust__label{
+  font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:1rem;
+}
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-bottom:1.5rem}
+.trust-card{padding:1.35rem 1.4rem;border:1px solid var(--rule);border-radius:12px;background:var(--surface)}
+.trust-card__title{
+  font-family:var(--ff-mono);font-size:.8125rem;font-weight:500;
+  color:var(--accent);margin-bottom:.6rem;letter-spacing:.01em;
+}
+.trust-card__body{color:var(--ink-2);font-size:.9375rem;line-height:1.65}
+.trust__foot{color:var(--ink-2);font-size:var(--step-1);line-height:1.65}
+
+/* ─── FIT ────────────────────────────────────────────────── */
+.fit-list{list-style:none;display:grid;gap:1rem;max-width:62ch}
+.fit-list li{display:grid;grid-template-columns:auto 1fr;gap:0 .875rem;align-items:start}
+.fit-list li::before{
+  content:'';width:8px;height:8px;border-radius:50%;
+  background:var(--accent);margin-top:.55em;
+}
+.fit-list span{color:var(--ink-2);font-size:var(--step-1);line-height:1.6}
+.fit-list strong{color:var(--ink);font-weight:600}
+
+/* ─── FAQ ────────────────────────────────────────────────── */
+.faq{max-width:62ch}
+.faq-item{border-bottom:1px solid var(--rule)}
+.faq-item:first-child{border-top:1px solid var(--rule)}
+.faq-item summary{
+  list-style:none;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+  padding:1.25rem 0;
+  font-size:var(--step-1);font-weight:600;letter-spacing:-.01em;color:var(--ink);
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:'+';flex-shrink:0;font-family:var(--ff-mono);font-weight:400;
+  font-size:1.1rem;line-height:1.2;color:var(--ink-3);transition:transform .2s,color .2s;
+}
+.faq-item[open] summary::after{transform:rotate(45deg);color:var(--accent)}
+.faq-item__a{
+  padding:0 0 1.35rem;color:var(--ink-2);
+  font-size:.9375rem;line-height:1.7;max-width:60ch;
+}
+.faq-item__a strong{color:var(--ink);font-weight:600}
+
+/* ─── RELATED READING ────────────────────────────────────── */
+.related{max-width:var(--content-w);margin-inline:auto}
+.related__title{font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:1rem}
+.related__list{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.related__list li{line-height:1.5}
+.related__list a{color:var(--ink);font-weight:500;text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;transition:border-color .15s,color .15s}
+.related__list a:hover{color:var(--accent);border-color:var(--accent)}
+.related__desc{color:var(--ink-2)}
+
+/* ─── CTA ────────────────────────────────────────────────── */
+.cta-section{text-align:center}
+.cta-section .section-title{margin-bottom:1.75rem;max-width:24ch;margin-inline:auto}
+
+/* ─── FOOTER (mirrors the site) ──────────────────────────── */
+.footer{padding-block:1.75rem;border-top:1px solid var(--rule)}
+.footer__logo-svg-bg  { fill: #FAFAF8; }
+.footer__logo-svg-path { stroke: #111110; }
+.footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.875rem}
+.footer__logo{font-weight:700;letter-spacing:-.02em;font-size:.875rem}
+.footer__links{display:flex;align-items:center;gap:1.5rem;list-style:none;flex-wrap:wrap}
+.footer__links a{font-size:.875rem;color:var(--ink-2);transition:color .15s}
+.footer__links a:hover{color:var(--ink)}
+.footer__copy{font-size:.78rem;color:var(--ink-3)}
+.footer__brand{display:flex;flex-direction:column;gap:.3rem}
+.footer__def{font-size:.72rem;color:var(--ink-3);font-style:italic;letter-spacing:.01em}
+
+.theme-toggle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:6px;color:var(--ink-2);
+  transition:color .15s,background .15s;
+}
+.theme-toggle:hover{color:var(--ink);background:var(--linen)}
+.theme-toggle__sun{display:none}
+.theme-toggle__moon{display:block}
+[data-theme="dark"] .theme-toggle__sun{display:block}
+[data-theme="dark"] .theme-toggle__moon{display:none}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle__sun{display:block}
+  :root:not([data-theme="light"]) .theme-toggle__moon{display:none}
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 780px) {
+  .nav__links{display:none}
+  .nav__mobile-actions{display:flex}
+  .nav__hamburger{display:flex}
+  .footer__inner{flex-direction:column;align-items:flex-start;gap:1.25rem}
+  .footer__links{gap:1rem}
+  .loop-row{grid-template-columns:1fr;gap:.2rem}
+  .gets{grid-template-columns:1fr}
+  .hero__actions{flex-direction:column;align-items:stretch}
+  .hero__actions .btn-primary,.hero__actions .btn-secondary{justify-content:center;width:100%}
+}
+
+/* ─── REDUCED MOTION ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .nav,.nav__signup,.nav__mobile-signup,.nav__hamburger span,
+  .nav__drawer,.theme-toggle,.footer__links a,.nav__links a,.nav__login,
+  .btn-primary,.btn-secondary,.faq-item summary::after{
+    transition:none!important;animation:none!important;
+  }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://maskin.io/sprint/#page",
+      "url": "https://maskin.io/sprint/",
+      "name": "AI-Native Loop Sprint — Maskin",
+      "description": "Set up AI agents in self-learning loops in a day. Your team transitions from prompting to building. Loops graduate to semi- or fully autonomous.",
+      "inLanguage": "en",
+      "isPartOf": { "@type": "WebSite", "name": "Maskin", "url": "https://maskin.io/" },
+      "publisher": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" },
+      "breadcrumb": { "@id": "https://maskin.io/sprint/#breadcrumb" },
+      "mainEntity": { "@id": "https://maskin.io/sprint/#faq" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://maskin.io/sprint/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
+        { "@type": "ListItem", "position": 2, "name": "AI-Native Loop Sprint", "item": "https://maskin.io/sprint/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://maskin.io/sprint/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long is the sprint?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Setup is half a day to a full day. The sprint window runs after that, with Slack access and follow-up sessions until every loop has graduated. We scope the exact length on the intro call." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does it cost?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Named on the intro call, tailored to the sprint scope. We don't publish a rate because the scope moves with your ambition." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can we self-host?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Apache 2.0. You run it on your own infrastructure and pay your model provider directly." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can we bring our own model?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Model-agnostic. Route each loop to the model that fits." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which loops can we start with?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Any of the seven above, or a shape you bring us. Common starts: Product Discovery to Strategic Bets, one go-to-market loop, and Shared Business Context underneath, all feeding each other." }
+        },
+        {
+          "@type": "Question",
+          "name": "What if a loop doesn't hit its close condition?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It stays in dry run and we keep tightening it in follow-up sessions. Loops that never earn their close condition get retired — you keep the substrate and the learnings." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you replace our tracker?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Loops can ship inside Maskin with coding agents, or hand off to Linear or Jira. The sale is the layer above your stack, not the tracker." }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from an AI consultant?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A consultant leaves you with a slide deck. We leave you with loops that are still running when we're gone, and a team that can build the next ones on their own." }
+        },
+        {
+          "@type": "Question",
+          "name": "How many sprints do you take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Limited slots. Book a meeting or email us to check current availability." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="/" style="display:flex;align-items:center;gap:.5rem">
+      <svg width="28" height="28" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="80" height="80" rx="14" fill="#111110"/>
+        <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+      </svg>
+      Maskin
+    </a>
+    <ul class="nav__links">
+      <li><a href="/#use-cases">Use cases</a></li>
+      <li><a href="/#method">How it works</a></li>
+      <li><a href="/docs/">Docs</a></li>
+      <li><a href="/changelog/">Changelog</a></li>
+      <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a class="nav__login" href="/login">Log in</a></li>
+      <li><a class="nav__signup" href="https://maskin.io/bookseb">Book a meeting</a></li>
+    </ul>
+    <div class="nav__mobile-actions">
+      <a class="nav__mobile-signup" href="https://maskin.io/bookseb">Book a meeting</a>
+      <button class="nav__hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<nav class="nav__drawer" id="navDrawer" aria-label="Mobile navigation">
+  <ul>
+    <li><a href="/#use-cases">Use cases</a></li>
+    <li><a href="/#method">How it works</a></li>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/changelog/">Changelog</a></li>
+    <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+    <li><a href="/login">Log in</a></li>
+  </ul>
+  <a class="nav__drawer-cta" href="https://maskin.io/bookseb">Book a meeting →</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero__eyebrow">AI-Native Loop Sprint</div>
+    <h1 class="hero__title">AI agents running <em>self-learning loops</em>. Outcomes, not prompts.</h1>
+    <p class="hero__sub">Your team stops prompting one message at a time. You build loops where agents run, learn, and deliver outcomes — in the same workspace as the humans who guide them.</p>
+    <p class="hero__body">In the AI-Native Loop Sprint, you set up your first self-learning loops in half a day to a day, then run them alongside our team on Slack for the rest of the sprint. Every loop learns from what it just shipped, so quality climbs while you watch. By the end, your loops have graduated from dry run to either <strong>semi-autonomous</strong> or <strong>fully autonomous</strong> — delivering outcomes on their own, with your team stepping in only for the calls that matter.</p>
+    <div class="hero__actions">
+      <a class="btn-primary" href="https://maskin.io/bookseb">Book a meeting</a>
+      <!--email_off--><a class="btn-secondary" href="mailto:sebastian@meshfirm.com">Email Sebastian</a><!--/email_off-->
+    </div>
+
+    <div class="hero__trace" role="img" aria-label="Every loop starts in dry run, then graduates to semi-autonomous or fully autonomous.">
+      <div class="hero__trace-grid" aria-hidden="true"></div>
+      <div class="hero__trace-label">Every loop earns its own trust level</div>
+      <div class="hero__trace-chips">
+        <span class="trace-chip">dry run</span>
+        <span class="trace-arrow" aria-hidden="true">→</span>
+        <span class="trace-chip">semi-autonomous</span>
+        <span class="trace-arrow" aria-hidden="true">→</span>
+        <span class="trace-chip trace-chip--gate">fully autonomous</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- WHAT YOUR TEAM GETS -->
+<section class="section" id="what-you-get">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section-tag">What your team gets</div>
+      <h2 class="section-title">From prompting to building.</h2>
+    </div>
+    <div class="gets">
+      <div class="get">
+        <h3 class="get__title">Stop prompting one message at a time.</h3>
+        <p class="get__body">Your team learns to build loops that keep running — the same way you'd write a playbook, but the agents run it, not a person.</p>
+      </div>
+      <div class="get">
+        <h3 class="get__title">Work natively with agents in one workspace.</h3>
+        <p class="get__body">Every agent output is context every next agent inherits. No re-briefing, no restarting from zero, no dropped context between roles or hires.</p>
+      </div>
+      <div class="get">
+        <h3 class="get__title">Own the substrate.</h3>
+        <p class="get__body">Self-host on your own infrastructure. Bring your own model. Apache 2.0. No lock-in.</p>
+      </div>
+      <div class="get">
+        <h3 class="get__title">Set the standard once.</h3>
+        <p class="get__body">Humans set the outcome and gate the calls that matter; agents produce against the standard forever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOOPS -->
+<section class="section section--linen" id="loops">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section-tag">What kinds of loops teams run</div>
+      <h2 class="section-title">Loops that ship every week.</h2>
+      <p class="section-sub">Seven loop shapes teams start with in a sprint. As the marketplace fills out, each row links to its own listing.</p>
+    </div>
+    <ul class="loop-list">
+      <li class="loop-row">
+        <span class="loop-row__name">Shared business context (LLM knowledge wiki)</span>
+        <span class="loop-row__desc">one shared context your agents and your team both read, fed by meetings, docs, competitor scans, and Slack.</span>
+      </li>
+      <li class="loop-row">
+        <span class="loop-row__name">Product discovery to strategic bets</span>
+        <span class="loop-row__desc">customer feedback, tickets, and interviews cluster into opportunities, then get shaped into bets with a close condition, ready to ship.</span>
+      </li>
+      <li class="loop-row">
+        <span class="loop-row__name">AI coding delivery</span>
+        <span class="loop-row__desc">shaped bets ship inside Maskin with coding agents, or hand off to Linear or Jira.</span>
+      </li>
+      <li class="loop-row">
+        <span class="loop-row__name">Go-to-market using LinkedIn</span>
+        <span class="loop-row__desc">in-ICP signal fires a research-and-draft loop; humans gate the send.</span>
+      </li>
+      <li class="loop-row">
+        <span class="loop-row__name">New customer activation</span>
+        <span class="loop-row__desc">onboarding that adapts to what the customer signed up for and drives to the first outcome.</span>
+      </li>
+      <li class="loop-row">
+        <span class="loop-row__name">Customer success in Slack</span>
+        <span class="loop-row__desc">a forward-deployed agent watching behaviour and analytics, drafting the right next step, escalating the calls that matter.</span>
+      </li>
+      <li class="loop-row">
+        <span class="loop-row__name">SEO inbound marketing</span>
+        <span class="loop-row__desc">marketing pages that end when they rank, not when they publish.</span>
+      </li>
+    </ul>
+    <p class="loop-note">Bring your own loop shape too — any weekly bottleneck your team keeps hitting is a loop candidate.</p>
+  </div>
+</section>
+
+<!-- HOW THE SPRINT RUNS -->
+<section class="section" id="how-it-runs">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section-tag">How the sprint runs</div>
+      <h2 class="section-title">Half a day to a day of setup. Then it runs.</h2>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <div>
+          <h3 class="step__title">Intro call.</h3>
+          <p class="step__body">You name the weekly bottleneck. We agree which loops the sprint will set up.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div>
+          <h3 class="step__title">Setup session.</h3>
+          <p class="step__body">Half a day to a full day — we set up the loops with your team, on your stack, with your models.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div>
+          <h3 class="step__title">Sprint window.</h3>
+          <p class="step__body">Your team has direct Slack access to ours while the loops run. We hold follow-up sessions to review outputs, tighten close conditions, and lift the loops out of dry run.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div>
+          <h3 class="step__title">Close.</h3>
+          <p class="step__body">Every loop has graduated to <strong>semi-autonomous</strong> or <strong>fully autonomous</strong> — based on what it's learned during the sprint — and is delivering outcomes with your team stepping in only for the calls that matter.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- GRADUATED -->
+<section class="section section--linen" id="graduated">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section-tag">What &ldquo;graduated&rdquo; means</div>
+      <h2 class="section-title">Every loop earns its own trust level.</h2>
+    </div>
+    <div class="trust">
+      <p class="trust__lead">Every loop starts in <strong>dry run</strong> — producing under supervision, every output critiqued.</p>
+      <p class="trust__label">When the loop's quality holds against its close condition, it graduates to:</p>
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-card__title">semi-autonomous</div>
+          <p class="trust-card__body">The loop runs on its own, but every material call goes through a human gate before it lands.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-card__title">fully autonomous</div>
+          <p class="trust-card__body">The loop runs on its own end-to-end, with a human sampling outputs and stepping in when the close condition drifts.</p>
+        </div>
+      </div>
+      <p class="trust__foot">Loops that stop meeting their close condition get demoted back to dry run automatically. Trust is earned per loop, on evidence — not on a calendar, not on a demo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="section" id="who-its-for">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section-tag">Who it's for</div>
+      <h2 class="section-title">You're the right fit if&hellip;</h2>
+    </div>
+    <ul class="fit-list">
+      <li><span>You lead a B2B SaaS team (founder, CPO, CTO, head of growth, head of ops).</span></li>
+      <li><span>Your team has bought AI seats; the workflows aren't running on their own yet.</span></li>
+      <li><span>You want your agents coordinating on shared context, not each doing their own thing in isolation.</span></li>
+      <li><span>You want to own the substrate — self-host, bring your own model, no vendor lock-in.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--linen" id="faq">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section-tag">Questions</div>
+      <h2 class="section-title">Questions, answered.</h2>
+    </div>
+    <div class="faq">
+      <details class="faq-item">
+        <summary>How long is the sprint?</summary>
+        <p class="faq-item__a">Setup is half a day to a full day. The sprint window runs after that, with Slack access and follow-up sessions until every loop has graduated. We scope the exact length on the intro call.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What does it cost?</summary>
+        <p class="faq-item__a">Named on the intro call, tailored to the sprint scope. We don't publish a rate because the scope moves with your ambition.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can we self-host?</summary>
+        <p class="faq-item__a">Yes. Apache 2.0. You run it on your own infrastructure and pay your model provider directly.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can we bring our own model?</summary>
+        <p class="faq-item__a">Yes. Model-agnostic. Route each loop to the model that fits.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Which loops can we start with?</summary>
+        <p class="faq-item__a">Any of the seven above, or a shape you bring us. Common starts: Product Discovery to Strategic Bets, one go-to-market loop, and Shared Business Context underneath, all feeding each other.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if a loop doesn't hit its close condition?</summary>
+        <p class="faq-item__a">It stays in dry run and we keep tightening it in follow-up sessions. Loops that never earn their close condition get retired — you keep the substrate and the learnings.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you replace our tracker?</summary>
+        <p class="faq-item__a">No. Loops can ship inside Maskin with coding agents, or hand off to Linear or Jira. The sale is the layer above your stack, not the tracker.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How is this different from an AI consultant?</summary>
+        <p class="faq-item__a">A consultant leaves you with a slide deck. We leave you with loops that are still running when we're gone, and a team that can build the next ones on their own.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How many sprints do you take?</summary>
+        <p class="faq-item__a">Limited slots. Book a meeting or email us to check current availability.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED READING -->
+<section class="section">
+  <div class="wrap">
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <ul class="related__list">
+        <li><a href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a> <span class="related__desc">&mdash; the category the sprint is built on: humans and agents working the same typed objects.</span></li>
+        <li><a href="/docs/closed-loop-workspace/">The closed-loop workspace</a> <span class="related__desc">&mdash; what makes a loop close on an outcome instead of an artifact.</span></li>
+        <li><a href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI: when it's real, when it's theater</a> <span class="related__desc">&mdash; why the human gate on a graduating loop is the honest version of oversight.</span></li>
+        <li><a href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace: bring your own model</a> <span class="related__desc">&mdash; the substrate you keep after the sprint, Apache 2.0, on your infrastructure.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REPEAT CTA -->
+<section class="section cta-section" id="book">
+  <div class="wrap">
+    <h2 class="section-title">Tell us the bottleneck. We'll set up the loops.</h2>
+    <div class="cta-actions">
+      <a class="btn-primary" href="https://maskin.io/bookseb">Book a meeting</a>
+      <!--email_off--><a class="btn-secondary" href="mailto:sebastian@meshfirm.com">Email Sebastian</a><!--/email_off-->
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="footer__logo" style="display:flex;align-items:center;gap:.5rem">
+          <svg width="22" height="22" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect class="footer__logo-svg-bg" width="80" height="80" rx="14" fill="#FAFAF8"/>
+            <path class="footer__logo-svg-path" d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#111110" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+          </svg>
+          Maskin
+        </span>
+        <span class="footer__def"><em>Maskin</em> — Scandinavian for &ldquo;machine&rdquo;.</span>
+      </div>
+      <ul class="footer__links">
+        <li><a href="/docs/">Docs</a></li>
+        <li><a href="/changelog/">Changelog</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://maskin.io/bookseb" target="_blank" rel="noopener">Book a meeting</a></li>
+        <li><!--email_off--><a href="mailto:sebastian@meshfirm.com">Contact</a><!--/email_off--></li>
+      </ul>
+      <span class="footer__copy">© 2026 <a href="https://vaerksted.ai" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Værksted</a> · Apache 2.0</span>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Nav scrolled state (mirrors index.html) ─────────────── */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+window.addEventListener('scroll', onScroll, { passive:true });
+onScroll();
+
+/* ── Hamburger menu ──────────────────────────────────────── */
+const hamburger = document.getElementById('navHamburger');
+const drawer = document.getElementById('navDrawer');
+if (hamburger && drawer) {
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    drawer.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    drawer.classList.remove('open');
+    hamburger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }));
+}
+
+/* ── Theme toggle (mirrors index.html) ───────────────────── */
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+  const stored = (() => { try { return localStorage.getItem('maskin-theme'); } catch(e){ return null; } })();
+  if (stored === 'dark' || stored === 'light') {
+    document.documentElement.setAttribute('data-theme', stored);
+  }
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme')
+      || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('maskin-theme', next); } catch(e){}
+  });
+}
+</script>
+</body>
+</html>
