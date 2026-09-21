@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{if(localStorage.getItem('maskin-api-key'))window.location.replace('/workspaces')}catch(e){}</script>
+<title>Maskin — intro deck</title>
+<meta name="description" content="The intro deck to Maskin — the team your AI agents work on. Vision, the loop, use cases, and how to hire your AI team.">
+
+<link rel="canonical" href="https://maskin.io/deck/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maskin.io/deck/">
+<meta property="og:title" content="Maskin — intro deck">
+<meta property="og:description" content="The team your AI agents work on. Vision, the loop, use cases, and how to hire your AI team.">
+<meta property="og:image" content="https://maskin.io/og-image.png?v=deck">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Maskin — intro deck">
+<meta name="twitter:description" content="The team your AI agents work on. Vision, the loop, use cases, and how to hire your AI team.">
+<meta name="twitter:image" content="https://maskin.io/og-image.png?v=deck">
+
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('POSTHOG_PROJECT_KEY', {
+    api_host: 'https://eu.i.posthog.com',
+    person_profiles: 'identified_only',
+    defaults: '2025-05-24'
+  });
+  posthog.capture('deck_page_viewed');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink:        #111110;
+  --ink-2:      #5A5751;
+  --ink-3:      #9B958F;
+  --surface:    #FAFAF8;
+  --linen:      #F0EDE7;
+  --rule:       #E2DDD7;
+  --accent:     #2563EB;
+  --accent-dim: rgba(37,99,235,0.12);
+
+  --ff-display: 'Schibsted Grotesk', sans-serif;
+  --ff-serif:   'Newsreader', Georgia, serif;
+  --ff-mono:    'JetBrains Mono', monospace;
+
+  --step-0: clamp(0.8125rem, 0.79rem + 0.12vw, 0.9375rem);
+  --step-1: clamp(0.9375rem, 0.9rem + 0.2vw, 1.125rem);
+  --step-2: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+  --step-3: clamp(1.5rem, 1.15rem + 1.5vw, 2.5rem);
+  --step-4: clamp(2rem, 1.4rem + 3vw, 3.75rem);
+  --step-5: clamp(2.5rem, 1.5rem + 5vw, 5.5rem);
+
+  --max-w: 1280px;
+  --content-w: 720px;
+  --stage-w: 1120px;
+  --nav-bg-scrolled: rgba(250,250,248,.92);
+  --gap: clamp(1rem, 3vw, 2.5rem);
+  --section-py: clamp(4rem, 9vw, 7rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --nav-bg-scrolled: rgba(20,20,18,.92);
+    --ink:        #ECEAE4;
+    --ink-2:      #A09A93;
+    --ink-3:      #6B6560;
+    --surface:    #141412;
+    --linen:      #1C1B18;
+    --rule:       #2A2925;
+    --accent:     #3B74F2;
+    --accent-dim: rgba(59,116,242,0.15);
+  }
+}
+[data-theme="dark"] {
+  --nav-bg-scrolled: rgba(20,20,18,.92);
+  --ink:        #ECEAE4;
+  --ink-2:      #A09A93;
+  --ink-3:      #6B6560;
+  --surface:    #141412;
+  --linen:      #1C1B18;
+  --rule:       #2A2925;
+  --accent:     #3B74F2;
+  --accent-dim: rgba(59,116,242,0.15);
+}
+[data-theme="light"] {
+  --nav-bg-scrolled: rgba(250,250,248,.92);
+  --ink:        #111110;
+  --ink-2:      #5A5751;
+  --ink-3:      #9B958F;
+  --surface:    #FAFAF8;
+  --linen:      #F0EDE7;
+  --rule:       #E2DDD7;
+  --accent:     #2563EB;
+  --accent-dim: rgba(37,99,235,0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .footer__logo-svg-bg  { fill: #1C1B18; }
+  :root:not([data-theme="light"]) .footer__logo-svg-path { stroke: #ECEAE4; }
+}
+[data-theme="dark"] .footer__logo-svg-bg  { fill: #1C1B18; }
+[data-theme="dark"] .footer__logo-svg-path { stroke: #ECEAE4; }
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--ff-display);
+  font-size:var(--step-0);
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--surface);
+  -webkit-font-smoothing:antialiased;
+}
+img,video,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+.wrap{width:100%;max-width:var(--max-w);margin-inline:auto;padding-inline:var(--gap)}
+.stage{width:100%;max-width:var(--stage-w);margin-inline:auto;padding-inline:var(--gap)}
+
+/* NAV — mirrors /sprint/ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;border-bottom:1px solid transparent;transition:border-color .25s,background .25s,backdrop-filter .25s}
+.nav.scrolled{background:var(--nav-bg-scrolled);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--rule)}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;height:56px;max-width:var(--max-w);margin-inline:auto;padding-inline:var(--gap)}
+.nav__logo{font-size:1rem;font-weight:700;letter-spacing:-.02em}
+.nav__links{display:flex;align-items:center;gap:1.75rem;list-style:none}
+.nav__links a{font-size:.875rem;font-weight:500;color:var(--ink-2);transition:color .15s}
+.nav__links a:hover{color:var(--ink)}
+.nav__login{font-size:.875rem;font-weight:500;color:var(--ink-2)!important;transition:color .15s}
+.nav__login:hover{color:var(--ink)!important}
+.nav__signup{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .9rem;background:var(--accent);color:#fff!important;border-radius:6px;font-size:.875rem!important;font-weight:600!important;transition:background .15s,transform .1s,opacity .15s}
+.nav__signup:hover{opacity:.88;transform:translateY(-1px)}
+.nav__mobile-actions{display:none;align-items:center;gap:.5rem}
+.nav__mobile-signup{display:inline-flex;align-items:center;padding:.375rem .75rem;background:var(--accent);color:#fff;border-radius:6px;font-size:.8125rem;font-weight:600;text-decoration:none;transition:opacity .15s}
+.nav__mobile-signup:hover{opacity:.88}
+.nav__hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;cursor:pointer;padding:6px;color:var(--ink);border-radius:6px}
+.nav__hamburger span{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .2s,opacity .2s;transform-origin:center}
+.nav__hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav__hamburger.open span:nth-child(2){opacity:0}
+.nav__hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav__drawer{display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:var(--surface);z-index:99;padding:2rem var(--gap);flex-direction:column;gap:0;border-top:1px solid var(--rule);overflow-y:auto}
+.nav__drawer.open{display:flex}
+.nav__drawer li{list-style:none;border-bottom:1px solid var(--rule)}
+.nav__drawer li a{display:block;padding:1rem 0;font-size:1.125rem;font-weight:600;color:var(--ink);text-decoration:none;transition:color .15s}
+.nav__drawer li a:hover{color:var(--accent)}
+.nav__drawer .nav__drawer-cta{margin-top:1.5rem;display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.5rem;background:var(--ink);color:var(--surface);border-radius:8px;font-weight:700;font-size:1rem;text-decoration:none;width:100%}
+
+/* BUTTONS */
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.7rem;background:var(--ink);color:var(--surface);border-radius:8px;font-weight:600;font-size:1rem;border:1.5px solid var(--ink);transition:background .15s,transform .1s,box-shadow .15s}
+.btn-primary:hover{background:#2a2925;transform:translateY(-1px);box-shadow:0 4px 16px rgba(17,17,16,.18)}
+.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.7rem;background:transparent;color:var(--ink);border-radius:8px;font-weight:500;font-size:1rem;border:1.5px solid var(--rule);transition:border-color .15s,background .15s,transform .1s}
+.btn-secondary:hover{border-color:var(--ink-2);background:var(--linen);transform:translateY(-1px)}
+
+/* SLIDE — the base pattern: full-width scroll section with generous air */
+.slide{padding-block:var(--section-py);border-bottom:1px solid var(--rule);position:relative}
+.slide--linen{background:var(--linen)}
+.slide__pos{font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:1.25rem}
+.slide__pos::before{content:'';display:inline-block;width:14px;height:1px;background:var(--ink-3);margin-right:.55rem;vertical-align:middle}
+
+@media (min-width: 900px){
+  .slide{min-height:100vh;display:flex;align-items:center}
+  .slide > .stage{width:100%}
+}
+
+/* S1 — Cover */
+.slide--cover{padding-top:calc(var(--section-py) + 3rem)}
+.cover__wordmark{
+  font-size:var(--step-5);font-weight:700;letter-spacing:-.04em;line-height:.95;
+  margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:clamp(1rem,3vw,1.75rem);
+}
+.cover__wordmark svg{width:clamp(56px,8vw,96px);height:clamp(56px,8vw,96px);flex-shrink:0}
+.cover__sub{font-family:var(--ff-serif);font-style:italic;font-size:var(--step-3);color:var(--ink-2);line-height:1.25;max-width:22ch;margin-bottom:2.5rem;font-weight:400}
+.cover__foot{font-family:var(--ff-mono);font-size:.8rem;letter-spacing:.05em;color:var(--ink-3);text-transform:uppercase}
+.cover__foot span{margin:0 .55rem;color:var(--rule)}
+
+/* S2 — Vision */
+.vision__head{font-family:var(--ff-serif);font-style:italic;font-weight:400;font-size:var(--step-4);letter-spacing:-.02em;line-height:1.08;max-width:20ch;margin-bottom:1rem}
+.vision__sub{font-size:var(--step-2);color:var(--ink-2);max-width:36ch;font-weight:400;line-height:1.4;margin-bottom:clamp(3rem,7vw,5rem)}
+.vision__bullets{list-style:none;display:grid;gap:1.1rem;max-width:60ch}
+.vision__bullets li{position:relative;padding-left:1.75rem;font-size:var(--step-2);color:var(--ink);line-height:1.45;font-weight:500;letter-spacing:-.01em}
+.vision__bullets li::before{content:'';position:absolute;left:0;top:.65em;width:12px;height:2px;background:var(--accent)}
+
+/* S3 — Maskin (the loop) */
+.loop__head{font-size:var(--step-3);font-weight:700;letter-spacing:-.02em;line-height:1.1;max-width:22ch;margin-bottom:1.5rem}
+.loop__lines{list-style:none;display:grid;gap:.85rem;max-width:60ch;margin-bottom:clamp(2.5rem,6vw,4rem)}
+.loop__lines li{font-size:var(--step-1);color:var(--ink-2);line-height:1.55;padding-left:1.4rem;position:relative}
+.loop__lines li::before{content:'—';position:absolute;left:0;color:var(--ink-3)}
+.loop__lines li strong{color:var(--ink);font-weight:600}
+
+/* Loop diagram — the visual */
+.loop-viz{
+  position:relative;
+  padding:clamp(1.5rem,3.5vw,2.5rem);
+  border:1px solid var(--rule);border-radius:16px;
+  background:var(--surface);
+  overflow:hidden;
+}
+.loop--linen .loop-viz{background:var(--surface)}
+.slide--linen .loop-viz{background:var(--surface)}
+.loop-viz__grid{position:absolute;inset:0;background-image:linear-gradient(var(--rule) 1px,transparent 1px),linear-gradient(90deg,var(--rule) 1px,transparent 1px);background-size:32px 32px;opacity:.25;mask-image:radial-gradient(ellipse 70% 65% at 50% 45%,#000 0%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 70% 65% at 50% 45%,#000 0%,transparent 80%);pointer-events:none}
+.loop-viz__label{position:relative;font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:1.4rem}
+.loop-viz__outcome{position:relative;display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .8rem;border-radius:99px;background:var(--accent-dim);color:var(--accent);font-family:var(--ff-mono);font-size:.78rem;letter-spacing:.03em;margin-bottom:1.5rem}
+.loop-ring{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin-bottom:1.75rem}
+.loop-ring__entry{font-family:var(--ff-mono);font-size:.75rem;color:var(--ink-3);padding:.5rem .8rem;border:1px dashed var(--rule);border-radius:6px;white-space:nowrap}
+.loop-node{font-family:var(--ff-mono);font-size:.8125rem;padding:.6rem 1rem;border-radius:6px;background:var(--linen);border:1px solid var(--rule);color:var(--ink);white-space:nowrap;font-weight:500}
+.loop-arrow{font-family:var(--ff-mono);font-size:.95rem;color:var(--ink-3)}
+.loop-arrow--back{color:var(--accent);font-weight:600}
+.loop-viz__band{
+  position:relative;
+  margin-top:.5rem;
+  padding:1rem 1.15rem;
+  border-radius:8px;
+  background:var(--linen);
+  border:1px solid var(--rule);
+  border-left:3px solid var(--accent);
+}
+.loop-viz__band-title{font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:.35rem}
+.loop-viz__band-body{font-size:.9rem;color:var(--ink-2);line-height:1.45}
+.loop-viz__humans{position:relative;margin-top:1.5rem;padding-top:1.25rem;border-top:1px dashed var(--rule);display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start}
+.loop-viz__humans-label{font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);padding-top:.3rem;white-space:nowrap}
+.loop-thread{font-family:var(--ff-mono);font-size:.82rem;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:.7rem .9rem;line-height:1.5}
+.loop-thread__msg{color:var(--ink)}
+.loop-thread__msg--agent{color:var(--ink-2);margin-top:.35rem}
+.loop-thread__who{color:var(--accent);font-weight:600;margin-right:.35rem}
+.loop-thread__who--agent{color:var(--ink-3)}
+
+/* S4 — Use cases */
+.uc__head{font-size:var(--step-3);font-weight:700;letter-spacing:-.02em;line-height:1.1;max-width:26ch;margin-bottom:.75rem}
+.uc__sub{font-size:var(--step-1);color:var(--ink-2);max-width:52ch;margin-bottom:clamp(2rem,5vw,3rem)}
+.uc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2.5vw,1.75rem)}
+.uc-card{padding:clamp(1.4rem,2.5vw,1.85rem);border:1px solid var(--rule);border-radius:14px;background:var(--surface);display:flex;flex-direction:column}
+.slide--linen .uc-card{background:var(--surface)}
+.uc-card__num{font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.08em;color:var(--accent);margin-bottom:.75rem;font-weight:500}
+.uc-card__title{font-size:var(--step-2);font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-bottom:.75rem;color:var(--ink)}
+.uc-card__body{color:var(--ink-2);font-size:.9375rem;line-height:1.6}
+
+/* S5 — Get started */
+.gs__head{font-size:var(--step-3);font-weight:700;letter-spacing:-.02em;line-height:1.1;max-width:22ch;margin-bottom:clamp(2rem,4vw,3rem)}
+.gs__head em{font-style:italic;font-weight:600}
+.gs-rows{display:grid;gap:1.5rem;max-width:64ch;margin-bottom:clamp(2rem,4vw,2.75rem)}
+.gs-row{display:grid;grid-template-columns:minmax(140px,180px) 1fr;gap:.35rem 2rem;align-items:baseline;padding:1.15rem 0;border-bottom:1px solid var(--rule)}
+.gs-row:first-child{border-top:1px solid var(--rule)}
+.gs-row__label{font-family:var(--ff-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.gs-row__body{font-size:var(--step-1);color:var(--ink);line-height:1.55}
+.gs-row__body a{color:var(--accent);border-bottom:1px solid var(--accent-dim);transition:border-color .15s}
+.gs-row__body a:hover{border-color:var(--accent)}
+.gs-cta{display:flex;flex-direction:column;align-items:flex-start;gap:.85rem}
+.gs-cta__buttons{display:flex;gap:.75rem;flex-wrap:wrap}
+.gs-cta__secondary{font-size:.9rem;color:var(--ink-3)}
+.gs-cta__secondary a{color:var(--ink-2);border-bottom:1px solid var(--rule);transition:color .15s,border-color .15s}
+.gs-cta__secondary a:hover{color:var(--ink);border-color:var(--ink-2)}
+
+/* FOOTER */
+.footer{padding-block:1.75rem;border-top:1px solid var(--rule)}
+.footer__logo-svg-bg  { fill: #FAFAF8; }
+.footer__logo-svg-path { stroke: #111110; }
+.footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.875rem}
+.footer__logo{font-weight:700;letter-spacing:-.02em;font-size:.875rem}
+.footer__links{display:flex;align-items:center;gap:1.5rem;list-style:none;flex-wrap:wrap}
+.footer__links a{font-size:.875rem;color:var(--ink-2);transition:color .15s}
+.footer__links a:hover{color:var(--ink)}
+.footer__copy{font-size:.78rem;color:var(--ink-3)}
+.footer__brand{display:flex;flex-direction:column;gap:.3rem}
+.footer__def{font-size:.72rem;color:var(--ink-3);font-style:italic;letter-spacing:.01em}
+
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;color:var(--ink-2);transition:color .15s,background .15s}
+.theme-toggle:hover{color:var(--ink);background:var(--linen)}
+.theme-toggle__sun{display:none}
+.theme-toggle__moon{display:block}
+[data-theme="dark"] .theme-toggle__sun{display:block}
+[data-theme="dark"] .theme-toggle__moon{display:none}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle__sun{display:block}
+  :root:not([data-theme="light"]) .theme-toggle__moon{display:none}
+}
+
+/* RESPONSIVE */
+@media (max-width: 780px) {
+  .nav__links{display:none}
+  .nav__mobile-actions{display:flex}
+  .nav__hamburger{display:flex}
+  .footer__inner{flex-direction:column;align-items:flex-start;gap:1.25rem}
+  .footer__links{gap:1rem}
+  .uc-grid{grid-template-columns:1fr}
+  .gs-row{grid-template-columns:1fr;gap:.25rem}
+  .gs-cta__buttons{width:100%}
+  .gs-cta__buttons .btn-primary,.gs-cta__buttons .btn-secondary{justify-content:center;flex:1 1 auto}
+  .loop-viz__humans{grid-template-columns:1fr}
+  .cover__wordmark{flex-direction:column;align-items:flex-start;gap:1rem}
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .nav,.nav__signup,.nav__mobile-signup,.nav__hamburger span,.nav__drawer,.theme-toggle,.footer__links a,.nav__links a,.nav__login,.btn-primary,.btn-secondary{transition:none!important;animation:none!important}
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://maskin.io/deck/#page",
+      "url": "https://maskin.io/deck/",
+      "name": "Maskin — intro deck",
+      "description": "The intro deck to Maskin — the team your AI agents work on. Vision, the loop, use cases, and how to hire your AI team.",
+      "inLanguage": "en",
+      "isPartOf": { "@type": "WebSite", "name": "Maskin", "url": "https://maskin.io/" },
+      "publisher": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" },
+      "breadcrumb": { "@id": "https://maskin.io/deck/#breadcrumb" },
+      "mainEntity": { "@id": "https://maskin.io/deck/#deck" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://maskin.io/deck/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Intro deck", "item": "https://maskin.io/deck/" }
+      ]
+    },
+    {
+      "@type": "PresentationDigitalDocument",
+      "@id": "https://maskin.io/deck/#deck",
+      "name": "Maskin — intro deck",
+      "url": "https://maskin.io/deck/",
+      "description": "Five-section intro deck to Maskin: cover, vision, the loop, use cases, get started.",
+      "inLanguage": "en",
+      "publisher": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" },
+      "about": [
+        { "@type": "Thing", "name": "agentic workspace" },
+        { "@type": "Thing", "name": "self-learning AI loops" },
+        { "@type": "Thing", "name": "human + AI workforce" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="/" style="display:flex;align-items:center;gap:.5rem">
+      <svg width="28" height="28" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="80" height="80" rx="14" fill="#111110"/>
+        <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+      </svg>
+      Maskin
+    </a>
+    <ul class="nav__links">
+      <li><a href="/#use-cases">Use cases</a></li>
+      <li><a href="/#method">How it works</a></li>
+      <li><a href="/docs/">Docs</a></li>
+      <li><a href="/changelog/">Changelog</a></li>
+      <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a class="nav__login" href="/login">Log in</a></li>
+      <li><a class="nav__signup" href="https://maskin.io/bookseb">Book a meeting</a></li>
+    </ul>
+    <div class="nav__mobile-actions">
+      <a class="nav__mobile-signup" href="https://maskin.io/bookseb">Book a meeting</a>
+      <button class="nav__hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<nav class="nav__drawer" id="navDrawer" aria-label="Mobile navigation">
+  <ul>
+    <li><a href="/#use-cases">Use cases</a></li>
+    <li><a href="/#method">How it works</a></li>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/changelog/">Changelog</a></li>
+    <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+    <li><a href="/login">Log in</a></li>
+  </ul>
+  <a class="nav__drawer-cta" href="https://maskin.io/bookseb">Book a meeting →</a>
+</nav>
+
+<!-- S1 — Cover -->
+<section class="slide slide--cover" id="s1-cover" aria-label="Cover">
+  <div class="stage">
+    <div class="slide__pos">01 · Cover</div>
+    <h1 class="cover__wordmark">
+      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="80" height="80" rx="14" fill="#111110"/>
+        <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+      </svg>
+      <span>Maskin</span>
+    </h1>
+    <p class="cover__sub">The team your AI agents work on.</p>
+    <p class="cover__foot">Copenhagen<span>·</span>open source<span>·</span>maskin.io</p>
+  </div>
+</section>
+
+<!-- S2 — Vision -->
+<section class="slide slide--linen" id="s2-vision" aria-label="Vision">
+  <div class="stage">
+    <div class="slide__pos">02 · Vision</div>
+    <h2 class="vision__head">Every company will run a human + AI workforce</h2>
+    <p class="vision__sub">with highly specialist, self-improving agents.</p>
+    <ul class="vision__bullets">
+      <li>Agents will do most of the closing.</li>
+      <li>Humans will keep the judgment.</li>
+      <li>The workforce needs a home — sovereign by default, EU infrastructure, run your own if you want to.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- S3 — Maskin (the loop) -->
+<section class="slide" id="s3-loop" aria-label="Maskin — the loop">
+  <div class="stage">
+    <div class="slide__pos">03 · Maskin</div>
+    <h2 class="loop__head">The layer where your AI agents actually work as a team.</h2>
+    <ul class="loop__lines">
+      <li><strong>One live graph</strong> — every agent output is context every next agent inherits.</li>
+      <li><strong>Loops run continuously</strong> — humans only see the calls that matter.</li>
+      <li><strong>Open, MCP-native, model-agnostic</strong> — the layer <em>over</em> your stack, not another silo.</li>
+    </ul>
+
+    <div class="loop-viz" role="img" aria-label="A closed loop of agent nodes — meeting agent, PM, Designer, Architect — working the product-discovery loop toward an outcome. Shared context sits below the loop as one substrate every agent reads and writes. Humans sit outside the loop and interact through a Slack-shaped conversational surface.">
+      <div class="loop-viz__grid" aria-hidden="true"></div>
+      <div class="loop-viz__label">Product-discovery loop</div>
+      <div class="loop-viz__outcome">outcome: signal → shaped bet</div>
+      <div class="loop-ring">
+        <span class="loop-ring__entry">transcripts</span>
+        <span class="loop-arrow">→</span>
+        <span class="loop-node">Meeting agent</span>
+        <span class="loop-arrow">→</span>
+        <span class="loop-node">PM</span>
+        <span class="loop-arrow">→</span>
+        <span class="loop-node">Designer</span>
+        <span class="loop-arrow">→</span>
+        <span class="loop-node">Architect</span>
+        <span class="loop-arrow loop-arrow--back">↺</span>
+      </div>
+      <div class="loop-viz__band">
+        <div class="loop-viz__band-title">Shared context</div>
+        <div class="loop-viz__band-body">One substrate every agent reads from and writes back to — the graph the loop runs on.</div>
+      </div>
+      <div class="loop-viz__humans">
+        <div class="loop-viz__humans-label">Humans — outside the loop</div>
+        <div class="loop-thread">
+          <div class="loop-thread__msg"><span class="loop-thread__who">You</span>Any pattern in the last five discovery calls worth shaping?</div>
+          <div class="loop-thread__msg loop-thread__msg--agent"><span class="loop-thread__who loop-thread__who--agent">PM agent</span>Three mentions of onboarding drop-off from ICP accounts. Drafted a bet — want me to open it?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 — Use cases -->
+<section class="slide slide--linen" id="s4-usecases" aria-label="Use cases">
+  <div class="stage">
+    <div class="slide__pos">04 · Use cases</div>
+    <h2 class="uc__head">High-quality outcomes matter more than ever post-AI.</h2>
+    <p class="uc__sub">Four ways teams run Maskin as loops.</p>
+    <div class="uc-grid">
+      <article class="uc-card">
+        <div class="uc-card__num">01 · Shared business context</div>
+        <h3 class="uc-card__title">An LLM wiki your agents live in, not a doc store they visit.</h3>
+        <p class="uc-card__body">Every meeting note, deal, and decision lands as a typed object your agents read and write back — context compounds instead of decaying. Maskin doesn't bolt a wiki onto the product; the workspace <em>is</em> the wiki, MCP-native and model-agnostic, yours to self-host.</p>
+      </article>
+      <article class="uc-card">
+        <div class="uc-card__num">02 · Product discovery</div>
+        <h3 class="uc-card__title">Making sense of the data. Making sure the team builds the right things.</h3>
+        <p class="uc-card__body">Transcripts, tickets, and feedback become shaped bets with a close condition — not one more dashboard. Because every agent writes back to shared context, discovery doesn't restart from a blank doc each cycle.</p>
+      </article>
+      <article class="uc-card">
+        <div class="uc-card__num">03 · Go-to-market</div>
+        <h3 class="uc-card__title">From LinkedIn touch to booked call.</h3>
+        <p class="uc-card__body">Prospecting, qualification, and follow-up run as one loop on the context the whole team works from — so a handoff never loses the thread. Humans keep the judgement on the calls that matter.</p>
+      </article>
+      <article class="uc-card">
+        <div class="uc-card__num">04 · SEO inbound marketing</div>
+        <h3 class="uc-card__title">Pages that keep compounding after they publish.</h3>
+        <p class="uc-card__body">The loop closes on the page <em>ranking</em>, not the page shipping — and search signal feeds straight back into what gets written next.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- S5 — Get started -->
+<section class="slide" id="s5-getstarted" aria-label="Get started">
+  <div class="stage">
+    <div class="slide__pos">05 · Get started</div>
+    <h2 class="gs__head">Get started — <em>Hire your AI team.</em></h2>
+    <div class="gs-rows">
+      <div class="gs-row">
+        <span class="gs-row__label">How to start</span>
+        <p class="gs-row__body">Start with the <a href="/sprint/">AI-Native Loop Sprint</a>: a half-day to full-day setup, our team alongside yours in Slack, follow-up sessions through the sprint window.</p>
+      </div>
+      <div class="gs-row">
+        <span class="gs-row__label">Outcome</span>
+        <p class="gs-row__body">Your loops graduate from dry run to semi- or fully autonomous, running real outcomes — with the judgement staying with your team.</p>
+      </div>
+    </div>
+    <div class="gs-cta">
+      <div class="gs-cta__buttons">
+        <a class="btn-primary" href="https://maskin.io/bookseb">Book a meeting →</a>
+      </div>
+      <p class="gs-cta__secondary">or email <!--email_off--><a href="mailto:sebastian@meshfirm.com">sebastian@meshfirm.com</a><!--/email_off--></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="footer__logo" style="display:flex;align-items:center;gap:.5rem">
+          <svg width="22" height="22" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect class="footer__logo-svg-bg" width="80" height="80" rx="14" fill="#FAFAF8"/>
+            <path class="footer__logo-svg-path" d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#111110" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+          </svg>
+          Maskin
+        </span>
+        <span class="footer__def"><em>Maskin</em> — Scandinavian for &ldquo;machine&rdquo;.</span>
+      </div>
+      <ul class="footer__links">
+        <li><a href="/docs/">Docs</a></li>
+        <li><a href="/sprint/">Sprint</a></li>
+        <li><a href="/changelog/">Changelog</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://maskin.io/bookseb" target="_blank" rel="noopener">Book a meeting</a></li>
+        <li><!--email_off--><a href="mailto:sebastian@meshfirm.com">Contact</a><!--/email_off--></li>
+      </ul>
+      <span class="footer__copy">© 2026 <a href="https://vaerksted.ai" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Værksted</a> · Apache 2.0</span>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+window.addEventListener('scroll', onScroll, { passive:true });
+onScroll();
+
+const hamburger = document.getElementById('navHamburger');
+const drawer = document.getElementById('navDrawer');
+if (hamburger && drawer) {
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    drawer.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    drawer.classList.remove('open');
+    hamburger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }));
+}
+
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+  const stored = (() => { try { return localStorage.getItem('maskin-theme'); } catch(e){ return null; } })();
+  if (stored === 'dark' || stored === 'light') {
+    document.documentElement.setAttribute('data-theme', stored);
+  }
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme')
+      || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('maskin-theme', next); } catch(e){}
+  });
+}
+</script>
+</body>
+</html>
