@@ -1188,6 +1188,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         { "@type": "Question", "name": "Do I need engineers to run this?", "acceptedAnswer": { "@type": "Answer", "text": "No for hosted — sign up, invite the team, plug in a model key, go. Yes if you want to self-host, but it's one docker-compose file away." } },
         { "@type": "Question", "name": "What's a \"bet\"?", "acceptedAnswer": { "@type": "Answer", "text": "A scoped hypothesis with a goal, evidence, and a timeline. Borrowed from Shape Up. It's the unit where leadership judgment compounds — signals get surfaced, priorities get chosen, outcomes get tracked. Bets replace the backlog." } },
         { "@type": "Question", "name": "What's a \"loop\"?", "acceptedAnswer": { "@type": "Answer", "text": "A closed cycle your team runs over and over: a trigger fires it, agents do the work, a human approves the parts that need a judgement call, the work ships, and the outcome feeds back in to sharpen the next pass — not recurring workflow execution inside one product. Every listing in the marketplace is a loop: wire the primitives once and it runs without anyone remembering to kick it off." } },
+        { "@type": "Question", "name": "What's a \"trigger\"?", "acceptedAnswer": { "@type": "Answer", "text": "What fires a loop: a signal, a schedule, or a click. A signal is something changing in the workspace (a new insight, a status flip, a comment). A schedule is a cron on the wall clock. A click is a human hitting go. Every loop has at least one trigger — no trigger, no run." } },
         { "@type": "Question", "name": "What models can I use?", "acceptedAnswer": { "@type": "Answer", "text": "Bring your own. Anthropic, OpenAI, local via Ollama — anything that speaks a standard API. Your key, your spend, your rate limits. No markup." } },
         { "@type": "Question", "name": "Where does my data live? Does it train anything?", "acceptedAnswer": { "@type": "Answer", "text": "Hosted: isolated tenants in EU or US regions. Self-host: wherever you put the container. Either way your prompts and context are never used as training data — they belong to you." } },
         { "@type": "Question", "name": "What does it cost?", "acceptedAnswer": { "@type": "Answer", "text": "14-day free trial — no credit card needed. After that: $20/seat/month (Pro), $200/workspace/month flat (Team, unlimited seats), or Enterprise with your own LLM and infrastructure. Self-host is always free under Apache 2.0." } }
@@ -1822,6 +1823,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
         </div>
         <div class="faq-item__a">A closed cycle your team runs over and over: a trigger fires it, agents do the work, a human approves the parts that need a judgement call, the work ships, and the outcome feeds back in to sharpen the next pass — not recurring workflow execution inside one product. Every listing in the marketplace is a loop: wire the primitives once and it runs without anyone remembering to kick it off.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">What's a "trigger"?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">What fires a loop: a signal, a schedule, or a click. A signal is something changing in the workspace (a new insight, a status flip, a comment). A schedule is a cron on the wall clock. A click is a human hitting go. Every loop has at least one trigger — no trigger, no run.</div>
       </div>
 
       <div class="faq-item">
