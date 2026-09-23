@@ -913,7 +913,7 @@ The field splits into three tiers:
 Maskin’s edge is the loop itself on one shared object model — MCP-native, Apache-2.0, self-hostable.
 
 ## Getting started
-Self-host the open-source repo or go managed — either way the loop runs on the same object model. The [get-started guide](/docs/get-started/) walks through it end to end, and the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) guide covers running the closed loop on your own infrastructure with bring-your-own-model.
+Self-host the open-source repo or go managed — either way the loop runs on the same object model. The [get-started guide](/docs/get-started/) walks through it end to end, and the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) guide covers running the closed loop on your own infrastructure with bring-your-own-model. Product teams can also start with the [product-team getting-started sequence](/solutions/product-teams/), which walks through what day one in the workspace looks like for a PM or CPO.
 
 ## FAQ
 
