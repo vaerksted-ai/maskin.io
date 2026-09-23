@@ -1,1 +1,294 @@
-PLACEHOLDER_HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI workspace for product teams &mdash; Maskin</title>
+<meta name="description" content="One workspace where your wiki, customer signals, shaped bets, and delivery handoff live together. Ship each bet into Jira/Linear or via Maskin agents.">
+
+<!-- Canonical (self-referential, trailing slash) -->
+<link rel="canonical" href="https://maskin.io/solutions/product-teams/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maskin.io/solutions/product-teams/">
+<meta property="og:title" content="Give your product team a workspace that ships bets, not backlogs.">
+<meta property="og:description" content="You spend most of your week retyping the same context &mdash; into Notion for the strategy doc, into Linear for the epic, into the customer-call summary, into the pricing update.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Give your product team a workspace that ships bets, not backlogs.">
+<meta name="twitter:description" content="You spend most of your week retyping the same context &mdash; into Notion for the strategy doc, into Linear for the epic, into the customer-call summary, into the pricing update.">
+<meta name="twitter:image" content="https://maskin.io/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "url": "https://maskin.io/solutions/product-teams/",
+      "name": "AI workspace for product teams \u2014 Maskin",
+      "description": "One workspace where your wiki, customer signals, shaped bets, and delivery handoff live together. Ship each bet into Jira/Linear or via Maskin agents.",
+      "inLanguage": "en",
+      "datePublished": "2026-09-23T00:00:00Z",
+      "dateModified": "2026-09-23T00:00:00Z",
+      "image": ["https://maskin.io/og-image.png"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "url": "https://maskin.io/",
+        "name": "Maskin"
+      },
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": "https://maskin.io/og/maskin-logo.png"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "mainEntityOfPage": "https://maskin.io/solutions/product-teams/",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", ".pas-problem"]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://maskin.io/solutions/" },
+        { "@type": "ListItem", "position": 3, "name": "Product teams", "item": "https://maskin.io/solutions/product-teams/" }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  /* Solutions page shell: PAS hero, proof strip, 6-step arc, primitives grid, dual-path implementation block, objections, repeat CTA. */
+  .pas-problem { font-family: var(--ff-serif); font-size: 1.2rem; line-height: 1.55; color: var(--ink); margin: 1.25rem 0 .75rem; }
+  .pas-agitation { font-size: 1.02rem; color: var(--ink-2); margin: 0 0 1.25rem; line-height: 1.6; }
+  .pas-solution { font-size: 1.05rem; color: var(--ink); margin: 0 0 1.5rem; line-height: 1.6; }
+  .cta-primary { display: inline-block; padding: .85rem 1.4rem; border-radius: 8px; background: var(--ink); color: var(--linen); font-family: var(--ff-display); font-weight: 600; font-size: 1rem; text-decoration: none; margin: .25rem 0 2rem; }
+  .cta-primary:hover { background: var(--ink-2); }
+  .proof-strip { padding: 1.25rem 1.4rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin: 2rem 0 2.75rem; font-size: .98rem; line-height: 1.6; color: var(--ink-2); }
+  .proof-strip strong { color: var(--ink); }
+  .arc-step { margin: 2.25rem 0 2rem; padding: 0 0 0 1.1rem; border-left: 3px solid var(--accent); }
+  .arc-step h3 { margin: 0 0 .5rem; font-family: var(--ff-display); font-weight: 600; font-size: 1.15rem; color: var(--ink); }
+  .arc-step__block { margin: .75rem 0 0; }
+  .arc-step__label { font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); display: block; margin-bottom: .15rem; }
+  .primitives { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.5rem 0 3rem; }
+  .primitive { padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+  .primitive__name { font-family: var(--ff-display); font-weight: 600; font-size: 1.05rem; margin: 0 0 .5rem; color: var(--ink); }
+  .primitive__def { font-size: .9rem; color: var(--ink-2); margin: 0; line-height: 1.55; }
+  .paths { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.1rem; margin: 1.5rem 0 1.5rem; }
+  .path { padding: 1.4rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+  .path__title { font-family: var(--ff-display); font-weight: 600; font-size: 1.1rem; margin: 0 0 .35rem; color: var(--ink); }
+  .path__eyebrow { font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin: 0 0 .55rem; }
+  .path__body { font-size: .95rem; color: var(--ink-2); line-height: 1.6; margin: 0 0 .9rem; }
+  .path__best { font-size: .88rem; color: var(--ink-3); line-height: 1.55; margin: 0; }
+  .path__best strong { color: var(--ink-2); }
+  .objection { margin: 1.5rem 0; padding: 0 0 0 1rem; border-left: 2px solid var(--rule); }
+  .objection h3 { margin: 0 0 .35rem; font-family: var(--ff-display); font-weight: 600; font-size: 1.02rem; color: var(--ink); font-style: italic; }
+  .objection p { margin: 0; font-size: .95rem; color: var(--ink-2); line-height: 1.6; }
+  .cta-block { margin: 2.75rem 0 2rem; padding: 1.5rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); text-align: center; }
+  .cta-block__label { display: block; font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); margin-bottom: .75rem; }
+</style>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Solutions</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Solutions"><p class="doc-sidebar__title">Solutions</p><ul class="doc-sidebar__list"><li><a class="is-active" href="/solutions/product-teams/" aria-current="page">Product teams</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All loops</a></li><li><a class="" href="/marketplace/seo-publishing/">The SEO publishing loop</a></li><li><a class="" href="/marketplace/outbound/">The outbound loop</a></li><li><a class="" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki loop</a></li><li><a class="" href="/marketplace/product-discovery/">The product discovery loop</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/">Home</a> / Solutions / Product teams</p>
+    <p class="eyebrow">Solution &middot; Product teams</p>
+
+    <!-- HERO: 5-slot PAS upper funnel -->
+    <h1 id="page-title">Give your product team a workspace that ships bets, not backlogs.</h1>
+
+    <p class="pas-problem">You spend most of your week retyping the same context &mdash; into Notion for the strategy doc, into Linear for the epic, into the customer-call summary, into the pricing update.</p>
+
+    <p class="pas-agitation">The tool where the LLM you&rsquo;d love to help lives is a fifth tab, and it has none of that context. Every decision gets re-derived because the last answer lived in someone&rsquo;s DMs. New hires read four wikis to catch up on one quarter.</p>
+
+    <p class="pas-solution">Maskin gives your product team one workspace where the wiki, customer signals, shaped bets, and the delivery handoff live together &mdash; ship each bet your way, either as an epic in your existing Jira or Linear tracker or through Maskin&rsquo;s own delivery agents.</p>
+
+    <a class="cta-primary" href="/docs/get-started/">Start your workspace</a>
+
+    <!-- PROOF STRIP -->
+    <div class="proof-strip">
+      <strong>The Maskin Team runs its own product operations &mdash; discovery, shaping, delivery, marketing &mdash; inside Maskin, live at <a href="/">maskin.io</a>.</strong> Everything on this site was drafted, shaped, and shipped inside the same product you&rsquo;re looking at. The six-step arc below isn&rsquo;t a pitch. It&rsquo;s what the workspace does, described by the team living in it every day.
+    </div>
+
+    <!-- 6-STEP ARC -->
+    <h2>The six steps a product team walks through in Maskin</h2>
+    <p>Each step: what your product team lives through in the workspace on its first day, then how the Maskin Team runs the same pattern on its own workspace, at product-capability level.</p>
+
+    <section class="arc-step" aria-labelledby="arc-1">
+      <h3 id="arc-1">1. Building business context</h3>
+      <div class="arc-step__block">
+        <span class="arc-step__label">What the workspace does</span>
+        <p>In the first minutes, a Researcher agent drafts a business-context sweep against your company URL: what you do, who you serve, who your competitors are, where the market moves. You confirm each item with one tap &mdash; <em>looks right / correct this / wrong entirely</em> &mdash; instead of typing from scratch. Fetchable items get pre-drafted; only the genuinely human-only calls (funding stage, framing, priority) open as blank questions.</p>
+      </div>
+      <div class="arc-step__block">
+        <span class="arc-step__label">How the Maskin Team runs it</span>
+        <p>Every fresh Maskin workspace, including the Maskin Team&rsquo;s own, is seeded by the same onboarding checklist &mdash; seven business-context domains cover humans, org, product, customers, competitors, market, and goals &amp; bets. From that point on, every agent in the workspace reads this before it answers. No more re-briefing an LLM on who you are.</p>
+      </div>
+    </section>
+
+    <section class="arc-step" aria-labelledby="arc-2">
+      <h3 id="arc-2">2. The wiki</h3>
+      <div class="arc-step__block">
+        <span class="arc-step__label">What the workspace does</span>
+        <p>As decisions get made, the wiki writes itself &mdash; every closed bet, every ratified position, every customer-truth insight lands as a page your team and your agents share. New agents you spawn read the wiki before they answer. New humans on your team read the same pages.</p>
+      </div>
+      <div class="arc-step__block">
+        <span class="arc-step__label">How the Maskin Team runs it</span>
+        <p>Inside Maskin, the wiki isn&rsquo;t a place someone remembers to update &mdash; it&rsquo;s the layer every agent reads before answering. The Maskin Team&rsquo;s own rolling opportunity map, its strategic positions, its customer-truth insights all live as wiki pages the team and its agents pull from. Same pages for the same reason &mdash; nothing gets re-derived because the last answer lived in someone&rsquo;s DMs.</p>
+      </div>
+    </section>
+
+    <section class="arc-step" aria-labelledby="arc-3">
+      <h3 id="arc-3">3. Creating product discovery loops</h3>
+      <div class="arc-step__block">
+        <span class="arc-step__label">What the workspace does</span>
+        <p>You connect the sources your team already listens to &mdash; support tickets, sales-call transcripts, review platforms, the LinkedIn feed. Each customer signal lands as a tagged insight sitting next to the roadmap it should shape. Agents cluster themes weekly; a human decides which cluster is worth running with.</p>
+      </div>
+      <div class="arc-step__block">
+        <span class="arc-step__label">How the Maskin Team runs it</span>
+        <p>The Maskin Team runs a <a href="/marketplace/product-discovery/">product-discovery loop</a> against its own workspace to catch market-vocabulary corrections, search-intent misses, and category-positioning shifts as they happen. Different sources than a PM/CPO team would use, same loop shape &mdash; signals in, insights out, humans deciding which cluster earns a bet.</p>
+      </div>
+    </section>
+
+    <section class="arc-step" aria-labelledby="arc-4">
+      <h3 id="arc-4">4. Finding signal in noise</h3>
+      <div class="arc-step__block">
+        <span class="arc-step__label">What the workspace does</span>
+        <p>A Signal Analyst agent runs across the insights your discovery loops land and surfaces clusters that look like real product bets, not one-off complaints. You get a shortlist per week, ranked and evidenced, not a firehose. Nothing gets scoped into a bet until a human confirms the pattern is real.</p>
+      </div>
+      <div class="arc-step__block">
+        <span class="arc-step__label">How the Maskin Team runs it</span>
+        <p>In the Maskin Team&rsquo;s own workspace, the Signal Analyst fires only after a Researcher agent validates each fresh insight batch &mdash; validated data first, clustering after, never concurrent. A recent product-onboarding rework got its scope from three separate sessions surfacing the same friction; a human read the shortlist and promoted the cluster into a shaped bet with one click.</p>
+      </div>
+    </section>
+
+    <section class="arc-step" aria-labelledby="arc-5">
+      <h3 id="arc-5">5. Creating product bets from opportunities</h3>
+      <div class="arc-step__block">
+        <span class="arc-step__label">What the workspace does</span>
+        <p>Shaped bets replace backlogs. A bet is a time-boxed outcome with a clear finish line, a named owner, and a written result when it lands &mdash; not a ticket that gets carried into the next sprint. The calls that matter &mdash; which signal to shape, which bet to run, which page to publish &mdash; stay with you; agents do the first-pass drafting so your week is spent on those calls instead of on retyping context. The workspace tracks each bet from shaping through active through live-or-lost, and writes the result back into the wiki so the next quarter&rsquo;s shaping is informed by what actually shipped.</p>
+      </div>
+      <div class="arc-step__block">
+        <span class="arc-step__label">How the Maskin Team runs it</span>
+        <p>Every commitment the Maskin Team runs is a bet, with Won/Lost criteria written up front, so nobody&rsquo;s arguing at the end about whether it worked. When a bet closes, the result is written back into the wiki. Next quarter&rsquo;s shaping reads what actually shipped, not what people remember shipping.</p>
+      </div>
+    </section>
+
+    <section class="arc-step" aria-labelledby="arc-6">
+      <h3 id="arc-6">6. Handoff to delivery</h3>
+      <div class="arc-step__block">
+        <span class="arc-step__label">What the workspace does</span>
+        <p>When a shaped bet is ready to build, your team picks a shipping path per bet, not per team &mdash; Maskin supports both. Details in the Implementation options section below.</p>
+      </div>
+      <div class="arc-step__block">
+        <span class="arc-step__label">How the Maskin Team runs it</span>
+        <p>The Maskin Team ships both ways. Marketing tasks push into non-Maskin systems where those systems already own the daily surface. Site changes ship through the Product Delivery loop inside Maskin, with AI agents drafting the changes and humans reviewing before they land. Either way, the bet in Maskin stays the source of truth; the wiki gets the result when the bet closes.</p>
+      </div>
+    </section>
+
+    <!-- PRIMITIVES BLOCK (identical across the site — glossary lives here) -->
+    <h2>What this workspace is built with</h2>
+    <p>Named the same on every Maskin page so the shape is portable. This block is explicitly the glossary &mdash; the one place on the page where Maskin&rsquo;s vocabulary earns its keep. Everything above this block reads without it.</p>
+    <div class="primitives">
+      <div class="primitive">
+        <p class="primitive__name">Loop</p>
+        <p class="primitive__def">A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome &mdash; not on <em>done for now</em>. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.</p>
+      </div>
+      <div class="primitive">
+        <p class="primitive__name">Agent</p>
+        <p class="primitive__def">A named role a model performs &mdash; a Researcher, a Signal Analyst, a discovery synthesizer. Not an <em>AI teammate</em>: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.</p>
+      </div>
+      <div class="primitive">
+        <p class="primitive__name">MCP</p>
+        <p class="primitive__def">The wire an agent uses to reach the tools your team already uses &mdash; the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.</p>
+      </div>
+      <div class="primitive">
+        <p class="primitive__name">Skill</p>
+        <p class="primitive__def">A packaged capability you attach to an agent &mdash; <em>summarize a customer call against our discovery template</em>, <em>draft a follow-up in our voice</em>. Skills are the reusable pieces of judgment your team is already building without realising it.</p>
+      </div>
+    </div>
+
+    <!-- IMPLEMENTATION OPTIONS: dual-path, equal weight -->
+    <h2>Ship bets your way &mdash; pick per bet, not per team</h2>
+    <div class="paths">
+      <div class="path">
+        <p class="path__eyebrow">Path A</p>
+        <p class="path__title">Keep your existing tracker (Jira, Linear)</p>
+        <p class="path__body">Your engineers live in Jira or Linear. Maskin doesn&rsquo;t ask them to move. Bets shaped in Maskin export as epics or issues into your existing tracker through a connector your team doesn&rsquo;t build. The bet in Maskin stays the source of truth for the shape &mdash; scope, Won/Lost criteria, owner, timeline. The tracker mirrors what needs to ship for the engineers who live there all day. Your team keeps the delivery motion it knows; you upgrade the discovery, shaping, and signal side of the workflow without a rip-and-replace.</p>
+        <p class="path__best"><strong>Best for:</strong> established product teams with a working delivery motion, ICs who don&rsquo;t want to learn a second tracker, engineering leadership that treats tracker migrations as high-cost.</p>
+      </div>
+      <div class="path">
+        <p class="path__eyebrow">Path B</p>
+        <p class="path__title">Run delivery inside Maskin (Product Delivery loop)</p>
+        <p class="path__body">For teams building AI-native workflows or looking to compress delivery cycle time, the Product Delivery loop runs the bet end-to-end. AI agents &mdash; a Planner, a Developer, a Code Reviewer, a Release Verifier &mdash; execute the shaped bet against your repo. Humans review at every taste-sensitive step. The loop closes when the change is live and the success signal is confirmed. The wiki gets the result.</p>
+        <p class="path__best"><strong>Best for:</strong> teams shipping AI features, product teams with tight engineering constraints who want to expand what a small team can commit to, teams already comfortable reviewing agent-drafted output.</p>
+      </div>
+    </div>
+    <p>The choice isn&rsquo;t team-wide &mdash; it&rsquo;s per commitment. A team running Jira for eight quarters can push most bets into Jira and run one Product Delivery loop for the AI-heavy work. Nothing about starting with Path A commits you to it forever, and nothing about running one Product Delivery loop forces the rest of the roadmap into it. Both paths ship the result back into the same wiki; the shape of what got shipped is legible either way.</p>
+
+    <!-- OBJECTIONS -->
+    <h2>Common objections</h2>
+
+    <div class="objection">
+      <h3>&ldquo;But our team is small.&rdquo;</h3>
+      <p>Good. The workspace is calibrated for small teams. There&rsquo;s no formal role architecture to fill in &mdash; a Researcher, a Signal Analyst, a Copywriter, a Delivery agent play the roles a two-person product team doesn&rsquo;t have headcount for. Small teams tend to see the biggest lift, because the alternative is one PM retyping the same context four times a week and losing every third insight to their DMs.</p>
+    </div>
+
+    <div class="objection">
+      <h3>&ldquo;But we don&rsquo;t have engineering time for a new tool integration.&rdquo;</h3>
+      <p>The workspace doesn&rsquo;t need one. Connectors to Jira, Linear, Notion, HubSpot, Intercom, GitHub, Slack, Google Docs, Zendesk, and the rest are already built. Sign in, pick the sources, the first agent has data by the end of the day. If a tool your team relies on isn&rsquo;t wired yet, name it &mdash; building a new connector is a one-week ticket, not a quarter.</p>
+    </div>
+
+    <div class="objection">
+      <h3>&ldquo;But we already tried an AI PM tool before.&rdquo;</h3>
+      <p>Fair. Most AI-flavoured PM tools of the last cycle were a chatbot grafted onto an existing tracker: talk-to-your-roadmap, summarise-my-tickets. Maskin is a different shape. The workspace isn&rsquo;t chat on top of Jira &mdash; it&rsquo;s the layer where the wiki, the customer signals, and the shaped bets actually live, so the LLM finally has context to reason against. The bet you shape in Maskin is a first-class object, not a prompt on top of one.</p>
+    </div>
+
+    <!-- REPEAT CTA -->
+    <div class="cta-block">
+      <span class="cta-block__label">Ready to start</span>
+      <a class="cta-primary" href="/docs/get-started/" style="margin:0">Start your workspace</a>
+    </div>
+
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
