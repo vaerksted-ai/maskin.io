@@ -108,7 +108,7 @@ No. Subagents are a runtime primitive (a spawned agent with its own context). Sk
 Close but not identical. Anthropic’s `plugin.json` bundles one or more skills into a distribution unit. A skill is one capability; a plugin is a versioned bundle of skills you install as a group. All plugins contain skills; not all skills ship as plugins.
 
 ### Where do skills fit relative to workspace state?
-The canonical framing assumes a developer-typed-prompt trigger. The extension the current writeups don’t cover: skills that fire on typed workspace state — an object entering a status, a field changing, an event on a graph. Same skill format, different invocation surface. Useful when the agent work is knowledge-work rather than code, and no human sits in the loop for every trigger.
+The canonical framing assumes a developer-typed-prompt trigger. The extension the current writeups don’t cover: skills that fire on typed workspace state — an object entering a status, a field changing, an event on a graph. Same skill format, different invocation surface. Useful when the agent work is knowledge-work rather than code, and no human sits in the [loop](/#faq) for every trigger.
 Read next
 
 ## Build skills against typed state, not just repos
