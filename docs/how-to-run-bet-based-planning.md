@@ -71,4 +71,4 @@ Agents can run the parts that are mechanical and continuous — monitoring sourc
 Read next
 
 ## Start running bets today
-You don’t need to buy a planning framework to start — the four steps are process, and you can run them in a shared document tonight. What Maskin adds is making the bet a machine-readable object an agent can execute and validate, so the loop runs continuously instead of on your discipline alone.
+You don’t need to buy a planning framework to start — the four steps are process, and you can run them in a shared document tonight. What Maskin adds is making the bet a machine-readable object an agent can execute and validate, so the loop runs continuously instead of on your discipline alone. Product teams can start with the [product-team getting-started sequence](/solutions/product-teams/) for what day one in the workspace looks like.
