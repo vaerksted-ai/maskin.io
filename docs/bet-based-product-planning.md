@@ -66,6 +66,8 @@ Bet-based product planning is a loop, not a set of tools. These are the five mov
 4. **Execute jointly with agents on typed objects.** Let agents run the continuous work — signal capture, synthesis, drafting, mechanical closure. Keep humans on the taste decisions: which bets deserve the cycle and which outcomes actually matter.
 5. **Validate against the win condition and reopen the loop.** When the bet ships, measure the outcome against its win condition, notify the requester, and shape the next cycle's bets from what was learned. The loop does not stop at delivery.
 
+Product teams applying this to their own week can start with the [product-team getting-started sequence](/solutions/product-teams/), which shows what a first-day workspace looks like for a PM or CPO.
+
 ## FAQ
 
 ### What is bet-based product planning?
