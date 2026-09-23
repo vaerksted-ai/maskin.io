@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Give your product team a workspace that ships bets, not backlogs.">
+  <defs>
+    <pattern id="grid-solutions-pt" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ECEAE4" stroke-width="1" opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid-solutions-pt)"/>
+
+  <text x="80" y="112" font-family="'JetBrains Mono'" font-size="20" font-weight="500" fill="#3B74F2" letter-spacing="0.18em">SOLUTION &#183; PRODUCT TEAMS</text>
+  <path d="M 80 150 L 660 150" stroke="#2A2925" stroke-width="1"/>
+
+  <text x="80" y="250" font-family="'Schibsted Grotesk'" font-size="54" font-weight="600" fill="#ECEAE4" letter-spacing="-0.018em">Give your product team</text>
+  <text x="80" y="312" font-family="'Schibsted Grotesk'" font-size="54" font-weight="600" fill="#ECEAE4" letter-spacing="-0.018em">a workspace that ships</text>
+  <text x="80" y="374" font-family="'Schibsted Grotesk'" font-size="54" font-weight="600" fill="#ECEAE4" letter-spacing="-0.018em"><tspan fill="#3B74F2">bets</tspan>, not backlogs.</text>
+
+  <text x="80" y="452" font-family="'Newsreader'" font-style="italic" font-size="27" fill="#A09A93">The AI-native product workspace &#8212;</text>
+
+  <g transform="translate(740 172)">
+    <path d="M 210 20 L 320 20 A 80 80 0 0 1 400 100 L 400 210 A 80 80 0 0 1 320 290 L 100 290 A 80 80 0 0 1 20 210 L 20 100 A 80 80 0 0 1 100 20 L 209.99 20" fill="none" stroke="#46433E" stroke-width="2.5"/>
+    <path d="M 210 20 L 320 20 A 80 80 0 0 1 400 100 L 400 148" fill="none" stroke="#3B74F2" stroke-width="3.5" stroke-linecap="round"/>
+    <g transform="translate(400 155) rotate(90)">
+      <path d="M -10 -12 L 0 0 L 10 -12" fill="none" stroke="#3B74F2" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <rect x="202" y="12" width="16" height="16" fill="#ECEAE4"/>
+    <rect x="395" y="150" width="10" height="10" fill="#A09A93"/>
+    <rect x="205" y="285" width="10" height="10" fill="#A09A93"/>
+    <rect x="15" y="150" width="10" height="10" fill="#A09A93"/>
+    <text x="210" y="162" text-anchor="middle" font-family="'JetBrains Mono'" font-size="17" font-weight="500" letter-spacing="0.24em" fill="#3B74F2">BET</text>
+  </g>
+
+  <text x="950" y="522" text-anchor="middle" font-family="'JetBrains Mono'" font-size="15" font-weight="500" letter-spacing="0.22em" fill="#6B6560">INSIGHT &#183; BET &#183; TASK &#183; SHIPPED</text>
+
+  <g transform="translate(1068 78) scale(0.65)">
+    <rect width="80" height="80" rx="10" fill="#ECEAE4"/>
+    <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#111110" stroke-width="10" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+  </g>
+
+  <text x="80" y="600" font-family="'JetBrains Mono'" font-size="16" fill="#6B6560" letter-spacing="0.04em">MASKIN &#183; SOLUTIONS</text>
+  <text x="1120" y="600" text-anchor="end" font-family="'JetBrains Mono'" font-size="16" fill="#6B6560">maskin.io/solutions/product-teams</text>
+</svg>
