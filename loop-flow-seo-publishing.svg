@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" role="img" aria-label="The SEO publishing loop — seven steps, one human gate, closes back to the queue">
+  <defs>
+    <pattern id="grid-lf-seo" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#111110" stroke-width="1" opacity="0.025"/>
+    </pattern>
+    <marker id="lf-arrow-accent" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="720" fill="#FAFAF8"/>
+  <rect width="1200" height="720" fill="url(#grid-lf-seo)"/>
+  <text x="72" y="90" font-family="'JetBrains Mono',monospace" font-size="12" letter-spacing="0.2em" font-weight="500" fill="#2563EB">LOOP · SEO PUBLISHING · 7 STEPS</text>
+  <text x="72" y="138" font-family="'Schibsted Grotesk',sans-serif" font-size="34" font-weight="600" fill="#111110" letter-spacing="-0.015em">A closed loop —</text>
+  <text x="72" y="178" font-family="'Schibsted Grotesk',sans-serif" font-size="34" font-weight="600" fill="#111110" letter-spacing="-0.015em">
+    <tspan font-family="'Newsreader',serif" font-style="italic" font-weight="500" fill="#2563EB">not a pipeline</tspan> that ends at publish.
+  </text>
+  <g font-family="'JetBrains Mono',monospace" font-size="11" letter-spacing="0.08em" fill="#5A5751">
+    <g transform="translate(1000,84)"><circle cx="0" cy="0" r="7" fill="#FAFAF8" stroke="#111110" stroke-width="1.5"/><text x="16" y="4">MASKIN STEP</text></g>
+    <g transform="translate(1000,110)"><circle cx="0" cy="0" r="7" fill="#F2A83B" stroke="#C58517" stroke-width="1.5"/><text x="16" y="4">HUMAN GATE</text></g>
+    <g transform="translate(1000,136)"><circle cx="0" cy="0" r="7" fill="#2563EB" stroke="#2563EB" stroke-width="1.5"/><text x="16" y="4">CLOSE CONDITION</text></g>
+  </g>
+  <path d="M 1052 440 C 1052 580, 148 580, 148 440" fill="none" stroke="#2563EB" stroke-width="2" stroke-dasharray="4 5" stroke-linecap="round" marker-end="url(#lf-arrow-accent)"/>
+  <text x="600" y="572" text-anchor="middle" font-family="'Newsreader',serif" font-style="italic" font-size="16" fill="#5A5751">closes back to the queue — next topic reads sharper</text>
+  <line x1="184" y1="390" x2="1016" y2="390" stroke="#E2DDD7" stroke-width="1.5"/>
+  <g fill="#9B958F"><path d="M 288 390 l -6 -4 l 0 8 z"/><path d="M 438 390 l -6 -4 l 0 8 z"/><path d="M 588 390 l -6 -4 l 0 8 z"/><path d="M 738 390 l -6 -4 l 0 8 z"/><path d="M 888 390 l -6 -4 l 0 8 z"/><path d="M 1038 390 l -6 -4 l 0 8 z"/></g>
+  <g><circle cx="148" cy="390" r="36" fill="#FAFAF8" stroke="#111110" stroke-width="2"/><text x="148" y="397" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="18" font-weight="500" fill="#111110">01</text><text x="148" y="330" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-size="14" font-weight="600" fill="#111110">Topic lands</text><text x="148" y="349" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-size="14" font-weight="600" fill="#111110">in queue</text></g>
+  <g><circle cx="298" cy="390" r="36" fill="#FAFAF8" stroke="#111110" stroke-width="2"/><text x="298" y="397" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="18" font-weight="500" fill="#111110">02</text><text x="298" y="458" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-size="14" font-weight="600" fill="#111110">Maskin pulls SERP</text><text x="298" y="477" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-size="14" font-weight="600" fill="#111110">+ your existing pages</text></g>
+  <g><circle cx="448" cy="390" r="36" fill="#FAFAF8" stroke="#111110" stroke-width="2"/><text x="448" y="397" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="18" font-weight="500" fill="#111110">03</text><text x="448" y="330" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-size="14" font-weight="600" fill="#111110">Drafts to searcher intent,</text><text x="448" y="349" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-size="14" font-weight="600" fill="#111110">in your voice</text></g>
+  <g>
+    <rect x="562" y="354" width="72" height="72" rx="10" fill="#FFF5E2" stroke="#C58517" stroke-width="2"/>
+    <text x="598" y="397" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="18" font-weight="500" fill="#8A5A0F">04</text>
+    <g transform="translate(578,366)"><path d="M 3 0 L 3 12 L 12 12 L 12 0 L 3 0" fill="none" stroke="#C58517" stroke-width="1.5"/><circle cx="10.5" cy="6.5" r="0.9" fill="#C58517"/><path d="M 15 5 L 17.5 8 L 22 3" fill="none" stroke="#C58517" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <text x="598" y="458" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="0.16em" fill="#C58517" font-weight="500">HUMAN GATE</text>
+    <text x="598" y="480" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-size="14" font-weight="600" fill="#111110">Editor approves</text>
+  </g>
+  <g><circle cx="748" cy="390" r="36" fill="#FAFAF8" stroke="#111110" stroke-width="2"/><text x="748" y="397" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="18" font-weight="500" fill="#111110">05</text><text x="748" y="330" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-size="14" font-weight="600" fill="#111110">Ships to</text><text x="748" y="349" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-size="14" font-weight="600" fill="#111110">your CMS</text></g>
+  <g><circle cx="898" cy="390" r="36" fill="#FAFAF8" stroke="#111110" stroke-width="2"/><text x="898" y="397" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="18" font-weight="500" fill="#111110">06</text><text x="898" y="458" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-size="14" font-weight="600" fill="#111110">Rank tracked;</text><text x="898" y="477" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-size="14" font-weight="600" fill="#111110">refresh if it slips</text></g>
+  <g><circle cx="1052" cy="390" r="38" fill="#EEF3FF" stroke="#2563EB" stroke-width="2"/><text x="1052" y="397" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="18" font-weight="500" fill="#2563EB">07</text><text x="1052" y="320" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="0.16em" fill="#2563EB" font-weight="500">CLOSE CONDITION</text><text x="1052" y="342" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-size="14" font-weight="600" fill="#111110">Every page</text><text x="1052" y="361" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-size="14" font-weight="600" fill="#111110">teaches the next</text></g>
+  <line x1="72" y1="640" x2="1128" y2="640" stroke="#E2DDD7" stroke-width="1"/>
+  <text x="72" y="668" font-family="'JetBrains Mono',monospace" font-size="11" letter-spacing="0.14em" fill="#9B958F">MASKIN.IO/MARKETPLACE/SEO-PUBLISHING · 07 STEPS · 1 HUMAN GATE</text>
+  <g transform="translate(1075,650)"><text x="0" y="16" font-family="'Schibsted Grotesk',sans-serif" font-size="13" font-weight="600" fill="#111110" letter-spacing="-0.005em">Maskin</text></g>
+  <g transform="translate(1130,652)"><rect x="0" y="0" width="22" height="22" rx="5" fill="#111110"/><path d="M4 17 L4 5 L9 10 L13 5 L18 10 L18 17" stroke="#FAFAF8" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></g>
+</svg>
