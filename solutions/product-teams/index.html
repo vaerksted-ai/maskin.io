@@ -52,7 +52,7 @@
       "description": "One workspace where your wiki, customer signals, shaped bets, and delivery handoff live together. Ship each bet into Jira/Linear or via Maskin agents.",
       "inLanguage": "en",
       "datePublished": "2026-09-23T00:00:00Z",
-      "dateModified": "2026-09-23T00:00:00Z",
+      "dateModified": "2026-09-24T00:00:00Z",
       "image": ["https://maskin.io/og-image-solutions-product-teams.png"],
       "isPartOf": {
         "@type": "WebSite",
@@ -94,6 +94,11 @@
   .pas-solution { font-size: 1.05rem; color: var(--ink); margin: 0 0 1.5rem; line-height: 1.6; }
   .cta-primary { display: inline-block; padding: .85rem 1.4rem; border-radius: 8px; background: var(--ink); color: var(--linen); font-family: var(--ff-display); font-weight: 600; font-size: 1rem; text-decoration: none; margin: .25rem 0 2rem; }
   .cta-primary:hover { background: var(--ink-2); }
+  .cta-secondary { display: inline-block; padding: .85rem 1.4rem; border-radius: 8px; background: transparent; color: var(--ink); border: 1px solid var(--ink); font-family: var(--ff-display); font-weight: 600; font-size: 1rem; text-decoration: none; }
+  .cta-secondary:hover { background: var(--ink); color: var(--linen); }
+  .cta-pair { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin: .25rem 0 2rem; }
+  .cta-pair .cta-primary, .cta-pair .cta-secondary { margin: 0; }
+  .cta-block .cta-pair { justify-content: center; margin: 0; }
   .proof-strip { padding: 1.25rem 1.4rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin: 2rem 0 2.75rem; font-size: .98rem; line-height: 1.6; color: var(--ink-2); }
   .proof-strip strong { color: var(--ink); }
   .arc-step { margin: 2.25rem 0 2rem; padding: 0 0 0 1.1rem; border-left: 3px solid var(--accent); }
@@ -138,7 +143,10 @@
 
     <p class="pas-solution">Maskin gives your product team one workspace where the wiki, customer signals, shaped bets, and the delivery handoff live together &mdash; ship each bet your way, either as an epic in your existing Jira or Linear tracker or through Maskin&rsquo;s own delivery agents.</p>
 
-    <a class="cta-primary" href="/docs/get-started/">Start your workspace</a>
+    <div class="cta-pair">
+      <a class="cta-primary" href="https://maskin.io/bookseb">Book a sprint</a>
+      <a class="cta-secondary" href="mailto:sebastian@meshfirm.com">Talk to us</a>
+    </div>
 
     <!-- PROOF STRIP -->
     <div class="proof-strip">
@@ -282,7 +290,10 @@
     <!-- REPEAT CTA -->
     <div class="cta-block">
       <span class="cta-block__label">Ready to start</span>
-      <a class="cta-primary" href="/docs/get-started/" style="margin:0">Start your workspace</a>
+      <div class="cta-pair">
+        <a class="cta-primary" href="https://maskin.io/bookseb">Book a sprint</a>
+        <a class="cta-secondary" href="mailto:sebastian@meshfirm.com">Talk to us</a>
+      </div>
     </div>
 
   </main>
