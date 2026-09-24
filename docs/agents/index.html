@@ -82,6 +82,7 @@
 
     <h2>What an agent is</h2>
     <p>An agent is an <a href="/docs/concepts/">actor</a> with a <strong>system prompt</strong>, a <strong>tools</strong> configuration, optional <strong>memory</strong>, and an <strong>LLM provider</strong>. You can attach reusable <strong>skills</strong> to an agent to give it standard procedures and context. Agents are assigned work, mentioned, and held responsible for objects exactly like human teammates.</p>
+    <p>For a wider read on how the OSS agent ecosystem splits &mdash; stateful-agent frameworks (Maskin, Letta, Cheshire Cat), workflow-node builders (n8n, Flowise, Dify), RAG chat frontends, and coding-agent control planes &mdash; see the <a href="/alternatives/self-hosted-ai-agents/">field survey of self-hosted AI agent repos</a>. It maps where Maskin sits in the 2026 landscape and which shape fits which object of work.</p>
 
     <h2>Sessions run in sandboxes</h2>
     <p>Each run executes in an <strong>ephemeral Docker container</strong> built from the <code>agent-base</code> image (Node 20 with the Claude Code CLI pre-installed, running as a non-root user). The container gets the agent's prompt, the relevant workspace context, and credentials injected as environment, then runs to completion and is torn down.</p>

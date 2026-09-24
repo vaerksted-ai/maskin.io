@@ -39,6 +39,7 @@ If you want the same loops without running infrastructure, [book a hosted trial]
 
 ## An open-source alternative to Claude Cowork / Codex
 The “open source alternative to X” searches are filling fast with desktop coding apps. What is missing is a closed-loop workspace for *product work*: signals in, bets shaped, tasks executed, outcomes validated — self-hostable and model-agnostic. That is the niche Maskin occupies. For how the same object-model argument plays against the crowded coding-agent lane specifically, see the [self-hosted AI agent control plane](/alternatives/self-hosted-ai-agent-control-plane/) comparison — twelve OSS control planes shipped in 2026 that all stack as kanbans of coding tasks.
+For a wider read on where the self-host-persona OSS agent field sits in 2026 — stateful-agent frameworks, workflow-node builders, RAG chat frontends, coding-agent control planes — the [field survey of self-hosted AI agent repos](/alternatives/self-hosted-ai-agents/) is the honest category map, and names which shape fits which shape of work.
 Start with the [get-started guide](/docs/get-started/) or the [self-hosted setup guide](/docs/get-started/self-hosted/) to stand up an instance on your own hardware.
 
 ## FAQ
