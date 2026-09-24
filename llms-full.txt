@@ -2333,10 +2333,10 @@ Inside a loop listing, agents / MCPs / skills appear as “built with” compone
 An LLM wiki is a knowledge base an LLM compiles from your own sources into interlinked pages that agents read before they answer. Andrej Karpathy named the pattern in April 2026 as an alternative to per-agent memory and query-time RAG. The point is a compiled, human-auditable artifact: the agent reads a stable page instead of retrieving a fresh set of fragments for every question.
 
 ### Is an LLM wiki a RAG?
-No. A RAG system embeds raw sources and retrieves fragments at query time, so the answer is assembled fresh on every request. An LLM wiki compiles those sources into interlinked pages ahead of time and stores them as a durable artifact. The wiki can feed a retrieval pipeline, but the wiki itself is the compiled knowledge, not the retrieval mechanism that reads from it.
+No — a RAG system embeds raw sources and retrieves fragments at query time, while an LLM wiki compiles those sources into interlinked pages ahead of time; [LLM wiki vs RAG](/docs/llm-wiki-vs-rag/) covers the full comparison.
 
 ### Is an LLM wiki better than RAG?
-They solve different problems, so the honest answer is that most teams end up with both. RAG retrieves fragments from raw sources at query time and is good at open-ended recall over a large corpus. An LLM wiki compiles sources into interlinked pages ahead of time and is good at stable, citeable answers a human can check. Use the wiki for what your team has already learned and wants to keep answering the same way.
+They solve different problems, so most teams end up running both; [here is how to choose between them](/docs/llm-wiki-vs-rag/).
 
 ### How does an LLM wiki work?
 An LLM reads your sources, extracts the durable claims, and writes them into interlinked pages with links back to the object each claim came from. Agents then read those pages before they answer, instead of searching raw documents. The compile runs on a schedule or when a source changes, so the wiki stays a maintained artifact rather than a one-time export.
