@@ -39,7 +39,6 @@ The MCP server is the single integration surface, which is what turns “MCP-nat
 - **Intercom and HubSpot** — customer conversations and contact context flow into product decisions.
 - **PostHog** — product analytics surface as signals that can trigger a loop when a metric moves.
 The result is that an agent doesn’t need special permission slips for each tool, because it only ever acts through the one typed contract. And because triggers are event-driven on top of that same backbone, a change in any connected source — a spike in PostHog, a support thread in Intercom, a pushed branch in GitHub — can enter the loop without anyone asking.
-
 The same substrate holds for compiled team memory: [the wiki lives in one place, agents reach it over MCP](/marketplace/knowledge-wiki/), and a coding agent, a research agent, and a support agent all read the same pages under the same gates without anyone copying content between products.
 
 ## How does composable infrastructure deliver determinism, safety, and scale?

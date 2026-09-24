@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Are Agent Skills? Anthropic&rsquo;s SKILL.md Primitive Explained | Maskin</title>
+<meta name="description" content="An agent skill is a folder with a SKILL.md file that teaches an AI agent one job. What's inside a skill, how progressive disclosure works, and how skills fire on workspace state in Maskin.">
+
+<link rel="canonical" href="https://maskin.io/docs/learn/agent-skills/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/learn/agent-skills/">
+<meta property="og:title" content="What are agent skills? Anthropic&rsquo;s SKILL.md primitive, with a Maskin example">
+<meta property="og:description" content="An agent skill is a folder holding a SKILL.md file with a name, a description, and optional support files. Here's the format, the three loading levels, and how skills fire on typed workspace state.">
+<meta property="og:image" content="https://maskin.io/docs/learn/agent-skills/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-09-25T00:00:00Z">
+<meta property="article:modified_time" content="2026-09-25T00:00:00Z">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="What are agent skills? Anthropic&rsquo;s SKILL.md primitive, with a Maskin example">
+<meta name="twitter:description" content="A skill is a folder with a SKILL.md file: a name, a description, and the instructions for one job. The format, the three loading levels, and how skills fire on workspace state.">
+<meta name="twitter:image" content="https://maskin.io/docs/learn/agent-skills/og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/learn/agent-skills/#post",
+      "headline": "What are agent skills? Anthropic's SKILL.md primitive, with a Maskin example",
+      "name": "What are agent skills: Anthropic's primitive, with a Maskin workspace example",
+      "description": "An agent skill is a folder that teaches an AI agent how to do one job well. It holds a SKILL.md file with a short name and a description at the top, plus any scripts or reference documents the job needs. This page covers what agent skills are, where the format came from, what lives inside a skill folder, how skills differ from tools and prompts and MCP servers, how to write your first one, and how skills appear inside a Maskin workspace.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/learn/agent-skills/",
+      "mainEntityOfPage": "https://maskin.io/docs/learn/agent-skills/",
+      "image": "https://maskin.io/docs/learn/agent-skills/og.png",
+      "datePublished": "2026-09-25T00:00:00Z",
+      "dateModified": "2026-09-25T00:00:00Z",
+      "author": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": { "@type": "ImageObject", "url": "https://maskin.io/icon-512.png" }
+      },
+      "isPartOf": { "@type": "WebSite", "name": "Maskin", "url": "https://maskin.io/" },
+      "about": [
+        { "@type": "Thing", "name": "Agent skills" },
+        { "@type": "Thing", "name": "SKILL.md" },
+        { "@type": "Thing", "name": "Progressive disclosure" },
+        { "@type": "Thing", "name": "Model Context Protocol" },
+        { "@type": "Thing", "name": "AI agents" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://maskin.io/docs/" },
+        { "@type": "ListItem", "position": 3, "name": "Learn", "item": "https://maskin.io/docs/learn/" },
+        { "@type": "ListItem", "position": 4, "name": "What are agent skills?", "item": "https://maskin.io/docs/learn/agent-skills/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are agent skills used for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They give an agent a repeatable, specialised capability without retraining a model or rewriting its prompt. Common uses include enforcing a team's code-review process, applying a document-extraction workflow, and handling a support task such as refunds. Because a skill loads only when its description matches the task, it can hold a long procedure while costing the agent a single sentence of context the rest of the time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who introduced agent skills?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Anthropic introduced the format in October 2025 for Claude and Claude Code, then published it as an open specification at agentskills.io. The plain folder-and-markdown design is why other agent products could adopt it quickly, and why community collections such as Addy Osmani's repository grew up alongside it. Today the format is implemented across several coding agents, not only Anthropic's."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are agent skills just prompts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A prompt is a message you send, and it lives for one turn. A skill is a folder the agent discovers and loads when a task matches, and it stays available across every conversation. A prompt competes for space in the context window and has to be resent; a skill sits on disk and costs one description line until it is needed. Skills can also bundle scripts and reference files, which a prompt cannot."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do agent skills work across different AI tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mostly. The folder format is public and implemented by several agents, so a skill generally runs wherever the format is supported. Skills that depend on a specific integration only run where that integration is reachable, and a vendor library can add its own review or signing step. The folder itself travels further than the tools it calls. For most teams, that portability is the reason to author in this format."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there an agent skills marketplace?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most results for \"agent skills marketplace\" are open collections, vendor libraries, or skills bundled inside a product, rather than a mature commercial marketplace where skills are bought, sold, and supported as products. If you are evaluating one, check which of those three shapes it is. A marketplace of skills is also not a marketplace of loops: a skill is a component, while a loop is a complete process with a trigger, agents, and a close condition."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between agent skills and MCP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They are different layers, and the two are often confused. MCP is the protocol that exposes tools and data from systems your team already runs, such as a CRM or an inbox. A skill is the packaged judgment about how and when to use those tools for a specific job. You connect MCP servers; you author skills. A skill frequently directs an agent to call several tools that MCP has exposed."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Solutions"><p class="doc-sidebar__title">Solutions</p><ul class="doc-sidebar__list"><li><a class="" href="/solutions/product-teams/">Product teams</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All loops</a></li><li><a class="is-nested" href="/marketplace/seo-publishing/">The SEO publishing loop</a></li><li><a class="is-nested" href="/marketplace/outbound/">The outbound loop</a></li><li><a class="is-nested" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki loop</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="is-active" href="/docs/learn/agent-skills/" aria-current="page">What are agent skills?</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="is-nested" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="" href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane</a></li><li><a class="" href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents</a></li></ul></nav></aside>  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Learn / What are agent skills?</p>
+    <p class="eyebrow">Article · Learn</p>
+    <h1>What are agent skills: Anthropic&rsquo;s primitive, with a Maskin workspace example</h1>
+    <p class="lead"><strong>An agent skill is a folder that teaches an AI agent how to do one job well.</strong> The folder holds a <code>SKILL.md</code> file with a short <code>name</code> and a <code>description</code> at the top, plus any scripts or reference documents the job needs. An agent reads the description first, decides the skill is relevant, then loads the rest. That design is what makes a skill cheap to keep around and precise to use.</p>
+    <p>This page covers what agent skills are, where the format came from, what lives inside a skill folder, how skills differ from tools and prompts and MCP servers, how to write your first one, and how skills appear inside a Maskin workspace.</p>
+
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">✓</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+          <li>An <strong>agent skill</strong> is a folder containing a <code>SKILL.md</code> file. The file opens with YAML frontmatter carrying a <code>name</code> and a <code>description</code>; everything else in the folder is optional supporting material.</li>
+          <li>Anthropic introduced the format in <strong>October 2025</strong>, and the specification is published openly at <code>agentskills.io/specification</code>.</li>
+          <li>Skills load in <strong>three levels</strong>: name and description first, the body of <code>SKILL.md</code> when a task matches, and bundled files only when the agent reaches for them. A one-line description can unlock a long playbook without that playbook sitting in context.</li>
+          <li>A skill is not a tool, a prompt, an MCP server, or a workflow. Each of those is a different layer; the skill is the reusable judgment you author and attach.</li>
+          <li>Inside a Maskin workspace, a skill is a <strong>component of a loop</strong>, never a top-level surface. You attach it to an agent working inside a loop, and it can fire when typed workspace state changes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>What are agent skills?</h2>
+    <p>An agent skill is a portable, self-contained instruction folder. Point an agent at the folder and it learns a capability without you changing the model, the tool list, or the surrounding application. The agent decides when to use it by reading one sentence: the <code>description</code> in the frontmatter.</p>
+    <p>The practical effect is that capability becomes something you carry between agents and between tools, rather than something you rebuild per integration. Anthropic shipped the format in October 2025 as a way to package capability for its agents: a known folder structure, an open file format, and a loading strategy that keeps context small.</p>
+    <p>Searches for &ldquo;agent skills&rdquo; jumped sharply after the release and have stayed high through 2026.<sup><a href="#fn1" id="fnref1">1</a></sup> The interest is not only in Claude. Teams want a unit of instruction that survives a change of model vendor, which is why the same folder now runs inside several different coding agents.</p>
+
+    <h2>Where agent skills came from</h2>
+    <p><a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" target="_blank" rel="noopener nofollow">Anthropic announced agent skills</a> in October 2025 as a way to package instructions for Claude and Claude Code. The format is deliberately plain: folders, markdown, and a small block of YAML. Nothing about it needs a proprietary runtime.</p>
+    <p>That plainness is why the format spread. The <a href="https://agentskills.io/specification" target="_blank" rel="noopener nofollow">specification is published openly</a>, and community collections have grown up around it. One of the most-read references is the <a href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noopener nofollow">agent-skills repository maintained by Addy Osmani on GitHub</a>, which collects working examples and explains the layout in plain terms.<sup><a href="#fn4" id="fnref4">4</a></sup> Anthropic&rsquo;s own documentation walks through the three loading levels and the frontmatter fields in detail.<sup><a href="#fn2" id="fnref2">2</a></sup></p>
+    <p>The relevant point for a product team is not the history. It is that a skill authored today against the public format is not locked to one vendor&rsquo;s agent. The folder runs where the format is supported, and the format is supported in more places every quarter.</p>
+
+    <h2>What an agent skill actually contains</h2>
+    <p>A skill is a directory. Inside it, one required file and a set of optional supporting files.</p>
+
+    <h3>The folder and the <code>SKILL.md</code> file</h3>
+    <p>The required piece is <code>SKILL.md</code>. It has two parts: a block of YAML frontmatter and a markdown body.</p>
+    <pre><code>---
+name: refund-subscription
+description: Issue a subscription refund when a customer cancels within 14 days and was billed in the last cycle. Use when a support ticket asks for money back on a recent charge.
+---
+
+# Refund a subscription
+
+1. Confirm the charge falls inside the 14-day window.
+2. Confirm the customer was billed in the last cycle.
+3. Issue the refund through the billing tool, then post the confirmation to the ticket.
+
+See `references/refund-policy.md` for the exceptions list.</code></pre>
+    <p>The frontmatter carries two fields that matter most. <code>name</code> is the skill&rsquo;s identifier, kept short and lowercase. <code>description</code> is the sentence an agent reads to decide whether to load the skill at all. Writing a good description is the single highest-leverage part of authoring a skill, because it is the only part that is always in front of the agent.</p>
+    <p>Everything else is optional. A skill folder can include a <code>references/</code> directory of documents the agent reads on demand, a <code>scripts/</code> directory of code the agent runs, and asset files such as templates. None of it is required for a skill to work.</p>
+
+    <h3>Progressive disclosure, in three levels</h3>
+    <p>Skills load in three levels, and the levels are the point.</p>
+    <ol>
+      <li><strong>Metadata.</strong> The name and description of every installed skill sit in the agent&rsquo;s context. This is cheap. A hundred skills cost about a hundred sentences.</li>
+      <li><strong>Body.</strong> When the agent decides a skill matches the task, it loads the body of <code>SKILL.md</code>. This holds the actual instructions for the job.</li>
+      <li><strong>Bundled files.</strong> If the body points at a reference document or a script, the agent loads that file only when it gets there.</li>
+    </ol>
+    <p>A skill can therefore hold thousands of words of procedure while costing the agent one sentence until the moment it is needed. That is why skills scale where pasting an instruction block into a system prompt does not.</p>
+
+    <h3>What a minimal skill looks like</h3>
+    <p>The smallest useful skill is a folder and one file. <code>SKILL.md</code> with a name, a description, and three or four lines of instruction is a complete skill. There is no build step, no manifest beyond the frontmatter, and no registration call. If the folder is in a location the agent reads, the skill exists.</p>
+
+    <h2>How agent skills relate to tools, prompts, rules, and workflows</h2>
+    <p>These terms get used interchangeably in marketing copy and mean different things. The clean way to hold them apart:</p>
+    <ul>
+      <li><strong>A prompt</strong> is a message you send. It lives for one turn.</li>
+      <li><strong>A tool</strong> is a function the agent can call. It does one thing and returns a result.</li>
+      <li><strong>An MCP server</strong> is the wire that exposes tools and data from systems your team already runs, such as a CRM or an inbox.</li>
+      <li><strong>A rule</strong> is a standing constraint on how the agent behaves, applied across every task.</li>
+      <li><strong>A workflow</strong> is a fixed sequence of steps executed the same way each time.</li>
+      <li><strong>A skill</strong> is packaged judgment about how to do a specific job, loaded on demand.</li>
+    </ul>
+    <p>A useful shorthand: skills are what you author, tools are what you call, MCP is what you connect, and rules are what you always apply. Skills are the layer that carries your team&rsquo;s way of doing a piece of work, which is why they tend to be the artifact people most want to share.</p>
+    <p>The distinctions matter in practice because the layers solve different problems and are frequently confused. Our <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">comparison of agent skills with MCP, cursor rules, and workflows</a> walks through each layer side by side, including the state problem that none of the instruction layers solve on their own.<sup><a href="#fn5" id="fnref5">5</a></sup></p>
+
+    <h2>Where to find agent skills (and what &ldquo;agent skills marketplace&rdquo; means)</h2>
+    <p>People search for an &ldquo;agent skills marketplace&rdquo; and the phrase covers a few different things today. It is worth being precise about which is which.</p>
+    <ul>
+      <li><strong>Open collections and directories.</strong> Community repositories and catalogues that list skills you can copy into your own project. These are the most common result for the phrase. Most are not products; they are indexes maintained by contributors.</li>
+      <li><strong>Vendor-hosted libraries.</strong> Collections published by the model vendor or a tool vendor, tied to that vendor&rsquo;s agent and sometimes to a signing or review process.</li>
+      <li><strong>Skills bundled inside a product.</strong> A capability a tool ships that happens to be packaged as a skill, where the folder is an implementation detail rather than something you browse.</li>
+    </ul>
+    <p>What the phrase does not yet describe, in most cases, is a live commercial marketplace where skills are bought, sold, and versioned as products with support behind them. If you are evaluating an &ldquo;agent skills marketplace,&rdquo; check which of the three shapes it actually is before assuming the third-party product model.</p>
+    <p>One more distinction worth holding: a marketplace of skills is not the same as a marketplace of loops. A skill is a component. A loop is a complete process with a trigger, agents, human gates, and a close condition, and it is the unit a buyer normally shops for. Skills are the parts inside it. The <a href="/marketplace/">Maskin Marketplace</a> lists loops on that reading.</p>
+
+    <h2>A live example: skills that fire on workspace state</h2>
+    <p>In Maskin, skills are attached to an agent working inside a loop. They are not a top-level section of their own. The Marketplace lists loops; agents, MCP servers, and skills appear as the &ldquo;built with&rdquo; components of a loop listing.</p>
+    <p>What makes the skill primitive in a Maskin workspace different from a folder you paste into a chat is the thing it can react to. A workspace-attached skill can fire against typed state in the object graph: an object entering a status, a field changing value, or an @mention landing on an object. The skill is not something an agent happens to have loaded; it is something that runs when the workspace reaches a state it was written for.</p>
+    <p>Concretely, a skill attached to a discovery agent might fire when an interview note object moves to <code>ready</code>. It reads that object, applies the team&rsquo;s synthesis template, and writes a drafted insight back to the graph. The next agent to work on the same topic reads from the same typed state, so the skill&rsquo;s output is not stranded in a chat transcript.</p>
+    <p>That is the difference between a skill as a document and a skill as a working part. Both use the same folder format. One is loaded by hand; the other is wired into the place the work actually happens. The <a href="/docs/what-is-a-stateful-orchestration-substrate/">stateful orchestration substrate</a> is what carries that typed state between agents, and the <a href="/docs/closed-loop-workspace/">closed-loop workspace</a> is the shape the whole arrangement forms.</p>
+
+    <h2>Are agent skills an open standard?</h2>
+    <p>The format is public. Anthropic documented it, the specification is hosted openly, and the loading rules are readable.<sup><a href="#fn3" id="fnref3">3</a></sup> Skills written for one supported agent generally run in another that implements the format, which is the concrete test of portability.</p>
+    <p>Portability is not total. Vendor libraries can add review or signing steps, and a skill that calls a specific tool only works where that tool is reachable. The folder itself travels; the integrations it depends on may not. As the format has been adopted more widely, community collections have rebranded and expanded beyond a single vendor, which is itself a signal that the format is behaving like a standard rather than a single product feature.</p>
+    <p>For a team deciding where to invest authoring time, that is the relevant fact: instruction written as a skill is more portable than instruction written into one vendor&rsquo;s prompt format.</p>
+
+    <h2>How to write your first agent skill</h2>
+    <ol>
+      <li><strong>Pick one job.</strong> Choose a task your team repeats and can describe in a page. &ldquo;Draft a follow-up in our voice&rdquo; is a job. &ldquo;Be helpful&rdquo; is not.</li>
+      <li><strong>Write the description first.</strong> One or two sentences: what the skill does and when it should be used. This is what the agent reads before anything else.</li>
+      <li><strong>Write the body as steps.</strong> Keep it to the instructions a competent person would need, in order, with the decision points called out.</li>
+      <li><strong>Move the bulk into references.</strong> Long policy documents, examples, and templates belong in <code>references/</code> so they load only when the body reaches for them.</li>
+      <li><strong>Test it against a real task.</strong> Run the skill on something you would actually do, watch where the agent goes wrong, and tighten the description and the steps until it lands. The description is usually where the fix is.</li>
+    </ol>
+
+    <h2>FAQ</h2>
+    <h3>What are agent skills used for?</h3>
+    <p>They give an agent a repeatable, specialised capability without retraining a model or rewriting its prompt. Common uses include enforcing a team&rsquo;s code-review process, applying a document-extraction workflow, and handling a support task such as refunds. Because a skill loads only when its description matches the task, it can hold a long procedure while costing the agent a single sentence of context the rest of the time.</p>
+    <h3>Who introduced agent skills?</h3>
+    <p>Anthropic introduced the format in October 2025 for Claude and Claude Code, then published it as an open specification at agentskills.io. The plain folder-and-markdown design is why other agent products could adopt it quickly, and why community collections such as Addy Osmani&rsquo;s repository grew up alongside it. Today the format is implemented across several coding agents, not only Anthropic&rsquo;s.</p>
+    <h3>Are agent skills just prompts?</h3>
+    <p>No. A prompt is a message you send, and it lives for one turn. A skill is a folder the agent discovers and loads when a task matches, and it stays available across every conversation. A prompt competes for space in the context window and has to be resent; a skill sits on disk and costs one description line until it is needed. Skills can also bundle scripts and reference files, which a prompt cannot.</p>
+    <h3>Do agent skills work across different AI tools?</h3>
+    <p>Mostly. The folder format is public and implemented by several agents, so a skill generally runs wherever the format is supported. Skills that depend on a specific integration only run where that integration is reachable, and a vendor library can add its own review or signing step. The folder itself travels further than the tools it calls. For most teams, that portability is the reason to author in this format.</p>
+    <h3>Is there an agent skills marketplace?</h3>
+    <p>Most results for &ldquo;agent skills marketplace&rdquo; are open collections, vendor libraries, or skills bundled inside a product, rather than a mature commercial marketplace where skills are bought, sold, and supported as products. If you are evaluating one, check which of those three shapes it is. A marketplace of skills is also not a marketplace of loops: a skill is a component, while a loop is a complete process with a trigger, agents, and a close condition.</p>
+    <h3>What is the difference between agent skills and MCP?</h3>
+    <p>They are different layers, and the two are often confused. MCP is the protocol that exposes tools and data from systems your team already runs, such as a CRM or an inbox. A skill is the packaged judgment about how and when to use those tools for a specific job. You connect MCP servers; you author skills. A skill frequently directs an agent to call several tools that MCP has exposed.</p>
+
+    <h2 id="sources">Sources</h2>
+    <ol class="sources">
+      <li id="fn1"><strong>Maskin — &lsquo;Agent skills&rsquo; keyword research</strong> (US, 8,100/mo, KD 47; pulled 2026-09-23). Internal demand, trend, and SERP-composition analysis showing the head SERP is spec/directory-shaped. <a href="#fnref1">↩</a></li>
+      <li id="fn2"><strong>Anthropic engineering</strong>, <em>Equipping agents for the real world with Agent Skills</em>. <a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" target="_blank" rel="noopener nofollow">anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills</a>. Anthropic&rsquo;s canonical write-up on progressive disclosure, the <code>SKILL.md</code> format, and the folder layout. <a href="#fnref2">↩</a></li>
+      <li id="fn3"><strong>Agent Skills specification</strong>, agentskills.io. <a href="https://agentskills.io/specification" target="_blank" rel="noopener nofollow">agentskills.io/specification</a>. The open format spec: <code>SKILL.md</code> frontmatter fields, directory layout, and the three-level loading model. <a href="#fnref3">↩</a></li>
+      <li id="fn4"><strong>addyosmani/agent-skills</strong> (GitHub). <a href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noopener nofollow">github.com/addyosmani/agent-skills</a>. A production-grade reference collection of working skills — the top-ranking page on the &ldquo;agent skills&rdquo; SERP. <a href="#fnref4">↩</a></li>
+      <li id="fn5"><strong>Maskin</strong>, <em>Agent skills vs MCP vs cursor rules vs workflows</em>. <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows</a>. The sister page that walks the layer comparison in full. <a href="#fnref5">↩</a></li>
+    </ol>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">
+          <div class="doc-card__title">Agent skills vs MCP vs cursor rules vs workflows</div>
+          <div class="doc-card__desc">Four layers, not a two-way fight &mdash; protocol, packaged capability, behavioural directives, and orchestration.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+          <div class="doc-card__title">What is an agentic workspace?</div>
+          <div class="doc-card__desc">The cornerstone &mdash; the object of work is the workspace, not the chat.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/closed-loop-workspace/">
+          <div class="doc-card__title">The closed-loop workspace</div>
+          <div class="doc-card__desc">Where agent work stops being a chat and becomes a loop with a trigger, gates, and a close condition.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-a-stateful-orchestration-substrate/">
+          <div class="doc-card__title">Stateful orchestration substrate</div>
+          <div class="doc-card__desc">The shared typed store that carries state between stateless agents &mdash; what a workspace-attached skill fires against.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Author the skill once, attach it to a loop</h2>
+      <p>Maskin is the open-source, MCP-native workspace where skills are components of a loop, not a surface of their own &mdash; attached to an agent, firing on typed workspace state, with the output landing back on the object graph. Apache 2.0, self-hostable, EU/US data residency.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

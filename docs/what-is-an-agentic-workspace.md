@@ -37,6 +37,7 @@ Small teams operate many agents through an abstraction layer and get pulled in o
 - **Lost deals → roadmap** — closed-lost reasons are weighted by ARR and shaped into roadmap bets.
 - **Competitive intelligence** — vendor changelogs and pricing pages route battlecards to sales and feature gaps to product.
 - **Team knowledge** — [a wiki your agents read before they answer](/marketplace/knowledge-wiki/) compiles closed bets and shipped decisions into a living record every future agent picks up on the same graph.
+- **Product discovery** — [the product discovery loop — signal to shipped bet](/marketplace/product-discovery/) keeps interviews, tickets, and reviews on the same typed graph as the bets you’re already shipping, so the loop closes on a validated bet instead of an opportunity board.
 
 ## Agentic workspaces vs. what came before
 The field splits into three tiers:

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="What are agent skills? Anthropic's SKILL.md primitive, and how it fires on workspace state.">
+  <defs>
+    <pattern id="grid-agent-skills" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ECEAE4" stroke-width="1" opacity="0.04"/>
+    </pattern>
+    <radialGradient id="asGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#3B74F2" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#3B74F2" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid-agent-skills)"/>
+
+  <text x="80" y="112" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, monospace" font-size="20" font-weight="500" fill="#3B74F2" letter-spacing="0.18em">ARTICLE &#183; LEARN</text>
+  <path d="M 80 150 L 660 150" stroke="#2A2925" stroke-width="1"/>
+
+  <text x="80" y="252" font-family="'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="600" fill="#ECEAE4" letter-spacing="-0.018em">What are</text>
+  <text x="80" y="312" font-family="'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif" font-size="52" font-weight="600" fill="#ECEAE4" letter-spacing="-0.018em">agent <tspan fill="#3B74F2">skills</tspan>?</text>
+
+  <text x="80" y="382" font-family="'Newsreader', Georgia, 'Times New Roman', serif" font-style="italic" font-size="26" fill="#A09A93">Anthropic&#8217;s SKILL.md primitive &#8212;</text>
+  <text x="80" y="420" font-family="'Newsreader', Georgia, 'Times New Roman', serif" font-style="italic" font-size="26" fill="#A09A93">and how it fires on workspace state.</text>
+
+  <!-- Progressive disclosure: three nested layers -->
+  <circle cx="930" cy="330" r="190" fill="url(#asGlow)"/>
+  <rect x="730" y="160" width="400" height="330" rx="22" fill="none" stroke="#33312C" stroke-width="2"/>
+  <text x="752" y="146" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, monospace" font-size="14" font-weight="500" fill="#6B6560" letter-spacing="0.18em">1 &#183; METADATA</text>
+
+  <rect x="772" y="206" width="316" height="240" rx="18" fill="none" stroke="#55524C" stroke-width="2"/>
+  <text x="794" y="192" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, monospace" font-size="14" font-weight="500" fill="#8A847C" letter-spacing="0.18em">2 &#183; INSTRUCTIONS</text>
+
+  <rect x="814" y="252" width="232" height="150" rx="14" fill="#17161A" stroke="#3B74F2" stroke-width="2.5"/>
+  <text x="836" y="238" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, monospace" font-size="14" font-weight="500" fill="#3B74F2" letter-spacing="0.18em">3 &#183; BUNDLED FILES</text>
+
+  <!-- SKILL.md doc glyph -->
+  <path d="M 846 292 L 884 292 L 898 306 L 898 348 L 846 348 Z" fill="none" stroke="#ECEAE4" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M 884 292 L 884 306 L 898 306" fill="none" stroke="#ECEAE4" stroke-width="2.5" stroke-linejoin="round"/>
+  <line x1="858" y1="322" x2="886" y2="322" stroke="#6B6560" stroke-width="2"/>
+  <line x1="858" y1="334" x2="878" y2="334" stroke="#6B6560" stroke-width="2"/>
+  <text x="918" y="332" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, monospace" font-size="22" font-weight="500" fill="#ECEAE4">SKILL.md</text>
+
+  <g transform="translate(1068 78) scale(0.65)">
+    <rect width="80" height="80" rx="10" fill="#ECEAE4"/>
+    <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#111110" stroke-width="10" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+  </g>
+
+  <text x="80" y="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, monospace" font-size="16" fill="#6B6560" letter-spacing="0.04em">MASKIN &#183; LEARN</text>
+  <text x="1120" y="600" text-anchor="end" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, monospace" font-size="16" fill="#6B6560">maskin.io/docs/learn/agent-skills</text>
+</svg>

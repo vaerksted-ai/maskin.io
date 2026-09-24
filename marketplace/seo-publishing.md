@@ -2,9 +2,6 @@
 
 # Ship SEO pages that end when they rank, not when they publish.
 One loop from keyword bracket to indexed rank — human gates the intent read and the send-to-publish.
-
-![A SERP for 'seo publishing loop': two generic AI-content results bracket a featured Maskin result whose voice is recognisably the team's — not a generic paste. Editorial hero: 'Rank on your voice, not a generic paste.'](/hero-seo-publishing.png)
-
 The SEO publishing loop closes on the outcome (a page in the target rank range), not the activity (a Notion doc marked done). Research fires the loop against a query bracket; agents draft to the winning intent; a human gates the intent read and the publish; agents track index and rank until the close condition is met. Every artifact — the query bracket, the draft, the published URL, the rank checks — lives on the same typed graph, so the next page inherits everything the last one learned.
 For product teams who own their own growth pages and are done losing weeks to *draft in Notion, publish somewhere else, forget who owns rank checks*.
 Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20SEO%20publishing%20loop) with subject “Waitlist: SEO publishing loop” and we’ll send it the moment it drops.
@@ -25,8 +22,6 @@ The result: pages ship on a cadence a human editor can supervise but not persona
 5. **Publish.** An agent builds the HTML page with the correct docs shell, JSON-LD, canonical, per-page OG image, interlinking, and registers it in sitemap.xml, docs.js nav, llms.txt, and llms-full.txt in a single commit.
 6. **Measure.** An analyst tracks indexation, snippet eligibility, and traffic against the bet’s checkpoints; flagged audit issues fire as tasks routed back to the publisher.
 7. **Close.** A page counts as shipped only once it is indexed, snippet-eligible, AND being tracked. Publishing without measurement is noise.
-
-![Loop-flow diagram of the seven-step SEO publishing loop: seven nodes in a row (01 Topic lands in queue → 02 Maskin pulls SERP + your existing pages → 03 Drafts to searcher intent in your voice → 04 Editor approves (human gate, rounded amber square) → 05 Ships to your CMS → 06 Rank tracked; refresh if it slips → 07 Every page teaches the next (close condition, blue)) with a dashed loop-back arc from 07 to 01 captioned 'closes back to the queue — next topic reads sharper'.](/loop-flow-seo-publishing.png)
 
 ## What this loop is built with
 Named the same on every loop page so the shape is portable. Below the fold on purpose — the loop is what closes; the primitives are just the parts. Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.

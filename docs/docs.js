@@ -49,6 +49,7 @@
       { label: "Ambient agent workspace", href: "/docs/ambient-agent-workspace/" },
       { label: "Agent Inbox", href: "/docs/agent-inbox/", nested: true },
       { label: "Human in the loop AI", href: "/docs/learn/human-in-the-loop-ai/" },
+      { label: "What are agent skills?", href: "/docs/learn/agent-skills/" },
       { label: "Three tiers of AI-native work", href: "/docs/three-tiers-ai-native-work/" },
       { label: "AI product management tool", href: "/docs/ai-product-management-tool/", nested: true },
       { label: "AI product workspace vs AI coding agent", href: "/docs/ai-product-workspace-vs-coding-agent/", nested: true },
