@@ -903,7 +903,7 @@ Small teams operate many agents through an abstraction layer and get pulled in o
 - **Churn & expansion** — usage drops and error spikes are watched; at-risk accounts trigger an alert with full context.
 - **Lost deals → roadmap** — closed-lost reasons are weighted by ARR and shaped into roadmap bets.
 - **Competitive intelligence** — vendor changelogs and pricing pages route battlecards to sales and feature gaps to product.
-- **Team knowledge** — [a wiki your agents read before they answer](/marketplace/knowledge-wiki/) compiles closed bets and shipped decisions into a living record every future agent picks up on the same graph.
+- **Team knowledge** — [a wiki your agents read before they answer](/marketplace/knowledge-wiki/) compiles closed bets and shipped decisions into a living record every future agent picks up on the same graph (see [LLM wiki vs RAG](/docs/llm-wiki-vs-rag/) for how that compiled layer differs from query-time retrieval).
 - **Product discovery** — [the product discovery loop — signal to shipped bet](/marketplace/product-discovery/) keeps interviews, tickets, and reviews on the same typed graph as the bets you’re already shipping, so the loop closes on a validated bet instead of an opportunity board.
 
 ## Agentic workspaces vs. what came before
@@ -1660,7 +1660,7 @@ The substrate frame is not always the right shape. Honest limits:
 - **Same for one long-running single-agent loop.** If one agent owns the whole job end-to-end (ZS Associates’s own recommendation for their domain), the substrate is the agent’s own scratchpad plus its harness — not a separate cross-agent surface.
 - **The overhead is real at small scale.** Writing typed objects, wiring `informs` edges, and reading `connected_objects` costs a few extra tool calls per handoff. At two handoffs that’s noise. At twenty it’s the reason the pipeline still works.
 The value appears at pipeline-of-many-agents scale — long-horizon runs, cross-vendor CLIs, human-in-the-loop gates between agents, or any point where the honest question is *what did the previous agent actually see?*, asked after the fact. That is the shape LongRCA Bench measures. That is where handoff amnesia stops being a nuisance and starts being the reason the outcome is wrong.
-The substrate is one primitive in the stack, not the whole stack. Context engineering is the discipline. The **harness** is the layer around a single agent (state, tools, guardrails for one runtime). The **substrate** is what runs a pipeline of agents. All three coexist. LangChain’s Agent Inbox is the queue-shaped cousin to the graph-shaped substrate — same problem (routing agent work to humans), different geometry.
+The substrate is one primitive in the stack, not the whole stack. Context engineering is the discipline. The **harness** is the layer around a single agent (state, tools, guardrails for one runtime). The **substrate** is what runs a pipeline of agents. A single step’s reusable capability is packaged as **[agent skills](/docs/learn/agent-skills/)** — discrete, loadable instructions that compose into a longer process only because the substrate carries state between the steps. All four coexist. LangChain’s Agent Inbox is the queue-shaped cousin to the graph-shaped substrate — same problem (routing agent work to humans), different geometry.
 
 ## FAQ
 
