@@ -309,93 +309,166 @@ Common commands: `pnpm dev` (Docker + migrations + servers), `pnpm build`, `pnpm
 
 > Source: https://maskin.io/docs/mcp-tools/
 
-# MCP tools reference
-Maskin is MCP-native: the entire workspace is driven through MCP tools, the same surface humans' agents and your Claude client use. This page groups the tools by domain. New to the protocol? Read [what MCP-native means](/what-is-mcp-native/).
-> This is a guided overview. The live, authoritative list comes from your instance — ask Claude to run `list_tools`. The set has grown over time, so your instance may expose more than is listed here.
+# MCP tools in Maskin: verbs, object types, and the typed workspace graph
+MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed input schema (`create_objects`, `get_objects`, `list_relationships`) that reads or writes a specific shape. Maskin's MCP server exposes around 60 tools across seven clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, and extensions/sessions/fields/skills. This reference lists the verbs and documents two of the core object types they operate on — `knowledge` and `loop`.
+> ✓
+> **Key takeaways**
+> MCP tools are verbs; object types are nouns. A tool call names both — the tool declares the operation, the type declares the shape being written or read.
+> Maskin's MCP server exposes ~60 tools across seven clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, and extensions/sessions/fields/skills.
+> Object types (`insight`, `bet`, `task`, `knowledge`, `loop`, `content`, plus custom types) are workspace-configurable — call `get_workspace_schema` to see the live list, valid statuses, and metadata fields.
+> `knowledge` is the durable, curated reference layer: statused `draft → validated → deprecated`, carrying `summary`, `doc_type`, `confidence`, and a review cadence.
+> `loop` is a named, iterative multi-agent process that wraps triggers + agents around a pipeline of object states — objects of any type flow through it via the `in_loop` edge.
 
-## Connecting
-The MCP endpoint is served over HTTP at `POST /mcp` and authenticates with two headers:
+## The MCP tools Maskin exposes
+Maskin's MCP server surfaces its verbs under the `mcp__maskin__` namespace. Each tool has a JSONSchema-defined parameter shape and validates its input server-side; type-specific validity (statuses, required fields, enum values) is enforced on the write path against `settings.statuses.<type>` and workspace-configured field schemas.
+The seven clusters are:
+- Object operations — create, read, update, delete typed rows in the graph.
+- Relationship operations — enumerate, traverse, and delete edges.
+- Schema and discovery — inspect live type, status, and field configuration.
+- Triggers and loops — steps and processes that wire agents to object state.
+- Comments, events, actors — the agent-to-human channel and event timeline.
+- Files and integrations — raw blob storage plus provider wiring.
+- Extensions, sessions, workspace fields, skills — workspace customisation.
+**Object operations.**
+- `create_objects` — create one or more typed objects in a single call; validates `type`, `status`, and `metadata` against the workspace schema and rejects the call with a field-level error if any value is out of range.
+- `get_objects` — fetch by id with opt-in blocks (`content`, `metadata`, `relationships`, `connected_objects`, `events`, `files`); returns an always-on `setup` block with readiness checks.
+- `update_objects` — patch `title`, `content`, `status`, `metadata`, or `driver`; the same call can create relationships through its `edges` parameter, so single-call "update fields + link" flows are the norm.
+- `delete_object` — remove an object along with its edges; use archival status where lineage matters.
+- `list_objects` / `search_objects` — enumerate by type/status or search title + content with `metadata_eq` filters; both are paginated.
+**Relationship operations.**
+- `list_relationships` — direction-agnostic (`object_id`) or directional (`source_id` / `target_id`) enumeration; use direction-agnostic mode when you want every edge on an object regardless of orientation.
+- `traverse_graph` — bounded multi-hop breadth-first traversal from a start object; useful for resolving `supersedes` / `contradicts` chains, walking `breaks_into` hierarchies, or pulling multi-hop context in one call.
+- `delete_relationship` — remove a single edge; the objects on either end stay.
+**Schema and discovery.**
+- `get_workspace_schema` — the single source of truth for object types, their custom metadata fields, valid statuses per type, and configured relationship types. Call this before hardcoding any enum against product defaults; workspaces override or extend defaults through the extension system.
+- `list_workspaces` — enumerate the workspaces the caller belongs to; used at boot to resolve the default workspace id.
+**Triggers and loops.**
+- `create_trigger` / `update_trigger` / `delete_trigger` / `list_triggers` — a trigger is a step: it fires a named agent when an object matches an event predicate (`created`, `status_changed`, `commented`, ...) or on a cron schedule.
+- `create_loop` / `get_loop` / `update_loop` / `delete_loop` / `list_loops` — a loop wraps a set of triggers + agents around a pipeline of object states; objects join it via the `in_loop` edge, `entry_condition` and `close_condition` are plain-language prose in loop `metadata` describing that pipeline, and `closed_statuses` is the done-marker the read path actually uses.
+- `run_agent` — invoke an agent directly on an object, outside the trigger fabric; typically used for one-off tasks a human kicks off.
+**Comments, events, actors.**
+- `create_comment` / `get_comments` — post comments on any object; comments carry `@mentions`, an `attention` score, an optional structured `decision` payload, and a `metadata.tasks` array that renders a live checklist. This is the primary agent-to-human channel.
+- `get_events` — timeline of lifecycle changes and comments on an object.
+- `list_actors` / `get_actor` / `create_actor` / `update_actor` — humans and agents that own or drive objects; each actor has a short description and, for agents, a system prompt that is the source of truth for their instructions.
+**Files and integrations.**
+- `create_file` / `get_file` / `update_file` / `list_files` / `delete_file` — raw blobs addressed by id and attached to objects or comments. Different from typed `knowledge`: files are opaque bytes, `knowledge` is a first-class typed row in the graph.
+- `list_integration_providers` / `list_integrations` / `connect_integration` / `disconnect_integration` — provider wiring (Slack, GitHub, Google Drive, Gmail, HubSpot, Stripe, Figma, etc.); the provider registry is what the workspace can talk to.
+**Extensions, sessions, workspace fields, skills.**
+- `create_extension` / `update_extension` / `delete_extension` / `list_extensions` — extensions declare custom object types, custom metadata fields, and workspace-specific relationship types.
+- `create_session` / `get_session` / `stop_session` / `pause_session` / `resume_session` / `list_sessions` — agent runtime sessions; the object that captures a specific agent invocation and its transcript.
+- `create_workspace_field` / `update_workspace_field` / `delete_workspace_field` — declare custom metadata fields per object type at the workspace level.
+- `create_workspace_skill` / `get_workspace_skill` / `list_workspace_skills` / `update_workspace_skill` / `delete_workspace_skill` — workspace-scoped skill packs that agents can invoke; the recipe layer above the raw MCP verbs.
+A full call names both a verb and a type: e.g. `create_objects` with `type: "knowledge"` and a `metadata` payload validated against the `knowledge` schema. The next section documents two of the object types those tools operate on in depth.
+
+## Object types the tools operate on
+Every MCP tool call reads or writes objects of a declared type. `get_workspace_schema` returns the full list of types for a workspace — built-ins (`insight`, `bet`, `task`, `knowledge`, `loop`, `content`, `actor`) plus custom types declared through the extension system. This reference documents two core types in depth: `knowledge` (the durable reference layer) and `loop` (the iterative process container).
+
+### `knowledge`
+**What it is.** A durable, curated, human-readable reference page — the layer that outlives the work that produced it. Where an `insight` is one atomic piece of evidence and a `bet` is a time-boxed outcome, `knowledge` is the settled record: what we know, at what confidence, as of when.
+**Not the same as a File.** `create_file` stores raw blobs in object storage, addressed by id and attached to objects or comments. `knowledge` is structured, typed, statused, and first-class in the graph — it has a driver, relationships, and comments. The workspace wiki renders `knowledge` objects for humans; it is not a separate store.
+**Status lifecycle (default):** `draft → validated → deprecated`.
+- `draft` — authored, not yet reviewed.
+- `validated` — reviewed and true as of `last_validated_at`; the state a page should reach before downstream consumers rely on it.
+- `deprecated` — superseded or no longer true; kept for lineage, not deleted.
+Progression is convention, not enforcement: any status is settable through the API. Agents and human curators maintain the ladder. Per-type status validity is workspace-configurable via `settings.statuses.knowledge` and readable at runtime with `get_workspace_schema`.
+**Custom metadata fields.**
+- `summary` (required) — one-line abstract.
+- `doc_type` — one of `topic_page`, `playbook`, `operational`, `profile`, `changelog`, `reference`, `note`.
+- `provenance` — where the content came from (session id, distilled bet, external source).
+- `last_validated_at` (date) — when the page was last reviewed and confirmed true.
+- `review_by` (date) — when the page should be re-reviewed.
+- `confidence` — `low` / `medium` / `high`.
+- `tags` — free-form.
+**Worked `create_objects` call.** Minimal payload to open a `knowledge` page in `draft` with the required `summary` and the two most-consulted optional fields (`doc_type`, `confidence`):
 ```
-Authorization: Bearer <YOUR_MASKIN_API_KEY>   # ank_…
-X-Workspace-Id: <YOUR_WORKSPACE_ID>           # workspace UUID
+{
+  "objects": [
+    {
+      "type": "knowledge",
+      "title": "Enterprise buyer decision criteria",
+      "content": "Enterprise buyers rank audit surface, integration effort, and identity model above headline price. Source: 18 discovery calls, Q1 2026.",
+      "status": "draft",
+      "metadata": {
+        "summary": "Enterprise buyers weight audit, integration, and identity above price — distilled from 18 Q1 2026 discovery calls.",
+        "doc_type": "topic_page",
+        "confidence": "high",
+        "last_validated_at": "2026-03-15"
+      }
+    }
+  ]
+}
 ```
-See [Self-hosted setup](/docs/get-started/self-hosted/) for the full `claude mcp add` command and the Claude Desktop config.
+The server validates `status` against `settings.statuses.knowledge`, `doc_type` and `confidence` against their configured enums, and rejects the call with a field-level error if any value is out of range.
+**Relationships.** Extension-declared: `supersedes` (this page replaces an entire past frame), `contradicts` (this page conflicts with another), `about` (this page is about a subject or entity). General edges also apply: `informs`, `relates_to`, `breaks_into`, `blocks`, `duplicates`.
+**How it relates to `insight` / `bet` / `task`.**
+- `insight` → `knowledge`: atomic evidence clusters and settles into a reference page; the page `informs` downstream bets.
+- `bet` → `knowledge`: a bet's verdict (`succeeded` / `failed`) is raw material for a durable learning — the bet outcome is recorded, the page outlives it.
+- `task` → `knowledge`: rarely direct; tasks produce artefacts, and artefacts (or the bet they served) get distilled into knowledge.
+- `knowledge` ↔ `knowledge`: `supersedes` / `contradicts` keep the record honest when a fact is replaced or conflicts. Supersede and keep the lineage; do not delete-and-recreate.
 
-## Onboarding
-| Tool | What it does |
-| --- | --- |
-| get_started | Apply a workspace template (development / growth / custom) with seed objects, agents, and triggers. Two-phase: call to preview + get tailoring questions, then call again with confirm: true to apply. |
+### `loop`
+**What it is.** A named, iterative multi-agent process. A loop wraps **triggers (steps) + agents + a pipeline of object states**: a step and a trigger are the same thing — each step fires an agent when an object changes state (`created`, `status_changed`, ...) or on a cron schedule. A loop is the process *container*; the objects it acts on are members flowing through it.
+**Custom metadata fields.**
+- `entry_condition` — plain-language prose describing what enters the loop; descriptive only, never runtime-evaluated.
+- `close_condition` — plain-language prose describing when a member is done; descriptive only, never runtime-evaluated. The prose closes nothing — a member closes when its own status reaches a terminal status for its type.
+- `closed_statuses` — the real done-marker: which statuses count as "done," per object type, used by the read path to derive `closedCount`. Set through the loop tooling; edited via `update_loop`.
+- `installed_from_marketplace_loop_id` — set when the loop was installed from a marketplace template.
+**Status lifecycle — workspace-configurable graduated-trust spectrum.** The valid set is workspace-configured (`settings.statuses.loop`) and enforced by the server on every write; **there is no hardcoded server-side loop status enum**. This reference prints the lifecycle **de-enumerated**, as a spectrum:
+```
+draft  →  supervised  →  autonomous
+                (paused reachable from any rung)
+```
+- `draft` — set up, not live; nothing fires for real.
+- `supervised` — the loop runs on its own, but material calls pass a human gate.
+- `autonomous` — runs end-to-end; a human samples outputs and steps in when members stall or go off-track.
+- `paused` — reachable from **any** rung; disables every trigger the loop references until resumed.
+Workspaces may configure additional rungs and terminal states. **Read the actual set for your workspace at runtime with `get_workspace_schema`** — do not assume a concrete ladder from this reference.
+Two mechanics worth knowing:
+1. **Validity is enforced per workspace on the write path.** `create_objects`, `update_objects`, and the bulk-update path each validate an incoming `status` against `settings.statuses.<type>`, so a workspace on a different ladder simply enforces that ladder.
+2. **Reading the ladder.** Call `get_workspace_schema` and inspect `settings.statuses.loop`. Do not hardcode a status list against the product default — there isn't one.
+**Worked `create_objects` call.** Minimal payload to stand up a `supervised` product-discovery loop that ingests `insight` objects and closes members once they reach a scored/archived state (or, for bets it spawns, a shipped/cancelled state):
+```
+{
+  "objects": [
+    {
+      "type": "loop",
+      "title": "Product discovery loop",
+      "status": "supervised",
+      "metadata": {
+        "entry_condition": "new insight objects are added to the loop",
+        "close_condition": "a member is done once its status reaches one listed in closed_statuses for its type",
+        "closed_statuses": {
+          "insight": ["scored", "archived"],
+          "bet": ["shipped", "cancelled"]
+        }
+      }
+    }
+  ]
+}
+```
+Steps (triggers) are attached separately via `create_trigger`; this call just stands up the loop container, its descriptive entry/close prose, and its per-type `closed_statuses`.
+**Relationships.** Loop membership is the `in_loop` edge from the loop to the object. This is the loop↔work relationship; it is not one of the semantic edges (`informs`, `blocks`, etc.). Loop steps are triggers (`create_trigger` / `update_trigger`); a step authored inline on a loop becomes a trigger attached to it. General edges (`relates_to`, `blocks`, ...) apply as usual.
+**How it relates to `insight` / `bet` / `task`.** Membership, not a peer relationship. Objects of *any* type — `insight`, `bet`, `task`, or a custom type — flow through a loop via `in_loop` (the explicit membership edge — nothing is inducted by the prose conditions). A member closes when its own status reaches a terminal status for its type; the read path derives `inProgressCount` / `closedCount` / `medianTimeToCloseMs` from the `in_loop` edge plus that status. The prose `entry_condition` / `close_condition` describe intent; they gate and close nothing at runtime. So a loop is the process *around* the work, not another kind of work: e.g. a Product-Discovery loop takes `insight` objects in at `new`, moves them through `clustered` and `scored`, and produces `bet` objects; a delivery loop takes `task` objects from `todo` to `done`. The loop's trust rung governs how much of that runs without a human gate.
 
-## Objects
-| Tool | What it does |
-| --- | --- |
-| create_objects | Create insights, bets, and tasks (with relationships and attachments) in one atomic call. |
-| get_objects | Fetch objects with relationships, connected objects, recent activity, and files. |
-| update_objects | Update fields (title, content, status, metadata) and create relationships. |
-| delete_object | Delete an object by ID. |
-| list_objects | List objects filtered by type, status, or driver; paginated. |
-| search_objects | Full-text search over title and content with optional filters. |
+## FAQ
 
-## Relationships
-| Tool | What it does |
-| --- | --- |
-| list_relationships | Query relationships for an object, by direction or type. |
-| delete_relationship | Delete a relationship by ID. |
+### What are MCP tools?
+MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed JSONSchema-defined input and a documented output. A tool call names both the verb and the shape it operates on: e.g. `create_objects` with `type: "knowledge"`. Maskin's MCP server exposes around 60 tools across seven clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, and extensions/sessions/fields/skills. Every read or write against the workspace graph flows through one of them.
 
-## Workspace schema & settings
-| Tool | What it does |
-| --- | --- |
-| get_workspace_schema | Discover statuses per type, custom field definitions, relationship types, and rendering rules. |
-| create_workspace_field · update_workspace_field · delete_workspace_field | Manage custom metadata fields on an object type. |
-| create_workspace · update_workspace · list_workspaces | Create, rename/configure, and list workspaces. |
-| create_extension · update_extension · delete_extension · list_extensions | Enable registered modules or define custom object types. |
+### What is the difference between MCP tools and MCP resources?
+Tools are verbs — write-path actions with side effects. Resources are read-only URIs a server exposes for context lookup without invoking an action. In Maskin, first-class typed rows (`knowledge`, `loop`, `insight`, `bet`, `task`, and custom types) are operated on by tools like `create_objects` and `update_objects`; opaque blobs (uploads, generated files, screenshots) are stored via `create_file` and attached to objects. Prefer a typed `knowledge` object when the content is human-readable reference material; prefer a file when it is a raw artifact.
 
-## Actors
-| Tool | What it does |
-| --- | --- |
-| create_actor | Create a human or agent actor and optionally add to a workspace with a role. |
-| get_actor · list_actors | Fetch or list actors in the workspace. |
-| update_actor | Update name, description, system prompt, tools config, memory, LLM provider, or attached skills. |
+### How do I list all MCP tools?
+MCP clients (Claude, Claude Code, Cursor, ChatGPT, VS Code) surface the full manifest under the connected server — every tool has a name, description, and JSONSchema parameter shape. Programmatically, an MCP client discovers tools by calling `tools/list` on the server; the response is the source of truth for what is callable, and Maskin adds tools without breaking older ones. For a functional view of Maskin's tools, see the seven clusters above (object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, and extensions/sessions/fields/skills).
 
-## Comments & activity
-| Tool | What it does |
-| --- | --- |
-| create_comment | Post a comment (status update, question, finding). @-mentioning an agent spawns a session; supports attachments and decision chips. |
-| get_comments | Fetch comments on an object, including replies and attachments. |
-| get_events | Read the workspace activity log, filtered by entity type and action. |
+### How do MCP tools relate to Maskin's object types?
+MCP tools are verbs; object types are nouns. The tool declares the operation (`create`, `update`, `list`, `search`); the type declares the shape being operated on. A single call names both — e.g. `create_objects` with `type: "loop"` and a valid `metadata` payload for that type. Type-specific validity (statuses, required fields, enum values) is enforced server-side on the write path against the workspace schema. Discover the type set with `get_workspace_schema`.
 
-## Files
-| Tool | What it does |
-| --- | --- |
-| create_file | Author a file (markdown, code, PDF, image) and store it; returns a shareable URL. |
-| get_file · list_files · update_file · delete_file | Read, list, rename, and delete files. |
+### Can I create custom MCP tools in Maskin?
+The MCP tool surface itself is server-defined and workspace-agnostic — you do not add new verbs per workspace. What you can customise is what those verbs operate on. Object types, their custom metadata fields, valid statuses per type, and relationship types are workspace-configurable through the extension system (`create_extension`, `create_workspace_field`). Once configured, a custom `stakeholder` or `experiment` type behaves identically to a built-in: the same `create_objects`, `get_objects`, `update_objects` verbs apply, and `get_workspace_schema` reflects the live configuration.
 
-## Skills & triggers
-| Tool | What it does |
-| --- | --- |
-| create_workspace_skill · list_workspace_skills · get_workspace_skill · update_workspace_skill · delete_workspace_skill | Manage reusable skills (prompts, snippets, context) attachable to agents. |
-| create_trigger · update_trigger · delete_trigger · list_triggers | Manage cron and event triggers that spawn agent sessions. |
-
-## Sessions
-| Tool | What it does |
-| --- | --- |
-| create_session | Spawn a containerized agent session with an action prompt (non-blocking). |
-| run_agent | Blocking: spawn a session, poll until completion, and return the result with logs. |
-| get_session · list_sessions | Fetch status/logs or list sessions. |
-| stop_session · pause_session · resume_session | Terminate, snapshot, or resume a session. |
-
-## Notifications & subscriptions
-| Tool | What it does |
-| --- | --- |
-| create_notification · list_notifications · get_notification · update_notification · delete_notification | Raise and manage structured human-input requests. |
-| subscribe · unsubscribe · list_subscribers · mark_read · list_unread | Track per-actor subscriptions and unread activity on objects. |
-
-## Integrations & LLM keys
-| Tool | What it does |
-| --- | --- |
-| list_integrations · list_integration_providers · connect_integration · disconnect_integration | List, connect (OAuth), and disconnect integrations. See Integrations setup. |
-| set_llm_api_key · get_llm_api_keys · delete_llm_api_key | Manage workspace LLM provider keys (stored encrypted; never returned in full). |
-| import_claude_subscription · get_claude_subscription_status · disconnect_claude_subscription | Use a Claude Pro/Max/Teams subscription for agent runs. |
+## Drive the workspace over the wire
+Every Maskin object, relationship, trigger, and loop is reachable through the MCP server. Open source under Apache 2.0. Self-host free, bring your own model.
 
 
 ---
@@ -552,46 +625,117 @@ The Anthropic API key and any workspace custom-LLM endpoint are configured **in 
 
 > Source: https://maskin.io/docs/integrations/
 
-# Integrations setup
-Maskin ships with five first-class integrations — Slack, GitHub, Linear, Gmail, and PostHog. Each connects over OAuth or an API key, receives events via webhooks, and auto-injects its own MCP server so agents can act on it.
+# Maskin integrations: the full provider registry
+Maskin ships with ten first-party integrations. Three of them are auto-injected into every agent session, six are attachable MCP servers the agent must load, and one is provider-only with no MCP surface. This page documents the **product registry** — what Maskin supports out of the box — so it stays accurate whether or not a given workspace has each provider connected.
+> ✓
+> **Key takeaways**
+> **10 first-party integrations, split by MCP exposure:** 3 auto-inject, 6 attachable, 1 provider-only.
+> **Auto-inject (3):** GitHub, Slack, PostHog — live in every agent session with no attach step.
+> **Attachable (6):** Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn — each carries an `mcp.server` the agent must load.
+> **Provider-only (1):** Skjald — Maskin's first-party meeting notetaker; emits `meeting` events onto the graph but exposes no MCP.
+> **Four auth types across the registry:** `oauth2`, `oauth2_custom`, `api_key`, `manual`. The registry lists what the product supports; a workspace's connected set can be smaller.
 
-## Before you start (self-hosted)
-Connecting integrations on a self-hosted instance needs two things set in your environment:
-- `INTEGRATION_ENCRYPTION_KEY` — 32-byte hex (64 chars) used to encrypt stored OAuth tokens. `pnpm dev` auto-generates one in development; set it explicitly in production.
-- `WEBHOOK_BASE_URL` — the public base URL providers call back to. Webhooks are delivered to `/api/webhooks/<provider>`.
-Then connect from the app: **Settings → Integrations → Connect**, which runs the OAuth flow. See the full env list in the [configuration reference](/docs/configuration/).
+## Auto-inject providers (live in every agent session)
 
-## Slack
-- **What it does:** read and post messages, watch channels/DMs, react, and respond to app mentions — agents can participate in Slack threads.
-- **Auth:** OAuth2. Env vars: `SLACK_CLIENT_ID`, `SLACK_CLIENT_SECRET`, `SLACK_SIGNING_SECRET`. Optionally `MASKIN_MACHINE_ICON_URL` for the agent avatar in Slack posts.
-- **Webhook:** verified via the `x-slack-signature` header (HMAC-SHA256 with timestamp).
-- **MCP:** a Slack MCP is auto-injected for every workspace with an active Slack connection.
-> Slack also needs an app manifest and icon set up. The repo has a detailed walkthrough at [docs/integrations/slack](https://github.com/sindre-ai/maskin/tree/main/docs/integrations/slack).
+### GitHub
+- **Auth:** `oauth2_custom` (GitHub App).
+- **MCP:** auto-inject. Every agent session sees the GitHub MCP server without an attach step.
+- **What agents can do:** read/write issues and PRs, create branches, push files, search code and PRs, open reviews, list commits. The full surface of the GitHub MCP tool set.
+- **Common use:** engineering loops (code review, issue triage), and cross-role loops that reference commits or PRs as `signal` objects.
 
-## GitHub
-- **What it does:** react to pull requests, issues, pushes, and reviews.
-- **Auth:** GitHub App flow. Env vars: `GITHUB_APP_ID`, `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `GITHUB_APP_WEBHOOK_SECRET`, `GITHUB_APP_PRIVATE_KEY`, `GITHUB_APP_SLUG`.
-- **Webhook:** verified via `x-hub-signature-256`; event type from `x-github-event`.
-- **MCP:** the official GitHub MCP server is run via stdio (uses a `GITHUB_TOKEN` from the connection).
+### Slack
+- **Auth:** `oauth2`.
+- **MCP:** auto-inject. Every agent session can post to channels, DM users, read history, list channels, add reactions.
+- **What agents can do:** send messages, read thread replies, open DM conversations, get channel history, add reactions to messages.
+- **Common use:** notifying humans of state changes on objects (the `driver_id` on a status transition triggers a Slack DM), running scheduled digests, capturing threads back onto objects as comments.
 
-## Linear
-- **What it does:** work with issues, comments, projects, cycles, and labels.
-- **Auth:** OAuth2 (scopes include `read`, `write`, `issues:create`, `comments:create`). Env vars: `LINEAR_CLIENT_ID`, `LINEAR_CLIENT_SECRET`, `LINEAR_WEBHOOK_SECRET`.
-- **Webhook:** verified via the `linear-signature` header.
-- **MCP:** Linear's hosted MCP (`https://mcp.linear.app/mcp`).
+### PostHog
+- **Auth:** `api_key`.
+- **MCP:** auto-inject. Every agent session can query events, insights, feature flags, dashboards, and the full PostHog analytics surface.
+- **What agents can do:** execute product analytics queries (SQL and event-based), read insights and dashboards, resolve errors, inspect feature flags and experiments.
+- **Common use:** product-analytics loops — an agent surfaces regressions on cohort trends, or drafts a hypothesis from an event-shape change and posts it as an `insight`.
 
-## Gmail
-- **What it does:** read, label, draft, and send email.
-- **Auth:** OAuth2 with PKCE + offline access (forces a refresh token). Env vars: `GMAIL_CLIENT_ID`, `GMAIL_CLIENT_SECRET`.
-- **Webhook:** Google Cloud Pub/Sub push with OIDC JWT verification. Configure `GMAIL_PUBSUB_TOPIC`, `GMAIL_PUBSUB_AUDIENCE`, and `GMAIL_PUBSUB_SERVICE_ACCOUNT`.
-- **MCP:** Google's hosted Gmail MCP.
+## Attachable providers (agents must load the MCP server)
 
-## PostHog
-- **What it does:** pull product analytics into the workspace for feedback loops.
-- **Auth:** API key (Bearer token) — no extra env vars beyond the stored token.
-- **Webhook:** none; PostHog data is pull-based via MCP.
-- **MCP:** PostHog's hosted MCP (`https://mcp.posthog.com/mcp`), auto-injected.
-> Integration credentials are encrypted at rest and never written to logs or agent output. Disconnecting revokes tokens with the provider.
+### Linear
+- **Auth:** `oauth2`.
+- **MCP:** attachable. Load `linear.mcp` in the agent's tool config.
+- **What agents can do:** read/write issues, projects, and teams; comment; transition status; list cycles.
+- **Common use:** engineering-team loops that mirror Linear issues into Maskin objects, or agents that write back to Linear from a Maskin bet.
+
+### Gmail
+- **Auth:** `oauth2`.
+- **MCP:** attachable. Load `gmail.mcp` for read/send/search.
+- **What agents can do:** read messages, send messages, search threads, manage drafts and labels.
+- **Common use:** support-inbox loops, SDR follow-up sequences (with HITL on send), meeting-scheduling loops paired with Calendar.
+
+### Google Calendar
+- **Auth:** `oauth2`.
+- **MCP:** attachable. Load `google-calendar.mcp` for read/write on events.
+- **What agents can do:** read events, create events, invite attendees, propose times.
+- **Common use:** meeting-scheduling loops, capacity-planning agents that read the calendar to guard against double-booking.
+
+### Google Meet
+- **Auth:** `oauth2`.
+- **MCP:** attachable. Load `google-meet.mcp` for meeting-lifecycle access.
+- **What agents can do:** read meeting metadata, join links, participant lists.
+- **Common use:** paired with the Skjald notetaker or Calendar to close a meeting-scheduled → meeting-held → notes-captured loop. Registered but not connected in every workspace; workspace-verified examples are not printed for this provider here.
+
+### Ubersuggest
+- **Auth:** `oauth2_custom`.
+- **MCP:** attachable. Load `ubersuggest.mcp` for SEO keyword, SERP, and backlink data.
+- **What agents can do:** run keyword research, pull SERP analyses, read backlinks and competitors, run site audits, look up traffic value.
+- **Common use:** SEO loops — an agent scans a keyword cluster weekly, files new `insight` objects on demand surges, drafts briefs.
+
+### LinkedIn
+- **Registry name:** LinkedIn (provider id: `linkedin-unipile`).
+- **Auth:** `oauth2_custom`.
+- **MCP:** attachable. Load the LinkedIn MCP for identity and messaging.
+- **What agents can do:** read profiles, read messages, send DMs, follow connection activity.
+- **Common use:** AI-SDR loops where an agent shapes an outbound draft on a signal and a human approves before the send.
+
+## Provider-only (no MCP surface)
+
+### Skjald
+- **Auth:** manual.
+- **MCP:** **no MCP surface.** Skjald does not expose an attachable MCP server. It emits `meeting` created/updated events onto the graph; agents subscribe to those events like they subscribe to any other object state change.
+- **What it does:** first-party meeting notetaker — attaches to meetings, produces transcripts and notes as `meeting` objects (not files). Registered but not connected in every workspace.
+- **Common use:** meeting → knowledge loops. A meeting object's `status → notes_ready` transition triggers a distiller agent that writes a `knowledge` page from the transcript and validates it under a human gate.
+
+## Auth types at a glance
+| Auth type | Providers |
+| --- | --- |
+| oauth2 | Linear, Slack, Gmail, Google Calendar, Google Meet |
+| oauth2_custom | GitHub, Ubersuggest, LinkedIn |
+| api_key | PostHog |
+| manual | Skjald |
+
+## MCP exposure at a glance
+| Exposure | Providers | Count |
+| --- | --- | --- |
+| Auto-inject (live in every agent session) | GitHub, Slack, PostHog | 3 |
+| Attachable (agent must load mcp.server) | Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn | 6 |
+| Provider-only (no MCP surface) | Skjald | 1 |
+
+## FAQ
+
+### How many integrations does Maskin support?
+Ten first-party integrations, split by how each exposes MCP to agents: three auto-inject providers (GitHub, Slack, PostHog), six attachable MCP servers (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn), and one provider-only integration (Skjald, Maskin's first-party meeting notetaker). This is the product registry — a given workspace may have fewer providers actually connected.
+
+### What is the difference between an auto-inject and an attachable MCP server in Maskin?
+An auto-inject provider (GitHub, Slack, PostHog) is loaded into every agent session automatically — the agent sees those tools without any setup. An attachable provider (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn) exposes an `mcp.server` that the agent must explicitly load in its tool config before it can call any of that provider's tools. Both surface the same way once loaded; the difference is whether the agent has to opt in.
+
+### Which Maskin integrations expose MCP to agents?
+Nine of the ten first-party providers expose MCP: GitHub, Slack, and PostHog are auto-injected into every agent session, while Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, and LinkedIn are attachable MCP servers the agent loads on demand. Skjald is the only registered provider without an MCP surface — it participates in agent workflows by emitting `meeting` created/updated events onto the object graph instead.
+
+### Does Maskin need Zapier or another middleware to connect to these services?
+No. Every integration on this page is a first-party Maskin provider — the auth, the MCP server (where present), and the object-graph emissions are all built into Maskin. There is no Zapier, Make, or generic iPaaS layer between the agent and the provider; agents call the provider's MCP tools directly.
+
+### How does Skjald differ from Maskin's other integrations?
+Skjald is Maskin's own first-party meeting notetaker, not a third-party service. Instead of exposing an MCP server for agents to call, it produces `meeting` objects (transcripts, notes) on the graph and emits status events (`created`, `updated`, `notes_ready`) that agents can subscribe to. Agents work with Skjald output the same way they work with any other object state change — by reading the object and reacting to its status transitions.
+
+## Ten first-party providers, no middleware
+Maskin wires auth, MCP servers, and object-graph emissions directly — agents call provider tools with no Zapier in between. Open source under Apache 2.0. Self-host free, bring your own model.
 
 
 ---
@@ -1998,6 +2142,568 @@ Read next
 
 ## Author the skill once, attach it to a loop
 Maskin is the open-source, MCP-native workspace where skills are components of a loop, not a surface of their own — attached to an agent, firing on typed workspace state, with the output landing back on the object graph. Apache 2.0, self-hostable, EU/US data residency.
+
+
+---
+
+> Source: https://maskin.io/docs/learn/agentic-workflow-vs-closed-loop/
+
+# Agentic workflow vs the closed loop: the third pattern beyond workflow-vs-agent
+**An agentic workflow is a predetermined chain of steps with an LLM slotted into one or more of them. An agent is an open-ended, tool-using LLM that decides its own next step. The closed loop is a third pattern: a workflow-shaped container with an entry condition, typed objects, human-taste gates, and a close condition — with agent-execution inside the shape.**
+
+## Key takeaways
+The five essentials break down like this:
+- **Workflow** = predetermined chain of steps, LLM optional. Cheap, predictable, brittle when the world moves.
+- **Agent** = open-ended LLM using tools to decide its own path. Flexible, expensive, hard to audit.
+- **Closed loop** = a workflow-shaped structure (entry → typed objects → close condition) with agent-execution slots and human-taste gates. Neither pure workflow nor pure agent.
+- The workflow-vs-agent binary comes from Anthropic's [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents) and has been absorbed by every enterprise vendor page. It's a useful distinction — but it's not the only choice.
+- **When to pick each:** workflow when the path is stable and the reader wants determinism. Agent when the environment shifts faster than any chain can be maintained. Loop when the *outcome* is well-defined but the *path* to it isn't — and the work has to close on something a human can inspect.
+
+## Where the workflow-vs-agent binary comes from
+The framing is Anthropic's. In *Building Effective Agents* (Dec 2024), the Anthropic engineering team drew a hard line between two things people were both calling "agents":
+- **Workflows** — systems where LLMs and tools are orchestrated through *predefined code paths*. The engineer wrote the topology; the LLM fills in the blanks.
+- **Agents** — systems where LLMs *dynamically direct their own processes and tool use*, maintaining control over how they accomplish tasks. The topology emerges at runtime.
+That distinction was clarifying, and the industry ran with it. IBM's ["What are Agentic Workflows?"](https://www.ibm.com/think/topics/agentic-workflows), Weaviate's [Patterns, Memory, Use Cases](https://weaviate.io/blog/what-are-agentic-workflows), orkes.io's [Agentic AI Explained: Workflows vs Agents](https://orkes.io/blog/agentic-ai-explained-agents-vs-workflows), IBM's YouTube [Agentic AI: Workflows vs. agents](https://www.youtube.com/watch?v=Qd6anWv0mv0) — every one reproduces the two-pattern framing. Salesforce, Atlassian, Zapier, ServiceNow all speak the same binary. Reddit's r/ExperiencedDevs thread ["What has everyone been building with agentic workflows in ..."](https://www.reddit.com/r/ExperiencedDevs/comments/1r1chos/what_has_everyone_been_building_with_agentic/), sitting at position one on the SERP with over a thousand practitioner clicks, is the same conversation replayed at the ground level.
+The framing is not wrong. It's just incomplete.
+
+## What the binary misses
+Here is the shape the binary can't describe cleanly: a *structured container* — with an entry event, typed inputs and outputs, and a defined close condition — that contains one or more *open-ended agent-execution slots* and one or more *human-taste checkpoints*. It looks workflow-shaped from the outside because it has structure and closure. It looks agent-shaped inside because the steps aren't predetermined at design time.
+That's a **closed loop**, and it's the third pattern.
+A loop has five properties the binary flattens:
+1. **Entry condition** — a specific trigger that fires the loop (a new insight lands; a bet moves to `shaped`; a customer reply hits the inbox). Not a schedule, not a chat message.
+2. **Typed objects** — the loop reads from and writes to first-class objects (a bet, an insight, a piece of content), not free-text chat state.
+3. **Agent-execution slots** — inside the shape, agents choose their own path within a bounded scope. The topology is *shaped*, not fully predetermined.
+4. **Human-taste gates** — designated checkpoints where a human's judgment is enforced (approve, reject, revise), not requested. The controllability literature ([OpenAI](https://cdn.openai.com/papers/practices-for-governing-agentic-ai-systems.pdf), [Springer's *On Controllability in Agentic AI*](https://link.springer.com/article/10.1007/s11023-026-09783-y)) converges on this pattern.
+5. **Close condition** — a falsifiable outcome that terminates the loop. "The agent says done" is not a close condition. "Tests pass", "the editor approved", "the customer replied" are.
+A loop is structurally more than a workflow (agent-execution slots inside a shaped chain) and less permissive than an agent (structural bounds on what the loop is allowed to touch). It occupies the middle. The [closed-loop workspace piece](https://maskin.io/docs/closed-loop-workspace/) develops this argument in more depth.
+![Three patterns compared: workflow as a linear chain of predetermined steps, agent as open-ended exploration with tool arrows, and closed loop as a shaped container with a typed entry event, first-class objects, an agent-execution slot, a human taste gate, and a falsifiable close condition](agentic-workflow-vs-closed-loop.png)
+
+## The three patterns, side by side
+|  | Workflow | Agent | Closed loop |
+| --- | --- | --- | --- |
+| Entry | Schedule or manual trigger | Prompt / chat message | Typed event on a workspace object |
+| Execution mode | Predetermined chain of steps | Open-ended, agent-directed | Shaped container; agent-directed inside slots |
+| State | Task queue, run log | Conversation history + scratch | First-class typed objects (bet, insight, task) |
+| Review discipline | Optional monitoring | Trust the model | Enforced human-taste gates at named points |
+| Close condition | "The chain finished" | "The agent stopped" | Falsifiable outcome tied to the typed object |
+| Fails on | Any variation the chain didn't anticipate | Long horizons, ambiguity, cost drift | The trigger firing on the wrong event |
+| When it fits | Path is stable, output is deterministic | Environment shifts faster than any chain | Outcome is defined; path to it isn't |
+The difference between a workflow and a loop is not "a workflow with an LLM step in it". A workflow with an LLM step is still a workflow: the LLM fills a blank in a chain someone else designed. A loop lets the agent decide *how* to close the condition, and lets a human review the closing, but constrains *what* the loop is allowed to touch.
+
+## What a loop looks like in production
+A concrete example from Maskin's own dogfooding — the SEO content loop that produced this article.
+- **Entry condition:** a triage agent creates a `content` object at status `proposed` and moves it to `in_progress` after human approval.
+- **Typed objects:** the loop reads a knowledge brief (typed `insight`), writes a `content` object (with `primary_keyword`, `content_type`, and body fields), and links both into the loop via `in_loop` edges.
+- **Agent-execution slot:** the SEO Writer agent picks the structure, runs SERP analysis via an Ubersuggest MCP, drafts the piece against the quality bar, and links citations. The agent chooses the shape; the agent does not choose the topic.
+- **Human-taste gate:** the SEO Editor agent reviews the draft. If it clears, the Editor moves the object to `published`; if it doesn't, it returns with numbered fixes. A human owns the final promotion; the Editor gate is the enforced checkpoint.
+- **Close condition:** the piece reaches `published` status with the primary keyword, title, and metadata locked. Not "the writer said it was done." A promoted `content` object with a specific measurable state.
+Run that loop against a different trigger and the same shape produces a discovery loop, a competitor-intel loop, a signal-triage loop. The primitives don't change; the trigger and typed objects do. That is what "[loop engineering](https://addyosmani.com/blog/loop-engineering/)" (Addy Osmani, Jun 2026) points at when it says the job shifted from *prompting the agent* to *designing the system that prompts the agent* — but productized as first-class objects a team configures, not code a developer writes.
+**Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.**
+The important word is *across*. A workflow inside a ticket tracker terminates when a ticket closes. A loop terminates when the typed outcome it exists to produce — the shipped bet, the approved content, the qualified pipeline — reaches a state a human can inspect, regardless of which tool the underlying work happened in.
+
+## When workflow is fine, when agent is fine, when a loop is the answer
+The honest cases for each — not a strawman.
+**Pick a workflow** when the path is stable and the desired output is deterministic. Invoice processing, expense categorisation, a well-defined ETL job. Adding an LLM to one node doesn't change the answer; a chain with a slot is still a chain. Zapier, n8n, ServiceNow flows, GitHub Actions all shine here. Do not upgrade to a loop just because the marketing says so.
+**Pick an agent** when the environment shifts faster than any chain can be maintained and the cost of unstructured exploration is worth paying. Deep research, code debugging in an unfamiliar repo, browsing tasks with unknown depth. The [Anthropic recursive-self-improvement result](https://www.anthropic.com/institute/recursive-self-improvement) — Claude agents recovering ~97% of a human-researcher performance gap over 800 hours — landed in this regime, with humans holding only the goal and the scoring rubric. Bounded, but open.
+**Pick a loop** when the outcome is well-defined but the path to it isn't, *and* the work has to close on something a human can inspect. SEO content production. Sales-cycle qualification. Product-management triage from raw insight to shipped bet. Compliance work that requires audit trails. Anywhere the answer to "is this done?" needs to be a state on a typed object, not "the agent stopped talking." This is where [loop engineering as a discipline](https://maskin.io/docs/what-is-loop-engineering/) earns its keep.
+The test is not "how autonomous do I want the AI to be?" The test is: *does the work I'm shaping have a falsifiable outcome, and does that outcome live on a typed object across tools?* If yes, you're building a loop whether you call it that or not. Naming it makes it debuggable.
+
+## FAQ
+
+### What is an agentic workflow?
+An agentic workflow is a predetermined chain of steps with an LLM slotted into one or more of them. The engineer writes the topology; the model fills in the blanks. Common shapes are routing (an LLM picks the next branch), tool use (an LLM calls a defined function), and reflection (an LLM critiques its own draft). The path is fixed at design time; the LLM smooths over predictable variation inside it.
+
+### What is agentic workflow in AI?
+In AI, an agentic workflow is a system where an LLM directs the routing between steps as well as the work inside them, but the overall chain is still designed by an engineer. It sits between a pure workflow (LLM optional, path predetermined) and an agent (LLM decides its own next step). Anthropic's *Building Effective Agents* is the canonical framing most vendors adopt.
+
+### What makes a workflow agentic?
+An LLM-directed decision at more than one step. A workflow with a single LLM node is still a workflow — the LLM fills a predetermined blank. An agentic workflow, as most vendors define it, hands the LLM the routing between steps as well as the work inside them. The wider frame is the closed loop: a shaped container with agent-execution slots and enforced human gates, closing on a typed outcome.
+
+### Agentic workflow vs agent — which should I pick?
+Agentic workflow when the path is stable and the output is deterministic, and you want the LLM to smooth over predictable variation. Agent when the environment shifts too fast for any chain to hold, and unstructured exploration is worth paying for. If you need both — a defined outcome *and* a flexible path to reach it — you want a closed loop, not either endpoint.
+
+### What is a closed loop in AI?
+A cycle with an entry condition, typed objects the work operates on, agent-execution inside the shape, human-taste gates at named checkpoints, and a close condition that terminates on a falsifiable outcome. Structurally, a workflow-shaped container with agent-driven internals.
+
+### Is agentic AI the same as agentic workflow?
+No. Agentic AI is the wider capability — systems that plan, act, and revise using tools. An agentic workflow is one product-shape that capability can take (an LLM-directed chain). A closed loop is a different product-shape of the same capability. They're not synonyms — the workflow is the design surface, the AI is what runs inside it.
+
+### How can agentic workflows be triggered?
+Three common patterns: (1) a schedule (cron), (2) a user prompt or chat message, (3) a typed event on a workspace object (a new insight lands, a bet moves to `shaped`, a customer reply hits the inbox). The third is what turns an agentic workflow into a closed loop — the trigger is a state change on data the team already owns, not a message a human had to remember to send.
+
+### Agentic workflow vs MCP — how do they fit together?
+MCP is a substrate the workflow runs on, not a competitor. An agentic workflow (or a closed loop) uses MCP to give the agent tools with typed inputs and outputs; agent skills package prompt-time behaviour; cursor rules constrain what a coding agent may do inside an IDE. See [agent skills vs MCP vs cursor rules vs workflows](https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/) for the layer map.
+
+### Is a loop the same as a directed cyclic graph?
+Structurally, yes — a loop is a directed graph with cycles (retry, revise, wait for human). The frame in this piece is at a higher level: the [three-layer decomposition of harness, loop, graph](https://ttoss.dev/blog/2026/08/08/you-probably-dont-need-a-graph) matters — a loop is the feedback cycle a team designs, the graph is the topology it compiles to. Most teams get more out of investing in the harness and the loop shape than in explicit graph engineering.
+Read next
+
+## Run the loop, not just the workflow
+Maskin is the MCP-native workspace where a workflow-shaped container carries typed objects, human-taste gates, and a close condition — with agent execution inside the shape. Open source under Apache 2.0. Self-host free, bring your own model.
+
+
+---
+
+> Source: https://maskin.io/docs/learn/ai-agent-governance/
+
+# AI agent governance for small teams: permissions, attribution, and the audit trail as workspace properties
+AI agent governance is the set of practices that make agent actions attributable, permissioned, and auditable. For small teams, it means typed permissions on agent identities, first-class driver attribution on every action, and an audit trail that lives on the same object graph the work does — not enterprise SSO or SOC 2.
+"Who let this agent do that, and can we prove it?" That is the AI-agent governance question small teams actually face in 2026 — and every ranking answer to it sells you SSO, SCIM, RBAC, and SOC 2 at enterprise altitude. That framing isn't wrong; it's just not the shape of the problem when your team is five people and two loops. This guide walks the small-team cut: governance as *workspace properties* — typed permissions, driver attribution, and an audit trail that lives on the same object graph the work does.
+> ✓
+> **Key takeaways**
+> **Governance is not the same problem as enterprise GRC.** GRC (SSO/SCIM/SOC 2) answers "can we sell to Fortune 500?" Small-team governance answers "can I query who did what?" You can need the second long before the first.
+> **Every agent is a first-class actor.** Not a service account belonging to a human. An agent identity carries its own permissions and shows up as the driver on every action it takes — the same way a human user does.
+> **Permissions are typed and attached to actors, not to features.** "Can send LinkedIn DMs," "can promote a lead to a rep," "can validate a knowledge page." Sentence-shaped, granular, revocable in one click.
+> **The audit trail is the object graph.** Every status transition, every metadata write, every relationship added is an event with an actor attached. Query "what did this agent do last week" the same way you query "which files did this user open."
+> **The gate that matters is the material call, not the model call.** Sending a DM, promoting a lead, publishing a page — those are the transitions that need a governance answer. Model reasoning inside a session doesn't.
+
+## Governance in three primitives
+The three primitives of small-team agent governance are:
+1. Actors as first-class identities, not human-owned service accounts.
+2. Sentence-shaped permissions, granted per action and revocable in one click.
+3. An audit trail that lives on the same object graph as the work.
+Each is unpacked below — first the framing, then the three primitives in depth, then how they answer real operator questions.
+
+## Why the enterprise framing is the wrong altitude
+Open any current governance page on the top-10 SERP for `ai agent governance` and you'll see: SSO, SCIM, RBAC, SOC 2 / HIPAA, encryption at rest, DLP, procurement checklists. All of that is real. None of it answers the small-team question, which is closer to: an agent just posted something the customer noticed. Can I find out which agent, which prompt, which permission it had, and roll back that permission before the next similar action?
+The enterprise stack answers this eventually, but only after you've spent procurement cycles buying the layers that make it answerable. Small teams get there faster by treating governance as a *product* concern from day one — permissions, attribution, and audit are properties the workspace has, not features you buy.
+One empirical anchor is worth naming: per Guardrail Technologies' 2026 audit of all 503 S&P 500 10-K filings (surfaced in Cassie Kozyrkov's [Sep 2026 Decision Intelligence roundup](https://decision.substack.com/p/97-of-s-and-p-500-filings-mention)), 97% of filings mention AI, only 16% document an AI-specific cyber-risk process, fewer than 5% describe a governed program with a named policy or committee, and only 21% document governing non-human identities. Enterprise governance itself is undercooked; the small-team gap isn't that small teams are behind, it's that no one has answered this question well at any altitude.
+
+## The three primitives in depth
+
+### 1. Actors, first-class
+An agent identity is an actor — the same primitive as a human user, with its own id and its own permissions. Not a service account owned by a human; a first-class entry in the actor table. Two consequences:
+- **Every action carries the acting actor's id.** When a loop's Prospector agent creates a `bet`, the driver on that bet is the Prospector agent. When it changes a contact's status, the transition event carries the Prospector's id. Not "created by the automation"; created by *this* actor.
+- **Retiring an agent is one revocation, not a hunt.** Delete an agent actor, or flip it to `deactivated`, and every trigger it was attached to stops firing under its identity. No orphaned automations.
+The practical test: pick any object in your workspace and ask, "who drove the last five transitions on this?" The answer should be five actor ids — some human, some agent — each with a name you can click on and a permission list you can read.
+
+### 2. Permissions, sentence-shaped
+Permissions belong to actors and are named in the shape of an action, not a feature.
+- "Can send messages via `linkedin-unipile.mcp`"
+- "Can transition a `contact` from `qualified` to `promoted_to_rep`"
+- "Can move a `knowledge` object to `validated`"
+- "Can install a marketplace loop"
+Sentence-shaped permissions read like the audit trail you'll want later; feature-shaped permissions ("can access Sales module") don't. Grant the smallest set that lets the agent do its job. If the Prospector needs to draft outreach but never send, its permission list includes drafting and excludes `send_message` — the send trigger belongs to a Sender identity with a narrower grant.
+One useful default: material calls (sending, publishing, spending money, changing customer state) live on their own permission per surface. That way revoking one integration or one workflow is a targeted action.
+
+### 3. Audit trail on the object graph
+Audit is not a separate log. Every state transition on every object is an event. Every event has: the object, the field that changed, the before and after value, the actor, the timestamp, and (if applicable) the trigger that fired it.
+What this buys you:
+- **Per-object history in place.** Open any object; scroll the event feed on it. You see who touched it, when, and what changed — without leaving the object.
+- **Cross-object queries.** "All contacts where the Prospector drafted outreach in the last week" is a `get_events` filter, not a report you have to build.
+- **Rollback with attribution.** When a transition was wrong, the fix is another transition — same shape, another actor. Nothing is quietly overwritten.
+
+## How this maps to real questions
+
+### "An agent did something I didn't expect. Where do I look?"
+Open the object it acted on. The event feed shows the transition with actor + trigger id. Click the actor — see its permission list. Click the trigger — see what fired it and with what config. If the answer is "the permission was wrong," revoke it in one click. If the answer is "the trigger's config drifted," edit the trigger. If the answer is "the model reasoned poorly," the drift is in the prompt or the model, not the governance layer — which is itself a useful finding.
+
+### "How do I stop everything, right now, if a customer is affected?"
+Loop-level `paused`. Every loop has a status; flipping the loop's status to `paused` disables every trigger that references it. On the trust ladder this is a rung reachable from any other rung. One click, cascading effect, reversible.
+
+### "How do I graduate an agent's trust?"
+Override rate. Look at the transitions the agent proposed vs the ones the human accepted, edited, or rejected. When the ratio crosses a threshold you set, the loop's trust rung can move — fewer transitions gated, same audit trail. The number is a query over events, not an aggregate dashboard.
+
+### "What about the enterprise checklist — SSO, SCIM, SOC 2?"
+Not the same question. Those are procurement-shaped: they let a Fortune 500 buy from you. Small-team governance is *operator-shaped*: it lets a five-person team run agents in production without losing track. Small teams generally need the operator answer first and the procurement answer when a specific customer needs it. Ship the loop; add SSO the day the deal requires it.
+
+## The mapping to Maskin
+Maskin's implementation of the primitives above:
+- **Actors:** humans and agents are both entries in the actor table. Every `driver`, every comment, every event carries an actor id. `list_actors` returns them all.
+- **Permissions:** attached to actors, granted per surface (MCP servers), per object-type transition, per admin action. Revocations are events themselves — you can see "the permission was removed at 14:22 by user X."
+- **Audit trail:** the events table on every object. `get_events` queries it directly; the event feed on every object renders it inline.
+- **Loop pause:** every `loop` has a status; `paused` is a rung reachable from any other rung and disables all attached triggers. Read the runtime set with `get_workspace_schema`.
+The governance surface is Apache-2.0 and self-hostable, so the audit trail runs where your other data does. That matters if compliance ever escalates to procurement altitude — you didn't build the operator answer on a substrate that has to be replaced when the enterprise checklist arrives.
+
+## FAQ
+
+### What is AI agent governance?
+The set of practices that make agent actions attributable, permissioned, and auditable. At small-team altitude: typed permissions on agent identities, first-class attribution on every action, and an audit trail that runs on the same graph the work does. At enterprise altitude: additionally, SSO/SCIM, SOC 2 / HIPAA, and formal risk documentation. Both are governance; they answer different scoping questions.
+
+### Is AI agent governance the same as an agent control plane?
+Overlapping, not identical. A control plane is the operator surface that runs a fleet of agent sessions. Governance is the set of properties (permissions, attribution, audit) that make that surface trustworthy. A control plane without governance is a nice dashboard; governance without a control plane is a policy without a surface to enforce it on.
+
+### How is this different from enterprise AI governance?
+Enterprise AI governance (as pitched by IBM, sim.ai, and the SOC-2/HIPAA cohort) starts from procurement requirements and works backward to controls. Small-team governance starts from operator questions ("who did what") and works up to controls only as they become load-bearing. Same word, different starting points — pick the one that matches your headcount and your current customer set.
+
+### Do I need governance if I only run one agent?
+Yes, but only the operator half. First-class actor id, sentence-shaped permissions, event history on every object. That's enough to answer "what happened" long before you have compliance pressure. Skip it and you'll add it later, painfully, with holes in the audit trail from before the switch.
+
+### What's non-human identity governance?
+The practice of treating agents (and other automated actors) as first-class identities with their own credentials, permissions, and audit trails — not as service accounts that inherit from a human. It's the same idea this guide names; enterprise-security vendors use the "NHI" acronym. Per Guardrail Technologies' 2026 audit of the S&P 500 10-Ks, only 21% of the filings describe governing non-human identities specifically — the gap between mentioning AI (97%) and governing it as an actor is large at every altitude.
+
+### What is a good AI agent audit trail?
+One with these properties: every action has an actor id (not "the system"), every state change is an event (not a log line), events live on the object they mutated (so you can find them by opening the object), and permissions are themselves events (so revocations are auditable). If any of those is missing, you'll hit the wall when someone asks "who did that."
+Read next
+
+## Governance as a workspace property
+Maskin gives every agent a typed identity, attributes every action to a driver, and keeps the audit trail on the same object graph the work lives on. Open source under Apache 2.0. Self-host free, bring your own model.
+
+
+---
+
+> Source: https://maskin.io/docs/learn/agent-memory-across-sessions/
+
+# Agent memory across sessions: what has to survive between scheduled runs
+Agent memory across sessions is the state your agent has to carry from one run to the next, and only three things are worth carrying: **decisions** (what was chosen, and why), **corrections** (what a human changed after the fact), and **artifacts** (what the run actually produced). If your scheduled agent wakes up Monday with no idea what it did Friday, one of those three fell on the floor.
+> ✓
+> **Key takeaways**
+> Scheduled agents forget for a structural reason, not a storage reason. The state they need is split across three kinds of knowledge, and most setups persist none of them.
+> The persistence checklist is decisions, corrections, artifacts. Each one fails silently, and each fails differently.
+> "Agent memory" as a feature (a vector store you bolt on) and persistence as a constraint (state lives in the substrate the agent runs on) are different designs. Only one survives an unattended run.
+> The pattern that carries all three is a shared workspace graph: typed objects an agent reads from and writes to, with loops that hold state between runs.
+
+## Why your scheduled agent forgets by Monday
+When an agent that runs on a schedule starts from scratch every morning, three separate things are broken. They usually get diagnosed as one problem, which is why the fix never sticks.
+**It does not get smarter.** This is already visible inside a single conversation: teams on r/AI_Agents report that agents forget the original goal by around step 10 and start hallucinating details from step 2. Across runs the floor is lower, because there is no step 11. Run two has no access to run one at all. RedHat's Jira-triage writeup ("Taming the Agent Beast", August 2026) names the pattern and the fix in one line: *stateless agents, stateful orchestration*, and *agents don't remember each other; the board does*. The agents are disposable. The board is not.
+**It has no shared context.** The agent that researched on Friday and the agent that drafts on Monday are strangers. Even when both are good at their job, neither can see the other's work. Every run re-derives context that already exists, and re-derivation is where drift creeps in.
+**It needs your laptop open.** If the agent only runs when you are at the keyboard, the work stops when you sleep. A schedule that pauses overnight is not a schedule. It is a reminder. The answer to this failure mode is an [ambient agent workspace](https://maskin.io/docs/ambient-agent-workspace/) that keeps running whether or not a window is open.
+None of these are model problems. They are harness problems. Memory, tools, permissions, and environment all live in the harness around the model, and the real failures live in the harness too. It is also why memory is a layer of its own, sitting alongside skills, tool bridges, and workflows rather than replacing any of them. For how those layers separate, see [agent skills vs MCP vs cursor rules vs workflows](https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/).
+
+## The persistence checklist: decisions, corrections, artifacts
+If you want your agent to pick up where it left off, there are exactly three categories of state to persist. Name them and you can audit any agent setup against them in about a minute.
+
+### 1. Decisions
+A decision is what the agent chose, plus the reason it chose it. Most setups store the first half and drop the second. Your agent logs "sent the follow-up email," but not "sent it to the tier-2 segment because the tier-1 list was rejected on Tuesday." Next run, it cannot tell a settled choice from an open one, so it either repeats the work or quietly reverses a decision a human already approved. The reason is the part that carries forward. The action is just the receipt.
+
+### 2. Corrections
+A correction is the gap between what the agent produced and what a human accepted. This is the most valuable signal in the system, and it is almost always thrown away. When you edit the agent's draft, retitle its ticket, or reject its outreach, you hand it the one piece of feedback it cannot generate on its own. If that edit lives in your head or in a chat window, the next run makes the same mistake at the same rate. A correction that gets written down turns into a rule. A correction that does not, turns into a recurring bug.
+
+### 3. Artifacts
+An artifact is the output itself, stored where the next run can find and reuse it rather than regenerate it. The research memo, the drafted ticket, the built page. If run one produced something useful and run two cannot address it, you paid twice for the same work. Artifacts double as the audit trail: they are how you answer "what did the agent actually do last week?" without guessing.
+Miss any one of these and the failure stays silent. The run completes, the output looks fine, and the loss only surfaces weeks later, when the agent confidently repeats a settled decision or a correction you made three times never sticks.
+
+## Memory as a feature vs persistence as a constraint
+Most "agent memory" products answer the wrong question. They ask *where do we store text?* and answer with a vector database you bolt onto the agent. The question that matters is *what has to survive the run?*, and the answer is a property of the substrate, not an add-on.
+The difference is not academic. Chip Huyen, in the vocabulary her AI Engineer Summit keynote formalized, splits agent memory into three tiers: short-term (the context window), long-term (an external store), and internal (the model weights). Long-term is the tier everyone argues about, and it is where the lock-in lives. Mem0 stores vectors, Letta stores agent state blocks, Zep stores graph nodes and edges, and this year added three more shapes: khive (closed-enum SQLite), Graphiti (Pydantic over Neo4j), and growmos (JSONL). Six incompatible formats. Migrating between any two means re-extracting everything.
+Simon Willison's complaint points at the same wall from the user's side. In his AI Engineer keynote he described ChatGPT's silent memory feature quietly injecting "Half Moon Bay" into an image prompt, and named the problem as losing control of context. A memory you cannot see is a memory you cannot correct, which is the opposite of what a scheduled agent needs, because correction is item two on the checklist.
+So the frame swap is this: stop treating memory as a feature you add to a stateless agent, and start treating persistence as a constraint on the [stateful orchestration substrate](https://maskin.io/docs/what-is-a-stateful-orchestration-substrate/) the agent runs on. When the state lives in the substrate, there is no format to migrate and no context to lose.
+
+## What actually carries persistence: the workspace graph
+A substrate that carries all three checklist items has three properties. Maskin's own setup is the working example.
+**State lives in typed objects in a shared graph.** Not a text blob, not an embedding you cannot inspect. A decision is a bet with a status. A correction is a comment attached to the object it concerns. An artifact is the object the run produced. Because the objects are typed and connected, the agent reads structure, not a wall of recalled prose. Independent research this year (khive, Graphiti, growmos) landed on the same three ingredients: a typed ontology, typed edges, and provenance on every item. Provenance is what makes a decision auditable later.
+**Loops carry the state, not the agent.** A loop is the process, and it holds the cursor, which is what makes it a [closed loop](https://maskin.io/docs/closed-loop-workspace/) rather than a one-shot job. Maskin's go-to-market loop is a live example: it carries 353 in-flight contacts, each one a record whose status is the cursor (`new_lead -> qualified -> ...`), with terminal states for converted, not interested, and rejected. The agents that work those records are interchangeable. The record outlives the run. That is the difference between a process that is record-scoped and one that is run-scoped, and it is why the loop keeps working across weeks with no single agent holding the whole picture.
+**It runs without you.** Because the state lives in the shared workspace and not on your laptop, the loop advances while you are away. This is the part chat-shaped tools cannot do: a conversation ends when you close the window, but a loop does not.
+Persistence is the point. The workspace graph is what makes it possible, and it is the fourth place agent memory can live, alongside the context window, the external vector store, and the model weights. You can see it, edit it, and correct it, which matters, because correction is item two on the checklist.
+
+## FAQ
+
+### Does Claude Code have memory?
+Claude Code has project memory: files such as CLAUDE.md that carry instructions into a session, and a memory tool for managed agents. That is real, but it is memory of instructions and project context, not memory of runs. On its own it does not persist what your scheduled agent decided, what you corrected, or what it produced last Monday. If your scheduled run starts from scratch, the gap is on the run side, not the project side.
+
+### How do agents remember across sessions?
+By writing their state somewhere that outlives the process, then reading it back at the start of the next run. That store has to hold three things to work: the decisions made, the corrections applied, and the artifacts produced. Anything less and the agent re-derives context it already had, which is where drift and repeated mistakes come from.
+
+### What state should an agent persist between runs?
+Three categories: decisions (what was chosen and why), corrections (what a human changed afterward), and artifacts (the outputs, still addressable). If you can only start with one, start with corrections, because it is the signal the agent cannot generate for itself and the one most setups discard.
+
+### Is a vector database the same as agent memory?
+No. A vector database is one storage format for long-term memory, and a useful one for recall. But it holds text, not structure, and it does not carry the status, the provenance, or the audit trail a decision needs. Treating a vector store as "the memory" is the mistake that keeps agents stateless: you can retrieve a paragraph, but you cannot tell whether a choice is settled.
+Persistence is not a feature you buy and bolt on at the end. It is a property of where the agent runs, and it is the difference between an agent that improves every week and one that starts over every Monday.
+
+## Persistence is where the agent runs
+Maskin carries decisions, corrections, and artifacts on a typed object graph every run reads and writes — so Monday starts where Friday stopped. Open source under Apache 2.0. Self-host free, bring your own model.
+
+
+---
+
+> Source: https://maskin.io/docs/agent-skills-marketplace/
+
+# Agent skills marketplace: how to evaluate one
+An **agent skills marketplace** is where you find, choose, and get agent skills — the on-demand instruction folders that teach an agent one job well. The phrase covers three different things today, and only one behaves like a marketplace. Before you compare listings, work out which shape you are looking at, and whether the skills will run where your work happens.
+> ✓
+> **Key takeaways**
+> **"Agent skills marketplace" names three different things**: open collections and directories, vendor-hosted libraries, and skills bundled inside a product. Most of them are discovery surfaces, not commercial marketplaces.
+> **The format is open, so nothing locks skills to one store.** An agent skill is a folder with a `SKILL.md` file — a `name`, a `description`, an on-demand body, and optional supporting files — all set out in Anthropic's agent skills specification (2025), an open format, so nothing forces you into a single vendor's catalogue. For the definition itself, start with [what agent skills are](https://maskin.io/docs/learn/agent-skills/).
+> **Evaluate any marketplace on six checks**: provenance, versioning, reach, maintenance, spec conformance, and trigger model.
+> **The trigger model is the check people skip and later regret.** A skill that only loads when someone remembers to invoke it is a snippet with better packaging. A skill that runs when workspace state changes is infrastructure.
+> **You browse skills; you run them inside loops.** The browse surface and the run surface are different products, and a marketplace of skills is not the same thing as a marketplace of loops.
+> **Nothing about the noun requires a store.** Plenty of teams adopt the primitive with a folder in a repository and no marketplace at all. A store is a distribution choice, not a requirement of the format.
+
+## The three shapes of an "agent skills marketplace"
+People arrive at the phrase expecting a shop and land on one of three very different things. Being precise about which one you are looking at is the first move, because each shape fails in a different way.
+
+### Open collections and directories
+Community repositories and catalogues that list skills you can copy into your own project. These are the most common result for the phrase, and they are usually not products — they are indexes maintained by contributors. A directory tells you a skill exists and where to find it. It does not sign it, version it, or support it. They tend to rank on domain age and repository stars rather than on any commercial relationship with the skills they list.
+
+### Vendor-hosted libraries
+Collections published by the model vendor or a tool vendor, tied to that vendor's agent and sometimes to a signing or review process. A vendor library is closer to a marketplace: there is a publisher, an audience, and a distribution channel. The trade-off is reach. A library that only serves one vendor's agent routes every skill through that vendor's review, and the skills you find there tend to assume that vendor's environment.
+
+### Skills bundled inside a product
+A capability a tool ships that happens to be packaged as a skill, where the folder is an implementation detail rather than something you browse. You do not choose these; they arrive with the product. They are worth understanding because they set a user's expectation of what a skill is — often invisibly, and often more narrowly than the open format allows.
+What the phrase does not yet describe, in most cases, is a live commercial marketplace where skills are bought, sold, and versioned as products with support behind them. If you are evaluating an "agent skills marketplace," establish which of the three shapes it actually is before assuming the third-party product model applies.
+
+## How to evaluate an agent skills marketplace
+Once you know the shape, the differences that decide the outcome are the same six, whichever vendor is in front of you. Score each one honestly before you commit a team to the tool.
+| Check | What to ask | Why it matters |
+| --- | --- | --- |
+| Provenance | Who published this skill, and can you verify them? | An unsigned folder from an unknown author runs with whatever reach the agent holding it has. |
+| Versioning | Can you pin a version and see what changed between releases? | Skills are instruction sets. A silent edit changes agent behavior with no diff for you to review. |
+| Reach | What can the skill touch once it loads — files, tools, connected data? | A skill inherits the permissions of the agent that carries it, so a small skill can act with large scope. |
+| Maintenance | Who fixes it when the tool or API underneath it changes? | A skill that wraps a live system decays the moment that system moves. Unmaintained skills fail quietly. |
+| Spec conformance | Does it follow the open SKILL.md format, or a private one? | Conformance is what lets you move a skill between agents instead of being locked to the listing that sold it. |
+| Trigger model | How does the skill decide when to load? | This is what separates a snippet you paste from a capability that fires on its own. |
+Most directory-shaped results do well on the first two checks and badly on the last. The trigger model deserves its own look, because it is the one buyers routinely skip.
+Skills load in three levels: the name and description first, the body of `SKILL.md` when a task matches, and bundled files only when the agent reaches for them. That design lets a skill stay dormant until it is relevant, and it keeps a long playbook out of context until the moment it is needed. But *relevance* has to be signalled by something. If the only signal is a person remembering to mention the skill, then the skill is a snippet of text with a folder around it. If the signal is state — a record changing status, a stage completing, an object arriving — the skill becomes part of how work moves rather than something you have to remember. When you evaluate a marketplace, ask how its skills load, and whether that answer survives a busy week.
+
+## Library, registry, and marketplace: three words doing different jobs
+These terms get used as synonyms. They should not be. The distinction is the difference between finding a skill and being able to rely on it.
+A **library** is a collection: a body of skills someone curates, whether or not you can act on it directly. A **registry** is an index with identity — names, versions, and where to fetch each one — closer to a package manager than to a shop. A **marketplace** adds a transaction and a relationship: a publisher accountable for a listing, terms under which you obtain it, and some expectation of support afterwards. A folder on a code host can be a library. A vendor's signed index can be a registry. Neither becomes a marketplace until somebody stands behind the listing.
+That distinction is why a search for an "agent skills marketplace" is really two questions stacked together: *where do I find skills*, and *who is accountable once I use one*. Directories answer the first well. Very little answers the second today, which is the gap the phrase keeps reaching for.
+
+## You browse skills; you run them inside loops
+Here is the split the noun hides. Whatever surface you use to find a skill is a **browse surface**. The place the skill actually does its work is a **run surface**, and the two are not the same product. You browse a skill the way you browse a package: read the description, check the author, decide. You *run* it inside something that gives it a job, a trigger, and a place to report back.
+That is the layer the category noun does not yet describe. Maskin's skill surface is a run surface: a skill attaches to an agent and ships as a ["built with" component of a loop](https://maskin.io/marketplace/), where the loop holds the trigger and the state. Maskin's Marketplace lists those loops — it is a catalogue of runnable loops, not a shelf of standalone skill folders, so you do not visit it to browse a plain skill directory; you use it to put a skill to work inside a defined process. The browse-versus-run distinction is also why the fast comparison people reach for — [agent skills versus MCP, cursor rules, and their neighbours](https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/) — matters: the instruction layers do different jobs, and only one of them carries state. If you want the layer-by-layer breakdown, that page is the hub for it.
+A marketplace of skills, in other words, is not automatically a marketplace of loops. Buying a skill and running a loop are different acts, and the products that do the first rarely do the second.
+
+## Where a skill actually runs
+This is the practical question behind the commercial one. A skill is a folder, and a folder does not run itself. Three places a skill can live:
+- **In a repository or prompt.** The skill sits in the project, and someone loads it when they remember. Simple, portable, and entirely dependent on human recall.
+- **Inside a vendor's agent.** The skill loads when the vendor's agent decides a task matches its description. You get automatic loading, and you accept that vendor's environment and review process.
+- **Inside a workspace that holds state.** The skill loads when the workspace changes in a way the trigger defines — a record moves status, a stage completes. The skill is invoked by the work itself, not by a person and not by a description match alone.
+The third is where the category is heading, and it is the reason a marketplace built only for browsing will feel incomplete to a team that has to ship. It is also the reason to ask, of any marketplace, not just what it lists but what runs the listing. Skills are the primitive. Something has to give them a job.
+
+## FAQ
+
+### Is there an agent skills marketplace?
+Not one, in the sense of a single commercial store where skills are bought and sold with support behind them. What exists today is mostly open collections and directories, plus vendor-hosted libraries and skills bundled inside products. The phrase is ahead of the market it describes. You can adopt agent skills today — the format is open and the tooling exists — without waiting for a store.
+
+### What is the difference between an agent skills marketplace and a library?
+A library is a collection of skills. A marketplace implies a publisher who is accountable for a listing, terms for obtaining it, and some expectation of support. Many things called an "agent skills marketplace" are libraries or directories wearing the commercial word.
+
+### Do I need a marketplace to use agent skills?
+No. A skill is a folder with a `SKILL.md` file and no build step or registration call. If the agent reads the folder, the skill exists. A marketplace is a distribution convenience, not a precondition — and a team that writes its own skills can go a long way before it ever needs one.
+
+### Are agent skills free?
+The format itself is free: a skill is a folder you can read, and there is no build step or registration call standing between you and the file. What you pay for, when you pay, is the support and maintenance around a skill, not the ability to open it. Plenty of teams run on skills they wrote and maintain in-house, with no third-party listing involved at all.
+
+### How do I choose between them?
+Run the six checks above, in order, and stop at the trigger model. Provenance, versioning, reach, maintenance, and spec conformance tell you whether a skill is safe to adopt. The trigger model tells you whether it will actually run. A listing that passes the first five and fails the sixth is a well-documented snippet.
+
+## Skills that run where the work happens
+Maskin is the MCP-native workspace where a skill is a packaged capability attached to a named agent inside a closed loop — not a snippet in a directory. Open source under Apache 2.0. Self-host free, bring your own model.
+
+
+---
+
+> Source: https://maskin.io/docs/knowledge-wiki-vs-vector-database/
+
+# Knowledge wiki vs vector database: a compiled artifact is not a storage engine
+A vector database stores embeddings and returns nearest-neighbour matches; a knowledge wiki is a set of compiled, human-auditable pages. They are not competitors. A vector database is one component inside a retrieval pipeline — a storage engine — while the wiki is the artifact you might store. You can put wiki pages **into** a vector database and retrieve from them; you cannot retire one with the other.
+> ✓
+> **Key takeaways**
+> **A vector database is storage for embeddings** — vectors plus metadata, chunked and indexed for similarity search. It is a component, not an architecture.
+> **A knowledge wiki is a compiled artifact** — interlinked pages a human can read and audit, each citing the object its claim came from.
+> **They compose rather than compete.** The wiki is a clean source; the vector database is one way to index it. The direction runs one way: pages go into the database, not the reverse.
+> **Most "vs" questions here are really asking which layer is missing** from your stack — a place to store vectors, or a stable artifact worth retrieving from.
+> **On the standard agent-memory benchmarks, retrieval is close to solved** (~97% recall@5 on LongMemEval); the unsolved part is synthesis over what was retrieved.
+
+## The short answer: an artifact and a component are different kinds of thing
+A vector database and a knowledge wiki sit at different layers, which is why a head-to-head "which wins" framing produces heat rather than an answer. The cleanest cut is **storage engine versus compiled artifact**. A vector database is infrastructure: it holds embeddings and answers a similarity query. A knowledge wiki is content: a set of pages written once, linked, and read many times by humans and agents. Infrastructure holds content. It does not replace it.
+If your actual question is whether a compiled wiki beats a query-time retrieval architecture, that comparison lives one page over — [LLM wiki vs RAG](/docs/llm-wiki-vs-rag/) covers the mechanism-versus-artifact decision in full. This page answers the narrower question: what a vector database is on its own, and how it relates to a wiki once you stop treating the two as rivals.
+
+## What a vector database actually is
+A vector database is a store built for one job: keep embeddings and find the vectors nearest a query vector, fast. An embedding is a fixed-length numeric representation of a piece of text — a list of floats, not the text itself. "Nearest" is measured by distance (cosine, dot product, Euclidean), and the lookup is approximate, because exact nearest-neighbour search over millions of vectors is too slow to serve. That approximation is the whole point of a specialised engine.
+
+### What actually gets stored
+Not documents. A vector database stores three things together: the vector, the metadata attached to it, and (usually) a pointer back to the original chunk of text.
+1. Your source is split into chunks — a paragraph, or a page section.
+2. Each chunk is passed through an embedding model, which returns a vector.
+3. The vector is written into an index (HNSW and IVF are two common structures) alongside metadata: source ID, page ID, section heading, timestamp.
+4. At query time your question is embedded the same way, and the index returns the closest vectors — and, through the metadata, the chunks they point at.
+You cannot read a vector. You can only search it. The original text has to live somewhere else, which is the first reason the wiki and the database are not the same thing: the database indexes the artifact, it does not become it.
+
+### It is neither relational nor a document store
+People reach for the nearest familiar category and miss. A vector database is not relational — it has no joins in the SQL sense, and one of the most-searched questions around it is literally "is a vector database relational?" The answer is no: its query primitive is similarity, not selection. Nor is it a document store in the Elasticsearch sense, though some engines blur the line by supporting hybrid lexical-plus-vector search. It is a purpose-built index for approximate nearest-neighbour search, with metadata bolted on for filtering. Useful, narrow, and one layer down from anything a human reads.
+
+## What a knowledge wiki actually is
+A knowledge wiki is a set of interlinked pages an LLM compiles from your own material, that other agents read before they answer. Andrej Karpathy published the pattern as a public gist in April 2026, framing it as the alternative to per-agent memory files and to bolting retrieval onto raw documents. Three properties matter for this comparison:
+- **It is compiled ahead of time.** Pages exist before the question is asked, so the same question tends to return the same answer. A compiled artifact is checkable; a fresh retrieval is not.
+- **It is human-auditable.** A person can open a page and read it. You cannot open a vector and read it.
+- **It cites its sources.** Each page links back to the object the claim came from, so a reader walks back to the source instead of trusting a summary.
+That is the artifact half of the pair. The failure mode is not the compile step; it is upkeep. A wiki that only gets written when someone remembers to write it decays into a folder of half-true pages inside a quarter. The [knowledge-wiki loop](/marketplace/knowledge-wiki/) is the working shape of keeping one alive.
+
+## Why "versus" collapses: you put wiki pages into a vector database
+Here is the move that ends the comparison. A wiki is a source. A vector database is an index. To search a wiki by meaning rather than by title, you embed its pages and store those vectors in a database — which is exactly what people do. The wiki does not compete with the database; it is one of the best things you can put in it.
+**Can you store wiki pages in a vector database? Yes.** Split each page into sections, embed each section, and write the vectors with metadata that points back to the page and heading. A query then returns the most relevant *sections of your wiki*, and because you kept the pointer, the agent can open the page and read the full, linkable context around the retrieved fragment. You have used the database as a lookup mechanism over a curated artifact. Nothing was replaced.
+That is the composition, and it is why the honest framing is layered rather than oppositional: the wiki is the curated core, the vector database is one index over it, and a retrieval pipeline serves whatever volatile material a wiki deliberately leaves out.
+
+## The mistake this comparison exposes
+Treat the vector database as "the knowledge layer" and you inherit a solved problem as if it were the whole problem. The 2026 benchmark picture is blunt about where the difficulty actually sits. On LongMemEval, first-stage retrieval is close to saturated — recall@5 around **97%**, while end-to-end accuracy lands near **87%**. Of the 65 wrong answers, **54 had the correct evidence sitting in the top-5 retrieval**; only 11 were genuine retrieval misses (AutoMem's 2026 comparison, over the LongMemEval full slice). The evidence was found. It was not used well.
+The same split shows up in evaluation. MemDelta (June 2026) found that swapping the embedding model alone moves LongMemEval by **+6.2 points** — enough to flip which system "wins" — while the model family doing the answering swings results by up to **45 points**, and Mem0 tied plain verbatim RAG at **50× the write-path cost**. A benchmark whose own answer key is 6.4% wrong (the Penfield Labs LoCoMo audit) cannot separate an 88% system from a 94% one.
+Read together, the message is that a vector database is a component whose behaviour depends heavily on the model around it, and that adding a better retriever will not move a system that is failing at synthesis. The artifact layer — a clean, well-structured page an agent can reason over — is where the remaining gains are. That is the wiki's job, and it is a job the database cannot do.
+
+## Vector database vs knowledge graph: the other neighbour worth not confusing
+One more distinction, because the vocabulary overlaps and people blur it. A vector database stores embeddings and answers similarity queries. A knowledge graph stores typed nodes and typed edges and answers traversal queries — "what depends on X, and who owns it." A knowledge wiki is a compiled artifact a person reads. Three different things.
+The shipping-code consensus this year has moved toward the graph for agent memory: khive, Graphiti, and growmos, three separate projects, converged within months on typed ontologies, typed edges, and provenance on every item — and all three explicitly position typed structure against raw similarity. Their shared claim is that "what depends on X" is structure, not a similarity result. Worth separating one more step: a typed *workspace graph* where agents write and read typed objects is a control plane, not a retrieval index — a distinction that matters because the AI-search vocabulary has trained buyers to hear "vector database" whenever anyone says "knowledge graph." When Maskin says the workspace graph is where persistence lives, it does not mean an index you query. It means the substrate agents read and write.
+
+## How to decide which layer you actually need
+Stop asking which wins. Ask which layer is missing.
+| Layer | What it answers | Its failure mode |
+| --- | --- | --- |
+| Vector database | "Find text like this" — similarity over embeddings | Retrieval noise; the right chunk was never the problem |
+| Knowledge graph | "How is X connected to Y" — traversal over typed edges | Ontology drift; expensive to keep typed and current |
+| Knowledge wiki | "What do we know, stated once" — a compiled, citeable page | Staleness and orphaned pages; upkeep nobody owns |
+Run four questions:
+1. **Can a human read the answer where it lives?** If it must be auditable, you need an artifact — a vector is not reviewable.
+2. **Does the same question come back?** Repeated questions favour a compiled page; one-off exploration favours an index.
+3. **Do you need to trace a claim to a source?** If yes, the wiki's citation structure is the feature, and it survives being indexed into a database.
+4. **Who keeps it current next quarter?** If the answer is "nobody," no storage choice will save it.
+Most teams that adopt a wiki still run a vector database underneath it — for search over the pages, and for the volatile material the wiki leaves out. The two are a stack, not a choice.
+
+## Making the wiki a maintained artifact, not a folder
+The database is the easy half. Standing one up is an afternoon. Keeping a compiled artifact *true* is the hard half, and it is an ownership problem, not a storage problem. Writing to the wiki has to be a byproduct of work that already closes, and reading it a byproduct of work that already starts, or it decays regardless of how good the index on top is. That is the shape of the [knowledge-wiki loop](/marketplace/knowledge-wiki/): a closed work item fires it, agents write the verdict and link the artifact, a human gates the taste-sensitive summaries, and it closes when a new hire or a new agent can read the page and stop needing to ask. For how the artifact relates to the volatile store beside it, see [agent memory across sessions](/docs/learn/agent-memory-across-sessions/), where the same vector-store-is-not-memory distinction is worked through from the persistence side.
+
+## FAQ
+
+### Is a vector database the same as a knowledge wiki?
+No. A vector database stores embeddings and returns nearest-neighbour matches; it is a storage engine, not a readable artifact. A knowledge wiki is a set of compiled, interlinked pages a human can read and audit, with each claim linked to the object it came from. You can store wiki pages in a vector database, but the database is the index, not the knowledge.
+
+### Can you store wiki pages in a vector database?
+Yes, and it is a common pattern. Split each page into sections, embed each section, and store the vectors with metadata pointing back to the page and heading. Queries then return the most relevant sections of your wiki, and the pointer lets an agent open the full page for context it can cite.
+
+### What is stored in a vector database?
+Vectors, plus metadata, plus usually a pointer to the original text. The source is chunked, each chunk is turned into an embedding by a model, and the vector is written to an approximate-nearest-neighbour index (HNSW and IVF are two common structures) with metadata such as source ID, page ID, and timestamp. The original text lives elsewhere; the database indexes it.
+
+### Is a vector database relational?
+No. It has no SQL-style joins, and its query primitive is similarity, not selection. It is also not a document store in the Elasticsearch sense, though some engines add hybrid lexical-plus-vector search. It is a purpose-built index for approximate nearest-neighbour search with metadata filtering.
+
+### Does a knowledge wiki replace a vector database?
+No. A wiki can replace the *corpus* you retrieve from — compiled, citeable pages beat raw chunks as a source — but you still need something to retrieve from it, and a vector database is one way to do that. What the wiki replaces is the pile of unprocessed documents, not the index on top of them.
+
+### Vector database vs knowledge graph — what is the difference?
+A vector database answers "find content like this" using similarity over embeddings. A knowledge graph answers "how is this connected to that" using traversal over typed nodes and edges. Typed structure is not a similarity result: "what depends on X, and who owns it" is a traversal query. The graph is the better fit for agent memory that has to reason about relationships.
+
+### Why do you need a vector database at all?
+For semantic search over a corpus too large or too varied to pre-write answers for. When your team asks the same settled questions, a compiled wiki answers them more stably and more cheaply to audit. When the corpus is large and moving, a similarity index is what lets an agent find the relevant fragment without a human having filed it first. Most teams end up with both.
+Read next
+
+## Compile the artifact, then index it
+Maskin compiles closed bets into typed pages agents read before they answer — an artifact you can point any retrieval pipeline at. Open source under Apache 2.0. Self-host free, bring your own model.
+
+
+---
+
+> Source: https://maskin.io/docs/mcp-vs-rag/
+
+# MCP vs RAG: the wire and the retrieval layer are not rivals
+MCP and RAG are not competitors. **MCP is the wire** — a protocol an agent uses to reach tools, data, and other systems. **RAG is a retrieval mechanism** — a way of finding relevant fragments at query time. One is how an agent *calls* something; the other is how it *finds* something. For agent memory the question that actually decides your architecture is neither: it is what carries state across runs.
+> ✓
+> **Key takeaways**
+> **MCP is a wire, RAG is a mechanism; they sit at different layers.** A head-to-head comparison produces more heat than light, which is why the top of this SERP is an architecture-choice question, not a horse race.
+> **Neither one carries state across runs.** MCP transports a call; RAG assembles an answer fresh each time. Both are stateless by design, so neither is "agent memory" on its own.
+> **Retrieval is close to solved; synthesis is the frontier.** Retrieval hits ~97% recall@5 on LongMemEval, yet 54 of 65 wrong answers already had the right evidence in the top five.
+> **They compose three ways** — RAG behind MCP, MCP on top of RAG, and both under a state layer. The demand data asks "how do MCP and RAG work together" far more than "which wins."
+> **What persists is the substrate, not the protocol.** A typed workspace graph is a fourth place agent memory can live, alongside the context window, the vector store, and the model weights.
+> **A warning on vocabulary:** when teams say "agent memory" they usually mean a vector database. A typed workspace graph is a control plane agents read and write — not a retrieval index.
+
+## The short answer: "versus" is the wrong frame
+The head of this SERP is genuinely a two-way question. A thread on r/AI_Agents frames it as *what's the right fit for my use case* — not which is better. Google's autocomplete makes the same move: this query space carries `how do mcp and rag work together`, `rag through mcp`, `mcp on top of rag`, `is mcp just rag`, and `what is the relationship between mcp and rag`.
+People are not asking which one wins. They are asking how the two relate, and whether they need both. That is a structural question, and it has a structural answer.
+
+## What MCP actually is
+The Model Context Protocol is a **wire**: a standard way for an agent to reach a tool, a data source, or a system it does not own. It is not knowledge and it is not a store. It carries a call out and a typed result back.
+The semantics are settled, and worth stating plainly because a lot of copy gets them backwards. An **MCP server** is the provider — the thing that exposes tools and data. An **MCP client** is the host application the model runs in, which dials into servers. When a workspace is called "MCP-native," it means the workspace exposes its own object model as an MCP server, so agents can operate the real surface of the work rather than a single bolted-on feature.
+The protocol is moving fast. The **2026-07-28 revision** and the August 22 roadmap together shipped the biggest overhaul since launch: stateless servers, Multi Round-Trip Requests (SEP-2322) for mid-call elicitation, `server/discover` capability negotiation, and cacheable lists. The practical effect is that a wire built for one agent in one chat window is becoming infrastructure for many agents making many calls.
+And the wire is crowded. An August 27–28 probe of every remote server in the official MCP Registry found **25,289 servers, 15,329 remote URLs, and 8,235 that were alive**, returning 140,284 tools between them (median 7 per server, max 1,076). Roughly a quarter were gated and a fifth were broken, with about 30% of the live surface concentrated in two operators. The market is real — and the unclaimed problem in it is curation quality, not reach.
+One more property matters for this comparison. **MCP has no opinion about what is worth retrieving.** It is transport. It will faithfully carry a bad call as fast as a good one — and by default an MCP server inherits the privileges of the process that started it, so "which tools can this agent reach" is a permissions decision, not a config detail.
+
+## What RAG actually is
+Retrieval-augmented generation is a **query-time mechanism**. You embed your sources into vectors, store them, and at question time retrieve the closest fragments, hand them to the model, and let it assemble an answer. The defining trait is that the answer is assembled fresh every time — the same question next week can return a different answer, because the retrieved set changed underneath it.
+The grown-up version, agentic RAG, lets an agent decide what to retrieve, when to re-query, and how to synthesize, instead of running a fixed top-k lookup. It is an established term: **US 1,900/mo, KD 50**, and its SERP is locked top-to-bottom by DA 77+ enterprise pages and a canonical academic paper. That tells you something about the market even if you never write for the term: **the buyer thinking about this problem thinks in vector-database vocabulary** — Weaviate, Neo4j, Qdrant, LlamaIndex — not in workspace-graph vocabulary.
+RAG is genuinely good at one thing: open-ended recall over a large, shifting corpus, cheaply. It is stateless by design, and it is the wrong tool for holding a decision.
+
+## The layer that actually decides it: what carries state
+Put MCP and RAG side by side and the real question appears. Neither one remembers anything.
+- MCP carries a call. When the call returns, the wire is done.
+- RAG retrieves fragments. When the answer is assembled, the mechanism is done.
+Neither keeps a record that run two can read. So if your problem is that a scheduled agent wakes up Monday with no idea what it decided Friday, **choosing between MCP and RAG does not solve it.** You are choosing between two stateless things.
+The research is unusually clear that retrieval is not the bottleneck. Retrieval has reached roughly **97% recall@5 on LongMemEval** — close to saturated on standard knowledge-base benchmarks. But **54 of 65 wrong AutoMem answers had the correct evidence sitting in the top five.** The evidence was retrieved; it was not synthesized. A separate June 2026 result (MemDelta) shows how much of the published "agent memory" progress is measurement confound: swapping the embedding model alone moves LongMemEval by +6.2 points, model choice swings results by ±45 points, and Mem0 ties a plain verbatim RAG baseline at **50× the write-path cost**.
+Read those together and the conclusion is structural. The retrieval mechanism is not where your leverage is, and the wire is not where your state is. Something else has to carry the decision, the correction, and the artifact from run to run.
+
+## Where each one sits
+| Dimension | MCP | RAG |
+| --- | --- | --- |
+| What it is | A wire: the protocol an agent reaches tools and data over | A mechanism: query-time retrieval of ranked fragments |
+| When the work happens | At call time — agent invokes a tool, gets a typed result | At query time — embed, retrieve, assemble per request |
+| Unit of exchange | A typed tool call and its response | A ranked set of fragments |
+| State across runs | None — the wire transports, it does not keep | None — stateless by design |
+| Best at | Reaching live systems, taking action, governed access | Open-ended recall over a large, volatile corpus |
+| Failure mode | Tool sprawl, ungoverned access, servers inheriting user privileges | Retrieval noise, stale or missing fragments, evidence retrieved but unsynthesized |
+| Replaces the other? | No | No |
+
+## They compose — the three ways they actually stack
+The reason "versus" collapses is that the two are complementary by construction. There are three honest ways to put them together, and the demand data shows people searching for all three.
+**1. RAG behind MCP.** Expose your retrieval pipeline as an MCP server. Now any MCP-native agent can call search as a tool, under the same permissions and audit trail as every other call. This is the shape behind queries like `rag behind mcp` and `rag through mcp` — the retrieval mechanism becomes one tool on the wire.
+**2. MCP on top of RAG.** An agent uses the wire to reach a vector store, a search API, or a database directly, and decides for itself what to pull. Here MCP is the access layer and RAG's role shrinks to "a tool the agent learned to call."
+**3. Both under a state layer.** The retrieval mechanism finds things and the wire reaches things, but a shared, typed store holds what was decided. This is the only arrangement of the three where run two knows what run one did — and it is the one the "vs" question almost always hides.
+
+## How to decide for your team
+Run these against your actual problem, in the order that changes the answer.
+1. **Is the job an action or a recall?** If the agent has to *do* something in a system it does not own — send, update, create, approve — you need a wire. That is MCP. If it has to *find* something in a large corpus, that is RAG.
+2. **Does the same question need the same answer?** Open-ended exploration forgives a shifting answer set. A decision a human already approved does not.
+3. **What has to survive the run?** Decisions, corrections, artifacts. If none of the three cross, you have built a stateless pipeline with good retrieval, not memory.
+4. **Who governs the access?** Every tool an agent can call is a permission. The wire is where that is enforced — and default MCP servers inherit the privileges of the process that started them, which is a security decision, not a config detail.
+5. **Where does the state live?** If the honest answer is "in a vector store nobody can read," you have optimized the wrong layer.
+
+## The "vs" questions that stack three things
+The autocomplete cluster around this query is not just two-way. `mcp vs rag vs ai agents`, `mcp vs rag vs skills`, and `mcp vs rag vs fine tuning` are all live. They resolve the same way every time — by layer.
+- **vs AI agents.** The agent is the *actor*. MCP and RAG are things the actor uses. Not a comparison: a hierarchy.
+- **vs skills.** A skill is packaged judgment — *draft a follow-up in our voice*, *summarize a call against our template*. MCP is the wire; skills are what the agent knows how to do once the call connects.
+- **vs fine tuning.** Fine-tuning bakes knowledge into the model weights — the "internal" tier of memory. MCP and RAG are both external to the weights. They are not rivals to fine-tuning; they are the other two tiers.
+- **vs graph RAG.** Graph RAG builds a graph at retrieval time to improve multi-hop recall. It is still a query-time mechanism — a smarter RAG, not a state layer.
+
+## What actually carries agent memory
+If neither the wire nor the retrieval mechanism carries state, what does? In practice, the answer converging across the agent-memory field is a **typed graph**: a store of typed objects connected by typed edges, with provenance on every item. That is the shape khive, Graphiti, and growmos independently landed on this year — typed ontology, typed edges, provenance — and it is the fourth place memory can live, alongside the context window, the vector store, and the model weights.
+That is the layer Maskin is built around, and it is worth being precise about it, because the vocabulary is where this comparison usually goes wrong. **A typed workspace graph is a control plane agents read and write — not a retrieval index.** The objects are decisions with statuses, corrections attached to the thing they concern, and artifacts the run produced. The retrieval mechanism can read from it. The wire is how agents reach it. Neither is what makes it persist.
+Persistence has a checklist, and it is short: **decisions** (what was chosen, and why), **corrections** (what a human changed after the fact), and **artifacts** (what the run produced, still addressable). Miss any one and the failure stays silent — the run completes, the output looks fine, and the loss only surfaces weeks later as an agent confidently repeating a settled call.
+MCP and RAG both matter in that system. MCP is the wire the agents use to reach the graph and the tools around it. RAG is a mechanism they can point at the graph's settled knowledge. But the thing that answers "what does this agent know, and what did it decide" is the typed store underneath both. That is where agent memory actually lives.
+
+## FAQ
+
+### Is MCP just another RAG?
+No. MCP is a protocol — a wire an agent uses to reach tools and data. RAG is a retrieval mechanism that assembles an answer from fragments at query time. They sit at different layers: one carries a call, the other finds content. You can expose RAG behind MCP, which is exactly why they get confused.
+
+### Can MCP replace RAG?
+No, not as a mechanism. MCP has no retrieval of its own — it transports calls. What MCP can replace is the *integration* layer for a retrieval pipeline: you can expose a RAG service as an MCP server so agents reach it over the same wire as everything else. The retrieval still happens; only the access path changed.
+
+### Does MCP make RAG obsolete?
+No. They are not substitutable. MCP moves a call; RAG decides what content is relevant. A wire without a retrieval mechanism still needs something to answer "what is relevant," and a retrieval mechanism without a wire still needs a way for other systems to be reached.
+
+### How do MCP and RAG work together?
+Three ways, and they stack. Put RAG *behind* MCP by exposing your retrieval pipeline as an MCP server. Put MCP *on top of* RAG when the agent uses the wire to reach a vector store or search API directly. Or run both *under* a shared state layer — a typed store that holds what was decided — which is the only arrangement where the next run benefits from the last one.
+
+### When should you use MCP vs RAG?
+Choose by the verb. If the agent has to *do* something in a system it does not own — send, update, create, approve — use MCP. If it has to *find* something in a large, shifting corpus, use RAG. If both are true, which they usually are, use both and put a state layer under them.
+
+### What is the difference between an MCP server and RAG?
+An MCP server is a thing that exposes tools and data over the Model Context Protocol; a RAG system is a mechanism that retrieves relevant fragments to ground an answer. An MCP server can *host* a RAG system — the server is the interface, the retrieval is the work behind it.
+
+### MCP vs RAG vs fine-tuning — what's the difference?
+Fine-tuning bakes knowledge into the model weights; it is the internal memory tier. MCP and RAG are external: MCP is the access wire, RAG is the retrieval mechanism. They solve different problems at different layers, which is why "which one" is the wrong question for all three.
+
+### What carries agent memory — MCP, RAG, or something else?
+Neither MCP nor RAG, on its own. Both are stateless by design. Memory is a property of the substrate the agent runs on: a typed store that holds decisions, corrections, and artifacts across runs. MCP is how agents reach it; RAG is how they can retrieve from it; the store is what persists.
+
+## The primitives underneath
+A short vocabulary note, because the words collide across vendors.
+
+### Loop
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop.
+**Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.**
+
+### Agent
+A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
+
+### MCP
+The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
+
+### Skill
+A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
+Read next
+
+## The wire, the mechanism, and the substrate
+Maskin is the MCP-native workspace where a typed object graph — not a protocol or a retrieval index — carries decisions, corrections, and artifacts across runs. Open source under Apache 2.0. Self-host free, bring your own model.
 
 
 ---

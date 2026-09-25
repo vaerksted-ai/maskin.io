@@ -61,7 +61,13 @@
       { label: "How to run bet-based planning", href: "/docs/how-to-run-bet-based-planning/", nested: true },
       { label: "Bet vs backlog", href: "/docs/bet-vs-backlog/", nested: true },
       { label: "Self-hosted AI workspace", href: "/docs/self-hosted-ai-workspace/" },
-      { label: "How to build an AI SDR loop", href: "/docs/how-to-build-ai-sdr-loop/" }
+      { label: "How to build an AI SDR loop", href: "/docs/how-to-build-ai-sdr-loop/" },
+      { label: "Agentic workflow vs the closed loop", href: "/docs/learn/agentic-workflow-vs-closed-loop/" },
+      { label: "AI agent governance", href: "/docs/learn/ai-agent-governance/" },
+      { label: "Agent memory across sessions", href: "/docs/learn/agent-memory-across-sessions/" },
+      { label: "Agent skills marketplace", href: "/docs/agent-skills-marketplace/" },
+      { label: "Knowledge wiki vs vector database", href: "/docs/knowledge-wiki-vs-vector-database/" },
+      { label: "MCP vs RAG", href: "/docs/mcp-vs-rag/" }
     ]},
     { title: "Alternatives", items: [
       { label: "Open source Jira alternative", href: "/alternatives/open-source-jira-alternative/" },
@@ -69,7 +75,8 @@
       { label: "Open source AI SDR", href: "/alternatives/open-source-ai-sdr/" },
       { label: "Open source Codex alternative", href: "/alternatives/open-source-alternative-to-codex/" },
       { label: "Self-hosted AI agent control plane", href: "/alternatives/self-hosted-ai-agent-control-plane/" },
-      { label: "Self-hosted AI agents", href: "/alternatives/self-hosted-ai-agents/" }
+      { label: "Self-hosted AI agents", href: "/alternatives/self-hosted-ai-agents/" },
+      { label: "Open source AI coding agent", href: "/alternatives/open-source-ai-coding-agent/" }
     ]}
   ];
 

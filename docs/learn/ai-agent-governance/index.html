@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI agent governance for small teams: permissions, attribution, and the audit trail — Maskin</title>
+<meta name="description" content="AI agent governance is the set of practices that make agent actions attributable, permissioned, and auditable. For small teams, it means typed permissions on agent identities, first-class driver attribution on every action, and an audit trail that lives on the same object graph the work does — not e">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/learn/ai-agent-governance/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/learn/ai-agent-governance/">
+<meta property="og:title" content="AI agent governance for small teams: permissions, attribution, and the audit trail — Maskin">
+<meta property="og:description" content="AI agent governance is the set of practices that make agent actions attributable, permissioned, and auditable. For small teams, it means typed permissions on agent identities, first-class driver attribution on every action, and an audit trail that lives on the same object graph the work does — not e">
+<meta property="og:image" content="https://maskin.io/og-image-ai-agent-governance.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="AI agent governance for small teams: permissions, attribution, and the audit trail — Maskin">
+<meta name="twitter:description" content="AI agent governance is the set of practices that make agent actions attributable, permissioned, and auditable. For small teams, it means typed permissions on agent identities, first-class driver attribution on every action, and an audit trail that lives on the same object graph the work does — not e">
+<meta name="twitter:image" content="https://maskin.io/og-image-ai-agent-governance.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/learn/ai-agent-governance/#post",
+      "headline": "AI agent governance for small teams: permissions, attribution, and the audit trail as workspace properties",
+      "description": "AI agent governance is the set of practices that make agent actions attributable, permissioned, and auditable. For small teams, it means typed permissions on agent identities, first-class driver attribution on every action, and an audit trail that lives on the same object graph the work does — not e",
+      "datePublished": "2026-09-25T00:00:00Z",
+      "dateModified": "2026-09-25T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "image": "https://maskin.io/og-image-ai-agent-governance.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/learn/ai-agent-governance/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "AI agent governance"
+        },
+        {
+          "@type": "Thing",
+          "name": "permissions"
+        },
+        {
+          "@type": "Thing",
+          "name": "audit trail"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI agent governance for small teams: permissions, attribution, and the audit trail as workspace properties",
+          "item": "https://maskin.io/docs/learn/ai-agent-governance/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is AI agent governance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The set of practices that make agent actions attributable, permissioned, and auditable. At small-team altitude: typed permissions on agent identities, first-class attribution on every action, and an audit trail that runs on the same graph the work does. At enterprise altitude: additionally, SSO/SCIM, SOC 2 / HIPAA, and formal risk documentation. Both are governance; they answer different scoping questions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is AI agent governance the same as an agent control plane?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Overlapping, not identical. A control plane is the operator surface that runs a fleet of agent sessions. Governance is the set of properties (permissions, attribution, audit) that make that surface trustworthy. A control plane without governance is a nice dashboard; governance without a control plane is a policy without a surface to enforce it on."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from enterprise AI governance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enterprise AI governance (as pitched by IBM, sim.ai, and the SOC-2/HIPAA cohort) starts from procurement requirements and works backward to controls. Small-team governance starts from operator questions (\"who did what\") and works up to controls only as they become load-bearing. Same word, different starting points — pick the one that matches your headcount and your current customer set."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need governance if I only run one agent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, but only the operator half. First-class actor id, sentence-shaped permissions, event history on every object. That's enough to answer \"what happened\" long before you have compliance pressure. Skip it and you'll add it later, painfully, with holes in the audit trail from before the switch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's non-human identity governance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The practice of treating agents (and other automated actors) as first-class identities with their own credentials, permissions, and audit trails — not as service accounts that inherit from a human. It's the same idea this guide names; enterprise-security vendors use the \"NHI\" acronym. Per Guardrail Technologies' 2026 audit of the S&P 500 10-Ks, only 21% of the filings describe governing non-human identities specifically — the gap between mentioning AI (97%) and governing it as an actor is large at every altitude."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good AI agent audit trail?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One with these properties: every action has an actor id (not \"the system\"), every state change is an event (not a log line), events live on the object they mutated (so you can find them by opening the object), and permissions are themselves events (so revocations are auditable). If any of those is missing, you'll hit the wall when someone asks \"who did that.\""
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="is-active" href="/docs/learn/ai-agent-governance/" aria-current="page">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li></ul></nav></aside>    <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / AI agent governance</p>
+    <p class="eyebrow">Guide</p>
+    <h1>AI agent governance for small teams: permissions, attribution, and the audit trail as workspace properties</h1>
+    <p class="lead">AI agent governance is the set of practices that make agent actions attributable, permissioned, and auditable. For small teams, it means typed permissions on agent identities, first-class driver attribution on every action, and an audit trail that lives on the same object graph the work does — not enterprise SSO or SOC 2.</p>
+    <p>"Who let this agent do that, and can we prove it?" That is the AI-agent governance question small teams actually face in 2026 — and every ranking answer to it sells you SSO, SCIM, RBAC, and SOC 2 at enterprise altitude. That framing isn't wrong; it's just not the shape of the problem when your team is five people and two loops. This guide walks the small-team cut: governance as <em>workspace properties</em> — typed permissions, driver attribution, and an audit trail that lives on the same object graph the work does.</p>
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul>
+          <li><strong>Governance is not the same problem as enterprise GRC.</strong> GRC (SSO/SCIM/SOC 2) answers "can we sell to Fortune 500?" Small-team governance answers "can I query who did what?" You can need the second long before the first.</li>
+          <li><strong>Every agent is a first-class actor.</strong> Not a service account belonging to a human. An agent identity carries its own permissions and shows up as the driver on every action it takes — the same way a human user does.</li>
+          <li><strong>Permissions are typed and attached to actors, not to features.</strong> "Can send LinkedIn DMs," "can promote a lead to a rep," "can validate a knowledge page." Sentence-shaped, granular, revocable in one click.</li>
+          <li><strong>The audit trail is the object graph.</strong> Every status transition, every metadata write, every relationship added is an event with an actor attached. Query "what did this agent do last week" the same way you query "which files did this user open."</li>
+          <li><strong>The gate that matters is the material call, not the model call.</strong> Sending a DM, promoting a lead, publishing a page — those are the transitions that need a governance answer. Model reasoning inside a session doesn't.</li>
+        </ul>
+      </div>
+    </div>
+    <h2>Governance in three primitives</h2>
+    <p>The three primitives of small-team agent governance are:</p>
+    <ol>
+      <li>Actors as first-class identities, not human-owned service accounts.</li>
+      <li>Sentence-shaped permissions, granted per action and revocable in one click.</li>
+      <li>An audit trail that lives on the same object graph as the work.</li>
+    </ol>
+    <p>Each is unpacked below — first the framing, then the three primitives in depth, then how they answer real operator questions.</p>
+    <h2>Why the enterprise framing is the wrong altitude</h2>
+    <p>Open any current governance page on the top-10 SERP for <code>ai agent governance</code> and you'll see: SSO, SCIM, RBAC, SOC 2 / HIPAA, encryption at rest, DLP, procurement checklists. All of that is real. None of it answers the small-team question, which is closer to: an agent just posted something the customer noticed. Can I find out which agent, which prompt, which permission it had, and roll back that permission before the next similar action?</p>
+    <p>The enterprise stack answers this eventually, but only after you've spent procurement cycles buying the layers that make it answerable. Small teams get there faster by treating governance as a <em>product</em> concern from day one — permissions, attribution, and audit are properties the workspace has, not features you buy.</p>
+    <p>One empirical anchor is worth naming: per Guardrail Technologies' 2026 audit of all 503 S&amp;P 500 10-K filings (surfaced in Cassie Kozyrkov's <a href="https://decision.substack.com/p/97-of-s-and-p-500-filings-mention">Sep 2026 Decision Intelligence roundup</a>), 97% of filings mention AI, only 16% document an AI-specific cyber-risk process, fewer than 5% describe a governed program with a named policy or committee, and only 21% document governing non-human identities. Enterprise governance itself is undercooked; the small-team gap isn't that small teams are behind, it's that no one has answered this question well at any altitude.</p>
+    <h2>The three primitives in depth</h2>
+    <h3>1. Actors, first-class</h3>
+    <p>An agent identity is an actor — the same primitive as a human user, with its own id and its own permissions. Not a service account owned by a human; a first-class entry in the actor table. Two consequences:</p>
+    <ul>
+      <li><strong>Every action carries the acting actor's id.</strong> When a loop's Prospector agent creates a <code>bet</code>, the driver on that bet is the Prospector agent. When it changes a contact's status, the transition event carries the Prospector's id. Not "created by the automation"; created by <em>this</em> actor.</li>
+      <li><strong>Retiring an agent is one revocation, not a hunt.</strong> Delete an agent actor, or flip it to <code>deactivated</code>, and every trigger it was attached to stops firing under its identity. No orphaned automations.</li>
+    </ul>
+    <p>The practical test: pick any object in your workspace and ask, "who drove the last five transitions on this?" The answer should be five actor ids — some human, some agent — each with a name you can click on and a permission list you can read.</p>
+    <h3>2. Permissions, sentence-shaped</h3>
+    <p>Permissions belong to actors and are named in the shape of an action, not a feature.</p>
+    <ul>
+      <li>"Can send messages via <code>linkedin-unipile.mcp</code>"</li>
+      <li>"Can transition a <code>contact</code> from <code>qualified</code> to <code>promoted_to_rep</code>"</li>
+      <li>"Can move a <code>knowledge</code> object to <code>validated</code>"</li>
+      <li>"Can install a marketplace loop"</li>
+    </ul>
+    <p>Sentence-shaped permissions read like the audit trail you'll want later; feature-shaped permissions ("can access Sales module") don't. Grant the smallest set that lets the agent do its job. If the Prospector needs to draft outreach but never send, its permission list includes drafting and excludes <code>send_message</code> — the send trigger belongs to a Sender identity with a narrower grant.</p>
+    <p>One useful default: material calls (sending, publishing, spending money, changing customer state) live on their own permission per surface. That way revoking one integration or one workflow is a targeted action.</p>
+    <h3>3. Audit trail on the object graph</h3>
+    <p>Audit is not a separate log. Every state transition on every object is an event. Every event has: the object, the field that changed, the before and after value, the actor, the timestamp, and (if applicable) the trigger that fired it.</p>
+    <p>What this buys you:</p>
+    <ul>
+      <li><strong>Per-object history in place.</strong> Open any object; scroll the event feed on it. You see who touched it, when, and what changed — without leaving the object.</li>
+      <li><strong>Cross-object queries.</strong> "All contacts where the Prospector drafted outreach in the last week" is a <code>get_events</code> filter, not a report you have to build.</li>
+      <li><strong>Rollback with attribution.</strong> When a transition was wrong, the fix is another transition — same shape, another actor. Nothing is quietly overwritten.</li>
+    </ul>
+    <h2>How this maps to real questions</h2>
+    <h3>"An agent did something I didn't expect. Where do I look?"</h3>
+    <p>Open the object it acted on. The event feed shows the transition with actor + trigger id. Click the actor — see its permission list. Click the trigger — see what fired it and with what config. If the answer is "the permission was wrong," revoke it in one click. If the answer is "the trigger's config drifted," edit the trigger. If the answer is "the model reasoned poorly," the drift is in the prompt or the model, not the governance layer — which is itself a useful finding.</p>
+    <h3>"How do I stop everything, right now, if a customer is affected?"</h3>
+    <p>Loop-level <code>paused</code>. Every loop has a status; flipping the loop's status to <code>paused</code> disables every trigger that references it. On the trust ladder this is a rung reachable from any other rung. One click, cascading effect, reversible.</p>
+    <h3>"How do I graduate an agent's trust?"</h3>
+    <p>Override rate. Look at the transitions the agent proposed vs the ones the human accepted, edited, or rejected. When the ratio crosses a threshold you set, the loop's trust rung can move — fewer transitions gated, same audit trail. The number is a query over events, not an aggregate dashboard.</p>
+    <h3>"What about the enterprise checklist — SSO, SCIM, SOC 2?"</h3>
+    <p>Not the same question. Those are procurement-shaped: they let a Fortune 500 buy from you. Small-team governance is <em>operator-shaped</em>: it lets a five-person team run agents in production without losing track. Small teams generally need the operator answer first and the procurement answer when a specific customer needs it. Ship the loop; add SSO the day the deal requires it.</p>
+    <h2>The mapping to Maskin</h2>
+    <p>Maskin's implementation of the primitives above:</p>
+    <ul>
+      <li><strong>Actors:</strong> humans and agents are both entries in the actor table. Every <code>driver</code>, every comment, every event carries an actor id. <code>list_actors</code> returns them all.</li>
+      <li><strong>Permissions:</strong> attached to actors, granted per surface (MCP servers), per object-type transition, per admin action. Revocations are events themselves — you can see "the permission was removed at 14:22 by user X."</li>
+      <li><strong>Audit trail:</strong> the events table on every object. <code>get_events</code> queries it directly; the event feed on every object renders it inline.</li>
+      <li><strong>Loop pause:</strong> every <code>loop</code> has a status; <code>paused</code> is a rung reachable from any other rung and disables all attached triggers. Read the runtime set with <code>get_workspace_schema</code>.</li>
+    </ul>
+    <p>The governance surface is Apache-2.0 and self-hostable, so the audit trail runs where your other data does. That matters if compliance ever escalates to procurement altitude — you didn't build the operator answer on a substrate that has to be replaced when the enterprise checklist arrives.</p>
+    <h2>FAQ</h2>
+    <h3>What is AI agent governance?</h3>
+    <p>The set of practices that make agent actions attributable, permissioned, and auditable. At small-team altitude: typed permissions on agent identities, first-class attribution on every action, and an audit trail that runs on the same graph the work does. At enterprise altitude: additionally, SSO/SCIM, SOC 2 / HIPAA, and formal risk documentation. Both are governance; they answer different scoping questions.</p>
+    <h3>Is AI agent governance the same as an agent control plane?</h3>
+    <p>Overlapping, not identical. A control plane is the operator surface that runs a fleet of agent sessions. Governance is the set of properties (permissions, attribution, audit) that make that surface trustworthy. A control plane without governance is a nice dashboard; governance without a control plane is a policy without a surface to enforce it on.</p>
+    <h3>How is this different from enterprise AI governance?</h3>
+    <p>Enterprise AI governance (as pitched by IBM, sim.ai, and the SOC-2/HIPAA cohort) starts from procurement requirements and works backward to controls. Small-team governance starts from operator questions ("who did what") and works up to controls only as they become load-bearing. Same word, different starting points — pick the one that matches your headcount and your current customer set.</p>
+    <h3>Do I need governance if I only run one agent?</h3>
+    <p>Yes, but only the operator half. First-class actor id, sentence-shaped permissions, event history on every object. That's enough to answer "what happened" long before you have compliance pressure. Skip it and you'll add it later, painfully, with holes in the audit trail from before the switch.</p>
+    <h3>What's non-human identity governance?</h3>
+    <p>The practice of treating agents (and other automated actors) as first-class identities with their own credentials, permissions, and audit trails — not as service accounts that inherit from a human. It's the same idea this guide names; enterprise-security vendors use the "NHI" acronym. Per Guardrail Technologies' 2026 audit of the S&amp;P 500 10-Ks, only 21% of the filings describe governing non-human identities specifically — the gap between mentioning AI (97%) and governing it as an actor is large at every altitude.</p>
+    <h3>What is a good AI agent audit trail?</h3>
+    <p>One with these properties: every action has an actor id (not "the system"), every state change is an event (not a log line), events live on the object they mutated (so you can find them by opening the object), and permissions are themselves events (so revocations are auditable). If any of those is missing, you'll hit the wall when someone asks "who did that."</p>
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="https://maskin.io/docs/learn/human-in-the-loop-ai/">
+          <div class="doc-card__title">Human in the loop</div>
+          <div class="doc-card__desc">— the human-gate discipline governance depends on.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Governance as a workspace property</h2>
+      <p>Maskin gives every agent a typed identity, attributes every action to a driver, and keeps the audit trail on the same object graph the work lives on. Open source under Apache 2.0. Self-host free, bring your own model.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

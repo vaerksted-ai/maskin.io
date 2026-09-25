@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic workflow vs the closed loop: the third pattern beyond workflow-vs-agent</title>
+<meta name="description" content="Every 2026 vendor page frames the debate as workflow vs agent. There is a third pattern — the closed loop — with an entry condition, typed objects, human-taste gates, and a close condition. Here is when each one fits.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/learn/agentic-workflow-vs-closed-loop/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/learn/agentic-workflow-vs-closed-loop/">
+<meta property="og:title" content="Agentic workflow vs the closed loop: the third pattern beyond workflow-vs-agent">
+<meta property="og:description" content="Every 2026 vendor page frames the debate as workflow vs agent. There is a third pattern — the closed loop — with an entry condition, typed objects, human-taste gates, and a close condition. Here is when each one fits.">
+<meta property="og:image" content="https://maskin.io/og-image-agentic-workflow-vs-closed-loop.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Agentic workflow vs the closed loop: the third pattern beyond workflow-vs-agent">
+<meta name="twitter:description" content="Every 2026 vendor page frames the debate as workflow vs agent. There is a third pattern — the closed loop — with an entry condition, typed objects, human-taste gates, and a close condition. Here is when each one fits.">
+<meta name="twitter:image" content="https://maskin.io/og-image-agentic-workflow-vs-closed-loop.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/learn/agentic-workflow-vs-closed-loop/#post",
+      "headline": "Agentic workflow vs the closed loop: the third pattern beyond workflow-vs-agent",
+      "description": "Every 2026 vendor page frames the debate as workflow vs agent. There is a third pattern — the closed loop — with an entry condition, typed objects, human-taste gates, and a close condition. Here is when each one fits.",
+      "datePublished": "2026-09-25T00:00:00Z",
+      "dateModified": "2026-09-25T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "image": "https://maskin.io/og-image-agentic-workflow-vs-closed-loop.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/learn/agentic-workflow-vs-closed-loop/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "agentic workflow"
+        },
+        {
+          "@type": "Thing",
+          "name": "closed loop"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI agents"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Agentic workflow vs the closed loop: the third pattern beyond workflow-vs-agent",
+          "item": "https://maskin.io/docs/learn/agentic-workflow-vs-closed-loop/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an agentic workflow?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An agentic workflow is a predetermined chain of steps with an LLM slotted into one or more of them. The engineer writes the topology; the model fills in the blanks. Common shapes are routing (an LLM picks the next branch), tool use (an LLM calls a defined function), and reflection (an LLM critiques its own draft). The path is fixed at design time; the LLM smooths over predictable variation inside it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is agentic workflow in AI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In AI, an agentic workflow is a system where an LLM directs the routing between steps as well as the work inside them, but the overall chain is still designed by an engineer. It sits between a pure workflow (LLM optional, path predetermined) and an agent (LLM decides its own next step). Anthropic's Building Effective Agents is the canonical framing most vendors adopt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes a workflow agentic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An LLM-directed decision at more than one step. A workflow with a single LLM node is still a workflow — the LLM fills a predetermined blank. An agentic workflow, as most vendors define it, hands the LLM the routing between steps as well as the work inside them. The wider frame is the closed loop: a shaped container with agent-execution slots and enforced human gates, closing on a typed outcome."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Agentic workflow vs agent — which should I pick?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Agentic workflow when the path is stable and the output is deterministic, and you want the LLM to smooth over predictable variation. Agent when the environment shifts too fast for any chain to hold, and unstructured exploration is worth paying for. If you need both — a defined outcome and a flexible path to reach it — you want a closed loop, not either endpoint."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a closed loop in AI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A cycle with an entry condition, typed objects the work operates on, agent-execution inside the shape, human-taste gates at named checkpoints, and a close condition that terminates on a falsifiable outcome. Structurally, a workflow-shaped container with agent-driven internals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is agentic AI the same as agentic workflow?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Agentic AI is the wider capability — systems that plan, act, and revise using tools. An agentic workflow is one product-shape that capability can take (an LLM-directed chain). A closed loop is a different product-shape of the same capability. They're not synonyms — the workflow is the design surface, the AI is what runs inside it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can agentic workflows be triggered?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three common patterns: (1) a schedule (cron), (2) a user prompt or chat message, (3) a typed event on a workspace object (a new insight lands, a bet moves to shaped, a customer reply hits the inbox). The third is what turns an agentic workflow into a closed loop — the trigger is a state change on data the team already owns, not a message a human had to remember to send."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Agentic workflow vs MCP — how do they fit together?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MCP is a substrate the workflow runs on, not a competitor. An agentic workflow (or a closed loop) uses MCP to give the agent tools with typed inputs and outputs; agent skills package prompt-time behaviour; cursor rules constrain what a coding agent may do inside an IDE. See agent skills vs MCP vs cursor rules vs workflows for the layer map."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a loop the same as a directed cyclic graph?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Structurally, yes — a loop is a directed graph with cycles (retry, revise, wait for human). The frame in this piece is at a higher level: the three-layer decomposition of harness, loop, graph matters — a loop is the feedback cycle a team designs, the graph is the topology it compiles to. Most teams get more out of investing in the harness and the loop shape than in explicit graph engineering."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="is-active" href="/docs/learn/agentic-workflow-vs-closed-loop/" aria-current="page">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li></ul></nav></aside>    <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Agentic workflow vs the closed loop</p>
+    <p class="eyebrow">Article &middot; Category framing</p>
+    <h1>Agentic workflow vs the closed loop: the third pattern beyond workflow-vs-agent</h1>
+    <p class="lead"><strong>An agentic workflow is a predetermined chain of steps with an LLM slotted into one or more of them. An agent is an open-ended, tool-using LLM that decides its own next step. The closed loop is a third pattern: a workflow-shaped container with an entry condition, typed objects, human-taste gates, and a close condition — with agent-execution inside the shape.</strong></p>
+    <h2>Key takeaways</h2>
+    <p>The five essentials break down like this:</p>
+    <ul>
+      <li><strong>Workflow</strong> = predetermined chain of steps, LLM optional. Cheap, predictable, brittle when the world moves.</li>
+      <li><strong>Agent</strong> = open-ended LLM using tools to decide its own path. Flexible, expensive, hard to audit.</li>
+      <li><strong>Closed loop</strong> = a workflow-shaped structure (entry → typed objects → close condition) with agent-execution slots and human-taste gates. Neither pure workflow nor pure agent.</li>
+      <li>The workflow-vs-agent binary comes from Anthropic's <a href="https://www.anthropic.com/engineering/building-effective-agents">Building Effective Agents</a> and has been absorbed by every enterprise vendor page. It's a useful distinction — but it's not the only choice.</li>
+      <li><strong>When to pick each:</strong> workflow when the path is stable and the reader wants determinism. Agent when the environment shifts faster than any chain can be maintained. Loop when the <em>outcome</em> is well-defined but the <em>path</em> to it isn't — and the work has to close on something a human can inspect.</li>
+    </ul>
+    <hr>
+    <h2>Where the workflow-vs-agent binary comes from</h2>
+    <p>The framing is Anthropic's. In <em>Building Effective Agents</em> (Dec 2024), the Anthropic engineering team drew a hard line between two things people were both calling "agents":</p>
+    <ul>
+      <li><strong>Workflows</strong> — systems where LLMs and tools are orchestrated through <em>predefined code paths</em>. The engineer wrote the topology; the LLM fills in the blanks.</li>
+      <li><strong>Agents</strong> — systems where LLMs <em>dynamically direct their own processes and tool use</em>, maintaining control over how they accomplish tasks. The topology emerges at runtime.</li>
+    </ul>
+    <p>That distinction was clarifying, and the industry ran with it. IBM's <a href="https://www.ibm.com/think/topics/agentic-workflows">"What are Agentic Workflows?"</a>, Weaviate's <a href="https://weaviate.io/blog/what-are-agentic-workflows">Patterns, Memory, Use Cases</a>, orkes.io's <a href="https://orkes.io/blog/agentic-ai-explained-agents-vs-workflows">Agentic AI Explained: Workflows vs Agents</a>, IBM's YouTube <a href="https://www.youtube.com/watch?v=Qd6anWv0mv0">Agentic AI: Workflows vs. agents</a> — every one reproduces the two-pattern framing. Salesforce, Atlassian, Zapier, ServiceNow all speak the same binary. Reddit's r/ExperiencedDevs thread <a href="https://www.reddit.com/r/ExperiencedDevs/comments/1r1chos/what_has_everyone_been_building_with_agentic/">"What has everyone been building with agentic workflows in ..."</a>, sitting at position one on the SERP with over a thousand practitioner clicks, is the same conversation replayed at the ground level.</p>
+    <p>The framing is not wrong. It's just incomplete.</p>
+    <h2>What the binary misses</h2>
+    <p>Here is the shape the binary can't describe cleanly: a <em>structured container</em> — with an entry event, typed inputs and outputs, and a defined close condition — that contains one or more <em>open-ended agent-execution slots</em> and one or more <em>human-taste checkpoints</em>. It looks workflow-shaped from the outside because it has structure and closure. It looks agent-shaped inside because the steps aren't predetermined at design time.</p>
+    <p>That's a <strong>closed loop</strong>, and it's the third pattern.</p>
+    <p>A loop has five properties the binary flattens:</p>
+    <ol>
+      <li><strong>Entry condition</strong> — a specific trigger that fires the loop (a new insight lands; a bet moves to <code>shaped</code>; a customer reply hits the inbox). Not a schedule, not a chat message.</li>
+      <li><strong>Typed objects</strong> — the loop reads from and writes to first-class objects (a bet, an insight, a piece of content), not free-text chat state.</li>
+      <li><strong>Agent-execution slots</strong> — inside the shape, agents choose their own path within a bounded scope. The topology is <em>shaped</em>, not fully predetermined.</li>
+      <li><strong>Human-taste gates</strong> — designated checkpoints where a human's judgment is enforced (approve, reject, revise), not requested. The controllability literature (<a href="https://cdn.openai.com/papers/practices-for-governing-agentic-ai-systems.pdf">OpenAI</a>, <a href="https://link.springer.com/article/10.1007/s11023-026-09783-y">Springer's <em>On Controllability in Agentic AI</em></a>) converges on this pattern.</li>
+      <li><strong>Close condition</strong> — a falsifiable outcome that terminates the loop. "The agent says done" is not a close condition. "Tests pass", "the editor approved", "the customer replied" are.</li>
+    </ol>
+    <p>A loop is structurally more than a workflow (agent-execution slots inside a shaped chain) and less permissive than an agent (structural bounds on what the loop is allowed to touch). It occupies the middle. The <a href="https://maskin.io/docs/closed-loop-workspace/">closed-loop workspace piece</a> develops this argument in more depth.</p>
+    <p>!<a href="agentic-workflow-vs-closed-loop.png">Three patterns compared: workflow as a linear chain of predetermined steps, agent as open-ended exploration with tool arrows, and closed loop as a shaped container with a typed entry event, first-class objects, an agent-execution slot, a human taste gate, and a falsifiable close condition</a></p>
+    <h2>The three patterns, side by side</h2>
+    <table>
+      <thead><tr><th></th><th><strong>Workflow</strong></th><th><strong>Agent</strong></th><th><strong>Closed loop</strong></th></tr></thead>
+      <tbody>
+        <tr><td><strong>Entry</strong></td><td>Schedule or manual trigger</td><td>Prompt / chat message</td><td>Typed event on a workspace object</td></tr>
+        <tr><td><strong>Execution mode</strong></td><td>Predetermined chain of steps</td><td>Open-ended, agent-directed</td><td>Shaped container; agent-directed inside slots</td></tr>
+        <tr><td><strong>State</strong></td><td>Task queue, run log</td><td>Conversation history + scratch</td><td>First-class typed objects (bet, insight, task)</td></tr>
+        <tr><td><strong>Review discipline</strong></td><td>Optional monitoring</td><td>Trust the model</td><td>Enforced human-taste gates at named points</td></tr>
+        <tr><td><strong>Close condition</strong></td><td>"The chain finished"</td><td>"The agent stopped"</td><td>Falsifiable outcome tied to the typed object</td></tr>
+        <tr><td><strong>Fails on</strong></td><td>Any variation the chain didn't anticipate</td><td>Long horizons, ambiguity, cost drift</td><td>The trigger firing on the wrong event</td></tr>
+        <tr><td><strong>When it fits</strong></td><td>Path is stable, output is deterministic</td><td>Environment shifts faster than any chain</td><td>Outcome is defined; path to it isn't</td></tr>
+      </tbody>
+    </table>
+    <p>The difference between a workflow and a loop is not "a workflow with an LLM step in it". A workflow with an LLM step is still a workflow: the LLM fills a blank in a chain someone else designed. A loop lets the agent decide <em>how</em> to close the condition, and lets a human review the closing, but constrains <em>what</em> the loop is allowed to touch.</p>
+    <h2>What a loop looks like in production</h2>
+    <p>A concrete example from Maskin's own dogfooding — the SEO content loop that produced this article.</p>
+    <ul>
+      <li><strong>Entry condition:</strong> a triage agent creates a <code>content</code> object at status <code>proposed</code> and moves it to <code>in_progress</code> after human approval.</li>
+      <li><strong>Typed objects:</strong> the loop reads a knowledge brief (typed <code>insight</code>), writes a <code>content</code> object (with <code>primary_keyword</code>, <code>content_type</code>, and body fields), and links both into the loop via <code>in_loop</code> edges.</li>
+      <li><strong>Agent-execution slot:</strong> the SEO Writer agent picks the structure, runs SERP analysis via an Ubersuggest MCP, drafts the piece against the quality bar, and links citations. The agent chooses the shape; the agent does not choose the topic.</li>
+      <li><strong>Human-taste gate:</strong> the SEO Editor agent reviews the draft. If it clears, the Editor moves the object to <code>published</code>; if it doesn't, it returns with numbered fixes. A human owns the final promotion; the Editor gate is the enforced checkpoint.</li>
+      <li><strong>Close condition:</strong> the piece reaches <code>published</code> status with the primary keyword, title, and metadata locked. Not "the writer said it was done." A promoted <code>content</code> object with a specific measurable state.</li>
+    </ul>
+    <p>Run that loop against a different trigger and the same shape produces a discovery loop, a competitor-intel loop, a signal-triage loop. The primitives don't change; the trigger and typed objects do. That is what "<a href="https://addyosmani.com/blog/loop-engineering/">loop engineering</a>" (Addy Osmani, Jun 2026) points at when it says the job shifted from <em>prompting the agent</em> to <em>designing the system that prompts the agent</em> — but productized as first-class objects a team configures, not code a developer writes.</p>
+    <blockquote><p><strong>Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.</strong></p></blockquote>
+    <p>The important word is <em>across</em>. A workflow inside a ticket tracker terminates when a ticket closes. A loop terminates when the typed outcome it exists to produce — the shipped bet, the approved content, the qualified pipeline — reaches a state a human can inspect, regardless of which tool the underlying work happened in.</p>
+    <h2>When workflow is fine, when agent is fine, when a loop is the answer</h2>
+    <p>The honest cases for each — not a strawman.</p>
+    <p><strong>Pick a workflow</strong> when the path is stable and the desired output is deterministic. Invoice processing, expense categorisation, a well-defined ETL job. Adding an LLM to one node doesn't change the answer; a chain with a slot is still a chain. Zapier, n8n, ServiceNow flows, GitHub Actions all shine here. Do not upgrade to a loop just because the marketing says so.</p>
+    <p><strong>Pick an agent</strong> when the environment shifts faster than any chain can be maintained and the cost of unstructured exploration is worth paying. Deep research, code debugging in an unfamiliar repo, browsing tasks with unknown depth. The <a href="https://www.anthropic.com/institute/recursive-self-improvement">Anthropic recursive-self-improvement result</a> — Claude agents recovering ~97% of a human-researcher performance gap over 800 hours — landed in this regime, with humans holding only the goal and the scoring rubric. Bounded, but open.</p>
+    <p><strong>Pick a loop</strong> when the outcome is well-defined but the path to it isn't, <em>and</em> the work has to close on something a human can inspect. SEO content production. Sales-cycle qualification. Product-management triage from raw insight to shipped bet. Compliance work that requires audit trails. Anywhere the answer to "is this done?" needs to be a state on a typed object, not "the agent stopped talking." This is where <a href="https://maskin.io/docs/what-is-loop-engineering/">loop engineering as a discipline</a> earns its keep.</p>
+    <p>The test is not "how autonomous do I want the AI to be?" The test is: <em>does the work I'm shaping have a falsifiable outcome, and does that outcome live on a typed object across tools?</em> If yes, you're building a loop whether you call it that or not. Naming it makes it debuggable.</p>
+    <h2>FAQ</h2>
+    <h3>What is an agentic workflow?</h3>
+    <p>An agentic workflow is a predetermined chain of steps with an LLM slotted into one or more of them. The engineer writes the topology; the model fills in the blanks. Common shapes are routing (an LLM picks the next branch), tool use (an LLM calls a defined function), and reflection (an LLM critiques its own draft). The path is fixed at design time; the LLM smooths over predictable variation inside it.</p>
+    <h3>What is agentic workflow in AI?</h3>
+    <p>In AI, an agentic workflow is a system where an LLM directs the routing between steps as well as the work inside them, but the overall chain is still designed by an engineer. It sits between a pure workflow (LLM optional, path predetermined) and an agent (LLM decides its own next step). Anthropic's <em>Building Effective Agents</em> is the canonical framing most vendors adopt.</p>
+    <h3>What makes a workflow agentic?</h3>
+    <p>An LLM-directed decision at more than one step. A workflow with a single LLM node is still a workflow — the LLM fills a predetermined blank. An agentic workflow, as most vendors define it, hands the LLM the routing between steps as well as the work inside them. The wider frame is the closed loop: a shaped container with agent-execution slots and enforced human gates, closing on a typed outcome.</p>
+    <h3>Agentic workflow vs agent — which should I pick?</h3>
+    <p>Agentic workflow when the path is stable and the output is deterministic, and you want the LLM to smooth over predictable variation. Agent when the environment shifts too fast for any chain to hold, and unstructured exploration is worth paying for. If you need both — a defined outcome <em>and</em> a flexible path to reach it — you want a closed loop, not either endpoint.</p>
+    <h3>What is a closed loop in AI?</h3>
+    <p>A cycle with an entry condition, typed objects the work operates on, agent-execution inside the shape, human-taste gates at named checkpoints, and a close condition that terminates on a falsifiable outcome. Structurally, a workflow-shaped container with agent-driven internals.</p>
+    <h3>Is agentic AI the same as agentic workflow?</h3>
+    <p>No. Agentic AI is the wider capability — systems that plan, act, and revise using tools. An agentic workflow is one product-shape that capability can take (an LLM-directed chain). A closed loop is a different product-shape of the same capability. They're not synonyms — the workflow is the design surface, the AI is what runs inside it.</p>
+    <h3>How can agentic workflows be triggered?</h3>
+    <p>Three common patterns: (1) a schedule (cron), (2) a user prompt or chat message, (3) a typed event on a workspace object (a new insight lands, a bet moves to <code>shaped</code>, a customer reply hits the inbox). The third is what turns an agentic workflow into a closed loop — the trigger is a state change on data the team already owns, not a message a human had to remember to send.</p>
+    <h3>Agentic workflow vs MCP — how do they fit together?</h3>
+    <p>MCP is a substrate the workflow runs on, not a competitor. An agentic workflow (or a closed loop) uses MCP to give the agent tools with typed inputs and outputs; agent skills package prompt-time behaviour; cursor rules constrain what a coding agent may do inside an IDE. See <a href="https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">agent skills vs MCP vs cursor rules vs workflows</a> for the layer map.</p>
+    <h3>Is a loop the same as a directed cyclic graph?</h3>
+    <p>Structurally, yes — a loop is a directed graph with cycles (retry, revise, wait for human). The frame in this piece is at a higher level: the <a href="https://ttoss.dev/blog/2026/08/08/you-probably-dont-need-a-graph">three-layer decomposition of harness, loop, graph</a> matters — a loop is the feedback cycle a team designs, the graph is the topology it compiles to. Most teams get more out of investing in the harness and the loop shape than in explicit graph engineering.</p>
+    <hr>
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="https://maskin.io/docs/what-is-loop-engineering/">
+          <div class="doc-card__title">What is loop engineering in AI</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="https://maskin.io/docs/closed-loop-workspace/">
+          <div class="doc-card__title">The closed-loop workspace: what tier 4 of AI-native work actually is</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="https://maskin.io/docs/ambient-agent-workspace/">
+          <div class="doc-card__title">Ambient agent workspace: the workspace-graph is the fifth pattern</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">
+          <div class="doc-card__title">Agent skills vs MCP vs cursor rules vs workflows</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Run the loop, not just the workflow</h2>
+      <p>Maskin is the MCP-native workspace where a workflow-shaped container carries typed objects, human-taste gates, and a close condition — with agent execution inside the shape. Open source under Apache 2.0. Self-host free, bring your own model.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

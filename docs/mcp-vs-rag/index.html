@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP vs RAG: the wire and the retrieval layer are not rivals</title>
+<meta name="description" content="MCP is the wire an agent reaches tools over; RAG retrieves fragments at query time. Neither carries state across runs — here's how they compose, and what does.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/mcp-vs-rag/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/mcp-vs-rag/">
+<meta property="og:title" content="MCP vs RAG: the wire and the retrieval layer are not rivals">
+<meta property="og:description" content="MCP and RAG are not rivals — one is a wire, one is a retrieval mechanism. For agent memory the real question is what carries state across runs.">
+<meta property="og:image" content="https://maskin.io/og-image-mcp-vs-rag.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="MCP vs RAG: the wire and the retrieval layer are not rivals">
+<meta name="twitter:description" content="MCP and RAG are not rivals — one is a wire, one is a retrieval mechanism. For agent memory the real question is what carries state across runs.">
+<meta name="twitter:image" content="https://maskin.io/og-image-mcp-vs-rag.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/mcp-vs-rag/#post",
+      "headline": "MCP vs RAG: the wire and the retrieval layer are not rivals",
+      "description": "MCP is the wire an agent reaches tools over; RAG retrieves fragments at query time. Neither carries state across runs — here's how they compose, and what does.",
+      "datePublished": "2026-09-25T00:00:00Z",
+      "dateModified": "2026-09-25T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "image": "https://maskin.io/og-image-mcp-vs-rag.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/mcp-vs-rag/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "MCP"
+        },
+        {
+          "@type": "Thing",
+          "name": "RAG"
+        },
+        {
+          "@type": "Thing",
+          "name": "agent memory"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "MCP vs RAG: the wire and the retrieval layer are not rivals",
+          "item": "https://maskin.io/docs/mcp-vs-rag/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is MCP just another RAG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. MCP is a protocol — a wire an agent uses to reach tools and data. RAG is a retrieval mechanism that assembles an answer from fragments at query time. They sit at different layers: one carries a call, the other finds content. You can expose RAG behind MCP, which is exactly why they get confused."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can MCP replace RAG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, not as a mechanism. MCP has no retrieval of its own — it transports calls. What MCP can replace is the integration layer for a retrieval pipeline: you can expose a RAG service as an MCP server so agents reach it over the same wire as everything else. The retrieval still happens; only the access path changed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does MCP make RAG obsolete?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. They are not substitutable. MCP moves a call; RAG decides what content is relevant. A wire without a retrieval mechanism still needs something to answer \"what is relevant,\" and a retrieval mechanism without a wire still needs a way for other systems to be reached."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do MCP and RAG work together?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three ways, and they stack. Put RAG behind MCP by exposing your retrieval pipeline as an MCP server. Put MCP on top of RAG when the agent uses the wire to reach a vector store or search API directly. Or run both under a shared state layer — a typed store that holds what was decided — which is the only arrangement where the next run benefits from the last one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should you use MCP vs RAG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose by the verb. If the agent has to do something in a system it does not own — send, update, create, approve — use MCP. If it has to find something in a large, shifting corpus, use RAG. If both are true, which they usually are, use both and put a state layer under them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between an MCP server and RAG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An MCP server is a thing that exposes tools and data over the Model Context Protocol; a RAG system is a mechanism that retrieves relevant fragments to ground an answer. An MCP server can host a RAG system — the server is the interface, the retrieval is the work behind it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "MCP vs RAG vs fine-tuning — what's the difference?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fine-tuning bakes knowledge into the model weights; it is the internal memory tier. MCP and RAG are external: MCP is the access wire, RAG is the retrieval mechanism. They solve different problems at different layers, which is why \"which one\" is the wrong question for all three."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What carries agent memory — MCP, RAG, or something else?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Neither MCP nor RAG, on its own. Both are stateless by design. Memory is a property of the substrate the agent runs on: a typed store that holds decisions, corrections, and artifacts across runs. MCP is how agents reach it; RAG is how they can retrieve from it; the store is what persists."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="is-active" href="/docs/mcp-vs-rag/" aria-current="page">MCP vs RAG</a></li></ul></nav></aside>    <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / MCP vs RAG</p>
+    <p class="eyebrow">Article &middot; Comparison</p>
+    <h1>MCP vs RAG: the wire and the retrieval layer are not rivals</h1>
+    <p class="lead">MCP and RAG are not competitors. <strong>MCP is the wire</strong> — a protocol an agent uses to reach tools, data, and other systems. <strong>RAG is a retrieval mechanism</strong> — a way of finding relevant fragments at query time. One is how an agent <em>calls</em> something; the other is how it <em>finds</em> something. For agent memory the question that actually decides your architecture is neither: it is what carries state across runs.</p>
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul>
+          <li><strong>MCP is a wire, RAG is a mechanism; they sit at different layers.</strong> A head-to-head comparison produces more heat than light, which is why the top of this SERP is an architecture-choice question, not a horse race.</li>
+          <li><strong>Neither one carries state across runs.</strong> MCP transports a call; RAG assembles an answer fresh each time. Both are stateless by design, so neither is "agent memory" on its own.</li>
+          <li><strong>Retrieval is close to solved; synthesis is the frontier.</strong> Retrieval hits ~97% recall@5 on LongMemEval, yet 54 of 65 wrong answers already had the right evidence in the top five.</li>
+          <li><strong>They compose three ways</strong> — RAG behind MCP, MCP on top of RAG, and both under a state layer. The demand data asks "how do MCP and RAG work together" far more than "which wins."</li>
+          <li><strong>What persists is the substrate, not the protocol.</strong> A typed workspace graph is a fourth place agent memory can live, alongside the context window, the vector store, and the model weights.</li>
+          <li><strong>A warning on vocabulary:</strong> when teams say "agent memory" they usually mean a vector database. A typed workspace graph is a control plane agents read and write — not a retrieval index.</li>
+        </ul>
+      </div>
+    </div>
+    <h2>The short answer: "versus" is the wrong frame</h2>
+    <p>The head of this SERP is genuinely a two-way question. A thread on r/AI_Agents frames it as <em>what's the right fit for my use case</em> — not which is better. Google's autocomplete makes the same move: this query space carries <code>how do mcp and rag work together</code>, <code>rag through mcp</code>, <code>mcp on top of rag</code>, <code>is mcp just rag</code>, and <code>what is the relationship between mcp and rag</code>.</p>
+    <p>People are not asking which one wins. They are asking how the two relate, and whether they need both. That is a structural question, and it has a structural answer.</p>
+    <h2>What MCP actually is</h2>
+    <p>The Model Context Protocol is a <strong>wire</strong>: a standard way for an agent to reach a tool, a data source, or a system it does not own. It is not knowledge and it is not a store. It carries a call out and a typed result back.</p>
+    <p>The semantics are settled, and worth stating plainly because a lot of copy gets them backwards. An <strong>MCP server</strong> is the provider — the thing that exposes tools and data. An <strong>MCP client</strong> is the host application the model runs in, which dials into servers. When a workspace is called "MCP-native," it means the workspace exposes its own object model as an MCP server, so agents can operate the real surface of the work rather than a single bolted-on feature.</p>
+    <p>The protocol is moving fast. The <strong>2026-07-28 revision</strong> and the August 22 roadmap together shipped the biggest overhaul since launch: stateless servers, Multi Round-Trip Requests (SEP-2322) for mid-call elicitation, <code>server/discover</code> capability negotiation, and cacheable lists. The practical effect is that a wire built for one agent in one chat window is becoming infrastructure for many agents making many calls.</p>
+    <p>And the wire is crowded. An August 27–28 probe of every remote server in the official MCP Registry found <strong>25,289 servers, 15,329 remote URLs, and 8,235 that were alive</strong>, returning 140,284 tools between them (median 7 per server, max 1,076). Roughly a quarter were gated and a fifth were broken, with about 30% of the live surface concentrated in two operators. The market is real — and the unclaimed problem in it is curation quality, not reach.</p>
+    <p>One more property matters for this comparison. <strong>MCP has no opinion about what is worth retrieving.</strong> It is transport. It will faithfully carry a bad call as fast as a good one — and by default an MCP server inherits the privileges of the process that started it, so "which tools can this agent reach" is a permissions decision, not a config detail.</p>
+    <h2>What RAG actually is</h2>
+    <p>Retrieval-augmented generation is a <strong>query-time mechanism</strong>. You embed your sources into vectors, store them, and at question time retrieve the closest fragments, hand them to the model, and let it assemble an answer. The defining trait is that the answer is assembled fresh every time — the same question next week can return a different answer, because the retrieved set changed underneath it.</p>
+    <p>The grown-up version, agentic RAG, lets an agent decide what to retrieve, when to re-query, and how to synthesize, instead of running a fixed top-k lookup. It is an established term: <strong>US 1,900/mo, KD 50</strong>, and its SERP is locked top-to-bottom by DA 77+ enterprise pages and a canonical academic paper. That tells you something about the market even if you never write for the term: <strong>the buyer thinking about this problem thinks in vector-database vocabulary</strong> — Weaviate, Neo4j, Qdrant, LlamaIndex — not in workspace-graph vocabulary.</p>
+    <p>RAG is genuinely good at one thing: open-ended recall over a large, shifting corpus, cheaply. It is stateless by design, and it is the wrong tool for holding a decision.</p>
+    <h2>The layer that actually decides it: what carries state</h2>
+    <p>Put MCP and RAG side by side and the real question appears. Neither one remembers anything.</p>
+    <ul>
+      <li>MCP carries a call. When the call returns, the wire is done.</li>
+      <li>RAG retrieves fragments. When the answer is assembled, the mechanism is done.</li>
+    </ul>
+    <p>Neither keeps a record that run two can read. So if your problem is that a scheduled agent wakes up Monday with no idea what it decided Friday, <strong>choosing between MCP and RAG does not solve it.</strong> You are choosing between two stateless things.</p>
+    <p>The research is unusually clear that retrieval is not the bottleneck. Retrieval has reached roughly <strong>97% recall@5 on LongMemEval</strong> — close to saturated on standard knowledge-base benchmarks. But <strong>54 of 65 wrong AutoMem answers had the correct evidence sitting in the top five.</strong> The evidence was retrieved; it was not synthesized. A separate June 2026 result (MemDelta) shows how much of the published "agent memory" progress is measurement confound: swapping the embedding model alone moves LongMemEval by +6.2 points, model choice swings results by ±45 points, and Mem0 ties a plain verbatim RAG baseline at <strong>50× the write-path cost</strong>.</p>
+    <p>Read those together and the conclusion is structural. The retrieval mechanism is not where your leverage is, and the wire is not where your state is. Something else has to carry the decision, the correction, and the artifact from run to run.</p>
+    <h2>Where each one sits</h2>
+    <table>
+      <thead><tr><th>Dimension</th><th>MCP</th><th>RAG</th></tr></thead>
+      <tbody>
+        <tr><td>What it is</td><td>A wire: the protocol an agent reaches tools and data over</td><td>A mechanism: query-time retrieval of ranked fragments</td></tr>
+        <tr><td>When the work happens</td><td>At call time — agent invokes a tool, gets a typed result</td><td>At query time — embed, retrieve, assemble per request</td></tr>
+        <tr><td>Unit of exchange</td><td>A typed tool call and its response</td><td>A ranked set of fragments</td></tr>
+        <tr><td>State across runs</td><td>None — the wire transports, it does not keep</td><td>None — stateless by design</td></tr>
+        <tr><td>Best at</td><td>Reaching live systems, taking action, governed access</td><td>Open-ended recall over a large, volatile corpus</td></tr>
+        <tr><td>Failure mode</td><td>Tool sprawl, ungoverned access, servers inheriting user privileges</td><td>Retrieval noise, stale or missing fragments, evidence retrieved but unsynthesized</td></tr>
+        <tr><td>Replaces the other?</td><td>No</td><td>No</td></tr>
+      </tbody>
+    </table>
+    <h2>They compose — the three ways they actually stack</h2>
+    <p>The reason "versus" collapses is that the two are complementary by construction. There are three honest ways to put them together, and the demand data shows people searching for all three.</p>
+    <p><strong>1. RAG behind MCP.</strong> Expose your retrieval pipeline as an MCP server. Now any MCP-native agent can call search as a tool, under the same permissions and audit trail as every other call. This is the shape behind queries like <code>rag behind mcp</code> and <code>rag through mcp</code> — the retrieval mechanism becomes one tool on the wire.</p>
+    <p><strong>2. MCP on top of RAG.</strong> An agent uses the wire to reach a vector store, a search API, or a database directly, and decides for itself what to pull. Here MCP is the access layer and RAG's role shrinks to "a tool the agent learned to call."</p>
+    <p><strong>3. Both under a state layer.</strong> The retrieval mechanism finds things and the wire reaches things, but a shared, typed store holds what was decided. This is the only arrangement of the three where run two knows what run one did — and it is the one the "vs" question almost always hides.</p>
+    <h2>How to decide for your team</h2>
+    <p>Run these against your actual problem, in the order that changes the answer.</p>
+    <ol>
+      <li><strong>Is the job an action or a recall?</strong> If the agent has to <em>do</em> something in a system it does not own — send, update, create, approve — you need a wire. That is MCP. If it has to <em>find</em> something in a large corpus, that is RAG.</li>
+      <li><strong>Does the same question need the same answer?</strong> Open-ended exploration forgives a shifting answer set. A decision a human already approved does not.</li>
+      <li><strong>What has to survive the run?</strong> Decisions, corrections, artifacts. If none of the three cross, you have built a stateless pipeline with good retrieval, not memory.</li>
+      <li><strong>Who governs the access?</strong> Every tool an agent can call is a permission. The wire is where that is enforced — and default MCP servers inherit the privileges of the process that started them, which is a security decision, not a config detail.</li>
+      <li><strong>Where does the state live?</strong> If the honest answer is "in a vector store nobody can read," you have optimized the wrong layer.</li>
+    </ol>
+    <h2>The "vs" questions that stack three things</h2>
+    <p>The autocomplete cluster around this query is not just two-way. <code>mcp vs rag vs ai agents</code>, <code>mcp vs rag vs skills</code>, and <code>mcp vs rag vs fine tuning</code> are all live. They resolve the same way every time — by layer.</p>
+    <ul>
+      <li><strong>vs AI agents.</strong> The agent is the <em>actor</em>. MCP and RAG are things the actor uses. Not a comparison: a hierarchy.</li>
+      <li><strong>vs skills.</strong> A skill is packaged judgment — <em>draft a follow-up in our voice</em>, <em>summarize a call against our template</em>. MCP is the wire; skills are what the agent knows how to do once the call connects.</li>
+      <li><strong>vs fine tuning.</strong> Fine-tuning bakes knowledge into the model weights — the "internal" tier of memory. MCP and RAG are both external to the weights. They are not rivals to fine-tuning; they are the other two tiers.</li>
+      <li><strong>vs graph RAG.</strong> Graph RAG builds a graph at retrieval time to improve multi-hop recall. It is still a query-time mechanism — a smarter RAG, not a state layer.</li>
+    </ul>
+    <h2>What actually carries agent memory</h2>
+    <p>If neither the wire nor the retrieval mechanism carries state, what does? In practice, the answer converging across the agent-memory field is a <strong>typed graph</strong>: a store of typed objects connected by typed edges, with provenance on every item. That is the shape khive, Graphiti, and growmos independently landed on this year — typed ontology, typed edges, provenance — and it is the fourth place memory can live, alongside the context window, the vector store, and the model weights.</p>
+    <p>That is the layer Maskin is built around, and it is worth being precise about it, because the vocabulary is where this comparison usually goes wrong. <strong>A typed workspace graph is a control plane agents read and write — not a retrieval index.</strong> The objects are decisions with statuses, corrections attached to the thing they concern, and artifacts the run produced. The retrieval mechanism can read from it. The wire is how agents reach it. Neither is what makes it persist.</p>
+    <p>Persistence has a checklist, and it is short: <strong>decisions</strong> (what was chosen, and why), <strong>corrections</strong> (what a human changed after the fact), and <strong>artifacts</strong> (what the run produced, still addressable). Miss any one and the failure stays silent — the run completes, the output looks fine, and the loss only surfaces weeks later as an agent confidently repeating a settled call.</p>
+    <p>MCP and RAG both matter in that system. MCP is the wire the agents use to reach the graph and the tools around it. RAG is a mechanism they can point at the graph's settled knowledge. But the thing that answers "what does this agent know, and what did it decide" is the typed store underneath both. That is where agent memory actually lives.</p>
+    <h2>FAQ</h2>
+    <h3>Is MCP just another RAG?</h3>
+    <p>No. MCP is a protocol — a wire an agent uses to reach tools and data. RAG is a retrieval mechanism that assembles an answer from fragments at query time. They sit at different layers: one carries a call, the other finds content. You can expose RAG behind MCP, which is exactly why they get confused.</p>
+    <h3>Can MCP replace RAG?</h3>
+    <p>No, not as a mechanism. MCP has no retrieval of its own — it transports calls. What MCP can replace is the <em>integration</em> layer for a retrieval pipeline: you can expose a RAG service as an MCP server so agents reach it over the same wire as everything else. The retrieval still happens; only the access path changed.</p>
+    <h3>Does MCP make RAG obsolete?</h3>
+    <p>No. They are not substitutable. MCP moves a call; RAG decides what content is relevant. A wire without a retrieval mechanism still needs something to answer "what is relevant," and a retrieval mechanism without a wire still needs a way for other systems to be reached.</p>
+    <h3>How do MCP and RAG work together?</h3>
+    <p>Three ways, and they stack. Put RAG <em>behind</em> MCP by exposing your retrieval pipeline as an MCP server. Put MCP <em>on top of</em> RAG when the agent uses the wire to reach a vector store or search API directly. Or run both <em>under</em> a shared state layer — a typed store that holds what was decided — which is the only arrangement where the next run benefits from the last one.</p>
+    <h3>When should you use MCP vs RAG?</h3>
+    <p>Choose by the verb. If the agent has to <em>do</em> something in a system it does not own — send, update, create, approve — use MCP. If it has to <em>find</em> something in a large, shifting corpus, use RAG. If both are true, which they usually are, use both and put a state layer under them.</p>
+    <h3>What is the difference between an MCP server and RAG?</h3>
+    <p>An MCP server is a thing that exposes tools and data over the Model Context Protocol; a RAG system is a mechanism that retrieves relevant fragments to ground an answer. An MCP server can <em>host</em> a RAG system — the server is the interface, the retrieval is the work behind it.</p>
+    <h3>MCP vs RAG vs fine-tuning — what's the difference?</h3>
+    <p>Fine-tuning bakes knowledge into the model weights; it is the internal memory tier. MCP and RAG are external: MCP is the access wire, RAG is the retrieval mechanism. They solve different problems at different layers, which is why "which one" is the wrong question for all three.</p>
+    <h3>What carries agent memory — MCP, RAG, or something else?</h3>
+    <p>Neither MCP nor RAG, on its own. Both are stateless by design. Memory is a property of the substrate the agent runs on: a typed store that holds decisions, corrections, and artifacts across runs. MCP is how agents reach it; RAG is how they can retrieve from it; the store is what persists.</p>
+    <h2>The primitives underneath</h2>
+    <p>A short vocabulary note, because the words collide across vendors.</p>
+    <h3>Loop</h3>
+    <p>A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on <em>done for now</em>. Every listing on the Marketplace is a loop.</p>
+    <p><strong>Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.</strong></p>
+    <h3>Agent</h3>
+    <p>A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an <em>AI teammate</em>: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.</p>
+    <h3>MCP</h3>
+    <p>The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.</p>
+    <h3>Skill</h3>
+    <p>A packaged capability you attach to an agent — <em>draft a follow-up in our voice</em>, <em>summarize a customer call against our discovery template</em>. Skills are the reusable pieces of judgment your team is already building without realising it.</p>
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/llm-wiki-vs-rag/">
+          <div class="doc-card__title">LLM wiki vs RAG — which one your team actually needs</div>
+          <div class="doc-card__desc">the sibling comparison: mechanism vs artifact.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/mcp-native-workspace/">
+          <div class="doc-card__title">MCP-native workspace: a category, not a checkbox</div>
+          <div class="doc-card__desc">what it means for a workspace to expose its whole object model over the wire.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/marketplace/knowledge-wiki/">
+          <div class="doc-card__title">Knowledge wiki — a wiki your agents read before they answer</div>
+          <div class="doc-card__desc">the up-application: the compiled artifact an agent reads at answer time.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">
+          <div class="doc-card__title">Agent skills vs MCP vs cursor rules vs workflows</div>
+          <div class="doc-card__desc">where the wire sits among the other layers.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>The wire, the mechanism, and the substrate</h2>
+      <p>Maskin is the MCP-native workspace where a typed object graph — not a protocol or a retrieval index — carries decisions, corrections, and artifacts across runs. Open source under Apache 2.0. Self-host free, bring your own model.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge wiki vs vector database: a compiled artifact, not a storage engine</title>
+<meta name="description" content="A vector database stores embeddings; a knowledge wiki is a compiled, auditable artifact. They are a stack, not rivals — here is which layer you actually need.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/knowledge-wiki-vs-vector-database/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/knowledge-wiki-vs-vector-database/">
+<meta property="og:title" content="Knowledge wiki vs vector database: an artifact is not a storage engine">
+<meta property="og:description" content="A vector database is a storage engine for embeddings; a knowledge wiki is a compiled, human-auditable artifact. They compose — here is which layer your stack is missing.">
+<meta property="og:image" content="https://maskin.io/og-image-knowledge-wiki-vs-vector-database.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Knowledge wiki vs vector database: an artifact is not a storage engine">
+<meta name="twitter:description" content="A vector database is a storage engine for embeddings; a knowledge wiki is a compiled, human-auditable artifact. They compose — here is which layer your stack is missing.">
+<meta name="twitter:image" content="https://maskin.io/og-image-knowledge-wiki-vs-vector-database.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/knowledge-wiki-vs-vector-database/#post",
+      "headline": "Knowledge wiki vs vector database: a compiled artifact is not a storage engine",
+      "description": "A vector database stores embeddings; a knowledge wiki is a compiled, auditable artifact. They are a stack, not rivals — here is which layer you actually need.",
+      "datePublished": "2026-09-25T00:00:00Z",
+      "dateModified": "2026-09-25T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "image": "https://maskin.io/og-image-knowledge-wiki-vs-vector-database.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/knowledge-wiki-vs-vector-database/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "knowledge wiki"
+        },
+        {
+          "@type": "Thing",
+          "name": "vector database"
+        },
+        {
+          "@type": "Thing",
+          "name": "retrieval"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Knowledge wiki vs vector database: a compiled artifact is not a storage engine",
+          "item": "https://maskin.io/docs/knowledge-wiki-vs-vector-database/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is a vector database the same as a knowledge wiki?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A vector database stores embeddings and returns nearest-neighbour matches; it is a storage engine, not a readable artifact. A knowledge wiki is a set of compiled, interlinked pages a human can read and audit, with each claim linked to the object it came from. You can store wiki pages in a vector database, but the database is the index, not the knowledge."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you store wiki pages in a vector database?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and it is a common pattern. Split each page into sections, embed each section, and store the vectors with metadata pointing back to the page and heading. Queries then return the most relevant sections of your wiki, and the pointer lets an agent open the full page for context it can cite."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is stored in a vector database?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vectors, plus metadata, plus usually a pointer to the original text. The source is chunked, each chunk is turned into an embedding by a model, and the vector is written to an approximate-nearest-neighbour index (HNSW and IVF are two common structures) with metadata such as source ID, page ID, and timestamp. The original text lives elsewhere; the database indexes it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a vector database relational?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It has no SQL-style joins, and its query primitive is similarity, not selection. It is also not a document store in the Elasticsearch sense, though some engines add hybrid lexical-plus-vector search. It is a purpose-built index for approximate nearest-neighbour search with metadata filtering."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a knowledge wiki replace a vector database?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A wiki can replace the corpus you retrieve from — compiled, citeable pages beat raw chunks as a source — but you still need something to retrieve from it, and a vector database is one way to do that. What the wiki replaces is the pile of unprocessed documents, not the index on top of them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vector database vs knowledge graph — what is the difference?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A vector database answers \"find content like this\" using similarity over embeddings. A knowledge graph answers \"how is this connected to that\" using traversal over typed nodes and edges. Typed structure is not a similarity result: \"what depends on X, and who owns it\" is a traversal query. The graph is the better fit for agent memory that has to reason about relationships."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do you need a vector database at all?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For semantic search over a corpus too large or too varied to pre-write answers for. When your team asks the same settled questions, a compiled wiki answers them more stably and more cheaply to audit. When the corpus is large and moving, a similarity index is what lets an agent find the relevant fragment without a human having filed it first. Most teams end up with both."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="is-active" href="/docs/knowledge-wiki-vs-vector-database/" aria-current="page">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li></ul></nav></aside>    <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Knowledge wiki vs vector database</p>
+    <p class="eyebrow">Article &middot; Comparison</p>
+    <h1>Knowledge wiki vs vector database: a compiled artifact is not a storage engine</h1>
+    <p class="lead">A vector database stores embeddings and returns nearest-neighbour matches; a knowledge wiki is a set of compiled, human-auditable pages. They are not competitors. A vector database is one component inside a retrieval pipeline — a storage engine — while the wiki is the artifact you might store. You can put wiki pages <strong>into</strong> a vector database and retrieve from them; you cannot retire one with the other.</p>
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul>
+          <li><strong>A vector database is storage for embeddings</strong> — vectors plus metadata, chunked and indexed for similarity search. It is a component, not an architecture.</li>
+          <li><strong>A knowledge wiki is a compiled artifact</strong> — interlinked pages a human can read and audit, each citing the object its claim came from.</li>
+          <li><strong>They compose rather than compete.</strong> The wiki is a clean source; the vector database is one way to index it. The direction runs one way: pages go into the database, not the reverse.</li>
+          <li><strong>Most "vs" questions here are really asking which layer is missing</strong> from your stack — a place to store vectors, or a stable artifact worth retrieving from.</li>
+          <li><strong>On the standard agent-memory benchmarks, retrieval is close to solved</strong> (~97% recall@5 on LongMemEval); the unsolved part is synthesis over what was retrieved.</li>
+        </ul>
+      </div>
+    </div>
+    <h2>The short answer: an artifact and a component are different kinds of thing</h2>
+    <p>A vector database and a knowledge wiki sit at different layers, which is why a head-to-head "which wins" framing produces heat rather than an answer. The cleanest cut is <strong>storage engine versus compiled artifact</strong>. A vector database is infrastructure: it holds embeddings and answers a similarity query. A knowledge wiki is content: a set of pages written once, linked, and read many times by humans and agents. Infrastructure holds content. It does not replace it.</p>
+    <p>If your actual question is whether a compiled wiki beats a query-time retrieval architecture, that comparison lives one page over — <a href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a> covers the mechanism-versus-artifact decision in full. This page answers the narrower question: what a vector database is on its own, and how it relates to a wiki once you stop treating the two as rivals.</p>
+    <h2>What a vector database actually is</h2>
+    <p>A vector database is a store built for one job: keep embeddings and find the vectors nearest a query vector, fast. An embedding is a fixed-length numeric representation of a piece of text — a list of floats, not the text itself. "Nearest" is measured by distance (cosine, dot product, Euclidean), and the lookup is approximate, because exact nearest-neighbour search over millions of vectors is too slow to serve. That approximation is the whole point of a specialised engine.</p>
+    <h3>What actually gets stored</h3>
+    <p>Not documents. A vector database stores three things together: the vector, the metadata attached to it, and (usually) a pointer back to the original chunk of text.</p>
+    <ol>
+      <li>Your source is split into chunks — a paragraph, or a page section.</li>
+      <li>Each chunk is passed through an embedding model, which returns a vector.</li>
+      <li>The vector is written into an index (HNSW and IVF are two common structures) alongside metadata: source ID, page ID, section heading, timestamp.</li>
+      <li>At query time your question is embedded the same way, and the index returns the closest vectors — and, through the metadata, the chunks they point at.</li>
+    </ol>
+    <p>You cannot read a vector. You can only search it. The original text has to live somewhere else, which is the first reason the wiki and the database are not the same thing: the database indexes the artifact, it does not become it.</p>
+    <h3>It is neither relational nor a document store</h3>
+    <p>People reach for the nearest familiar category and miss. A vector database is not relational — it has no joins in the SQL sense, and one of the most-searched questions around it is literally "is a vector database relational?" The answer is no: its query primitive is similarity, not selection. Nor is it a document store in the Elasticsearch sense, though some engines blur the line by supporting hybrid lexical-plus-vector search. It is a purpose-built index for approximate nearest-neighbour search, with metadata bolted on for filtering. Useful, narrow, and one layer down from anything a human reads.</p>
+    <h2>What a knowledge wiki actually is</h2>
+    <p>A knowledge wiki is a set of interlinked pages an LLM compiles from your own material, that other agents read before they answer. Andrej Karpathy published the pattern as a public gist in April 2026, framing it as the alternative to per-agent memory files and to bolting retrieval onto raw documents. Three properties matter for this comparison:</p>
+    <ul>
+      <li><strong>It is compiled ahead of time.</strong> Pages exist before the question is asked, so the same question tends to return the same answer. A compiled artifact is checkable; a fresh retrieval is not.</li>
+      <li><strong>It is human-auditable.</strong> A person can open a page and read it. You cannot open a vector and read it.</li>
+      <li><strong>It cites its sources.</strong> Each page links back to the object the claim came from, so a reader walks back to the source instead of trusting a summary.</li>
+    </ul>
+    <p>That is the artifact half of the pair. The failure mode is not the compile step; it is upkeep. A wiki that only gets written when someone remembers to write it decays into a folder of half-true pages inside a quarter. The <a href="/marketplace/knowledge-wiki/">knowledge-wiki loop</a> is the working shape of keeping one alive.</p>
+    <h2>Why "versus" collapses: you put wiki pages into a vector database</h2>
+    <p>Here is the move that ends the comparison. A wiki is a source. A vector database is an index. To search a wiki by meaning rather than by title, you embed its pages and store those vectors in a database — which is exactly what people do. The wiki does not compete with the database; it is one of the best things you can put in it.</p>
+    <p><strong>Can you store wiki pages in a vector database? Yes.</strong> Split each page into sections, embed each section, and write the vectors with metadata that points back to the page and heading. A query then returns the most relevant <em>sections of your wiki</em>, and because you kept the pointer, the agent can open the page and read the full, linkable context around the retrieved fragment. You have used the database as a lookup mechanism over a curated artifact. Nothing was replaced.</p>
+    <p>That is the composition, and it is why the honest framing is layered rather than oppositional: the wiki is the curated core, the vector database is one index over it, and a retrieval pipeline serves whatever volatile material a wiki deliberately leaves out.</p>
+    <h2>The mistake this comparison exposes</h2>
+    <p>Treat the vector database as "the knowledge layer" and you inherit a solved problem as if it were the whole problem. The 2026 benchmark picture is blunt about where the difficulty actually sits. On LongMemEval, first-stage retrieval is close to saturated — recall@5 around <strong>97%</strong>, while end-to-end accuracy lands near <strong>87%</strong>. Of the 65 wrong answers, <strong>54 had the correct evidence sitting in the top-5 retrieval</strong>; only 11 were genuine retrieval misses (AutoMem's 2026 comparison, over the LongMemEval full slice). The evidence was found. It was not used well.</p>
+    <p>The same split shows up in evaluation. MemDelta (June 2026) found that swapping the embedding model alone moves LongMemEval by <strong>+6.2 points</strong> — enough to flip which system "wins" — while the model family doing the answering swings results by up to <strong>45 points</strong>, and Mem0 tied plain verbatim RAG at <strong>50× the write-path cost</strong>. A benchmark whose own answer key is 6.4% wrong (the Penfield Labs LoCoMo audit) cannot separate an 88% system from a 94% one.</p>
+    <p>Read together, the message is that a vector database is a component whose behaviour depends heavily on the model around it, and that adding a better retriever will not move a system that is failing at synthesis. The artifact layer — a clean, well-structured page an agent can reason over — is where the remaining gains are. That is the wiki's job, and it is a job the database cannot do.</p>
+    <h2>Vector database vs knowledge graph: the other neighbour worth not confusing</h2>
+    <p>One more distinction, because the vocabulary overlaps and people blur it. A vector database stores embeddings and answers similarity queries. A knowledge graph stores typed nodes and typed edges and answers traversal queries — "what depends on X, and who owns it." A knowledge wiki is a compiled artifact a person reads. Three different things.</p>
+    <p>The shipping-code consensus this year has moved toward the graph for agent memory: khive, Graphiti, and growmos, three separate projects, converged within months on typed ontologies, typed edges, and provenance on every item — and all three explicitly position typed structure against raw similarity. Their shared claim is that "what depends on X" is structure, not a similarity result. Worth separating one more step: a typed <em>workspace graph</em> where agents write and read typed objects is a control plane, not a retrieval index — a distinction that matters because the AI-search vocabulary has trained buyers to hear "vector database" whenever anyone says "knowledge graph." When Maskin says the workspace graph is where persistence lives, it does not mean an index you query. It means the substrate agents read and write.</p>
+    <h2>How to decide which layer you actually need</h2>
+    <p>Stop asking which wins. Ask which layer is missing.</p>
+    <table>
+      <thead><tr><th>Layer</th><th>What it answers</th><th>Its failure mode</th></tr></thead>
+      <tbody>
+        <tr><td>Vector database</td><td>"Find text like this" — similarity over embeddings</td><td>Retrieval noise; the right chunk was never the problem</td></tr>
+        <tr><td>Knowledge graph</td><td>"How is X connected to Y" — traversal over typed edges</td><td>Ontology drift; expensive to keep typed and current</td></tr>
+        <tr><td>Knowledge wiki</td><td>"What do we know, stated once" — a compiled, citeable page</td><td>Staleness and orphaned pages; upkeep nobody owns</td></tr>
+      </tbody>
+    </table>
+    <p>Run four questions:</p>
+    <ol>
+      <li><strong>Can a human read the answer where it lives?</strong> If it must be auditable, you need an artifact — a vector is not reviewable.</li>
+      <li><strong>Does the same question come back?</strong> Repeated questions favour a compiled page; one-off exploration favours an index.</li>
+      <li><strong>Do you need to trace a claim to a source?</strong> If yes, the wiki's citation structure is the feature, and it survives being indexed into a database.</li>
+      <li><strong>Who keeps it current next quarter?</strong> If the answer is "nobody," no storage choice will save it.</li>
+    </ol>
+    <p>Most teams that adopt a wiki still run a vector database underneath it — for search over the pages, and for the volatile material the wiki leaves out. The two are a stack, not a choice.</p>
+    <h2>Making the wiki a maintained artifact, not a folder</h2>
+    <p>The database is the easy half. Standing one up is an afternoon. Keeping a compiled artifact <em>true</em> is the hard half, and it is an ownership problem, not a storage problem. Writing to the wiki has to be a byproduct of work that already closes, and reading it a byproduct of work that already starts, or it decays regardless of how good the index on top is. That is the shape of the <a href="/marketplace/knowledge-wiki/">knowledge-wiki loop</a>: a closed work item fires it, agents write the verdict and link the artifact, a human gates the taste-sensitive summaries, and it closes when a new hire or a new agent can read the page and stop needing to ask. For how the artifact relates to the volatile store beside it, see <a href="/docs/learn/agent-memory-across-sessions/">agent memory across sessions</a>, where the same vector-store-is-not-memory distinction is worked through from the persistence side.</p>
+    <h2>FAQ</h2>
+    <h3>Is a vector database the same as a knowledge wiki?</h3>
+    <p>No. A vector database stores embeddings and returns nearest-neighbour matches; it is a storage engine, not a readable artifact. A knowledge wiki is a set of compiled, interlinked pages a human can read and audit, with each claim linked to the object it came from. You can store wiki pages in a vector database, but the database is the index, not the knowledge.</p>
+    <h3>Can you store wiki pages in a vector database?</h3>
+    <p>Yes, and it is a common pattern. Split each page into sections, embed each section, and store the vectors with metadata pointing back to the page and heading. Queries then return the most relevant sections of your wiki, and the pointer lets an agent open the full page for context it can cite.</p>
+    <h3>What is stored in a vector database?</h3>
+    <p>Vectors, plus metadata, plus usually a pointer to the original text. The source is chunked, each chunk is turned into an embedding by a model, and the vector is written to an approximate-nearest-neighbour index (HNSW and IVF are two common structures) with metadata such as source ID, page ID, and timestamp. The original text lives elsewhere; the database indexes it.</p>
+    <h3>Is a vector database relational?</h3>
+    <p>No. It has no SQL-style joins, and its query primitive is similarity, not selection. It is also not a document store in the Elasticsearch sense, though some engines add hybrid lexical-plus-vector search. It is a purpose-built index for approximate nearest-neighbour search with metadata filtering.</p>
+    <h3>Does a knowledge wiki replace a vector database?</h3>
+    <p>No. A wiki can replace the <em>corpus</em> you retrieve from — compiled, citeable pages beat raw chunks as a source — but you still need something to retrieve from it, and a vector database is one way to do that. What the wiki replaces is the pile of unprocessed documents, not the index on top of them.</p>
+    <h3>Vector database vs knowledge graph — what is the difference?</h3>
+    <p>A vector database answers "find content like this" using similarity over embeddings. A knowledge graph answers "how is this connected to that" using traversal over typed nodes and edges. Typed structure is not a similarity result: "what depends on X, and who owns it" is a traversal query. The graph is the better fit for agent memory that has to reason about relationships.</p>
+    <h3>Why do you need a vector database at all?</h3>
+    <p>For semantic search over a corpus too large or too varied to pre-write answers for. When your team asks the same settled questions, a compiled wiki answers them more stably and more cheaply to audit. When the corpus is large and moving, a similarity index is what lets an agent find the relevant fragment without a human having filed it first. Most teams end up with both.</p>
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/llm-wiki-vs-rag/">
+          <div class="doc-card__title">LLM wiki vs RAG</div>
+          <div class="doc-card__desc">the retrieval-architecture comparison this page deliberately does not repeat.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/marketplace/knowledge-wiki/">
+          <div class="doc-card__title">LLM wiki — a wiki your agents read before they answer</div>
+          <div class="doc-card__desc">the loop this comparison belongs to.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/learn/agent-memory-across-sessions/">
+          <div class="doc-card__title">Agent memory across sessions</div>
+          <div class="doc-card__desc">why a vector store is not the same as agent memory.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+          <div class="doc-card__title">What is an agentic workspace?</div>
+          <div class="doc-card__desc">how the loops fit together.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Compile the artifact, then index it</h2>
+      <p>Maskin compiles closed bets into typed pages agents read before they answer — an artifact you can point any retrieval pipeline at. Open source under Apache 2.0. Self-host free, bring your own model.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

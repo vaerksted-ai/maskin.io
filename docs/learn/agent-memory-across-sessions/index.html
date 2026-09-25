@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent memory across sessions: what has to survive between scheduled runs — Maskin</title>
+<meta name="description" content="Agent memory across sessions is the state your agent has to carry from one run to the next, and only three things are worth carrying: decisions (what was chosen, and why), corrections (what a human changed after the fact), and artifacts (what the run actually produced). If your scheduled agent wakes">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/learn/agent-memory-across-sessions/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/learn/agent-memory-across-sessions/">
+<meta property="og:title" content="Agent memory across sessions: what has to survive between scheduled runs — Maskin">
+<meta property="og:description" content="Agent memory across sessions is the state your agent has to carry from one run to the next, and only three things are worth carrying: decisions (what was chosen, and why), corrections (what a human changed after the fact), and artifacts (what the run actually produced). If your scheduled agent wakes">
+<meta property="og:image" content="https://maskin.io/og-image-agent-memory-across-sessions.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Agent memory across sessions: what has to survive between scheduled runs — Maskin">
+<meta name="twitter:description" content="Agent memory across sessions is the state your agent has to carry from one run to the next, and only three things are worth carrying: decisions (what was chosen, and why), corrections (what a human changed after the fact), and artifacts (what the run actually produced). If your scheduled agent wakes">
+<meta name="twitter:image" content="https://maskin.io/og-image-agent-memory-across-sessions.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/learn/agent-memory-across-sessions/#post",
+      "headline": "Agent memory across sessions: what has to survive between scheduled runs",
+      "description": "Agent memory across sessions is the state your agent has to carry from one run to the next, and only three things are worth carrying: decisions (what was chosen, and why), corrections (what a human changed after the fact), and artifacts (what the run actually produced). If your scheduled agent wakes",
+      "datePublished": "2026-09-25T00:00:00Z",
+      "dateModified": "2026-09-25T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "image": "https://maskin.io/og-image-agent-memory-across-sessions.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/learn/agent-memory-across-sessions/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "agent memory"
+        },
+        {
+          "@type": "Thing",
+          "name": "state across sessions"
+        },
+        {
+          "@type": "Thing",
+          "name": "decisions corrections artifacts"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Agent memory across sessions: what has to survive between scheduled runs",
+          "item": "https://maskin.io/docs/learn/agent-memory-across-sessions/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does Claude Code have memory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Claude Code has project memory: files such as CLAUDE.md that carry instructions into a session, and a memory tool for managed agents. That is real, but it is memory of instructions and project context, not memory of runs. On its own it does not persist what your scheduled agent decided, what you corrected, or what it produced last Monday. If your scheduled run starts from scratch, the gap is on the run side, not the project side."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do agents remember across sessions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By writing their state somewhere that outlives the process, then reading it back at the start of the next run. That store has to hold three things to work: the decisions made, the corrections applied, and the artifacts produced. Anything less and the agent re-derives context it already had, which is where drift and repeated mistakes come from."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What state should an agent persist between runs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three categories: decisions (what was chosen and why), corrections (what a human changed afterward), and artifacts (the outputs, still addressable). If you can only start with one, start with corrections, because it is the signal the agent cannot generate for itself and the one most setups discard."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a vector database the same as agent memory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A vector database is one storage format for long-term memory, and a useful one for recall. But it holds text, not structure, and it does not carry the status, the provenance, or the audit trail a decision needs. Treating a vector store as \"the memory\" is the mistake that keeps agents stateless: you can retrieve a paragraph, but you cannot tell whether a choice is settled."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="is-active" href="/docs/learn/agent-memory-across-sessions/" aria-current="page">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li></ul></nav></aside>    <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Agent memory across sessions</p>
+    <p class="eyebrow">Article</p>
+    <h1>Agent memory across sessions: what has to survive between scheduled runs</h1>
+    <p class="lead">Agent memory across sessions is the state your agent has to carry from one run to the next, and only three things are worth carrying: <strong>decisions</strong> (what was chosen, and why), <strong>corrections</strong> (what a human changed after the fact), and <strong>artifacts</strong> (what the run actually produced). If your scheduled agent wakes up Monday with no idea what it did Friday, one of those three fell on the floor.</p>
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul>
+          <li>Scheduled agents forget for a structural reason, not a storage reason. The state they need is split across three kinds of knowledge, and most setups persist none of them.</li>
+          <li>The persistence checklist is decisions, corrections, artifacts. Each one fails silently, and each fails differently.</li>
+          <li>"Agent memory" as a feature (a vector store you bolt on) and persistence as a constraint (state lives in the substrate the agent runs on) are different designs. Only one survives an unattended run.</li>
+          <li>The pattern that carries all three is a shared workspace graph: typed objects an agent reads from and writes to, with loops that hold state between runs.</li>
+        </ul>
+      </div>
+    </div>
+    <h2>Why your scheduled agent forgets by Monday</h2>
+    <p>When an agent that runs on a schedule starts from scratch every morning, three separate things are broken. They usually get diagnosed as one problem, which is why the fix never sticks.</p>
+    <p><strong>It does not get smarter.</strong> This is already visible inside a single conversation: teams on r/AI_Agents report that agents forget the original goal by around step 10 and start hallucinating details from step 2. Across runs the floor is lower, because there is no step 11. Run two has no access to run one at all. RedHat's Jira-triage writeup ("Taming the Agent Beast", August 2026) names the pattern and the fix in one line: <em>stateless agents, stateful orchestration</em>, and <em>agents don't remember each other; the board does</em>. The agents are disposable. The board is not.</p>
+    <p><strong>It has no shared context.</strong> The agent that researched on Friday and the agent that drafts on Monday are strangers. Even when both are good at their job, neither can see the other's work. Every run re-derives context that already exists, and re-derivation is where drift creeps in.</p>
+    <p><strong>It needs your laptop open.</strong> If the agent only runs when you are at the keyboard, the work stops when you sleep. A schedule that pauses overnight is not a schedule. It is a reminder. The answer to this failure mode is an <a href="https://maskin.io/docs/ambient-agent-workspace/">ambient agent workspace</a> that keeps running whether or not a window is open.</p>
+    <p>None of these are model problems. They are harness problems. Memory, tools, permissions, and environment all live in the harness around the model, and the real failures live in the harness too. It is also why memory is a layer of its own, sitting alongside skills, tool bridges, and workflows rather than replacing any of them. For how those layers separate, see <a href="https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">agent skills vs MCP vs cursor rules vs workflows</a>.</p>
+    <h2>The persistence checklist: decisions, corrections, artifacts</h2>
+    <p>If you want your agent to pick up where it left off, there are exactly three categories of state to persist. Name them and you can audit any agent setup against them in about a minute.</p>
+    <h3>1. Decisions</h3>
+    <p>A decision is what the agent chose, plus the reason it chose it. Most setups store the first half and drop the second. Your agent logs "sent the follow-up email," but not "sent it to the tier-2 segment because the tier-1 list was rejected on Tuesday." Next run, it cannot tell a settled choice from an open one, so it either repeats the work or quietly reverses a decision a human already approved. The reason is the part that carries forward. The action is just the receipt.</p>
+    <h3>2. Corrections</h3>
+    <p>A correction is the gap between what the agent produced and what a human accepted. This is the most valuable signal in the system, and it is almost always thrown away. When you edit the agent's draft, retitle its ticket, or reject its outreach, you hand it the one piece of feedback it cannot generate on its own. If that edit lives in your head or in a chat window, the next run makes the same mistake at the same rate. A correction that gets written down turns into a rule. A correction that does not, turns into a recurring bug.</p>
+    <h3>3. Artifacts</h3>
+    <p>An artifact is the output itself, stored where the next run can find and reuse it rather than regenerate it. The research memo, the drafted ticket, the built page. If run one produced something useful and run two cannot address it, you paid twice for the same work. Artifacts double as the audit trail: they are how you answer "what did the agent actually do last week?" without guessing.</p>
+    <p>Miss any one of these and the failure stays silent. The run completes, the output looks fine, and the loss only surfaces weeks later, when the agent confidently repeats a settled decision or a correction you made three times never sticks.</p>
+    <h2>Memory as a feature vs persistence as a constraint</h2>
+    <p>Most "agent memory" products answer the wrong question. They ask <em>where do we store text?</em> and answer with a vector database you bolt onto the agent. The question that matters is <em>what has to survive the run?</em>, and the answer is a property of the substrate, not an add-on.</p>
+    <p>The difference is not academic. Chip Huyen, in the vocabulary her AI Engineer Summit keynote formalized, splits agent memory into three tiers: short-term (the context window), long-term (an external store), and internal (the model weights). Long-term is the tier everyone argues about, and it is where the lock-in lives. Mem0 stores vectors, Letta stores agent state blocks, Zep stores graph nodes and edges, and this year added three more shapes: khive (closed-enum SQLite), Graphiti (Pydantic over Neo4j), and growmos (JSONL). Six incompatible formats. Migrating between any two means re-extracting everything.</p>
+    <p>Simon Willison's complaint points at the same wall from the user's side. In his AI Engineer keynote he described ChatGPT's silent memory feature quietly injecting "Half Moon Bay" into an image prompt, and named the problem as losing control of context. A memory you cannot see is a memory you cannot correct, which is the opposite of what a scheduled agent needs, because correction is item two on the checklist.</p>
+    <p>So the frame swap is this: stop treating memory as a feature you add to a stateless agent, and start treating persistence as a constraint on the <a href="https://maskin.io/docs/what-is-a-stateful-orchestration-substrate/">stateful orchestration substrate</a> the agent runs on. When the state lives in the substrate, there is no format to migrate and no context to lose.</p>
+    <h2>What actually carries persistence: the workspace graph</h2>
+    <p>A substrate that carries all three checklist items has three properties. Maskin's own setup is the working example.</p>
+    <p><strong>State lives in typed objects in a shared graph.</strong> Not a text blob, not an embedding you cannot inspect. A decision is a bet with a status. A correction is a comment attached to the object it concerns. An artifact is the object the run produced. Because the objects are typed and connected, the agent reads structure, not a wall of recalled prose. Independent research this year (khive, Graphiti, growmos) landed on the same three ingredients: a typed ontology, typed edges, and provenance on every item. Provenance is what makes a decision auditable later.</p>
+    <p><strong>Loops carry the state, not the agent.</strong> A loop is the process, and it holds the cursor, which is what makes it a <a href="https://maskin.io/docs/closed-loop-workspace/">closed loop</a> rather than a one-shot job. Maskin's go-to-market loop is a live example: it carries 353 in-flight contacts, each one a record whose status is the cursor (<code>new_lead -&gt; qualified -&gt; ...</code>), with terminal states for converted, not interested, and rejected. The agents that work those records are interchangeable. The record outlives the run. That is the difference between a process that is record-scoped and one that is run-scoped, and it is why the loop keeps working across weeks with no single agent holding the whole picture.</p>
+    <p><strong>It runs without you.</strong> Because the state lives in the shared workspace and not on your laptop, the loop advances while you are away. This is the part chat-shaped tools cannot do: a conversation ends when you close the window, but a loop does not.</p>
+    <p>Persistence is the point. The workspace graph is what makes it possible, and it is the fourth place agent memory can live, alongside the context window, the external vector store, and the model weights. You can see it, edit it, and correct it, which matters, because correction is item two on the checklist.</p>
+    <h2>FAQ</h2>
+    <h3>Does Claude Code have memory?</h3>
+    <p>Claude Code has project memory: files such as CLAUDE.md that carry instructions into a session, and a memory tool for managed agents. That is real, but it is memory of instructions and project context, not memory of runs. On its own it does not persist what your scheduled agent decided, what you corrected, or what it produced last Monday. If your scheduled run starts from scratch, the gap is on the run side, not the project side.</p>
+    <h3>How do agents remember across sessions?</h3>
+    <p>By writing their state somewhere that outlives the process, then reading it back at the start of the next run. That store has to hold three things to work: the decisions made, the corrections applied, and the artifacts produced. Anything less and the agent re-derives context it already had, which is where drift and repeated mistakes come from.</p>
+    <h3>What state should an agent persist between runs?</h3>
+    <p>Three categories: decisions (what was chosen and why), corrections (what a human changed afterward), and artifacts (the outputs, still addressable). If you can only start with one, start with corrections, because it is the signal the agent cannot generate for itself and the one most setups discard.</p>
+    <h3>Is a vector database the same as agent memory?</h3>
+    <p>No. A vector database is one storage format for long-term memory, and a useful one for recall. But it holds text, not structure, and it does not carry the status, the provenance, or the audit trail a decision needs. Treating a vector store as "the memory" is the mistake that keeps agents stateless: you can retrieve a paragraph, but you cannot tell whether a choice is settled.</p>
+    <p>Persistence is not a feature you buy and bolt on at the end. It is a property of where the agent runs, and it is the difference between an agent that improves every week and one that starts over every Monday.</p>
+    <div class="post-cta">
+      <h2>Persistence is where the agent runs</h2>
+      <p>Maskin carries decisions, corrections, and artifacts on a typed object graph every run reads and writes — so Monday starts where Friday stopped. Open source under Apache 2.0. Self-host free, bring your own model.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

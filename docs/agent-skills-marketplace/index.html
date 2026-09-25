@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent skills marketplace: how to evaluate one</title>
+<meta name="description" content="An agent skills marketplace is not one thing. Learn the three shapes, the six checks that separate a real marketplace from a directory, and where skills actually run.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/agent-skills-marketplace/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/agent-skills-marketplace/">
+<meta property="og:title" content="Agent skills marketplace: how to evaluate one">
+<meta property="og:description" content="An agent skills marketplace is not one thing. Learn the three shapes, the six checks that separate a real marketplace from a directory, and where skills actually run.">
+<meta property="og:image" content="https://maskin.io/og-image-agent-skills-marketplace.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Agent skills marketplace: how to evaluate one">
+<meta name="twitter:description" content="An agent skills marketplace is not one thing. Learn the three shapes, the six checks that separate a real marketplace from a directory, and where skills actually run.">
+<meta name="twitter:image" content="https://maskin.io/og-image-agent-skills-marketplace.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/agent-skills-marketplace/#post",
+      "headline": "Agent skills marketplace: how to evaluate one",
+      "description": "An agent skills marketplace is not one thing. Learn the three shapes, the six checks that separate a real marketplace from a directory, and where skills actually run.",
+      "datePublished": "2026-09-25T00:00:00Z",
+      "dateModified": "2026-09-25T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "image": "https://maskin.io/og-image-agent-skills-marketplace.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/agent-skills-marketplace/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "agent skills marketplace"
+        },
+        {
+          "@type": "Thing",
+          "name": "agent skills"
+        },
+        {
+          "@type": "Thing",
+          "name": "SKILL.md"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Agent skills marketplace: how to evaluate one",
+          "item": "https://maskin.io/docs/agent-skills-marketplace/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is there an agent skills marketplace?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not one, in the sense of a single commercial store where skills are bought and sold with support behind them. What exists today is mostly open collections and directories, plus vendor-hosted libraries and skills bundled inside products. The phrase is ahead of the market it describes. You can adopt agent skills today — the format is open and the tooling exists — without waiting for a store."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between an agent skills marketplace and a library?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A library is a collection of skills. A marketplace implies a publisher who is accountable for a listing, terms for obtaining it, and some expectation of support. Many things called an \"agent skills marketplace\" are libraries or directories wearing the commercial word."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a marketplace to use agent skills?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A skill is a folder with a SKILL.md file and no build step or registration call. If the agent reads the folder, the skill exists. A marketplace is a distribution convenience, not a precondition — and a team that writes its own skills can go a long way before it ever needs one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are agent skills free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The format itself is free: a skill is a folder you can read, and there is no build step or registration call standing between you and the file. What you pay for, when you pay, is the support and maintenance around a skill, not the ability to open it. Plenty of teams run on skills they wrote and maintain in-house, with no third-party listing involved at all."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I choose between them?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Run the six checks above, in order, and stop at the trigger model. Provenance, versioning, reach, maintenance, and spec conformance tell you whether a skill is safe to adopt. The trigger model tells you whether it will actually run. A listing that passes the first five and fails the sixth is a well-documented snippet."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="is-active" href="/docs/agent-skills-marketplace/" aria-current="page">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li></ul></nav></aside>    <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Agent skills marketplace</p>
+    <p class="eyebrow">Article</p>
+    <h1>Agent skills marketplace: how to evaluate one</h1>
+    <p class="lead">An <strong>agent skills marketplace</strong> is where you find, choose, and get agent skills — the on-demand instruction folders that teach an agent one job well. The phrase covers three different things today, and only one behaves like a marketplace. Before you compare listings, work out which shape you are looking at, and whether the skills will run where your work happens.</p>
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul>
+          <li><strong>"Agent skills marketplace" names three different things</strong>: open collections and directories, vendor-hosted libraries, and skills bundled inside a product. Most of them are discovery surfaces, not commercial marketplaces.</li>
+          <li><strong>The format is open, so nothing locks skills to one store.</strong> An agent skill is a folder with a <code>SKILL.md</code> file — a <code>name</code>, a <code>description</code>, an on-demand body, and optional supporting files — all set out in Anthropic's agent skills specification (2025), an open format, so nothing forces you into a single vendor's catalogue. For the definition itself, start with <a href="https://maskin.io/docs/learn/agent-skills/">what agent skills are</a>.</li>
+          <li><strong>Evaluate any marketplace on six checks</strong>: provenance, versioning, reach, maintenance, spec conformance, and trigger model.</li>
+          <li><strong>The trigger model is the check people skip and later regret.</strong> A skill that only loads when someone remembers to invoke it is a snippet with better packaging. A skill that runs when workspace state changes is infrastructure.</li>
+          <li><strong>You browse skills; you run them inside loops.</strong> The browse surface and the run surface are different products, and a marketplace of skills is not the same thing as a marketplace of loops.</li>
+          <li><strong>Nothing about the noun requires a store.</strong> Plenty of teams adopt the primitive with a folder in a repository and no marketplace at all. A store is a distribution choice, not a requirement of the format.</li>
+        </ul>
+      </div>
+    </div>
+    <h2>The three shapes of an "agent skills marketplace"</h2>
+    <p>People arrive at the phrase expecting a shop and land on one of three very different things. Being precise about which one you are looking at is the first move, because each shape fails in a different way.</p>
+    <h3>Open collections and directories</h3>
+    <p>Community repositories and catalogues that list skills you can copy into your own project. These are the most common result for the phrase, and they are usually not products — they are indexes maintained by contributors. A directory tells you a skill exists and where to find it. It does not sign it, version it, or support it. They tend to rank on domain age and repository stars rather than on any commercial relationship with the skills they list.</p>
+    <h3>Vendor-hosted libraries</h3>
+    <p>Collections published by the model vendor or a tool vendor, tied to that vendor's agent and sometimes to a signing or review process. A vendor library is closer to a marketplace: there is a publisher, an audience, and a distribution channel. The trade-off is reach. A library that only serves one vendor's agent routes every skill through that vendor's review, and the skills you find there tend to assume that vendor's environment.</p>
+    <h3>Skills bundled inside a product</h3>
+    <p>A capability a tool ships that happens to be packaged as a skill, where the folder is an implementation detail rather than something you browse. You do not choose these; they arrive with the product. They are worth understanding because they set a user's expectation of what a skill is — often invisibly, and often more narrowly than the open format allows.</p>
+    <p>What the phrase does not yet describe, in most cases, is a live commercial marketplace where skills are bought, sold, and versioned as products with support behind them. If you are evaluating an "agent skills marketplace," establish which of the three shapes it actually is before assuming the third-party product model applies.</p>
+    <h2>How to evaluate an agent skills marketplace</h2>
+    <p>Once you know the shape, the differences that decide the outcome are the same six, whichever vendor is in front of you. Score each one honestly before you commit a team to the tool.</p>
+    <table>
+      <thead><tr><th>Check</th><th>What to ask</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Provenance</strong></td><td>Who published this skill, and can you verify them?</td><td>An unsigned folder from an unknown author runs with whatever reach the agent holding it has.</td></tr>
+        <tr><td><strong>Versioning</strong></td><td>Can you pin a version and see what changed between releases?</td><td>Skills are instruction sets. A silent edit changes agent behavior with no diff for you to review.</td></tr>
+        <tr><td><strong>Reach</strong></td><td>What can the skill touch once it loads — files, tools, connected data?</td><td>A skill inherits the permissions of the agent that carries it, so a small skill can act with large scope.</td></tr>
+        <tr><td><strong>Maintenance</strong></td><td>Who fixes it when the tool or API underneath it changes?</td><td>A skill that wraps a live system decays the moment that system moves. Unmaintained skills fail quietly.</td></tr>
+        <tr><td><strong>Spec conformance</strong></td><td>Does it follow the open <code>SKILL.md</code> format, or a private one?</td><td>Conformance is what lets you move a skill between agents instead of being locked to the listing that sold it.</td></tr>
+        <tr><td><strong>Trigger model</strong></td><td>How does the skill decide when to load?</td><td>This is what separates a snippet you paste from a capability that fires on its own.</td></tr>
+      </tbody>
+    </table>
+    <p>Most directory-shaped results do well on the first two checks and badly on the last. The trigger model deserves its own look, because it is the one buyers routinely skip.</p>
+    <p>Skills load in three levels: the name and description first, the body of <code>SKILL.md</code> when a task matches, and bundled files only when the agent reaches for them. That design lets a skill stay dormant until it is relevant, and it keeps a long playbook out of context until the moment it is needed. But <em>relevance</em> has to be signalled by something. If the only signal is a person remembering to mention the skill, then the skill is a snippet of text with a folder around it. If the signal is state — a record changing status, a stage completing, an object arriving — the skill becomes part of how work moves rather than something you have to remember. When you evaluate a marketplace, ask how its skills load, and whether that answer survives a busy week.</p>
+    <h2>Library, registry, and marketplace: three words doing different jobs</h2>
+    <p>These terms get used as synonyms. They should not be. The distinction is the difference between finding a skill and being able to rely on it.</p>
+    <p>A <strong>library</strong> is a collection: a body of skills someone curates, whether or not you can act on it directly. A <strong>registry</strong> is an index with identity — names, versions, and where to fetch each one — closer to a package manager than to a shop. A <strong>marketplace</strong> adds a transaction and a relationship: a publisher accountable for a listing, terms under which you obtain it, and some expectation of support afterwards. A folder on a code host can be a library. A vendor's signed index can be a registry. Neither becomes a marketplace until somebody stands behind the listing.</p>
+    <p>That distinction is why a search for an "agent skills marketplace" is really two questions stacked together: <em>where do I find skills</em>, and <em>who is accountable once I use one</em>. Directories answer the first well. Very little answers the second today, which is the gap the phrase keeps reaching for.</p>
+    <h2>You browse skills; you run them inside loops</h2>
+    <p>Here is the split the noun hides. Whatever surface you use to find a skill is a <strong>browse surface</strong>. The place the skill actually does its work is a <strong>run surface</strong>, and the two are not the same product. You browse a skill the way you browse a package: read the description, check the author, decide. You <em>run</em> it inside something that gives it a job, a trigger, and a place to report back.</p>
+    <p>That is the layer the category noun does not yet describe. Maskin's skill surface is a run surface: a skill attaches to an agent and ships as a <a href="https://maskin.io/marketplace/">"built with" component of a loop</a>, where the loop holds the trigger and the state. Maskin's Marketplace lists those loops — it is a catalogue of runnable loops, not a shelf of standalone skill folders, so you do not visit it to browse a plain skill directory; you use it to put a skill to work inside a defined process. The browse-versus-run distinction is also why the fast comparison people reach for — <a href="https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">agent skills versus MCP, cursor rules, and their neighbours</a> — matters: the instruction layers do different jobs, and only one of them carries state. If you want the layer-by-layer breakdown, that page is the hub for it.</p>
+    <p>A marketplace of skills, in other words, is not automatically a marketplace of loops. Buying a skill and running a loop are different acts, and the products that do the first rarely do the second.</p>
+    <h2>Where a skill actually runs</h2>
+    <p>This is the practical question behind the commercial one. A skill is a folder, and a folder does not run itself. Three places a skill can live:</p>
+    <ul>
+      <li><strong>In a repository or prompt.</strong> The skill sits in the project, and someone loads it when they remember. Simple, portable, and entirely dependent on human recall.</li>
+      <li><strong>Inside a vendor's agent.</strong> The skill loads when the vendor's agent decides a task matches its description. You get automatic loading, and you accept that vendor's environment and review process.</li>
+      <li><strong>Inside a workspace that holds state.</strong> The skill loads when the workspace changes in a way the trigger defines — a record moves status, a stage completes. The skill is invoked by the work itself, not by a person and not by a description match alone.</li>
+    </ul>
+    <p>The third is where the category is heading, and it is the reason a marketplace built only for browsing will feel incomplete to a team that has to ship. It is also the reason to ask, of any marketplace, not just what it lists but what runs the listing. Skills are the primitive. Something has to give them a job.</p>
+    <h2>FAQ</h2>
+    <h3>Is there an agent skills marketplace?</h3>
+    <p>Not one, in the sense of a single commercial store where skills are bought and sold with support behind them. What exists today is mostly open collections and directories, plus vendor-hosted libraries and skills bundled inside products. The phrase is ahead of the market it describes. You can adopt agent skills today — the format is open and the tooling exists — without waiting for a store.</p>
+    <h3>What is the difference between an agent skills marketplace and a library?</h3>
+    <p>A library is a collection of skills. A marketplace implies a publisher who is accountable for a listing, terms for obtaining it, and some expectation of support. Many things called an "agent skills marketplace" are libraries or directories wearing the commercial word.</p>
+    <h3>Do I need a marketplace to use agent skills?</h3>
+    <p>No. A skill is a folder with a <code>SKILL.md</code> file and no build step or registration call. If the agent reads the folder, the skill exists. A marketplace is a distribution convenience, not a precondition — and a team that writes its own skills can go a long way before it ever needs one.</p>
+    <h3>Are agent skills free?</h3>
+    <p>The format itself is free: a skill is a folder you can read, and there is no build step or registration call standing between you and the file. What you pay for, when you pay, is the support and maintenance around a skill, not the ability to open it. Plenty of teams run on skills they wrote and maintain in-house, with no third-party listing involved at all.</p>
+    <h3>How do I choose between them?</h3>
+    <p>Run the six checks above, in order, and stop at the trigger model. Provenance, versioning, reach, maintenance, and spec conformance tell you whether a skill is safe to adopt. The trigger model tells you whether it will actually run. A listing that passes the first five and fails the sixth is a well-documented snippet.</p>
+    <div class="post-cta">
+      <h2>Skills that run where the work happens</h2>
+      <p>Maskin is the MCP-native workspace where a skill is a packaged capability attached to a named agent inside a closed loop — not a snippet in a directory. Open source under Apache 2.0. Self-host free, bring your own model.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

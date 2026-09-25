@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Integrations setup — Maskin Docs</title>
-<meta name="description" content="Connect Maskin to Slack, GitHub, Linear, Gmail, and PostHog: OAuth env vars, webhook URLs, scopes, and how each integration auto-injects its own MCP.">
+<title>Maskin integrations: the full provider registry — Maskin Docs</title>
+<meta name="description" content="Maskin ships with ten first-party integrations. Three of them are auto-injected into every agent session, six are attachable MCP servers the agent must load, and one is provider-only with no MCP surface. This page documents the product registry — what Maskin supports out of the box — so it stays acc">
 
 <link rel="canonical" href="https://maskin.io/docs/integrations/">
 
@@ -17,9 +17,9 @@
 
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/docs/integrations/">
-<meta property="og:title" content="Integrations setup — Maskin">
-<meta property="og:description" content="Connect Maskin to Slack, GitHub, Linear, Gmail, and PostHog.">
-<meta property="og:image" content="https://maskin.io/og-image.png?v=2">
+<meta property="og:title" content="Maskin integrations: the full provider registry — Maskin Docs">
+<meta property="og:description" content="Maskin ships with ten first-party integrations. Three of them are auto-injected into every agent session, six are attachable MCP servers the agent must load, and one is provider-only with no MCP surface. This page documents the product registry — what Maskin supports out of the box — so it stays acc">
+<meta property="og:image" content="https://maskin.io/og-image-integrations.png">
 <meta property="og:site_name" content="Maskin">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,14 +33,31 @@
   "@graph": [
     {
       "@type": "TechArticle",
-      "headline": "Integrations setup",
-      "name": "Integrations setup",
-      "description": "Connect Maskin to Slack, GitHub, Linear, Gmail, and PostHog: OAuth env vars, webhook URLs, scopes, and how each integration auto-injects its own MCP.",
-      "inLanguage": "en",
-      "url": "https://maskin.io/docs/integrations/",
-      "isPartOf": "https://maskin.io/docs/",
+      "@id": "https://maskin.io/docs/integrations/#article",
+      "headline": "Maskin integrations: the full provider registry",
+      "description": "Maskin ships with ten first-party integrations. Three of them are auto-injected into every agent session, six are attachable MCP servers the agent must load, and one is provider-only with no MCP surface. This page documents the product registry — what Maskin supports out of the box — so it stays acc",
+      "datePublished": "2026-09-25T00:00:00Z",
+      "dateModified": "2026-09-25T00:00:00Z",
       "author": {
         "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "image": "https://maskin.io/og-image-integrations.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/integrations/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
         "name": "Maskin",
         "url": "https://maskin.io/"
       }
@@ -51,14 +68,65 @@
         {
           "@type": "ListItem",
           "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
           "name": "Docs",
           "item": "https://maskin.io/docs/"
         },
         {
           "@type": "ListItem",
-          "position": 2,
-          "name": "Integrations",
+          "position": 3,
+          "name": "Maskin integrations: the full provider registry",
           "item": "https://maskin.io/docs/integrations/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many integrations does Maskin support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ten first-party integrations, split by how each exposes MCP to agents: three auto-inject providers (GitHub, Slack, PostHog), six attachable MCP servers (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn), and one provider-only integration (Skjald, Maskin's first-party meeting notetaker). This is the product registry — a given workspace may have fewer providers actually connected."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between an auto-inject and an attachable MCP server in Maskin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An auto-inject provider (GitHub, Slack, PostHog) is loaded into every agent session automatically — the agent sees those tools without any setup. An attachable provider (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn) exposes an mcp.server that the agent must explicitly load in its tool config before it can call any of that provider's tools. Both surface the same way once loaded; the difference is whether the agent has to opt in."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Maskin integrations expose MCP to agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nine of the ten first-party providers expose MCP: GitHub, Slack, and PostHog are auto-injected into every agent session, while Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, and LinkedIn are attachable MCP servers the agent loads on demand. Skjald is the only registered provider without an MCP surface — it participates in agent workflows by emitting meeting created/updated events onto the object graph instead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Maskin need Zapier or another middleware to connect to these services?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Every integration on this page is a first-party Maskin provider — the auth, the MCP server (where present), and the object-graph emissions are all built into Maskin. There is no Zapier, Make, or generic iPaaS layer between the agent and the provider; agents call the provider's MCP tools directly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Skjald differ from Maskin's other integrations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Skjald is Maskin's own first-party meeting notetaker, not a third-party service. Instead of exposing an MCP server for agents to call, it produces meeting objects (transcripts, notes) on the graph and emits status events (created, updated, notesready) that agents can subscribe to. Agents work with Skjald output the same way they work with any other object state change — by reading the object and reacting to its status transitions."
+          }
         }
       ]
     }
@@ -72,75 +140,137 @@
 <noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
 
 <div class="wrap doc-layout">
-  <aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="is-active" href="/docs/integrations/" aria-current="page">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/open-source-jira-alternative/">Open source Jira alternative</a></li></ul></nav></aside>
-  <main class="doc-content">
+  <aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="is-active" href="/docs/integrations/" aria-current="page">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li></ul></nav></aside>
+        <main class="doc-content">
     <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Integrations</p>
-
     <p class="eyebrow">Reference</p>
-    <h1>Integrations setup</h1>
-    <p class="lead">Maskin ships with five first-class integrations — Slack, GitHub, Linear, Gmail, and PostHog. Each connects over OAuth or an API key, receives events via webhooks, and auto-injects its own MCP server so agents can act on it.</p>
-
-    <h2>Before you start (self-hosted)</h2>
-    <p>Connecting integrations on a self-hosted instance needs two things set in your environment:</p>
-    <ul>
-      <li><code>INTEGRATION_ENCRYPTION_KEY</code> — 32-byte hex (64 chars) used to encrypt stored OAuth tokens. <code>pnpm dev</code> auto-generates one in development; set it explicitly in production.</li>
-      <li><code>WEBHOOK_BASE_URL</code> — the public base URL providers call back to. Webhooks are delivered to <code>/api/webhooks/&lt;provider&gt;</code>.</li>
-    </ul>
-    <p>Then connect from the app: <strong>Settings → Integrations → Connect</strong>, which runs the OAuth flow. See the full env list in the <a href="/docs/configuration/">configuration reference</a>.</p>
-
-    <h2>Slack</h2>
-    <ul>
-      <li><strong>What it does:</strong> read and post messages, watch channels/DMs, react, and respond to app mentions — agents can participate in Slack threads.</li>
-      <li><strong>Auth:</strong> OAuth2. Env vars: <code>SLACK_CLIENT_ID</code>, <code>SLACK_CLIENT_SECRET</code>, <code>SLACK_SIGNING_SECRET</code>. Optionally <code>MASKIN_MACHINE_ICON_URL</code> for the agent avatar in Slack posts.</li>
-      <li><strong>Webhook:</strong> verified via the <code>x-slack-signature</code> header (HMAC-SHA256 with timestamp).</li>
-      <li><strong>MCP:</strong> a Slack MCP is auto-injected for every workspace with an active Slack connection.</li>
-    </ul>
+    <h1>Maskin integrations: the full provider registry</h1>
+    <p class="lead">Maskin ships with ten first-party integrations. Three of them are auto-injected into every agent session, six are attachable MCP servers the agent must load, and one is provider-only with no MCP surface. This page documents the <strong>product registry</strong> — what Maskin supports out of the box — so it stays accurate whether or not a given workspace has each provider connected.</p>
     <div class="callout callout--muted">
-      <span class="callout__icon">i</span>
-      <span class="callout__body">Slack also needs an app manifest and icon set up. The repo has a detailed walkthrough at <a href="https://github.com/sindre-ai/maskin/tree/main/docs/integrations/slack" target="_blank" rel="noopener">docs/integrations/slack</a>.</span>
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul>
+          <li><strong>10 first-party integrations, split by MCP exposure:</strong> 3 auto-inject, 6 attachable, 1 provider-only.</li>
+          <li><strong>Auto-inject (3):</strong> GitHub, Slack, PostHog — live in every agent session with no attach step.</li>
+          <li><strong>Attachable (6):</strong> Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn — each carries an <code>mcp.server</code> the agent must load.</li>
+          <li><strong>Provider-only (1):</strong> Skjald — Maskin's first-party meeting notetaker; emits <code>meeting</code> events onto the graph but exposes no MCP.</li>
+          <li><strong>Four auth types across the registry:</strong> <code>oauth2</code>, <code>oauth2_custom</code>, <code>api_key</code>, <code>manual</code>. The registry lists what the product supports; a workspace's connected set can be smaller.</li>
+        </ul>
+      </div>
     </div>
-
-    <h2>GitHub</h2>
+    <h2>Auto-inject providers (live in every agent session)</h2>
+    <h3>GitHub</h3>
     <ul>
-      <li><strong>What it does:</strong> react to pull requests, issues, pushes, and reviews.</li>
-      <li><strong>Auth:</strong> GitHub App flow. Env vars: <code>GITHUB_APP_ID</code>, <code>GITHUB_CLIENT_ID</code>, <code>GITHUB_CLIENT_SECRET</code>, <code>GITHUB_APP_WEBHOOK_SECRET</code>, <code>GITHUB_APP_PRIVATE_KEY</code>, <code>GITHUB_APP_SLUG</code>.</li>
-      <li><strong>Webhook:</strong> verified via <code>x-hub-signature-256</code>; event type from <code>x-github-event</code>.</li>
-      <li><strong>MCP:</strong> the official GitHub MCP server is run via stdio (uses a <code>GITHUB_TOKEN</code> from the connection).</li>
+      <li><strong>Auth:</strong> <code>oauth2_custom</code> (GitHub App).</li>
+      <li><strong>MCP:</strong> auto-inject. Every agent session sees the GitHub MCP server without an attach step.</li>
+      <li><strong>What agents can do:</strong> read/write issues and PRs, create branches, push files, search code and PRs, open reviews, list commits. The full surface of the GitHub MCP tool set.</li>
+      <li><strong>Common use:</strong> engineering loops (code review, issue triage), and cross-role loops that reference commits or PRs as <code>signal</code> objects.</li>
     </ul>
-
-    <h2>Linear</h2>
+    <h3>Slack</h3>
     <ul>
-      <li><strong>What it does:</strong> work with issues, comments, projects, cycles, and labels.</li>
-      <li><strong>Auth:</strong> OAuth2 (scopes include <code>read</code>, <code>write</code>, <code>issues:create</code>, <code>comments:create</code>). Env vars: <code>LINEAR_CLIENT_ID</code>, <code>LINEAR_CLIENT_SECRET</code>, <code>LINEAR_WEBHOOK_SECRET</code>.</li>
-      <li><strong>Webhook:</strong> verified via the <code>linear-signature</code> header.</li>
-      <li><strong>MCP:</strong> Linear's hosted MCP (<code>https://mcp.linear.app/mcp</code>).</li>
+      <li><strong>Auth:</strong> <code>oauth2</code>.</li>
+      <li><strong>MCP:</strong> auto-inject. Every agent session can post to channels, DM users, read history, list channels, add reactions.</li>
+      <li><strong>What agents can do:</strong> send messages, read thread replies, open DM conversations, get channel history, add reactions to messages.</li>
+      <li><strong>Common use:</strong> notifying humans of state changes on objects (the <code>driver_id</code> on a status transition triggers a Slack DM), running scheduled digests, capturing threads back onto objects as comments.</li>
     </ul>
-
-    <h2>Gmail</h2>
+    <h3>PostHog</h3>
     <ul>
-      <li><strong>What it does:</strong> read, label, draft, and send email.</li>
-      <li><strong>Auth:</strong> OAuth2 with PKCE + offline access (forces a refresh token). Env vars: <code>GMAIL_CLIENT_ID</code>, <code>GMAIL_CLIENT_SECRET</code>.</li>
-      <li><strong>Webhook:</strong> Google Cloud Pub/Sub push with OIDC JWT verification. Configure <code>GMAIL_PUBSUB_TOPIC</code>, <code>GMAIL_PUBSUB_AUDIENCE</code>, and <code>GMAIL_PUBSUB_SERVICE_ACCOUNT</code>.</li>
-      <li><strong>MCP:</strong> Google's hosted Gmail MCP.</li>
+      <li><strong>Auth:</strong> <code>api_key</code>.</li>
+      <li><strong>MCP:</strong> auto-inject. Every agent session can query events, insights, feature flags, dashboards, and the full PostHog analytics surface.</li>
+      <li><strong>What agents can do:</strong> execute product analytics queries (SQL and event-based), read insights and dashboards, resolve errors, inspect feature flags and experiments.</li>
+      <li><strong>Common use:</strong> product-analytics loops — an agent surfaces regressions on cohort trends, or drafts a hypothesis from an event-shape change and posts it as an <code>insight</code>.</li>
     </ul>
-
-    <h2>PostHog</h2>
+    <h2>Attachable providers (agents must load the MCP server)</h2>
+    <h3>Linear</h3>
     <ul>
-      <li><strong>What it does:</strong> pull product analytics into the workspace for feedback loops.</li>
-      <li><strong>Auth:</strong> API key (Bearer token) — no extra env vars beyond the stored token.</li>
-      <li><strong>Webhook:</strong> none; PostHog data is pull-based via MCP.</li>
-      <li><strong>MCP:</strong> PostHog's hosted MCP (<code>https://mcp.posthog.com/mcp</code>), auto-injected.</li>
+      <li><strong>Auth:</strong> <code>oauth2</code>.</li>
+      <li><strong>MCP:</strong> attachable. Load <code>linear.mcp</code> in the agent's tool config.</li>
+      <li><strong>What agents can do:</strong> read/write issues, projects, and teams; comment; transition status; list cycles.</li>
+      <li><strong>Common use:</strong> engineering-team loops that mirror Linear issues into Maskin objects, or agents that write back to Linear from a Maskin bet.</li>
     </ul>
-
-    <div class="callout callout--muted">
-      <span class="callout__icon">i</span>
-      <span class="callout__body">Integration credentials are encrypted at rest and never written to logs or agent output. Disconnecting revokes tokens with the provider.</span>
+    <h3>Gmail</h3>
+    <ul>
+      <li><strong>Auth:</strong> <code>oauth2</code>.</li>
+      <li><strong>MCP:</strong> attachable. Load <code>gmail.mcp</code> for read/send/search.</li>
+      <li><strong>What agents can do:</strong> read messages, send messages, search threads, manage drafts and labels.</li>
+      <li><strong>Common use:</strong> support-inbox loops, SDR follow-up sequences (with HITL on send), meeting-scheduling loops paired with Calendar.</li>
+    </ul>
+    <h3>Google Calendar</h3>
+    <ul>
+      <li><strong>Auth:</strong> <code>oauth2</code>.</li>
+      <li><strong>MCP:</strong> attachable. Load <code>google-calendar.mcp</code> for read/write on events.</li>
+      <li><strong>What agents can do:</strong> read events, create events, invite attendees, propose times.</li>
+      <li><strong>Common use:</strong> meeting-scheduling loops, capacity-planning agents that read the calendar to guard against double-booking.</li>
+    </ul>
+    <h3>Google Meet</h3>
+    <ul>
+      <li><strong>Auth:</strong> <code>oauth2</code>.</li>
+      <li><strong>MCP:</strong> attachable. Load <code>google-meet.mcp</code> for meeting-lifecycle access.</li>
+      <li><strong>What agents can do:</strong> read meeting metadata, join links, participant lists.</li>
+      <li><strong>Common use:</strong> paired with the Skjald notetaker or Calendar to close a meeting-scheduled → meeting-held → notes-captured loop. Registered but not connected in every workspace; workspace-verified examples are not printed for this provider here.</li>
+    </ul>
+    <h3>Ubersuggest</h3>
+    <ul>
+      <li><strong>Auth:</strong> <code>oauth2_custom</code>.</li>
+      <li><strong>MCP:</strong> attachable. Load <code>ubersuggest.mcp</code> for SEO keyword, SERP, and backlink data.</li>
+      <li><strong>What agents can do:</strong> run keyword research, pull SERP analyses, read backlinks and competitors, run site audits, look up traffic value.</li>
+      <li><strong>Common use:</strong> SEO loops — an agent scans a keyword cluster weekly, files new <code>insight</code> objects on demand surges, drafts briefs.</li>
+    </ul>
+    <h3>LinkedIn</h3>
+    <ul>
+      <li><strong>Registry name:</strong> LinkedIn (provider id: <code>linkedin-unipile</code>).</li>
+      <li><strong>Auth:</strong> <code>oauth2_custom</code>.</li>
+      <li><strong>MCP:</strong> attachable. Load the LinkedIn MCP for identity and messaging.</li>
+      <li><strong>What agents can do:</strong> read profiles, read messages, send DMs, follow connection activity.</li>
+      <li><strong>Common use:</strong> AI-SDR loops where an agent shapes an outbound draft on a signal and a human approves before the send.</li>
+    </ul>
+    <h2>Provider-only (no MCP surface)</h2>
+    <h3>Skjald</h3>
+    <ul>
+      <li><strong>Auth:</strong> manual.</li>
+      <li><strong>MCP:</strong> <strong>no MCP surface.</strong> Skjald does not expose an attachable MCP server. It emits <code>meeting</code> created/updated events onto the graph; agents subscribe to those events like they subscribe to any other object state change.</li>
+      <li><strong>What it does:</strong> first-party meeting notetaker — attaches to meetings, produces transcripts and notes as <code>meeting</code> objects (not files). Registered but not connected in every workspace.</li>
+      <li><strong>Common use:</strong> meeting → knowledge loops. A meeting object's <code>status → notes_ready</code> transition triggers a distiller agent that writes a <code>knowledge</code> page from the transcript and validates it under a human gate.</li>
+    </ul>
+    <h2>Auth types at a glance</h2>
+    <table>
+      <thead><tr><th>Auth type</th><th>Providers</th></tr></thead>
+      <tbody>
+        <tr><td><code>oauth2</code></td><td>Linear, Slack, Gmail, Google Calendar, Google Meet</td></tr>
+        <tr><td><code>oauth2_custom</code></td><td>GitHub, Ubersuggest, LinkedIn</td></tr>
+        <tr><td><code>api_key</code></td><td>PostHog</td></tr>
+        <tr><td><code>manual</code></td><td>Skjald</td></tr>
+      </tbody>
+    </table>
+    <h2>MCP exposure at a glance</h2>
+    <table>
+      <thead><tr><th>Exposure</th><th>Providers</th><th>Count</th></tr></thead>
+      <tbody>
+        <tr><td>Auto-inject (live in every agent session)</td><td>GitHub, Slack, PostHog</td><td>3</td></tr>
+        <tr><td>Attachable (agent must load <code>mcp.server</code>)</td><td>Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn</td><td>6</td></tr>
+        <tr><td>Provider-only (no MCP surface)</td><td>Skjald</td><td>1</td></tr>
+      </tbody>
+    </table>
+    <h2>FAQ</h2>
+    <h3>How many integrations does Maskin support?</h3>
+    <p>Ten first-party integrations, split by how each exposes MCP to agents: three auto-inject providers (GitHub, Slack, PostHog), six attachable MCP servers (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn), and one provider-only integration (Skjald, Maskin's first-party meeting notetaker). This is the product registry — a given workspace may have fewer providers actually connected.</p>
+    <h3>What is the difference between an auto-inject and an attachable MCP server in Maskin?</h3>
+    <p>An auto-inject provider (GitHub, Slack, PostHog) is loaded into every agent session automatically — the agent sees those tools without any setup. An attachable provider (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn) exposes an <code>mcp.server</code> that the agent must explicitly load in its tool config before it can call any of that provider's tools. Both surface the same way once loaded; the difference is whether the agent has to opt in.</p>
+    <h3>Which Maskin integrations expose MCP to agents?</h3>
+    <p>Nine of the ten first-party providers expose MCP: GitHub, Slack, and PostHog are auto-injected into every agent session, while Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, and LinkedIn are attachable MCP servers the agent loads on demand. Skjald is the only registered provider without an MCP surface — it participates in agent workflows by emitting <code>meeting</code> created/updated events onto the object graph instead.</p>
+    <h3>Does Maskin need Zapier or another middleware to connect to these services?</h3>
+    <p>No. Every integration on this page is a first-party Maskin provider — the auth, the MCP server (where present), and the object-graph emissions are all built into Maskin. There is no Zapier, Make, or generic iPaaS layer between the agent and the provider; agents call the provider's MCP tools directly.</p>
+    <h3>How does Skjald differ from Maskin's other integrations?</h3>
+    <p>Skjald is Maskin's own first-party meeting notetaker, not a third-party service. Instead of exposing an MCP server for agents to call, it produces <code>meeting</code> objects (transcripts, notes) on the graph and emits status events (<code>created</code>, <code>updated</code>, <code>notes_ready</code>) that agents can subscribe to. Agents work with Skjald output the same way they work with any other object state change — by reading the object and reacting to its status transitions.</p>
+    <div class="post-cta">
+      <h2>Ten first-party providers, no middleware</h2>
+      <p>Maskin wires auth, MCP servers, and object-graph emissions directly — agents call provider tools with no Zapier in between. Open source under Apache 2.0. Self-host free, bring your own model.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
     </div>
-
-    <nav class="doc-pagenav" aria-label="Page navigation">
-      <a href="/docs/mcp-tools/">← MCP tools</a>
-      <a href="/docs/configuration/">Configuration →</a>
-    </nav>
   </main>
 </div>
 
