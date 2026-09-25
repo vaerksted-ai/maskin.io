@@ -7,7 +7,7 @@ The SEO publishing loop closes on the outcome (a page in the target rank range),
 For product teams who own their own growth pages and are done losing weeks to *draft in Notion, publish somewhere else, forget who owns rank checks*.
 Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20SEO%20publishing%20loop) with subject “Waitlist: SEO publishing loop” and we’ll send it the moment it drops.
 
-## What this loop gets you
+## What an SEO content loop gets you
 The SEO publishing loop closes the gap between “we should write about X” and “X is a live, indexed, snippet-eligible page on our site.” It runs continuously, so weekly audit findings, keyword whitespace, and shipped-in-public changelog entries all end up as real pages without a human touching HTML.
 - **Keyword insight becomes a shaped brief.** A researcher walks the SERP, names the anti-frame the incumbents haven’t claimed, and shapes a brief instead of dumping a keyword list.
 - **The brief becomes an approved draft.** A writer produces markdown against the brief; a human approves before it moves to publish. Override rate is measurable and watched.
@@ -15,7 +15,7 @@ The SEO publishing loop closes the gap between “we should write about X” and
 - **The live page gets measured.** An analyst tracks indexation, snippet eligibility, and traffic against the bet checkpoints; flagged audit issues (thin content, broken schema, CWV regressions) route back into the loop as tasks.
 The result: pages ship on a cadence a human editor can supervise but not personally execute. The wedge over “prompt ChatGPT for a blog post” is the loop shape — approval gate, live registration checklist, measured close — not the generation.
 
-## The seven-step loop the video walks through
+## The seven-step SEO content loop the video walks through
 1. **Signal.** A keyword-whitespace insight or a weekly Ubersuggest audit finding fires. The insight becomes a typed object with a testable frame.
 2. **Research.** An agent walks the top 10-20 SERP results, extracts the anti-frame, and drafts a brief. A human approves the brief before writing starts.
 3. **Draft.** An agent writes the markdown content object against the approved brief, in the site’s voice.
@@ -38,6 +38,6 @@ Skill
 A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
 Full concept map: [Agent skills vs MCP vs cursor rules vs workflows](/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/) explains where each layer belongs.
 
-## Why publish it this way instead of prompting ChatGPT
+## Programmatic SEO and content operations: why publish this way instead of prompting ChatGPT
 Prompting a chat model for a blog post gets you a page. Running the loop gets you a page that’s indexed, snippet-eligible, tracked, and re-audited weekly by an agent that already knows the site’s conventions. The gap between the two shows up around week six, when the chat-model pages are quietly de-indexed for thin content and the loop-shaped pages are pulling traffic that compounds. The [override rate](/docs/learn/human-in-the-loop-ai/) at the approval gate is the only honest signal that the loop is real and not theatre.
 Read next
