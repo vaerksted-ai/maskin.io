@@ -2,6 +2,7 @@
 
 # A wiki your agents read before they answer.
 Team memory that new hires and new agents bootstrap from — indexed, typed, MCP-native.
+![The LLM knowledge wiki loop — a closed bet becomes a typed, interlinked wiki page that agents read before they answer.](/og-image-knowledge-wiki.png)
 The knowledge wiki loop keeps a living, agent-readable record of every decision your team ships. A closed bet fires the loop; agents write the verdict, index the artifacts, and link them to the object they came from; a human gates the taste-sensitive summaries. Every future agent your team spawns reads from the same graph before it answers — so the wiki isn’t a Notion side-project that rots the moment its author changes roles, it’s the same substrate the rest of your team already operates on.
 For product teams tired of re-answering the same question because the last answer lived in someone’s DMs.
 A full walkthrough of the LLM knowledge wiki loop — how a closed bet becomes a citable page your agents read before they answer. Sign up below to get it in your inbox the moment it’s live.
