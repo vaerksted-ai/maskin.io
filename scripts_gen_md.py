@@ -85,6 +85,12 @@ class MD(HTMLParser):
             if self.ol: self.listidx[-1]+=1
             self.cur="li"
         elif tag=="br": self.inline.append(" ")
+        elif tag=="img":
+            src=(a.get("src") or "").strip(); alt=(a.get("alt") or "").strip()
+            if src:
+                self._flush()
+                self.out.append("![%s](%s)\n"%(alt,src))
+        elif tag=="figcaption": self._flush(); self.cur="p"
         elif tag=="table": self._flush(); self.table=[]; 
         elif tag=="thead": self.in_head=True
         elif tag=="tr": self.row=[]
@@ -95,6 +101,7 @@ class MD(HTMLParser):
         if tag in ("p","span") and getattr(self,"_brk",False): self.skip-=1; self._brk=False; return
         if self.skip: return
         if tag in ("h1","h2","h3","p"): self._flush()
+        elif tag=="figcaption": self._flush()
         elif tag=="pre":
             self.pre=False
             if self.out and not self.out[-1].endswith("\n"): self.out.append("\n")
