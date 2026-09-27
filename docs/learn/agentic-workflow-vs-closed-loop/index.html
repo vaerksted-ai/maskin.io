@@ -51,7 +51,7 @@
       "headline": "Agentic workflow vs the closed loop: the third pattern beyond workflow-vs-agent",
       "description": "Every 2026 vendor page frames the debate as workflow vs agent. There is a third pattern — the closed loop — with an entry condition, typed objects, human-taste gates, and a close condition. Here is when each one fits.",
       "datePublished": "2026-09-25T00:00:00Z",
-      "dateModified": "2026-09-25T00:00:00Z",
+      "dateModified": "2026-09-27T00:00:00Z",
       "author": {
         "@type": "Organization",
         "name": "Maskin",
@@ -235,7 +235,6 @@
       <li><strong>Close condition</strong> — a falsifiable outcome that terminates the loop. "The agent says done" is not a close condition. "Tests pass", "the editor approved", "the customer replied" are.</li>
     </ol>
     <p>A loop is structurally more than a workflow (agent-execution slots inside a shaped chain) and less permissive than an agent (structural bounds on what the loop is allowed to touch). It occupies the middle. The <a href="https://maskin.io/docs/closed-loop-workspace/">closed-loop workspace piece</a> develops this argument in more depth.</p>
-    <p>!<a href="agentic-workflow-vs-closed-loop.png">Three patterns compared: workflow as a linear chain of predetermined steps, agent as open-ended exploration with tool arrows, and closed loop as a shaped container with a typed entry event, first-class objects, an agent-execution slot, a human taste gate, and a falsifiable close condition</a></p>
     <h2>The three patterns, side by side</h2>
     <table>
       <thead><tr><th></th><th><strong>Workflow</strong></th><th><strong>Agent</strong></th><th><strong>Closed loop</strong></th></tr></thead>
@@ -266,7 +265,7 @@
     <p>The honest cases for each — not a strawman.</p>
     <p><strong>Pick a workflow</strong> when the path is stable and the desired output is deterministic. Invoice processing, expense categorisation, a well-defined ETL job. Adding an LLM to one node doesn't change the answer; a chain with a slot is still a chain. Zapier, n8n, ServiceNow flows, GitHub Actions all shine here. Do not upgrade to a loop just because the marketing says so.</p>
     <p><strong>Pick an agent</strong> when the environment shifts faster than any chain can be maintained and the cost of unstructured exploration is worth paying. Deep research, code debugging in an unfamiliar repo, browsing tasks with unknown depth. The <a href="https://www.anthropic.com/institute/recursive-self-improvement">Anthropic recursive-self-improvement result</a> — Claude agents recovering ~97% of a human-researcher performance gap over 800 hours — landed in this regime, with humans holding only the goal and the scoring rubric. Bounded, but open.</p>
-    <p><strong>Pick a loop</strong> when the outcome is well-defined but the path to it isn't, <em>and</em> the work has to close on something a human can inspect. SEO content production. Sales-cycle qualification. Product-management triage from raw insight to shipped bet. Compliance work that requires audit trails. Anywhere the answer to "is this done?" needs to be a state on a typed object, not "the agent stopped talking." This is where <a href="https://maskin.io/docs/what-is-loop-engineering/">loop engineering as a discipline</a> earns its keep.</p>
+    <p><strong>Pick a loop</strong> when the outcome is well-defined but the path to it isn't, <em>and</em> the work has to close on something a human can inspect. SEO content production. Sales-cycle qualification. Product-management triage from raw insight to shipped bet. Compliance work that requires audit trails. Anywhere the answer to "is this done?" needs to be a state on a typed object, not "the agent stopped talking." This is where <a href="https://maskin.io/docs/three-tiers-ai-native-work/">loop engineering as a discipline</a> earns its keep.</p>
     <p>The test is not "how autonomous do I want the AI to be?" The test is: <em>does the work I'm shaping have a falsifiable outcome, and does that outcome live on a typed object across tools?</em> If yes, you're building a loop whether you call it that or not. Naming it makes it debuggable.</p>
     <h2>FAQ</h2>
     <h3>What is an agentic workflow?</h3>
@@ -291,8 +290,8 @@
     <div class="related">
       <p class="related__title">Read next</p>
       <div class="doc-cards">
-        <a class="doc-card" href="https://maskin.io/docs/what-is-loop-engineering/">
-          <div class="doc-card__title">What is loop engineering in AI</div>
+        <a class="doc-card" href="https://maskin.io/docs/what-is-a-stateful-orchestration-substrate/">
+          <div class="doc-card__title">What is a stateful orchestration substrate</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
         <a class="doc-card" href="https://maskin.io/docs/closed-loop-workspace/">
