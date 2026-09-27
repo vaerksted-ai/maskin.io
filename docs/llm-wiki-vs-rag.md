@@ -16,7 +16,7 @@ Google’s autocomplete agrees. The same query space carries `llm wiki and rag`,
 
 ## What RAG actually does
 Retrieval-augmented generation is a **query-time** pattern. You embed your sources into vectors, store them, and at question time retrieve the closest fragments, hand them to the model, and let it assemble an answer from what it caught.
-That shape is genuinely good at one thing: open-ended recall over a large, shifting corpus. It is also stateless by design. The same question can produce a different answer next week, because the retrieved set changed underneath it. Standing it up is cheap; its cost scales with how often you ask, not how much you know.
+That shape is genuinely good at one thing: open-ended recall over a large, shifting corpus. It is also stateless by design. The same question can produce a different answer next week, because the retrieved set changed underneath it. Standing it up is cheap; its cost scales with how often you ask, not how much you know — and for the sibling cut between a retrieval mechanism and the protocol an agent uses to reach tools, [why MCP replaces RAG for tool access](/docs/mcp-vs-rag/) covers the wire-versus-retrieval layer.
 
 ## What an LLM wiki actually does
 An LLM wiki is a **compile-time** pattern. Andrej Karpathy named it in a public gist in April 2026 as the alternative to two things teams were already doing: stuffing per-agent memory files, and bolting a retrieval layer onto raw documents.
@@ -60,7 +60,7 @@ Run those against six questions, in the order that changes the answer:
 ## Where each one wins, and where you run both
 **The wiki wins** when the knowledge is settled, the answers need to be stable and citeable, and the same questions get asked repeatedly — the things your team has already learned and wants to keep answering the same way.
 **RAG wins** when the corpus is large and moving, the questions are open-ended, and “close enough, retrieved fresh” beats “stable but expensive to keep current.”
-**You run both** when the wiki is the curated core and RAG serves the volatile edge — new tickets, fresh transcripts, anything that changes faster than a compile cycle. That hybrid is what the autocomplete traffic is already searching for.
+**You run both** when the wiki is the curated core and RAG serves the volatile edge — new tickets, fresh transcripts, anything that changes faster than a compile cycle. That hybrid is what the autocomplete traffic is already searching for — and if you are mapping the compiled artifact to the storage engine underneath it, [wiki-style knowledge vs an embedding store](/docs/knowledge-wiki-vs-vector-database/) covers where those two layers meet.
 
 ## Running a wiki as a loop, not a side project
 Here the comparison stops being about architecture and starts being about ownership. The compile is the easy part. The failure mode is upkeep: a wiki that only gets written when someone remembers decays into a folder of half-true pages inside a quarter. Writing to it is a separate job from doing the work, and separate jobs lose.

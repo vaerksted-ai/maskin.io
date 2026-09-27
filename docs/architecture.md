@@ -27,7 +27,7 @@ Humans (web)  Agents (Claude Code)   External (Slack/GitHub/…)
 Insights, bets, tasks (and extension types) live in **one objects table** with a `type` discriminator; a separate **relationships** table connects them into a graph. This is why an agent and a human can operate on exactly the same records. See [Core concepts](/docs/concepts/).
 
 ## Event-sourced activity
-Every change appends to an immutable **events** table. That log is both the audit trail and the basis for unread tracking — state is derived, not overwritten.
+Every change appends to an immutable **events** table. That log is both the audit trail and the basis for unread tracking — state is derived, not overwritten. The same log doubles as the substrate for [the workspace-as-trace approach to agent observability](/docs/agent-observability/) — the agent-level trace is a side effect of the work, not a second pipeline.
 
 ## Real-time without a broker
 Writes emit PostgreSQL `NOTIFY`; the API `LISTEN`s and fans changes out to clients as **Server-Sent Events**, so the UI and live session logs update with no extra message queue. Behind a connection pooler, set `DATABASE_URL_DIRECT` to a non-pooled connection so LISTEN/NOTIFY keeps working (see [Troubleshooting](/docs/troubleshooting/)).

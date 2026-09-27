@@ -94,7 +94,7 @@
     </div>
 
     <h2>Sandboxed agent execution</h2>
-    <p>Agent sessions run as <strong>ephemeral, non-root Docker containers</strong> (from the <code>agent-base</code> image), one per run, torn down on completion. To launch them the app uses the host Docker socket (<code>/var/run/docker.sock</code>) — treat access to that socket as root-equivalent and restrict it to the app. For stronger isolation, run sessions on dedicated <a href="/docs/agents/">agent servers</a> rather than the app host.</p>
+    <p>Agent sessions run as <strong>ephemeral, non-root Docker containers</strong> (from the <code>agent-base</code> image), one per run, torn down on completion. To launch them the app uses the host Docker socket (<code>/var/run/docker.sock</code>) — treat access to that socket as root-equivalent and restrict it to the app. For stronger isolation, run sessions on dedicated <a href="/docs/agents/">agent servers</a> rather than the app host. For the policy layer above the sandbox &mdash; who signs off on agent actions, and how those approvals get recorded &mdash; see the <a href="/docs/learn/ai-agent-governance/">governance framework for AI agents</a>.</p>
 
     <h2>Webhook verification</h2>
     <p>Inbound webhooks are signature-verified per provider before processing:</p>

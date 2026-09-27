@@ -14,7 +14,7 @@ Ten people, ten AI chats, none of them visible to the rest of the team. Decision
 The core failure of chat-first AI is that it helps one person and the organisation learns nothing: progress evaporates overnight. An agentic workspace fixes that by making the **work itself** the shared surface, instead of the conversation.
 
 ## Agentic, not chatty: agents act until done
-A chatbot answers a question. An agentic workspace runs a loop: it observes, reasons, acts, and keeps going until the outcome is verified — then it reports back. That “closed loop” is what separates real agents from one-shot assistants.
+A chatbot answers a question. An agentic workspace runs a loop: it observes, reasons, acts, and keeps going until the outcome is verified — then it reports back. That “closed loop” is what separates real agents from one-shot assistants — and for the narrower distinction against the workflow framing, [why closed loops replace agentic workflows](/docs/learn/agentic-workflow-vs-closed-loop/) walks it out.
 In Maskin, work enters through **triggers** — a Slack message, a new customer complaint, a scheduled morning scan. Agents with defined roles — not just prompts — pick it up. The Feedback Monitor reads signals, the Bet Strategist shapes them into a bet, the Developer ships, and an agent validates whether the bet hit its target.
 
 ## The closed loop: insight → bet → task → shipped → repeat

@@ -14,7 +14,7 @@ Integration OAuth tokens and workspace LLM API keys are encrypted with **AES-256
 > Set `INTEGRATION_ENCRYPTION_KEY` explicitly in production and keep it stable — rotating it makes previously stored credentials undecryptable, so connections must be re-established.
 
 ## Sandboxed agent execution
-Agent sessions run as **ephemeral, non-root Docker containers** (from the `agent-base` image), one per run, torn down on completion. To launch them the app uses the host Docker socket (`/var/run/docker.sock`) — treat access to that socket as root-equivalent and restrict it to the app. For stronger isolation, run sessions on dedicated [agent servers](/docs/agents/) rather than the app host.
+Agent sessions run as **ephemeral, non-root Docker containers** (from the `agent-base` image), one per run, torn down on completion. To launch them the app uses the host Docker socket (`/var/run/docker.sock`) — treat access to that socket as root-equivalent and restrict it to the app. For stronger isolation, run sessions on dedicated [agent servers](/docs/agents/) rather than the app host. For the policy layer above the sandbox — who signs off on agent actions, and how those approvals get recorded — see the [governance framework for AI agents](/docs/learn/ai-agent-governance/).
 
 ## Webhook verification
 Inbound webhooks are signature-verified per provider before processing:

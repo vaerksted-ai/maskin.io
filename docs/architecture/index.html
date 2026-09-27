@@ -104,7 +104,7 @@
     <p>Insights, bets, tasks (and extension types) live in <strong>one objects table</strong> with a <code>type</code> discriminator; a separate <strong>relationships</strong> table connects them into a graph. This is why an agent and a human can operate on exactly the same records. See <a href="/docs/concepts/">Core concepts</a>.</p>
 
     <h2>Event-sourced activity</h2>
-    <p>Every change appends to an immutable <strong>events</strong> table. That log is both the audit trail and the basis for unread tracking — state is derived, not overwritten.</p>
+    <p>Every change appends to an immutable <strong>events</strong> table. That log is both the audit trail and the basis for unread tracking — state is derived, not overwritten. The same log doubles as the substrate for <a href="/docs/agent-observability/">the workspace-as-trace approach to agent observability</a> &mdash; the agent-level trace is a side effect of the work, not a second pipeline.</p>
 
     <h2>Real-time without a broker</h2>
     <p>Writes emit PostgreSQL <code>NOTIFY</code>; the API <code>LISTEN</code>s and fans changes out to clients as <strong>Server-Sent Events</strong>, so the UI and live session logs update with no extra message queue. Behind a connection pooler, set <code>DATABASE_URL_DIRECT</code> to a non-pooled connection so LISTEN/NOTIFY keeps working (see <a href="/docs/troubleshooting/">Troubleshooting</a>).</p>
