@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111110" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#111110" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="120" fill="url(#topFade)"/>
+
+  <text x="80" y="98" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#5A5751" letter-spacing="4">CHOOSE A KNOWLEDGE LAYER</text>
+  <text x="80" y="160" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">Four architectures.</text>
+  <text x="80" y="222" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">Two questions decide it.</text>
+  <text x="80" y="266" font-family="Newsreader, Georgia, serif" font-size="24" font-style="italic" fill="#8B8781">What survives between runs — and who reads it without tooling</text>
+
+  <g id="matrix">
+    <rect x="80" y="322" width="510" height="112" rx="12" fill="#141311" stroke="#3A3835" stroke-width="1.4"/>
+    <text x="102" y="356" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#8B8781">RETRIEVAL-BESIDE</text>
+    <text x="102" y="386" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="22" font-weight="600" fill="#FAFAF8">Mem0-shaped vectors</text>
+    <text x="102" y="414" font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" fill="#7A7770">content, not structure · agent-only</text>
+
+    <rect x="610" y="322" width="510" height="112" rx="12" fill="#141311" stroke="#3A3835" stroke-width="1.4"/>
+    <text x="632" y="356" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#8B8781">STATEFUL-RUNTIME</text>
+    <text x="632" y="386" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="22" font-weight="600" fill="#FAFAF8">Letta-shaped state blocks</text>
+    <text x="632" y="414" font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" fill="#7A7770">working memory · single-agent</text>
+
+    <rect x="80" y="454" width="510" height="112" rx="12" fill="#141311" stroke="#3A3835" stroke-width="1.4"/>
+    <text x="102" y="488" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#8B8781">TEMPORAL-KNOWLEDGE-GRAPH</text>
+    <text x="102" y="518" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="22" font-weight="600" fill="#FAFAF8">Zep-shaped nodes and edges</text>
+    <text x="102" y="546" font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" fill="#7A7770">typed traversal · ontology upkeep</text>
+
+    <rect x="605" y="449" width="520" height="122" rx="14" fill="none" stroke="#2563EB" stroke-width="1" opacity="0.28"/>
+    <rect x="610" y="454" width="510" height="112" rx="11" fill="#131720" stroke="#2563EB" stroke-width="2"/>
+    <text x="632" y="488" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#7FA6EE">TYPED WORKSPACE GRAPH</text>
+    <text x="632" y="518" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="22" font-weight="600" fill="#FAFAF8">Maskin</text>
+    <text x="632" y="546" font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" fill="#B8C9EE">human-readable · shared substrate</text>
+  </g>
+
+  <g transform="translate(80, 585)">
+    <rect x="0" y="-22" width="30" height="30" rx="6" fill="#1C1B18"/>
+    <path d="M6 -1 L6 -16 L15 -7 L24 -16 L24 -1" stroke="#FAFAF8" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+    <text x="42" y="0" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="17" font-weight="600" fill="#FAFAF8">Maskin</text>
+    <text x="110" y="0" font-family="JetBrains Mono, monospace" font-size="12" fill="#5A5751">maskin.io/docs/learn/choose-a-knowledge-layer</text>
+  </g>
+</svg>
