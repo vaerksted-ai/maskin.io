@@ -130,7 +130,7 @@
           "name": "Where does a workspace-shaped gate fit alongside the SDK primitive?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It sits above it. The SDK handles the runtime pause; the workspace records the decision as a durable fact on the object the action was about. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product. That persistence — the verdict living next to the work — is what turns an approval from a transient event into an auditable one."
+            "text": "It sits above it. The SDK handles the runtime pause; the workspace records the decision as a durable fact on the object the action was about — who approved, when, why, in the same feed as the transitions the approval unblocked. That verdict then travels with the work: the next agent, the next auditor, and the next you can all read it a week or a year later, without asking the run trace it came from."
           }
         }
       ]
@@ -149,8 +149,8 @@
     <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Learn / Human in the loop</p>
     <p class="eyebrow">Article · Learn</p>
     <h1>Human in the loop: the approval gate before side-effecting tool calls</h1>
-    <p class="lead"><strong>Human in the loop, in 2026, means an approval step in front of an AI agent&rsquo;s action &mdash; the moment when the agent stops before doing something it can&rsquo;t undo, waits for a person to say yes, and only then acts.</strong> Four major agent frameworks &mdash; OpenAI, Cloudflare, Microsoft, and Temporal &mdash; have all shipped this same primitive into their SDKs in the last twelve months, under nearly identical names. If you build agents that touch the outside world, this is the contract your users will expect.</p>
-    <p>That&rsquo;s a real shift. &ldquo;Human in the loop&rdquo; used to describe a person labeling training data. It now describes a runtime gate inside your agent code. This piece walks the four vendor primitives, what the shared contract is, and what a workspace-shaped version of the same gate adds on top &mdash; the part where the approval is recorded next to the work it approves, not just resolved in memory.</p>
+    <p class="lead"><strong>Human in the loop, in 2026, means an approval gate before an AI agent&rsquo;s side-effecting tool call.</strong> The agent pauses, a person approves or rejects, and only then does the tool fire. Four vendors &mdash; OpenAI, Cloudflare, Microsoft, Temporal &mdash; shipped the primitive under nearly identical names in the last twelve months.</p>
+    <p>If you build agents that touch the outside world, this is the contract your users will expect. &ldquo;Human in the loop&rdquo; used to describe a person labeling training data; it now describes a runtime gate inside your agent code. This piece walks the four vendor primitives, what the shared contract is, and what a workspace-shaped version of the same gate adds on top &mdash; the part where the approval is recorded next to the work it approves, not just resolved in memory.</p>
 
     <div class="callout callout--muted">
       <div class="callout__icon" aria-hidden="true">&#10003;</div>
@@ -257,7 +257,7 @@
     <p>A tool call that changes state outside the agent &mdash; sends an email, hits an external API, writes to a database, moves money, deletes a record. The distinction that matters for approvals is reversibility: side-effecting calls change the world; the agent&rsquo;s own reasoning does not, until it decides to call one of them.</p>
 
     <h3>Where does a workspace-shaped gate fit alongside the SDK primitive?</h3>
-    <p>It sits above it. The SDK handles the runtime pause; the workspace records the decision as a durable fact on the object the action was about. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product. That persistence &mdash; the verdict living next to the work &mdash; is what turns an approval from a transient event into an auditable one.</p>
+    <p>It sits above it. The SDK handles the runtime pause; the workspace records the decision as a durable fact on the object the action was about &mdash; who approved, when, why, in the same feed as the transitions the approval unblocked. That verdict then travels with the work: the next agent, the next auditor, and the next you can all read it a week or a year later, without asking the run trace it came from.</p>
 
     <h2 id="sources">Sources</h2>
     <p><strong>External (vendor documentation, primary sources, 2026-09-25):</strong></p>
