@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to choose a knowledge layer for your agents — a decision guide — Maskin</title>
+<meta name="description" content="Four places agent knowledge can live in 2026 — retrieval-beside, stateful-runtime, temporal knowledge graph, and typed workspace graph. Walk two questions to pick.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/learn/choose-a-knowledge-layer/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/learn/choose-a-knowledge-layer/">
+<meta property="og:title" content="How to choose a knowledge layer for your agents — a decision guide">
+<meta property="og:description" content="Four architectures — retrieval-beside (Mem0), stateful-runtime (Letta), temporal knowledge graph (Zep), typed workspace graph (Maskin). Two questions collapse the choice.">
+<meta property="og:image" content="https://maskin.io/og-image-choose-a-knowledge-layer.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="How to choose a knowledge layer for your agents — a decision guide">
+<meta name="twitter:description" content="Four architectures — retrieval-beside (Mem0), stateful-runtime (Letta), temporal knowledge graph (Zep), typed workspace graph (Maskin). Two questions collapse the choice.">
+<meta name="twitter:image" content="https://maskin.io/og-image-choose-a-knowledge-layer.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/learn/choose-a-knowledge-layer/#post",
+      "headline": "How to choose a knowledge layer for your agents — a decision guide",
+      "description": "Four architectures — retrieval-beside, stateful-runtime, temporal knowledge graph, and typed workspace graph — walked as a decision, not a vendor horse race. Two questions collapse a four-way field into two or three candidates.",
+      "datePublished": "2026-09-28T00:00:00Z",
+      "dateModified": "2026-09-28T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "image": "https://maskin.io/og-image-choose-a-knowledge-layer.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/learn/choose-a-knowledge-layer/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        { "@type": "Thing", "name": "agent knowledge layer" },
+        { "@type": "Thing", "name": "agent memory architecture" },
+        { "@type": "Thing", "name": "Mem0 vs Letta vs Zep" },
+        { "@type": "Thing", "name": "typed workspace graph" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://maskin.io/docs/" },
+        { "@type": "ListItem", "position": 3, "name": "How to choose a knowledge layer for your agents — a decision guide", "item": "https://maskin.io/docs/learn/choose-a-knowledge-layer/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I choose a knowledge layer for my agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Walk two questions before you compare vendors. First, what has to survive between runs — decisions, corrections, and artifacts, or just content? Second, who reads that memory without tooling — agents only, or humans too? The answers collapse a four-way field into two or three candidates. Then decide by composition: often the right answer is a shared substrate that carries state, plus one of the other layers for retrieval or working memory, rather than one architecture for everything."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the main types of agent memory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Retrieval-beside (Mem0-shaped vectors) — an embedded store the agent queries per turn. Stateful-runtime (Letta-shaped state blocks) — an agent runtime that keeps working memory in place between calls. Temporal-knowledge-graph (Zep-shaped nodes and edges) — a graph of typed entities and time-windowed relationships. Typed workspace graph (Maskin) — the shared substrate of workspace objects the team already operates on, that agents read and write against as first-class participants."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a vector database the same as agent memory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A vector database is one storage format for long-term memory, useful for recall. But it holds text, not structure, and it does not carry the status, the provenance, or the audit trail a decision needs. Treating a vector store as the memory is the mistake that keeps agents stateless — you can retrieve a paragraph, but you cannot tell whether a choice is settled."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between Mem0, Letta, and Zep?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They are shaped for different questions. Mem0 is retrieval-beside — a vector store that watches the conversation and re-injects extracted claims. Letta is stateful-runtime — an agent runtime that carries state blocks across sessions. Zep is a temporal knowledge graph — typed nodes, typed edges, and validity windows over time. All three are memory for the agent; none is a shared substrate a team's humans and agents both read."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does Maskin sit among the four?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Maskin is the typed workspace graph — the shared substrate itself, not a memory add-on. Insights, bets, tasks, and comments are the same object model the team's humans use; agents read and write against the same graph over MCP. Because the storage format is the read surface, a human can open any item, correct it, or add context without a viewer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use two of these together?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Almost always yes, and it is usually the right answer. A typed workspace graph can carry the decisions, corrections, and artifacts while a vector store indexes long-form content for retrieval; a knowledge wiki can sit as a curated source that both an agent and a retrieval pipeline read; a stateful-runtime agent can work against a shared workspace graph as its board. The comparison spokes under this guide cover the specific pair-ups."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the biggest mistake in choosing a knowledge layer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Optimising the wrong axis. Retrieval quality is close to solved on the standard benchmarks — LongMemEval reports roughly 97% recall@5, and swapping the embedding model alone can shift end-to-end scores by more than 6 points (MemDelta, June 2026). The unsolved layers are provenance, correction, and human readability. Picking the vendor with the biggest recall number does not close those gaps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have to write my own agents to use the workspace-graph approach?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Agents from any runtime (Claude Code, Claude Agent SDK, Letta, custom) can read and write the workspace graph over MCP. The graph is the substrate; the agents are interchangeable. That is precisely what makes it a shared board and not a per-agent memory."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop/">Human in the loop</a></li><li><a class="is-nested" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="is-active" href="/docs/learn/choose-a-knowledge-layer/" aria-current="page">How to choose a knowledge layer</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li></ul></nav></aside>    <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / How to choose a knowledge layer for your agents</p>
+    <p class="eyebrow">Article &middot; Decision guide</p>
+    <h1>How to choose a knowledge layer for your agents — a decision guide</h1>
+    <p class="lead">Four places agent knowledge can live in 2026: <strong>retrieval-beside</strong> (Mem0-shaped vectors), <strong>stateful-runtime</strong> (Letta-shaped state blocks), <strong>temporal-knowledge-graph</strong> (Zep-shaped nodes and edges), and a <strong>typed workspace graph</strong> (Maskin). None of them is universally best, and the head-of-SERP question — <em>which framework remembers best?</em> — is the wrong one to answer. The right one is two questions: <strong>what has to survive between runs, and who has to read it without tooling?</strong> This page turns those into a decision.</p>
+
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul>
+          <li><strong>The choice is architectural, not vendor-tier.</strong> Star counts don&rsquo;t predict fit; where memory has to live does.</li>
+          <li><strong>Four architectures cover the honest field.</strong> Retrieval-beside, stateful-runtime, temporal-knowledge-graph, and typed workspace graph — each with a shipping exemplar (Mem0, Letta, Zep, Maskin).</li>
+          <li><strong>The two decisive questions are structural.</strong> What survives between runs (decisions, corrections, artifacts) — and who reads it without tooling (agents only, or humans too).</li>
+          <li><strong>Retrieval quality is close to solved on the standard benchmark;</strong> synthesis and provenance are the frontier. Chasing a better vector store is optimising a mostly-solved layer.</li>
+          <li><strong>None of these formats is human-readable by default</strong> — except the typed workspace graph, whose contents are typed objects a person can open and audit.</li>
+          <li><strong>Two knowledge layers often compose better than one replaces another.</strong> The decision guide names when to pair and when to pick.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Why &ldquo;which framework remembers best&rdquo; is the wrong frame</h2>
+    <p>The three top-ranking 2026 comparisons of agent memory frameworks all open with the same reframe. DreamingPress (June 2026) puts it plainly: <em>the question isn&rsquo;t which framework remembers best. It&rsquo;s whether you want a retrieval add-on, a temporal graph, or an agent that runs inside someone else&rsquo;s server.</em> PLUR (July 2026): <em>none is universally best. Choose by use case, not by star count.</em> AgentsCamp (June 2026) names the same three architectures as competing bets on where memory should live.</p>
+    <p>There is a fourth answer no top-ranking comparison names, and it becomes obvious once you split <em>what carries state</em> from <em>what runs the agent</em>: a typed store of workspace objects a person can open and read, with agents writing and reading against it. Every 2026 comparison leaves that slot unclaimed — and every one of them frames the &ldquo;vs&rdquo; between three frameworks whose formats a human cannot read without tooling.</p>
+    <p>The rest of this page is the decision. It names the four architectures with their exemplars, walks the two questions that actually change the answer, gives a decision matrix, and closes on the composition patterns that beat picking one architecture and hoping.</p>
+
+    <h2>The four architectures, named with exemplars</h2>
+
+    <h3>1. Retrieval-beside (Mem0-shaped vectors)</h3>
+    <p>The retrieval-beside architecture bolts a vector store next to the agent. On each run, the agent embeds the current query, retrieves the most similar previous messages or extracted facts, and stuffs them into the context window. Mem0 is the vendor exemplar: an add-on that watches the conversation, extracts durable claims, embeds them, and re-injects them at the top of the next turn.</p>
+    <p><strong>What it stores.</strong> Embeddings of extracted text, plus metadata pointing back to the source turn. The vectors themselves are unreadable; the metadata makes them addressable.</p>
+    <p><strong>What it is good at.</strong> Open-ended recall over long, unstructured conversation histories. Personalisation. Any case where the state to carry forward is <em>content</em> (what was said, what was preferred) rather than <em>structure</em> (what was decided, and why).</p>
+    <p><strong>Where it breaks.</strong> Two places, both hard. Format lock-in — six incompatible long-term-memory formats shipped in 2026 alone (Mem0, Letta, Zep, khive, Graphiti, growmos), and migrating between any two means re-extracting from source. Silent context injection — Simon Willison&rsquo;s ChatGPT complaint at the 2026 AI Engineer Summit was that a memory feature quietly slipped <em>Half Moon Bay</em> into an image prompt, which is the failure mode any retrieval-beside layer inherits: a store you cannot see is a store you cannot correct. Retrieval quality has also plateaued rather than scaled: on LongMemEval, first-stage retrieval is close to saturated at roughly <strong>97% recall@5</strong>, but of 65 wrong answers, <strong>54 already had the correct evidence sitting in the top-5</strong> (AutoMem&rsquo;s 2026 full-slice comparison). The evidence was found; it was not used.</p>
+    <p><strong>Pick it when</strong> the JTBD is &ldquo;the assistant should remember what I told it last week,&rdquo; the reader of that memory is the agent only, and the failure mode of a silent injection is acceptable to your users.</p>
+
+    <h3>2. Stateful-runtime (Letta-shaped state blocks)</h3>
+    <p>The stateful-runtime architecture removes the retrieval step entirely. Instead of storing embeddings and re-fetching them per turn, the agent runs on a server that keeps its state blocks — a working memory, a scratchpad, an evolving persona — in place between calls. Letta (formerly MemGPT) is the vendor exemplar: an agent runtime that owns memory as first-class state, promotes and demotes blocks between hot and cold storage, and hands the agent a durable &ldquo;self&rdquo; across sessions.</p>
+    <p><strong>What it stores.</strong> Structured state blocks — named regions of persistent context — plus a memory hierarchy that decides what lives in the working set and what gets paged out. The blocks are typed and editable at the API level.</p>
+    <p><strong>What it is good at.</strong> Long-running single-agent processes where the <em>agent</em> is the entity that has to accumulate context, not the <em>system around it</em>. Personas. Ongoing companion or assistant loops that need to feel continuous rather than fresh-per-turn.</p>
+    <p><strong>Where it breaks.</strong> Two places. The agent lives inside the vendor&rsquo;s server, which is the exact framing DreamingPress used — <em>an agent that runs inside someone else&rsquo;s server</em> — and that couples memory to compute. And the state blocks are the agent&rsquo;s memory, not the team&rsquo;s: two agents doing related work do not automatically read each other&rsquo;s blocks. The board that RedHat&rsquo;s <em>Taming the Agent Beast</em> piece (August 2026) named — <em>stateless agents, stateful orchestration</em> — is not what stateful-runtime buys. It buys the opposite: stateful agents, unshared board.</p>
+    <p><strong>Pick it when</strong> the JTBD is &ldquo;one long-running agent needs to accumulate a persona and a working memory,&rdquo; you are comfortable with the runtime coupling, and the memory does not need to be read by other agents or by humans.</p>
+
+    <h3>3. Temporal-knowledge-graph (Zep-shaped nodes and edges)</h3>
+    <p>The temporal-knowledge-graph architecture extracts entities, relationships, and events from the conversation into a graph, and tracks how facts change over time. Zep is the vendor exemplar: entities become nodes, relationships become edges, and each edge carries a validity window so <em>the customer was on the Pro plan</em> and <em>the customer is on the Enterprise plan</em> can both be true — just not at the same time.</p>
+    <p><strong>What it stores.</strong> Typed nodes (people, projects, decisions), typed edges (worked on, decided against, escalated to), and a temporal window per fact. Provenance is usually attached.</p>
+    <p><strong>What it is good at.</strong> Multi-hop questions the vector store cannot answer — <em>who decided X, and what depended on it?</em> — over conversation histories where relationships matter more than paragraphs. Cases where the answer to <em>is this still true?</em> is load-bearing.</p>
+    <p><strong>Where it breaks.</strong> Ontology drift and upkeep cost. A knowledge graph that gets typed once and then leaks decays into a graph nobody trusts. Graphs are also opinionated: the shipping-code consensus this year — khive, Graphiti, and growmos, three separate projects — converged within months on typed ontologies, typed edges, and provenance on every item, and their shared claim is that <em>typed structure is not a similarity result</em>. That is the strength of the architecture. Keeping the types current is the cost of the strength.</p>
+    <p><strong>Pick it when</strong> the JTBD is &ldquo;we need to answer traversal questions, not just retrieval questions,&rdquo; you can invest in the ontology, and the reader of the graph is the agent (or, with a query language, an analyst).</p>
+
+    <h3>4. Typed workspace graph (Maskin)</h3>
+    <p>The typed workspace graph is the fourth answer, and it is a different kind of object from the other three. The other three are memory <em>for the agent</em>; the typed workspace graph is the shared substrate the <em>team</em> is already working on — insights, bets, tasks, comments — that agents read from and write to as first-class participants. In Maskin, the workspace graph is the same object model humans see in the UI: a decision is a bet with a status, a correction is a comment attached to the thing it corrects, and an artifact is the object the run produced. Every item is human-readable by default.</p>
+    <p>That last property is the wedge. The typed workspace graph is the only one of the four architectures whose long-term state a person can open, read, and edit without special tooling. Vectors need a search; state blocks need an API; graph nodes need a query. A workspace object needs a click.</p>
+    <p><strong>What it stores.</strong> Typed objects a person can open and read (insights, bets, tasks, comments, artifacts). Typed edges between them (<code>informs</code>, <code>blocks</code>, <code>in_loop</code>). Provenance on every item — who wrote it, when, from which upstream signal — and a live status.</p>
+    <p><strong>What it is good at.</strong> Multi-agent work where run one and run two are done by different agents but share a board. The three-item persistence checklist — <em>decisions, corrections, artifacts</em> — because a workspace object is exactly the shape of each one. Any case where the human needs to be able to correct the memory, not just consume it.</p>
+    <p><strong>Where it breaks.</strong> The upfront cost of a schema. If your only need is <em>the assistant should remember what I told it</em>, a retrieval-beside vector store is faster to stand up and enough. The typed workspace graph pays off when the state is <em>decisions and corrections a team has to carry across time</em>, not raw content.</p>
+    <p><strong>Pick it when</strong> the JTBD is &ldquo;our scheduled agents have to pick up where the last run left off, and a human has to be able to correct what they remember,&rdquo; the readers of the memory include humans as well as agents, and the state to carry forward is structured (decisions with reasons, corrections with attribution) rather than a wall of extracted prose.</p>
+
+    <h2>The two questions that actually change the answer</h2>
+    <p>Before the matrix, walk two questions in order. They collapse the field faster than any feature list.</p>
+
+    <h3>Question 1: What has to survive between runs?</h3>
+    <p>There are only three categories of state worth persisting, and they map cleanly to the checklist worked out in <a href="/docs/learn/agent-memory-across-sessions/">agent memory across sessions</a>:</p>
+    <ul>
+      <li><strong>Decisions</strong> — what was chosen, and why. Not the receipt (<em>sent the follow-up email</em>) but the reason (<em>sent it to the tier-2 segment because the tier-1 list was rejected on Tuesday</em>).</li>
+      <li><strong>Corrections</strong> — the gap between what the agent produced and what a human accepted. The most valuable signal in the system, and the one most setups discard.</li>
+      <li><strong>Artifacts</strong> — the outputs themselves, still addressable, so run two can read run one&rsquo;s work instead of regenerating it.</li>
+    </ul>
+    <p>Miss any one of these and the failure is silent. The run completes, the output looks fine, and the loss surfaces weeks later — an agent confidently repeating a settled call, or a correction you made three times still not sticking.</p>
+    <p>Now map that back to the four architectures:</p>
+    <ul>
+      <li><strong>Retrieval-beside</strong> captures the content of what was said, not the decision behind it. It can hold artifacts as embedded text, but the addressability is the metadata, not the vector. Corrections have to be re-extracted or re-said.</li>
+      <li><strong>Stateful-runtime</strong> holds working memory well but does not naturally represent the &ldquo;why&rdquo; behind a decision or a human&rsquo;s after-the-fact correction; the block is the agent&rsquo;s, not a shared record.</li>
+      <li><strong>Temporal-knowledge-graph</strong> represents decisions and their timing beautifully, and corrections can be modelled as new edges with new validity windows. Artifacts sit outside the graph unless you wire them in.</li>
+      <li><strong>Typed workspace graph</strong> stores all three natively — a decision is a bet, a correction is a comment on the thing it corrects, an artifact is an object with a link — and every item is typed, provenanced, and time-stamped.</li>
+    </ul>
+
+    <h3>Question 2: Who reads it without tooling?</h3>
+    <p>Long-term memory that only the agent can read is a lock-in decision, whether you frame it that way or not. Three of the four architectures store their long-term state in a format a human cannot open: Mem0 stores vectors, Letta stores runtime state blocks, Zep stores graph nodes and edges. Each vendor offers a UI on top of the store — but the UI is a viewer, not the storage. If you swap vendors, the format goes with them.</p>
+    <p>The typed workspace graph is the one architecture whose storage format <em>is</em> the read surface. The bet is a page. The comment is a comment. The artifact is a file with a link. A new hire, a support engineer, or an agent from a different vendor can open the item and read it — because there is no format to decode, just the object.</p>
+    <p>This is not an argument against the other three. It is the thing that makes the fourth answer a different kind of thing. If your memory has to be auditable by a human at any point — for correction, for compliance, or for a taste-sensitive review — the format has to be human-readable by default, not through a tool.</p>
+
+    <h2>The decision matrix</h2>
+    <p>Rows are the four architectures; columns are the four questions that decide it.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Architecture</th>
+          <th>What survives between runs</th>
+          <th>Who reads it without tooling</th>
+          <th>Where the human gate lives</th>
+          <th>Where Maskin sits</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Retrieval-beside</strong> (Mem0)</td>
+          <td>Extracted text, embedded — content, not structure</td>
+          <td>Nobody — vectors are not readable</td>
+          <td>Nowhere by default; edits happen by re-saying</td>
+          <td>Not this — retrieval-beside is a component you can point at Maskin objects, not a substitute for them</td>
+        </tr>
+        <tr>
+          <td><strong>Stateful-runtime</strong> (Letta)</td>
+          <td>Agent state blocks — working memory for one agent</td>
+          <td>The agent, via API — humans need a viewer</td>
+          <td>On the block edit, if the runtime exposes one</td>
+          <td>Not this — Maskin is not an agent runtime; it is the substrate agents (from any runtime) read and write</td>
+        </tr>
+        <tr>
+          <td><strong>Temporal-knowledge-graph</strong> (Zep)</td>
+          <td>Typed nodes, typed edges, with temporal windows</td>
+          <td>The agent, via query — humans need a graph viewer</td>
+          <td>On graph writes, if you build one</td>
+          <td>Adjacent — Maskin&rsquo;s typed graph carries some of the same primitives, but with a workspace UI rather than a query language</td>
+        </tr>
+        <tr>
+          <td><strong>Typed workspace graph</strong> (Maskin)</td>
+          <td>Decisions (bets), corrections (comments), artifacts (typed objects) — all three checklist items</td>
+          <td>Anyone with access — the object is the read surface</td>
+          <td>Wherever the loop is shaped to gate; corrections are first-class comments</td>
+          <td>This — the shared substrate itself, human-readable, MCP-native</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>The matrix is honest about scope. Maskin is not trying to be a retrieval-beside vector store or an agent runtime. Those are components you can compose against a typed workspace graph — and the composition is often the right answer, not the pick.</p>
+
+    <h2>When two layers compose better than one replaces another</h2>
+    <p>The comparison spokes under this decision cover the three composition patterns worth knowing. All three end the same way: a typed store carries what has to persist, and the other layer handles what it is good at.</p>
+    <ul>
+      <li><strong>A wiki inside a vector database.</strong> A <a href="/docs/knowledge-wiki-vs-vector-database/">knowledge wiki is a compiled artifact, not a storage engine</a> — you can put wiki pages <em>into</em> a vector database and get the best of both. The wiki is the curated source; the database is the index over it.</li>
+      <li><strong>RAG on top of the graph.</strong> <a href="/docs/mcp-vs-rag/">MCP is the wire and RAG is a retrieval mechanism</a> — neither carries state. Point a retrieval pipeline at the typed graph&rsquo;s settled knowledge and you have a system where the retrieval is good <em>and</em> the state is auditable. The retrieval mechanism is not the memory; the graph is.</li>
+      <li><strong>A wiki instead of raw documents.</strong> <a href="/docs/llm-wiki-vs-rag/">An LLM wiki versus RAG</a> is not really a &ldquo;vs&rdquo; — the wiki replaces the <em>corpus</em> RAG retrieves from, not the retrieval layer. Most teams end up with both.</li>
+    </ul>
+    <p>The composition question resolves the same way each time. Retrieval is a mechanism. A vector store is an index. A wiki is an artifact. A graph is a substrate. The four are not rivals — they are layers, and the honest question is which layer is missing from your stack.</p>
+
+    <h2>The upkeep question that outlives the architecture choice</h2>
+    <p>Every architecture on this page has the same failure mode, and it is the one nobody scores in the demos. Whatever you pick, someone has to keep it current after its first author changes roles.</p>
+    <ul>
+      <li>The vector store rots when the extraction rules stop matching the way people talk about the work.</li>
+      <li>The state blocks rot when nobody edits the runtime memory after a decision changes.</li>
+      <li>The temporal graph rots when the ontology drifts and no one owns the schema.</li>
+      <li>The workspace graph rots when the loop that writes to it stops closing.</li>
+    </ul>
+    <p>The architecture decision determines <em>what shape</em> the rot takes. It does not exempt you from the rot. The teams that keep a memory alive make writing to it a byproduct of work that already closes, and reading it a byproduct of work that already starts — never a separate writing chore. That is why the deciding factor is usually not the architecture at all. It is whether the loop that maintains the memory is closed, or whether <em>keep the memory current</em> is a side-project nobody owns.</p>
+    <p>If the loop is closed, any of the four architectures will hold. If it is not, none of them will.</p>
+
+    <h2>FAQ</h2>
+
+    <h3>How do I choose a knowledge layer for my agents?</h3>
+    <p>Walk two questions before you compare vendors. First, what has to survive between runs — decisions, corrections, and artifacts, or just content? Second, who reads that memory without tooling — agents only, or humans too? The answers collapse a four-way field into two or three candidates. Then decide by composition: often the right answer is a shared substrate that carries state, plus one of the other layers for retrieval or working memory, rather than one architecture for everything.</p>
+
+    <h3>What are the main types of agent memory?</h3>
+    <p>Retrieval-beside (Mem0-shaped vectors) — an embedded store the agent queries per turn. Stateful-runtime (Letta-shaped state blocks) — an agent runtime that keeps working memory in place between calls. Temporal-knowledge-graph (Zep-shaped nodes and edges) — a graph of typed entities and time-windowed relationships. Typed workspace graph (Maskin) — the shared substrate of workspace objects the team already operates on, that agents read and write against as first-class participants.</p>
+
+    <h3>Is a vector database the same as agent memory?</h3>
+    <p>No. A vector database is one storage format for long-term memory, useful for recall. But it holds text, not structure, and it does not carry the status, the provenance, or the audit trail a decision needs. Treating a vector store as <em>the</em> memory is the mistake that keeps agents stateless — you can retrieve a paragraph, but you cannot tell whether a choice is settled. See <a href="/docs/knowledge-wiki-vs-vector-database/">knowledge wiki vs vector database</a> for the storage-versus-artifact cut.</p>
+
+    <h3>What is the difference between Mem0, Letta, and Zep?</h3>
+    <p>They are shaped for different questions. Mem0 is retrieval-beside — a vector store that watches the conversation and re-injects extracted claims. Letta is stateful-runtime — an agent runtime that carries state blocks across sessions. Zep is a temporal knowledge graph — typed nodes, typed edges, and validity windows over time. All three are memory <em>for the agent</em>; none is a shared substrate a team&rsquo;s humans and agents both read.</p>
+
+    <h3>Where does Maskin sit among the four?</h3>
+    <p>Maskin is the typed workspace graph — the shared substrate itself, not a memory add-on. Insights, bets, tasks, and comments are the same object model the team&rsquo;s humans use; agents read and write against the same graph over MCP. Because the storage format is the read surface, a human can open any item, correct it, or add context without a viewer.</p>
+
+    <h3>Can I use two of these together?</h3>
+    <p>Almost always yes, and it is usually the right answer. A typed workspace graph can carry the decisions, corrections, and artifacts while a vector store indexes long-form content for retrieval; a knowledge wiki can sit as a curated source that both an agent and a retrieval pipeline read; a stateful-runtime agent can work against a shared workspace graph as its board. The comparison spokes under this guide cover the specific pair-ups.</p>
+
+    <h3>What is the biggest mistake in choosing a knowledge layer?</h3>
+    <p>Optimising the wrong axis. Retrieval quality is close to solved on the standard benchmarks — LongMemEval reports roughly 97% recall@5, and swapping the embedding model alone can shift end-to-end scores by more than 6 points (MemDelta, June 2026). The unsolved layers are provenance, correction, and human readability. Picking the vendor with the biggest recall number does not close those gaps.</p>
+
+    <h3>Do I have to write my own agents to use the workspace-graph approach?</h3>
+    <p>No. Agents from any runtime (Claude Code, Claude Agent SDK, Letta, custom) can read and write the workspace graph over MCP. The graph is the substrate; the agents are interchangeable. That is precisely what makes it a shared board and not a per-agent memory.</p>
+
+    <h2>The primitives underneath</h2>
+    <p>A short vocabulary note, because the words collide across vendors, and the loop word in particular is now a two-vendor category noun (Linear September 2026, Atlassian ten days later).</p>
+
+    <h3>Loop</h3>
+    <p>A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on <em>done for now</em>. Every listing on the Marketplace is a loop.</p>
+    <p><strong>Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.</strong></p>
+
+    <h3>Agent</h3>
+    <p>A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an <em>AI teammate</em>: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.</p>
+
+    <h3>MCP</h3>
+    <p>The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.</p>
+
+    <h3>Skill</h3>
+    <p>A packaged capability you attach to an agent — <em>draft a follow-up in our voice</em>, <em>summarize a customer call against our discovery template</em>. Skills are the reusable pieces of judgment your team is already building without realising it.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/knowledge-wiki-vs-vector-database/">
+          <div class="doc-card__title">Knowledge wiki vs vector database</div>
+          <div class="doc-card__desc">The artifact-versus-storage cut; one composition pattern under this decision.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/mcp-vs-rag/">
+          <div class="doc-card__title">MCP vs RAG for agent memory</div>
+          <div class="doc-card__desc">The wire-versus-retrieval cut; neither carries state on its own.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/llm-wiki-vs-rag/">
+          <div class="doc-card__title">LLM wiki vs RAG</div>
+          <div class="doc-card__desc">The mechanism-versus-artifact cut; when to keep both.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/learn/agent-memory-across-sessions/">
+          <div class="doc-card__title">Agent memory across sessions</div>
+          <div class="doc-card__desc">The persistence checklist — decisions, corrections, artifacts — this decision guide leans on.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/marketplace/knowledge-wiki/">
+          <div class="doc-card__title">LLM wiki — a wiki your agents read before they answer</div>
+          <div class="doc-card__desc">The closed-loop up-application of the fourth answer.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="post-cta">
+      <h2>Pick the substrate, compose the rest</h2>
+      <p>Maskin is the typed workspace graph — the shared substrate humans and agents both read and write, with decisions, corrections, and artifacts as first-class objects. Open source under Apache 2.0. Self-host free, bring your own model.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
