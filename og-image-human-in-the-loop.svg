@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111110" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#111110" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="120" fill="url(#topFade)"/>
+
+  <text x="80" y="98" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#5A5751" letter-spacing="4">HUMAN IN THE LOOP</text>
+  <text x="80" y="160" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">Four vendors,</text>
+  <text x="80" y="222" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">one primitive.</text>
+  <text x="80" y="266" font-family="Newsreader, Georgia, serif" font-size="24" font-style="italic" fill="#8B8781">The approval gate before side-effecting tool calls</text>
+
+  <g id="primitives" transform="translate(80, 320)">
+    <rect x="0" y="0" width="510" height="80" rx="11" fill="#131720" stroke="#2563EB" stroke-width="1.6"/>
+    <text x="22" y="34" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#7FA6EE">OpenAI Agents SDK</text>
+    <text x="22" y="60" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18" fill="#FAFAF8">needs_approval</text>
+
+    <rect x="530" y="0" width="510" height="80" rx="11" fill="#131720" stroke="#2563EB" stroke-width="1.6"/>
+    <text x="552" y="34" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#7FA6EE">Cloudflare Agents</text>
+    <text x="552" y="60" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18" fill="#FAFAF8">waitForApproval()</text>
+
+    <rect x="0" y="96" width="510" height="80" rx="11" fill="#131720" stroke="#2563EB" stroke-width="1.6"/>
+    <text x="22" y="130" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#7FA6EE">Microsoft Agent Framework</text>
+    <text x="22" y="156" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18" fill="#FAFAF8">RequestPort</text>
+
+    <rect x="530" y="96" width="510" height="80" rx="11" fill="#131720" stroke="#2563EB" stroke-width="1.6"/>
+    <text x="552" y="130" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#7FA6EE">Temporal</text>
+    <text x="552" y="156" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18" fill="#FAFAF8">signal-based approval</text>
+  </g>
+
+  <g transform="translate(80, 550)">
+    <rect x="0" y="0" width="34" height="34" rx="7" fill="#1C1B18"/>
+    <path d="M7 26 L7 9 L17 19 L27 9 L27 26" stroke="#FAFAF8" stroke-width="3.6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+    <text x="46" y="24" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">Maskin</text>
+    <text x="46" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="#5A5751">maskin.io/docs/learn/human-in-the-loop</text>
+  </g>
+</svg>

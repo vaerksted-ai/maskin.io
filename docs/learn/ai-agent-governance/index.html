@@ -224,7 +224,7 @@
       <li>"Can install a marketplace loop"</li>
     </ul>
     <p>Sentence-shaped permissions read like the audit trail you'll want later; feature-shaped permissions ("can access Sales module") don't. Grant the smallest set that lets the agent do its job. If the Prospector needs to draft outreach but never send, its permission list includes drafting and excludes <code>send_message</code> — the send trigger belongs to a Sender identity with a narrower grant.</p>
-    <p>One useful default: material calls (sending, publishing, spending money, changing customer state) live on their own permission per surface. That way revoking one integration or one workflow is a targeted action.</p>
+    <p>One useful default: material calls (sending, publishing, spending money, changing customer state) live on their own permission per surface. That way revoking one integration or one workflow is a targeted action. The same material calls are also where the <a href="/docs/learn/human-in-the-loop/">approval-gate primitive</a> shipped by OpenAI, Cloudflare, Microsoft, and Temporal fires &mdash; the permission answers <em>may this agent do this?</em> and the gate answers <em>did a human sign off on this specific instance?</em>. Both live on the object; the audit trail collects them together.</p>
     <h3>3. Audit trail on the object graph</h3>
     <p>Audit is not a separate log. Every state transition on every object is an event. Every event has: the object, the field that changed, the before and after value, the actor, the timestamp, and (if applicable) the trigger that fired it.</p>
     <p>What this buys you:</p>

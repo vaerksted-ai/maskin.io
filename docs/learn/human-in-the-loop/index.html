@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human in the loop: the approval gate before side-effecting tool calls | Maskin</title>
+<meta name="description" content="Human in the loop is now an SDK-level approval gate for agent tool calls. OpenAI, Cloudflare, Microsoft, and Temporal converged on the same primitive — here is what it is and what the workspace-shape adds.">
+
+<link rel="canonical" href="https://maskin.io/docs/learn/human-in-the-loop/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/learn/human-in-the-loop/">
+<meta property="og:title" content="Human in the loop: the approval gate before side-effecting tool calls">
+<meta property="og:description" content="OpenAI, Cloudflare, Microsoft, and Temporal all shipped the same primitive in 2026 — a named SDK contract that pauses an agent before it acts on the world. Here is what it is and what the workspace-shape adds.">
+<meta property="og:image" content="https://maskin.io/docs/learn/human-in-the-loop/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-09-28T00:00:00Z">
+<meta property="article:modified_time" content="2026-09-28T00:00:00Z">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Human in the loop: the approval gate before side-effecting tool calls">
+<meta name="twitter:description" content="Four vendors, four API surfaces, one primitive — human in the loop has been re-defined as an SDK-level approval gate. Here is the contract, and what a typed workspace adds.">
+<meta name="twitter:image" content="https://maskin.io/docs/learn/human-in-the-loop/og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/learn/human-in-the-loop/#post",
+      "headline": "Human in the loop: the approval gate before side-effecting tool calls",
+      "name": "Human in the loop: the approval gate before side-effecting tool calls",
+      "description": "Four major agent-SDK vendors — OpenAI, Cloudflare, Microsoft, and Temporal — shipped the same primitive in 2025-2026: a named contract that pauses an agent before it invokes a tool that would act on the world. This page explains the primitive, the four API surfaces that name it, why the contract matters more than the vocabulary, and what a typed workspace adds on top — a decision recorded next to the work it approves, not just a paused run.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/learn/human-in-the-loop/",
+      "mainEntityOfPage": "https://maskin.io/docs/learn/human-in-the-loop/",
+      "image": "https://maskin.io/docs/learn/human-in-the-loop/og.png",
+      "datePublished": "2026-09-28T00:00:00Z",
+      "dateModified": "2026-09-28T00:00:00Z",
+      "author": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": { "@type": "ImageObject", "url": "https://maskin.io/icon-512.png" }
+      },
+      "isPartOf": { "@type": "WebSite", "name": "Maskin", "url": "https://maskin.io/" },
+      "about": [
+        { "@type": "Thing", "name": "Human in the loop" },
+        { "@type": "Thing", "name": "Approval gate" },
+        { "@type": "Thing", "name": "Agent tool calls" },
+        { "@type": "Thing", "name": "OpenAI Agents SDK" },
+        { "@type": "Thing", "name": "Cloudflare Agents" },
+        { "@type": "Thing", "name": "Microsoft Agent Framework" },
+        { "@type": "Thing", "name": "Temporal" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://maskin.io/docs/" },
+        { "@type": "ListItem", "position": 3, "name": "Learn", "item": "https://maskin.io/docs/learn/" },
+        { "@type": "ListItem", "position": 4, "name": "Human in the loop", "item": "https://maskin.io/docs/learn/human-in-the-loop/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is human in the loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In 2026 the phrase mostly names an SDK-level approval gate: before an AI agent calls a tool that would send an email, move money, or otherwise act on the world, the run pauses and waits for a person to approve or reject. Four major vendors — OpenAI, Cloudflare, Microsoft, and Temporal — shipped named primitives for exactly this in 2025-2026. The older meaning (data labeling for supervised learning) is still valid, but not what agent builders reach for the term to name."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the approval-gate primitive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A contract at the SDK layer: an agent about to invoke a tool marked as side-effecting suspends its own run, emits a request for approval, and only resumes when a human (or another authorised actor) returns an approve or reject. It is the same shape across every vendor that named it: OpenAI's needs_approval flag with RunState suspension, Cloudflare's waitForApproval() call, Microsoft's RequestPort, Temporal's signal-based approval activity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which vendors ship an SDK-level human-in-the-loop primitive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As of 2026: OpenAI Agents SDK (needs_approval on tools, RunState for suspension); Cloudflare Agents (waitForApproval() and MCP elicitation on Workers); Microsoft Agent Framework (RequestPort as the approval channel); Temporal (signal-based approval activities on a durable workflow). Four vendors, four API surfaces, one primitive — that convergence is the story."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is human in the loop the same as human oversight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — and the difference matters. Human in the loop is a technical contract that pauses a run. Human oversight (the standard EU AI Act Article 14 uses) is a broader design property that also covers monitoring, understanding, and halting. A pause without a recorded decision does not deliver oversight; oversight without a pause on side-effecting actions is not enforceable. The two live at different layers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a workspace-shaped approval gate add over a plain SDK primitive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Persistence across tools plus an audit trail. An SDK primitive pauses one run inside one product. A workspace-shaped gate records the decision as a typed outcome next to the work it approves, so the reason for the approval survives the run — and any other agent (or auditor, or the same loop tomorrow) can read what was decided and why."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from human-on-the-loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Human-on-the-loop puts the person above the transaction as a supervisor; human-in-the-loop puts them inside it as the trigger. The vocabulary cut, safety register, and EU AI Act Article 14 reading are covered in the companion piece on Human in the loop AI: when it's real, when it's theater. This page is about the SDK primitive; that page is about the vocabulary and the metric."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="is-active" href="/docs/learn/human-in-the-loop/" aria-current="page">Human in the loop</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li></ul></nav></aside>  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Learn / Human in the loop</p>
+    <p class="eyebrow">Article · Learn</p>
+    <h1>Human in the loop: the approval gate before side-effecting tool calls</h1>
+    <p class="lead"><strong>Four major agent-SDK vendors shipped the same primitive in 2025-2026: a named contract that pauses an AI agent before it invokes a tool that would act on the world.</strong> OpenAI calls it <code>needs_approval</code>; Cloudflare calls it <code>waitForApproval()</code>; Microsoft calls it <code>RequestPort</code>; Temporal expresses it as a signal on a durable workflow. Four API surfaces, one primitive. If you are building an agent that sends the email, moves the money, or files the ticket, this is the contract buyers now expect you to hold.</p>
+
+    <h2>The primitive, in one sentence</h2>
+    <p>Before an agent calls a tool marked as side-effecting &mdash; anything that would change something outside the model&rsquo;s own scratch space &mdash; the run pauses and waits for a person to approve or reject. Nothing ships until someone says so. That is the whole contract; everything else is which API surface names it.</p>
+    <p>The older meaning of &ldquo;human in the loop&rdquo; &mdash; labeling training data for supervised learning &mdash; is still valid, but agent builders in 2026 reach for the phrase to name this pause-before-side-effect contract instead. Both meanings are alive; the phrase now defaults to the second when the context is agents.</p>
+
+    <h2>Four vendors, four API surfaces</h2>
+    <p>The convergence is what makes this a category, not a feature. Every major agent framework shipped the same primitive between the OpenAI Agents SDK launch in March 2025 and the Microsoft Agent Framework preview in early 2026 &mdash; each with a different name, all with the same behaviour.</p>
+    <ul>
+      <li><strong>OpenAI Agents SDK</strong> marks a tool with <code>needs_approval</code>. When the agent selects it, the SDK returns a <code>RunState</code> object rather than executing &mdash; the state can be serialised, held for a human decision, and later resumed with the approval or rejection recorded on the run.</li>
+      <li><strong>Cloudflare Agents</strong> exposes <code>waitForApproval()</code> inside a Workers-hosted agent. The Worker suspends, the request lands on an approval surface (an MCP elicitation, an inbox, a Slack message &mdash; the surface is your call), and the Worker resumes on the returned decision.</li>
+      <li><strong>Microsoft Agent Framework</strong> models the approval channel as a <code>RequestPort</code> &mdash; a typed input port on the agent graph that a human (or a governance service) fulfills before the downstream node runs.</li>
+      <li><strong>Temporal</strong> wraps the same pattern in a signal-based approval activity: a durable workflow reaches the approval activity, blocks on a signal, and continues when the signal arrives with the decision payload.</li>
+    </ul>
+    <p>The four names are noise; the primitive is signal. Any of them will pause the run and hold state until a human makes the call. What differs is where the state lives, how long it can wait, and how the approval request is surfaced &mdash; and those are the design decisions that separate a demo from a system you would run in production.</p>
+
+    <h2>Why the primitive appeared now</h2>
+    <p>Agents crossed the line from &ldquo;returns a chat response&rdquo; to &ldquo;calls a tool that acts on the world.&rdquo; The old shape &mdash; a model that produces text and a human that reads it &mdash; had implicit oversight built in: the human decided what to do with the text. The new shape &mdash; a model that invokes tools that send emails, mutate rows, transfer money &mdash; has no implicit gate. Something has to hold the tool call before it commits, or the wrong side-effect ships automatically.</p>
+    <p>Vendors reached the same design at nearly the same time because the failure mode was the same everywhere: an agent that autonomously called a side-effecting tool in a demo, and the demo audience realised the fix could not be &ldquo;write a better prompt.&rdquo; The fix had to be a contract at the SDK layer, callable per tool, and readable by the operator without reading the model&rsquo;s reasoning trace.</p>
+
+    <h2>What the primitive does not do</h2>
+    <p>The pause is necessary, and it is not sufficient. The primitive answers &ldquo;did a human approve this action?&rdquo; It does not answer:</p>
+    <ul>
+      <li><strong>Was the reason recorded next to the work?</strong> If the approve/reject click is the only artefact, no one downstream can tell why the decision went that way. The reason lives in the reviewer&rsquo;s head, not the run.</li>
+      <li><strong>Can another agent, another loop, or a future operator read the decision?</strong> An SDK primitive holds state for the run it belongs to. When the run ends, the decision typically disappears unless something outside the SDK persisted it.</li>
+      <li><strong>What is the audit trail across tools?</strong> An agent that touches four tools produces four independent approval records &mdash; unless something above the SDK is stitching them into one narrative.</li>
+    </ul>
+    <p>Those are the three questions that separate an SDK pause from real oversight. The primitive is the wire; what carries the decision across time and across tools is a different layer.</p>
+
+    <h2>What a workspace-shaped gate adds</h2>
+    <p>The pause-before-side-effect contract is the floor. The design decision that sits on top is <em>where the decision gets recorded so the reason survives the run</em>. In a workspace-shaped implementation, the approval is not a click that resumes the SDK &mdash; it is a change to a typed object with the reviewer&rsquo;s note attached, and the SDK resume is a consequence of that change. Plain-English: the decision is recorded next to the work it approves, so anyone can go back and read what was decided and why.</p>
+    <p>That naming matters because it is what turns the pause into an audit trail without a second system. The event that resumes the agent is the same event an auditor reads six months later &mdash; a typed workspace object (a &ldquo;bet,&rdquo; a &ldquo;task,&rdquo; a &ldquo;send&rdquo;) with the approve/reject transition and its reason on the object&rsquo;s own event log. There is no separate approvals database to keep in sync, and no reviewer&rsquo;s prose stuck in a Slack thread the SDK has never heard of.</p>
+    <p>This is the shape the <a href="/docs/what-is-a-stateful-orchestration-substrate/">stateful orchestration substrate</a> was designed to hold: a shared typed store where handoffs between stateless agents survive, so a pipeline produces coherent work across runs. An approval-gate decision is one class of handoff &mdash; from the agent that proposed the action to the human who ruled on it &mdash; and the substrate keeps it addressable long after the run that produced it ended.</p>
+    <p><strong>Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.</strong> The approval is not a modal that blocks a UI &mdash; it is a first-class transition on a first-class object. Loop-level pause, per-action-class autonomy, and per-loop override rate are consequences of the same substrate, covered in the companion piece on <a href="/docs/learn/ai-agent-governance/">AI agent governance for small teams</a>.</p>
+
+    <h2>Approval surfaces, in the wild</h2>
+    <p>The primitive is neutral on where the human sees the approval request. In practice, four surfaces dominate as of 2026, each with a different failure profile:</p>
+    <ul>
+      <li><strong>Inbox surfaces.</strong> A queue of pending approvals with a per-item context panel. LangChain&rsquo;s open-source <a href="/docs/agent-inbox/">Agent Inbox</a> is the definitional reference for this shape &mdash; three interrupt types (notify, question, review), one queue, one operator. Scales while the queue is short; buckles when many parallel loops share it and the operator has to remember what each item was for.</li>
+      <li><strong>Chat surfaces.</strong> The approve/reject arrives as a Slack message or a Teams card. Fastest response time when the reviewer is at their desk; worst audit trail, because the reason for the decision lives in the chat scrollback and rarely makes it back onto the run.</li>
+      <li><strong>MCP elicitation.</strong> The agent asks its host client (Claude Desktop, Claude Code, another MCP-native client) for the human&rsquo;s call, in-context. Cleanest when the human is already driving the agent through an MCP client; irrelevant when the agent is running headless.</li>
+      <li><strong>Workspace-graph surfaces.</strong> The approval is a status transition on the object itself &mdash; the same object the work will land on. The <a href="/docs/ambient-agent-workspace/">ambient agent workspace</a> pattern names this as the alternative to the flat inbox once you have many parallel loops. Slower to build than an inbox; the audit trail is a side effect of the work.</li>
+    </ul>
+    <p>Which surface fits which loop is a judgment call about volume, reversibility, and how much context the reviewer needs. Most production systems end up running two or three at once &mdash; MCP elicitation for the operator&rsquo;s own driven loops, inbox for the queued ones, workspace-graph for the ones an auditor will read afterwards.</p>
+
+    <h2>How to hold the primitive without shipping theater</h2>
+    <p>The trap the primitive does not prevent: <em>approval fatigue</em>. A reviewer with a long queue and low-context approve buttons learns to click approve, and the pause becomes a rubber stamp. The pause fires, the run resumes, and the audit trail records &ldquo;approved&rdquo; on an action nobody read. That failure mode is covered end-to-end in the companion piece &mdash; <a href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI: when it&rsquo;s real, when it&rsquo;s theater</a> &mdash; which walks the override-rate metric, the human-on-the-loop vocabulary cut, and what EU AI Act Article 14 actually requires. Read that piece for the register on when a pause counts as oversight.</p>
+    <p>The short version: pair the primitive with three things and it holds up under audit. First, <strong>tier the gate per action class</strong> &mdash; not every tool call needs the pause, and forcing the pause everywhere is what produces the fatigue. Second, <strong>watch override rate per class over time</strong> &mdash; 0% is rubber-stamping, above 20% is a broken model, real oversight sits in the middle band. Third, <strong>record the reason on the object</strong>, not on the SDK &mdash; so a reviewer six months later can reconstruct what was decided and why without reading a model&rsquo;s reasoning trace.</p>
+
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">✓</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+          <li><strong>Human in the loop</strong> now names an SDK-level contract: a pause before an agent invokes a tool that would act on the world.</li>
+          <li><strong>Four vendors, four API surfaces, one primitive.</strong> OpenAI <code>needs_approval</code>, Cloudflare <code>waitForApproval()</code>, Microsoft <code>RequestPort</code>, Temporal signal-based approval &mdash; different names for the same contract.</li>
+          <li><strong>The pause is necessary and not sufficient.</strong> A click that resumes a run is not the same as a recorded decision an auditor can read six months later.</li>
+          <li><strong>What a workspace-shaped gate adds is persistence and audit.</strong> The approval is a transition on a typed object &mdash; the decision is recorded next to the work it approves &mdash; not a modal that blocks a UI.</li>
+          <li><strong>Four approval surfaces dominate:</strong> inbox, chat, MCP elicitation, workspace-graph. Most production systems run two or three at once, tiered by action class.</li>
+          <li><strong>Pair the primitive with override-rate monitoring</strong> to avoid approval fatigue. The pause without the metric is theater.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>FAQ</h2>
+    <h3>What is human in the loop?</h3>
+    <p>In 2026 the phrase mostly names an SDK-level approval gate: before an AI agent calls a tool that would send an email, move money, or otherwise act on the world, the run pauses and waits for a person to approve or reject. Four major vendors &mdash; OpenAI, Cloudflare, Microsoft, and Temporal &mdash; shipped named primitives for exactly this in 2025-2026. The older meaning (data labeling for supervised learning) is still valid, but not what agent builders reach for the term to name.</p>
+    <h3>What is the approval-gate primitive?</h3>
+    <p>A contract at the SDK layer: an agent about to invoke a tool marked as side-effecting suspends its own run, emits a request for approval, and only resumes when a human (or another authorised actor) returns an approve or reject. It is the same shape across every vendor that named it: OpenAI&rsquo;s <code>needs_approval</code> flag with <code>RunState</code> suspension, Cloudflare&rsquo;s <code>waitForApproval()</code> call, Microsoft&rsquo;s <code>RequestPort</code>, Temporal&rsquo;s signal-based approval activity.</p>
+    <h3>Which vendors ship an SDK-level human-in-the-loop primitive?</h3>
+    <p>As of 2026: OpenAI Agents SDK (<code>needs_approval</code> on tools, <code>RunState</code> for suspension); Cloudflare Agents (<code>waitForApproval()</code> and MCP elicitation on Workers); Microsoft Agent Framework (<code>RequestPort</code> as the approval channel); Temporal (signal-based approval activities on a durable workflow). Four vendors, four API surfaces, one primitive &mdash; that convergence is the story.</p>
+    <h3>Is human in the loop the same as human oversight?</h3>
+    <p>No &mdash; and the difference matters. Human in the loop is a technical contract that pauses a run. Human oversight (the standard EU AI Act Article 14 uses) is a broader design property that also covers monitoring, understanding, and halting. A pause without a recorded decision does not deliver oversight; oversight without a pause on side-effecting actions is not enforceable. The two live at different layers.</p>
+    <h3>What does a workspace-shaped approval gate add over a plain SDK primitive?</h3>
+    <p>Persistence across tools plus an audit trail. An SDK primitive pauses one run inside one product. A workspace-shaped gate records the decision as a typed outcome next to the work it approves, so the reason for the approval survives the run &mdash; and any other agent (or auditor, or the same loop tomorrow) can read what was decided and why.</p>
+    <h3>How is this different from human-on-the-loop?</h3>
+    <p>Human-on-the-loop puts the person above the transaction as a supervisor; human-in-the-loop puts them inside it as the trigger. The vocabulary cut, safety register, and EU AI Act Article 14 reading are covered in the companion piece on <a href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI: when it&rsquo;s real, when it&rsquo;s theater</a>. This page is about the SDK primitive; that page is about the vocabulary and the metric.</p>
+
+    <h2 id="sources">Sources</h2>
+    <ol class="sources">
+      <li id="fn1"><strong>OpenAI</strong>, <em>Agents SDK &mdash; Human-in-the-Loop / <code>needs_approval</code> and <code>RunState</code></em>. <a href="https://openai.github.io/openai-agents-python/" target="_blank" rel="noopener nofollow">openai.github.io/openai-agents-python</a>. Reference for the <code>needs_approval</code> tool flag and the serialisable <code>RunState</code> that carries a suspended run across a human decision. <a href="#fnref1">↩</a></li>
+      <li id="fn2"><strong>Cloudflare</strong>, <em>Agents &mdash; Human in the Loop, <code>waitForApproval()</code>, and MCP elicitation</em>. <a href="https://developers.cloudflare.com/agents/" target="_blank" rel="noopener nofollow">developers.cloudflare.com/agents</a>. Reference for <code>waitForApproval()</code> on a Worker-hosted agent and MCP elicitation as the approval surface. <a href="#fnref2">↩</a></li>
+      <li id="fn3"><strong>Microsoft</strong>, <em>Agent Framework &mdash; <code>RequestPort</code> for human approval</em>. <a href="https://learn.microsoft.com/en-us/agent-framework/" target="_blank" rel="noopener nofollow">learn.microsoft.com/en-us/agent-framework</a>. Reference for typed input ports as the human-in-the-loop channel on the agent graph. <a href="#fnref3">↩</a></li>
+      <li id="fn4"><strong>Temporal</strong>, <em>Signals &mdash; Human approval activities on durable workflows</em>. <a href="https://docs.temporal.io/develop" target="_blank" rel="noopener nofollow">docs.temporal.io/develop</a>. Reference for signal-based approval activities as the durable equivalent of the SDK pause. <a href="#fnref4">↩</a></li>
+    </ol>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/learn/human-in-the-loop-ai/">
+          <div class="doc-card__title">Human in the loop AI: when it&rsquo;s real, when it&rsquo;s theater</div>
+          <div class="doc-card__desc">The vocabulary cut &mdash; HITL vs HOTL, override rate as the honest metric, what EU AI Act Article 14 actually requires.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/learn/ai-agent-governance/">
+          <div class="doc-card__title">AI agent governance for small teams</div>
+          <div class="doc-card__desc">Approval + attribution + audit trail as workspace properties, at team scale &mdash; not enterprise altitude.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-a-stateful-orchestration-substrate/">
+          <div class="doc-card__title">Stateful orchestration substrate</div>
+          <div class="doc-card__desc">The shared typed store that carries decisions between stateless agents so a pipeline produces coherent work.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/ambient-agent-workspace/">
+          <div class="doc-card__title">Ambient agent workspace</div>
+          <div class="doc-card__desc">The workspace-graph pattern for background agents &mdash; where the approval surface stops being a flat inbox.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Hold the primitive without shipping theater</h2>
+      <p>Maskin is the open-source, MCP-native workspace where the approval gate is a first-class transition on a typed object &mdash; per-loop autonomy, an event-sourced audit trail, and per-action-class override rate visible to the operator. Apache 2.0, self-hostable, EU/US data residency.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
