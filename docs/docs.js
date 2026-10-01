@@ -78,7 +78,8 @@
       { label: "Open source Codex alternative", href: "/alternatives/open-source-alternative-to-codex/" },
       { label: "Self-hosted AI agent control plane", href: "/alternatives/self-hosted-ai-agent-control-plane/" },
       { label: "Self-hosted AI agents", href: "/alternatives/self-hosted-ai-agents/" },
-      { label: "Open source AI coding agent", href: "/alternatives/open-source-ai-coding-agent/" }
+      { label: "Open source AI coding agent", href: "/alternatives/open-source-ai-coding-agent/" },
+      { label: "n8n alternative", href: "/alternatives/n8n/" }
     ]}
   ];
 
