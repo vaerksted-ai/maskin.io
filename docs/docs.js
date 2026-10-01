@@ -48,6 +48,7 @@
       { label: "Agent observability", href: "/docs/agent-observability/" },
       { label: "Ambient agent workspace", href: "/docs/ambient-agent-workspace/" },
       { label: "Agent Inbox", href: "/docs/agent-inbox/", nested: true },
+      { label: "Composable AI agents vs AI employees", href: "/docs/composable-ai-agents-vs-ai-employees/" },
       { label: "Human in the loop", href: "/docs/learn/human-in-the-loop/" },
       { label: "Human in the loop AI", href: "/docs/learn/human-in-the-loop-ai/", nested: true },
       { label: "What are agent skills?", href: "/docs/learn/agent-skills/" },

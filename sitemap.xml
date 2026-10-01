@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://maskin.io/docs/what-is-an-agentic-workspace/</loc>
-    <lastmod>2026-09-27</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -68,13 +68,13 @@
   </url>
   <url>
     <loc>https://maskin.io/docs/what-is-mcp-native/</loc>
-    <lastmod>2026-09-27</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://maskin.io/docs/ambient-agent-workspace/</loc>
-    <lastmod>2026-09-27</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -230,7 +230,7 @@
   </url>
   <url>
     <loc>https://maskin.io/docs/self-hosted-ai-workspace/</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -386,6 +386,12 @@
   </url>
   <url>
     <loc>https://maskin.io/docs/at-risk-account-alerts/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maskin.io/docs/composable-ai-agents-vs-ai-employees/</loc>
     <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

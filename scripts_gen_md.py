@@ -43,6 +43,7 @@ ORDER = [
   "docs/mcp-vs-rag/index.html",
   "docs/at-risk-account-alerts/index.html",
   "docs/agent-inbox/index.html",
+  "docs/composable-ai-agents-vs-ai-employees/index.html",
   "docs/how-to-build-ai-sdr-loop/index.html",
   "marketplace/seo-publishing/index.html",
   "marketplace/outbound/index.html",
