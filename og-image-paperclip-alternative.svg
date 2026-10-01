@@ -80,5 +80,5 @@
     <path d="M7 26 L7 9 L17 19 L27 9 L27 26" stroke="#FAFAF8" stroke-width="3.6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
     <text x="46" y="24" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">Maskin</text>
     <text x="46" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="#5A5751">maskin.io/alternatives/paperclip</text>
-  </div>
+  </g>
 </svg>
