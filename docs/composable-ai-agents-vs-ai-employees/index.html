@@ -137,7 +137,7 @@
           "name": "Is Paperclip a strawman for the simulation camp?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No, and this page deliberately doesn't strawman it. Paperclip is a serious open-source project — roughly 95K GitHub stars at the time of writing — that made the \"orchestrate AI employees on a shared budget\" pattern legible and reachable for anyone who wants to try it. The composable-vs-simulation frame isn't a claim that Paperclip is bad; it's a claim that the persona-as-primitive bet has honest strengths and honest costs, and teams should choose with both in view."
+            "text": "No, and this page deliberately doesn't strawman it. Paperclip is a serious open-source project — roughly 95K GitHub stars as of 1 October 2026 — that made the \"orchestrate AI employees on a shared budget\" pattern legible and reachable for anyone who wants to try it. The composable-vs-simulation frame isn't a claim that Paperclip is bad; it's a claim that the persona-as-primitive bet has honest strengths and honest costs, and teams should choose with both in view."
           }
         },
         {
@@ -145,7 +145,7 @@
           "name": "Where does Claude Cowork fit?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Closer to the simulation camp on the interaction model (shared threads, persona-shaped hand-offs) and closer to the composable camp on the underlying platform integration. Vendor-hosted agent platforms are hybrid by nature — they can wear a persona surface without committing to persona-as-primitive underneath. The choice between camps is a separate axis from the choice between hosted and self-hosted: you can pick a composable architecture and still run it on your own infrastructure, or pick a persona-shaped product and still rent it from a vendor."
+            "text": "Closer to the simulation camp on the interaction model (shared threads, persona-shaped hand-offs) and closer to the composable camp on the underlying platform integration. Vendor-hosted agent platforms are hybrid by nature — they can wear a persona surface without committing to persona-as-primitive underneath. The choice between camps is also a separate axis from hosted vs self-hosted: either camp can be run either way."
           }
         },
         {
@@ -283,9 +283,9 @@
     <h3>Is &ldquo;AI employees&rdquo; just marketing for the same thing as AI agents?</h3>
     <p>No. It&rsquo;s a real architectural bet on the <em>persona</em> as the unit of work, not a rebrand of the word &ldquo;agent.&rdquo; An AI-employee system trusts a role and audits chat logs; a composable-agent system triggers on typed events and audits object transitions. Both are called &ldquo;AI agents&rdquo; in the loose sense of the word, but the shape of the runtime, the state model, the autonomy control, and the audit trail all diverge from the choice of primitive.</p>
     <h3>Is Paperclip a strawman for the simulation camp?</h3>
-    <p>No, and this page deliberately doesn&rsquo;t strawman it. Paperclip is a serious open-source project &mdash; roughly 95K GitHub stars at the time of writing<sup><a href="#fn2" id="fnref2d">2</a></sup> &mdash; that made the &ldquo;orchestrate AI employees on a shared budget&rdquo; pattern legible and reachable for anyone who wants to try it. The composable-vs-simulation frame isn&rsquo;t a claim that Paperclip is bad; it&rsquo;s a claim that the persona-as-primitive bet has honest strengths and honest costs, and teams should choose with both in view.</p>
+    <p>No, and this page deliberately doesn&rsquo;t strawman it. Paperclip is a serious open-source project &mdash; roughly 95K GitHub stars as of 1 October 2026<sup><a href="#fn2" id="fnref2d">2</a></sup> &mdash; that made the &ldquo;orchestrate AI employees on a shared budget&rdquo; pattern legible and reachable for anyone who wants to try it. The composable-vs-simulation frame isn&rsquo;t a claim that Paperclip is bad; it&rsquo;s a claim that the persona-as-primitive bet has honest strengths and honest costs, and teams should choose with both in view.</p>
     <h3>Where does Claude Cowork fit?</h3>
-    <p>Closer to the simulation camp on the interaction model (shared threads, persona-shaped hand-offs) and closer to the composable camp on the underlying platform integration. Vendor-hosted agent platforms are hybrid by nature &mdash; they can wear a persona surface without committing to persona-as-primitive underneath. The choice between camps is a separate axis from the choice between hosted and self-hosted: you can pick a composable architecture and still run it on your own infrastructure, or pick a persona-shaped product and still rent it from a vendor.</p>
+    <p>Closer to the simulation camp on the interaction model (shared threads, persona-shaped hand-offs) and closer to the composable camp on the underlying platform integration. Vendor-hosted agent platforms are hybrid by nature &mdash; they can wear a persona surface without committing to persona-as-primitive underneath. The choice between camps is also a separate axis from hosted vs self-hosted: either camp can be run either way.</p>
     <h3>Does the composable camp mean no personas at all?</h3>
     <p>No &mdash; personas can be useful as an <em>interface</em> over composable capabilities. The distinction is which layer is load-bearing. Composable-first products can render a persona-shaped view when it helps a user reason about the work, but the durable substrate underneath is still typed objects, event triggers, and per-action gates. Simulation-first products invert that: the persona is the durable substrate, and any typed structure is scaffolding for the persona rather than the other way around.</p>
     <h3>How does this relate to the &ldquo;ambient agent workspace&rdquo; frame?</h3>
