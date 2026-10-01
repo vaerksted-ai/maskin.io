@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <!-- Warm-dark canvas + subtle grid -->
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Title band -->
+  <text x="80" y="98" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#5A5751" letter-spacing="4">PAPERCLIP ALTERNATIVE</text>
+  <text x="80" y="160" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">When AI employees</text>
+  <text x="80" y="222" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">stop fitting.</text>
+  <text x="80" y="266" font-family="Newsreader, Georgia, serif" font-size="24" font-style="italic" fill="#8B8781">Five shapes of alternative &middot; one honest comparison</text>
+
+  <!-- Left side: org chart of AI employees -->
+  <g transform="translate(80, 330)">
+    <text x="0" y="0" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" fill="#8B8781" letter-spacing="2">PAPERCLIP</text>
+    <text x="0" y="22" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" fill="#5A5751">org chart &rarr; issues &rarr; activity log</text>
+
+    <rect x="150" y="40" width="130" height="38" rx="8" fill="#141311" stroke="#2A2825" stroke-width="1.2"/>
+    <text x="215" y="64" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" fill="#FAFAF8">CEO agent</text>
+
+    <path d="M 215 78 L 215 96" stroke="#5A5751" stroke-width="1.5"/>
+    <path d="M 70 96 L 360 96" stroke="#5A5751" stroke-width="1.5"/>
+    <path d="M 70 96 L 70 112" stroke="#5A5751" stroke-width="1.5"/>
+    <path d="M 215 96 L 215 112" stroke="#5A5751" stroke-width="1.5"/>
+    <path d="M 360 96 L 360 112" stroke="#5A5751" stroke-width="1.5"/>
+
+    <rect x="10" y="112" width="120" height="38" rx="8" fill="#141311" stroke="#2A2825" stroke-width="1.2"/>
+    <text x="70" y="136" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" fill="#FAFAF8">CTO agent</text>
+    <rect x="155" y="112" width="120" height="38" rx="8" fill="#141311" stroke="#2A2825" stroke-width="1.2"/>
+    <text x="215" y="136" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" fill="#FAFAF8">Engineer</text>
+    <rect x="300" y="112" width="120" height="38" rx="8" fill="#141311" stroke="#2A2825" stroke-width="1.2"/>
+    <text x="360" y="136" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" fill="#FAFAF8">Marketer</text>
+
+    <text x="10" y="178" font-family="Newsreader, Georgia, serif" font-size="14" font-style="italic" fill="#8B8781">the org is the unit of work</text>
+  </g>
+
+  <!-- Right side: Maskin loop (typed objects with an owner) -->
+  <g transform="translate(600, 330)">
+    <text x="0" y="0" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" fill="#8B8781" letter-spacing="2">MASKIN</text>
+    <text x="0" y="22" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="14" fill="#FAFAF8">insight &rarr; bet &rarr; task &rarr; outcome</text>
+
+    <rect x="0" y="46" width="110" height="50" rx="8" fill="#141311" stroke="#FAFAF8" stroke-width="1.2"/>
+    <text x="55" y="70" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" fill="#FAFAF8">insight</text>
+    <text x="55" y="86" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#5A5751">signal in</text>
+
+    <path d="M 116 71 L 148 71" stroke="#FAFAF8" stroke-width="1.5"/>
+    <path d="M 142 66 L 150 71 L 142 76" fill="none" stroke="#FAFAF8" stroke-width="1.5" stroke-linejoin="miter"/>
+
+    <rect x="156" y="46" width="110" height="50" rx="8" fill="#141311" stroke="#FAFAF8" stroke-width="1.2"/>
+    <text x="211" y="70" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" fill="#FAFAF8">bet</text>
+    <text x="211" y="86" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#5A5751">owner + win cond.</text>
+
+    <path d="M 272 71 L 304 71" stroke="#FAFAF8" stroke-width="1.5"/>
+    <path d="M 298 66 L 306 71 L 298 76" fill="none" stroke="#FAFAF8" stroke-width="1.5" stroke-linejoin="miter"/>
+
+    <rect x="312" y="46" width="90" height="50" rx="8" fill="#141311" stroke="#FAFAF8" stroke-width="1.2"/>
+    <text x="357" y="70" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" fill="#FAFAF8">task</text>
+    <text x="357" y="86" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#5A5751">executes</text>
+
+    <path d="M 408 71 L 440 71" stroke="#2563EB" stroke-width="2"/>
+    <path d="M 434 65 L 442 71 L 434 77" fill="none" stroke="#2563EB" stroke-width="2" stroke-linejoin="miter"/>
+
+    <rect x="448" y="42" width="120" height="58" rx="8" fill="#111110" stroke="#2563EB" stroke-width="2.5"/>
+    <text x="508" y="66" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" font-weight="700" fill="#2563EB">typed record</text>
+    <text x="508" y="82" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="13" font-weight="700" fill="#2563EB">with an owner</text>
+    <text x="508" y="96" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#2563EB">outlives the agent</text>
+
+    <text x="448" y="128" font-family="Newsreader, Georgia, serif" font-size="14" font-style="italic" fill="#FAFAF8">the decision is the work</text>
+  </g>
+
+  <line x1="560" y1="340" x2="560" y2="520" stroke="#2A2825" stroke-width="1" stroke-dasharray="3 6"/>
+
+  <g transform="translate(80, 550)">
+    <rect x="0" y="0" width="34" height="34" rx="7" fill="#1C1B18"/>
+    <path d="M7 26 L7 9 L17 19 L27 9 L27 26" stroke="#FAFAF8" stroke-width="3.6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+    <text x="46" y="24" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">Maskin</text>
+    <text x="46" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="#5A5751">maskin.io/alternatives/paperclip</text>
+  </div>
+</svg>
