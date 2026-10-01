@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <!-- Warm-dark canvas + subtle grid -->
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Title band -->
+  <text x="80" y="98" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#5A5751" letter-spacing="4">LOOP ENGINEERING</text>
+  <text x="80" y="160" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">Stop writing the prompt.</text>
+  <text x="80" y="222" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">Design what prompts the agent.</text>
+  <text x="80" y="266" font-family="Newsreader, Georgia, serif" font-size="24" font-style="italic" fill="#8B8781">Trigger &middot; tools &middot; check &middot; stopping condition &middot; human gate</text>
+
+  <!-- The loop: trigger -> agent call -> check -> (iterate | stop | human gate) -->
+  <g transform="translate(80, 340)">
+    <rect x="0" y="40" width="150" height="64" rx="8" fill="#141311" stroke="#FAFAF8" stroke-width="1.2"/>
+    <text x="75" y="68" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="16" fill="#FAFAF8">trigger</text>
+    <text x="75" y="90" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#5A5751">schedule or event</text>
+
+    <path d="M 158 72 L 206 72" stroke="#FAFAF8" stroke-width="1.5"/>
+    <path d="M 198 66 L 208 72 L 198 78" fill="none" stroke="#FAFAF8" stroke-width="1.5" stroke-linejoin="miter"/>
+
+    <rect x="216" y="40" width="170" height="64" rx="8" fill="#141311" stroke="#FAFAF8" stroke-width="1.2"/>
+    <text x="301" y="68" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="16" fill="#FAFAF8">agent call</text>
+    <text x="301" y="90" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#5A5751">tools + memory</text>
+
+    <path d="M 394 72 L 442 72" stroke="#FAFAF8" stroke-width="1.5"/>
+    <path d="M 434 66 L 444 72 L 434 78" fill="none" stroke="#FAFAF8" stroke-width="1.5" stroke-linejoin="miter"/>
+
+    <rect x="452" y="40" width="170" height="64" rx="8" fill="#141311" stroke="#2563EB" stroke-width="2"/>
+    <text x="537" y="68" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="16" fill="#FAFAF8">check</text>
+    <text x="537" y="90" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#5A5751">evidence, not confidence</text>
+
+    <!-- iterate arc back to the agent call -->
+    <path d="M 537 40 C 537 -10 301 -10 301 40" fill="none" stroke="#5A5751" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <path d="M 295 31 L 301 41 L 307 31" fill="none" stroke="#5A5751" stroke-width="1.5" stroke-linejoin="miter"/>
+    <text x="419" y="-2" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#8B8781">iterate</text>
+
+    <!-- exits -->
+    <path d="M 630 72 L 678 72" stroke="#FAFAF8" stroke-width="1.5"/>
+    <path d="M 670 66 L 680 72 L 670 78" fill="none" stroke="#FAFAF8" stroke-width="1.5" stroke-linejoin="miter"/>
+
+    <rect x="688" y="10" width="170" height="52" rx="8" fill="#141311" stroke="#2A2825" stroke-width="1.2"/>
+    <text x="773" y="34" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="15" fill="#FAFAF8">stop</text>
+    <text x="773" y="52" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#5A5751">bounded by budget</text>
+
+    <rect x="688" y="82" width="170" height="52" rx="8" fill="#141311" stroke="#2A2825" stroke-width="1.2"/>
+    <text x="773" y="106" text-anchor="middle" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="15" fill="#FAFAF8">human gate</text>
+    <text x="773" y="124" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#5A5751">taste decisions</text>
+  </g>
+
+  <text x="80" y="580" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="20" font-weight="600" fill="#FAFAF8">Maskin</text>
+  <text x="176" y="580" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="16" fill="#5A5751">maskin.io/docs/what-is-loop-engineering</text>
+</svg>

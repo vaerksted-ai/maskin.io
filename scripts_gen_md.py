@@ -42,6 +42,7 @@ ORDER = [
   "docs/knowledge-wiki-vs-vector-database/index.html",
   "docs/mcp-vs-rag/index.html",
   "docs/agent-inbox/index.html",
+  "docs/what-is-loop-engineering/index.html",
   "docs/how-to-build-ai-sdr-loop/index.html",
   "marketplace/seo-publishing/index.html",
   "marketplace/outbound/index.html",

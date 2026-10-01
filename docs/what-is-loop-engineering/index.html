@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is loop engineering in AI? | Maskin</title>
+<meta name="description" content="Loop engineering is designing the system that prompts an AI agent: triggers, checks, stopping conditions and human gates. Versus prompt, harness and graph engineering.">
+
+<link rel="canonical" href="https://maskin.io/docs/what-is-loop-engineering/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/what-is-loop-engineering/">
+<meta property="og:title" content="What is loop engineering in AI?">
+<meta property="og:description" content="Loop engineering is designing the system that prompts an AI agent: triggers, checks, stopping conditions and human gates. Versus prompt, harness and graph engineering.">
+<meta property="og:image" content="https://maskin.io/og-image-what-is-loop-engineering.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-10-01T00:00:00Z">
+<meta property="article:modified_time" content="2026-10-01T00:00:00Z">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="What is loop engineering in AI?">
+<meta name="twitter:description" content="Loop engineering is designing the system that prompts an AI agent: triggers, checks, stopping conditions and human gates. Versus prompt, harness and graph engineering.">
+<meta name="twitter:image" content="https://maskin.io/og-image-what-is-loop-engineering.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/what-is-loop-engineering/#post",
+      "headline": "What is loop engineering in AI?",
+      "name": "What is loop engineering in AI?",
+      "description": "Loop engineering is designing the system that prompts an AI agent: triggers, checks, stopping conditions and human gates. Versus prompt, harness and graph engineering.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/what-is-loop-engineering/",
+      "mainEntityOfPage": "https://maskin.io/docs/what-is-loop-engineering/",
+      "image": "https://maskin.io/og-image-what-is-loop-engineering.png",
+      "datePublished": "2026-10-01T00:00:00Z",
+      "dateModified": "2026-10-01T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Loop engineering"
+        },
+        {
+          "@type": "Thing",
+          "name": "Prompt engineering"
+        },
+        {
+          "@type": "Thing",
+          "name": "Harness engineering"
+        },
+        {
+          "@type": "Thing",
+          "name": "Graph engineering"
+        },
+        {
+          "@type": "Thing",
+          "name": "Agent stopping conditions"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "What is loop engineering?",
+          "item": "https://maskin.io/docs/what-is-loop-engineering/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is loop engineering in one sentence?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Loop engineering is the practice of designing the system that runs an AI agent — trigger, tools, context, checker, stopping condition, human gate — instead of writing the prompt the agent will use on any one call. The industry's short version, coined by Peter Steinberger and popularised by Addy Osmani, is that you stop prompting the agent and start designing the loops that prompt the agent."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is loop engineering the same as prompt engineering?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — loop engineering contains prompt engineering. Prompt engineering is a craft of the single string that reaches the model on one call; loop engineering is the design of the runtime that decides when to call the model, with which context, against which check, and when to stop. A well-loop-engineered system still has good prompts inside it. It also has the harness, memory, and stopping condition around them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between loop engineering and graph engineering?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At the runtime layer, none in kind — an agent loop is the simplest directed cyclic graph, per David Khourshid and LangChain. \"Graph engineering\" is what you call it when the topology becomes explicit enough that reproducibility and durable resumption become the point; \"loop engineering\" is what you call it when the emphasis is on the feedback cycle and the stopping condition. Production agent graphs are not DAGs because agents need cycles; framework marketing that presents graphs as a replacement for loops is renaming, not replacing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between loop engineering and harness engineering?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The cleanest decomposition, from ttoss's August 2026 piece, is three layers: harness (one agent's environment — tools, memory, permissions), loop (the feedback cycle around one agent — checking, iterating, stopping), and graph (explicit topology across many agents). The investment order that essay defends — harness first, loop second, graph last — is the honest engineering read: most \"we need a graph\" conversations should have been \"we need a better harness\" or \"we need a real stopping condition.\""
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a framework (LangGraph, CrewAI, Temporal) to do loop engineering?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — you need the primitives (trigger, tools, memory, checker, stopping condition, human gate). Frameworks package those primitives with different trade-offs: LangGraph gives you a typed state graph with checkpointing and HITL; CrewAI gives you role-based collaboration and fast prototyping; Temporal gives you durable execution with a strong audit log. Any of them is a legitimate substrate, and none is required — you can loop-engineer with a scheduler, a tool-calling model, and a database. The decision is whether the primitives are explicit and reproducible, not whether the runtime carries a specific brand."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I *not* reach for a loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When a single call, a single deterministic script, or a single verb-surface command does the job. A loop earns its overhead once the work is iterative, has a checkable stopping condition, or spans a duration where the user won't wait synchronously. If your task is \"summarise this document,\" you don't need a loop. If your task is \"scan every new customer complaint, cluster them, and open a bet when one crosses threshold,\" you do."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does loop engineering fall short?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three places worth flagging. First, the evidence layer knowledge-work loops depend on has to be built by hand — there is no test suite or CI signal for \"did the competitor-intel loop find the right thing?\" the way there is for a code loop. Second, a stopping condition doesn't rescue a bad harness or a weak model; loop engineering is only the layer that decides when to run and when to stop. Third, the human gate is the discipline that erodes first — approvals get batched, then skipped — so the review cadence has to be designed with the same care as the loop itself."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who coined loop engineering?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The phrase surfaced in independent places within weeks of each other in mid-2026. Marily Nika's June–July 2026 posts (\"Prompt Engineering Is Dead\" → \"Loop engineering is your new job\") named the shift from the PM side. Addy Osmani's \"Loop Engineering\" essay named it from the coding-agent side, with quotes from Peter Steinberger and Boris Cherny that carried it into practitioner discourse. LangChain and Prefect then wired it into the graph-engineering literature."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Solutions"><p class="doc-sidebar__title">Solutions</p><ul class="doc-sidebar__list"><li><a class="" href="/solutions/product-teams/">Product teams</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All loops</a></li><li><a class="is-nested" href="/marketplace/seo-publishing/">The SEO publishing loop</a></li><li><a class="is-nested" href="/marketplace/outbound/">The outbound loop</a></li><li><a class="is-nested" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki loop</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents & sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM & models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="is-active" href="/docs/what-is-loop-engineering/" aria-current="page">What is loop engineering?</a></li><li><a class="" href="/docs/learn/human-in-the-loop/">Human in the loop</a></li><li><a class="is-nested" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="is-nested" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="is-nested" href="/docs/learn/choose-a-knowledge-layer/">How to choose a knowledge layer</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="" href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane</a></li><li><a class="" href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents</a></li><li><a class="" href="/alternatives/open-source-ai-coding-agent/">Open source AI coding agent</a></li><li><a class="" href="/alternatives/n8n/">n8n alternative</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / What is loop engineering?</p>
+    <p class="eyebrow">Article · Definition</p>
+    <h1>What is loop engineering in AI</h1>
+    <p class="lead"><strong>Loop engineering is the practice of designing the system that prompts an AI agent — the triggers, tools, stopping conditions, gates, and verification steps that run around the model call — instead of writing the prompt itself.</strong> It is what Marily Nika named as &quot;your new job&quot; in mid-2026 and what Addy Osmani, LangChain, and Prefect have since converged on: the human&#39;s role in the age of capable agents is not to talk to the model, it is to build the harness that talks to the model on a schedule, checks the output, and knows when to stop. This page defines the term, walks the stack it sits inside, separates it from the two neighbours it is most often confused with — graph engineering and harness engineering — and names where the frame is oversold.</p>
+
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">✓</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+<li><strong>Loop engineering designs what happens <em>around</em> the model call</strong>, not the model call itself: trigger, tools, memory, checker, stopping condition, human gate.</li>
+<li><strong>Marily Nika coined the working definition</strong> in June–July 2026 (&quot;Prompt Engineering Is Dead&quot; → &quot;Loop engineering is your new job&quot;), and Addy Osmani, Boris Cherny, and Peter Steinberger echoed it inside the same quarter.</li>
+<li><strong>A loop is the simplest directed cyclic graph.</strong> &quot;Loop&quot; and &quot;graph&quot; are terminology choices at the same layer of the stack, not an architecture gap — production agent graphs are not DAGs because agents need cycles (retry, ask, revise, pause).</li>
+<li><strong>The design frontier is silence and stopping conditions.</strong> A loop with no ceiling is a cost leak; a loop that runs long enough starts optimising for its checker instead of the outcome (&quot;proxy collapse&quot;).</li>
+<li><strong>The horizontal primitives are universal</strong>: scheduled triggers, atomic tools, sub-agents, MCP connectors, durable memory outside the model&#39;s context, and a human gate at the taste decisions. Vertical wrapper products sit downstream of these primitives.</li>
+<li><strong>You probably don&#39;t need a full graph yet.</strong> The engineering-honest investment order is harness first, loop second, graph last — and &quot;last&quot; often means &quot;never.&quot;</li>
+<li><strong>The frame is oversold in specific ways.</strong> It&#39;s a coding-agent-first idea, the diagnostic is cleaner in essay than in production, and a well-designed loop can still fail on a bad harness or a lazy human gate.</li>
+</ul>
+
+      </div>
+    </div>
+
+    <figure style="margin:1.5rem 0">
+      <img src="/og-image-what-is-loop-engineering.png" alt="Loop engineering diagram: a trigger starts an agent call, a check against evidence decides whether to iterate, stop within a budget, or hand off to a human gate" width="1200" height="630" loading="lazy" style="max-width:100%;height:auto;border-radius:10px">
+      <figcaption>The shape of a loop-engineered system: trigger, agent call, evidence check, then iterate, stop within a budget, or hand off to a human gate.</figcaption>
+    </figure>
+
+<h2>Where the term came from — and why it stuck this quarter</h2>
+<p>The phrase surfaced in mid-2026 in two independent places within a few weeks of each other. In June 2026 Marily Nika published &quot;Prompt Engineering Is Dead&quot; and its follow-up &quot;Loop engineering is your new job: how to design for silence,&quot; arguing that PMs and builders working with agents now design autonomous systems — with explicit stopping conditions, tool audits, context budgets, and human-interrupt stakes — because vague goals make agents loop forever.<sup><a href="#fn1" id="fnref1">1</a></sup> Around the same time, Addy Osmani&#39;s <a href="https://addyosmani.com/blog/loop-engineering/" target="_blank" rel="noopener">&quot;Loop Engineering&quot;</a> essay landed the same idea from the coding-agent side, with two quotes that carried the frame across the industry: Peter Steinberger&#39;s <em>&quot;You shouldn&#39;t be prompting coding agents anymore. You should be designing loops that prompt your agents,&quot;</em> and Boris Cherny&#39;s (head of Claude Code) <em>&quot;I don&#39;t prompt Claude anymore… my job is to write loops.&quot;</em><sup><a href="#fn2" id="fnref2">2</a></sup></p>
+<p>What made those posts stick is that they weren&#39;t naming a new capability — the loop primitive had been there since ReAct and AutoGPT — they were naming a <strong>shift in whose job it is.</strong> Prompt engineering asked a human to write the best possible instruction for one call. Loop engineering asks a human to build the system that decides when to call the model, with what context, against which check, and when to stop. The centre of gravity moved from the prompt string to the runtime around it.</p>
+<h2>Prompt engineering vs loop engineering (the stack)</h2>
+<p>By late 2026 the industry has settled on a stack for what an agent is actually running, and the two layers this piece cares about sit on top of two older layers people still confuse them with:</p>
+<ul>
+<li><strong>Prompt engineering</strong> is the craft of the single instruction the model sees on one call. It still matters — the string that reaches the model is still the string — but it is one line of one call in a much longer runtime.</li>
+<li><strong>Context engineering</strong> is assembling <em>what the model sees</em> on every call: retrieval, memory, tool definitions, prior state, task framing. This layer became the SERP darling in early 2026 because it is where the biggest lifts live.</li>
+<li><strong>Harness engineering</strong> is the runtime around one agent — the tools it can call, the permissions, the state it can read and write between turns, what survives after the session ends. This is the layer ttoss argues you should invest in first, before either loops or graphs, because it is where the cheapest wins live.<sup><a href="#fn3" id="fnref3">3</a></sup></li>
+<li><strong>Loop engineering</strong> is the system that runs the whole thing on a schedule or a trigger, checks the output against evidence, decides whether to iterate, escalate, or stop, and hands off to a human when taste is needed. It is the layer that turns &quot;a good prompt&quot; into &quot;a shipped outcome.&quot;</li>
+</ul>
+<p>The honest way to see the difference from prompt engineering is not <em>replacement</em> — it is <em>containment</em>. Prompt engineering is one line in a loop-engineered system. A team that only does prompt engineering has one long conversation with a model. A team that does loop engineering has a system that runs many short conversations on its own, checks each one, and pings a human on the ones that need judgment. Where prompt engineering asks <em>what should I say</em>, loop engineering asks <em>what should run, when, against which check, and when should it stop</em>.</p>
+<h2>Loop engineering vs graph engineering: same idea, two words</h2>
+<p>The most common source of confusion in the 2026 discourse is whether &quot;graph engineering&quot; (LangChain, Prefect) is a different thing from loop engineering. LangChain&#39;s <em>3 Years of Graph Engineering with LangGraph</em> cites David Khourshid on the point: <strong>an agent loop is the simplest directed cyclic graph.</strong> LangChain&#39;s own framing in the same post is that graph engineering, loop engineering, and harness engineering are three names circling one idea — the runtime around the model call.<sup><a href="#fn4" id="fnref4">4</a></sup> Production agent graphs are not DAGs, because agents need cycles: retry, ask user, revise, pause for a human, resume. Most teams that think they are running a linear loop are actually already running a graph — Claude Code&#39;s sub-agent fan-out is one, LangGraph&#39;s checkpointed state machine is another.</p>
+<p>Prefect&#39;s Jeremiah Lowin traces the progression as one continuous line: prompt engineering → multi-prompt scripts → loop engineering → graph engineering — where a &quot;directed agentic graph&quot; is a loop whose nodes are parameterised and whose transitions are explicit, aimed at reproducibility rather than a new capability.<sup><a href="#fn5" id="fnref5">5</a></sup> The <em>Graph Harness</em> scheduler survey puts numbers on it: across the systems it categorised, <strong>Agent Loop was the dominant scheduler pattern at roughly 60%</strong>, event-driven at ~15%, state-machine at ~10%, graph/flow at ~5%, hybrid at ~10%.<sup><a href="#fn6" id="fnref6">6</a></sup> The takeaway is that most of what &quot;graph engineering&quot; advocates propose is graph vocabulary for a loop that was already there.</p>
+<p>The practical read: <strong>loop-vs-graph is a terminology choice at the same layer, not a capability gap.</strong> Framework marketing that presents graphs as a <em>replacement</em> for loops is what Prefect calls the tendency to &quot;boil powerful ideas down to the dumbest version.&quot; The interesting question is not whether to call your system a loop or a graph — it is whether the primitives underneath (stopping conditions, human gates, durable memory, sub-agents, MCP connectors) are explicit and reproducible.</p>
+<h2>Loop engineering vs harness engineering: the three-layer decomposition</h2>
+<p>The most useful engineering counterpoint to the loop discourse is ttoss&#39;s August 2026 essay <a href="https://ttoss.dev/blog/2026/08/08/you-probably-dont-need-a-graph" target="_blank" rel="noopener"><em>You Probably Don&#39;t Need a Graph</em></a>, which decomposes the runtime into three layers you can attribute failure to independently:<sup><a href="#fn3" id="fnref3b">3</a></sup></p>
+<ul>
+<li><strong>Harness</strong> — the environment one agent runs in: tools, memory, permissions, what survives between sessions.</li>
+<li><strong>Loop</strong> — the feedback cycle: how work is checked, when it iterates, when it stops.</li>
+<li><strong>Graph</strong> — the explicit topology: which step is next, what runs in parallel, where the mandatory human gate lives.</li>
+</ul>
+<p>The diagnostic move — <em>attribute a failure to a layer before you fix it</em> — is the single most useful idea in the current writing on this topic. A hallucination on a tool call is usually a harness problem (wrong tool, wrong permissions, wrong context). A run that never terminates is a loop problem (no stopping condition, no evidence-based check). A pipeline that skips the wrong step is a graph problem (topology, not iteration).</p>
+<p>The corresponding investment order — <strong>harness first, loop second, graph last</strong> — is a direct challenge to the framework-first temptation. Cheap harness wins come from <strong>Tool Minimalism</strong>: fewer, atomic tools, deletion is often the highest-leverage move. Loop wins come from a simple rule: <strong>do not loop on confidence, loop on evidence</strong> — tests passing, schema validating, citations resolving, an output the checker can verify. Not &quot;the agent says it&#39;s done.&quot;</p>
+<p>Two loop failure modes are worth naming because they show up in every long-horizon deployment:</p>
+<ol>
+<li><strong>Cost-leak loops</strong> — no ceiling. A loop without a success predicate, a budget, and an escalation path will burn compute until something else stops it. &quot;Bounded iteration&quot; is the name to know: every loop needs a max-step count, a token/dollar budget, and a named escalation pathway when either trips.</li>
+<li><strong>Proxy collapse</strong> — a loop that runs long enough starts optimising for its checker rather than the actual outcome. The gradient, as ttoss puts it, &quot;points at green, not at correct.&quot; The mitigation is not a better checker — checkers are always Goodhart-able — it is a human gate on the taste decision, on a schedule the human is actually going to keep.</li>
+</ol>
+<p>And the corollary: <strong>a graph earns its place only when properties of the process require it,</strong> not properties of the model. Those properties are a mandatory human gate that must be enforced rather than requested, an audit requirement, expensive parallel stages with deterministic joins, and durable resumption (interrupt at hour six, restart at step nine). Where those properties are absent, a well-designed loop is enough. Where they are present, the graph is doing real work that no amount of prompting will do for you.</p>
+<h2>The horizontal primitives every loop-engineered system uses</h2>
+<p>Across Claude Code, Codex, and self-hosted stacks, the same six primitives show up in every loop worth shipping. Osmani&#39;s essay mapped five of them 1:1 across the two major coding agents, and the pattern generalises to non-code work:<sup><a href="#fn2" id="fnref2b">2</a></sup></p>
+<ul>
+<li><strong>Scheduled or event triggers.</strong> The loop fires on a schedule, an inbox event, a metric threshold, or a state change — not on a human typing a prompt.</li>
+<li><strong>Sub-agents.</strong> A parent agent fans out narrower work to purpose-scoped sub-agents with their own context windows, so parallelism and isolation are safe.</li>
+<li><strong>Skills or worktrees.</strong> Named, reusable units of work an agent can invoke (SKILL.md files, worktree templates), rather than reinventing the same instruction each run.</li>
+<li><strong>MCP connectors.</strong> A shared tool surface an agent can call across integrations (Slack, GitHub, PostHog, a database) — the <a href="/docs/mcp-native-workspace/">MCP-native workspace</a> design pattern is what makes this reusable across model vendors.</li>
+<li><strong>Durable memory outside the model&#39;s context.</strong> &quot;The agent forgets, the repo doesn&#39;t.&quot; State that has to survive across handoffs lives in a typed store — a repo, a graph, a database — not in the context window. This is the primitive the <a href="/docs/what-is-a-stateful-orchestration-substrate/">stateful orchestration substrate</a> piece unpacks in detail.</li>
+<li><strong>A human gate on taste decisions.</strong> Not human review of every step — a scheduled, named interrupt where the human sets direction, approves a bet, or accepts a shipped outcome. Chase&#39;s <code>notify</code> / <code>question</code> / <code>review</code> interrupt taxonomy at LangChain is the cleanest published version of this.</li>
+</ul>
+<p>Osmani&#39;s phrase for the effect is the memorable one: <strong>&quot;the agent forgets, the repo doesn&#39;t.&quot;</strong> Loop engineering is largely the discipline of choosing which primitives to make first-class in the surface your team actually touches — because the primitives are universal, but the wrapper product is where teams either buy or build.</p>
+<h2>Silence and stopping conditions: the real design frontier</h2>
+<p>Nika&#39;s follow-up post named the sharpest edge of the whole practice: <strong>designing for silence.</strong> A prompt-engineered call finishes when the model finishes generating. A loop-engineered system has to know when to <em>stop</em> — and &quot;the agent decided it was done&quot; is not a stopping condition, because agents that never stop and agents that stop too early both cost real money.</p>
+<p>The reason &quot;let the model self-diagnose the stop&quot; is a bad plan is that the model is not a reliable judge of its own run. This is the same failure mode the observability literature has been pointing at for two years — long agent trajectories are hard for anything, including the model that produced them, to reason about after the fact. A design that assumes the model will self-check its way to a stop is a design that will silently drift.</p>
+<p>The stopping-condition literature and the controllability/safety writing have quietly converged on the same three moves:</p>
+<ul>
+<li><strong>Interruptibility as the backstop.</strong> OpenAI&#39;s <em>Practices for Governing Agentic AI Systems</em> argues periodic time-outs until a human reauthorizes are the critical last defence when everything else fails.<sup><a href="#fn7" id="fnref7">7</a></sup></li>
+<li><strong>Controllability, not just alignment.</strong> The CONTROLBENCH work argues alignment is not enough — authority, runtime monitoring, intervention, and audit are the last line of defence against a loop that has learned to pass its own tests.<sup><a href="#fn8" id="fnref8">8</a></sup></li>
+<li><strong>Bounded iteration + mandatory human gate.</strong> The Springer survey on controllability in agentic AI names three oversight levels (guardrails, adaptive control, agent-in-the-loop) and lands on the same recommendation: HITL adds the normative authority no constraint can internalise.<sup><a href="#fn9" id="fnref9">9</a></sup></li>
+</ul>
+<p>A loop-engineered system that ships with an explicit stopping condition, a bounded step/budget cap, and a named human gate is what the governance literature calls a <em>controllable</em> agent. One that doesn&#39;t is what your finance team calls next month&#39;s bill.</p>
+<h2>Where the loop-engineering frame is oversold</h2>
+<p>The frame is genuinely useful, and it&#39;s still oversold in ways worth naming — because a piece that only sells the frame will not survive contact with a shipped system. The honest limits:</p>
+<ul>
+<li><strong>It&#39;s a coding-agent-first idea, retrofitted to everything else.</strong> Almost every worked example in the 2026 corpus — Osmani&#39;s essay, the Steinberger and Cherny quotes, the Ralph loop, the &quot;harness first&quot; argument — comes from the <em>coding</em> agent world, where a repo, a test suite, and a CI signal give you unambiguous evidence for the loop to close on. Knowledge-work loops (customer feedback, competitor intel, sales notes, roadmap synthesis) don&#39;t have that. There is often no test suite, no schema validation, no green/red signal that says &quot;this loop can stop now.&quot; The frame transfers, but the <em>evidence layer</em> it depends on has to be built by hand, and the SERP largely doesn&#39;t cover that.</li>
+<li><strong>A well-loop-engineered system can still fail on a bad harness or a bad model.</strong> Bounded iteration + human gate + evidence-based stop is a real discipline, and none of it rescues a loop wired to the wrong tools, running on a model that isn&#39;t strong enough for the reasoning, or drawing from stale context. Loop engineering is the layer that decides <em>when to run and when to stop</em>; it is not the layer that decides <em>what the agent can do</em>. Treating &quot;we have a stopping condition&quot; as a substitute for &quot;we have the right tools and enough model&quot; is the most common mis-adoption of the frame.</li>
+<li><strong>The three-layer diagnostic is cleaner in an essay than in production.</strong> &quot;Attribute the failure to a layer before you fix it&quot; is a beautiful heuristic. Real failures cross layers: a run that never terminates might be a stopping-condition problem <em>and</em> a bad tool that keeps returning &quot;try again&quot; <em>and</em> a missing capability the agent is silently working around. Teams that mistake the diagnostic for a checklist end up fixing the wrong layer in confidence. The diagnostic is a lens, not a bisection algorithm.</li>
+<li><strong>Human gates decay when the human stops showing up.</strong> The mitigation for proxy collapse — <em>put a human on the taste decision, on a schedule they&#39;ll keep</em> — is only as strong as the schedule. In every long-running deployment worth watching, the human gate is where the discipline erodes: approvals get batched, then rubber-stamped, then skipped. The literature is quiet on this because it&#39;s an operator problem, not a research one, but any team taking loop engineering seriously has to design the <em>review cadence</em> with the same care it designs the loop, and accept that it will still soften over time.</li>
+<li><strong>&quot;The primitives are universal&quot; is aspirational, not observed.</strong> MCP is real and its adoption is genuine, but connector quality varies wildly, sub-agent frameworks are on different maturity curves, and &quot;durable memory outside the model&#39;s context&quot; means something concrete in Claude Code and something much fuzzier in most other stacks. The pattern generalises; the <em>interop</em> does not, yet.</li>
+</ul>
+<p>None of that unmakes the frame — it just moves it from doctrine to discipline. A loop engineer who takes the limits seriously ships a system that survives its own users; one who doesn&#39;t ships a demo.</p>
+<h2>Maskin: loops as first-class workspace objects</h2>
+<p>All of the above is what Maskin&#39;s <code>loop</code> object type expresses at the workspace layer. A Maskin loop is a typed object with a trigger (schedule or event), steps (each an agent invocation with its own prompt, model, and MCP tool surface), a close condition, and named human gates where the loop pauses for taste. The trigger is the entry edge; the steps are the nodes; the close condition is the termination; the human gate is a first-class transition, not a hope.</p>
+<p>The reason to shape a loop as an <em>object</em> rather than a script is that it lives in the same graph as the work it produces. An insight fires a loop; the loop opens a bet; a step on the bet produces a task; the task closes with evidence written back to the object. The whole path is inspectable, the audit trail is the object graph&#39;s own history, and swapping the model on one step is a metadata change, not a rewrite. The <a href="/docs/what-is-an-agentic-workspace/">agentic workspace cornerstone</a> covers the shape from the workspace side, <a href="/docs/bet-vs-backlog/">bet vs backlog</a> covers the object model shift, and <a href="/docs/ambient-agent-workspace/">ambient agent workspace</a> covers the UX camp the loop-object sits inside.</p>
+<p>The practical corollary of taking loop engineering seriously is that most of what a serious team needs — durable memory, HITL gates, MCP connectors, reproducible sub-agent fan-out, close conditions on state — is <em>productisable</em> rather than <em>codable</em>. That is the wager Maskin makes: loop-vs-graph is a terminology choice, harness/loop/graph is an investment order, and the primitives underneath are horizontal enough that a team should not be rebuilding them per vertical.</p>
+
+<h2>FAQ</h2>
+<h3>What is loop engineering in one sentence?</h3>
+<p>Loop engineering is the practice of designing the system that runs an AI agent — trigger, tools, context, checker, stopping condition, human gate — instead of writing the prompt the agent will use on any one call. The industry&#39;s short version, coined by Peter Steinberger and popularised by Addy Osmani, is that you stop prompting the agent and start designing the loops that prompt the agent.<sup><a href="#fn2" id="fnref2c">2</a></sup></p>
+<h3>Is loop engineering the same as prompt engineering?</h3>
+<p>No — loop engineering <em>contains</em> prompt engineering. Prompt engineering is a craft of the single string that reaches the model on one call; loop engineering is the design of the runtime that decides <em>when</em> to call the model, <em>with which context</em>, <em>against which check</em>, and <em>when to stop</em>. A well-loop-engineered system still has good prompts inside it. It also has the harness, memory, and stopping condition around them.</p>
+<h3>What&#39;s the difference between loop engineering and graph engineering?</h3>
+<p>At the runtime layer, none in kind — an agent loop is the simplest directed cyclic graph, per David Khourshid and LangChain.<sup><a href="#fn4" id="fnref4b">4</a></sup> &quot;Graph engineering&quot; is what you call it when the topology becomes explicit enough that reproducibility and durable resumption become the point; &quot;loop engineering&quot; is what you call it when the emphasis is on the feedback cycle and the stopping condition. Production agent graphs are not DAGs because agents need cycles; framework marketing that presents graphs as a <em>replacement</em> for loops is renaming, not replacing.</p>
+<h3>What&#39;s the difference between loop engineering and harness engineering?</h3>
+<p>The cleanest decomposition, from ttoss&#39;s August 2026 piece, is three layers: harness (one agent&#39;s environment — tools, memory, permissions), loop (the feedback cycle around one agent — checking, iterating, stopping), and graph (explicit topology across many agents).<sup><a href="#fn3" id="fnref3c">3</a></sup> The investment order that essay defends — harness first, loop second, graph last — is the honest engineering read: most &quot;we need a graph&quot; conversations should have been &quot;we need a better harness&quot; or &quot;we need a real stopping condition.&quot;</p>
+<h3>Do I need a framework (LangGraph, CrewAI, Temporal) to do loop engineering?</h3>
+<p>No — you need the primitives (trigger, tools, memory, checker, stopping condition, human gate). Frameworks package those primitives with different trade-offs: LangGraph gives you a typed state graph with checkpointing and HITL; CrewAI gives you role-based collaboration and fast prototyping; Temporal gives you durable execution with a strong audit log. Any of them is a legitimate substrate, and none is required — you can loop-engineer with a scheduler, a tool-calling model, and a database. The decision is whether the primitives are explicit and reproducible, not whether the runtime carries a specific brand.</p>
+<h3>When should I <em>not</em> reach for a loop?</h3>
+<p>When a single call, a single deterministic script, or a single verb-surface command does the job. A loop earns its overhead once the work is iterative, has a checkable stopping condition, or spans a duration where the user won&#39;t wait synchronously. If your task is &quot;summarise this document,&quot; you don&#39;t need a loop. If your task is &quot;scan every new customer complaint, cluster them, and open a bet when one crosses threshold,&quot; you do.</p>
+<h3>Where does loop engineering fall short?</h3>
+<p>Three places worth flagging. First, the evidence layer knowledge-work loops depend on has to be built by hand — there is no test suite or CI signal for &quot;did the competitor-intel loop find the right thing?&quot; the way there is for a code loop. Second, a stopping condition doesn&#39;t rescue a bad harness or a weak model; loop engineering is only the layer that decides when to run and when to stop. Third, the human gate is the discipline that erodes first — approvals get batched, then skipped — so the review cadence has to be designed with the same care as the loop itself.</p>
+<h3>Who coined loop engineering?</h3>
+<p>The phrase surfaced in independent places within weeks of each other in mid-2026. Marily Nika&#39;s June–July 2026 posts (&quot;Prompt Engineering Is Dead&quot; → &quot;Loop engineering is your new job&quot;) named the shift from the PM side.<sup><a href="#fn1" id="fnref1b">1</a></sup> Addy Osmani&#39;s <a href="https://addyosmani.com/blog/loop-engineering/" target="_blank" rel="noopener">&quot;Loop Engineering&quot;</a> essay named it from the coding-agent side, with quotes from Peter Steinberger and Boris Cherny that carried it into practitioner discourse.<sup><a href="#fn2" id="fnref2d">2</a></sup> LangChain and Prefect then wired it into the graph-engineering literature.<sup><a href="#fn4" id="fnref4c">4</a></sup><sup><a href="#fn5" id="fnref5b">5</a></sup></p>
+
+    <h2>Own the loop, not the prompt</h2>
+    <p>If the frame lands — the human&#39;s job is the system that prompts the agent, not the prompt itself — the shape of the tool you want is a workspace where the loop, the tools, the memory, the stopping condition, and the human gate all live as typed objects you can inspect, swap, and hand off. That is what Maskin is: an open-source, MCP-native, self-hostable workspace where loops are first-class objects a team configures rather than code an engineer writes. Self-host free forever under Apache 2.0, or start a hosted trial with EU/US data residency.</p>
+
+    <h2 id="sources">Sources</h2>
+    <ol class="sources">
+      <li id="fn1">Marily Nika, <em><a href="https://marily.substack.com/p/prompt-engineering-is-dead-good" target="_blank" rel="noopener nofollow">Prompt Engineering Is Dead</a></em> (2026-06-22) and <em><a href="https://marily.substack.com/p/loop-engineering-is-your-new-job" target="_blank" rel="noopener nofollow">Loop engineering is your new job: how to design for silence</a></em> (2026-07-01), AI Product Academy on Substack. The PM-side framing of the shift from prompt to loop and the &quot;design for silence&quot; thesis on stopping conditions.</li>
+      <li id="fn2">Addy Osmani, <em>Loop Engineering</em> (Jun 2026), <a href="https://addyosmani.com/blog/loop-engineering/" target="_blank" rel="noopener nofollow">addyosmani.com/blog/loop-engineering</a>. The coding-agent-side framing plus the Peter Steinberger and Boris Cherny quotes that carried the term into practitioner discourse. Includes the primitives mapping across Claude Code and Codex and the durable-memory-outside-the-conversation principle.</li>
+      <li id="fn3">ttoss, <em>You Probably Don&#39;t Need a Graph</em> (2026-08-08), <a href="https://ttoss.dev/blog/2026/08/08/you-probably-dont-need-a-graph" target="_blank" rel="noopener nofollow">ttoss.dev/blog/2026/08/08/you-probably-dont-need-a-graph</a>. The three-layer harness/loop/graph decomposition, the harness-first investment order, Tool Minimalism, and the &quot;loop on evidence, not confidence&quot; rule. Also the source for the two loop failure modes named here (cost-leak loops, proxy collapse).</li>
+      <li id="fn4">Harrison Chase / LangChain, <em>3 Years of Graph Engineering with LangGraph</em>, <a href="https://www.langchain.com/blog/3-years-of-graph-engineering-with-langgraph" target="_blank" rel="noopener nofollow">langchain.com/blog/3-years-of-graph-engineering-with-langgraph</a>. David Khourshid&#39;s line that an agent loop is the simplest directed cyclic graph, and LangChain&#39;s framing that graph, loop, and harness engineering are three names for the same runtime layer.</li>
+      <li id="fn5">Jeremiah Lowin / Prefect, <em>Loops vs. graphs</em> (Jul 2026), <a href="https://www.prefect.io/blog/loops-vs-graphs" target="_blank" rel="noopener nofollow">prefect.io/blog/loops-vs-graphs</a>. The progression prompt → multi-prompt → loop → graph, the &quot;directed agentic graph&quot; framing, and the caveat that some of the &quot;death of loops&quot; wave is marketing relabeling (the Ralph loop being the exhibit A).</li>
+      <li id="fn6">Hu Wei et al., <em>Graph Harness</em> (position paper), <a href="https://arxiv.org/abs/2604.11378" target="_blank" rel="noopener nofollow">arXiv 2604.11378</a>. The scheduler-continuum survey with the ~60% / 15% / 10% / 5% / 10% breakdown across Agent Loop, event-driven, state-machine, graph/flow, and hybrid schedulers.</li>
+      <li id="fn7">OpenAI, <em>Practices for Governing Agentic AI Systems</em>, <a href="https://cdn.openai.com/papers/practices-for-governing-agentic-ai-systems.pdf" target="_blank" rel="noopener nofollow">cdn.openai.com/papers/practices-for-governing-agentic-ai-systems.pdf</a>. Interruptibility as the critical backstop, periodic time-outs until a human reauthorises, HITL approval for irreversible actions.</li>
+      <li id="fn8">Li, Feng, Sun, <em>AI Safety Requires Effective Controllability (CONTROLBENCH)</em>, <a href="https://arxiv.org/abs/2605.27117" target="_blank" rel="noopener nofollow">arXiv 2605.27117</a>. The controllability-not-alignment argument: authority, runtime monitoring, intervention, and audit as the last line of defence.</li>
+      <li id="fn9"><em><a href="https://link.springer.com/article/10.1007/s11023-026-09783-y" target="_blank" rel="noopener nofollow">On Controllability in Agentic AI: A Survey</a></em>, Minds and Machines (Springer). Three oversight levels (guardrails, adaptive control, agent-in-the-loop) and the HITL-normative-authority argument.</li>
+    </ol>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+          <div class="doc-card__title">What is an agentic workspace?</div>
+          <div class="doc-card__desc">The cornerstone: the object of work is the workspace, not the chat.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/ambient-agent-workspace/">
+          <div class="doc-card__title">Ambient agent workspace</div>
+          <div class="doc-card__desc">Where loops run on events, not prompts, and the human reviews state.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-a-stateful-orchestration-substrate/">
+          <div class="doc-card__title">Stateful orchestration substrate</div>
+          <div class="doc-card__desc">The runtime layer that carries state between loop steps.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/learn/agentic-workflow-vs-closed-loop/">
+          <div class="doc-card__title">Agentic workflow vs the closed loop</div>
+          <div class="doc-card__desc">Why a loop is a structured container, not a looser workflow.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/learn/human-in-the-loop-ai/">
+          <div class="doc-card__title">Human in the loop AI</div>
+          <div class="doc-card__desc">When the human gate is real oversight, and when it is theater.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Self-host the loop</h2>
+      <p>Loops, tools, memory and human gates as typed objects you can inspect and swap. Apache 2.0, MCP-native, EU/US data residency.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
