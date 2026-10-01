@@ -48,7 +48,6 @@
       { label: "Agent observability", href: "/docs/agent-observability/" },
       { label: "Ambient agent workspace", href: "/docs/ambient-agent-workspace/" },
       { label: "Agent Inbox", href: "/docs/agent-inbox/", nested: true },
-      { label: "What is loop engineering?", href: "/docs/what-is-loop-engineering/" },
       { label: "Human in the loop", href: "/docs/learn/human-in-the-loop/" },
       { label: "Human in the loop AI", href: "/docs/learn/human-in-the-loop-ai/", nested: true },
       { label: "What are agent skills?", href: "/docs/learn/agent-skills/" },
@@ -70,7 +69,8 @@
       { label: "How to choose a knowledge layer", href: "/docs/learn/choose-a-knowledge-layer/", nested: true },
       { label: "Agent skills marketplace", href: "/docs/agent-skills-marketplace/" },
       { label: "Knowledge wiki vs vector database", href: "/docs/knowledge-wiki-vs-vector-database/" },
-      { label: "MCP vs RAG", href: "/docs/mcp-vs-rag/" }
+      { label: "MCP vs RAG", href: "/docs/mcp-vs-rag/" },
+      { label: "At-risk account alerts", href: "/docs/at-risk-account-alerts/" }
     ]},
     { title: "Alternatives", items: [
       { label: "Open source Jira alternative", href: "/alternatives/open-source-jira-alternative/" },
