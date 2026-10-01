@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Composable AI agents vs AI employees: two camps | Maskin</title>
+<meta name="description" content="The agent market split in two: AI employees (personas on an org chart) vs composable AI agents (typed objects, event triggers, human gates). How to choose.">
+
+<link rel="canonical" href="https://maskin.io/docs/composable-ai-agents-vs-ai-employees/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/composable-ai-agents-vs-ai-employees/">
+<meta property="og:title" content="Composable AI agents vs AI employees: the two camps of the agent workspace market">
+<meta property="og:description" content="The agent market split in two: AI employees (personas on an org chart) vs composable AI agents (typed objects, event triggers, human gates). How to choose.">
+<meta property="og:image" content="https://maskin.io/og-image-composable-ai-agents-vs-ai-employees.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Composable AI agents vs AI employees: persona org chart on the left, typed-object agent graph on the right">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-10-01T00:00:00Z">
+<meta property="article:modified_time" content="2026-10-01T00:00:00Z">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Composable AI agents vs AI employees: the two camps of the agent workspace market">
+<meta name="twitter:description" content="The agent market split in two: AI employees (personas on an org chart) vs composable AI agents (typed objects, event triggers, human gates). How to choose.">
+<meta name="twitter:image" content="https://maskin.io/og-image-composable-ai-agents-vs-ai-employees.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/composable-ai-agents-vs-ai-employees/#post",
+      "headline": "Composable AI agents vs AI employees: the two camps of the agent workspace market",
+      "name": "Composable AI agents vs AI employees",
+      "description": "The agent market split in two: AI employees (personas on an org chart) vs composable AI agents (typed objects, event triggers, human gates). How to choose.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/composable-ai-agents-vs-ai-employees/",
+      "mainEntityOfPage": "https://maskin.io/docs/composable-ai-agents-vs-ai-employees/",
+      "image": "https://maskin.io/og-image-composable-ai-agents-vs-ai-employees.svg",
+      "datePublished": "2026-10-01T00:00:00Z",
+      "dateModified": "2026-10-01T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "AI employees"
+        },
+        {
+          "@type": "Thing",
+          "name": "Composable AI agents"
+        },
+        {
+          "@type": "Thing",
+          "name": "Agent workspace"
+        },
+        {
+          "@type": "Thing",
+          "name": "Model Context Protocol"
+        },
+        {
+          "@type": "Thing",
+          "name": "Human-on-the-loop"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Composable AI agents vs AI employees",
+          "item": "https://maskin.io/docs/composable-ai-agents-vs-ai-employees/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is \"AI employees\" just marketing for the same thing as AI agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It's a real architectural bet on the persona as the unit of work, not a rebrand of the word \"agent.\" An AI-employee system trusts a role and audits chat logs; a composable-agent system triggers on typed events and audits object transitions. Both are called \"AI agents\" in the loose sense of the word, but the shape of the runtime, the state model, the autonomy control, and the audit trail all diverge from the choice of primitive."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Paperclip a strawman for the simulation camp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, and this page deliberately doesn't strawman it. Paperclip is a serious open-source project — roughly 38K GitHub stars at the time of writing — that made the \"orchestrate AI employees on a shared budget\" pattern legible and reachable for anyone who wants to try it. The composable-vs-simulation frame isn't a claim that Paperclip is bad; it's a claim that the persona-as-primitive bet has honest strengths and honest costs, and teams should choose with both in view."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does Claude Cowork fit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Closer to the simulation camp on the interaction model (shared threads, persona-shaped hand-offs) and closer to the composable camp on the underlying platform integration. Vendor-hosted agent platforms are hybrid by nature — they can wear a persona surface without committing to persona-as-primitive underneath. Our Cowork open-source alternative piece covers where the vendor-hosted pattern hits its ceiling on model choice, data residency, and scope; the choice between camps is a separate axis from the choice between hosted and self-hosted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the composable camp mean no personas at all?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — personas can be useful as an interface over composable capabilities. The distinction is which layer is load-bearing. Composable-first products can render a persona-shaped view when it helps a user reason about the work, but the durable substrate underneath is still typed objects, event triggers, and per-action gates. Simulation-first products invert that: the persona is the durable substrate, and any typed structure is scaffolding for the persona rather than the other way around."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does this relate to the \"ambient agent workspace\" frame?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They are sibling arguments. The ambient agent workspace piece is about the UX split — chat is the wrong default for background work; the shape of the replacement is a typed object graph humans and agents share. This page is about the architecture split — persona-as-primitive vs typed-object-as-primitive. The UX argument and the architecture argument point at the same underlying bet from different angles: the object model, not the chat window or the org chart, is what carries a decision across sessions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which camp is Maskin in, and why?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Composable, and the reason is the audit obligation. Maskin is built for teams putting agents on real product work — insights, bets, tasks, validated outcomes on a shared typed backend — where \"what did the agent do, on what trigger, at what state?\" is a question you have to be able to answer without reconstructing a chat log. The cornerstone covers the full object model; the MCP-native piece covers why the protocol layer matters; the self-hosted AI workspace piece covers the deployment side. Composable is the substrate all three of those rest on."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Solutions"><p class="doc-sidebar__title">Solutions</p><ul class="doc-sidebar__list"><li><a class="" href="/solutions/product-teams/">Product teams</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All loops</a></li><li><a class="is-nested" href="/marketplace/seo-publishing/">The SEO publishing loop</a></li><li><a class="is-nested" href="/marketplace/outbound/">The outbound loop</a></li><li><a class="is-nested" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki loop</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="is-active" href="/docs/composable-ai-agents-vs-ai-employees/" aria-current="page">Composable AI agents vs AI employees</a></li><li><a class="" href="/docs/learn/human-in-the-loop/">Human in the loop</a></li><li><a class="is-nested" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="is-nested" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="is-nested" href="/docs/learn/choose-a-knowledge-layer/">How to choose a knowledge layer</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="" href="/docs/at-risk-account-alerts/">At-risk account alerts</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="" href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane</a></li><li><a class="" href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents</a></li><li><a class="" href="/alternatives/open-source-ai-coding-agent/">Open source AI coding agent</a></li><li><a class="" href="/alternatives/n8n/">n8n alternative</a></li></ul></nav></aside>  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Composable AI agents vs AI employees</p>
+    <p class="eyebrow">Article · Category comparison</p>
+    <h1>Composable AI agents vs AI employees: the two camps of the agent workspace market</h1>
+    <p class="lead"><strong>The AI agent workspace market split into two camps in 2026, and the split is architectural, not cosmetic. One camp ships <em>AI employees</em> &mdash; personas with titles and budgets that populate a synthetic org chart. The other ships <em>composable AI agents</em> &mdash; small, scoped, event-driven capabilities that fire on typed objects with bounded human gates.</strong> Same word (&ldquo;agent&rdquo;), same landing-page verbs (&ldquo;delegate,&rdquo; &ldquo;run in the background,&rdquo; &ldquo;close the loop&rdquo;), fundamentally different production properties. This page names both camps honestly, explains the architectural stake each one is placing, and gives you a way to choose the one whose failure modes you can live with.</p>
+
+    <figure style="margin:1.5rem 0">
+      <img src="/og-image-composable-ai-agents-vs-ai-employees.svg" width="1200" height="630" alt="Two columns. Left, AI employees: an org chart of persona boxes with a chat log as the audit trail. Right, composable agents: typed objects linked by event-driven agents, a human gate, and an event-sourced trail." style="width:100%;height:auto;border-radius:10px;border:1px solid var(--rule)" loading="eager">
+      <figcaption style="font-size:.85rem;color:var(--ink-3);margin-top:.5rem">The two camps differ in the primitive of AI work: a persona, or a typed object.</figcaption>
+    </figure>
+
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+          <li><strong>The market really did split.</strong> Sebastian Krumhausen&rsquo;s April 2026 LinkedIn post named the two camps &mdash; &ldquo;full company simulation&rdquo; and &ldquo;composable infrastructure&rdquo; &mdash; and the frame has since been cited across founder writing, VC memos, and cluster-vocabulary SERPs.<sup><a href="#fn1" id="fnref1">1</a></sup></li>
+          <li><strong>The load-bearing cut is protocol vs sandbox</strong> &mdash; &ldquo;what an agent can reach&rdquo; (protocol / MCP) vs &ldquo;how much it can touch while working&rdquo; (sandbox / autonomy dial). Every downstream tradeoff between the camps hangs on this cut.</li>
+          <li><strong>The composable camp treats three properties as first-class: determinism, safety, scale.</strong> Typed objects + event-driven triggers = reproducible outcomes; bounded human-gated loops = named escalation; small auditable agents = orchestration, not personas.</li>
+          <li><strong>The simulation camp&rsquo;s strengths are real</strong> &mdash; natural mental model, low ramp, exceptional demo &mdash; and its costs are also real: opaque state, entangled autonomy, hard-to-audit outcomes.</li>
+          <li><strong>Paperclip (roughly 38K GitHub stars) is the current emblem of the simulation camp</strong> &mdash; a serious open-source project that made the &ldquo;AI employees&rdquo; pattern legible.<sup><a href="#fn2" id="fnref2">2</a></sup> Composable-camp production systems tend to look less like a demo and more like infrastructure.</li>
+          <li><strong>You are choosing a failure surface, not a philosophy.</strong> Solo builder shipping a demo &rarr; simulation is probably right. Team putting agents on real work with an audit obligation &rarr; composable is probably right.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>What each camp actually ships</h2>
+    <p>The two camps are easiest to see by asking the same question of both: <em>what is the unit of work?</em></p>
+    <p>In the <strong>AI-employees / simulation</strong> camp, the unit is a <strong>persona</strong>. You define a &ldquo;Sales Rep&rdquo; or a &ldquo;Researcher&rdquo; agent with a job description, a set of tools, and (in the more advanced versions) a budget. Users interact with the persona the way they would a coworker &mdash; assign it a task, watch it &ldquo;think,&rdquo; check its output. Multi-agent runs are staged as meetings, hand-offs are messages between roles, the audit trail is a chat log. The design metaphor is a company you can hire in an afternoon. Paperclip is the current standout in open source, at roughly 38K GitHub stars.<sup><a href="#fn2" id="fnref2b">2</a></sup> Vendor-hosted platforms have shipped adjacent shapes &mdash; Claude Cowork&rsquo;s shared-workspace threads, GPT-shaped &ldquo;workforce&rdquo; products &mdash; that lean on the same mental model.</p>
+    <p>In the <strong>composable-infrastructure</strong> camp, the unit is a <strong>typed object</strong> &mdash; an insight, a bet, a task, a file, a comment &mdash; and agents are small, scoped capabilities that fire when the object graph changes. There is no &ldquo;sales rep&rdquo; persona; there is a <code>market-signal-triage</code> agent that fires on new inbound signals, an <code>insight-cluster</code> agent that fires when a cluster reaches N members, a <code>bet-shaper</code> agent that fires when a cluster is promoted, and so on. Runs are triggered by state, not by chat; hand-offs are typed relationships between objects; the audit trail is the object graph&rsquo;s own event history. The design metaphor is a set of Unix-style tools that compose across a shared, typed backend.<sup><a href="#fn3" id="fnref3">3</a></sup></p>
+    <p>That difference is not a UI choice. It is a bet about what the <em>primitive</em> of AI work is: a person or a capability, a role or an event, a conversation or a state transition. Everything else in the two camps follows from that.</p>
+    <h2>The load-bearing cut: protocol vs sandbox</h2>
+    <p>The cleanest way to see why the two camps produce different failure modes is a distinction we&rsquo;ve written down before and are going to reuse verbatim across the whole cluster: <strong>there are two independent design decisions in any agent system, and confusing them is where most of the shipped confusion in the market comes from.</strong></p>
+    <ul>
+      <li><strong>The protocol decides <em>what an agent can reach</em>.</strong> Which tools, which data sources, which APIs are visible to the model at all. This is the layer the Model Context Protocol (MCP) standardizes &mdash; a public, typed contract for how models discover and call tools.</li>
+      <li><strong>The sandbox decides <em>how much it can touch while working</em>.</strong> How isolated the runtime is, what side effects it can produce, what state it can mutate, and &mdash; crucially &mdash; where the human gate sits.</li>
+    </ul>
+
+    <p>Those two decisions are orthogonal. You can have a wide protocol and a tight sandbox (many tools reachable, each action bounded and reviewable) or a narrow protocol and a loose sandbox (few tools reachable, but each call runs unchecked to completion) or any combination. Most of the &ldquo;is this agent safe?&rdquo; argument in the market collapses when you separate the two questions.</p>
+    <p>The two camps place different bets on the sandbox side of that cut. <strong>The simulation camp tends toward loose sandboxes</strong> &mdash; the persona is trusted to act, the loop is the persona&rsquo;s own conversation with itself, and the human is imagined as a manager who reviews outcomes rather than gates actions. <strong>The composable camp tends toward tight sandboxes and explicit gates</strong> &mdash; each agent action is a typed object transition, human promote gates are named and required at specific steps, and the runtime is often an isolated container per session. Neither is &ldquo;the right answer&rdquo; in the abstract; they solve for different production properties.<sup><a href="#fn4" id="fnref4">4</a></sup></p>
+    <h2>The three properties composable treats as first-class: determinism, safety, scale</h2>
+    <p>This is the spine of the composable-camp argument, and we use it verbatim across our cornerstone, our MCP-native piece, and this page. It&rsquo;s not marketing &mdash; it&rsquo;s the three things you actually have to prove to run agents on real work.</p>
+    <ul>
+      <li><strong>Determinism.</strong> An event fires an agent; the agent acts; the outcome is a state change you can inspect in the object model and the event-sourced audit trail. Every transition is recorded, so behavior is explainable and auditable rather than opaque. The same trigger, on the same object state, produces the same downstream graph &mdash; barring model non-determinism, which is bounded by the agent&rsquo;s narrow scope. In the simulation camp, determinism is much harder to reason about, because the &ldquo;state&rdquo; is a persona&rsquo;s chat history and the &ldquo;trigger&rdquo; is often another persona&rsquo;s message.</li>
+      <li><strong>Safety.</strong> Agents execute in isolated sessions (Docker containers, in Maskin&rsquo;s implementation) that can&rsquo;t reach private keys or production state outside the workspace&rsquo;s authority, and human promote gates bound the closed loop. The protocol defines what agents can reach; the sandbox defines how far they can go. Named escalation &mdash; Chase&rsquo;s <code>notify</code> / <code>question</code> / <code>review</code> interrupts, or their equivalents &mdash; is how a human on-the-loop stays in control without becoming a bottleneck.<sup><a href="#fn5" id="fnref5">5</a></sup> In the simulation camp, safety is a function of persona-level trust: the &ldquo;Sales Rep&rdquo; gets to do sales-rep things, and the review model is usually chat-log-after-the-fact rather than action-before-the-fact.</li>
+      <li><strong>Scale.</strong> A small team can run many agents because each one owns a narrow, well-defined role on typed objects. Load is delegated to many bounded loops rather than a few monolithic personas, sidestepping the wall where a handful of agents each carry too many responsibilities to be trusted. In the simulation camp, scale is a function of adding personas, which linearly increases the coordination overhead of the synthetic org and &mdash; in the products that lean hardest on the metaphor &mdash; introduces the same meeting-and-status-update friction the metaphor was borrowed from.</li>
+    </ul>
+
+    <p>The composable camp did not invent these properties. It&rsquo;s the camp that decided to make them the first-class shape of the product rather than a compliance-and-observability layer stapled on later.</p>
+    <h2>The simulation camp&rsquo;s honest strengths &mdash; and honest costs</h2>
+    <p>A camps-not-takedown page is only honest if the other camp reads its own bet fairly stated. So: what does the AI-employees camp <em>actually</em> get right that the composable camp doesn&rsquo;t?</p>
+    <ul>
+      <li><strong>The mental model is instantly legible.</strong> A user who has never touched an agent system understands &ldquo;Sales Rep&rdquo; and &ldquo;Researcher&rdquo; the moment they see the interface. There is no schema to learn, no event model, no distinction between an object and its transitions. Onboarding is minutes, not weeks. For a solo builder or a small team running a handful of loops, this legibility is a genuine advantage &mdash; the same argument the <a href="/docs/ambient-agent-workspace/">ambient agent workspace</a> piece makes about chat-as-primary at true solo scale.</li>
+      <li><strong>Demos are exceptional.</strong> A room full of AI employees &ldquo;meeting&rdquo; to plan a launch is a demo you can drop on a landing page. A typed-object graph mutating on event triggers is a demo that requires the viewer to already understand the substrate. The simulation camp will win first-look bake-offs almost every time, which is a real distribution advantage for the products in the camp.</li>
+      <li><strong>The persona metaphor generalizes horizontally.</strong> &ldquo;Give the Sales Rep a CRM&rdquo; and &ldquo;give the Researcher web access&rdquo; are both persona-plus-tools moves; the metaphor accommodates any vertical without a schema change. The composable camp has to design typed objects and relationships for each new domain, which is more work up front.</li>
+    </ul>
+
+    <p>The costs are the mirror image:</p>
+    <ul>
+      <li><strong>Opaque state.</strong> A persona&rsquo;s &ldquo;memory&rdquo; is usually a chat transcript. That transcript is not queryable in the way a typed object graph is; you cannot ask &ldquo;show me every bet the Researcher touched last week and which insights motivated them&rdquo; without additional plumbing that the persona metaphor didn&rsquo;t ask you to build.</li>
+      <li><strong>Entangled autonomy.</strong> A persona is trusted at the persona level, which means an &ldquo;autonomy dial&rdquo; is a single knob per employee rather than a per-action gate. When something goes wrong, the failure attribution is at the persona level (&ldquo;the Sales Rep sent a bad email&rdquo;) not the action level (&ldquo;this specific tool call, at this specific state, violated this specific gate&rdquo;).</li>
+      <li><strong>Audit is a chat log.</strong> Post-hoc, you read a transcript. That works for small teams and small blast radii. It stops working when the number of parallel loops crosses the point where triaging transcripts is now a second full-time job, or when the auditor is external (SOC2, GDPR, an angry customer).</li>
+    </ul>
+
+    <p>None of these costs are fatal to the simulation camp. They are the failure modes you sign up for when you pick the persona as your primitive. The right question at buy-time is which failure surface you can live with &mdash; see the choose-a-camp heuristic below.</p>
+    <h2>Where the two camps diverge, in one table</h2>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Question</th><th>AI-employees / simulation</th><th>Composable AI agents</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Unit of work</strong></td><td>Persona</td><td>Typed object</td></tr>
+        <tr><td><strong>What triggers a run</strong></td><td>Chat / assignment</td><td>State change in the graph (or a scheduled trigger)</td></tr>
+        <tr><td><strong>Coordination pattern</strong></td><td>Meetings, hand-off messages</td><td>Typed relationships, event fan-out</td></tr>
+        <tr><td><strong>Autonomy control</strong></td><td>Persona-level trust</td><td>Per-action gates, explicit dial per loop</td></tr>
+        <tr><td><strong>Audit trail</strong></td><td>Chat transcript</td><td>Event-sourced object transitions</td></tr>
+        <tr><td><strong>Failure surface</strong></td><td>Opaque state, entangled autonomy</td><td>LLM cost/latency at volume, orchestration complexity</td></tr>
+        <tr><td><strong>Best-in-class demo</strong></td><td>Effortless &mdash; the metaphor is the demo</td><td>Requires the viewer to grok the substrate</td></tr>
+        <tr><td><strong>Best-in-class production</strong></td><td>Harder &mdash; persona trust doesn&rsquo;t compose</td><td>The default shape once the loops multiply</td></tr>
+        <tr><td><strong>Emblem in open source</strong></td><td>Paperclip (~38K stars)<sup><a href="#fn2" id="fnref2c">2</a></sup></td><td>Maskin, plus the growing set of MCP-native workspaces</td></tr>
+      </tbody>
+    </table></div>
+
+    <p>Neither column is &ldquo;correct.&rdquo; They are two internally consistent bets on what the primitive of AI work is. The table is a way to see which bet matches the shape of the work you actually do.</p>
+    <h2>How to choose (a decision heuristic, not a manifesto)</h2>
+    <p>The honest test is not &ldquo;which camp is right?&rdquo; &mdash; it&rsquo;s &ldquo;which camp&rsquo;s failure modes match the work I have?&rdquo; Three questions, in order:</p>
+    <ol>
+      <li><strong>How many humans need to see the same agent state?</strong> One &rarr; simulation is often fine; the chat log doubles as the audit. More than one &rarr; composable pulls ahead sharply, because a typed graph is how state stays coherent across humans without a status-update meeting.</li>
+      <li><strong>How long is the loop, and how many hand-offs does it cross?</strong> Minutes and one hand-off &rarr; simulation is legible enough. Hours to days and multiple hand-offs (an insight becomes a cluster becomes a bet becomes a task becomes a validated outcome) &rarr; the composable graph is what carries context across the hand-offs without a persona &ldquo;remembering&rdquo; it.</li>
+      <li><strong>Do you owe someone an audit?</strong> Just yourself &rarr; the transcript is fine. A customer, a regulator, a board, or your future self debugging a bad outcome &rarr; the event-sourced object trail is the difference between &ldquo;I think the agent did X&rdquo; and &ldquo;here is exactly what it did, on what trigger, at what state, with what gate cleared.&rdquo;</li>
+    </ol>
+
+    <p>Two-out-of-three toward the composable side and the graph starts paying for itself. Two-out-of-three toward the simulation side and the persona metaphor is doing the work you need. This is the same shape of test the <a href="/docs/ambient-agent-workspace/">ambient agent workspace</a> page argues on the UX side, and it lands the same way: the frame isn&rsquo;t &ldquo;always X,&rdquo; it&rsquo;s &ldquo;X is the wrong <em>default</em> for background work that carries state across loops or across humans.&rdquo;</p>
+    <h2>Where the market is heading</h2>
+    <p>The two-camps frame is not going to resolve into one winner over the next cycle, because the two camps are solving for different customers. The simulation camp will keep winning solo-builder and single-team traction on legibility and demo quality. The composable camp will keep winning multi-team, audit-heavy, self-hosted, model-agnostic deployments on determinism and safety. The interesting thing to watch is the middle: teams that started in the simulation camp because it was easier to try, then hit the &ldquo;we can&rsquo;t tell what our AI employees actually did last week&rdquo; wall, and looked for a substrate under the personas rather than a replacement for them.</p>
+    <p>That middle is also where the incumbents are moving. Atlassian opened its Teamwork Graph as an agent layer via Rovo, reporting use by 90%+ of its enterprise cloud customers and a 7x rise in agentic automations over six months (Atlassian Team &rsquo;26, May 2026). Notion shipped Custom Agents and a Developer Platform in early 2026, and Linear released its agent grounded in roadmap, code, and issues (TechCrunch, May 13 2026; Linear changelog, Mar 2026). Every one of those moves is a bet on the <em>graph under the persona</em> &mdash; the composable substrate, wearing the persona as an interface layer when it helps and getting out of the way when it doesn&rsquo;t. That&rsquo;s the composable-camp bet, played inside an incumbent&rsquo;s distribution.</p>
+    <p>For an independent workspace, the argument for building openly in the composable camp is the same argument the <a href="/docs/what-is-mcp-native/">MCP-native</a> piece makes for the protocol layer: when the substrate is a public typed contract instead of a proprietary persona zoo, model choice, tool choice, and deployment choice stop being vendor terms and start being your terms. The AI-employees frame is the friendliest onboarding for a demo; the composable-agents frame is the honest architecture for a workspace.</p>
+    <h2>FAQ</h2>
+    <h3>Is &ldquo;AI employees&rdquo; just marketing for the same thing as AI agents?</h3>
+    <p>No. It&rsquo;s a real architectural bet on the <em>persona</em> as the unit of work, not a rebrand of the word &ldquo;agent.&rdquo; An AI-employee system trusts a role and audits chat logs; a composable-agent system triggers on typed events and audits object transitions. Both are called &ldquo;AI agents&rdquo; in the loose sense of the word, but the shape of the runtime, the state model, the autonomy control, and the audit trail all diverge from the choice of primitive.</p>
+    <h3>Is Paperclip a strawman for the simulation camp?</h3>
+    <p>No, and this page deliberately doesn&rsquo;t strawman it. Paperclip is a serious open-source project &mdash; roughly 38K GitHub stars at the time of writing<sup><a href="#fn2" id="fnref2d">2</a></sup> &mdash; that made the &ldquo;orchestrate AI employees on a shared budget&rdquo; pattern legible and reachable for anyone who wants to try it. The composable-vs-simulation frame isn&rsquo;t a claim that Paperclip is bad; it&rsquo;s a claim that the persona-as-primitive bet has honest strengths and honest costs, and teams should choose with both in view.</p>
+    <h3>Where does Claude Cowork fit?</h3>
+    <p>Closer to the simulation camp on the interaction model (shared threads, persona-shaped hand-offs) and closer to the composable camp on the underlying platform integration. Vendor-hosted agent platforms are hybrid by nature &mdash; they can wear a persona surface without committing to persona-as-primitive underneath. Our <!-- link to /alternatives/open-source-alternative-to-claude-cowork/ when that page ships (content bd57c302) -->Cowork open-source alternative piece covers where the vendor-hosted pattern hits its ceiling on model choice, data residency, and scope; the choice between camps is a separate axis from the choice between hosted and self-hosted.</p>
+    <h3>Does the composable camp mean no personas at all?</h3>
+    <p>No &mdash; personas can be useful as an <em>interface</em> over composable capabilities. The distinction is which layer is load-bearing. Composable-first products can render a persona-shaped view when it helps a user reason about the work, but the durable substrate underneath is still typed objects, event triggers, and per-action gates. Simulation-first products invert that: the persona is the durable substrate, and any typed structure is scaffolding for the persona rather than the other way around.</p>
+    <h3>How does this relate to the &ldquo;ambient agent workspace&rdquo; frame?</h3>
+    <p>They are sibling arguments. The <a href="/docs/ambient-agent-workspace/">ambient agent workspace</a> piece is about the <em>UX</em> split &mdash; chat is the wrong default for background work; the shape of the replacement is a typed object graph humans and agents share. This page is about the <em>architecture</em> split &mdash; persona-as-primitive vs typed-object-as-primitive. The UX argument and the architecture argument point at the same underlying bet from different angles: the object model, not the chat window or the org chart, is what carries a decision across sessions.</p>
+    <h3>Which camp is Maskin in, and why?</h3>
+    <p>Composable, and the reason is the audit obligation. Maskin is built for teams putting agents on real product work &mdash; insights, bets, tasks, validated outcomes on a shared typed backend &mdash; where &ldquo;what did the agent do, on what trigger, at what state?&rdquo; is a question you have to be able to answer without reconstructing a chat log. The <a href="/docs/what-is-an-agentic-workspace/">cornerstone</a> covers the full object model; the <a href="/docs/what-is-mcp-native/">MCP-native</a> piece covers why the protocol layer matters; the <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a> piece covers the deployment side. Composable is the substrate all three of those rest on.</p>
+    <h2>Own the substrate, not the org chart</h2>
+    <p>If the audit obligation, the multi-team coordination, and the multi-hour loop are all real for your team, the shape of the workspace is composable &mdash; typed objects under the personas, event triggers under the meetings, per-action gates under the persona-level trust. Maskin is the open-source, MCP-native, self-hostable version of that shape. Self-host free forever under Apache 2.0, or start a hosted trial with EU/US data residency.</p>
+
+    <h2 id="sources">Sources</h2>
+    <ol class="sources">
+      <li id="fn1">Sebastian Krumhausen, &ldquo;The AI agent workspace market is splitting&rdquo; &mdash; LinkedIn post, 10 April 2026. <a href="https://www.linkedin.com/posts/krumhausen_the-ai-agent-workspace-market-is-splitting-activity-7448474897564975104-O7Nq" target="_blank" rel="noopener nofollow">linkedin.com/posts/krumhausen &mdash; market-camps post</a>. <a href="#fnref1">&#8617;</a></li>
+      <li id="fn2">Public repo metrics for the emblem project of the simulation camp; roughly 38K GitHub stars at time of writing. <a href="#fnref2">&#8617;</a></li>
+      <li id="fn3">Maskin architecture &mdash; unified object model, PG NOTIFY &rarr; SSE realtime, MCP-native agent sessions. Public source: <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener nofollow">github.com/sindre-ai/maskin</a>. <a href="#fnref3">&#8617;</a></li>
+      <li id="fn4">The protocol/sandbox split as the load-bearing structural cut is drawn from the ratified cluster spine established in <a href="/docs/what-is-mcp-native/">What is MCP-native? Why Maskin is built on the Model Context Protocol</a> &mdash; &ldquo;the protocol decides what an agent can reach; the sandbox decides how much it can touch while working.&rdquo; <a href="#fnref4">&#8617;</a></li>
+      <li id="fn5">Harrison Chase / LangChain, <em>Introducing Ambient Agents</em> (Jan 2025). <a href="https://www.langchain.com/blog/introducing-ambient-agents" target="_blank" rel="noopener nofollow">www.langchain.com/blog/introducing-ambient-agents</a>. Definitional citation for named escalation pathways (<code>notify</code> / <code>question</code> / <code>review</code>) and the human-on-the-loop vs human-in-the-loop shift. <a href="#fnref5">&#8617;</a></li>
+    </ol>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/ambient-agent-workspace/">
+          <div class="doc-card__title">Ambient agent workspace</div>
+          <div class="doc-card__desc">The UX side of the same split: chat is the wrong default for background work.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-mcp-native/">
+          <div class="doc-card__title">What is MCP-native?</div>
+          <div class="doc-card__desc">The protocol layer under the object graph, and why bring-your-own-model is real.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+          <div class="doc-card__title">What is an agentic workspace?</div>
+          <div class="doc-card__desc">The cornerstone: the object of work is the workspace, not the chat.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/self-hosted-ai-workspace/">
+          <div class="doc-card__title">Self-hosted AI workspace</div>
+          <div class="doc-card__desc">Run the composable loop on your own infrastructure, bring your own model.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Self-host the composable loop</h2>
+      <p>Typed objects under the personas, event triggers under the meetings. Apache 2.0, MCP-native, EU/US data residency.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
