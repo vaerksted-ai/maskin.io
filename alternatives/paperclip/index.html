@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paperclip alternative for AI agents: when to switch | Maskin</title>
+<meta name="description" content="Paperclip alternative for AI agents? Compare frameworks, runtimes, hosted workforces and Maskin's typed-object workspace, plus when to stay on Paperclip.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/alternatives/paperclip/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/alternatives/paperclip/">
+<meta property="og:title" content="Paperclip alternative for AI agents: when AI employees stop fitting">
+<meta property="og:description" content="CrewAI, OpenClaw, Relevance AI, n8n or a typed-object workspace? Pick the Paperclip alternative by what you are missing, and see when to stay on Paperclip.">
+<meta property="og:image" content="https://maskin.io/og-image-paperclip-alternative.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Paperclip alternative for AI agents: when AI employees stop fitting">
+<meta name="twitter:description" content="CrewAI, OpenClaw, Relevance AI, n8n or a typed-object workspace? Pick the Paperclip alternative by what you are missing, and see when to stay on Paperclip.">
+<meta name="twitter:image" content="https://maskin.io/og-image-paperclip-alternative.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Paperclip alternative for AI agents: when AI employees stop fitting",
+      "name": "Paperclip alternative for AI agents: when AI employees stop fitting",
+      "description": "Paperclip alternative for AI agents? Compare frameworks, runtimes, hosted workforces and Maskin's typed-object workspace, plus when to stay on Paperclip.",
+      "url": "https://maskin.io/alternatives/paperclip/",
+      "inLanguage": "en",
+      "datePublished": "2026-10-01T00:00:00Z",
+      "dateModified": "2026-10-01T00:00:00Z",
+      "image": [
+        "https://maskin.io/og-image-paperclip-alternative.svg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "mainEntityOfPage": "https://maskin.io/alternatives/paperclip/",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": {
+        "@type": "Product",
+        "name": "Maskin"
+      },
+      "keywords": "paperclip alternative, paperclip ai alternative, paperclip ai, paperclip alternative for ai agents, ai agent orchestrator"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Alternatives",
+          "item": "https://maskin.io/alternatives/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Paperclip alternative",
+          "item": "https://maskin.io/alternatives/paperclip/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best Paperclip alternative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on what you are missing. CrewAI or LangGraph if you want to write the orchestration yourself. Relevance AI or Lindy if you want a hosted AI workforce. n8n or Dify for visual automation with agent nodes. Maskin if agent work has to leave typed, owned records of insights, bets, and outcomes. Most \"best of\" lists mix these shapes, which is why they feel unhelpful."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Paperclip AI free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The software is. Paperclip is MIT licensed and self-hosted, and its README says no Paperclip account is required. You still pay for the infrastructure you run it on and for the model usage of the agents you connect. The README lists a hosted Paperclip Cloud as a waitlist, so we can't quote a hosted price."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Paperclip AI open source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The repository at github.com/paperclipai/paperclip carries an MIT license, copyright Paperclip Labs, Inc. It had about 95.5K GitHub stars when we read it on 1 October 2026. MIT is permissive, so you can self-host, modify, and embed it. Maskin is Apache 2.0, which is also permissive and self-hostable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who owns Paperclip AI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The repository's license line reads copyright 2026 Paperclip Labs, Inc, and the README says the Paperclip team maintains the project. The repository was created on 2 March 2026. We found no other ownership detail in the sources we read, so check the company's own site for funding or corporate structure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between Paperclip and OpenClaw?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They sit at different layers. The Paperclip README puts it as \"If OpenClaw is an employee, Paperclip is the company.\" OpenClaw is an agent runtime. Paperclip orchestrates it, along with Claude Code, Codex, and others, through an org chart, budgets, and approvals. That is why OpenClaw is a component you pair with Paperclip, not a drop-in replacement for it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a hosted Paperclip alternative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, with trade-offs. Hosted AI workforce platforms such as Relevance AI and Lindy skip the self-hosting work, and Paperclip's own cloud offering is a waitlist in its README. Hosted tools usually trade away control of the runtime and self-hosting. Maskin offers a hosted trial and a free self-hosted version under Apache 2.0."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use Paperclip and Maskin together?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Possibly, but it is untested. Paperclip's README lets agents connect to your own MCP server, and Maskin exposes its objects over MCP, so a Paperclip agent could write outcomes into Maskin objects. We have not published a tested recipe, so treat it as something to prototype rather than a documented integration."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Alternatives</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="" href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents</a></li><li><a class="" href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane</a></li><li><a class="" href="/alternatives/open-source-ai-coding-agent/">Open source AI coding agent</a></li><li><a class="" href="/alternatives/n8n/">n8n alternative</a></li><li><a class="is-active" href="/alternatives/paperclip/" aria-current="page">Paperclip alternative</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/">Home</a> / <a href="/alternatives/">Alternatives</a> / Paperclip alternative</p>
+    <p class="eyebrow">Comparison</p>
+    <h1>Paperclip alternative for AI agents: when AI employees stop fitting</h1>
+  <p class="lead">The right Paperclip alternative depends on what you're missing. Want another open-source orchestrator? Look at CrewAI or LangGraph. A hosted AI workforce? Relevance AI or Lindy. Visual automation with agent nodes? n8n or Dify. Agent work that has to leave a typed, owned record of insights, bets, and outcomes instead of an org chart of AI employees? Maskin.</p>
+
+  <p>This page is about Paperclip, the open-source AI agent orchestrator at github.com/paperclipai/paperclip. If you were after the old Ruby file-attachment gem, its maintainers deprecated it in favor of Rails' Active Storage, and the "paperclip maximizer" is a thought experiment, not a product. We build Maskin, so weigh this page accordingly. Where Paperclip is the better fit, we say so.</p>
+  <div class="callout callout--muted">
+    <div class="callout__icon" aria-hidden="true">&#10003;</div>
+    <div class="callout__body"><strong>Key takeaways</strong>
+      <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+        <li><strong>Paperclip is a serious project.</strong> It is MIT licensed, had about 95.5K GitHub stars when we read the repository on 1 October 2026, and its README claims over 2,700 merged pull requests (<a href="https://github.com/paperclipai/paperclip" target="_blank" rel="noopener">Paperclip README</a>).</li>
+        <li><strong>OpenClaw, Claude Code, and Codex are what Paperclip hires, not what replaces it.</strong> Several "alternatives" lists mix agents with the thing that manages agents.</li>
+        <li><strong>Real reasons to leave are specific:</strong> you don't want to run Node and Postgres, you need memory or a tracker on-ramp that is still on Paperclip's roadmap, or the org-chart metaphor is overhead for work that is really a decision.</li>
+        <li><strong>Paperclip does keep a durable record</strong> (activity log, task threads, run history). The difference from Maskin is what the record is about, not whether one exists.</li>
+        <li><strong>Maskin is the alternative for decision-shaped work.</strong> Apache 2.0, self-hostable, MCP-native, with insights, bets, and tasks as typed objects. It has no org chart and no heartbeat, and it is early.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>What Paperclip actually is</h2>
+  <p>Paperclip is a Node.js server and React UI that, in its own words, orchestrates "a team of AI agents to run a business." You define a company goal (the README's example is "Build the #1 AI note-taking app to $1M MRR"), hire agents into an org chart (CEO, CTO, engineers, marketers), set budgets, and approve work from a dashboard. Agents are bring-your-own. Claude Code, Codex, Cursor, Gemini CLI, OpenCode, OpenClaw, and Hermes plug in through adapters, and the README's rule is "if it can receive a heartbeat, it's hired."</p>
+  <p>By the README's own account, this is what you get:</p>
+  <ul>
+    <li><strong>Atomic task checkout.</strong> One assignee and execution locks, so two agent runs can't claim the same task.</li>
+    <li><strong>Budgets with hard stops</strong> by company, agent, and project, with warning thresholds.</li>
+    <li><strong>Governance.</strong> Approval and review stages, config changes that are revisioned and can be rolled back.</li>
+    <li><strong>A durable activity log.</strong> Mutating actions, cost events, approvals, comments, and work products are recorded.</li>
+    <li><strong>Routines.</strong> Cron, webhook, or API triggers, where each run creates a tracked issue and wakes the assigned agent.</li>
+    <li><strong>Multiple organizations</strong> in one deployment, and export/import of whole company templates.</li>
+    <li><strong>A tool gateway.</strong> Connect GitHub, Notion, or your own MCP server, and set each action to Allowed, Ask first, or Off.</li>
+  </ul>
+  <p>These are the project's own claims from its README. We have not benchmarked Paperclip or run it in production.</p>
+  <h2>Why people look for a Paperclip alternative</h2>
+  <p>Six reasons come up. Each points to a different answer.</p>
+  <p><strong>1. You don't want to run the infrastructure.</strong> Paperclip needs Node.js 24.11 or newer. Locally it creates an embedded Postgres database; for production you point it at your own Postgres or deploy with Docker. The hosted Paperclip Cloud is a waitlist in the README. If you want zero ops, look at hosted AI workforce platforms.</p>
+  <p><strong>2. You wanted an agent, not a manager of agents.</strong> The README is explicit: Paperclip is "not an agent framework." It brings no agent of its own. Comparison pages written for support teams, such as <a href="https://www.eesel.ai/blog/paperclip-ai-alternatives" target="_blank" rel="noopener">eesel's</a>, make this their lead argument: Paperclip has no helpdesk on the other end and no way to test an agent on your past tickets.</p>
+  <p><strong>3. The org chart is overhead for your work.</strong> win.sh argues that roles and org charts add ceremony before any work starts when you are a solo operator (<a href="https://win.sh/compare/paperclip" target="_blank" rel="noopener">win.sh comparison</a>). That is a competitor's view, but the point holds for work where nobody needs a CEO agent.</p>
+  <p><strong>4. You need memory today.</strong> The README roadmap lists "Memory / Knowledge" as in progress, alongside agent chat and cloud deployments. Skills and persisted session context exist; a first-class knowledge layer is on the way.</p>
+  <p><strong>5. Your tracker is already the source of truth.</strong> "Bring-your-own-ticket-system (Asana / Linear / Jira as on-ramps)" is on the roadmap but not yet shipped. Today work lives in Paperclip's own issues.</p>
+  <p><strong>6. What you manage is a decision, not a deliverable.</strong> An agent team can ship tickets all day and still leave nobody able to say which customer signal justified the work or whether it paid off. That gap is where a typed-object workspace fits, and it gets its own section below.</p>
+  <h2>The five shapes of Paperclip alternative</h2>
+  <p>Every ranking comparison mixes different kinds of tool. The five shapes are:</p>
+  <ol>
+    <li>Code-first orchestration frameworks (CrewAI, LangGraph, AutoGen)</li>
+    <li>Agent runtimes (OpenClaw, Hermes)</li>
+    <li>Hosted AI workforce platforms (Relevance AI, Lindy)</li>
+    <li>Visual automation with agent nodes (n8n, Dify)</li>
+    <li>Typed-object workspaces (Maskin)</li>
+  </ol>
+  <p>Picking inside the wrong shape is the most common mistake. A team that wants to stop running servers does not need another framework. A team that wants a record of why work happened does not need a cheaper hosted workforce.</p>
+  <p>We have not benchmarked these tools for this page. What follows describes shape, not performance; check each vendor's docs for current features and pricing.</p>
+  <h3>Code-first orchestration frameworks</h3>
+  <p><strong>CrewAI</strong>, <strong>LangGraph</strong>, and <strong>AutoGen</strong> are the names that recur on the ranking pages, for example in <a href="https://contabo.com/blog/paperclip-ai-alternatives/" target="_blank" rel="noopener">Contabo's comparison</a>. You write the orchestration in code. Paperclip ships the control plane around it (org chart, budgets, approvals, dashboard). Choose a framework if you want to own every line of coordination and have engineers to do it.</p>
+  <h3>Agent runtimes</h3>
+  <p><strong>OpenClaw</strong> and <strong>Hermes</strong> are agents, not managers of agents. Paperclip lists both as adapters it can hire, so they are complements before they are replacements. Hermes also ships a durable Kanban board for multi-agent work, and OpenClaw has its own cron, heartbeat, and file-based memory. If one capable agent with memory covers your job, you may not need an orchestrator at all.</p>
+  <h3>Hosted AI workforce platforms</h3>
+  <p><strong>Relevance AI</strong> and <strong>Lindy</strong> sell AI workers as a managed product, and eesel targets support queues. You trade control of the runtime and, usually, self-hosting for a working agent without maintenance.</p>
+  <h3>Visual automation with agent nodes</h3>
+  <p><strong>n8n</strong> and <strong>Dify</strong> are workflow and LLM-app builders with visual canvases and AI agent nodes. They fit when the job is plumbing between apps with some model calls inside. The <a href="/alternatives/n8n/">n8n alternative page</a> covers that fork in detail.</p>
+  <h3>Typed-object workspaces</h3>
+  <p><strong>Maskin</strong> is the entry here, and the rest of this page explains where it fits and where it does not.</p>
+  <h2>Paperclip vs Maskin, side by side</h2>
+  <table>
+    <thead>
+      <tr><th></th><th>Paperclip</th><th>Maskin</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Unit of work</strong></td><td>An issue inside an org with goals, projects, and titled agents</td><td>A typed object: insight, bet, or task, linked by relationships</td></tr>
+      <tr><td><strong>What wakes an agent</strong></td><td>Assigned work, follow-up messages, optional timer heartbeats, routines</td><td>A trigger: a schedule, a one-shot reminder, or an event on the object graph. No heartbeat</td></tr>
+      <tr><td><strong>Who owns the outcome</strong></td><td>The human board approves hires and review stages</td><td>A named driver, human or agent, owns each bet and its win condition</td></tr>
+      <tr><td><strong>Runtime</strong></td><td>Adapters run agents you already have; optional sandbox providers</td><td>A fresh sandboxed Docker container per agent session</td></tr>
+      <tr><td><strong>Cost control</strong></td><td>Budgets by company, agent, and project with hard stops</td><td>Workspace-level plan limits; no per-agent hard stop in the docs we reviewed</td></tr>
+      <tr><td><strong>The record</strong></td><td>Activity log, task threads, run history, documents, work products</td><td>Typed objects and their event history; the objects are the work</td></tr>
+      <tr><td><strong>Install</strong></td><td>One npx command, Node.js 24.11+, embedded Postgres locally</td><td>Self-host with Docker on the host</td></tr>
+      <tr><td><strong>License</strong></td><td>MIT</td><td>Apache 2.0</td></tr>
+      <tr><td><strong>Maturity</strong></td><td>About 95.5K stars, repository created March 2026</td><td>Early; evaluate the architecture, not a long track record</td></tr>
+    </tbody>
+  </table>
+  <h2>Where Paperclip is the better fit</h2>
+  <p>Stay on Paperclip, or pick it first, when:</p>
+  <ul>
+    <li><strong>You are running a business-shaped organization.</strong> Goal in, team hired, budget set. The README is written for exactly this, and an org chart is the right primitive for it.</li>
+    <li><strong>Per-agent budget hard stops are a hard requirement.</strong> Paperclip documents them by company, agent, project, goal, provider, and model. Maskin's cost controls sit at the workspace level, so Paperclip wins this row.</li>
+    <li><strong>You already run a mixed fleet of agent CLIs</strong> and want one dashboard over all of them. Paperclip's adapter model is built to hire agents you already run. Maskin's agents run in its own sandboxed sessions, and outside agents reach it over MCP.</li>
+    <li><strong>You want the community.</strong> Paperclip has a large user base, a Discord, and a plugin ecosystem. Maskin has none of that at comparable scale.</li>
+    <li><strong>You want to be running in five minutes.</strong> One npx command beats cloning a repo and standing up Docker.</li>
+  </ul>
+  <h2>Where a typed-object workspace fits instead</h2>
+  <p>Three situations tip the decision toward Maskin.</p>
+  <p><strong>The work is a decision with a life of weeks.</strong> A customer signal becomes an insight, the insight is shaped into a bet with a win condition and an owner, the bet breaks into tasks, and it closes with a measured outcome. The bet is the thing you query later, and it stays put when you swap the agent or the model. <a href="/docs/closed-loop-workspace/">The closed-loop workspace</a> describes that loop.</p>
+  <p><strong>More than one human edits the same state.</strong> In Maskin, people and agents read and write the same objects over the same API, and a human gate attaches to the object: you decide where a person promotes, approves, or closes. See <a href="/docs/learn/human-in-the-loop-ai/">human in the loop AI</a>.</p>
+  <p><strong>You want agents bounded by triggers, not wake-ups.</strong> Maskin agents fire on schedules, reminders, or events, run in an isolated container, and exit. That is deliberate and it has a cost: polling has to be modeled as a schedule. The longer architectural argument is in <a href="/docs/composable-ai-agents-vs-ai-employees/">composable AI agents vs AI employees</a>.</p>
+  <h3>A worked example: customer feedback to a shipped fix</h3>
+  <p>Take onboarding complaints arriving in Slack and Intercom.</p>
+  <p>On Paperclip you would set a goal such as "reduce onboarding drop-off," hire an analyst agent and a PM agent under a CEO agent, and add a daily routine that creates a tracked issue to triage new feedback. The agents comment in threads, write documents, and the board approves a review stage. Everything lands in the activity log, organized by project and goal.</p>
+  <p>On Maskin each complaint enters as an insight linked to its source. Related insights cluster, and a cluster is promoted to a bet with an owner and a measurable win condition. Tasks hang off the bet, and when the fix ships the bet closes with an outcome. The next time a similar signal arrives, anyone, person or agent, can read how comparable bets ended.</p>
+  <p>Both setups can answer both questions with enough work. Paperclip's default shape answers "what did the PM agent do on Tuesday?" Maskin's default shape answers "which bets did this kind of signal produce, and did they work?" We have not run this comparison head to head; it is a mapping of the two designs, not a test result.</p>
+  <h2>A five-item audit test before you switch</h2>
+  <p>A concrete way to decide, in an afternoon: take the last five things your agents shipped. For each one, try to find who decided to do it, on what evidence, and whether it worked, without reading a thread.</p>
+  <ul>
+    <li><strong>All five answered in under a minute:</strong> your current setup is fine. Stay.</li>
+    <li><strong>You found the work but not the reason:</strong> the gap is evidence. Add structure around inputs.</li>
+    <li><strong>You found the reason but not the outcome:</strong> the gap is closure. You need win conditions and a way to close them.</li>
+    <li><strong>You couldn't tell which agent or run produced it:</strong> that is a run-level logging problem. Paperclip's activity log or a framework with tracing fixes it without leaving.</li>
+  </ul>
+  <p>Only the middle two cases are a Maskin problem. The first and last are not, and no alternative needs to be found for them.</p>
+  <h2>Using Paperclip and Maskin together</h2>
+  <p>These are not mutually exclusive. Paperclip's README says you can connect your own MCP server as a connection, and Maskin exposes its objects over MCP (see the <a href="/docs/mcp-tools/">MCP tools reference</a>). So a design where Paperclip keeps managing the agent fleet and writes outcomes into Maskin bets is technically plausible. We have not published a tested recipe, so treat it as something to prototype, not a documented integration.</p>
+  <h2>Maskin in one pass</h2>
+  <p>Maskin is open source under Apache 2.0, MCP-native, and built for team knowledge work. Agents run in isolated, sandboxed container sessions. Insights, bets, and tasks live in one schema linked by typed relationships, and the UI and the agents read the same objects. Self-hosting is free with no open-core gate on the software, and the current implementation requires Docker on the host. Maskin is early, so evaluate the architecture rather than a long vendor track record. For the self-hosted setup see <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a>. For other open-source comparisons by job, see the <a href="/alternatives/">alternatives hub</a>.</p>
+  <h2>Getting started</h2>
+  <ul>
+    <li><strong><a href="/docs/self-hosted-ai-workspace/">Self-host</a> free forever.</strong> Clone the repo (Apache 2.0), follow the onboarding, and run agents in sandboxed sessions on your own infrastructure.</li>
+    <li><strong><a href="/">Start a hosted trial</a>.</strong> Managed plans are available if you would rather not run it yourself; see maskin.io for current tiers.</li>
+  </ul>
+  <h2>FAQ</h2>
+  <h3>What is the best Paperclip alternative?</h3>
+  <p>It depends on what you are missing. CrewAI or LangGraph if you want to write the orchestration yourself. Relevance AI or Lindy if you want a hosted AI workforce. n8n or Dify for visual automation with agent nodes. Maskin if agent work has to leave typed, owned records of insights, bets, and outcomes. Most "best of" lists mix these shapes, which is why they feel unhelpful.</p>
+  <h3>Is Paperclip AI free?</h3>
+  <p>The software is. Paperclip is MIT licensed and self-hosted, and its README says no Paperclip account is required. You still pay for the infrastructure you run it on and for the model usage of the agents you connect. The README lists a hosted Paperclip Cloud as a waitlist, so we can't quote a hosted price.</p>
+  <h3>Is Paperclip AI open source?</h3>
+  <p>Yes. The repository at github.com/paperclipai/paperclip carries an MIT license, copyright Paperclip Labs, Inc. It had about 95.5K GitHub stars when we read it on 1 October 2026. MIT is permissive, so you can self-host, modify, and embed it. Maskin is Apache 2.0, which is also permissive and self-hostable.</p>
+  <h3>Who owns Paperclip AI?</h3>
+  <p>The repository's license line reads copyright 2026 Paperclip Labs, Inc, and the README says the Paperclip team maintains the project. The repository was created on 2 March 2026. We found no other ownership detail in the sources we read, so check the company's own site for funding or corporate structure.</p>
+  <h3>What is the difference between Paperclip and OpenClaw?</h3>
+  <p>They sit at different layers. The Paperclip README puts it as "If OpenClaw is an employee, Paperclip is the company." OpenClaw is an agent runtime. Paperclip orchestrates it, along with Claude Code, Codex, and others, through an org chart, budgets, and approvals. That is why OpenClaw is a component you pair with Paperclip, not a drop-in replacement for it.</p>
+  <h3>Is there a hosted Paperclip alternative?</h3>
+  <p>Yes, with trade-offs. Hosted AI workforce platforms such as Relevance AI and Lindy skip the self-hosting work, and Paperclip's own cloud offering is a waitlist in its README. Hosted tools usually trade away control of the runtime and self-hosting. Maskin offers a hosted trial and a free self-hosted version under Apache 2.0.</p>
+  <h3>Can I use Paperclip and Maskin together?</h3>
+  <p>Possibly, but it is untested. Paperclip's README lets agents connect to your own MCP server, and Maskin exposes its objects over MCP, so a Paperclip agent could write outcomes into Maskin objects. We have not published a tested recipe, so treat it as something to prototype rather than a documented integration.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/docs/composable-ai-agents-vs-ai-employees/">
+        <div class="doc-card__title">Composable AI agents vs AI employees</div>
+        <div class="doc-card__desc">The two camps of the agent workspace market, with Paperclip as the emblem of the AI-employees camp.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/alternatives/self-hosted-ai-agents/">
+        <div class="doc-card__title">Self-hosted AI agents</div>
+        <div class="doc-card__desc">The OSS landscape split into four real categories, with Paperclip in the stateful-agent group.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/alternatives/n8n/">
+        <div class="doc-card__title">n8n alternative</div>
+        <div class="doc-card__desc">The same four-shapes method applied to workflow engines: pick by what your runs leave behind.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/closed-loop-workspace/">
+        <div class="doc-card__title">The closed-loop workspace</div>
+        <div class="doc-card__desc">Insights, bets, and tasks as typed objects, and why the bet is the thing you query later.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Keep the decision, not just the activity log</h2>
+      <p>Paperclip is a strong choice for running AI agents as a company. If agent work has to leave a typed record of the signal, the bet, the owner, and the outcome, Maskin is the open-source, MCP-native workspace where that lives. Self-host free forever under Apache 2.0, or start a hosted trial. Browse the <a href="/docs/">full docs</a> for the object-model spec.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
