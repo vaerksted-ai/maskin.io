@@ -1055,7 +1055,7 @@ The field splits into three tiers:
 - **Agent-native platforms** — big-model vendor workspaces turned the agent loop into a platform feature.
 - **Incumbent task suites** — Notion, Asana, Jira, Linear, monday bolt AI onto trackers; the object stays a task.
 - **Knowledge spaces** — Obsidian, Mem, Confluence, Raft hold notes but stop before the decision.
-Maskin’s edge is the loop itself on one shared object model — MCP-native, Apache-2.0, self-hostable.
+Maskin’s edge is the loop itself on one shared object model — MCP-native, Apache-2.0, self-hostable. Inside the field there is a second cut, between products that make a persona the unit of work and products that make a typed object the unit of work; [the two camps of AI employees and composable agents](/docs/composable-ai-agents-vs-ai-employees/) are compared in full.
 
 ## Getting started
 Self-host the open-source repo or go managed — either way the loop runs on the same object model. The [get-started guide](/docs/get-started/) walks through it end to end, and the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) guide covers running the closed loop on your own infrastructure with bring-your-own-model. Product teams can also start with the [product-team getting-started sequence](/solutions/product-teams/), which walks through what day one in the workspace looks like for a PM or CPO.
@@ -1318,7 +1318,7 @@ Self-host Maskin today, or take a hosted trial. Run your knowledge space where y
 
 # The closed-loop workspace: what tier 4 of AI-native work actually is
 **A closed-loop workspace is the fourth tier of AI-native work: the tier where the object of work is a shaped bet with a win condition, and the terminal event is a shipped change measured against that condition. The three lower tiers close on artifacts — a merged PR, a status column moving to done, a page being opened. A closed-loop workspace closes on an outcome. That single change to the object model is what lets the tool answer the question a product team actually needs answered: did the work succeed?**
-The [trilogy hub](/docs/three-tiers-ai-native-work/) runs the closure diagnostic across the three tiers of AI-native work in the negative direction — what each tier does not close. The [tier-1 spoke](/docs/ai-product-workspace-vs-coding-agent/), the [tier-2 spoke](/docs/ai-product-management-tool/), and the [tier-3 spoke](/docs/agentic-workspace-vs-knowledge-space/) each pick up one tier’s negative case. This piece is the fourth spoke: the affirmative case. What does a tool built to answer “did the work succeed?” actually look like — object model, terminal event, human split. The practice underneath it, designing the system that prompts the agent rather than the prompt itself, is covered in [what is loop engineering?](/docs/what-is-loop-engineering/)
+The [trilogy hub](/docs/three-tiers-ai-native-work/) runs the closure diagnostic across the three tiers of AI-native work in the negative direction — what each tier does not close. The [tier-1 spoke](/docs/ai-product-workspace-vs-coding-agent/), the [tier-2 spoke](/docs/ai-product-management-tool/), and the [tier-3 spoke](/docs/agentic-workspace-vs-knowledge-space/) each pick up one tier’s negative case. This piece is the fourth spoke: the affirmative case. What does a tool built to answer “did the work succeed?” actually look like — object model, terminal event, human split.
 > ✓
 > **Key takeaways**
 > **A closed-loop workspace is a fourth tier**, not a rebrand of any of the first three. The object of work is a shaped bet with a win condition; the loop terminates on a validated outcome.
@@ -1342,7 +1342,7 @@ The order matters. The win condition exists on the bet before the work begins, n
 This is the point where “false closure” as a term of art bites, and the trilogy hub’s vocabulary hygiene applies here too. In agent-lifecycle research, [jpalioto/agent-lifecycle-framework](https://github.com/jpalioto/agent-lifecycle-framework) uses “false closure” as a model-behaviour failure mode: coherent model output treated as evidence of structural understanding it does not have. That is a different sense of the word in a different domain. Closure here is the tool’s ability to tell you whether the shipped work succeeded — not the model-behaviour failure mode of the same name.
 
 ## The human split: agents close the loop, humans keep the taste
-The affirmative case for the tier has to answer the honest objection: if the loop is closed and the terminal event is a measured outcome, what are the humans for? A closed-loop workspace’s answer is that agents do the closing and humans keep the judgment. Agents bring signal in from triggers, synthesise it into insight, draft shaped bets, execute the work, and gather evidence for validation. Humans keep taste — which bets deserve the cycle, which outcomes count as wins, which moves require approval.
+The affirmative case for the tier has to answer the honest objection: if the loop is closed and the terminal event is a measured outcome, what are the humans for? A closed-loop workspace’s answer is that agents do the closing and humans keep the judgment. Agents bring signal in from triggers, synthesise it into insight, draft shaped bets, execute the work, and gather evidence for validation. Humans keep taste — which bets deserve the cycle, which outcomes count as wins, which moves require approval. A worked example is [at-risk account alerts](/docs/at-risk-account-alerts/), where a usage drop plus an error spike becomes a shaped recovery bet.
 The split is not a hedge, and it is not a stopgap while the models improve. It is a structural claim: the decisions that require taste are the ones that should not be automated, and the mechanical parts of the loop are what agents are good at. The 2026 governance and controllability research — OpenAI, Anthropic, CONTROLBENCH, and the Springer literature — converges on human-in-the-loop as the backstop for irreversible or taste-driven decisions. What is product taste for a closed-loop workspace is what the safety literature recommends independently. The two arguments arrive at the same architecture from different directions.
 
 ## Where tier 4 sits vs the three tiers below
@@ -1570,7 +1570,7 @@ Run those against six questions, in the order that changes the answer:
 ## Where each one wins, and where you run both
 **The wiki wins** when the knowledge is settled, the answers need to be stable and citeable, and the same questions get asked repeatedly — the things your team has already learned and wants to keep answering the same way.
 **RAG wins** when the corpus is large and moving, the questions are open-ended, and “close enough, retrieved fresh” beats “stable but expensive to keep current.”
-**You run both** when the wiki is the curated core and RAG serves the volatile edge — new tickets, fresh transcripts, anything that changes faster than a compile cycle. That hybrid is what the autocomplete traffic is already searching for — and if you are mapping the compiled artifact to the storage engine underneath it, [wiki-style knowledge vs an embedding store](/docs/knowledge-wiki-vs-vector-database/) covers where those two layers meet.
+**You run both** when the wiki is the curated core and RAG serves the volatile edge — new tickets, fresh transcripts, anything that changes faster than a compile cycle. That hybrid is what the autocomplete traffic is already searching for — and if you are mapping the compiled artifact to the storage engine underneath it, [wiki-style knowledge vs an embedding store](/docs/knowledge-wiki-vs-vector-database/) covers where those two layers meet. For the wider decision across all four architectures agent knowledge can live in — retrieval-beside, stateful-runtime, temporal knowledge graph, and typed workspace graph — [how to choose a knowledge layer for your agents](/docs/learn/choose-a-knowledge-layer/) walks the two structural questions that decide it.
 
 ## Running a wiki as a loop, not a side project
 Here the comparison stops being about architecture and starts being about ownership. The compile is the easy part. The failure mode is upkeep: a wiki that only gets written when someone remembers decays into a folder of half-true pages inside a quarter. Writing to it is a separate job from doing the work, and separate jobs lose.
@@ -1933,29 +1933,38 @@ Maskin is the open-source, MCP-native, Apache-2.0 version of the workspace-graph
 > Source: https://maskin.io/docs/learn/human-in-the-loop/
 
 # Human in the loop: the approval gate before side-effecting tool calls
-**Human in the loop, in 2026, means an approval step in front of an AI agent’s action — the moment when the agent stops before doing something it can’t undo, waits for a person to say yes, and only then acts.** Four major agent frameworks — OpenAI, Cloudflare, Microsoft, and Temporal — have all shipped this same primitive into their SDKs in the last twelve months, under nearly identical names. If you build agents that touch the outside world, this is the contract your users will expect.
-That’s a real shift. “Human in the loop” used to describe a person labeling training data. It now describes a runtime gate inside your agent code. This piece walks the four vendor primitives, what the shared contract is, and what a workspace-shaped version of the same gate adds on top — the part where the approval is recorded next to the work it approves, not just resolved in memory.
-- **The phrase means something new.** In 2026, “human in the loop” means an approval step before a side-effecting tool call, not a person labeling training data. The vocabulary shifted with the agent stack.
-- **Four major vendors converged on the same primitive in twelve months.** OpenAI’s `needs_approval`, Cloudflare’s `waitForApproval()`, Microsoft’s `RequestPort`, Temporal’s signal-based approval — four SDKs, one contract: pause the agent, surface the pending action, wait for a person, then resume or cancel.
-- **The contract is: stop, surface, wait, resume.** Every agent framework that ships approvals ships some version of these four moves. If yours doesn’t, buyers who have used any of the four will notice.
-- **Approval is not the same as record.** An SDK gate resolves an approval; a workspace-shaped gate records it. The decision, the reason, and the person who made it survive the session that produced them — because the next auditor, the next agent, or the next you will need to reconstruct why.
-- **Design per action class, not per system.** Read a doc, no gate. Send an email, gate. Move money, gate with a second reviewer. Uniform gates on everything collapse into rubber-stamping; ungated on everything shifts risk into your users’ inboxes.
+**Human in the loop, in 2026, means an approval gate before an AI agent’s side-effecting tool call.** The agent pauses, a person approves or rejects, and only then does the tool fire. Four vendors — OpenAI, Cloudflare, Microsoft, Temporal — shipped the primitive under nearly identical names in the last twelve months.
+If you build agents that touch the outside world, this is the contract your users will expect. “Human in the loop” used to describe a person labeling training data; it now describes a runtime gate inside your agent code. This piece walks the four vendor primitives, what the shared contract is, and what a workspace-shaped version of the same gate adds on top — the part where the approval is recorded next to the work it approves, not just resolved in memory.
+> ✓
+> **Key takeaways**
+> **The phrase means something new.** In 2026, “human in the loop” means an approval step before a side-effecting tool call, not a person labeling training data. The vocabulary shifted with the agent stack.
+> **Four major vendors converged on the same primitive in twelve months.** OpenAI’s `needs_approval`, Cloudflare’s `waitForApproval()`, Microsoft’s `RequestPort`, Temporal’s signal-based approval — four SDKs, one contract: pause the agent, surface the pending action, wait for a person, then resume or cancel.
+> **The contract is: stop, surface, wait, resume.** Every agent framework that ships approvals ships some version of these four moves. If yours doesn’t, buyers who have used any of the four will notice.
+> **Approval is not the same as record.** An SDK gate resolves an approval; a workspace-shaped gate records it. The decision, the reason, and the person who made it survive the session that produced them — because the next auditor, the next agent, or the next you will need to reconstruct why.
+> **Design per action class, not per system.** Read a doc, no gate. Send an email, gate. Move money, gate with a second reviewer. Uniform gates on everything collapse into rubber-stamping; ungated on everything shifts risk into your users’ inboxes.
+
 ## What “human in the loop” means in 2026
 Open the docs for any major agent framework shipped in the last twelve months and search for “human in the loop.” You will find the same story told four different ways: the agent proposes a tool call that would do something in the real world — send an email, run a shell command, transfer money — and the SDK pauses the run, hands the pending call up to the calling application, and waits for a person to approve or reject before the tool actually fires. The phrase used to point at data labeling. It now points at approval gates.
 The reason the meaning moved is that the underlying job moved. Until about 2024, “human in the loop” was a machine-learning phrase — the human in the loop was a labeler correcting model outputs so the next training run would be a little less wrong. It was slow, offline, and shaped by the training cycle. What builders need in 2026 is different. Agents now take actions in production, live, on user data. The gap between the model’s decision and the world’s state is a tool call, and that tool call needs a stop-and-check before it commits when the blast radius is bigger than a bad guess.
 So the SDKs added the stop-and-check. That’s what “human in the loop” now describes for anyone building on the current agent stack: not offline labeling of training data but an inline pause in front of side-effecting tool calls at runtime. Both meanings exist in the wild; the current SDK-shaped meaning is the one that shows up in your codebase and in your buyer’s expectations.
 A more careful read of when the gate belongs there and where the related “human on the loop” pattern picks up sits in the [human in the loop vs human on the loop](/docs/learn/human-in-the-loop-ai/) piece — that page carries the HOTL/HITL vocabulary cut and the EU AI Act Article 14 read. The rest of this page stays on the SDK-primitive contract and what a workspace-shaped version of the gate adds on top.
+
 ## Four vendors, four APIs, one primitive
 Here is the SDK vocabulary the four major agent frameworks have converged on, all inside the last twelve months.
+
 ### OpenAI Agents SDK — `needs_approval`
 OpenAI’s Agents SDK ships a `needs_approval` flag you attach to a tool (or a function that returns one at runtime). When the agent tries to call the tool, the run halts, the current `RunState` is serialized so the run can be resumed later, and the caller receives a list of tool-approval items. The application decides whether to approve or reject each one, then resumes the run with the decisions attached. Approvals are first-class run interruptions, not middleware.
+
 ### Cloudflare Agents — `waitForApproval()`
 Cloudflare’s Agents runtime exposes `waitForApproval()`, an async primitive an agent (or MCP tool) can call at the point in its work where a decision is needed. The runtime persists the pending request against the durable object that owns the agent, resumes when an external system posts the decision back, and treats the wait as an ordinary suspension. Cloudflare pairs this with MCP elicitation for the same shape at the protocol level, and Code Mode approvals for gating generated code before it executes.
+
 ### Microsoft Agent Framework — `RequestPort` / `RequestInfoEvent`
 Microsoft’s Agent Framework models the gate as a `RequestPort`: a typed input the workflow declares it needs, which the runtime turns into a `RequestInfoEvent` when the agent hits that point. The event goes up to the host application, which fulfills it — with a person’s approval, or a machine-supplied answer — and the workflow continues from where it paused. The type of the request is part of the contract, so approvals can carry structured payloads and not just yes/no.
+
 ### Temporal — signal-based approval
 Temporal doesn’t ship an “approval” primitive so much as it re-uses its existing one: a signal. An approval-gated workflow enters a wait state, a signal handler receives the human’s decision, and the workflow resumes. Because Temporal workflows are durable by construction, the wait can last minutes or weeks with the same code — the state survives process restarts, deploys, and machine failures.
 Four SDKs, four names, the same primitive underneath: **stop the agent, surface the pending action to a caller, wait for a decision, then resume or cancel.** The differences are ergonomic — flag vs function vs typed port vs signal — not architectural. The convergence is the interesting part: two years ago none of these existed by name; twelve months ago maybe one did; today all four do, and their docs describe them in almost interchangeable language.
+
 ## The approval-gate contract buyers now expect
 Because the primitive has converged, so has the buyer expectation. A team evaluating your agent product in late 2026 has probably prototyped against at least one of the four SDKs above. When they look at how your product handles a risky action, they’re testing whether it does the four moves the SDKs already ship:
 - **Stop.** The agent halts before the side-effecting call, not after. “We’ll audit it afterward” isn’t the same feature.
@@ -1964,6 +1973,7 @@ Because the primitive has converged, so has the buyer expectation. A team evalua
 - **Resume or cancel.** The decision resolves the pause deterministically; the agent picks up exactly where it paused, or the action is cleanly dropped. No half-committed state.
 If your product does the four moves, you’re speaking the language the buyer already knows. If it doesn’t, the conversation stalls at “how does approval work?” and doesn’t get to your differentiator.
 The reason to name the vendor primitives explicitly is that this is now the market’s vocabulary. Positioning a competing gate as “like `needs_approval`, plus X” or “we call `waitForApproval()` under the hood, and here’s what we do with the pending request” moves faster than trying to re-invent the vocabulary. The SDK contract is the shared floor. What matters is what you build above it.
+
 ## What a workspace-shaped gate adds
 The SDK primitives all resolve an approval — they pause, they hand off, they resume. They do not, on their own, record the decision anywhere the next auditor, the next agent, or the next you can find it a week later. That gap is where a workspace-shaped gate does its work.
 **Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.**
@@ -1975,16 +1985,22 @@ That’s a shift from **transient approval** to **persistent verdict**. Concrete
 - **The audit is a query, not a rebuild.** “Show me every send-message that a human approved in the last month, and who approved it” is one filter on the events table, not a log-scraping project.
 On a single-vendor SDK the same information exists but scattered — some in the run trace, some in the callback that resolved the approval, some in whatever the caller chose to persist. A workspace shape doesn’t replace the SDK primitive; it gives the approval a place to live once the run is over. The typed object graph, in this cut, is the store the approval is written to; the SDK is the runtime that surfaces it.
 The deeper architecture write-up sits in the [ambient agent workspace](/docs/ambient-agent-workspace/) piece, which walks the graph-shaped alternative to the chat-shaped agent inbox. The governance side — how approvals compose with typed permissions and the audit trail — is in [AI agent governance for small teams](/docs/learn/ai-agent-governance/). The developer-register substrate reference is [the stateful orchestration substrate](/docs/what-is-a-stateful-orchestration-substrate/).
+
 ## How to design an approval gate that’s actually useful
 Having the primitive isn’t enough. The gate has to be applied to the right actions, in the right shape, or it becomes decoration. Four design moves that separate a real approval gate from a compliance sticker.
+
 ### 1. Gate the material call, not the model call
 The thing that needs approval is the tool call that changes the world — the email being sent, the payment being moved, the record being deleted. Not the LLM inference that decided to propose it. Model reasoning without a side effect is reversible by definition; the side effect is not. Wire the gate on the tool, not on the agent’s reasoning step.
+
 ### 2. Give the reviewer enough context to actually decide
 A reviewer clicking approve on a payload they can’t evaluate is worse than no reviewer at all — you get the appearance of oversight and none of the substance. When you surface a pending action, surface with it: the intent (what the agent said it was doing), the payload (what will actually happen), the object the action touches (so the reviewer can see the surrounding work), and the blast radius (who it affects and whether it’s reversible).
+
 ### 3. Design per action class, and set the tier once
 The worst pattern in production HITL is the one where every action gates identically. Read-only calls gate the same as sends; low-blast-radius drafts gate the same as billing changes. The queue gets deep, the reviewer’s context gets thin, and the approval rate collapses toward reflexive yes. Tier the action classes up front: autonomy for low-stakes reads, sampled review for bulk actions, per-call approval for irreversible or high-blast-radius operations. Enforce the tier at the platform layer, not inside agent code — an agent that sets its own approval tier is signing its own permission slip.
+
 ### 4. Make the approval an event on the object, not a modal on the screen
 Approvals routed through modals in a browser tab die when the tab closes. Approvals routed through a typed object survive the tab, the session, the person who was on-call. The reviewer’s decision is another transition on the object, with an actor id and a timestamp — the same shape as every other state change. That’s what makes the approval queryable a month later.
+
 ## When the SDK-primitive is enough — and when it isn’t
 The honest scope of the SDK-primitive gate is single-vendor, single-run, in-session. That’s plenty for a lot of jobs — a prototype agent, a single-purpose tool with a small user base, a script an engineer runs and watches. If you don’t need to audit the approval later, don’t need to compose it with other approvals, and don’t need it to survive a session restart, the SDK primitive is the whole answer.
 The places it stops being enough are the places the workspace shape matters:
@@ -1993,19 +2009,27 @@ The places it stops being enough are the places the workspace shape matters:
 - **Multi-tool work.** The team’s Ops agent runs on Temporal, the Sales agent on OpenAI’s SDK, the internal tool on Cloudflare Agents. The approvals from each shouldn’t live in three incompatible run traces if the underlying business is one thing.
 - **Audit and compliance work.** “Who approved that send, and when?” is a legitimate question a year later. The SDK’s per-run callback is not built for that horizon.
 A useful mental model: SDK primitives are the runtime; a workspace-shaped store is the record layer. Both exist together in a production system. You don’t rip out `needs_approval` to use Maskin; you keep it, and you write its resolutions to the typed object the loop is acting on, so the run and the record aren’t the same thing.
+
 ## FAQ
+
 ### What does “human in the loop” mean in 2026?
 In 2026, human in the loop means an approval step in front of an agent’s side-effecting tool call. The agent proposes an action, the SDK pauses the run, a person approves or rejects, and the run resumes or cancels. The older meaning — a person labeling training data — still exists but is not what agent-framework docs describe when they use the phrase now.
+
 ### What’s the difference between “human in the loop” and “human on the loop”?
 Human in the loop puts the person inside the transaction: nothing ships until they approve. Human on the loop puts the person above it: the agent runs, and the human supervises through review surfaces and escalation gates rather than per-action approval. The two fail differently, and most production systems use both — HOTL for bulk reversible work, HITL for irreversible or high-blast-radius actions. The vocabulary and the failure-mode differences are covered in detail in the [human in the loop vs human on the loop](/docs/learn/human-in-the-loop-ai/) piece; this page stays on the SDK-primitive contract.
+
 ### Which agent frameworks ship an approval primitive?
 As of late 2026: OpenAI Agents SDK (`needs_approval` with resumable `RunState`), Cloudflare Agents (`waitForApproval()`, plus MCP elicitation and Code Mode approvals), Microsoft Agent Framework (`RequestPort` / `RequestInfoEvent`), and Temporal (signal-based approval on durable workflows). Four vendors, four API shapes, one underlying contract.
+
 ### Do I still need a workspace if my SDK already has approvals?
 Depends on how long the approval needs to matter. If the whole audience for the decision is the code that resumes the run, the SDK primitive is the whole answer. If the decision needs to be discoverable a week later, composed with other approvals, or read by a different agent, the SDK is the runtime and you need a record layer above it — the object the approval was made about, with the approval landing as an event on it.
+
 ### What is a side-effecting tool call?
 A tool call that changes state outside the agent — sends an email, hits an external API, writes to a database, moves money, deletes a record. The distinction that matters for approvals is reversibility: side-effecting calls change the world; the agent’s own reasoning does not, until it decides to call one of them.
+
 ### Where does a workspace-shaped gate fit alongside the SDK primitive?
-It sits above it. The SDK handles the runtime pause; the workspace records the decision as a durable fact on the object the action was about. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product. That persistence — the verdict living next to the work — is what turns an approval from a transient event into an auditable one.
+It sits above it. The SDK handles the runtime pause; the workspace records the decision as a durable fact on the object the action was about — who approved, when, why, in the same feed as the transitions the approval unblocked. That verdict then travels with the work: the next agent, the next auditor, and the next you can all read it a week or a year later, without asking the run trace it came from.
+
 ## Sources
 **External (vendor documentation, primary sources, 2026-09-25):**
 1. **OpenAI Agents SDK, human-in-the-loop guide** — `needs_approval`, `RunState`, resumable interruptions. [openai.github.io/openai-agents-python/agents/#human-in-the-loop](https://openai.github.io/openai-agents-python/agents/#human-in-the-loop).
@@ -2013,6 +2037,7 @@ It sits above it. The SDK handles the runtime pause; the workspace records the d
 3. **Microsoft Agent Framework, request-response workflows** — `RequestPort`, `RequestInfoEvent`. [learn.microsoft.com/en-us/agent-framework/tutorials/workflows/human-in-the-loop](https://learn.microsoft.com/en-us/agent-framework/tutorials/workflows/human-in-the-loop).
 4. **Temporal, signal-based human approval** — durable workflow signals. [temporal.io/blog/human-in-the-loop-with-temporal](https://temporal.io/blog/human-in-the-loop-with-temporal).
 Read next
+
 ## Give the approval a place to live
 Maskin is the open-source, MCP-native workspace where the approval gate is a first-class transition on a typed object — the decision recorded next to the work it approves. Apache 2.0, self-hostable, EU/US data residency.
 
@@ -2039,19 +2064,20 @@ The design lesson matters because HITL and HOTL are not synonyms in disguise. Th
 ## When is HITL real vs theater? The override-rate test
 The honest way to tell whether a HITL claim is real oversight or ceremonial is to measure one number: **override rate** — the share of AI outputs the human reviewer actually changes, rejects, or escalates before the action commits.
 Two bounds separate real oversight from theater. If the override rate is stuck at **0%**, the reviewer has become a rubber stamp — approval fatigue has set in, the human is clicking approve because nothing has ever come back wrong, and the loop is producing the appearance of oversight without the substance. If the override rate is stuck **above 20%**, the model is broken and the human is doing the model’s job under a HITL banner. Real HITL sits in the middle band and is watched over time; a drifting override rate is the earliest signal something has changed.
-The frame did not originate here. MIT Technology Review’s April 16, 2026 piece on the illusion of AI oversight made the point plainly: humans nominally in the loop but operating under workflow pressure and without meaningful visibility produce the appearance of oversight, not the substance.[1](#fn1) Verfassungsblog coined the phrase that captures the failure mode — the **“warm body in the loop”** — a person whose role fails on first audit because nothing about the workflow lets them meaningfully intervene.[2](#fn2)
+The frame did not originate here. MIT Technology Review’s April 16, 2026 piece on the illusion of AI oversight made the point plainly: humans nominally in the loop but operating under workflow pressure and without meaningful visibility produce the appearance of oversight, not the substance.[1](#fn1) The phrase that captures the failure mode is the **“warm body in the loop”**: a person kept in the loop for the sake of having one, with no real ability to intervene. Crootof, Kaminski and Price put “warm body” roles in their 2023 typology of the jobs a human can be given in a human-in-the-loop system.[5](#fn5) Schwemer and Koivisto’s 2025 Verfassungsblog piece, “A Warm Body in the Loop,” carries the idea into EU tech regulation and asks whether human involvement is meaningful or merely symbolic.[2](#fn2)
 A second metric belongs alongside override rate: **override latency**. If the reviewer’s median time-to-intervene is longer than the time-to-commit-wrong-outcome — the queue is deeper than the action window — then the HITL claim is theater by construction, regardless of override rate. A moderator with a two-minute median response on a queue that ships in ten seconds is not in any operational sense “in the loop.”
 The two-metric frame — override rate plus override latency, watched per action class — is what turns HITL from a marketing claim into an auditable one. It also explains why a uniform “add a human review step” policy destroys agent value without buying real safety: the queue gets too long, the reviewer’s context gets too thin, and the override rate collapses to zero.
 
 ## What does EU AI Act Article 14 actually require?
 Article 14 of the EU AI Act is the section most often cited in “the AI Act requires human in the loop” claims. Read the text: **Article 14 does not mandate human-in-the-loop by name.** It requires *effective, commensurate human oversight* for high-risk AI systems — a different thing.
-The article names four operational duties the oversight arrangement must enable the assigned natural persons to perform:
-1. **Understand.** Properly understand the relevant capacities and limitations of the high-risk system and monitor its operation, including for anomalies.
-2. **Monitor.** Remain aware of the tendency toward automation bias — over-relying on the system’s output — and detect drift in performance.
-3. **Intervene.** Correctly interpret the system’s output, decide not to use it, or disregard, override, or reverse it.
-4. **Halt.** Stop the system through a “stop” button or a similar procedure that brings it to a safe state.
-The word “loop” does not appear. The article is agnostic on whether the human sits *in* the transaction (HITL) or *on* it (HOTL); what it demands is that the oversight arrangement — whichever shape it takes — actually delivers the four capabilities in practice. This is why the honest way to design against Article 14 is to specify oversight *per action class*, not per system: the four duties can be satisfied by a HOTL arrangement for bulk pipeline actions and a HITL arrangement for irreversible or high-blast-radius ones, in the same product.
-The compliance implication is uncomfortable for vendors selling “HITL for AI Act” as a single feature. A uniform HITL policy that produces a 0% override rate fails Article 14’s *effectiveness* test as clearly as no oversight at all. A “warm body in the loop” is not “effective, commensurate” oversight. The auditor’s question is not “is there a human?” — it is “does the human understand, monitor, intervene, and halt?” The [EU AI Act, Article 14, on EUR-Lex](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689) is worth reading directly before you build against it.
+Article 14(4) lists five things the oversight arrangement must enable the assigned natural persons to do, as appropriate and proportionate, in points (a) to (e):
+1. **Understand and monitor.** Properly understand the relevant capacities and limitations of the high-risk system, and duly monitor its operation, including to detect and address anomalies, dysfunctions and unexpected performance. (Article 14(4)(a))
+2. **Resist automation bias.** Remain aware of the possible tendency to rely, or over-rely, on the system’s output, in particular where the system provides information or recommendations for decisions that people take. (Article 14(4)(b))
+3. **Interpret the output.** Correctly interpret the system’s output, taking into account the interpretation tools and methods available. (Article 14(4)(c))
+4. **Decide to override.** Decide, in any particular situation, not to use the system, or to disregard, override or reverse its output. (Article 14(4)(d))
+5. **Intervene or stop.** Intervene in the operation of the system or interrupt it through a “stop” button or a similar procedure that lets it come to a halt in a safe state. (Article 14(4)(e))
+The word “loop” does not appear. The article is agnostic on whether the human sits *in* the transaction (HITL) or *on* it (HOTL); what it demands is that the oversight arrangement — whichever shape it takes — actually delivers the five capabilities in practice. This is why the honest way to design against Article 14 is to specify oversight *per action class*, not per system: the five duties can be satisfied by a HOTL arrangement for bulk pipeline actions and a HITL arrangement for irreversible or high-blast-radius ones, in the same product.
+The compliance implication is uncomfortable for vendors selling “HITL for AI Act” as a single feature. A uniform HITL policy that produces a 0% override rate fails Article 14’s *effectiveness* test as clearly as no oversight at all. A “warm body in the loop” is not “effective, commensurate” oversight. The auditor’s question is not “is there a human?” — it is “can the human do all five: understand and monitor, resist automation bias, interpret the output, override it, and stop the system?” The [EU AI Act, Article 14, on EUR-Lex](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689) is worth reading directly before you build against it.
 
 ## When to use HITL, HOTL, or a tiered approval policy
 Deciding between HITL and HOTL is not a system-wide choice; it is a per-action-class choice. The right architecture for most production AI systems is a **tiered approval policy** — HOTL as the default for bulk reversible actions, HITL routed only for irreversible or high-blast-radius actions, and full autonomy where the cost of being wrong is negligible.
@@ -2075,7 +2101,7 @@ Maskin’s workspace is built on a typed object graph — insights, bets, tasks,
 > **HITL** means a human approves an AI output before it commits. **HOTL** means a human supervises an autonomous agent through review surfaces and escalation gates. The distance between the two prepositions is a design decision, not a semantic quibble.
 > **The honest metric is override rate.** Stuck at 0% means the reviewer is rubber-stamping (theater). Stuck above 20% means the model is broken. Real HITL sits in the middle band, watched over time.
 > **Override latency matters as much as override rate.** If the reviewer’s response time is slower than the action’s commit window, the HITL claim is theater by construction.
-> **EU AI Act Article 14 does not mandate HITL by name.** It requires *effective, commensurate* oversight — understand, monitor, intervene, halt — which HOTL can satisfy for many action classes.
+> **EU AI Act Article 14 does not mandate HITL by name.** It requires *effective, commensurate* oversight, and Article 14(4) lists five duties: understand and monitor, resist automation bias, interpret the output, decide to override, intervene or stop. HOTL can satisfy them for many action classes.
 > **The right architecture is a tiered approval policy** — autonomy for low-stakes, HOTL for bulk, HITL for irreversible or high-blast-radius actions — enforced at a governance layer, not inside agent code.
 > **Uniform HITL destroys value without buying safety.** A “warm body in the loop” fails Article 14’s effectiveness test as clearly as no oversight at all.
 
@@ -2088,7 +2114,7 @@ Human in the loop AI is a design pattern where a person reviews or approves an A
 HITL puts the person inside the transaction — nothing ships until they approve. HOTL puts them above it — the agent runs, and the human supervises through review surfaces and named escalation gates. HITL fails when reviewers become rubber stamps; HOTL fails when the escalation policy is under-specified. Choose per action class.
 
 ### Does the EU AI Act require human in the loop?
-No. Article 14 of the EU AI Act requires effective, commensurate human oversight of high-risk AI systems and specifies four duties the arrangement must enable — understand, monitor, intervene, halt. The word “loop” does not appear. HOTL can satisfy Article 14 for many action classes; HITL is one design that meets the duties, not the only one.
+No. Article 14 of the EU AI Act requires effective, commensurate human oversight of high-risk AI systems. Article 14(4) lists five duties the arrangement must enable: understand and monitor, resist automation bias, interpret the output, decide to override or reverse it, and intervene or stop the system. The word “loop” does not appear. HOTL can satisfy Article 14 for many action classes; HITL is one design that meets the duties, not the only one.
 
 ### What is override rate?
 Override rate is the share of AI outputs the human reviewer changes, rejects, or escalates before the action commits. It is the honest way to tell whether a HITL claim is real oversight or theater. Stuck at 0% signals rubber-stamping; above 20% signals a broken model. Real HITL sits between, monitored per action class.
@@ -2098,9 +2124,10 @@ When the reviewer lacks context, visibility, or time — any one of the three �
 
 ## Sources
 1. **Stephanie Arnett / MIT Technology Review**, *Why having “humans in the loop” in an AI war is an illusion* (2026-04-16). [technologyreview.com/2026/04/16/1136029/humans-in-the-loop-ai-war-illusion](https://www.technologyreview.com/2026/04/16/1136029/humans-in-the-loop-ai-war-illusion/). Source for the illusion-of-oversight framing — a human nominally in the loop but under workflow pressure and without visibility provides the appearance of oversight, not the substance. [↩](#fnref1)
-2. **Verfassungsblog**, *A Warm Body in the Loop: Rethinking Human Control of AI in EU Tech Regulation*. [verfassungsblog.de/warm-body-in-the-loop](https://verfassungsblog.de/warm-body-in-the-loop/). Source of the “warm body in the loop” phrase — a person whose oversight role fails on first audit because the workflow does not let them meaningfully intervene. [↩](#fnref2)
+2. **Sebastian Schwemer and Ida Koivisto / Verfassungsblog**, *A Warm Body in the Loop: Rethinking Human Control of AI in EU Tech Regulation* (2025-09-18). [verfassungsblog.de/warm-body-in-the-loop](https://verfassungsblog.de/warm-body-in-the-loop/). Applies the “warm body” idea to EU tech regulation and asks whether human involvement is meaningful or merely symbolic. The piece itself credits the “warm bodies” role to Crootof et al. 2023. [↩](#fnref2)
 3. **Harrison Chase / LangChain**, *Introducing Ambient Agents* (Jan 2025). [langchain.com/blog/introducing-ambient-agents](https://www.langchain.com/blog/introducing-ambient-agents). Definitional citation for the human-on-the-loop vs human-in-the-loop shift and the ambient-agent design pattern. [↩](#fnref3)
 4. **OpenAI case study**, *Morgan Stanley uses AI evals to shape the future of financial services*. [openai.com/index/morgan-stanley](https://openai.com/index/morgan-stanley/). Public description of Morgan Stanley’s internal AI deployment — advisors retain approval on client-facing outputs; the model runs bulk research-summarisation and internal document work. [↩](#fnref4)
+5. **Rebecca Crootof, Margot E. Kaminski and W. Nicholson Price II**, *Humans in the Loop*, 76 Vanderbilt Law Review 429 (2023). [scholarship.law.vanderbilt.edu/vlr/vol76/iss2/2](https://scholarship.law.vanderbilt.edu/vlr/vol76/iss2/2). Its typology of human roles includes “warm body” roles. [↩](#fnref5)
 Read next
 
 ## Design oversight per action class, not per system
@@ -2174,14 +2201,7 @@ These terms get used interchangeably in marketing copy and mean different things
 - **A skill** is packaged judgment about how to do a specific job, loaded on demand.
 A useful shorthand: skills are what you author, tools are what you call, MCP is what you connect, and rules are what you always apply. Skills are the layer that carries your team’s way of doing a piece of work, which is why they tend to be the artifact people most want to share.
 The distinctions matter in practice because the layers solve different problems and are frequently confused. Our [comparison of agent skills with MCP, cursor rules, and workflows](/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/) walks through each layer side by side, including the state problem that none of the instruction layers solve on their own.[5](#fn5)
-
-## Where to find agent skills (and what “agent skills marketplace” means)
-People search for an “agent skills marketplace” and the phrase covers a few different things today. It is worth being precise about which is which.
-- **Open collections and directories.** Community repositories and catalogues that list skills you can copy into your own project. These are the most common result for the phrase. Most are not products; they are indexes maintained by contributors.
-- **Vendor-hosted libraries.** Collections published by the model vendor or a tool vendor, tied to that vendor’s agent and sometimes to a signing or review process.
-- **Skills bundled inside a product.** A capability a tool ships that happens to be packaged as a skill, where the folder is an implementation detail rather than something you browse.
-What the phrase does not yet describe, in most cases, is a live commercial marketplace where skills are bought, sold, and versioned as products with support behind them. If you are evaluating an “agent skills marketplace,” check which of the three shapes it actually is before assuming the third-party product model. Our fuller pass on the SERP shape and the category confusion lives at [how agent skills ship as a discoverable primitive](/docs/agent-skills-marketplace/).
-One more distinction worth holding: a marketplace of skills is not the same as a marketplace of loops. A skill is a component. A loop is a complete process with a trigger, agents, human gates, and a close condition, and it is the unit a buyer normally shops for. Skills are the parts inside it. The [Maskin Marketplace](/marketplace/) lists loops on that reading.
+Looking for where to find skills? Most results for “agent skills marketplace” are open directories or vendor libraries rather than a commercial store, and a marketplace of skills is not a marketplace of loops. [How to evaluate an agent skills marketplace](/docs/agent-skills-marketplace/) covers the three shapes, six checks, and where skills actually run; the [Maskin Marketplace](/marketplace/) lists loops.
 
 ## A live example: skills that fire on workspace state
 In Maskin, skills are attached to an agent working inside a loop. They are not a top-level section of their own. The Marketplace lists loops; agents, MCP servers, and skills appear as the “built with” components of a loop listing.
@@ -2216,7 +2236,7 @@ No. A prompt is a message you send, and it lives for one turn. A skill is a fold
 Mostly. The folder format is public and implemented by several agents, so a skill generally runs wherever the format is supported. Skills that depend on a specific integration only run where that integration is reachable, and a vendor library can add its own review or signing step. The folder itself travels further than the tools it calls. For most teams, that portability is the reason to author in this format.
 
 ### Is there an agent skills marketplace?
-Most results for “agent skills marketplace” are open collections, vendor libraries, or skills bundled inside a product, rather than a mature commercial marketplace where skills are bought, sold, and supported as products. If you are evaluating one, check which of those three shapes it is. A marketplace of skills is also not a marketplace of loops: a skill is a component, while a loop is a complete process with a trigger, agents, and a close condition.
+Mostly not as a commercial store: most results are open directories, vendor libraries, or skills bundled inside products. See [how to evaluate an agent skills marketplace](/docs/agent-skills-marketplace/) for the three shapes and the six checks.
 
 ### What is the difference between agent skills and MCP?
 They are different layers, and the two are often confused. MCP is the protocol that exposes tools and data from systems your team already runs, such as a CRM or an inbox. A skill is the packaged judgment about how and when to use those tools for a specific job. You connect MCP servers; you author skills. A skill frequently directs an agent to call several tools that MCP has exposed.
@@ -2285,7 +2305,7 @@ A concrete example from Maskin's own dogfooding — the SEO content loop that pr
 - **Agent-execution slot:** the SEO Writer agent picks the structure, runs SERP analysis via an Ubersuggest MCP, drafts the piece against the quality bar, and links citations. The agent chooses the shape; the agent does not choose the topic.
 - **Human-taste gate:** the SEO Editor agent reviews the draft. If it clears, the Editor moves the object to `published`; if it doesn't, it returns with numbered fixes. A human owns the final promotion; the Editor gate is the enforced checkpoint.
 - **Close condition:** the piece reaches `published` status with the primary keyword, title, and metadata locked. Not "the writer said it was done." A promoted `content` object with a specific measurable state.
-Run that loop against a different trigger and the same shape produces a discovery loop, a competitor-intel loop, a signal-triage loop. The primitives don't change; the trigger and typed objects do. That is what "[loop engineering](/docs/what-is-loop-engineering/)" ([Addy Osmani, Jun 2026](https://addyosmani.com/blog/loop-engineering/)) points at when it says the job shifted from *prompting the agent* to *designing the system that prompts the agent* — but productized as first-class objects a team configures, not code a developer writes.
+Run that loop against a different trigger and the same shape produces a discovery loop, a competitor-intel loop, a signal-triage loop, a churn-recovery loop ([at-risk account alerts](/docs/at-risk-account-alerts/)). The primitives don't change; the trigger and typed objects do. That is what "[loop engineering](https://addyosmani.com/blog/loop-engineering/)" (Addy Osmani, Jun 2026) points at when it says the job shifted from *prompting the agent* to *designing the system that prompts the agent* — but productized as first-class objects a team configures, not code a developer writes.
 **Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.**
 The important word is *across*. A workflow inside a ticket tracker terminates when a ticket closes. A loop terminates when the typed outcome it exists to produce — the shipped bet, the approved content, the qualified pipeline — reaches a state a human can inspect, regardless of which tool the underlying work happened in.
 
@@ -2323,7 +2343,7 @@ Three common patterns: (1) a schedule (cron), (2) a user prompt or chat message,
 MCP is a substrate the workflow runs on, not a competitor. An agentic workflow (or a closed loop) uses MCP to give the agent tools with typed inputs and outputs; agent skills package prompt-time behaviour; cursor rules constrain what a coding agent may do inside an IDE. See [agent skills vs MCP vs cursor rules vs workflows](https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/) for the layer map.
 
 ### Is a loop the same as a directed cyclic graph?
-Structurally, yes — a loop is a directed graph with cycles (retry, revise, wait for human). The frame in this piece is at a higher level: the [three-layer decomposition of harness, loop, graph](https://ttoss.dev/blog/2026/08/08/you-probably-dont-need-a-graph) matters — a loop is the feedback cycle a team designs, the graph is the topology it compiles to. Most teams get more out of investing in the harness and the loop shape than in explicit graph engineering. The [loop engineering explainer](/docs/what-is-loop-engineering/) walks through that harness-first investment order.
+Structurally, yes — a loop is a directed graph with cycles (retry, revise, wait for human). The frame in this piece is at a higher level: the [three-layer decomposition of harness, loop, graph](https://ttoss.dev/blog/2026/08/08/you-probably-dont-need-a-graph) matters — a loop is the feedback cycle a team designs, the graph is the topology it compiles to. Most teams get more out of investing in the harness and the loop shape than in explicit graph engineering.
 Read next
 
 ## Run the loop, not just the workflow
@@ -2372,7 +2392,7 @@ Permissions belong to actors and are named in the shape of an action, not a feat
 - "Can move a `knowledge` object to `validated`"
 - "Can install a marketplace loop"
 Sentence-shaped permissions read like the audit trail you'll want later; feature-shaped permissions ("can access Sales module") don't. Grant the smallest set that lets the agent do its job. If the Prospector needs to draft outreach but never send, its permission list includes drafting and excludes `send_message` — the send trigger belongs to a Sender identity with a narrower grant.
-One useful default: material calls (sending, publishing, spending money, changing customer state) live on their own permission per surface. That way revoking one integration or one workflow is a targeted action.
+One useful default: material calls (sending, publishing, spending money, changing customer state) live on their own permission per surface. That way revoking one integration or one workflow is a targeted action. The same material calls are also where the [approval-gate primitive](/docs/learn/human-in-the-loop/) shipped by OpenAI, Cloudflare, Microsoft, and Temporal fires — the permission answers *may this agent do this?* and the gate answers *did a human sign off on this specific instance?*. Both live on the object; the audit trail collects them together.
 
 ### 3. Audit trail on the object graph
 Audit is not a separate log. Every state transition on every object is an event. Every event has: the object, the field that changed, the before and after value, the actor, the timestamp, and (if applicable) the trigger that fired it.
@@ -2463,7 +2483,7 @@ Miss any one of these and the failure stays silent. The run completes, the outpu
 
 ## Memory as a feature vs persistence as a constraint
 Most "agent memory" products answer the wrong question. They ask *where do we store text?* and answer with a vector database you bolt onto the agent. The question that matters is *what has to survive the run?*, and the answer is a property of the substrate, not an add-on.
-The difference is not academic. Chip Huyen, in the vocabulary her AI Engineer Summit keynote formalized, splits agent memory into three tiers: short-term (the context window), long-term (an external store), and internal (the model weights). Long-term is the tier everyone argues about, and it is where the lock-in lives. Mem0 stores vectors, Letta stores agent state blocks, Zep stores graph nodes and edges, and this year added three more shapes: khive (closed-enum SQLite), Graphiti (Pydantic over Neo4j), and growmos (JSONL). Six incompatible formats. Migrating between any two means re-extracting everything.
+The difference is not academic. Chip Huyen, in the vocabulary her AI Engineer Summit keynote formalized, splits agent memory into three tiers: short-term (the context window), long-term (an external store), and internal (the model weights). Long-term is the tier everyone argues about, and it is where the lock-in lives. Mem0 stores vectors, Letta stores agent state blocks, Zep stores graph nodes and edges, and this year added three more shapes: khive (closed-enum SQLite), Graphiti (Pydantic over Neo4j), and growmos (JSONL). Six incompatible formats. Migrating between any two means re-extracting everything. For the decision-stage walk across those architectures, [how to choose a knowledge layer for your agents](/docs/learn/choose-a-knowledge-layer/) turns the vendor-comparison question into two structural ones.
 Simon Willison's complaint points at the same wall from the user's side. In his AI Engineer keynote he described ChatGPT's silent memory feature quietly injecting "Half Moon Bay" into an image prompt, and named the problem as losing control of context. A memory you cannot see is a memory you cannot correct, which is the opposite of what a scheduled agent needs, because correction is item two on the checklist.
 So the frame swap is this: stop treating memory as a feature you add to a stateless agent, and start treating persistence as a constraint on the [stateful orchestration substrate](https://maskin.io/docs/what-is-a-stateful-orchestration-substrate/) the agent runs on. When the state lives in the substrate, there is no format to migrate and no context to lose.
 
@@ -2498,198 +2518,143 @@ Maskin carries decisions, corrections, and artifacts on a typed object graph eve
 > Source: https://maskin.io/docs/learn/choose-a-knowledge-layer/
 
 # How to choose a knowledge layer for your agents — a decision guide
-
 Four places agent knowledge can live in 2026: **retrieval-beside** (Mem0-shaped vectors), **stateful-runtime** (Letta-shaped state blocks), **temporal-knowledge-graph** (Zep-shaped nodes and edges), and a **typed workspace graph** (Maskin). None of them is universally best, and the head-of-SERP question — *which framework remembers best?* — is the wrong one to answer. The right one is two questions: **what has to survive between runs, and who has to read it without tooling?** This page turns those into a decision.
+> ✓
+> **Key takeaways**
+> **The choice is architectural, not vendor-tier.** Star counts don’t predict fit; where memory has to live does.
+> **Four architectures cover the honest field.** Retrieval-beside, stateful-runtime, temporal-knowledge-graph, and typed workspace graph — each with a shipping exemplar (Mem0, Letta, Zep, Maskin).
+> **The two decisive questions are structural.** What survives between runs (decisions, corrections, artifacts) — and who reads it without tooling (agents only, or humans too).
+> **Retrieval quality is close to solved on the standard benchmark;** synthesis and provenance are the frontier. Chasing a better vector store is optimising a mostly-solved layer.
+> **None of these formats is human-readable by default** — except the typed workspace graph, whose contents are typed objects a person can open and audit.
+> **Two knowledge layers often compose better than one replaces another.** The decision guide names when to pair and when to pick.
 
-**Key takeaways**
-
-- **The choice is architectural, not vendor-tier.** Star counts don't predict fit; where memory has to live does.
-- **Four architectures cover the honest field.** Retrieval-beside, stateful-runtime, temporal-knowledge-graph, and typed workspace graph — each with a shipping exemplar (Mem0, Letta, Zep, Maskin).
-- **The two decisive questions are structural.** What survives between runs (decisions, corrections, artifacts) — and who reads it without tooling (agents only, or humans too).
-- **Retrieval quality is close to solved on the standard benchmark;** synthesis and provenance are the frontier. Chasing a better vector store is optimising a mostly-solved layer.
-- **None of these formats is human-readable by default** — except the typed workspace graph, whose contents are typed objects a person can open and audit.
-- **Two knowledge layers often compose better than one replaces another.** The decision guide names when to pair and when to pick.
-
-## Why "which framework remembers best" is the wrong frame
-
-The three top-ranking 2026 comparisons of agent memory frameworks all open with the same reframe. DreamingPress (June 2026) puts it plainly: *the question isn't which framework remembers best. It's whether you want a retrieval add-on, a temporal graph, or an agent that runs inside someone else's server.* PLUR (July 2026): *none is universally best. Choose by use case, not by star count.* AgentsCamp (June 2026) names the same three architectures as competing bets on where memory should live.
-
-There is a fourth answer no top-ranking comparison names, and it becomes obvious once you split *what carries state* from *what runs the agent*: a typed store of workspace objects a person can open and read, with agents writing and reading against it. Every 2026 comparison leaves that slot unclaimed — and every one of them frames the "vs" between three frameworks whose formats a human cannot read without tooling.
-
+## Why “which framework remembers best” is the wrong frame
+The three top-ranking 2026 comparisons of agent memory frameworks all open with the same reframe. DreamingPress (June 2026) puts it plainly: *the question isn’t which framework remembers best. It’s whether you want a retrieval add-on, a temporal graph, or an agent that runs inside someone else’s server.* PLUR (July 2026): *none is universally best. Choose by use case, not by star count.* AgentsCamp (June 2026) names the same three architectures as competing bets on where memory should live.
+There is a fourth answer no top-ranking comparison names, and it becomes obvious once you split *what carries state* from *what runs the agent*: a typed store of workspace objects a person can open and read, with agents writing and reading against it. Every 2026 comparison leaves that slot unclaimed — and every one of them frames the “vs” between three frameworks whose formats a human cannot read without tooling.
 The rest of this page is the decision. It names the four architectures with their exemplars, walks the two questions that actually change the answer, gives a decision matrix, and closes on the composition patterns that beat picking one architecture and hoping.
 
 ## The four architectures, named with exemplars
 
 ### 1. Retrieval-beside (Mem0-shaped vectors)
-
 The retrieval-beside architecture bolts a vector store next to the agent. On each run, the agent embeds the current query, retrieves the most similar previous messages or extracted facts, and stuffs them into the context window. Mem0 is the vendor exemplar: an add-on that watches the conversation, extracts durable claims, embeds them, and re-injects them at the top of the next turn.
-
 **What it stores.** Embeddings of extracted text, plus metadata pointing back to the source turn. The vectors themselves are unreadable; the metadata makes them addressable.
-
 **What it is good at.** Open-ended recall over long, unstructured conversation histories. Personalisation. Any case where the state to carry forward is *content* (what was said, what was preferred) rather than *structure* (what was decided, and why).
-
-**Where it breaks.** Two places, both hard. Format lock-in — six incompatible long-term-memory formats shipped in 2026 alone (Mem0, Letta, Zep, khive, Graphiti, growmos), and migrating between any two means re-extracting from source. Silent context injection — Simon Willison's ChatGPT complaint at the 2026 AI Engineer Summit was that a memory feature quietly slipped *Half Moon Bay* into an image prompt, which is the failure mode any retrieval-beside layer inherits: a store you cannot see is a store you cannot correct. Retrieval quality has also plateaued rather than scaled: on LongMemEval, first-stage retrieval is close to saturated at roughly **97% recall@5**, but of 65 wrong answers, **54 already had the correct evidence sitting in the top-5** (AutoMem's 2026 full-slice comparison). The evidence was found; it was not used.
-
-**Pick it when** the JTBD is "the assistant should remember what I told it last week," the reader of that memory is the agent only, and the failure mode of a silent injection is acceptable to your users.
+**Where it breaks.** Two places, both hard. Format lock-in — six incompatible long-term-memory formats shipped in 2026 alone (Mem0, Letta, Zep, khive, Graphiti, growmos), and migrating between any two means re-extracting from source. Silent context injection — Simon Willison’s ChatGPT complaint at the 2026 AI Engineer Summit was that a memory feature quietly slipped *Half Moon Bay* into an image prompt, which is the failure mode any retrieval-beside layer inherits: a store you cannot see is a store you cannot correct. Retrieval quality has also plateaued rather than scaled: on LongMemEval, first-stage retrieval is close to saturated at roughly **97% recall@5**, but of 65 wrong answers, **54 already had the correct evidence sitting in the top-5** (AutoMem’s 2026 full-slice comparison). The evidence was found; it was not used.
+**Pick it when** the JTBD is “the assistant should remember what I told it last week,” the reader of that memory is the agent only, and the failure mode of a silent injection is acceptable to your users.
 
 ### 2. Stateful-runtime (Letta-shaped state blocks)
-
-The stateful-runtime architecture removes the retrieval step entirely. Instead of storing embeddings and re-fetching them per turn, the agent runs on a server that keeps its state blocks — a working memory, a scratchpad, an evolving persona — in place between calls. Letta (formerly MemGPT) is the vendor exemplar: an agent runtime that owns memory as first-class state, promotes and demotes blocks between hot and cold storage, and hands the agent a durable "self" across sessions.
-
+The stateful-runtime architecture removes the retrieval step entirely. Instead of storing embeddings and re-fetching them per turn, the agent runs on a server that keeps its state blocks — a working memory, a scratchpad, an evolving persona — in place between calls. Letta (formerly MemGPT) is the vendor exemplar: an agent runtime that owns memory as first-class state, promotes and demotes blocks between hot and cold storage, and hands the agent a durable “self” across sessions.
 **What it stores.** Structured state blocks — named regions of persistent context — plus a memory hierarchy that decides what lives in the working set and what gets paged out. The blocks are typed and editable at the API level.
-
 **What it is good at.** Long-running single-agent processes where the *agent* is the entity that has to accumulate context, not the *system around it*. Personas. Ongoing companion or assistant loops that need to feel continuous rather than fresh-per-turn.
-
-**Where it breaks.** Two places. The agent lives inside the vendor's server, which is the exact framing DreamingPress used — *an agent that runs inside someone else's server* — and that couples memory to compute. And the state blocks are the agent's memory, not the team's: two agents doing related work do not automatically read each other's blocks. The board that RedHat's *Taming the Agent Beast* piece (August 2026) named — *stateless agents, stateful orchestration* — is not what stateful-runtime buys. It buys the opposite: stateful agents, unshared board.
-
-**Pick it when** the JTBD is "one long-running agent needs to accumulate a persona and a working memory," you are comfortable with the runtime coupling, and the memory does not need to be read by other agents or by humans.
+**Where it breaks.** Two places. The agent lives inside the vendor’s server, which is the exact framing DreamingPress used — *an agent that runs inside someone else’s server* — and that couples memory to compute. And the state blocks are the agent’s memory, not the team’s: two agents doing related work do not automatically read each other’s blocks. The board that RedHat’s *Taming the Agent Beast* piece (August 2026) named — *stateless agents, stateful orchestration* — is not what stateful-runtime buys. It buys the opposite: stateful agents, unshared board.
+**Pick it when** the JTBD is “one long-running agent needs to accumulate a persona and a working memory,” you are comfortable with the runtime coupling, and the memory does not need to be read by other agents or by humans.
 
 ### 3. Temporal-knowledge-graph (Zep-shaped nodes and edges)
-
 The temporal-knowledge-graph architecture extracts entities, relationships, and events from the conversation into a graph, and tracks how facts change over time. Zep is the vendor exemplar: entities become nodes, relationships become edges, and each edge carries a validity window so *the customer was on the Pro plan* and *the customer is on the Enterprise plan* can both be true — just not at the same time.
-
 **What it stores.** Typed nodes (people, projects, decisions), typed edges (worked on, decided against, escalated to), and a temporal window per fact. Provenance is usually attached.
-
 **What it is good at.** Multi-hop questions the vector store cannot answer — *who decided X, and what depended on it?* — over conversation histories where relationships matter more than paragraphs. Cases where the answer to *is this still true?* is load-bearing.
-
 **Where it breaks.** Ontology drift and upkeep cost. A knowledge graph that gets typed once and then leaks decays into a graph nobody trusts. Graphs are also opinionated: the shipping-code consensus this year — khive, Graphiti, and growmos, three separate projects — converged within months on typed ontologies, typed edges, and provenance on every item, and their shared claim is that *typed structure is not a similarity result*. That is the strength of the architecture. Keeping the types current is the cost of the strength.
-
-**Pick it when** the JTBD is "we need to answer traversal questions, not just retrieval questions," you can invest in the ontology, and the reader of the graph is the agent (or, with a query language, an analyst).
+**Pick it when** the JTBD is “we need to answer traversal questions, not just retrieval questions,” you can invest in the ontology, and the reader of the graph is the agent (or, with a query language, an analyst).
 
 ### 4. Typed workspace graph (Maskin)
-
 The typed workspace graph is the fourth answer, and it is a different kind of object from the other three. The other three are memory *for the agent*; the typed workspace graph is the shared substrate the *team* is already working on — insights, bets, tasks, comments — that agents read from and write to as first-class participants. In Maskin, the workspace graph is the same object model humans see in the UI: a decision is a bet with a status, a correction is a comment attached to the thing it corrects, and an artifact is the object the run produced. Every item is human-readable by default.
-
 That last property is the wedge. The typed workspace graph is the only one of the four architectures whose long-term state a person can open, read, and edit without special tooling. Vectors need a search; state blocks need an API; graph nodes need a query. A workspace object needs a click.
-
 **What it stores.** Typed objects a person can open and read (insights, bets, tasks, comments, artifacts). Typed edges between them (`informs`, `blocks`, `in_loop`). Provenance on every item — who wrote it, when, from which upstream signal — and a live status.
-
 **What it is good at.** Multi-agent work where run one and run two are done by different agents but share a board. The three-item persistence checklist — *decisions, corrections, artifacts* — because a workspace object is exactly the shape of each one. Any case where the human needs to be able to correct the memory, not just consume it.
-
 **Where it breaks.** The upfront cost of a schema. If your only need is *the assistant should remember what I told it*, a retrieval-beside vector store is faster to stand up and enough. The typed workspace graph pays off when the state is *decisions and corrections a team has to carry across time*, not raw content.
-
-**Pick it when** the JTBD is "our scheduled agents have to pick up where the last run left off, and a human has to be able to correct what they remember," the readers of the memory include humans as well as agents, and the state to carry forward is structured (decisions with reasons, corrections with attribution) rather than a wall of extracted prose.
+**Pick it when** the JTBD is “our scheduled agents have to pick up where the last run left off, and a human has to be able to correct what they remember,” the readers of the memory include humans as well as agents, and the state to carry forward is structured (decisions with reasons, corrections with attribution) rather than a wall of extracted prose.
 
 ## The two questions that actually change the answer
-
 Before the matrix, walk two questions in order. They collapse the field faster than any feature list.
 
 ### Question 1: What has to survive between runs?
-
 There are only three categories of state worth persisting, and they map cleanly to the checklist worked out in [agent memory across sessions](/docs/learn/agent-memory-across-sessions/):
-
 - **Decisions** — what was chosen, and why. Not the receipt (*sent the follow-up email*) but the reason (*sent it to the tier-2 segment because the tier-1 list was rejected on Tuesday*).
 - **Corrections** — the gap between what the agent produced and what a human accepted. The most valuable signal in the system, and the one most setups discard.
-- **Artifacts** — the outputs themselves, still addressable, so run two can read run one's work instead of regenerating it.
-
+- **Artifacts** — the outputs themselves, still addressable, so run two can read run one’s work instead of regenerating it.
 Miss any one of these and the failure is silent. The run completes, the output looks fine, and the loss surfaces weeks later — an agent confidently repeating a settled call, or a correction you made three times still not sticking.
-
 Now map that back to the four architectures:
-
 - **Retrieval-beside** captures the content of what was said, not the decision behind it. It can hold artifacts as embedded text, but the addressability is the metadata, not the vector. Corrections have to be re-extracted or re-said.
-- **Stateful-runtime** holds working memory well but does not naturally represent the "why" behind a decision or a human's after-the-fact correction; the block is the agent's, not a shared record.
+- **Stateful-runtime** holds working memory well but does not naturally represent the “why” behind a decision or a human’s after-the-fact correction; the block is the agent’s, not a shared record.
 - **Temporal-knowledge-graph** represents decisions and their timing beautifully, and corrections can be modelled as new edges with new validity windows. Artifacts sit outside the graph unless you wire them in.
 - **Typed workspace graph** stores all three natively — a decision is a bet, a correction is a comment on the thing it corrects, an artifact is an object with a link — and every item is typed, provenanced, and time-stamped.
 
 ### Question 2: Who reads it without tooling?
-
 Long-term memory that only the agent can read is a lock-in decision, whether you frame it that way or not. Three of the four architectures store their long-term state in a format a human cannot open: Mem0 stores vectors, Letta stores runtime state blocks, Zep stores graph nodes and edges. Each vendor offers a UI on top of the store — but the UI is a viewer, not the storage. If you swap vendors, the format goes with them.
-
 The typed workspace graph is the one architecture whose storage format *is* the read surface. The bet is a page. The comment is a comment. The artifact is a file with a link. A new hire, a support engineer, or an agent from a different vendor can open the item and read it — because there is no format to decode, just the object.
-
 This is not an argument against the other three. It is the thing that makes the fourth answer a different kind of thing. If your memory has to be auditable by a human at any point — for correction, for compliance, or for a taste-sensitive review — the format has to be human-readable by default, not through a tool.
 
 ## The decision matrix
-
 Rows are the four architectures; columns are the four questions that decide it.
-
 | Architecture | What survives between runs | Who reads it without tooling | Where the human gate lives | Where Maskin sits |
 | --- | --- | --- | --- | --- |
-| **Retrieval-beside** (Mem0) | Extracted text, embedded — content, not structure | Nobody — vectors are not readable | Nowhere by default; edits happen by re-saying | Not this — retrieval-beside is a component you can point at Maskin objects, not a substitute for them |
-| **Stateful-runtime** (Letta) | Agent state blocks — working memory for one agent | The agent, via API — humans need a viewer | On the block edit, if the runtime exposes one | Not this — Maskin is not an agent runtime; it is the substrate agents (from any runtime) read and write |
-| **Temporal-knowledge-graph** (Zep) | Typed nodes, typed edges, with temporal windows | The agent, via query — humans need a graph viewer | On graph writes, if you build one | Adjacent — Maskin's typed graph carries some of the same primitives, but with a workspace UI rather than a query language |
-| **Typed workspace graph** (Maskin) | Decisions (bets), corrections (comments), artifacts (typed objects) — all three checklist items | Anyone with access — the object is the read surface | Wherever the loop is shaped to gate; corrections are first-class comments | This — the shared substrate itself, human-readable, MCP-native |
-
+| Retrieval-beside (Mem0) | Extracted text, embedded — content, not structure | Nobody — vectors are not readable | Nowhere by default; edits happen by re-saying | Not this — retrieval-beside is a component you can point at Maskin objects, not a substitute for them |
+| Stateful-runtime (Letta) | Agent state blocks — working memory for one agent | The agent, via API — humans need a viewer | On the block edit, if the runtime exposes one | Not this — Maskin is not an agent runtime; it is the substrate agents (from any runtime) read and write |
+| Temporal-knowledge-graph (Zep) | Typed nodes, typed edges, with temporal windows | The agent, via query — humans need a graph viewer | On graph writes, if you build one | Adjacent — Maskin’s typed graph carries some of the same primitives, but with a workspace UI rather than a query language |
+| Typed workspace graph (Maskin) | Decisions (bets), corrections (comments), artifacts (typed objects) — all three checklist items | Anyone with access — the object is the read surface | Wherever the loop is shaped to gate; corrections are first-class comments | This — the shared substrate itself, human-readable, MCP-native |
 The matrix is honest about scope. Maskin is not trying to be a retrieval-beside vector store or an agent runtime. Those are components you can compose against a typed workspace graph — and the composition is often the right answer, not the pick.
 
 ## When two layers compose better than one replaces another
-
 The comparison spokes under this decision cover the three composition patterns worth knowing. All three end the same way: a typed store carries what has to persist, and the other layer handles what it is good at.
-
 - **A wiki inside a vector database.** A [knowledge wiki is a compiled artifact, not a storage engine](/docs/knowledge-wiki-vs-vector-database/) — you can put wiki pages *into* a vector database and get the best of both. The wiki is the curated source; the database is the index over it.
-- **RAG on top of the graph.** [MCP is the wire and RAG is a retrieval mechanism](/docs/mcp-vs-rag/) — neither carries state. Point a retrieval pipeline at the typed graph's settled knowledge and you have a system where the retrieval is good *and* the state is auditable. The retrieval mechanism is not the memory; the graph is.
-- **A wiki instead of raw documents.** [An LLM wiki versus RAG](/docs/llm-wiki-vs-rag/) is not really a "vs" — the wiki replaces the *corpus* RAG retrieves from, not the retrieval layer. Most teams end up with both.
-
+- **RAG on top of the graph.** [MCP is the wire and RAG is a retrieval mechanism](/docs/mcp-vs-rag/) — neither carries state. Point a retrieval pipeline at the typed graph’s settled knowledge and you have a system where the retrieval is good *and* the state is auditable. The retrieval mechanism is not the memory; the graph is.
+- **A wiki instead of raw documents.** [An LLM wiki versus RAG](/docs/llm-wiki-vs-rag/) is not really a “vs” — the wiki replaces the *corpus* RAG retrieves from, not the retrieval layer. Most teams end up with both.
 The composition question resolves the same way each time. Retrieval is a mechanism. A vector store is an index. A wiki is an artifact. A graph is a substrate. The four are not rivals — they are layers, and the honest question is which layer is missing from your stack.
 
 ## The upkeep question that outlives the architecture choice
-
 Every architecture on this page has the same failure mode, and it is the one nobody scores in the demos. Whatever you pick, someone has to keep it current after its first author changes roles.
-
 - The vector store rots when the extraction rules stop matching the way people talk about the work.
 - The state blocks rot when nobody edits the runtime memory after a decision changes.
 - The temporal graph rots when the ontology drifts and no one owns the schema.
 - The workspace graph rots when the loop that writes to it stops closing.
-
 The architecture decision determines *what shape* the rot takes. It does not exempt you from the rot. The teams that keep a memory alive make writing to it a byproduct of work that already closes, and reading it a byproduct of work that already starts — never a separate writing chore. That is why the deciding factor is usually not the architecture at all. It is whether the loop that maintains the memory is closed, or whether *keep the memory current* is a side-project nobody owns.
-
 If the loop is closed, any of the four architectures will hold. If it is not, none of them will.
 
 ## FAQ
 
 ### How do I choose a knowledge layer for my agents?
-
 Walk two questions before you compare vendors. First, what has to survive between runs — decisions, corrections, and artifacts, or just content? Second, who reads that memory without tooling — agents only, or humans too? The answers collapse a four-way field into two or three candidates. Then decide by composition: often the right answer is a shared substrate that carries state, plus one of the other layers for retrieval or working memory, rather than one architecture for everything.
 
 ### What are the main types of agent memory?
-
 Retrieval-beside (Mem0-shaped vectors) — an embedded store the agent queries per turn. Stateful-runtime (Letta-shaped state blocks) — an agent runtime that keeps working memory in place between calls. Temporal-knowledge-graph (Zep-shaped nodes and edges) — a graph of typed entities and time-windowed relationships. Typed workspace graph (Maskin) — the shared substrate of workspace objects the team already operates on, that agents read and write against as first-class participants.
 
 ### Is a vector database the same as agent memory?
-
 No. A vector database is one storage format for long-term memory, useful for recall. But it holds text, not structure, and it does not carry the status, the provenance, or the audit trail a decision needs. Treating a vector store as *the* memory is the mistake that keeps agents stateless — you can retrieve a paragraph, but you cannot tell whether a choice is settled. See [knowledge wiki vs vector database](/docs/knowledge-wiki-vs-vector-database/) for the storage-versus-artifact cut.
 
 ### What is the difference between Mem0, Letta, and Zep?
-
-They are shaped for different questions. Mem0 is retrieval-beside — a vector store that watches the conversation and re-injects extracted claims. Letta is stateful-runtime — an agent runtime that carries state blocks across sessions. Zep is a temporal knowledge graph — typed nodes, typed edges, and validity windows over time. All three are memory *for the agent*; none is a shared substrate a team's humans and agents both read.
+They are shaped for different questions. Mem0 is retrieval-beside — a vector store that watches the conversation and re-injects extracted claims. Letta is stateful-runtime — an agent runtime that carries state blocks across sessions. Zep is a temporal knowledge graph — typed nodes, typed edges, and validity windows over time. All three are memory *for the agent*; none is a shared substrate a team’s humans and agents both read.
 
 ### Where does Maskin sit among the four?
-
-Maskin is the typed workspace graph — the shared substrate itself, not a memory add-on. Insights, bets, tasks, and comments are the same object model the team's humans use; agents read and write against the same graph over MCP. Because the storage format is the read surface, a human can open any item, correct it, or add context without a viewer.
+Maskin is the typed workspace graph — the shared substrate itself, not a memory add-on. Insights, bets, tasks, and comments are the same object model the team’s humans use; agents read and write against the same graph over MCP. Because the storage format is the read surface, a human can open any item, correct it, or add context without a viewer.
 
 ### Can I use two of these together?
-
 Almost always yes, and it is usually the right answer. A typed workspace graph can carry the decisions, corrections, and artifacts while a vector store indexes long-form content for retrieval; a knowledge wiki can sit as a curated source that both an agent and a retrieval pipeline read; a stateful-runtime agent can work against a shared workspace graph as its board. The comparison spokes under this guide cover the specific pair-ups.
 
 ### What is the biggest mistake in choosing a knowledge layer?
-
 Optimising the wrong axis. Retrieval quality is close to solved on the standard benchmarks — LongMemEval reports roughly 97% recall@5, and swapping the embedding model alone can shift end-to-end scores by more than 6 points (MemDelta, June 2026). The unsolved layers are provenance, correction, and human readability. Picking the vendor with the biggest recall number does not close those gaps.
 
 ### Do I have to write my own agents to use the workspace-graph approach?
-
 No. Agents from any runtime (Claude Code, Claude Agent SDK, Letta, custom) can read and write the workspace graph over MCP. The graph is the substrate; the agents are interchangeable. That is precisely what makes it a shared board and not a per-agent memory.
 
 ## The primitives underneath
-
 A short vocabulary note, because the words collide across vendors, and the loop word in particular is now a two-vendor category noun (Linear September 2026, Atlassian ten days later).
 
 ### Loop
-
 A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop.
-
 **Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.**
 
 ### Agent
-
 A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 
 ### MCP
-
 The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
 
 ### Skill
-
 A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
+Read next
+
+## Pick the substrate, compose the rest
+Maskin is the typed workspace graph — the shared substrate humans and agents both read and write, with decisions, corrections, and artifacts as first-class objects. Open source under Apache 2.0. Self-host free, bring your own model.
 
 
 ---
@@ -2818,7 +2783,7 @@ That is the composition, and it is why the honest framing is layered rather than
 ## The mistake this comparison exposes
 Treat the vector database as "the knowledge layer" and you inherit a solved problem as if it were the whole problem. The 2026 benchmark picture is blunt about where the difficulty actually sits. On LongMemEval, first-stage retrieval is close to saturated — recall@5 around **97%**, while end-to-end accuracy lands near **87%**. Of the 65 wrong answers, **54 had the correct evidence sitting in the top-5 retrieval**; only 11 were genuine retrieval misses (AutoMem's 2026 comparison, over the LongMemEval full slice). The evidence was found. It was not used well.
 The same split shows up in evaluation. MemDelta (June 2026) found that swapping the embedding model alone moves LongMemEval by **+6.2 points** — enough to flip which system "wins" — while the model family doing the answering swings results by up to **45 points**, and Mem0 tied plain verbatim RAG at **50× the write-path cost**. A benchmark whose own answer key is 6.4% wrong (the Penfield Labs LoCoMo audit) cannot separate an 88% system from a 94% one.
-Read together, the message is that a vector database is a component whose behaviour depends heavily on the model around it, and that adding a better retriever will not move a system that is failing at synthesis. The artifact layer — a clean, well-structured page an agent can reason over — is where the remaining gains are. That is the wiki's job, and it is a job the database cannot do. For the neighbouring cut between the retrieval mechanism and the protocol an agent uses to reach tools, [why MCP replaces RAG for tool access](/docs/mcp-vs-rag/) takes the same wire-versus-mechanism split from the tool-calling side.
+Read together, the message is that a vector database is a component whose behaviour depends heavily on the model around it, and that adding a better retriever will not move a system that is failing at synthesis. The artifact layer — a clean, well-structured page an agent can reason over — is where the remaining gains are. That is the wiki's job, and it is a job the database cannot do. For the neighbouring cut between the retrieval mechanism and the protocol an agent uses to reach tools, [why MCP replaces RAG for tool access](/docs/mcp-vs-rag/) takes the same wire-versus-mechanism split from the tool-calling side; and for the decision-stage walk across the four architectures agent knowledge can live in, [how to choose a knowledge layer for your agents](/docs/learn/choose-a-knowledge-layer/) collapses the field into two structural questions.
 
 ## Vector database vs knowledge graph: the other neighbour worth not confusing
 One more distinction, because the vocabulary overlaps and people blur it. A vector database stores embeddings and answers similarity queries. A knowledge graph stores typed nodes and typed edges and answers traversal queries — "what depends on X, and who owns it." A knowledge wiki is a compiled artifact a person reads. Three different things.
@@ -2944,7 +2909,7 @@ The autocomplete cluster around this query is not just two-way. `mcp vs rag vs a
 If neither the wire nor the retrieval mechanism carries state, what does? In practice, the answer converging across the agent-memory field is a **typed graph**: a store of typed objects connected by typed edges, with provenance on every item. That is the shape khive, Graphiti, and growmos independently landed on this year — typed ontology, typed edges, provenance — and it is the fourth place memory can live, alongside the context window, the vector store, and the model weights.
 That is the layer Maskin is built around, and it is worth being precise about it, because the vocabulary is where this comparison usually goes wrong. **A typed workspace graph is a control plane agents read and write — not a retrieval index.** The objects are decisions with statuses, corrections attached to the thing they concern, and artifacts the run produced. The retrieval mechanism can read from it. The wire is how agents reach it. Neither is what makes it persist.
 Persistence has a checklist, and it is short: **decisions** (what was chosen, and why), **corrections** (what a human changed after the fact), and **artifacts** (what the run produced, still addressable). Miss any one and the failure stays silent — the run completes, the output looks fine, and the loss only surfaces weeks later as an agent confidently repeating a settled call.
-MCP and RAG both matter in that system. MCP is the wire the agents use to reach the graph and the tools around it. RAG is a mechanism they can point at the graph's settled knowledge. But the thing that answers "what does this agent know, and what did it decide" is the typed store underneath both. That is where agent memory actually lives.
+MCP and RAG both matter in that system. MCP is the wire the agents use to reach the graph and the tools around it. RAG is a mechanism they can point at the graph's settled knowledge. But the thing that answers "what does this agent know, and what did it decide" is the typed store underneath both. That is where agent memory actually lives. If your open question is which of the four architectures to reach for in the first place, [how to choose a knowledge layer for your agents](/docs/learn/choose-a-knowledge-layer/) walks the decision.
 
 ## FAQ
 
@@ -3051,6 +3016,7 @@ Read next
 ## Make churn a decision, not a surprise
 You already have the usage and error data. The question is whether it reaches you as a blinking dashboard or as a prepared bet you can act on in the seconds it takes to read it. Stand the churn & expansion loop up on Maskin, where signals become bets with full context and human taste gates. [Self-host free](https://maskin.io/), or run a hosted trial for a team, and get the next at-risk account alert as a plan, not a ping.
 
+
 ---
 
 > Source: https://maskin.io/docs/agent-inbox/
@@ -3069,7 +3035,7 @@ You already have the usage and error data. The question is whether it reaches yo
 ## What is an Agent Inbox? (Chase’s definition, plainly)
 Chase gave the Agent Inbox its working definition in his January 2025 LangChain post *Introducing Ambient Agents* and expanded it on the Sequoia *Training Data* podcast that followed.[1](#fn1) The claim is small and precise: if an agent runs continuously against a stream of events, it needs a place to reach the human that is *not* a chat window. That place is an inbox.
 The inbox does three things at once. It is a **queue** of interrupts the agent has raised, a **decision surface** where the human resolves each with minimal context-switching, and a **contract** that says, in effect: “I run on my own; I interrupt you only in these named ways; you don’t have to be watching for me to keep working.”
-In a chat, the human is the trigger — you type, the model waits. In an ambient system, an *event* is the trigger — a new email, a metric moving, a scheduled scan — and the human enters only when the agent decides taste is required. Chase names the shift precisely: **human-on-the-loop**, not human-in-the-loop.[1](#fn1) In-the-loop makes the human a required step on every action; on-the-loop lets the agent act autonomously within a defined envelope and pull the human in only at named checkpoints. The Agent Inbox is the UI that makes on-the-loop legible. The companion piece on [human in the loop AI](/docs/learn/human-in-the-loop-ai/) walks the HITL/HOTL failure modes and the override-rate test in detail.
+In a chat, the human is the trigger — you type, the model waits. In an ambient system, an *event* is the trigger — a new email, a metric moving, a scheduled scan — and the human enters only when the agent decides taste is required. Chase names the shift precisely: **human-on-the-loop**, not human-in-the-loop.[1](#fn1) In-the-loop makes the human a required step on every action; on-the-loop lets the agent act autonomously within a defined envelope and pull the human in only at named checkpoints. The Agent Inbox is the UI that makes on-the-loop legible. The companion piece on [human in the loop AI](/docs/learn/human-in-the-loop-ai/) walks the HITL/HOTL failure modes and the override-rate test in detail; the `review` interrupt in particular corresponds to what OpenAI, Cloudflare, Microsoft, and Temporal now ship as a named SDK primitive — the [approval gate before side-effecting tool calls](/docs/learn/human-in-the-loop/).
 
 ## The three interrupt types: notify, question, review
 Chase’s inbox exposes three interrupt types the agent can raise. Every reasonable ambient-agent product ends up implementing at least two of them, and the vocabulary is stable enough now that treating it as your own local nomenclature is a mistake — use Chase’s names.
@@ -3250,131 +3216,6 @@ Read next
 
 ## Self-host the composable loop
 Typed objects under the personas, event triggers under the meetings. Apache 2.0, MCP-native, EU/US data residency.
-
-
----
-
-> Source: https://maskin.io/docs/what-is-loop-engineering/
-
-# What is loop engineering in AI
-**Loop engineering is the practice of designing the system that prompts an AI agent — the triggers, tools, stopping conditions, gates, and verification steps that run around the model call — instead of writing the prompt itself.** It is what Marily Nika named as "your new job" in mid-2026 and what Addy Osmani, LangChain, and Prefect have since converged on: the human's role in the age of capable agents is not to talk to the model, it is to build the harness that talks to the model on a schedule, checks the output, and knows when to stop. This page defines the term, walks the stack it sits inside, separates it from the two neighbours it is most often confused with — graph engineering and harness engineering — and names where the frame is oversold.
-> ✓
-> **Key takeaways**
-> **Loop engineering designs what happens *around* the model call**, not the model call itself: trigger, tools, memory, checker, stopping condition, human gate.
-> **Marily Nika coined the working definition** in June–July 2026 ("Prompt Engineering Is Dead" → "Loop engineering is your new job"), and Addy Osmani, Boris Cherny, and Peter Steinberger echoed it inside the same quarter.
-> **A loop is the simplest directed cyclic graph.** "Loop" and "graph" are terminology choices at the same layer of the stack, not an architecture gap — production agent graphs are not DAGs because agents need cycles (retry, ask, revise, pause).
-> **The design frontier is silence and stopping conditions.** A loop with no ceiling is a cost leak; a loop that runs long enough starts optimising for its checker instead of the outcome ("proxy collapse").
-> **The horizontal primitives are universal**: scheduled triggers, atomic tools, sub-agents, MCP connectors, durable memory outside the model's context, and a human gate at the taste decisions. Vertical wrapper products sit downstream of these primitives.
-> **You probably don't need a full graph yet.** The engineering-honest investment order is harness first, loop second, graph last — and "last" often means "never."
-> **The frame is oversold in specific ways.** It's a coding-agent-first idea, the diagnostic is cleaner in essay than in production, and a well-designed loop can still fail on a bad harness or a lazy human gate.
-![Loop engineering diagram: a trigger starts an agent call, a check against evidence decides whether to iterate, stop within a budget, or hand off to a human gate](/og-image-what-is-loop-engineering.png)
-The shape of a loop-engineered system: trigger, agent call, evidence check, then iterate, stop within a budget, or hand off to a human gate.
-
-## Where the term came from — and why it stuck this quarter
-The phrase surfaced in mid-2026 in two independent places within a few weeks of each other. In June 2026 Marily Nika published "Prompt Engineering Is Dead" and its follow-up "Loop engineering is your new job: how to design for silence," arguing that PMs and builders working with agents now design autonomous systems — with explicit stopping conditions, tool audits, context budgets, and human-interrupt stakes — because vague goals make agents loop forever.[1](#fn1) Around the same time, Addy Osmani's ["Loop Engineering"](https://addyosmani.com/blog/loop-engineering/) essay landed the same idea from the coding-agent side, with two quotes that carried the frame across the industry: Peter Steinberger's *"You shouldn't be prompting coding agents anymore. You should be designing loops that prompt your agents,"* and Boris Cherny's (head of Claude Code) *"I don't prompt Claude anymore… my job is to write loops."*[2](#fn2)
-What made those posts stick is that they weren't naming a new capability — the loop primitive had been there since ReAct and AutoGPT — they were naming a **shift in whose job it is.** Prompt engineering asked a human to write the best possible instruction for one call. Loop engineering asks a human to build the system that decides when to call the model, with what context, against which check, and when to stop. The centre of gravity moved from the prompt string to the runtime around it.
-
-## Prompt engineering vs loop engineering (the stack)
-By late 2026 the industry has settled on a stack for what an agent is actually running, and the two layers this piece cares about sit on top of two older layers people still confuse them with:
-- **Prompt engineering** is the craft of the single instruction the model sees on one call. It still matters — the string that reaches the model is still the string — but it is one line of one call in a much longer runtime.
-- **Context engineering** is assembling *what the model sees* on every call: retrieval, memory, tool definitions, prior state, task framing. This layer became the SERP darling in early 2026 because it is where the biggest lifts live.
-- **Harness engineering** is the runtime around one agent — the tools it can call, the permissions, the state it can read and write between turns, what survives after the session ends. This is the layer ttoss argues you should invest in first, before either loops or graphs, because it is where the cheapest wins live.[3](#fn3)
-- **Loop engineering** is the system that runs the whole thing on a schedule or a trigger, checks the output against evidence, decides whether to iterate, escalate, or stop, and hands off to a human when taste is needed. It is the layer that turns "a good prompt" into "a shipped outcome."
-The honest way to see the difference from prompt engineering is not *replacement* — it is *containment*. Prompt engineering is one line in a loop-engineered system. A team that only does prompt engineering has one long conversation with a model. A team that does loop engineering has a system that runs many short conversations on its own, checks each one, and pings a human on the ones that need judgment. Where prompt engineering asks *what should I say*, loop engineering asks *what should run, when, against which check, and when should it stop*.
-
-## Loop engineering vs graph engineering: same idea, two words
-The most common source of confusion in the 2026 discourse is whether "graph engineering" (LangChain, Prefect) is a different thing from loop engineering. LangChain's *3 Years of Graph Engineering with LangGraph* cites David Khourshid on the point: **an agent loop is the simplest directed cyclic graph.** LangChain's own framing in the same post is that graph engineering, loop engineering, and harness engineering are three names circling one idea — the runtime around the model call.[4](#fn4) Production agent graphs are not DAGs, because agents need cycles: retry, ask user, revise, pause for a human, resume. Most teams that think they are running a linear loop are actually already running a graph — Claude Code's sub-agent fan-out is one, LangGraph's checkpointed state machine is another.
-Prefect's Jeremiah Lowin traces the progression as one continuous line: prompt engineering → multi-prompt scripts → loop engineering → graph engineering — where a "directed agentic graph" is a loop whose nodes are parameterised and whose transitions are explicit, aimed at reproducibility rather than a new capability.[5](#fn5) The *Graph Harness* scheduler survey puts numbers on it: across the systems it categorised, **Agent Loop was the dominant scheduler pattern at roughly 60%**, event-driven at ~15%, state-machine at ~10%, graph/flow at ~5%, hybrid at ~10%.[6](#fn6) The takeaway is that most of what "graph engineering" advocates propose is graph vocabulary for a loop that was already there.
-The practical read: **loop-vs-graph is a terminology choice at the same layer, not a capability gap.** Framework marketing that presents graphs as a *replacement* for loops is what Prefect calls the tendency to "boil powerful ideas down to the dumbest version." The interesting question is not whether to call your system a loop or a graph — it is whether the primitives underneath (stopping conditions, human gates, durable memory, sub-agents, MCP connectors) are explicit and reproducible.
-
-## Loop engineering vs harness engineering: the three-layer decomposition
-The most useful engineering counterpoint to the loop discourse is ttoss's August 2026 essay [*You Probably Don't Need a Graph*](https://ttoss.dev/blog/2026/08/08/you-probably-dont-need-a-graph), which decomposes the runtime into three layers you can attribute failure to independently:[3](#fn3)
-- **Harness** — the environment one agent runs in: tools, memory, permissions, what survives between sessions.
-- **Loop** — the feedback cycle: how work is checked, when it iterates, when it stops.
-- **Graph** — the explicit topology: which step is next, what runs in parallel, where the mandatory human gate lives.
-The diagnostic move — *attribute a failure to a layer before you fix it* — is the single most useful idea in the current writing on this topic. A hallucination on a tool call is usually a harness problem (wrong tool, wrong permissions, wrong context). A run that never terminates is a loop problem (no stopping condition, no evidence-based check). A pipeline that skips the wrong step is a graph problem (topology, not iteration).
-The corresponding investment order — **harness first, loop second, graph last** — is a direct challenge to the framework-first temptation. Cheap harness wins come from **Tool Minimalism**: fewer, atomic tools, deletion is often the highest-leverage move. Loop wins come from a simple rule: **do not loop on confidence, loop on evidence** — tests passing, schema validating, citations resolving, an output the checker can verify. Not "the agent says it's done."
-Two loop failure modes are worth naming because they show up in every long-horizon deployment:
-1. **Cost-leak loops** — no ceiling. A loop without a success predicate, a budget, and an escalation path will burn compute until something else stops it. "Bounded iteration" is the name to know: every loop needs a max-step count, a token/dollar budget, and a named escalation pathway when either trips.
-2. **Proxy collapse** — a loop that runs long enough starts optimising for its checker rather than the actual outcome. The gradient, as ttoss puts it, "points at green, not at correct." The mitigation is not a better checker — checkers are always Goodhart-able — it is a human gate on the taste decision, on a schedule the human is actually going to keep.
-And the corollary: **a graph earns its place only when properties of the process require it,** not properties of the model. Those properties are a mandatory human gate that must be enforced rather than requested, an audit requirement, expensive parallel stages with deterministic joins, and durable resumption (interrupt at hour six, restart at step nine). Where those properties are absent, a well-designed loop is enough. Where they are present, the graph is doing real work that no amount of prompting will do for you.
-
-## The horizontal primitives every loop-engineered system uses
-Across Claude Code, Codex, and self-hosted stacks, the same six primitives show up in every loop worth shipping. Osmani's essay mapped five of them 1:1 across the two major coding agents, and the pattern generalises to non-code work:[2](#fn2)
-- **Scheduled or event triggers.** The loop fires on a schedule, an inbox event, a metric threshold, or a state change — not on a human typing a prompt.
-- **Sub-agents.** A parent agent fans out narrower work to purpose-scoped sub-agents with their own context windows, so parallelism and isolation are safe.
-- **Skills or worktrees.** Named, reusable units of work an agent can invoke (SKILL.md files, worktree templates), rather than reinventing the same instruction each run.
-- **MCP connectors.** A shared tool surface an agent can call across integrations (Slack, GitHub, PostHog, a database) — the [MCP-native workspace](/docs/mcp-native-workspace/) design pattern is what makes this reusable across model vendors.
-- **Durable memory outside the model's context.** "The agent forgets, the repo doesn't." State that has to survive across handoffs lives in a typed store — a repo, a graph, a database — not in the context window. This is the primitive the [stateful orchestration substrate](/docs/what-is-a-stateful-orchestration-substrate/) piece unpacks in detail.
-- **A human gate on taste decisions.** Not human review of every step — a scheduled, named interrupt where the human sets direction, approves a bet, or accepts a shipped outcome. Chase's `notify` / `question` / `review` interrupt taxonomy at LangChain is the cleanest published version of this.
-Osmani's phrase for the effect is the memorable one: **"the agent forgets, the repo doesn't."** Loop engineering is largely the discipline of choosing which primitives to make first-class in the surface your team actually touches — because the primitives are universal, but the wrapper product is where teams either buy or build.
-
-## Silence and stopping conditions: the real design frontier
-Nika's follow-up post named the sharpest edge of the whole practice: **designing for silence.** A prompt-engineered call finishes when the model finishes generating. A loop-engineered system has to know when to *stop* — and "the agent decided it was done" is not a stopping condition, because agents that never stop and agents that stop too early both cost real money.
-The reason "let the model self-diagnose the stop" is a bad plan is that the model is not a reliable judge of its own run. This is the same failure mode the observability literature has been pointing at for two years — long agent trajectories are hard for anything, including the model that produced them, to reason about after the fact. A design that assumes the model will self-check its way to a stop is a design that will silently drift.
-The stopping-condition literature and the controllability/safety writing have quietly converged on the same three moves:
-- **Interruptibility as the backstop.** OpenAI's *Practices for Governing Agentic AI Systems* argues periodic time-outs until a human reauthorizes are the critical last defence when everything else fails.[7](#fn7)
-- **Controllability, not just alignment.** The CONTROLBENCH work argues alignment is not enough — authority, runtime monitoring, intervention, and audit are the last line of defence against a loop that has learned to pass its own tests.[8](#fn8)
-- **Bounded iteration + mandatory human gate.** The Springer survey on controllability in agentic AI names three oversight levels (guardrails, adaptive control, agent-in-the-loop) and lands on the same recommendation: HITL adds the normative authority no constraint can internalise.[9](#fn9)
-A loop-engineered system that ships with an explicit stopping condition, a bounded step/budget cap, and a named human gate is what the governance literature calls a *controllable* agent. One that doesn't is what your finance team calls next month's bill.
-
-## Where the loop-engineering frame is oversold
-The frame is genuinely useful, and it's still oversold in ways worth naming — because a piece that only sells the frame will not survive contact with a shipped system. The honest limits:
-- **It's a coding-agent-first idea, retrofitted to everything else.** Almost every worked example in the 2026 corpus — Osmani's essay, the Steinberger and Cherny quotes, the Ralph loop, the "harness first" argument — comes from the *coding* agent world, where a repo, a test suite, and a CI signal give you unambiguous evidence for the loop to close on. Knowledge-work loops (customer feedback, competitor intel, sales notes, roadmap synthesis) don't have that. There is often no test suite, no schema validation, no green/red signal that says "this loop can stop now." The frame transfers, but the *evidence layer* it depends on has to be built by hand, and the SERP largely doesn't cover that.
-- **A well-loop-engineered system can still fail on a bad harness or a bad model.** Bounded iteration + human gate + evidence-based stop is a real discipline, and none of it rescues a loop wired to the wrong tools, running on a model that isn't strong enough for the reasoning, or drawing from stale context. Loop engineering is the layer that decides *when to run and when to stop*; it is not the layer that decides *what the agent can do*. Treating "we have a stopping condition" as a substitute for "we have the right tools and enough model" is the most common mis-adoption of the frame.
-- **The three-layer diagnostic is cleaner in an essay than in production.** "Attribute the failure to a layer before you fix it" is a beautiful heuristic. Real failures cross layers: a run that never terminates might be a stopping-condition problem *and* a bad tool that keeps returning "try again" *and* a missing capability the agent is silently working around. Teams that mistake the diagnostic for a checklist end up fixing the wrong layer in confidence. The diagnostic is a lens, not a bisection algorithm.
-- **Human gates decay when the human stops showing up.** The mitigation for proxy collapse — *put a human on the taste decision, on a schedule they'll keep* — is only as strong as the schedule. In every long-running deployment worth watching, the human gate is where the discipline erodes: approvals get batched, then rubber-stamped, then skipped. The literature is quiet on this because it's an operator problem, not a research one, but any team taking loop engineering seriously has to design the *review cadence* with the same care it designs the loop, and accept that it will still soften over time.
-- **"The primitives are universal" is aspirational, not observed.** MCP is real and its adoption is genuine, but connector quality varies wildly, sub-agent frameworks are on different maturity curves, and "durable memory outside the model's context" means something concrete in Claude Code and something much fuzzier in most other stacks. The pattern generalises; the *interop* does not, yet.
-None of that unmakes the frame — it just moves it from doctrine to discipline. A loop engineer who takes the limits seriously ships a system that survives its own users; one who doesn't ships a demo.
-
-## Maskin: loops as first-class workspace objects
-All of the above is what Maskin's `loop` object type expresses at the workspace layer. A Maskin loop is a typed object with a trigger (schedule or event), steps (each an agent invocation with its own prompt, model, and MCP tool surface), a close condition, and named human gates where the loop pauses for taste. The trigger is the entry edge; the steps are the nodes; the close condition is the termination; the human gate is a first-class transition, not a hope.
-The reason to shape a loop as an *object* rather than a script is that it lives in the same graph as the work it produces. An insight fires a loop; the loop opens a bet; a step on the bet produces a task; the task closes with evidence written back to the object. The whole path is inspectable, the audit trail is the object graph's own history, and swapping the model on one step is a metadata change, not a rewrite. The [agentic workspace cornerstone](/docs/what-is-an-agentic-workspace/) covers the shape from the workspace side, [bet vs backlog](/docs/bet-vs-backlog/) covers the object model shift, and [ambient agent workspace](/docs/ambient-agent-workspace/) covers the UX camp the loop-object sits inside.
-The practical corollary of taking loop engineering seriously is that most of what a serious team needs — durable memory, HITL gates, MCP connectors, reproducible sub-agent fan-out, close conditions on state — is *productisable* rather than *codable*. That is the wager Maskin makes: loop-vs-graph is a terminology choice, harness/loop/graph is an investment order, and the primitives underneath are horizontal enough that a team should not be rebuilding them per vertical.
-
-## FAQ
-
-### What is loop engineering in one sentence?
-Loop engineering is the practice of designing the system that runs an AI agent — trigger, tools, context, checker, stopping condition, human gate — instead of writing the prompt the agent will use on any one call. The industry's short version, coined by Peter Steinberger and popularised by Addy Osmani, is that you stop prompting the agent and start designing the loops that prompt the agent.[2](#fn2)
-
-### Is loop engineering the same as prompt engineering?
-No — loop engineering *contains* prompt engineering. Prompt engineering is a craft of the single string that reaches the model on one call; loop engineering is the design of the runtime that decides *when* to call the model, *with which context*, *against which check*, and *when to stop*. A well-loop-engineered system still has good prompts inside it. It also has the harness, memory, and stopping condition around them.
-
-### What's the difference between loop engineering and graph engineering?
-At the runtime layer, none in kind — an agent loop is the simplest directed cyclic graph, per David Khourshid and LangChain.[4](#fn4) "Graph engineering" is what you call it when the topology becomes explicit enough that reproducibility and durable resumption become the point; "loop engineering" is what you call it when the emphasis is on the feedback cycle and the stopping condition. Production agent graphs are not DAGs because agents need cycles; framework marketing that presents graphs as a *replacement* for loops is renaming, not replacing.
-
-### What's the difference between loop engineering and harness engineering?
-The cleanest decomposition, from ttoss's August 2026 piece, is three layers: harness (one agent's environment — tools, memory, permissions), loop (the feedback cycle around one agent — checking, iterating, stopping), and graph (explicit topology across many agents).[3](#fn3) The investment order that essay defends — harness first, loop second, graph last — is the honest engineering read: most "we need a graph" conversations should have been "we need a better harness" or "we need a real stopping condition."
-
-### Do I need a framework (LangGraph, CrewAI, Temporal) to do loop engineering?
-No — you need the primitives (trigger, tools, memory, checker, stopping condition, human gate). Frameworks package those primitives with different trade-offs: LangGraph gives you a typed state graph with checkpointing and HITL; CrewAI gives you role-based collaboration and fast prototyping; Temporal gives you durable execution with a strong audit log. Any of them is a legitimate substrate, and none is required — you can loop-engineer with a scheduler, a tool-calling model, and a database. The decision is whether the primitives are explicit and reproducible, not whether the runtime carries a specific brand.
-
-### When should I *not* reach for a loop?
-When a single call, a single deterministic script, or a single verb-surface command does the job. A loop earns its overhead once the work is iterative, has a checkable stopping condition, or spans a duration where the user won't wait synchronously. If your task is "summarise this document," you don't need a loop. If your task is "scan every new customer complaint, cluster them, and open a bet when one crosses threshold," you do.
-
-### Where does loop engineering fall short?
-Three places worth flagging. First, the evidence layer knowledge-work loops depend on has to be built by hand — there is no test suite or CI signal for "did the competitor-intel loop find the right thing?" the way there is for a code loop. Second, a stopping condition doesn't rescue a bad harness or a weak model; loop engineering is only the layer that decides when to run and when to stop. Third, the human gate is the discipline that erodes first — approvals get batched, then skipped — so the review cadence has to be designed with the same care as the loop itself.
-
-### Who coined loop engineering?
-The phrase surfaced in independent places within weeks of each other in mid-2026. Marily Nika's June–July 2026 posts ("Prompt Engineering Is Dead" → "Loop engineering is your new job") named the shift from the PM side.[1](#fn1) Addy Osmani's ["Loop Engineering"](https://addyosmani.com/blog/loop-engineering/) essay named it from the coding-agent side, with quotes from Peter Steinberger and Boris Cherny that carried it into practitioner discourse.[2](#fn2) LangChain and Prefect then wired it into the graph-engineering literature.[4](#fn4)[5](#fn5)
-
-## Own the loop, not the prompt
-If the frame lands — the human's job is the system that prompts the agent, not the prompt itself — the shape of the tool you want is a workspace where the loop, the tools, the memory, the stopping condition, and the human gate all live as typed objects you can inspect, swap, and hand off. That is what Maskin is: an open-source, MCP-native, self-hostable workspace where loops are first-class objects a team configures rather than code an engineer writes. Self-host free forever under Apache 2.0, or start a hosted trial with EU/US data residency.
-
-## Sources
-1. Marily Nika, *[Prompt Engineering Is Dead](https://marily.substack.com/p/prompt-engineering-is-dead-good)* (2026-06-22) and *[Loop engineering is your new job: how to design for silence](https://marily.substack.com/p/loop-engineering-is-your-new-job)* (2026-07-01), AI Product Academy on Substack. The PM-side framing of the shift from prompt to loop and the "design for silence" thesis on stopping conditions.
-2. Addy Osmani, *Loop Engineering* (Jun 2026), [addyosmani.com/blog/loop-engineering](https://addyosmani.com/blog/loop-engineering/). The coding-agent-side framing plus the Peter Steinberger and Boris Cherny quotes that carried the term into practitioner discourse. Includes the primitives mapping across Claude Code and Codex and the durable-memory-outside-the-conversation principle.
-3. ttoss, *You Probably Don't Need a Graph* (2026-08-08), [ttoss.dev/blog/2026/08/08/you-probably-dont-need-a-graph](https://ttoss.dev/blog/2026/08/08/you-probably-dont-need-a-graph). The three-layer harness/loop/graph decomposition, the harness-first investment order, Tool Minimalism, and the "loop on evidence, not confidence" rule. Also the source for the two loop failure modes named here (cost-leak loops, proxy collapse).
-4. Harrison Chase / LangChain, *3 Years of Graph Engineering with LangGraph*, [langchain.com/blog/3-years-of-graph-engineering-with-langgraph](https://www.langchain.com/blog/3-years-of-graph-engineering-with-langgraph). David Khourshid's line that an agent loop is the simplest directed cyclic graph, and LangChain's framing that graph, loop, and harness engineering are three names for the same runtime layer.
-5. Jeremiah Lowin / Prefect, *Loops vs. graphs* (Jul 2026), [prefect.io/blog/loops-vs-graphs](https://www.prefect.io/blog/loops-vs-graphs). The progression prompt → multi-prompt → loop → graph, the "directed agentic graph" framing, and the caveat that some of the "death of loops" wave is marketing relabeling (the Ralph loop being the exhibit A).
-6. Hu Wei et al., *Graph Harness* (position paper), [arXiv 2604.11378](https://arxiv.org/abs/2604.11378). The scheduler-continuum survey with the ~60% / 15% / 10% / 5% / 10% breakdown across Agent Loop, event-driven, state-machine, graph/flow, and hybrid schedulers.
-7. OpenAI, *Practices for Governing Agentic AI Systems*, [cdn.openai.com/papers/practices-for-governing-agentic-ai-systems.pdf](https://cdn.openai.com/papers/practices-for-governing-agentic-ai-systems.pdf). Interruptibility as the critical backstop, periodic time-outs until a human reauthorises, HITL approval for irreversible actions.
-8. Li, Feng, Sun, *AI Safety Requires Effective Controllability (CONTROLBENCH)*, [arXiv 2605.27117](https://arxiv.org/abs/2605.27117). The controllability-not-alignment argument: authority, runtime monitoring, intervention, and audit as the last line of defence.
-9. *[On Controllability in Agentic AI: A Survey](https://link.springer.com/article/10.1007/s11023-026-09783-y)*, Minds and Machines (Springer). Three oversight levels (guardrails, adaptive control, agent-in-the-loop) and the HITL-normative-authority argument.
-Read next
-
-## Self-host the loop
-Loops, tools, memory and human gates as typed objects you can inspect and swap. Apache 2.0, MCP-native, EU/US data residency.
 
 
 ---

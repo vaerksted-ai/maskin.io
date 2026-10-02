@@ -63,14 +63,7 @@ These terms get used interchangeably in marketing copy and mean different things
 - **A skill** is packaged judgment about how to do a specific job, loaded on demand.
 A useful shorthand: skills are what you author, tools are what you call, MCP is what you connect, and rules are what you always apply. Skills are the layer that carries your team’s way of doing a piece of work, which is why they tend to be the artifact people most want to share.
 The distinctions matter in practice because the layers solve different problems and are frequently confused. Our [comparison of agent skills with MCP, cursor rules, and workflows](/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/) walks through each layer side by side, including the state problem that none of the instruction layers solve on their own.[5](#fn5)
-
-## Where to find agent skills (and what “agent skills marketplace” means)
-People search for an “agent skills marketplace” and the phrase covers a few different things today. It is worth being precise about which is which.
-- **Open collections and directories.** Community repositories and catalogues that list skills you can copy into your own project. These are the most common result for the phrase. Most are not products; they are indexes maintained by contributors.
-- **Vendor-hosted libraries.** Collections published by the model vendor or a tool vendor, tied to that vendor’s agent and sometimes to a signing or review process.
-- **Skills bundled inside a product.** A capability a tool ships that happens to be packaged as a skill, where the folder is an implementation detail rather than something you browse.
-What the phrase does not yet describe, in most cases, is a live commercial marketplace where skills are bought, sold, and versioned as products with support behind them. If you are evaluating an “agent skills marketplace,” check which of the three shapes it actually is before assuming the third-party product model. Our fuller pass on the SERP shape and the category confusion lives at [how agent skills ship as a discoverable primitive](/docs/agent-skills-marketplace/).
-One more distinction worth holding: a marketplace of skills is not the same as a marketplace of loops. A skill is a component. A loop is a complete process with a trigger, agents, human gates, and a close condition, and it is the unit a buyer normally shops for. Skills are the parts inside it. The [Maskin Marketplace](/marketplace/) lists loops on that reading.
+Looking for where to find skills? Most results for “agent skills marketplace” are open directories or vendor libraries rather than a commercial store, and a marketplace of skills is not a marketplace of loops. [How to evaluate an agent skills marketplace](/docs/agent-skills-marketplace/) covers the three shapes, six checks, and where skills actually run; the [Maskin Marketplace](/marketplace/) lists loops.
 
 ## A live example: skills that fire on workspace state
 In Maskin, skills are attached to an agent working inside a loop. They are not a top-level section of their own. The Marketplace lists loops; agents, MCP servers, and skills appear as the “built with” components of a loop listing.
@@ -105,7 +98,7 @@ No. A prompt is a message you send, and it lives for one turn. A skill is a fold
 Mostly. The folder format is public and implemented by several agents, so a skill generally runs wherever the format is supported. Skills that depend on a specific integration only run where that integration is reachable, and a vendor library can add its own review or signing step. The folder itself travels further than the tools it calls. For most teams, that portability is the reason to author in this format.
 
 ### Is there an agent skills marketplace?
-Most results for “agent skills marketplace” are open collections, vendor libraries, or skills bundled inside a product, rather than a mature commercial marketplace where skills are bought, sold, and supported as products. If you are evaluating one, check which of those three shapes it is. A marketplace of skills is also not a marketplace of loops: a skill is a component, while a loop is a complete process with a trigger, agents, and a close condition.
+Mostly not as a commercial store: most results are open directories, vendor libraries, or skills bundled inside products. See [how to evaluate an agent skills marketplace](/docs/agent-skills-marketplace/) for the three shapes and the six checks.
 
 ### What is the difference between agent skills and MCP?
 They are different layers, and the two are often confused. MCP is the protocol that exposes tools and data from systems your team already runs, such as a CRM or an inbox. A skill is the packaged judgment about how and when to use those tools for a specific job. You connect MCP servers; you author skills. A skill frequently directs an agent to call several tools that MCP has exposed.
