@@ -26,6 +26,8 @@ for f in og-image-*.svg og-image-*.png; do
   cp "$f" dist/
 done
 shopt -u nullglob
+# Marketplace listing visuals (hero + loop-flow) live at the repo root; not covered by the og-image-* glob.
+cp hero-seo-publishing.png loop-flow-seo-publishing.png loop-flow-seo-publishing.svg dist/
 cp llms.txt llms-full.txt dist/
 cp maskin-launch.mp4 dist/
 # IndexNow key file(s): served at https://maskin.io/<key>.txt so api.indexnow.org
