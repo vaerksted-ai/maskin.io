@@ -1,25 +1,28 @@
 > Source: https://maskin.io/docs/mcp-tools/
 
 # MCP tools in Maskin: verbs, object types, and the typed workspace graph
-MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed input schema (`create_objects`, `get_objects`, `list_relationships`) that reads or writes a specific shape. Maskin's MCP server exposes around 60 tools across seven clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, and extensions/sessions/fields/skills. This reference lists the verbs and documents two of the core object types they operate on — `knowledge` and `loop`.
+MCP tools are the callable operations a Model Context Protocol server exposes to AI agents, each one a verb with a typed input schema, such as `create_objects` or `get_objects`. Maskin's MCP server exposes around 65 of them. This reference groups the verbs by cluster and documents two core object types they operate on: `knowledge` and `loop`.
 > ✓
 > **Key takeaways**
 > MCP tools are verbs; object types are nouns. A tool call names both — the tool declares the operation, the type declares the shape being written or read.
-> Maskin's MCP server exposes ~60 tools across seven clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, and extensions/sessions/fields/skills.
+> Maskin's MCP server exposes ~65 tools across eight clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup.
+> Edges have three write paths: `create_objects` and `update_objects` take an `edges` parameter for object-to-object links, and `create_relationship` writes one edge at a time between objects or files.
+> Conversations (chats with participants) and comments (events on an object) are different channels with different length limits: 8,000 characters for a conversation message, 2,000 for a comment.
 > Object types (`insight`, `bet`, `task`, `knowledge`, `loop`, `content`, plus custom types) are workspace-configurable — call `get_workspace_schema` to see the live list, valid statuses, and metadata fields.
 > `knowledge` is the durable, curated reference layer: statused `draft → validated → deprecated`, carrying `summary`, `doc_type`, `confidence`, and a review cadence.
 > `loop` is a named, iterative multi-agent process that wraps triggers + agents around a pipeline of object states — objects of any type flow through it via the `in_loop` edge.
 
 ## The MCP tools Maskin exposes
 Maskin's MCP server surfaces its verbs under the `mcp__maskin__` namespace. Each tool has a JSONSchema-defined parameter shape and validates its input server-side; type-specific validity (statuses, required fields, enum values) is enforced on the write path against `settings.statuses.<type>` and workspace-configured field schemas.
-The seven clusters are:
+The eight clusters are:
 - Object operations — create, read, update, delete typed rows in the graph.
-- Relationship operations — enumerate, traverse, and delete edges.
+- Relationship operations — write, enumerate, traverse, and delete edges.
 - Schema and discovery — inspect live type, status, and field configuration.
 - Triggers and loops — steps and processes that wire agents to object state.
 - Comments, events, actors — the agent-to-human channel and event timeline.
 - Files and integrations — raw blob storage plus provider wiring.
 - Extensions, sessions, workspace fields, skills — workspace customisation.
+- Conversations, inbox, workspace setup — chats and the unread feed.
 **Object operations.**
 - `create_objects` — create one or more typed objects in a single call; validates `type`, `status`, and `metadata` against the workspace schema and rejects the call with a field-level error if any value is out of range.
 - `get_objects` — fetch by id with opt-in blocks (`content`, `metadata`, `relationships`, `connected_objects`, `events`, `files`); returns an always-on `setup` block with readiness checks.
@@ -27,9 +30,16 @@ The seven clusters are:
 - `delete_object` — remove an object along with its edges; use archival status where lineage matters.
 - `list_objects` / `search_objects` — enumerate by type/status or search title + content with `metadata_eq` filters; both are paginated.
 **Relationship operations.**
+- `create_relationship` — write one directed, typed edge. Parameters: `source_id`, `target_id`, `type`, and an optional `workspace_id`. Each endpoint can be an object or a file; the server works out which from the id, so you never pass a kind. Calling it twice with the same source, target and type succeeds both times and stores one edge. If either id is not an object or file in the workspace, the call fails with a 404 that lists the ids it could not resolve. Conversation and session endpoints cannot be written through this tool.
 - `list_relationships` — direction-agnostic (`object_id`) or directional (`source_id` / `target_id`) enumeration; use direction-agnostic mode when you want every edge on an object regardless of orientation.
 - `traverse_graph` — bounded multi-hop breadth-first traversal from a start object; useful for resolving `supersedes` / `contradicts` chains, walking `breaks_into` hierarchies, or pulling multi-hop context in one call.
-- `delete_relationship` — remove a single edge; the objects on either end stay.
+- `delete_relationship` — remove a single edge by its edge id (`id`, plus optional `workspace_id`); works for edges with file endpoints too, and the objects on either end stay.
+**Which tool writes which edge.**
+- New objects plus their edges in one go: `create_objects` with its `edges` parameter. One atomic call creates up to 50 objects, and edges can point at new objects by a temporary id or at existing objects by uuid. Object endpoints only.
+- An edge between two existing objects: `update_objects` with `edges` (no object change needed), or `create_relationship` for a single edge.
+- Any edge with a file at one end, added after the fact: `create_relationship`. Example: to attach an uploaded file to a bet, set `source_id` to the bet, `target_id` to the file, and `type` to `attached`.
+- Removing an edge: `delete_relationship`.
+The `type` string is not an enum on the tool. The five built-in types are `informs`, `breaks_into`, `blocks`, `relates_to` and `duplicates`; extensions and modules add more (`attached`, `in_loop`, `supersedes`, `contradicts`, `about`, and so on), and workspaces can declare their own. Read the live list from the `relationship_types` field of `get_workspace_schema` instead of hardcoding it.
 **Schema and discovery.**
 - `get_workspace_schema` — the single source of truth for object types, their custom metadata fields, valid statuses per type, and configured relationship types. Call this before hardcoding any enum against product defaults; workspaces override or extend defaults through the extension system.
 - `list_workspaces` — enumerate the workspaces the caller belongs to; used at boot to resolve the default workspace id.
@@ -49,6 +59,20 @@ The seven clusters are:
 - `create_session` / `get_session` / `stop_session` / `pause_session` / `resume_session` / `list_sessions` — agent runtime sessions; the object that captures a specific agent invocation and its transcript.
 - `create_workspace_field` / `update_workspace_field` / `delete_workspace_field` — declare custom metadata fields per object type at the workspace level.
 - `create_workspace_skill` / `get_workspace_skill` / `list_workspace_skills` / `update_workspace_skill` / `delete_workspace_skill` — workspace-scoped skill packs that agents can invoke; the recipe layer above the raw MCP verbs.
+**Conversations, inbox, workspace setup.**
+A conversation is a chat between people and agents. It is not attached to any object, which is what separates it from a comment.
+- **Conversation message:** up to 8,000 characters, sent to a list of participants. Each participant has their own read position, tracked by message id. Mentioning a workspace agent in a message adds it to the chat.
+- **Comment:** up to 2,000 characters, posted on an object. Supports threads, `@mentions`, an `attention` score and a `decision` card, and is what reaches a human's For You feed.
+To talk to a human about an object, use `create_comment`. To leave a note inside a chat you are already part of, use `post_conversation_message`.
+- `get_conversation` — takes `conversation_id`. Returns the conversation, your own state in it (pinned, archived, unread count, last read message id), and the active participants with name, type and who added them.
+- `list_conversation_messages` — takes `conversation_id`, optional `before_id` / `after_id` message ids, and a `limit` of 1 to 200 (default 50). Returns messages newest first with a has-more flag. Paging is by message id, not by time, and reading does not move your read position.
+- `post_conversation_message` — takes `conversation_id`, `content` (1 to 8,000 characters) and optional `metadata`: up to 10 attachments, up to 50 mentions, plus context objects. It is not idempotent, so a retry posts a second message.
+The conversation tools are mostly useful inside chat sessions.
+- `list_unread` — a page of objects with unread activity for the caller (`limit` 1 to 100, default 25, plus a `cursor`). Each row carries the unread count, mention count, highest attention score, latest event id and the latest mention. It covers objects only (not conversations) and shows only the caller's own feed.
+- `mark_read` — takes `entity_type` (`object`), `entity_id` and `last_event_id`, the latest event id you have seen, as returned by `list_unread`. The stored read position only ever moves forward. There is no tool to mark something unread again.
+- `get_started` — orientation for a fresh workspace. With no `loop_id` it lists the marketplace loops you can install; with a `loop_id` and `confirm` it optionally renames the workspace and installs that loop. It returns plain text and is a setup step, not part of everyday work.
+- `create_workspace` — takes a `name` and optional `settings`, and has no `workspace_id`. The caller becomes owner.
+- `update_workspace` — takes the workspace `id`, a `name` and `settings`. Settings are merged into the existing ones.
 A full call names both a verb and a type: e.g. `create_objects` with `type: "knowledge"` and a `metadata` payload validated against the `knowledge` schema. The next section documents two of the object types those tools operate on in depth.
 
 ## Object types the tools operate on
@@ -144,13 +168,13 @@ Steps (triggers) are attached separately via `create_trigger`; this call just st
 ## FAQ
 
 ### What are MCP tools?
-MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed JSONSchema-defined input and a documented output. A tool call names both the verb and the shape it operates on: e.g. `create_objects` with `type: "knowledge"`. Maskin's MCP server exposes around 60 tools across seven clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, and extensions/sessions/fields/skills. Every read or write against the workspace graph flows through one of them.
+MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed JSONSchema-defined input and a documented output. A tool call names both the verb and the shape it operates on: e.g. `create_objects` with `type: "knowledge"`. Maskin's MCP server exposes around 65 tools across eight clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup. Every read or write against the workspace graph flows through one of them.
 
 ### What is the difference between MCP tools and MCP resources?
 Tools are verbs — write-path actions with side effects. Resources are read-only URIs a server exposes for context lookup without invoking an action. In Maskin, first-class typed rows (`knowledge`, `loop`, `insight`, `bet`, `task`, and custom types) are operated on by tools like `create_objects` and `update_objects`; opaque blobs (uploads, generated files, screenshots) are stored via `create_file` and attached to objects. Prefer a typed `knowledge` object when the content is human-readable reference material; prefer a file when it is a raw artifact.
 
 ### How do I list all MCP tools?
-MCP clients (Claude, Claude Code, Cursor, ChatGPT, VS Code) surface the full manifest under the connected server — every tool has a name, description, and JSONSchema parameter shape. Programmatically, an MCP client discovers tools by calling `tools/list` on the server; the response is the source of truth for what is callable, and Maskin adds tools without breaking older ones. For a functional view of Maskin's tools, see the seven clusters above (object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, and extensions/sessions/fields/skills).
+MCP clients (Claude, Claude Code, Cursor, ChatGPT, VS Code) surface the full manifest under the connected server — every tool has a name, description, and JSONSchema parameter shape. Programmatically, an MCP client discovers tools by calling `tools/list` on the server; the response is the source of truth for what is callable, and Maskin adds tools without breaking older ones. For a functional view of Maskin's tools, see the eight clusters above (object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup).
 
 ### How do MCP tools relate to Maskin's object types?
 MCP tools are verbs; object types are nouns. The tool declares the operation (`create`, `update`, `list`, `search`); the type declares the shape being operated on. A single call names both — e.g. `create_objects` with `type: "loop"` and a valid `metadata` payload for that type. Type-specific validity (statuses, required fields, enum values) is enforced server-side on the write path against the workspace schema. Discover the type set with `get_workspace_schema`.
