@@ -205,7 +205,7 @@
     <p><strong>Files and integrations.</strong></p>
     <ul>
       <li><code>create_file</code> / <code>get_file</code> / <code>update_file</code> / <code>list_files</code> / <code>delete_file</code> — raw blobs addressed by id and attached to objects or comments. Different from typed <code>knowledge</code>: files are opaque bytes, <code>knowledge</code> is a first-class typed row in the graph.</li>
-      <li><code>list_integration_providers</code> / <code>list_integrations</code> / <code>connect_integration</code> / <code>disconnect_integration</code> — provider wiring (Slack, GitHub, Google Drive, Gmail, HubSpot, Stripe, Figma, etc.); the provider registry is what the workspace can talk to.</li>
+      <li><code>list_integration_providers</code> / <code>list_integrations</code> / <code>connect_integration</code> / <code>disconnect_integration</code> — provider wiring; the provider registry is what the workspace can talk to. The supported providers, their auth types, and which of them expose MCP tools to agents are listed on the <a href="/docs/integrations/">integrations page</a>.</li>
     </ul>
     <p><strong>Extensions, sessions, workspace fields, skills.</strong></p>
     <ul>
