@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MCP tools: verbs, object types, typed graph — Maskin</title>
-<meta name="description" content="MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed input schema (createobjects, getobjects, listrelationships) that reads or writes a specific shape. Maskin's MCP server exposes around 60 tools across seven clusters: ">
+<meta name="description" content="MCP tools are the callable operations an MCP server exposes to AI agents. Maskin exposes about 65, in eight clusters, plus the knowledge and loop object types.">
 
 <link rel="canonical" href="https://maskin.io/docs/mcp-tools/">
 
@@ -18,7 +18,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/docs/mcp-tools/">
 <meta property="og:title" content="MCP tools: verbs, object types, typed graph — Maskin">
-<meta property="og:description" content="MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed input schema (createobjects, getobjects, listrelationships) that reads or writes a specific shape. Maskin's MCP server exposes around 60 tools across seven clusters: ">
+<meta property="og:description" content="MCP tools are the callable operations an MCP server exposes to AI agents. Maskin exposes about 65, in eight clusters, plus the knowledge and loop object types.">
 <meta property="og:image" content="https://maskin.io/og-image-mcp-tools.png">
 <meta property="og:site_name" content="Maskin">
 
@@ -35,9 +35,9 @@
       "@type": "TechArticle",
       "@id": "https://maskin.io/docs/mcp-tools/#article",
       "headline": "MCP tools in Maskin: verbs, object types, and the typed workspace graph",
-      "description": "MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed input schema (createobjects, getobjects, listrelationships) that reads or writes a specific shape. Maskin's MCP server exposes around 60 tools across seven clusters: ",
+      "description": "MCP tools are the callable operations an MCP server exposes to AI agents. Maskin exposes about 65, in eight clusters, plus the knowledge and loop object types.",
       "datePublished": "2026-09-25T00:00:00Z",
-      "dateModified": "2026-09-25T00:00:00Z",
+      "dateModified": "2026-10-04T00:00:00Z",
       "author": {
         "@type": "Organization",
         "name": "Maskin",
@@ -93,7 +93,7 @@
           "name": "What are MCP tools?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed JSONSchema-defined input and a documented output. A tool call names both the verb and the shape it operates on: e.g. createobjects with type: \"knowledge\". Maskin's MCP server exposes around 60 tools across seven clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, and extensions/sessions/fields/skills. Every read or write against the workspace graph flows through one of them."
+            "text": "MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed JSONSchema-defined input and a documented output. A tool call names both the verb and the shape it operates on: e.g. create_objects with type: \"knowledge\". Maskin's MCP server exposes around 65 tools across eight clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup. Every read or write against the workspace graph flows through one of them."
           }
         },
         {
@@ -101,7 +101,7 @@
           "name": "What is the difference between MCP tools and MCP resources?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tools are verbs — write-path actions with side effects. Resources are read-only URIs a server exposes for context lookup without invoking an action. In Maskin, first-class typed rows (knowledge, loop, insight, bet, task, and custom types) are operated on by tools like createobjects and updateobjects; opaque blobs (uploads, generated files, screenshots) are stored via createfile and attached to objects. Prefer a typed knowledge object when the content is human-readable reference material; prefer a file when it is a raw artifact."
+            "text": "Tools are verbs — write-path actions with side effects. Resources are read-only URIs a server exposes for context lookup without invoking an action. In Maskin, first-class typed rows (knowledge, loop, insight, bet, task, and custom types) are operated on by tools like create_objects and update_objects; opaque blobs (uploads, generated files, screenshots) are stored via create_file and attached to objects. Prefer a typed knowledge object when the content is human-readable reference material; prefer a file when it is a raw artifact."
           }
         },
         {
@@ -109,7 +109,7 @@
           "name": "How do I list all MCP tools?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "MCP clients (Claude, Claude Code, Cursor, ChatGPT, VS Code) surface the full manifest under the connected server — every tool has a name, description, and JSONSchema parameter shape. Programmatically, an MCP client discovers tools by calling tools/list on the server; the response is the source of truth for what is callable, and Maskin adds tools without breaking older ones. For a functional view of Maskin's tools, see the seven clusters above (object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, and extensions/sessions/fields/skills)."
+            "text": "MCP clients (Claude, Claude Code, Cursor, ChatGPT, VS Code) surface the full manifest under the connected server — every tool has a name, description, and JSONSchema parameter shape. Programmatically, an MCP client discovers tools by calling tools/list on the server; the response is the source of truth for what is callable, and Maskin adds tools without breaking older ones. For a functional view of Maskin's tools, see the eight clusters above (object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup)."
           }
         },
         {
@@ -117,7 +117,7 @@
           "name": "How do MCP tools relate to Maskin's object types?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "MCP tools are verbs; object types are nouns. The tool declares the operation (create, update, list, search); the type declares the shape being operated on. A single call names both — e.g. createobjects with type: \"loop\" and a valid metadata payload for that type. Type-specific validity (statuses, required fields, enum values) is enforced server-side on the write path against the workspace schema. Discover the type set with getworkspaceschema."
+            "text": "MCP tools are verbs; object types are nouns. The tool declares the operation (create, update, list, search); the type declares the shape being operated on. A single call names both — e.g. create_objects with type: \"loop\" and a valid metadata payload for that type. Type-specific validity (statuses, required fields, enum values) is enforced server-side on the write path against the workspace schema. Discover the type set with get_workspace_schema."
           }
         },
         {
@@ -125,7 +125,7 @@
           "name": "Can I create custom MCP tools in Maskin?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The MCP tool surface itself is server-defined and workspace-agnostic — you do not add new verbs per workspace. What you can customise is what those verbs operate on. Object types, their custom metadata fields, valid statuses per type, and relationship types are workspace-configurable through the extension system (createextension, createworkspacefield). Once configured, a custom stakeholder or experiment type behaves identically to a built-in: the same createobjects, getobjects, updateobjects verbs apply, and getworkspaceschema reflects the live configuration."
+            "text": "The MCP tool surface itself is server-defined and workspace-agnostic — you do not add new verbs per workspace. What you can customise is what those verbs operate on. Object types, their custom metadata fields, valid statuses per type, and relationship types are workspace-configurable through the extension system (create_extension, create_workspace_field). Once configured, a custom stakeholder or experiment type behaves identically to a built-in: the same create_objects, get_objects, update_objects verbs apply, and get_workspace_schema reflects the live configuration."
           }
         }
       ]
@@ -140,19 +140,21 @@
 <noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
 
 <div class="wrap doc-layout">
-  <aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="is-active" href="/docs/mcp-tools/" aria-current="page">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li></ul></nav></aside>
+  <aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="is-active" href="/docs/mcp-tools/" aria-current="page">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li></ul></nav></aside>
         <main class="doc-content">
     <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / MCP tools</p>
     <p class="eyebrow">Reference</p>
     <h1>MCP tools in Maskin: verbs, object types, and the typed workspace graph</h1>
-    <p class="lead">MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed input schema (<code>create_objects</code>, <code>get_objects</code>, <code>list_relationships</code>) that reads or writes a specific shape. Maskin's MCP server exposes around 60 tools across seven clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, and extensions/sessions/fields/skills. This reference lists the verbs and documents two of the core object types they operate on — <code>knowledge</code> and <code>loop</code>.</p>
+    <p class="lead">MCP tools are the callable operations a Model Context Protocol server exposes to AI agents, each one a verb with a typed input schema, such as <code>create_objects</code> or <code>get_objects</code>. Maskin's MCP server exposes around 65 of them. This reference groups the verbs by cluster and documents two core object types they operate on: <code>knowledge</code> and <code>loop</code>.</p>
     <div class="callout callout--muted">
       <div class="callout__icon" aria-hidden="true">&#10003;</div>
       <div class="callout__body">
         <strong>Key takeaways</strong>
         <ul>
           <li>MCP tools are verbs; object types are nouns. A tool call names both — the tool declares the operation, the type declares the shape being written or read.</li>
-          <li>Maskin's MCP server exposes ~60 tools across seven clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, and extensions/sessions/fields/skills.</li>
+          <li>Maskin's MCP server exposes ~65 tools across eight clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup.</li>
+          <li>Edges have three write paths: <code>create_objects</code> and <code>update_objects</code> take an <code>edges</code> parameter for object-to-object links, and <code>create_relationship</code> writes one edge at a time between objects or files.</li>
+          <li>Conversations (chats with participants) and comments (events on an object) are different channels with different length limits: 8,000 characters for a conversation message, 2,000 for a comment.</li>
           <li>Object types (<code>insight</code>, <code>bet</code>, <code>task</code>, <code>knowledge</code>, <code>loop</code>, <code>content</code>, plus custom types) are workspace-configurable — call <code>get_workspace_schema</code> to see the live list, valid statuses, and metadata fields.</li>
           <li><code>knowledge</code> is the durable, curated reference layer: statused <code>draft → validated → deprecated</code>, carrying <code>summary</code>, <code>doc_type</code>, <code>confidence</code>, and a review cadence.</li>
           <li><code>loop</code> is a named, iterative multi-agent process that wraps triggers + agents around a pipeline of object states — objects of any type flow through it via the <code>in_loop</code> edge.</li>
@@ -161,15 +163,16 @@
     </div>
     <h2>The MCP tools Maskin exposes</h2>
     <p>Maskin's MCP server surfaces its verbs under the <code>mcp__maskin__</code> namespace. Each tool has a JSONSchema-defined parameter shape and validates its input server-side; type-specific validity (statuses, required fields, enum values) is enforced on the write path against <code>settings.statuses.&lt;type&gt;</code> and workspace-configured field schemas.</p>
-    <p>The seven clusters are:</p>
+    <p>The eight clusters are:</p>
     <ul>
       <li>Object operations — create, read, update, delete typed rows in the graph.</li>
-      <li>Relationship operations — enumerate, traverse, and delete edges.</li>
+      <li>Relationship operations — write, enumerate, traverse, and delete edges.</li>
       <li>Schema and discovery — inspect live type, status, and field configuration.</li>
       <li>Triggers and loops — steps and processes that wire agents to object state.</li>
       <li>Comments, events, actors — the agent-to-human channel and event timeline.</li>
       <li>Files and integrations — raw blob storage plus provider wiring.</li>
       <li>Extensions, sessions, workspace fields, skills — workspace customisation.</li>
+      <li>Conversations, inbox, workspace setup — chats and the unread feed.</li>
     </ul>
     <p><strong>Object operations.</strong></p>
     <ul>
@@ -181,10 +184,19 @@
     </ul>
     <p><strong>Relationship operations.</strong></p>
     <ul>
+      <li><code>create_relationship</code> — write one directed, typed edge. Parameters: <code>source_id</code>, <code>target_id</code>, <code>type</code>, and an optional <code>workspace_id</code>. Each endpoint can be an object or a file; the server works out which from the id, so you never pass a kind. Calling it twice with the same source, target and type succeeds both times and stores one edge. If either id is not an object or file in the workspace, the call fails with a 404 that lists the ids it could not resolve. Conversation and session endpoints cannot be written through this tool.</li>
       <li><code>list_relationships</code> — direction-agnostic (<code>object_id</code>) or directional (<code>source_id</code> / <code>target_id</code>) enumeration; use direction-agnostic mode when you want every edge on an object regardless of orientation.</li>
       <li><code>traverse_graph</code> — bounded multi-hop breadth-first traversal from a start object; useful for resolving <code>supersedes</code> / <code>contradicts</code> chains, walking <code>breaks_into</code> hierarchies, or pulling multi-hop context in one call.</li>
-      <li><code>delete_relationship</code> — remove a single edge; the objects on either end stay.</li>
+      <li><code>delete_relationship</code> — remove a single edge by its edge id (<code>id</code>, plus optional <code>workspace_id</code>); works for edges with file endpoints too, and the objects on either end stay.</li>
     </ul>
+    <p><strong>Which tool writes which edge.</strong></p>
+    <ul>
+      <li>New objects plus their edges in one go: <code>create_objects</code> with its <code>edges</code> parameter. One atomic call creates up to 50 objects, and edges can point at new objects by a temporary id or at existing objects by uuid. Object endpoints only.</li>
+      <li>An edge between two existing objects: <code>update_objects</code> with <code>edges</code> (no object change needed), or <code>create_relationship</code> for a single edge.</li>
+      <li>Any edge with a file at one end, added after the fact: <code>create_relationship</code>. Example: to attach an uploaded file to a bet, set <code>source_id</code> to the bet, <code>target_id</code> to the file, and <code>type</code> to <code>attached</code>.</li>
+      <li>Removing an edge: <code>delete_relationship</code>.</li>
+    </ul>
+    <p>The <code>type</code> string is not an enum on the tool. The five built-in types are <code>informs</code>, <code>breaks_into</code>, <code>blocks</code>, <code>relates_to</code> and <code>duplicates</code>; extensions and modules add more (<code>attached</code>, <code>in_loop</code>, <code>supersedes</code>, <code>contradicts</code>, <code>about</code>, and so on), and workspaces can declare their own. Read the live list from the <code>relationship_types</code> field of <code>get_workspace_schema</code> instead of hardcoding it.</p>
     <p><strong>Schema and discovery.</strong></p>
     <ul>
       <li><code>get_workspace_schema</code> — the single source of truth for object types, their custom metadata fields, valid statuses per type, and configured relationship types. Call this before hardcoding any enum against product defaults; workspaces override or extend defaults through the extension system.</li>
@@ -213,6 +225,26 @@
       <li><code>create_session</code> / <code>get_session</code> / <code>stop_session</code> / <code>pause_session</code> / <code>resume_session</code> / <code>list_sessions</code> — agent runtime sessions; the object that captures a specific agent invocation and its transcript.</li>
       <li><code>create_workspace_field</code> / <code>update_workspace_field</code> / <code>delete_workspace_field</code> — declare custom metadata fields per object type at the workspace level.</li>
       <li><code>create_workspace_skill</code> / <code>get_workspace_skill</code> / <code>list_workspace_skills</code> / <code>update_workspace_skill</code> / <code>delete_workspace_skill</code> — workspace-scoped skill packs that agents can invoke; the recipe layer above the raw MCP verbs.</li>
+    </ul>
+    <p><strong>Conversations, inbox, workspace setup.</strong></p>
+    <p>A conversation is a chat between people and agents. It is not attached to any object, which is what separates it from a comment.</p>
+    <ul>
+      <li><strong>Conversation message:</strong> up to 8,000 characters, sent to a list of participants. Each participant has their own read position, tracked by message id. Mentioning a workspace agent in a message adds it to the chat.</li>
+      <li><strong>Comment:</strong> up to 2,000 characters, posted on an object. Supports threads, <code>@mentions</code>, an <code>attention</code> score and a <code>decision</code> card, and is what reaches a human's For You feed.</li>
+    </ul>
+    <p>To talk to a human about an object, use <code>create_comment</code>. To leave a note inside a chat you are already part of, use <code>post_conversation_message</code>.</p>
+    <ul>
+      <li><code>get_conversation</code> — takes <code>conversation_id</code>. Returns the conversation, your own state in it (pinned, archived, unread count, last read message id), and the active participants with name, type and who added them.</li>
+      <li><code>list_conversation_messages</code> — takes <code>conversation_id</code>, optional <code>before_id</code> / <code>after_id</code> message ids, and a <code>limit</code> of 1 to 200 (default 50). Returns messages newest first with a has-more flag. Paging is by message id, not by time, and reading does not move your read position.</li>
+      <li><code>post_conversation_message</code> — takes <code>conversation_id</code>, <code>content</code> (1 to 8,000 characters) and optional <code>metadata</code>: up to 10 attachments, up to 50 mentions, plus context objects. It is not idempotent, so a retry posts a second message.</li>
+    </ul>
+    <p>The conversation tools are mostly useful inside chat sessions.</p>
+    <ul>
+      <li><code>list_unread</code> — a page of objects with unread activity for the caller (<code>limit</code> 1 to 100, default 25, plus a <code>cursor</code>). Each row carries the unread count, mention count, highest attention score, latest event id and the latest mention. It covers objects only (not conversations) and shows only the caller's own feed.</li>
+      <li><code>mark_read</code> — takes <code>entity_type</code> (<code>object</code>), <code>entity_id</code> and <code>last_event_id</code>, the latest event id you have seen, as returned by <code>list_unread</code>. The stored read position only ever moves forward. There is no tool to mark something unread again.</li>
+      <li><code>get_started</code> — orientation for a fresh workspace. With no <code>loop_id</code> it lists the marketplace loops you can install; with a <code>loop_id</code> and <code>confirm</code> it optionally renames the workspace and installs that loop. It returns plain text and is a setup step, not part of everyday work.</li>
+      <li><code>create_workspace</code> — takes a <code>name</code> and optional <code>settings</code>, and has no <code>workspace_id</code>. The caller becomes owner.</li>
+      <li><code>update_workspace</code> — takes the workspace <code>id</code>, a <code>name</code> and <code>settings</code>. Settings are merged into the existing ones.</li>
     </ul>
     <p>A full call names both a verb and a type: e.g. <code>create_objects</code> with <code>type: "knowledge"</code> and a <code>metadata</code> payload validated against the <code>knowledge</code> schema. The next section documents two of the object types those tools operate on in depth.</p>
     <h2>Object types the tools operate on</h2>
@@ -310,11 +342,11 @@
     <p><strong>How it relates to <code>insight</code> / <code>bet</code> / <code>task</code>.</strong> Membership, not a peer relationship. Objects of <em>any</em> type — <code>insight</code>, <code>bet</code>, <code>task</code>, or a custom type — flow through a loop via <code>in_loop</code> (the explicit membership edge — nothing is inducted by the prose conditions). A member closes when its own status reaches a terminal status for its type; the read path derives <code>inProgressCount</code> / <code>closedCount</code> / <code>medianTimeToCloseMs</code> from the <code>in_loop</code> edge plus that status. The prose <code>entry_condition</code> / <code>close_condition</code> describe intent; they gate and close nothing at runtime. So a loop is the process <em>around</em> the work, not another kind of work: e.g. a Product-Discovery loop takes <code>insight</code> objects in at <code>new</code>, moves them through <code>clustered</code> and <code>scored</code>, and produces <code>bet</code> objects; a delivery loop takes <code>task</code> objects from <code>todo</code> to <code>done</code>. The loop's trust rung governs how much of that runs without a human gate.</p>
     <h2>FAQ</h2>
     <h3>What are MCP tools?</h3>
-    <p>MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed JSONSchema-defined input and a documented output. A tool call names both the verb and the shape it operates on: e.g. <code>create_objects</code> with <code>type: "knowledge"</code>. Maskin's MCP server exposes around 60 tools across seven clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, and extensions/sessions/fields/skills. Every read or write against the workspace graph flows through one of them.</p>
+    <p>MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed JSONSchema-defined input and a documented output. A tool call names both the verb and the shape it operates on: e.g. <code>create_objects</code> with <code>type: "knowledge"</code>. Maskin's MCP server exposes around 65 tools across eight clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup. Every read or write against the workspace graph flows through one of them.</p>
     <h3>What is the difference between MCP tools and MCP resources?</h3>
     <p>Tools are verbs — write-path actions with side effects. Resources are read-only URIs a server exposes for context lookup without invoking an action. In Maskin, first-class typed rows (<code>knowledge</code>, <code>loop</code>, <code>insight</code>, <code>bet</code>, <code>task</code>, and custom types) are operated on by tools like <code>create_objects</code> and <code>update_objects</code>; opaque blobs (uploads, generated files, screenshots) are stored via <code>create_file</code> and attached to objects. Prefer a typed <code>knowledge</code> object when the content is human-readable reference material; prefer a file when it is a raw artifact.</p>
     <h3>How do I list all MCP tools?</h3>
-    <p>MCP clients (Claude, Claude Code, Cursor, ChatGPT, VS Code) surface the full manifest under the connected server — every tool has a name, description, and JSONSchema parameter shape. Programmatically, an MCP client discovers tools by calling <code>tools/list</code> on the server; the response is the source of truth for what is callable, and Maskin adds tools without breaking older ones. For a functional view of Maskin's tools, see the seven clusters above (object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, and extensions/sessions/fields/skills).</p>
+    <p>MCP clients (Claude, Claude Code, Cursor, ChatGPT, VS Code) surface the full manifest under the connected server — every tool has a name, description, and JSONSchema parameter shape. Programmatically, an MCP client discovers tools by calling <code>tools/list</code> on the server; the response is the source of truth for what is callable, and Maskin adds tools without breaking older ones. For a functional view of Maskin's tools, see the eight clusters above (object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup).</p>
     <h3>How do MCP tools relate to Maskin's object types?</h3>
     <p>MCP tools are verbs; object types are nouns. The tool declares the operation (<code>create</code>, <code>update</code>, <code>list</code>, <code>search</code>); the type declares the shape being operated on. A single call names both — e.g. <code>create_objects</code> with <code>type: "loop"</code> and a valid <code>metadata</code> payload for that type. Type-specific validity (statuses, required fields, enum values) is enforced server-side on the write path against the workspace schema. Discover the type set with <code>get_workspace_schema</code>.</p>
     <h3>Can I create custom MCP tools in Maskin?</h3>
