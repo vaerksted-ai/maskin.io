@@ -43,7 +43,7 @@ The seven clusters are:
 - `list_actors` / `get_actor` / `create_actor` / `update_actor` — humans and agents that own or drive objects; each actor has a short description and, for agents, a system prompt that is the source of truth for their instructions.
 **Files and integrations.**
 - `create_file` / `get_file` / `update_file` / `list_files` / `delete_file` — raw blobs addressed by id and attached to objects or comments. Different from typed `knowledge`: files are opaque bytes, `knowledge` is a first-class typed row in the graph.
-- `list_integration_providers` / `list_integrations` / `connect_integration` / `disconnect_integration` — provider wiring (Slack, GitHub, Google Drive, Gmail, HubSpot, Stripe, Figma, etc.); the provider registry is what the workspace can talk to.
+- `list_integration_providers` / `list_integrations` / `connect_integration` / `disconnect_integration` — provider wiring; the provider registry is what the workspace can talk to. The supported providers, their auth types, and which of them expose MCP tools to agents are listed on the [integrations page](/docs/integrations/).
 **Extensions, sessions, workspace fields, skills.**
 - `create_extension` / `update_extension` / `delete_extension` / `list_extensions` — extensions declare custom object types, custom metadata fields, and workspace-specific relationship types.
 - `create_session` / `get_session` / `stop_session` / `pause_session` / `resume_session` / `list_sessions` — agent runtime sessions; the object that captures a specific agent invocation and its transcript.
