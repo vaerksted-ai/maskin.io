@@ -319,7 +319,7 @@ MCP tools are the callable operations a Model Context Protocol server exposes to
 > Conversations (chats with participants) and comments (events on an object) are different channels with different length limits: 8,000 characters for a conversation message, 2,000 for a comment.
 > Object types (`insight`, `bet`, `task`, `knowledge`, `loop`, `content`, plus custom types) are workspace-configurable — call `get_workspace_schema` to see the live list, valid statuses, and metadata fields.
 > `knowledge` is the durable, curated reference layer: statused `draft → validated → deprecated`, carrying `summary`, `doc_type`, `confidence`, and a review cadence.
-> `loop` is a named, iterative multi-agent process that wraps triggers + agents around a pipeline of object states — objects of any type flow through it via the `in_loop` edge.
+> `loop` is a named, iterative multi-agent process that wraps triggers + agents around a pipeline of object states — objects of any type flow through it via the `in_loop` edge. Loops are created with `create_loop`, not `create_objects`.
 
 ## The MCP tools Maskin exposes
 Maskin's MCP server surfaces its verbs under the `mcp__maskin__` namespace. Each tool has a JSONSchema-defined parameter shape and validates its input server-side; type-specific validity (statuses, required fields, enum values) is enforced on the write path against `settings.statuses.<type>` and workspace-configured field schemas.
@@ -351,7 +351,7 @@ The eight clusters are:
 The `type` string is not an enum on the tool. The five built-in types are `informs`, `breaks_into`, `blocks`, `relates_to` and `duplicates`; extensions and modules add more (`attached`, `in_loop`, `supersedes`, `contradicts`, `about`, and so on), and workspaces can declare their own. Read the live list from the `relationship_types` field of `get_workspace_schema` instead of hardcoding it.
 **Schema and discovery.**
 - `get_workspace_schema` — the single source of truth for object types, their custom metadata fields, valid statuses per type, and configured relationship types. Call this before hardcoding any enum against product defaults; workspaces override or extend defaults through the extension system.
-- `list_workspaces` — enumerate the workspaces the caller belongs to; used at boot to resolve the default workspace id.
+- `list_workspaces` — enumerate the workspaces the caller belongs to; this is where the `workspace_id` that most write tools require comes from.
 **Triggers and loops.**
 - `create_trigger` / `update_trigger` / `delete_trigger` / `list_triggers` — a trigger is a step: it fires a named agent when an object matches an event predicate (`created`, `status_changed`, `commented`, ...) or on a cron schedule.
 - `create_loop` / `get_loop` / `update_loop` / `delete_loop` / `list_loops` — a loop wraps a set of triggers + agents around a pipeline of object states; objects join it via the `in_loop` edge, `entry_condition` and `close_condition` are plain-language prose describing that pipeline, and `closed_statuses` is the done-marker the read path actually uses. `create_loop` is the only way to create a loop; `create_objects` does not wire a loop's trigger and membership metadata.

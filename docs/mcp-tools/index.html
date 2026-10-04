@@ -157,7 +157,7 @@
           <li>Conversations (chats with participants) and comments (events on an object) are different channels with different length limits: 8,000 characters for a conversation message, 2,000 for a comment.</li>
           <li>Object types (<code>insight</code>, <code>bet</code>, <code>task</code>, <code>knowledge</code>, <code>loop</code>, <code>content</code>, plus custom types) are workspace-configurable — call <code>get_workspace_schema</code> to see the live list, valid statuses, and metadata fields.</li>
           <li><code>knowledge</code> is the durable, curated reference layer: statused <code>draft → validated → deprecated</code>, carrying <code>summary</code>, <code>doc_type</code>, <code>confidence</code>, and a review cadence.</li>
-          <li><code>loop</code> is a named, iterative multi-agent process that wraps triggers + agents around a pipeline of object states — objects of any type flow through it via the <code>in_loop</code> edge.</li>
+          <li><code>loop</code> is a named, iterative multi-agent process that wraps triggers + agents around a pipeline of object states — objects of any type flow through it via the <code>in_loop</code> edge. Loops are created with <code>create_loop</code>, not <code>create_objects</code>.</li>
         </ul>
       </div>
     </div>
@@ -200,7 +200,7 @@
     <p><strong>Schema and discovery.</strong></p>
     <ul>
       <li><code>get_workspace_schema</code> — the single source of truth for object types, their custom metadata fields, valid statuses per type, and configured relationship types. Call this before hardcoding any enum against product defaults; workspaces override or extend defaults through the extension system.</li>
-      <li><code>list_workspaces</code> — enumerate the workspaces the caller belongs to; used at boot to resolve the default workspace id.</li>
+      <li><code>list_workspaces</code> — enumerate the workspaces the caller belongs to; this is where the <code>workspace_id</code> that most write tools require comes from.</li>
     </ul>
     <p><strong>Triggers and loops.</strong></p>
     <ul>
