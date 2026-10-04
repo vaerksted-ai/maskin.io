@@ -14,6 +14,7 @@ MCP tools are the callable operations a Model Context Protocol server exposes to
 
 ## The MCP tools Maskin exposes
 Maskin's MCP server surfaces its verbs under the `mcp__maskin__` namespace. Each tool has a JSONSchema-defined parameter shape and validates its input server-side; type-specific validity (statuses, required fields, enum values) is enforced on the write path against `settings.statuses.<type>` and workspace-configured field schemas.
+Coding agents are MCP clients too. On [the open-source AI coding agent shortlist](/alternatives/open-source-ai-coding-agent/), Cline is MCP-native and Goose builds its tool use on MCP, so either can call the verbs below.
 The eight clusters are:
 - Object operations — create, read, update, delete typed rows in the graph.
 - Relationship operations — write, enumerate, traverse, and delete edges.
