@@ -163,6 +163,7 @@
     </div>
     <h2>The MCP tools Maskin exposes</h2>
     <p>Maskin's MCP server surfaces its verbs under the <code>mcp__maskin__</code> namespace. Each tool has a JSONSchema-defined parameter shape and validates its input server-side; type-specific validity (statuses, required fields, enum values) is enforced on the write path against <code>settings.statuses.&lt;type&gt;</code> and workspace-configured field schemas.</p>
+    <p>Coding agents are MCP clients too. On <a href="/alternatives/open-source-ai-coding-agent/">the open-source AI coding agent shortlist</a>, Cline is MCP-native and Goose builds its tool use on MCP, so either can call the verbs below.</p>
     <p>The eight clusters are:</p>
     <ul>
       <li>Object operations — create, read, update, delete typed rows in the graph.</li>
