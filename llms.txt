@@ -108,4 +108,4 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 ## Contact
 
 - Email: ai@maskin.io — for product questions, demos, and enterprise/self-host enquiries.
-- Book a meeting with the founders: https://meshfirm.com/bookmagnus
+- Book a walkthrough with the founders: https://meshfirm.com/bookmagnus
