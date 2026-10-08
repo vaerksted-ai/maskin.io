@@ -65,6 +65,7 @@ Probably not. The loop is scoped to team decisions — shaped bets, human taste 
 ## Where to go next
 This piece is the tier-3 leg of the trilogy hub, [The three tiers of AI-native work — the closure diagnostic](/docs/three-tiers-ai-native-work/), which runs the same diagnostic across all three tiers of AI-native work.
 If you’re evaluating the tier past capture, the two companion pieces are worth reading side by side. The [cornerstone on agentic workspaces](/docs/what-is-an-agentic-workspace/) walks the full shape end to end. The tier-2 companion, [AI product management tool: not a task tracker](/docs/ai-product-management-tool/), runs the same diagnostic against task trackers with AI summaries. For the operational expression of the anti-backlog doctrine that makes the bet a first-class object, see [bet-based product planning](/docs/bet-based-product-planning/).
+If you’re deciding which knowledge-layer architecture your agents should read from, [how to choose a knowledge layer for your agents](/docs/learn/choose-a-knowledge-layer/) walks the four options (retrieval-beside, stateful-runtime, temporal-knowledge-graph, typed workspace graph) and the two questions that decide.
 Maskin is open source under Apache 2.0. Self-hosting is free — clone the repo and run the loop on your own infrastructure. Hosted Pro is $20/seat/month with agent credits included; Team is $200/workspace/month with unlimited seats. The knowledge space keeps what you know; the agentic workspace turns what you know into decisions that ship.
 Read next
 

@@ -52,7 +52,7 @@ This is the practical question behind the commercial one. A skill is a folder, a
 - **In a repository or prompt.** The skill sits in the project, and someone loads it when they remember. Simple, portable, and entirely dependent on human recall.
 - **Inside a vendor's agent.** The skill loads when the vendor's agent decides a task matches its description. You get automatic loading, and you accept that vendor's environment and review process.
 - **Inside a workspace that holds state.** The skill loads when the workspace changes in a way the trigger defines — a record moves status, a stage completes. The skill is invoked by the work itself, not by a person and not by a description match alone.
-The third is where the category is heading, and it is the reason a marketplace built only for browsing will feel incomplete to a team that has to ship. It is also the reason to ask, of any marketplace, not just what it lists but what runs the listing. Skills are the primitive. Something has to give them a job.
+The third is where the category is heading, and it is the reason a marketplace built only for browsing will feel incomplete to a team that has to ship. It is also the reason to ask, of any marketplace, not just what it lists but what runs the listing. Skills are the primitive. Something has to give them a job, and something has to review the risky ones: an [approval gate before side-effecting tool calls](/docs/learn/human-in-the-loop/) is what keeps a skill that can send or write under human control.
 
 ## FAQ
 

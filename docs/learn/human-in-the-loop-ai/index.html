@@ -195,7 +195,7 @@
       <li><strong>Tiered approvals enforced at the governance layer.</strong> The agent cannot escalate its own tier; policy is set outside the agent and enforced when the agent tries to act.</li>
       <li><strong>An event-sourced audit trail.</strong> Every action, every intervention, every halt is a typed event, so an auditor can reconstruct the oversight arrangement after the fact.</li>
     </ul>
-    <p>Maskin&rsquo;s workspace is built on a typed object graph &mdash; insights, bets, tasks, loops &mdash; with per-loop autonomy settings and an audit trail that treats every agent action as a typed transition. Gates live on the object, override rate is measurable per action class, and the audit trail is the graph&rsquo;s own history. The deeper architecture write-up is the <a href="/docs/ambient-agent-workspace/">ambient agent workspace piece</a>.</p>
+    <p>Maskin&rsquo;s workspace is built on a typed object graph &mdash; insights, bets, tasks, loops &mdash; with per-loop autonomy settings and an audit trail that treats every agent action as a typed transition. Gates live on the object, override rate is measurable per action class, and the audit trail is the graph&rsquo;s own history. The deeper architecture write-up is the <a href="/docs/ambient-agent-workspace/">ambient agent workspace piece</a>. A concrete example of a human gate on a decision is <a href="/docs/at-risk-account-alerts/">the human call on an at-risk account&rsquo;s recovery bet</a>, where a person decides whether the bet is right and commits the resources.</p>
 
     <div class="callout callout--muted">
       <div class="callout__icon" aria-hidden="true">✓</div>
