@@ -7,7 +7,7 @@ Maskin gives humans and AI agents one shared place to work. Everything flows thr
 Run it two ways: **self-hosted** (one `docker-compose` file, free under Apache 2.0) or **managed**. Bring your own model key (Anthropic, OpenAI, or local via Ollama).
 
 Setup in one line — connect Claude to a Maskin instance over MCP, then ask Claude to call `get_started`:
-`claude mcp add maskin --transport http --url https://<your-maskin-host>/mcp --header "Authorization: Bearer <MASKIN_API_KEY>" --header "X-Workspace-Id: <WORKSPACE_ID>"`
+`claude mcp add --transport http maskin https://<your-maskin-host>/mcp --header "Authorization: Bearer <MASKIN_API_KEY>" --header "X-Workspace-Id: <WORKSPACE_ID>"`
 
 ## Top pages
 
@@ -108,4 +108,4 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 ## Contact
 
 - Email: ai@maskin.io — for product questions, demos, and enterprise/self-host enquiries.
-- Book a walkthrough with the founders: https://meshfirm.com/bookmagnus
+- Book a meeting with the founders: https://meshfirm.com/bookmagnus
