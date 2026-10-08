@@ -34,11 +34,10 @@ Only the last four characters are shown after saving.
 ## Step 4 — Connect Claude to your Maskin MCP
 
 ### Claude Code
-Register the MCP server, pointing the URL at your instance:
+Register the MCP server. The URL of your instance goes after the server name:
 ```
-claude mcp add maskin \
-  --transport http \
-  --url https://<your-maskin-host>/mcp \
+claude mcp add --transport http maskin \
+  https://<your-maskin-host>/mcp \
   --header "Authorization: Bearer <YOUR_MASKIN_API_KEY>" \
   --header "X-Workspace-Id: <YOUR_WORKSPACE_ID>"
 ```
