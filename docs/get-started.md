@@ -1,7 +1,7 @@
 > Source: https://maskin.io/docs/get-started/
 
 # Get started with Maskin
-Maskin is an open-source, MCP-native system where your whole team — humans *and* AI agents — closes the loop together, from customer signal to shipped bet to measured outcome, with shared memory and a real process.
+This page is the Maskin overview and the place to pick a hosting path. For the hands-on tutorial, see the [Quickstart tutorial](/docs/quickstart/). Maskin is an open-source, MCP-native system where your whole team — humans *and* AI agents — closes the loop together, from customer signal to shipped bet to measured outcome, with shared memory and a real process.
 Most AI tools are built for one person in one chat window. Maskin is built for a team: a shared place where people and agents see the same objects, follow the same process, and build on the same context over time. It's **MCP-native**, so you can drive a workspace directly from inside Claude Code or Claude Desktop.
 
 ## The unified pipeline
@@ -16,8 +16,8 @@ Pick the path that fits how you want to operate.
 > The setup guide covers the **self-hosted** version. For managed hosting, [book a meeting](https://meshfirm.com/bookmagnus) with the founders.
 
 ## Next steps
-- Prefer a hands-on walkthrough? → [Quickstart tutorial](/docs/quickstart/) — empty instance to an agent doing real work in about ten minutes, all driven from Claude
+- Set up your own instance → [Self-hosted setup](/docs/get-started/self-hosted/) (on managed hosting, [book a meeting](https://meshfirm.com/bookmagnus) instead)
+- Then try it hands-on → [Quickstart tutorial](/docs/quickstart/): empty instance to an agent doing real work in about ten minutes, all driven from Claude
 - Understand the model → [Core concepts](/docs/concepts/)
-- Set up your own instance → [Self-hosted setup](/docs/get-started/self-hosted/)
 - See what agents can do → [MCP tools](/docs/mcp-tools/) and [Agents & sessions](/docs/agents/)
 - Browse the code → [GitHub](https://github.com/sindre-ai/maskin)

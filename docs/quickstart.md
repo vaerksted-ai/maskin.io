@@ -1,13 +1,13 @@
 > Source: https://maskin.io/docs/quickstart/
 
-# Quickstart tutorial
-Go from an empty instance to an agent doing real work in about ten minutes — all driven from inside Claude. This is the hands-on companion to the [concepts](/docs/concepts/).
+# Maskin quickstart tutorial
+The hands-on Maskin quickstart: go from an empty instance to an agent doing real work in about ten minutes, all driven from inside Claude. It picks up after setup. For the overview and hosting options, start at [Get started](/docs/get-started/); when you finish, [Core concepts](/docs/concepts/) explains the model behind what you just did.
 
 ## Before you begin
-You need two things in place:
-- A **running Maskin instance** with your Anthropic key saved, and
-- **Claude connected** to it over MCP.
-Both are covered in [Self-hosted setup](/docs/get-started/self-hosted/) — finish that first, then come back here. Quick check: ask Claude *"List the maskin MCP tools"* and confirm you get a list back.
+You need a running Maskin instance with Claude connected to it over MCP. Which setup applies depends on how you run Maskin:
+- **Managed hosting:** your instance is already running, so there is no setup to do. Make sure Claude is connected to it over MCP, then start at Step 1.
+- **Self-hosted:** run your own instance with your Anthropic key saved and Claude connected. Both are covered in [Self-hosted setup](/docs/get-started/self-hosted/). Finish that first, then come back here.
+Quick check: ask Claude *"List the maskin MCP tools"* and confirm you get a list back.
 
 ## Step 1 — Seed your workspace
 Ask Claude:
@@ -45,6 +45,7 @@ Claude uses `list_sessions` / `get_session` to stream the run. You'll see it mov
 > Everything you just did by chatting maps to MCP tools — browse the full set in the [MCP tools reference](/docs/mcp-tools/).
 
 ## Where to go next
+- Learn the model → [Core concepts](/docs/concepts/)
 - Automate it → create a [trigger](/docs/concepts/) so an agent runs on a schedule or on events.
 - Connect your tools → [Integrations setup](/docs/integrations/) (Slack, GitHub, Linear, Gmail, PostHog).
 - Understand the run model → [Agents & sessions](/docs/agents/).
