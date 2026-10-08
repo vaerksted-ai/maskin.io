@@ -1,0 +1,46 @@
+name: Regenerate docs mirrors
+
+# Manual only. Refreshes the .md mirrors and llms-full.txt from the docs HTML
+# (scripts_gen_md.py) and, optionally, adds a new page to every baked-in docs sidebar
+# (scripts_sync_sidebar.py). Commits the result back to the ref it was run on.
+on:
+  workflow_dispatch:
+    inputs:
+      sidebar_new_slug:
+        description: "Optional: slug of a new docs page to add to every sidebar"
+        required: false
+      sidebar_label:
+        description: "Sidebar label for the new page"
+        required: false
+      sidebar_after_slug:
+        description: "Existing slug the new entry goes after"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  regen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Sync sidebar
+        if: ${{ inputs.sidebar_new_slug != '' }}
+        env:
+          NEW_SLUG: ${{ inputs.sidebar_new_slug }}
+          LABEL: ${{ inputs.sidebar_label }}
+          AFTER_SLUG: ${{ inputs.sidebar_after_slug }}
+        run: python3 scripts_sync_sidebar.py "$NEW_SLUG" "$LABEL" "$AFTER_SLUG"
+      - name: Regenerate md mirrors and llms-full.txt
+        run: python3 scripts_gen_md.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Regenerate docs mirrors and llms-full.txt"
+          git push
