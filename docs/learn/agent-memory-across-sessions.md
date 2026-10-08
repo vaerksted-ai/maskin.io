@@ -45,7 +45,7 @@ Persistence is the point. The workspace graph is what makes it possible, and it 
 ## FAQ
 
 ### Does Claude Code have memory?
-Claude Code has project memory: files such as CLAUDE.md that carry instructions into a session, and a memory tool for managed agents. That is real, but it is memory of instructions and project context, not memory of runs. On its own it does not persist what your scheduled agent decided, what you corrected, or what it produced last Monday. If your scheduled run starts from scratch, the gap is on the run side, not the project side.
+Claude Code has project memory: files such as CLAUDE.md that carry instructions into a session, and a memory tool for managed agents. That is real, but it is memory of instructions and project context, not memory of runs. On its own it does not persist what your scheduled agent decided, what you corrected, or what it produced last Monday. If your scheduled run starts from scratch, the gap is on the run side, not the project side. For the product manager's view of the same limits, see [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/).
 
 ### How do agents remember across sessions?
 By writing their state somewhere that outlives the process, then reading it back at the start of the next run. That store has to hold three things to work: the decisions made, the corrections applied, and the artifacts produced. Anything less and the agent re-derives context it already had, which is where drift and repeated mistakes come from.
