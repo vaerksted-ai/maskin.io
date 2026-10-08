@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code vs Codex: pick by job, keep one record | Maskin</title>
+<meta name="description" content="Claude Code vs Codex compared from each vendor's own docs: how to choose by job, what breaks when a team uses both, and where the shared record lives.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/claude-code-vs-codex/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/claude-code-vs-codex/">
+<meta property="og:title" content="Claude Code vs Codex: you don’t have to pick one, so keep one record">
+<meta property="og:description" content="Claude Code and Codex overlap more than the results page suggests. Choose by job, run a three-PR bake-off on your own repo, and keep one record when a team uses both.">
+<meta property="og:image" content="https://maskin.io/og-image-claude-code-vs-codex.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Claude Code vs Codex: you don’t have to pick one, so keep one record">
+<meta name="twitter:description" content="Claude Code and Codex overlap more than the results page suggests. Choose by job, run a three-PR bake-off on your own repo, and keep one record when a team uses both.">
+<meta name="twitter:image" content="https://maskin.io/og-image-claude-code-vs-codex.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/claude-code-vs-codex/#post",
+      "headline": "Claude Code vs Codex: you don’t have to pick one, so keep one record",
+      "name": "Claude Code vs Codex: you don’t have to pick one, so keep one record",
+      "description": "Claude Code vs Codex compared from each vendor's own docs: how to choose by job, what breaks when a team uses both, and where the shared record lives.",
+      "url": "https://maskin.io/docs/claude-code-vs-codex/",
+      "inLanguage": "en",
+      "datePublished": "2026-10-08T00:00:00Z",
+      "dateModified": "2026-10-08T00:00:00Z",
+      "image": [
+        "https://maskin.io/og-image-claude-code-vs-codex.svg"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/claude-code-vs-codex/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Claude Code"
+        },
+        {
+          "@type": "Thing",
+          "name": "OpenAI Codex"
+        },
+        {
+          "@type": "Thing",
+          "name": "AGENTS.md"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Claude Code vs Codex",
+          "item": "https://maskin.io/docs/claude-code-vs-codex/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which is better, Claude Code or Codex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Neither wins on every job, and no vendor documentation gives you a score for your code. Both offer a terminal agent, an instructions file, MCP, skills, subagents and a non-interactive mode. Decide on the account you already pay for, the provider your security team approved, and a three-task test on your own merged pull requests."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you use Claude Code and Codex together?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. They are separate tools with separate sign-ins, so nothing stops a team from running both. The practical problems are two instruction files, two permission setups and two session histories. Share one AGENTS.md through a CLAUDE.md import, and keep decisions and outcomes in a record outside both tools."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do Claude Code and Codex read the same instructions file?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not by default. Codex reads AGENTS.md. Claude Code reads CLAUDE.md, and per Anthropic’s memory page it reads AGENTS.md only when no CLAUDE.md exists in the working directory or above (v2.1.277 or later). To share one file, have your CLAUDE.md import AGENTS.md."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Codex CLI open source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The openai/codex repository on GitHub is licensed Apache-2.0, and its README describes Codex CLI as a coding agent from OpenAI that runs locally on your computer. Anthropic’s Claude Code overview page does not state a license, so check Anthropic’s current terms if that matters to you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which is cheaper, Claude Code or Codex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on your plan and how much you use it, and both vendors change plans and limits often. Claude Code needs a Claude subscription or Anthropic Console account. Codex comes with ChatGPT Plus, Pro, Business, Edu and Enterprise plans, or runs on an API key. Compare the vendors’ current pricing pages against your own usage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do Claude Code and Codex have usage limits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both are gated by the plan or API account you sign in with. We found no fixed numbers on the pages we read, and limits change often, so we print none. If a limit blocks a long-running job, that is one reason teams end up on both tools, and a reason to track which job ran on which account."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Solutions"><p class="doc-sidebar__title">Solutions</p><ul class="doc-sidebar__list"><li><a class="" href="/solutions/product-teams/">Product teams</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All loops</a></li><li><a class="is-nested" href="/marketplace/seo-publishing/">The SEO publishing loop</a></li><li><a class="is-nested" href="/marketplace/outbound/">The outbound loop</a></li><li><a class="is-nested" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki loop</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/composable-ai-agents-vs-ai-employees/">Composable AI agents vs AI employees</a></li><li><a class="" href="/docs/learn/human-in-the-loop/">Human in the loop</a></li><li><a class="is-nested" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="is-nested" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="is-nested" href="/docs/learn/choose-a-knowledge-layer/">How to choose a knowledge layer</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="" href="/docs/at-risk-account-alerts/">At-risk account alerts</a></li><li><a class="is-active" href="/docs/claude-code-vs-codex/" aria-current="page">Claude Code vs Codex</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="" href="/alternatives/open-source-alternative-to-claude-cowork/">Open source alternative to Claude Cowork</a></li><li><a class="" href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane</a></li><li><a class="" href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents</a></li><li><a class="" href="/alternatives/open-source-ai-coding-agent/">Open source AI coding agent</a></li><li><a class="" href="/alternatives/n8n/">n8n alternative</a></li><li><a class="" href="/alternatives/paperclip/">Paperclip alternative</a></li></ul></nav></aside>  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Claude Code vs Codex</p>
+    <p class="eyebrow">Article &middot; Comparison</p>
+    <h1>Claude Code vs Codex: you don&rsquo;t have to pick one, so keep one record</h1>
+<p class="lead">Claude Code is Anthropic&rsquo;s coding agent and Codex is OpenAI&rsquo;s. Both run in a terminal, read a project instructions file, connect to tools over MCP, script from the command line and delegate to subagents. Pick by the account you already pay for and a test on your own repo. If your team uses both, keep one record of the work.</p>
+<p><em>Read against Anthropic&rsquo;s <a href="https://code.claude.com/docs/en/overview" rel="noopener">Claude Code docs</a>, OpenAI&rsquo;s <a href="https://learn.chatgpt.com/docs/codex/cli" rel="noopener">Codex docs</a> and the <a href="https://github.com/openai/codex" rel="noopener">Codex CLI repository</a> on 2026-10-08. Both tools change often, so check the vendor pages before you rely on a detail. This page does not rank the two on output quality. Neither the vendors&rsquo; docs nor we can give you that number for your code, and a method for getting it is below.</em></p>
+
+<div class="callout callout--muted"><div class="callout__icon" aria-hidden="true">&#10003;</div><div class="callout__body"><strong>Key takeaways</strong><ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+<li><strong>The feature lists overlap more than the results page suggests.</strong> Terminal agent, instructions file, MCP, skills, subagents, non-interactive mode and a cloud option all appear in both vendors&rsquo; own docs.</li>
+<li><strong>The real differences are accounts and files.</strong> Claude Code signs in with a Claude subscription or an Anthropic Console account. Codex signs in with a ChatGPT plan or an API key. The instructions file is CLAUDE.md for one and AGENTS.md for the other.</li>
+<li><strong>Choose by job, then verify on your repo.</strong> A three-task bake-off using your own merged pull requests beats any head-to-head test written on someone else&rsquo;s codebase.</li>
+<li><strong>Using both is normal, and it has a cost.</strong> Two instruction files, two permission setups, two session histories and two bills. Only the first is easy to fix.</li>
+<li><strong>Neither tool is a team&rsquo;s record.</strong> What was decided, who owned it and whether it worked has to live somewhere both tools can reach. A tracker you already use can hold it. Maskin is one way to do it with typed objects.</li>
+</ul></div></div>
+
+<figure style="margin:1.5rem 0">
+  <img src="/og-image-claude-code-vs-codex.svg" width="1200" height="630" alt="Two boxes, Claude Code reading CLAUDE.md and Codex reading AGENTS.md, both feeding one shared record that holds an owner, a decision with its reason, an outcome condition and links." style="width:100%;height:auto;border-radius:10px;border:1px solid var(--rule)" loading="lazy">
+  <figcaption style="font-size:.85rem;color:var(--ink-3);margin-top:.5rem">Two agents with two instruction files can still write to one record.</figcaption>
+</figure>
+
+<h2>Claude Code vs Codex at a glance</h2>
+<p>This table sticks to what each vendor&rsquo;s own pages state. &ldquo;Not stated&rdquo; means the page we read does not say, not that the feature is absent.</p>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead><tr><th></th><th>Claude Code</th><th>Codex</th></tr></thead>
+<tbody>
+<tr><td>Maker</td><td>Anthropic</td><td>OpenAI</td></tr>
+<tr><td>Where it runs</td><td>Terminal, VS Code, JetBrains, desktop app, web and mobile</td><td>Terminal CLI, IDE extension, cloud environments via codex cloud</td></tr>
+<tr><td>Sign in</td><td>Claude subscription or Anthropic Console account; the terminal CLI, VS Code and JetBrains also support third-party providers</td><td>ChatGPT Plus, Pro, Business, Edu or Enterprise plan, or an API key with extra setup</td></tr>
+<tr><td>Project instructions</td><td>CLAUDE.md; reads AGENTS.md when no CLAUDE.md is present</td><td>AGENTS.md, with AGENTS.override.md for overrides</td></tr>
+<tr><td>Instruction limits</td><td>CLAUDE.md imports nest up to four hops</td><td>32 KiB combined by default (<code>project_doc_max_bytes</code>)</td></tr>
+<tr><td>Non-interactive mode</td><td><code>claude -p</code></td><td><code>codex exec</code></td></tr>
+<tr><td>Extending it</td><td>Skills, hooks, MCP, subagents, Agent SDK</td><td>Skills and plugins, MCP, subagents</td></tr>
+<tr><td>Cloud and scheduled runs</td><td>Claude Code on the web; routines that run in the cloud</td><td>codex cloud</td></tr>
+<tr><td>License</td><td>Not stated on the overview page</td><td>Apache-2.0 (the CLI repository)</td></tr>
+</tbody>
+</table></div>
+<p>The Claude Code column comes from Anthropic&rsquo;s <a href="https://code.claude.com/docs/en/overview" rel="noopener">overview</a> and <a href="https://code.claude.com/docs/en/memory" rel="noopener">memory</a> pages. The Codex column comes from OpenAI&rsquo;s <a href="https://learn.chatgpt.com/docs/codex/cli" rel="noopener">Codex CLI overview</a> and <a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md" rel="noopener">AGENTS.md guide</a> and the <a href="https://github.com/openai/codex" rel="noopener">openai/codex README</a>. &ldquo;Codex&rdquo; here means the CLI and its cloud mode, not every ChatGPT surface that uses the name.</p>
+
+<h2>How to choose between Claude Code and Codex by job</h2>
+<p>Most comparison pages answer &ldquo;which is better&rdquo; with a score. The question that decides your week is narrower: which one fits the job in front of you, given what you already have. Run these five checks in order and stop at the first one that settles it.</p>
+<ol>
+<li><strong>Which account do you already pay for?</strong> A team on ChatGPT Business or Enterprise already has Codex access. A team on a Claude plan already has Claude Code. Adding a second subscription to test the other is the cheapest experiment you can run, so do it for one month, not one year.</li>
+<li><strong>Which provider must your code go through?</strong> If your security team approved one vendor, or one cloud, that decides it. Anthropic documents third-party provider support for the terminal CLI, VS Code and JetBrains. Check OpenAI&rsquo;s pages for the Codex equivalent, because we could not confirm it from the pages we read.</li>
+<li><strong>Do you need to read or change the tool itself?</strong> The Codex CLI repository is Apache-2.0. Anthropic&rsquo;s overview page does not state a license for Claude Code. If you need to fork or audit the agent, that is a real difference. If you only need to use it, it is not.</li>
+<li><strong>Where does the work run?</strong> In your terminal and editor: both. Unattended in the cloud: Claude Code has routines and a web surface, and Codex has codex cloud. Scripted in CI: <code>claude -p</code> and <code>codex exec</code> do the same job, so what matters is how you authenticate in the pipeline.</li>
+<li><strong>Which customization do you rely on?</strong> Hooks, which run shell commands before or after actions, are a documented Claude Code feature. Plugins are a documented Codex feature. If your workflow depends on one of them, check the other tool&rsquo;s docs for the equivalent before you move.</li>
+</ol>
+<p>If none of the five settles it, you are choosing on output quality, and the only evidence that counts is your own.</p>
+
+<h3>A bake-off on your own repo</h3>
+<p>Head-to-head tests on the results page are run on someone else&rsquo;s code, with model versions that have since changed. You can get a more useful answer in an afternoon.</p>
+<ol>
+<li><strong>Pick three merged pull requests.</strong> One small bug fix, one feature that touched several files, one refactor. You already have the reviewed, accepted diff for each.</li>
+<li><strong>Start each tool from the commit before the merge.</strong> Give both the same ticket text and the same instructions file, so the only variable is the agent.</li>
+<li><strong>Score the same five things for each run:</strong> do the tests pass, how big is the diff compared with the merged one, what would a reviewer flag, how long did you wait, and how many times did you have to step in.</li>
+<li><strong>Record the result as a decision, not a vibe.</strong> Write down which tool you chose for which kind of job and why. In three months, that sentence is what your team will want. It is also the kind of entry the record described further down is for.</li>
+</ol>
+<p>This is our method, not a measurement. Maskin has not benchmarked the two tools against each other and makes no claim about which writes better code.</p>
+
+<h2>What changes when a team uses both</h2>
+<p>One developer switching tools between jobs is easy. A team where some people prefer one tool and some the other, or where an automated job runs on one and humans on the other, runs into five frictions.</p>
+<p><strong>1. Two instruction files drift apart.</strong> Codex reads AGENTS.md. Claude Code reads CLAUDE.md. Anthropic&rsquo;s <a href="https://code.claude.com/docs/en/memory" rel="noopener">memory page</a> says Claude Code reads AGENTS.md as the project instructions when there is no CLAUDE.md in the working directory or above it (this needs Claude Code v2.1.277 or later). If both files exist, it reads only the CLAUDE.md files. So a repository that has both quietly gives each tool different rules. The documented fix is a CLAUDE.md that imports AGENTS.md, so there is one source of truth. Mind the size cap too: Codex stops adding instruction files once the combined size reaches 32 KiB by default, so a long root AGENTS.md can push out the more specific ones nested below it. Where those files sit among the other layers is covered in <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">agent skills vs MCP vs Cursor rules vs workflows</a>.</p>
+<p><strong>2. Permissions live in two places.</strong> Codex exposes approval modes through its <code>/permissions</code> command and runs in a sandbox. Claude Code has its own settings and hooks, and its memory page says it treats CLAUDE.md as context, not enforced configuration, and points to a PreToolUse hook to block an action outright. If you want the same guardrails on both, you configure and review them twice.</p>
+<p><strong>3. Session history is per vendor.</strong> Each Claude Code session begins with a fresh context window, and what carries over is CLAUDE.md plus the notes Claude writes for itself. Codex sessions sit apart from those, and we found no documented way for the two tools to share history. Neither is a timeline a colleague can open. The same gap, from the memory side, is in <a href="/docs/learn/agent-memory-across-sessions/">agent memory across sessions</a>.</p>
+<p><strong>4. Decisions disappear into whichever tool made them.</strong> &ldquo;Why did we change the retry logic this way&rdquo; is answered in a chat transcript on one laptop, in one vendor&rsquo;s format. It is the same gap as with Claude Code agent teams: a session is not a place to keep a decision.</p>
+<p><strong>5. Cost and usage split across two bills.</strong> You cannot answer &ldquo;what did this feature cost us in agent time&rdquo; from one place. Plans and limits differ by vendor and plan and change often, so read the current pricing pages rather than a table that would be stale by the time you read it here.</p>
+<p>Only the first of these has a fix inside the tools. The other four need something that sits above them.</p>
+
+<h2>Where the record lives</h2>
+<p>You do not need a product for this. You need four things written down in a place that outlives any one session and that both tools, and the people using them, can reach:</p>
+<ol>
+<li><strong>An owner per piece of work.</strong> One name, a person or an agent, on each item.</li>
+<li><strong>A decision with its reason.</strong> What you chose, what you rejected, who approved it. The bake-off result is a decision.</li>
+<li><strong>A stated outcome condition.</strong> What &ldquo;done&rdquo; means in terms you can check later, not &ldquo;the agent said it finished&rdquo;.</li>
+<li><strong>Links between them.</strong> The request that started the work, the decision it led to, the changes that carried it out.</li>
+</ol>
+<p>A tracker works if you add those fields by convention. The catch is that most trackers have no slot for a decision&rsquo;s reason or an outcome condition, so they get stuffed into comments and nobody can query them. Whichever tool you use, keep the record independent of the agent. Which agent ran the work should be one field on the item, not the item itself. Then moving from one tool to the other, or running both, changes one field.</p>
+
+<h3>An illustrative scenario</h3>
+<p>Take a team of four. Two developers use Claude Code and two use Codex. A recurring job that triages dependency updates runs on whichever account has headroom that week. In March a developer decides to pin a major version of a library because the upgrade breaks a plugin. That reasoning lives in one developer&rsquo;s Codex session. In May the job, running on Claude Code, proposes the upgrade again. Nobody can say why it was pinned, so someone redoes the investigation.</p>
+<p>With a record that holds the pin as a decision with a reason and an outcome condition (&ldquo;revisit when the plugin supports the new major&rdquo;), whichever tool runs the job reads the same entry and skips the upgrade. This scenario is made up to show the gap. It is not a Maskin customer story.</p>
+
+<h2>How Maskin keeps the record</h2>
+<p>Maskin is an open-source (Apache 2.0), MCP-native, self-hostable <a href="/docs/what-is-an-agentic-workspace/">agentic workspace</a> where people and agents work on shared typed objects. A signal enters as an insight, gets shaped into a bet with a win condition, and breaks into tasks. Each object has a driver (an owner, person or agent) and a comment thread, and a bet closes against its stated condition. The objects are the work, not a log of it.</p>
+<p>Maskin runs its agent sessions on the Claude Code CLI by default, or on the Codex CLI, each inside an isolated microVM. So the two tools in this comparison are the two it runs on, and the record is the same whichever CLI ran the session. That answers the decision and ownership gaps in the friction list above. Some honest limits: you bring your own Anthropic or OpenAI access, local models are not a path we have validated, and Maskin is early, so evaluate the architecture rather than a long track record. Maskin does not replace either CLI. It holds what they produced, not how they ran.</p>
+<p>If you want to try it, you can <a href="/docs/self-hosted-ai-workspace/">self-host it</a>. For the longer argument, read <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a> and <a href="/docs/agent-observability/">agent observability</a>. Related decisions: <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">agent skills vs MCP vs Cursor rules vs workflows</a> covers where shared instructions live, <a href="/docs/learn/agent-memory-across-sessions/">agent memory across sessions</a> covers what survives between runs, and <a href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a> covers where a workspace sits next to your editor. For a wider look at open-source coding agents, see the <a href="/alternatives/open-source-ai-coding-agent/">open source AI coding agent alternatives</a> and the <a href="/alternatives/open-source-alternative-to-codex/">open source Codex alternative</a>.</p>
+
+<h2>A quick decision rule</h2>
+<ul>
+<li><strong>Solo, one account, one repo:</strong> use the tool your account already includes. Run the bake-off before you add a second subscription.</li>
+<li><strong>Solo and curious:</strong> run the three-PR bake-off. It costs an afternoon and tells you about your code.</li>
+<li><strong>A team that has split across both tools:</strong> make one instructions file (AGENTS.md, imported by CLAUDE.md) before you do anything else.</li>
+<li><strong>Two or more people, or you will need to explain a choice next quarter:</strong> add the four-field record. It works with either tool and it is the part that lasts.</li>
+<li><strong>Unattended jobs on either tool:</strong> give each job an owner and an outcome condition in the record, so a missed run is something a person sees.</li>
+</ul>
+
+<h2>FAQ</h2>
+<h3>Which is better, Claude Code or Codex?</h3>
+<p>Neither wins on every job, and no vendor documentation gives you a score for your code. Both offer a terminal agent, an instructions file, MCP, skills, subagents and a non-interactive mode. Decide on the account you already pay for, the provider your security team approved, and a three-task test on your own merged pull requests.</p>
+
+<h3>Can you use Claude Code and Codex together?</h3>
+<p>Yes. They are separate tools with separate sign-ins, so nothing stops a team from running both. The practical problems are two instruction files, two permission setups and two session histories. Share one AGENTS.md through a CLAUDE.md import, and keep decisions and outcomes in a record outside both tools.</p>
+
+<h3>Do Claude Code and Codex read the same instructions file?</h3>
+<p>Not by default. Codex reads AGENTS.md. Claude Code reads CLAUDE.md, and per Anthropic&rsquo;s memory page it reads AGENTS.md only when no CLAUDE.md exists in the working directory or above (v2.1.277 or later). To share one file, have your CLAUDE.md import AGENTS.md.</p>
+
+<h3>Is Codex CLI open source?</h3>
+<p>Yes. The openai/codex repository on GitHub is licensed Apache-2.0, and its README describes Codex CLI as a coding agent from OpenAI that runs locally on your computer. Anthropic&rsquo;s Claude Code overview page does not state a license, so check Anthropic&rsquo;s current terms if that matters to you.</p>
+
+<h3>Which is cheaper, Claude Code or Codex?</h3>
+<p>It depends on your plan and how much you use it, and both vendors change plans and limits often. Claude Code needs a Claude subscription or Anthropic Console account. Codex comes with ChatGPT Plus, Pro, Business, Edu and Enterprise plans, or runs on an API key. Compare the vendors&rsquo; current pricing pages against your own usage.</p>
+
+<h3>Do Claude Code and Codex have usage limits?</h3>
+<p>Both are gated by the plan or API account you sign in with. We found no fixed numbers on the pages we read, and limits change often, so we print none. If a limit blocks a long-running job, that is one reason teams end up on both tools, and a reason to track which job ran on which account.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/docs/ai-product-workspace-vs-coding-agent/">
+        <div class="doc-card__title">AI product workspace vs AI coding agent</div>
+        <div class="doc-card__desc">Where a workspace sits next to your coding agent, and why most teams run both.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/learn/agent-memory-across-sessions/">
+        <div class="doc-card__title">Agent memory across sessions</div>
+        <div class="doc-card__desc">The three things worth carrying from one run to the next.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+        <div class="doc-card__title">What is an agentic workspace?</div>
+        <div class="doc-card__desc">The cornerstone: the closed loop on shared typed objects.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Getting started is free</h2>
+      <p>Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of what was decided. The <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace cornerstone</a> and the <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a> guide are the two best next reads.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
