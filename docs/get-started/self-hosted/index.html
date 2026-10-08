@@ -127,10 +127,9 @@ docker-compose up</code></pre>
     <h2>Step 4 — Connect Claude to your Maskin MCP</h2>
 
     <h3>Claude Code</h3>
-    <p>Register the MCP server, pointing the URL at your instance:</p>
-    <pre><code>claude mcp add maskin \
-  --transport http \
-  --url https://&lt;your-maskin-host&gt;/mcp \
+    <p>Register the MCP server. The URL of your instance goes after the server name:</p>
+    <pre><code>claude mcp add --transport http maskin \
+  https://&lt;your-maskin-host&gt;/mcp \
   --header "Authorization: Bearer &lt;YOUR_MASKIN_API_KEY&gt;" \
   --header "X-Workspace-Id: &lt;YOUR_WORKSPACE_ID&gt;"</code></pre>
     <p>Then reload plugins:</p>
