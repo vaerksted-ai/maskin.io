@@ -21,7 +21,7 @@ The table shows what each tool reads from a repository, taken from each vendorâ€
 | GitHub Copilot | Yes, nearest file wins | Yes, one file at the repo root | Also reads .github/copilot-instructions.md |
 | Gemini CLI | Only if you add it to context.fileName | Only if you add it to context.fileName | Default file is GEMINI.md |
 Sources: [Claude Code memory docs](https://code.claude.com/docs/en/memory), [Codex AGENTS.md guide](https://developers.openai.com/codex/guides/agents-md), [Cursor rules docs](https://cursor.com/docs/context/rules), [GitHub Copilot repository instructions](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions), [Gemini CLI context files](https://geminicli.com/docs/cli/gemini-md/) and [agents.md](https://agents.md).
-The agents.md site lists more than twenty supporting tools, including Codex, Cursor, Gemini CLI, GitHub Copilot, Aider, Zed, Windsurf, Warp and VS Code. Claude Code now reads `AGENTS.md` itself, which makes the old advice to symlink one file to the other unnecessary in most setups.
+The agents.md site lists more than twenty supporting tools, including Codex, Cursor, Gemini CLI, GitHub Copilot, Aider, Zed, Windsurf, Warp and VS Code. Claude Code now reads `AGENTS.md` itself, which makes the old advice to symlink one file to the other unnecessary in most setups. For the two agents compared head to head, see [Claude Code vs Codex](/docs/claude-code-vs-codex/).
 
 ## Which setup should you pick?
 Pick by how many different agents touch the repo:
