@@ -55,6 +55,7 @@
       { label: "Three tiers of AI-native work", href: "/docs/three-tiers-ai-native-work/" },
       { label: "AI product management tool", href: "/docs/ai-product-management-tool/", nested: true },
       { label: "AI product workspace vs AI coding agent", href: "/docs/ai-product-workspace-vs-coding-agent/", nested: true },
+      { label: "Claude Code vs Codex", href: "/docs/claude-code-vs-codex/", nested: true },
       { label: "Agentic workspace vs knowledge space", href: "/docs/agentic-workspace-vs-knowledge-space/", nested: true },
       { label: "The closed-loop workspace", href: "/docs/closed-loop-workspace/", nested: true },
       { label: "Agent skills vs MCP vs cursor rules vs workflows", href: "/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/" },
