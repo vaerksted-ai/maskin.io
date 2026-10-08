@@ -45,7 +45,7 @@ Persistence is the point. The workspace graph is what makes it possible, and it 
 ## FAQ
 
 ### Does Claude Code have memory?
-Claude Code has project memory: files such as [CLAUDE.md and AGENTS.md](/docs/claude-md-vs-agents-md/) that carry instructions into a session, and a memory tool for managed agents. That is real, but it is memory of instructions and project context, not memory of runs. On its own it does not persist what your scheduled agent decided, what you corrected, or what it produced last Monday. If your scheduled run starts from scratch, the gap is on the run side, not the project side. For the product manager's view of the same limits, see [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/).
+Claude Code has project memory: files such as [CLAUDE.md and AGENTS.md](/docs/claude-md-vs-agents-md/) that carry instructions into a session, and a memory tool for managed agents. That is real, but it is memory of instructions and project context, not memory of runs. On its own it does not persist what your scheduled agent decided, what you corrected, or what it produced last Monday. If your scheduled run starts from scratch, the gap is on the run side, not the project side.
 
 ### How do agents remember across sessions?
 By writing their state somewhere that outlives the process, then reading it back at the start of the next run. That store has to hold three things to work: the decisions made, the corrections applied, and the artifacts produced. Anything less and the agent re-derives context it already had, which is where drift and repeated mistakes come from.
@@ -56,6 +56,7 @@ Three categories: decisions (what was chosen and why), corrections (what a human
 ### Is a vector database the same as agent memory?
 No. A vector database is one storage format for long-term memory, and a useful one for recall. But it holds text, not structure, and it does not carry the status, the provenance, or the audit trail a decision needs. Treating a vector store as "the memory" is the mistake that keeps agents stateless: you can retrieve a paragraph, but you cannot tell whether a choice is settled.
 Persistence is not a feature you buy and bolt on at the end. It is a property of where the agent runs, and it is the difference between an agent that improves every week and one that starts over every Monday.
+If you are a product manager starting with Claude Code, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers where its memory ends and a team record takes over.
 
 ## Persistence is where the agent runs
 Maskin carries decisions, corrections, and artifacts on a typed object graph every run reads and writes — so Monday starts where Friday stopped. Open source under Apache 2.0. Self-host free, bring your own model.
