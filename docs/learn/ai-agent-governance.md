@@ -41,7 +41,7 @@ Sentence-shaped permissions read like the audit trail you'll want later; feature
 One useful default: material calls (sending, publishing, spending money, changing customer state) live on their own permission per surface. That way revoking one integration or one workflow is a targeted action. The same material calls are also where the [approval-gate primitive](/docs/learn/human-in-the-loop/) shipped by OpenAI, Cloudflare, Microsoft, and Temporal fires — the permission answers *may this agent do this?* and the gate answers *did a human sign off on this specific instance?*. Both live on the object; the audit trail collects them together.
 
 ### 3. Audit trail on the object graph
-Audit is not a separate log. Every state transition on every object is an event. Every event has: the object, the field that changed, the before and after value, the actor, the timestamp, and (if applicable) the trigger that fired it.
+Audit is not a separate log. Every state transition on every object is an event. Every event has: the object, the field that changed, the before and after value, the actor, the timestamp, and (if applicable) the trigger that fired it. This is also the practical difference between persona-level trust and [per-action gates](/docs/composable-ai-agents-vs-ai-employees/): trust attaches to the action and its event, not to the agent’s job title.
 What this buys you:
 - **Per-object history in place.** Open any object; scroll the event feed on it. You see who touched it, when, and what changed — without leaving the object.
 - **Cross-object queries.** "All contacts where the Prospector drafted outreach in the last week" is a `get_events` filter, not a report you have to build.

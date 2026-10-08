@@ -35,6 +35,7 @@ Concretely, in the workspace-graph pattern:
 - **Typed relationships** carry context between objects (`informs`, `breaks_into`, `blocks`, `supersedes`), so an agent reading a task can see the bet it belongs to and the insight that motivated it without extra prompting.
 - **Close conditions live on the object**, so a loop terminates when the outcome is verified rather than when the human remembers to close it.
 - **Agents mutate the graph, humans reshape it.** The audit trail is the graph’s own history, not a separate log.
+A churn warning is the plainest example: instead of a bare notification, you get an alert that arrives as a prepared decision, [like an at-risk account](/docs/at-risk-account-alerts/) with its signal, its proposed bet and its context already attached.
 This is the pattern Maskin is built on, and it’s why the [agentic workspace cornerstone](/docs/what-is-an-agentic-workspace/) opens with “the object of work is the workspace, not the chat.” We aren’t the only product in the shape — the shape is real enough that it should have a name in the industry taxonomy, and it doesn’t yet. Naming it here, alongside Barla’s four and Chase’s inbox, is the honest editorial move: it extends the SERP’s own vocabulary rather than replacing it. The surface where the interrupts land in Maskin is the [notification-driven agent inbox](/docs/agent-inbox/) — the graph carries state, the inbox carries the moments a human needs to weigh in.
 
 ## Four failure modes the SERP has already found

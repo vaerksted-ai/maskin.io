@@ -45,7 +45,7 @@ You don’t pick between them. A skill for *refund a customer* almost certainly 
 
 ## `agent skills vs MCP` — protocol vs packaged capability
 The core question the SERP keeps mis-answering: *do I ship an MCP server or an agent skill?* The honest answer is *usually both, and they’re not the same thing.*
-**MCP is a protocol between the agent and the outside world.** It’s what makes `stripe.subscription.cancel` callable at all. When you ship an MCP server, you’re publishing typed tool contracts. Any MCP-capable agent (Claude, Cursor, Codex, VS Code, and now most harnesses) can wire the server in and use the tools. The unit of shipping is *the tool interface*.
+**MCP is a protocol between the agent and the outside world.** It’s what makes `stripe.subscription.cancel` callable at all. When you ship an MCP server, you’re publishing typed tool contracts. Any MCP-capable agent (Claude, Cursor, Codex, VS Code, and now most harnesses) can wire the server in and use the tools. The unit of shipping is *the tool interface*. For a worked example of a full tool surface, see [how Maskin’s MCP tools are grouped](/docs/mcp-tools/).
 **A skill is a bundle the agent loads when a use case matches.** It composes zero or more tools (often over MCP), prompt fragments, scripts, and a `SKILL.md` describing the trigger. The unit of shipping is *the capability package*. Skills are how you get the agent to reliably use the *right combination* of tools you’ve exposed.
 Concrete example. You want an agent that can refund a Stripe subscription and log to your audit trail.
 - **MCP layer:** `stripe-mcp` exposes `stripe.subscription.cancel` and `stripe.credit_note.create`. `audit-mcp` exposes `audit.log.write`.

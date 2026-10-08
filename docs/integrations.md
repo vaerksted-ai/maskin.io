@@ -91,6 +91,7 @@ Maskin ships with ten first-party integrations. Three of them are auto-injected 
 | Auto-inject (live in every agent session) | GitHub, Slack, PostHog | 3 |
 | Attachable (agent must load mcp.server) | Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn | 6 |
 | Provider-only (no MCP surface) | Skjald | 1 |
+Once a provider is connected, agents work through the same verbs on every object type. The [verbs agents call once a provider is connected](/docs/mcp-tools/) are listed in the MCP tools reference.
 
 ## FAQ
 
