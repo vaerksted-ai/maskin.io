@@ -13,6 +13,10 @@ points in every dist/docs/**/*.html:
 House-style guardrail: CTA copy stays "Sign up" or "Try Maskin free". Never
 "Get started" for a /signup link — that label is reserved for the walkthrough
 entry (/docs/get-started/) so the two funnel paths don't collapse.
+
+Self-link guardrail: the card's secondary CTA points at /docs/get-started/.
+build.sh rewrites it on that page itself (to the quickstart) so a page never
+links to itself. Keep the markup below in sync with the sed in build.sh.
 -->
 
 <!-- DOCS_CTA_HEADER_START -->
@@ -25,7 +29,7 @@ entry (/docs/get-started/) so the two funnel paths don't collapse.
   <p class="docs-cta__hook">Open-source, MCP-native workspace where humans and AI agents close the loop together. Self-host or managed.</p>
   <div class="docs-cta__actions">
     <a class="docs-cta__primary" href="/signup">Sign up</a>
-    <a class="docs-cta__secondary" href="/docs/get-started/">See how it works &rarr;</a>
+    <a class="docs-cta__secondary" href="/docs/get-started/">Read the overview &rarr;</a>
   </div>
 </aside>
 <!-- DOCS_CTA_CARD_END -->
