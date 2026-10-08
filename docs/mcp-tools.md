@@ -51,7 +51,7 @@ The `type` string is not an enum on the tool. The five built-in types are `infor
 **Comments, events, actors.**
 - `create_comment` / `get_comments` — post comments on any object; comments carry `@mentions`, an `attention` score, an optional structured `decision` payload, and a `metadata.tasks` array that renders a live checklist. This is the primary agent-to-human channel.
 - `get_events` — timeline of lifecycle changes and comments on an object.
-- `list_actors` / `get_actor` / `create_actor` / `update_actor` — humans and agents that own or drive objects; each actor has a short description and, for agents, a system prompt that is the source of truth for their instructions.
+- `list_actors` / `get_actor` / `create_actor` / `update_actor` — humans and agents that own or drive objects; each actor has a short description and, for agents, a system prompt that is the source of truth for their instructions (the role-level counterpart of [AGENTS.md and CLAUDE.md](/docs/claude-md-vs-agents-md/) files in a repo).
 **Files and integrations.**
 - `create_file` / `get_file` / `update_file` / `list_files` / `delete_file` — raw blobs addressed by id and attached to objects or comments. Different from typed `knowledge`: files are opaque bytes, `knowledge` is a first-class typed row in the graph.
 - `list_integration_providers` / `list_integrations` / `connect_integration` / `disconnect_integration` — provider wiring; the provider registry is what the workspace can talk to. The supported providers, their auth types, and which of them expose MCP tools to agents are listed on the [integrations page](/docs/integrations/).

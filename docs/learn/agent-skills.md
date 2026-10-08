@@ -48,7 +48,7 @@ Skills load in three levels, and the levels are the point.
 1. **Metadata.** The name and description of every installed skill sit in the agent’s context. This is cheap. A hundred skills cost about a hundred sentences.
 2. **Body.** When the agent decides a skill matches the task, it loads the body of `SKILL.md`. This holds the actual instructions for the job.
 3. **Bundled files.** If the body points at a reference document or a script, the agent loads that file only when it gets there.
-A skill can therefore hold thousands of words of procedure while costing the agent one sentence until the moment it is needed. That is why skills scale where pasting an instruction block into a system prompt does not.
+A skill can therefore hold thousands of words of procedure while costing the agent one sentence until the moment it is needed. That is why skills scale where pasting an instruction block into a system prompt does not. The always-on version of that block is an instruction file such as `AGENTS.md` or `CLAUDE.md`, read at the start of every session; [CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/) covers how those files differ across coding agents.
 
 ### What a minimal skill looks like
 The smallest useful skill is a folder and one file. `SKILL.md` with a name, a description, and three or four lines of instruction is a complete skill. There is no build step, no manifest beyond the frontmatter, and no registration call. If the folder is in a location the agent reads, the skill exists.

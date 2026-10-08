@@ -4,7 +4,7 @@
 Agents are first-class actors in your workspace. When one does work, it runs as a **session** — Claude Code executing in an isolated sandbox, reading and writing the same objects your team does.
 
 ## What an agent is
-An agent is an [actor](/docs/concepts/) with a **system prompt**, a **tools** configuration, optional **memory**, and an **LLM provider**. You can attach reusable **skills** to an agent to give it standard procedures and context. Agents are assigned work, mentioned, and held responsible for objects exactly like human teammates — the same taste gates and audit trail apply, which is the shape of the [governance framework for AI agents](/docs/learn/ai-agent-governance/) as it works in practice.
+An agent is an [actor](/docs/concepts/) with a **system prompt** (the role-level counterpart of a repo’s [`AGENTS.md` or `CLAUDE.md`](/docs/claude-md-vs-agents-md/)), a **tools** configuration, optional **memory**, and an **LLM provider**. You can attach reusable **skills** to an agent to give it standard procedures and context. Agents are assigned work, mentioned, and held responsible for objects exactly like human teammates — the same taste gates and audit trail apply, which is the shape of the [governance framework for AI agents](/docs/learn/ai-agent-governance/) as it works in practice.
 For a wider read on how the OSS agent ecosystem splits — stateful-agent frameworks (Maskin, Letta, Cheshire Cat), workflow-node builders (n8n, Flowise, Dify), RAG chat frontends, and coding-agent control planes — see the [field survey of self-hosted AI agent repos](/alternatives/self-hosted-ai-agents/). It maps where Maskin sits in the 2026 landscape and which shape fits which object of work.
 
 ## Sessions run in sandboxes
