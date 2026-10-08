@@ -56,7 +56,7 @@ Three categories: decisions (what was chosen and why), corrections (what a human
 ### Is a vector database the same as agent memory?
 No. A vector database is one storage format for long-term memory, and a useful one for recall. But it holds text, not structure, and it does not carry the status, the provenance, or the audit trail a decision needs. Treating a vector store as "the memory" is the mistake that keeps agents stateless: you can retrieve a paragraph, but you cannot tell whether a choice is settled.
 Persistence is not a feature you buy and bolt on at the end. It is a property of where the agent runs, and it is the difference between an agent that improves every week and one that starts over every Monday.
-If you are a product manager starting with Claude Code, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers where its memory ends and a team record takes over.
+If you are a product manager starting with Claude Code, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers where its memory ends and a team record takes over. If your team splits sessions across two tools, [when a team uses both Claude Code and Codex](/docs/claude-code-vs-codex/) shows why each tool's session history stays separate.
 
 ## Persistence is where the agent runs
 Maskin carries decisions, corrections, and artifacts on a typed object graph every run reads and writes — so Monday starts where Friday stopped. Open source under Apache 2.0. Self-host free, bring your own model.
