@@ -19,10 +19,9 @@
 <meta property="og:url" content="https://maskin.io/docs/claude-md-vs-agents-md/">
 <meta property="og:title" content="CLAUDE.md vs AGENTS.md: one instruction file or two, and what changes at team scale">
 <meta property="og:description" content="Which file do coding agents read? Use AGENTS.md as the shared source, import it from CLAUDE.md, and keep team-wide rules in one place above the repo.">
-<meta property="og:image" content="https://maskin.io/og-image-claude-md-vs-agents-md.png">
+<meta property="og:image" content="https://maskin.io/og-image.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="CLAUDE.md imports AGENTS.md: shared rules in AGENTS.md, Claude-only rules in CLAUDE.md">
 <meta property="og:site_name" content="Maskin">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-10-08T00:00:00Z">
@@ -32,7 +31,7 @@
 <meta name="twitter:site" content="@maskin_io">
 <meta name="twitter:title" content="CLAUDE.md vs AGENTS.md: one instruction file or two, and what changes at team scale">
 <meta name="twitter:description" content="Which file do coding agents read? Use AGENTS.md as the shared source, import it from CLAUDE.md, and keep team-wide rules in one place above the repo.">
-<meta name="twitter:image" content="https://maskin.io/og-image-claude-md-vs-agents-md.png">
+<meta name="twitter:image" content="https://maskin.io/og-image.png?v=2">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,14 +47,14 @@
       "@type": "BlogPosting",
       "@id": "https://maskin.io/docs/claude-md-vs-agents-md/#post",
       "headline": "CLAUDE.md vs AGENTS.md: one instruction file or two, and what changes at team scale",
-      "name": "CLAUDE.md vs AGENTS.md: one instruction file or two",
+      "name": "CLAUDE.md vs AGENTS.md",
       "description": "Which file do coding agents read? Use AGENTS.md as the shared source, import it from CLAUDE.md, and keep team-wide rules in one place above the repo.",
+      "inLanguage": "en",
       "url": "https://maskin.io/docs/claude-md-vs-agents-md/",
       "mainEntityOfPage": "https://maskin.io/docs/claude-md-vs-agents-md/",
-      "inLanguage": "en",
+      "image": "https://maskin.io/og-image.png",
       "datePublished": "2026-10-08T00:00:00Z",
       "dateModified": "2026-10-08T00:00:00Z",
-      "image": "https://maskin.io/og-image-claude-md-vs-agents-md.png",
       "author": {
         "@type": "Organization",
         "name": "Maskin",
@@ -192,97 +191,95 @@
     <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / CLAUDE.md vs AGENTS.md</p>
     <p class="eyebrow">Article &middot; Comparison</p>
     <h1>CLAUDE.md vs AGENTS.md: one instruction file or two, and what changes at team scale</h1>
-    <p class="lead"><strong>Keep your shared rules in one <code>AGENTS.md</code>.</strong> Codex, Cursor and GitHub Copilot read it, and Claude Code reads it when the repo has no <code>CLAUDE.md</code>. If you need Claude-only rules, add a <code>CLAUDE.md</code> whose first line is <code>@AGENTS.md</code>. Once a <code>CLAUDE.md</code> exists, Claude Code reads <code>AGENTS.md</code> only through that import, unless you change a setting.</p>
-
-    <p>Tool behavior below was checked against each vendor&rsquo;s own documentation on 8 October 2026. This area changes fast, so re-check the table before you rely on it.</p>
+    <p class="lead"><strong>Keep your shared rules in one AGENTS.md.</strong> Codex, Cursor and GitHub Copilot read it, and Claude Code reads it when the repo has no CLAUDE.md. If you need Claude-only rules, add a CLAUDE.md whose first line is <code>@AGENTS.md</code>. Once a CLAUDE.md exists, Claude Code reads AGENTS.md only through that import, unless you change a setting.</p>
+    <p>Tool behavior below was checked against each vendor's own documentation on 8 October 2026. This area changes fast, so re-check the table before you rely on it.</p>
 
     <div class="callout callout--muted">
       <div class="callout__icon" aria-hidden="true">&#10003;</div>
       <div class="callout__body">
         <strong>Key takeaways</strong>
         <ul>
-          <li><strong>One source of rules, two filenames.</strong> <code>AGENTS.md</code> is the open format, stewarded by the Agentic AI Foundation under the Linux Foundation. <code>CLAUDE.md</code> is Claude Code&rsquo;s own file. Keep the rules in the first and let the second import it.</li>
-          <li><strong>Claude Code prefers <code>CLAUDE.md</code>.</strong> It reads <code>AGENTS.md</code> by default only when no <code>CLAUDE.md</code> or <code>CLAUDE.local.md</code> exists in the working directory or above it. A stray <code>CLAUDE.local.md</code> turns your <code>AGENTS.md</code> off.</li>
-          <li><strong>Nesting does not behave the same everywhere.</strong> Claude Code concatenates every file it finds. Codex adds one file per directory and stops at a size cap. The <code>AGENTS.md</code> spec says the closest file wins.</li>
+          <li><strong>One source of rules, two filenames.</strong> AGENTS.md is the open format, stewarded by the Agentic AI Foundation under the Linux Foundation. CLAUDE.md is Claude Code's own file. Keep the rules in the first and let the second import it.</li>
+          <li><strong>Claude Code prefers CLAUDE.md.</strong> It reads AGENTS.md by default only when no CLAUDE.md or CLAUDE.local.md exists in the working directory or above it. A stray CLAUDE.local.md turns your AGENTS.md off.</li>
+          <li><strong>Nesting does not behave the same everywhere.</strong> Claude Code concatenates every file it finds. Codex adds one file per directory and stops at a size cap. The AGENTS.md spec says the closest file wins.</li>
           <li><strong>Files are per repo and per tool.</strong> The moment a team has several repos and several agents, the same rule gets copied, and the copies drift.</li>
-          <li><strong>An instruction file is a request, not a lock.</strong> Anthropic&rsquo;s docs say Claude treats these files as context, not enforced configuration. Use a hook to block an action.</li>
+          <li><strong>An instruction file is a request, not a lock.</strong> Anthropic's docs say Claude treats these files as context, not enforced configuration. Use a hook to block an action.</li>
         </ul>
       </div>
     </div>
 
-    <h2>Which tools read which file?</h2>
-    <p>The table shows what each tool reads from a repository, taken from each vendor&rsquo;s docs:</p>
+    <figure style="margin:1.5rem 0">
+      <img src="/docs/claude-md-vs-agents-md/instruction-file-layers-claude-md-agents-md.svg" width="1200" height="630" alt="Five layers of agent rules, top to bottom. A shared home above the repo for rules true everywhere. A user-level file for personal preferences. CLAUDE.md for Claude-only rules, importing AGENTS.md. AGENTS.md in the repo for build, test and style rules every tool reads. A hook or permission setting for rules that must never be broken." style="width:100%;height:auto;border-radius:10px;border:1px solid var(--rule)" loading="eager">
+      <figcaption style="font-size:.85rem;color:var(--ink-3);margin-top:.5rem">Where each kind of rule belongs: the repo files cover one repo, the layers above and below cover everything else.</figcaption>
+    </figure>
 
-    <table>
+    <h2>Which tools read which file?</h2>
+    <p>The table shows what each tool reads from a repository, taken from each vendor's docs:</p>
+
+    <div class="doc-table-wrap"><table class="doc-table">
       <thead>
         <tr><th>Tool</th><th>Reads AGENTS.md</th><th>Reads CLAUDE.md</th><th>Catch</th></tr>
       </thead>
       <tbody>
-        <tr><td>Claude Code</td><td>Yes, if the repo has no CLAUDE.md or CLAUDE.local.md (v2.1.277 or later)</td><td>Yes, first choice</td><td>A CLAUDE.md that imports @AGENTS.md pulls it in explicitly</td></tr>
-        <tr><td>Codex</td><td>Yes, after checking AGENTS.override.md in each directory</td><td>Only if you list it in project_doc_fallback_filenames</td><td>Combined instructions are capped at 32 KiB by default</td></tr>
-        <tr><td>Cursor</td><td>Yes, including nested files in subdirectories</td><td>Cursor&rsquo;s rules docs do not mention it</td><td>Do not assume it</td></tr>
-        <tr><td>GitHub Copilot</td><td>Yes, nearest file wins</td><td>Yes, one file at the repo root</td><td>Also reads .github/copilot-instructions.md</td></tr>
-        <tr><td>Gemini CLI</td><td>Only if you add it to context.fileName</td><td>Only if you add it to context.fileName</td><td>Default file is GEMINI.md</td></tr>
+        <tr><td><strong>Claude Code</strong></td><td>Yes, if the repo has no CLAUDE.md or CLAUDE.local.md (v2.1.277 or later)</td><td>Yes, first choice</td><td>A CLAUDE.md that imports <code>@AGENTS.md</code> pulls it in explicitly</td></tr>
+        <tr><td><strong>Codex</strong></td><td>Yes, after checking AGENTS.override.md in each directory</td><td>Only if you list it in <code>project_doc_fallback_filenames</code></td><td>Combined instructions are capped at 32 KiB by default</td></tr>
+        <tr><td><strong>Cursor</strong></td><td>Yes, including nested files in subdirectories</td><td>Cursor's rules docs do not mention it</td><td>Do not assume it</td></tr>
+        <tr><td><strong>GitHub Copilot</strong></td><td>Yes, nearest file wins</td><td>Yes, one file at the repo root</td><td>Also reads <code>.github/copilot-instructions.md</code></td></tr>
+        <tr><td><strong>Gemini CLI</strong></td><td>Only if you add it to <code>context.fileName</code></td><td>Only if you add it to <code>context.fileName</code></td><td>Default file is GEMINI.md</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <p>Sources: <a href="https://code.claude.com/docs/en/memory" target="_blank" rel="noopener">Claude Code memory docs</a>, <a href="https://developers.openai.com/codex/guides/agents-md" target="_blank" rel="noopener">Codex AGENTS.md guide</a>, <a href="https://cursor.com/docs/context/rules" target="_blank" rel="noopener">Cursor rules docs</a>, <a href="https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions" target="_blank" rel="noopener">GitHub Copilot repository instructions</a>, <a href="https://geminicli.com/docs/cli/gemini-md/" target="_blank" rel="noopener">Gemini CLI context files</a> and <a href="https://agents.md" target="_blank" rel="noopener">agents.md</a>.</p>
-
-    <p>The agents.md site lists more than twenty supporting tools, including Codex, Cursor, Gemini CLI, GitHub Copilot, Aider, Zed, Windsurf, Warp and VS Code. Claude Code now reads <code>AGENTS.md</code> itself, which makes the old advice to symlink one file to the other unnecessary in most setups.</p>
+    <p>The agents.md site lists more than twenty supporting tools, including Codex, Cursor, Gemini CLI, GitHub Copilot, Aider, Zed, Windsurf, Warp and VS Code. Claude Code now reads AGENTS.md itself, which makes the old advice to symlink one file to the other unnecessary in most setups.</p>
 
     <h2>Which setup should you pick?</h2>
     <p>Pick by how many different agents touch the repo:</p>
     <ol>
-      <li><strong>Only Claude Code:</strong> keep <code>CLAUDE.md</code>. Nothing else is needed.</li>
-      <li><strong>No Claude Code:</strong> keep <code>AGENTS.md</code>. Nothing else is needed.</li>
-      <li><strong>Claude Code plus any other agent:</strong> put the shared rules in <code>AGENTS.md</code>. Add a <code>CLAUDE.md</code> that imports it and holds only what is Claude-specific.</li>
-      <li><strong>Both files already exist and disagree:</strong> merge them into <code>AGENTS.md</code> first, then add the import. Do not start by symlinking, because the symlink hides which copy was right.</li>
+      <li><strong>Only Claude Code:</strong> keep CLAUDE.md. Nothing else is needed.</li>
+      <li><strong>No Claude Code:</strong> keep AGENTS.md. Nothing else is needed.</li>
+      <li><strong>Claude Code plus any other agent:</strong> put the shared rules in AGENTS.md. Add a CLAUDE.md that imports it and holds only what is Claude-specific.</li>
+      <li><strong>Both files already exist and disagree:</strong> merge them into AGENTS.md first, then add the import. Do not start by symlinking, because the symlink hides which copy was right.</li>
     </ol>
-    <p>Case 3 is the one most teams are in. Anthropic&rsquo;s own example looks like this:</p>
-    <pre><code>@AGENTS.md
+    <p>Case 3 is the one most teams are in. Anthropic's own example looks like this:</p>
+<pre><code>@AGENTS.md
 
 ## Claude Code
 
 Use plan mode for changes under src/billing/.</code></pre>
     <p>Claude reads the imported file first, then the Claude-specific section. Imports expand at launch and can nest up to four hops deep.</p>
 
-    <figure style="margin:1.5rem 0">
-      <img src="/og-image-claude-md-vs-agents-md.png" alt="Two panels: CLAUDE.md for Claude Code only, starting with an @AGENTS.md import line, pointing to AGENTS.md as the shared source read by Codex, Cursor and Copilot" width="1200" height="630" loading="lazy" style="max-width:100%;height:auto;border-radius:10px">
-      <figcaption>Case 3 in one picture: shared rules live in AGENTS.md, and CLAUDE.md imports them and adds only the Claude-specific part.</figcaption>
-    </figure>
-
     <h2>Import, symlink, or let the fallback work?</h2>
-    <p>There are four ways to get <code>AGENTS.md</code> in front of Claude Code, and each has a failure mode:</p>
+    <p>There are four ways to get AGENTS.md in front of Claude Code, and each has a failure mode:</p>
     <ul>
-      <li><strong>Do nothing.</strong> Works only while the repo has no <code>CLAUDE.md</code>, no <code>CLAUDE.local.md</code>, and your Claude Code is v2.1.277 or later. Anthropic notes that before v2.1.281, some sessions (Amazon Bedrock, or telemetry disabled) read <code>CLAUDE.md</code> files only.</li>
-      <li><strong>Import with <code>@AGENTS.md</code>.</strong> The safest default. It works in sessions that cannot read <code>AGENTS.md</code> directly, and Claude Code never loads the file twice.</li>
-      <li><strong>Symlink <code>CLAUDE.md</code> to <code>AGENTS.md</code>.</strong> Fine if you need no Claude-specific content. Two catches from Anthropic&rsquo;s docs: Claude&rsquo;s Edit and Write tools refuse to write through a symlink and redirect the edit to the target, and on Windows a committed symlink checks out as a one-line text file unless <code>core.symlinks</code> is enabled.</li>
+      <li><strong>Do nothing.</strong> Works only while the repo has no CLAUDE.md, no CLAUDE.local.md, and your Claude Code is v2.1.277 or later. Anthropic notes that before v2.1.281, some sessions (Amazon Bedrock, or telemetry disabled) read CLAUDE.md files only.</li>
+      <li><strong>Import with <code>@AGENTS.md</code>.</strong> The safest default. It works in sessions that cannot read AGENTS.md directly, and Claude Code never loads the file twice.</li>
+      <li><strong>Symlink CLAUDE.md to AGENTS.md.</strong> Fine if you need no Claude-specific content. Two catches from Anthropic's docs: Claude's Edit and Write tools refuse to write through a symlink and redirect the edit to the target, and on Windows a committed symlink checks out as a one-line text file unless <code>core.symlinks</code> is enabled.</li>
       <li><strong>Set Project instructions to <code>claude-md-and-agents-md</code>.</strong> Loads both files together. It lives in your user or managed settings, so it does not travel with the repo and cannot protect teammates.</li>
     </ul>
-    <p>One mistake to avoid: a <code>CLAUDE.md</code> that says &ldquo;read AGENTS.md&rdquo; in plain words. Claude sees the file only if it decides to open it. Use the import.</p>
-    <p>After any change, run <code>/context</code> in Claude Code and confirm <code>CLAUDE.md</code> appears under Memory files. When the fallback is doing the work, an interactive session prints a line such as &ldquo;no CLAUDE.md found; AGENTS.md loaded&rdquo; with the path.</p>
+    <p>One mistake to avoid: a CLAUDE.md that says "read AGENTS.md" in plain words. Claude sees the file only if it decides to open it. Use the import.</p>
+    <p>After any change, run <code>/context</code> in Claude Code and confirm CLAUDE.md appears under Memory files. When the fallback is doing the work, an interactive session prints a line such as "no CLAUDE.md found; AGENTS.md loaded" with the path.</p>
 
     <h2>What happens when files nest</h2>
-    <p>Monorepos break the &ldquo;same behavior everywhere&rdquo; assumption fastest:</p>
+    <p>Monorepos break the "same behavior everywhere" assumption fastest:</p>
     <ul>
-      <li><strong>Claude Code concatenates.</strong> It loads <code>CLAUDE.md</code> files from the working directory and every directory above it, ordered from the root down so the closest file is read last. Files in subdirectories load on demand, when Claude reads a file there. Nothing overrides anything. Anthropic warns that if two instructions contradict, Claude may pick one arbitrarily.</li>
+      <li><strong>Claude Code concatenates.</strong> It loads CLAUDE.md files from the working directory and every directory above it, ordered from the root down so the closest file is read last. Files in subdirectories load on demand, when Claude reads a file there. Nothing overrides anything. Anthropic warns that if two instructions contradict, Claude may pick one arbitrarily.</li>
       <li><strong>Codex also merges from the root down,</strong> with at most one file per directory, and files closer to your working directory win by coming later. It stops adding files once the combined size reaches 32 KiB. Because files are added from the root down, a long root file spends the budget first.</li>
-      <li><strong>The <code>AGENTS.md</code> spec says the closest file wins,</strong> and an explicit instruction in chat overrides everything. Copilot says the same.</li>
+      <li><strong>The AGENTS.md spec says the closest file wins,</strong> and an explicit instruction in chat overrides everything. Copilot says the same.</li>
     </ul>
-    <p>The practical rule: never rely on a nested file to cancel a root rule. Write each rule in one place, and keep every file short. Anthropic recommends under 200 lines per <code>CLAUDE.md</code>, and notes that imports organize a long file but do not reduce what it costs in context.</p>
+    <p>The practical rule: never rely on a nested file to cancel a root rule. Write each rule in one place, and keep every file short. Anthropic recommends under 200 lines per CLAUDE.md, and notes that imports organize a long file but do not reduce what it costs in context.</p>
 
     <h2>What belongs in the file</h2>
-    <p>The agents.md site suggests a project overview, build and test commands, code style, testing instructions and security notes. Add to that list only what the agent cannot discover by reading the repo. A rule the agent already follows costs context and buys nothing. A rule you cannot check (&ldquo;write clean code&rdquo;) buys nothing either. Write rules you could verify in a pull request, such as &ldquo;run pnpm test before committing&rdquo; or &ldquo;never edit files under vendor/&rdquo;.</p>
+    <p>The agents.md site suggests a project overview, build and test commands, code style, testing instructions and security notes. Add to that list only what the agent cannot discover by reading the repo. A rule the agent already follows costs context and buys nothing. A rule you cannot check ("write clean code") buys nothing either. Write rules you could verify in a pull request, such as "run <code>pnpm test</code> before committing" or "never edit files under <code>vendor/</code>".</p>
 
     <h2>What changes at team scale</h2>
     <p>For one developer with one repo, the answer above is the whole story. A team hits four problems that no filename choice fixes.</p>
-    <p><strong>1. The same rule lives in many places.</strong> Say a team has six repos and uses Claude Code, Codex and Copilot. A rule about commit messages or review etiquette is true everywhere, yet it sits in six <code>AGENTS.md</code> files. Someone updates three. (This is an illustration, not a customer story.) The import trick merges files inside one repo. It does nothing across repos.</p>
-    <p><strong>2. There is no shared, writable home above the repo.</strong> The options that exist are per person or per organization: a user-level file such as <code>~/.claude/CLAUDE.md</code>, an organization-managed <code>CLAUDE.md</code>, or a shared rules folder symlinked into <code>.claude/rules/</code>. Anthropic&rsquo;s docs describe all three. They work, but each reaches only people who set it up, and a symlinked rules folder that points outside the repo needs a one-time approval per project.</p>
-    <p><strong>3. Personal and shared rules collide.</strong> <code>CLAUDE.local.md</code> is the documented place for private per-project preferences, and only Claude Code reads it. Codex has its own override file, <code>AGENTS.override.md</code>, which Claude Code ignores. Each tool has its own private-override convention, so personal rules do not travel between tools.</p>
-    <p><strong>4. Not every agent works in a repo.</strong> A research agent, a support triage agent or a planning agent has no <code>AGENTS.md</code> to read. Its rules need a home that is not a code repository.</p>
+    <p><strong>1. The same rule lives in many places.</strong> Say a team has six repos and uses Claude Code, Codex and Copilot. A rule about commit messages or review etiquette is true everywhere, yet it sits in six AGENTS.md files. Someone updates three. (This is an illustration, not a customer story.) The import trick merges files inside one repo. It does nothing across repos.</p>
+    <p><strong>2. There is no shared, writable home above the repo.</strong> The options that exist are per person or per organization: a user-level file such as <code>~/.claude/CLAUDE.md</code>, an organization-managed CLAUDE.md, or a shared rules folder symlinked into <code>.claude/rules/</code>. Anthropic's docs describe all three. They work, but each reaches only people who set it up, and a symlinked rules folder that points outside the repo needs a one-time approval per project.</p>
+    <p><strong>3. Personal and shared rules collide.</strong> CLAUDE.local.md is the documented place for private per-project preferences, and only Claude Code reads it. Codex has its own override file, AGENTS.override.md, which Claude Code ignores. Each tool has its own private-override convention, so personal rules do not travel between tools.</p>
+    <p><strong>4. Not every agent works in a repo.</strong> A research agent, a support triage agent or a planning agent has no AGENTS.md to read. Its rules need a home that is not a code repository.</p>
     <p>Here is where each kind of rule belongs:</p>
 
-    <table>
+    <div class="doc-table-wrap"><table class="doc-table">
       <thead>
         <tr><th>Rule</th><th>Best home</th></tr>
       </thead>
@@ -293,69 +290,68 @@ Use plan mode for changes under src/billing/.</code></pre>
         <tr><td>A rule true across every repo and every agent</td><td>One shared home above the repos (see below)</td></tr>
         <tr><td>A rule that must never be broken</td><td>A hook or permission setting, not an instruction file</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <h3>A home above the repo</h3>
     <p>Rules about how a role behaves, rather than how one repo builds, need to be written once and reach every agent. You can build that with a shared rules repository and a sync script. Or you can keep it in the system where the agents already run.</p>
-    <p>In Maskin, an open-source workspace where humans and agents share typed records, each agent is an actor with a system prompt that defines its role. When a session starts, an ephemeral microVM launches the Claude Code CLI by default, or the Codex CLI as an alternative, with that system prompt and a scoped API key injected. Workspace skills are managed through the same tool surface (<code>create_workspace_skill</code>, <code>update_workspace_skill</code> and the rest). So a rule such as &ldquo;no agent marks work done before the checks pass&rdquo; is written once on the agent or its skill and applies in every session, with no repo involved. The <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">agent skills comparison</a> covers how that layer differs from rule files, and <a href="/docs/learn/agent-skills/">what are agent skills</a> explains the <code>SKILL.md</code> format.</p>
-    <p>Be clear about the limits. Maskin does not replace <code>AGENTS.md</code> or <code>CLAUDE.md</code>. Build commands and code style belong next to the code, in the repo file. A system prompt in Maskin governs agents that run in Maskin sessions, not a teammate&rsquo;s Cursor window on their laptop. And it is a prompt, so it carries the same limit as every file above: it guides, it does not enforce.</p>
+    <p>In Maskin, an open-source workspace where humans and agents share typed records, each agent is an <a href="/docs/concepts/">actor</a> with a system prompt that defines its role. When a session starts, an ephemeral microVM launches the Claude Code CLI by default, or the Codex CLI as an alternative, with that system prompt and a scoped API key injected (see <a href="/docs/agents/">Agents &amp; sessions</a> for the session lifecycle). Workspace skills are managed through the same tool surface (<code>create_workspace_skill</code>, <code>update_workspace_skill</code> and the rest; the full list is in <a href="/docs/mcp-tools/">MCP tools</a>). So a rule such as "no agent marks work done before the checks pass" is written once on the agent or its skill and applies in every session, with no repo involved. The <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">agent skills comparison</a> covers how that layer differs from rule files, and <a href="/docs/learn/agent-skills/">what are agent skills</a> explains the SKILL.md format.</p>
+    <p>Be clear about the limits. Maskin does not replace AGENTS.md or CLAUDE.md. Build commands and code style belong next to the code, in the repo file. A system prompt in Maskin governs agents that run in Maskin sessions, not a teammate's Cursor window on their laptop. And it is a prompt, so it carries the same limit as every file above: it guides, it does not enforce.</p>
 
     <h2>A 20-minute cleanup</h2>
     <ol>
-      <li><strong>List every instruction file in the repo:</strong> <code>CLAUDE.md</code>, <code>AGENTS.md</code>, <code>.cursor/rules</code>, <code>.github/copilot-instructions.md</code>, <code>GEMINI.md</code>.</li>
-      <li><strong>Pick <code>AGENTS.md</code> as the source.</strong> Move rules every tool should follow into it. Delete duplicates.</li>
-      <li><strong>Move tool-specific rules out.</strong> Plan mode and slash commands go in <code>CLAUDE.md</code>. Editor settings go in the editor&rsquo;s file.</li>
-      <li><strong>Cut to size.</strong> Aim for under 200 lines for Claude Code, and keep the combined chain well under Codex&rsquo;s 32 KiB.</li>
-      <li><strong>Add a <code>CLAUDE.md</code></strong> whose first line is <code>@AGENTS.md</code>.</li>
-      <li><strong>Verify in Claude Code.</strong> Run <code>/context</code> and confirm <code>CLAUDE.md</code> is listed under Memory files.</li>
+      <li><strong>List every instruction file in the repo:</strong> CLAUDE.md, AGENTS.md, .cursor/rules, .github/copilot-instructions.md, GEMINI.md.</li>
+      <li><strong>Pick AGENTS.md as the source.</strong> Move rules every tool should follow into it. Delete duplicates.</li>
+      <li><strong>Move tool-specific rules out.</strong> Plan mode and slash commands go in CLAUDE.md. Editor settings go in the editor's file.</li>
+      <li><strong>Cut to size.</strong> Aim for under 200 lines for Claude Code, and keep the combined chain well under Codex's 32 KiB.</li>
+      <li><strong>Add a CLAUDE.md</strong> whose first line is <code>@AGENTS.md</code>.</li>
+      <li><strong>Verify in Claude Code.</strong> Run <code>/context</code> and confirm CLAUDE.md is listed under Memory files.</li>
       <li><strong>Delete stale copies</strong> of the same rule in user-level files.</li>
     </ol>
-    <p>Claude Code&rsquo;s <code>/init</code> command can help. It reads Cursor rules and Copilot instructions when generating a <code>CLAUDE.md</code>, and with <code>CLAUDE_CODE_NEW_INIT=1</code> set it also reads <code>AGENTS.md</code>.</p>
+    <p>Claude Code's <code>/init</code> command can help. It reads Cursor rules and Copilot instructions when generating a CLAUDE.md, and with <code>CLAUDE_CODE_NEW_INIT=1</code> set it also reads AGENTS.md.</p>
 
     <h2>FAQ</h2>
-    <h3>Does Claude Code read <code>AGENTS.md</code>?</h3>
-    <p>Yes, from v2.1.277. By default it reads <code>AGENTS.md</code> only when there is no <code>CLAUDE.md</code> or <code>CLAUDE.local.md</code> in the working directory or above. If a <code>CLAUDE.md</code> exists, import <code>AGENTS.md</code> from it with <code>@AGENTS.md</code>, or set Project instructions to <code>claude-md-and-agents-md</code>.</p>
-    <h3>Can I symlink <code>CLAUDE.md</code> to <code>AGENTS.md</code>?</h3>
-    <p>You can, and Claude Code reads the content once. The catches are that Claude&rsquo;s Edit and Write tools refuse to write through a symlink, and that Windows checkouts turn a committed symlink into a plain text file unless <code>core.symlinks</code> is enabled. An <code>@AGENTS.md</code> import avoids both.</p>
-    <h3>Does Codex read <code>CLAUDE.md</code>?</h3>
-    <p>Not by default. Codex looks for <code>AGENTS.override.md</code>, then <code>AGENTS.md</code>, in each directory. You can add <code>CLAUDE.md</code> to <code>project_doc_fallback_filenames</code> in its configuration so it is used when the other two are missing. The combined instructions are capped at 32 KiB by default.</p>
-    <h3>Does Cursor read <code>CLAUDE.md</code>?</h3>
-    <p>Cursor&rsquo;s rules documentation describes <code>AGENTS.md</code>, including nested files in subdirectories, and does not mention <code>CLAUDE.md</code>. Do not assume it reads <code>CLAUDE.md</code>. Keep the shared rules in <code>AGENTS.md</code>, which Cursor documents, and test the behavior in your own editor.</p>
-    <h3>What is the difference between <code>CLAUDE.md</code> and <code>AGENTS.md</code>?</h3>
-    <p><code>CLAUDE.md</code> is Claude Code&rsquo;s instruction file, with imports, a local variant and path-scoped rules. <code>AGENTS.md</code> is a plain markdown format that many coding agents read, stewarded by the Agentic AI Foundation. Both carry the same kind of content: project context and rules the agent should follow every session.</p>
-    <h3>Does Gemini CLI read <code>AGENTS.md</code>?</h3>
-    <p>Not by default. Gemini CLI reads <code>GEMINI.md</code>. You can change that in <code>settings.json</code> by listing <code>AGENTS.md</code> under <code>context.fileName</code>, for example alongside <code>GEMINI.md</code>.</p>
-    <h3>What about <code>skills.md</code>?</h3>
-    <p>There is no <code>skills.md</code>. Skills use a <code>SKILL.md</code> file inside a skill folder. The difference is loading: an instruction file is read at the start of every session, while a skill is loaded when its description matches the task. Put always-on rules in <code>AGENTS.md</code> and task-specific procedures in skills.</p>
-
+    <h3>Does Claude Code read AGENTS.md?</h3>
+    <p>Yes, from v2.1.277. By default it reads AGENTS.md only when there is no CLAUDE.md or CLAUDE.local.md in the working directory or above. If a CLAUDE.md exists, import AGENTS.md from it with <code>@AGENTS.md</code>, or set Project instructions to <code>claude-md-and-agents-md</code>.</p>
+    <h3>Can I symlink CLAUDE.md to AGENTS.md?</h3>
+    <p>You can, and Claude Code reads the content once. The catches are that Claude's Edit and Write tools refuse to write through a symlink, and that Windows checkouts turn a committed symlink into a plain text file unless <code>core.symlinks</code> is enabled. An <code>@AGENTS.md</code> import avoids both.</p>
+    <h3>Does Codex read CLAUDE.md?</h3>
+    <p>Not by default. Codex looks for AGENTS.override.md, then AGENTS.md, in each directory. You can add CLAUDE.md to <code>project_doc_fallback_filenames</code> in its configuration so it is used when the other two are missing. The combined instructions are capped at 32 KiB by default.</p>
+    <h3>Does Cursor read CLAUDE.md?</h3>
+    <p>Cursor's rules documentation describes AGENTS.md, including nested files in subdirectories, and does not mention CLAUDE.md. Do not assume it reads CLAUDE.md. Keep the shared rules in AGENTS.md, which Cursor documents, and test the behavior in your own editor.</p>
+    <h3>What is the difference between CLAUDE.md and AGENTS.md?</h3>
+    <p>CLAUDE.md is Claude Code's instruction file, with imports, a local variant and path-scoped rules. AGENTS.md is a plain markdown format that many coding agents read, stewarded by the Agentic AI Foundation. Both carry the same kind of content: project context and rules the agent should follow every session.</p>
+    <h3>Does Gemini CLI read AGENTS.md?</h3>
+    <p>Not by default. Gemini CLI reads GEMINI.md. You can change that in settings.json by listing AGENTS.md under <code>context.fileName</code>, for example alongside GEMINI.md.</p>
+    <h3>What about skills.md?</h3>
+    <p>There is no skills.md. Skills use a SKILL.md file inside a skill folder. The difference is loading: an instruction file is read at the start of every session, while a skill is loaded when its description matches the task. Put always-on rules in AGENTS.md and task-specific procedures in skills.</p>
     <div class="related">
       <p class="related__title">Read next</p>
       <div class="doc-cards">
         <a class="doc-card" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">
           <div class="doc-card__title">Agent skills vs MCP vs cursor rules vs workflows</div>
-          <div class="doc-card__desc">Where rule files sit among the four layers, and why you stack them instead of choosing.</div>
+          <div class="doc-card__desc">Where rule files sit among the four layers of agent work, and what each layer answers.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
         <a class="doc-card" href="/docs/learn/agent-skills/">
           <div class="doc-card__title">What are agent skills?</div>
-          <div class="doc-card__desc">The SKILL.md format, and how a skill loads on demand instead of every session.</div>
+          <div class="doc-card__desc">The SKILL.md format for task-specific procedures that load only when they match the job.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
-        <a class="doc-card" href="/docs/agents/">
-          <div class="doc-card__title">Agents &amp; sessions</div>
-          <div class="doc-card__desc">How a Maskin agent gets its system prompt, tools and skills in every session.</div>
+        <a class="doc-card" href="/docs/learn/agent-memory-across-sessions/">
+          <div class="doc-card__title">Agent memory across sessions</div>
+          <div class="doc-card__desc">Instruction files carry rules into a run. Decisions, corrections and artifacts have to survive it.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
         <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
           <div class="doc-card__title">What is an agentic workspace?</div>
-          <div class="doc-card__desc">The cornerstone: one typed workspace humans and agents share, instead of rules scattered across repos.</div>
+          <div class="doc-card__desc">The cornerstone: humans and agents on one typed object graph, with the closed loop on top.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
       </div>
     </div>
     <div class="post-cta">
-      <h2>Write the role rules once</h2>
-      <p>In Maskin, an agent&rsquo;s system prompt and skills apply in every session it runs, with no repo involved. Open source, MCP-native. Self-host free, bring your own model.</p>
+      <h2>Give every agent one set of rules</h2>
+      <p>Maskin keeps role rules on the agent and its skills, not in a dozen repo files. Open source, self-hostable, bring your own model.</p>
       <div class="post-cta__actions">
         <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
         <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
