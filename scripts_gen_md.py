@@ -38,6 +38,7 @@ ORDER = [
   "docs/learn/agentic-workflow-vs-closed-loop/index.html",
   "docs/learn/ai-agent-governance/index.html",
   "docs/learn/agent-memory-across-sessions/index.html",
+  "docs/learn/claude-code-for-product-managers/index.html",
   "docs/learn/choose-a-knowledge-layer/index.html",
   "docs/agent-skills-marketplace/index.html",
   "docs/knowledge-wiki-vs-vector-database/index.html",

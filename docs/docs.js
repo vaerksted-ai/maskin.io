@@ -68,6 +68,7 @@
       { label: "Agentic workflow vs the closed loop", href: "/docs/learn/agentic-workflow-vs-closed-loop/" },
       { label: "AI agent governance", href: "/docs/learn/ai-agent-governance/" },
       { label: "Agent memory across sessions", href: "/docs/learn/agent-memory-across-sessions/" },
+      { label: "Claude Code for product managers", href: "/docs/learn/claude-code-for-product-managers/" },
       { label: "How to choose a knowledge layer", href: "/docs/learn/choose-a-knowledge-layer/", nested: true },
       { label: "Agent skills marketplace", href: "/docs/agent-skills-marketplace/" },
       { label: "Knowledge wiki vs vector database", href: "/docs/knowledge-wiki-vs-vector-database/" },
