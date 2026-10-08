@@ -1,7 +1,7 @@
 > Source: https://maskin.io/docs/learn/claude-code-for-product-managers/
 
 # Claude Code for product managers: what it covers, and where a team record takes over
-**Claude Code works for product managers as a file-based assistant. It reads your notes, interview transcripts and specs from a folder, drafts PRDs, research syntheses and stakeholder updates, and reaches Slack or Linear over MCP. It covers solo work well. It stops where a second person needs your decisions, their reasons, and a later check on whether they worked.**
+Claude Code works for product managers as a file-based assistant. It reads your notes, interview transcripts and specs from a folder, drafts PRDs, research syntheses and stakeholder updates, and reaches Slack or Linear over MCP. It covers solo work well. It stops where a second person needs your decisions, their reasons, and a later check on whether they worked.
 *Read against [Anthropic's Claude Code docs](https://code.claude.com/docs/en/overview), the [product-management plugin README](https://github.com/anthropics/knowledge-work-plugins/blob/main/product-management/README.md) and Anthropic's post on [how its own teams use Claude Code](https://claude.com/blog/how-anthropic-teams-use-claude-code) on 8 October 2026. Anthropic ships changes weekly, so check the docs for the version you run.*
 > ✓
 > **Key takeaways**
