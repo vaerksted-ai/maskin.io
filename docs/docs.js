@@ -58,6 +58,7 @@
       { label: "Agentic workspace vs knowledge space", href: "/docs/agentic-workspace-vs-knowledge-space/", nested: true },
       { label: "The closed-loop workspace", href: "/docs/closed-loop-workspace/", nested: true },
       { label: "Agent skills vs MCP vs cursor rules vs workflows", href: "/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/" },
+      { label: "CLAUDE.md vs AGENTS.md", href: "/docs/claude-md-vs-agents-md/", nested: true },
       { label: "LLM wiki vs RAG", href: "/docs/llm-wiki-vs-rag/" },
       { label: "Bet-based product planning", href: "/docs/bet-based-product-planning/" },
       { label: "How to run bet-based planning", href: "/docs/how-to-run-bet-based-planning/", nested: true },
