@@ -40,4 +40,4 @@ A workspace needs a model. Add an Anthropic key or Claude subscription, or a cus
 **Can I use models other than Claude?** Yes. Point a workspace at any OpenAI-compatible endpoint (OpenRouter, Ollama, vLLM) via a custom LLM — see [LLM & models](/docs/llm/).
 **Where do I see what a run cost?** Each session records token usage and `totalCostUsd` — see [Agents & sessions](/docs/agents/).
 **Do I have to self-host?** No — managed hosting is available. [Book a meeting](https://meshfirm.com/bookmagnus).
-**Still stuck?** Open an issue on [GitHub](https://github.com/sindre-ai/maskin). For security reports, email the contact on the [Security](/docs/security/) page instead.
+**Still stuck?** Open an issue on [GitHub](https://github.com/sindre-ai/maskin), or [contact Maskin support](/support/). For security reports, email the contact on the [Security](/docs/security/) page instead.
