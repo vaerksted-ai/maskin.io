@@ -72,7 +72,8 @@
       { label: "Agent skills marketplace", href: "/docs/agent-skills-marketplace/" },
       { label: "Knowledge wiki vs vector database", href: "/docs/knowledge-wiki-vs-vector-database/" },
       { label: "MCP vs RAG", href: "/docs/mcp-vs-rag/" },
-      { label: "At-risk account alerts", href: "/docs/at-risk-account-alerts/" }
+      { label: "At-risk account alerts", href: "/docs/at-risk-account-alerts/" },
+      { label: "Claude Code vs Codex", href: "/docs/claude-code-vs-codex/" }
     ]},
     { title: "Alternatives", items: [
       { label: "Open source Jira alternative", href: "/alternatives/open-source-jira-alternative/" },
