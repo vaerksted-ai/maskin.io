@@ -145,4 +145,17 @@ find dist/docs -type f -name '*.html' | while IFS= read -r html; do
   ' "$html" > "$html.tmp" && mv "$html.tmp" "$html"
 done
 
+# Self-link guard: the card's secondary CTA points at the overview
+# (/docs/get-started/). On the overview itself, send it to the quickstart
+# instead so no page links to itself. Fail loudly if the markup drifts and a
+# self-link survives.
+GET_STARTED_HTML="dist/docs/get-started/index.html"
+if [ -f "$GET_STARTED_HTML" ]; then
+  sed -i 's|<a class="docs-cta__secondary" href="/docs/get-started/">Read the overview &rarr;</a>|<a class="docs-cta__secondary" href="/docs/quickstart/">Try the quickstart \&rarr;</a>|' "$GET_STARTED_HTML"
+  if grep -q 'docs-cta__secondary" href="/docs/get-started/"' "$GET_STARTED_HTML"; then
+    echo "Error: docs CTA card still self-links on /docs/get-started/ — update the sed in build.sh to match partials/docs-cta.html" >&2
+    exit 1
+  fi
+fi
+
 echo "Build complete. PostHog + Turnstile keys + docs-shell CTAs injected."
