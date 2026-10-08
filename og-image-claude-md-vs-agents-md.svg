@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111110" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#111110" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="120" fill="url(#topFade)"/>
+  <text x="80" y="98" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#5A5751" letter-spacing="4">CLAUDE.MD VS AGENTS.MD</text>
+  <text x="80" y="160" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">One source of rules,</text>
+  <text x="80" y="222" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">one import line.</text>
+  <text x="80" y="266" font-family="Newsreader, Georgia, serif" font-size="24" font-style="italic" fill="#8B8781">Shared rules in AGENTS.md, Claude-only rules below the import</text>
+  <g id="panels">
+    <rect x="80" y="320" width="470" height="200" rx="16" fill="#141311" stroke="#3A3835" stroke-width="1.4"/>
+    <text x="104" y="354" font-family="JetBrains Mono, ui-monospace, monospace" font-size="13" fill="#8B8781" letter-spacing="2">CLAUDE.MD · CLAUDE CODE ONLY</text>
+    <circle cx="114" cy="388" r="3.4" fill="#5A5751"/>
+    <text x="132" y="393" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#B8B5AE">@AGENTS.md  (first line)</text>
+    <circle cx="114" cy="418" r="3.4" fill="#5A5751"/>
+    <text x="132" y="423" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#B8B5AE">plan mode for src/billing/</text>
+    <circle cx="114" cy="448" r="3.4" fill="#5A5751"/>
+    <text x="132" y="453" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#B8B5AE">Claude-specific workflow</text>
+    <circle cx="114" cy="478" r="3.4" fill="#5A5751"/>
+    <text x="132" y="483" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#B8B5AE">imports nest up to 4 hops</text>
+    <rect x="628" y="312" width="492" height="216" rx="18" fill="none" stroke="#2563EB" stroke-width="1" opacity="0.28"/>
+    <rect x="638" y="320" width="470" height="200" rx="16" fill="#131720" stroke="#2563EB" stroke-width="2"/>
+    <text x="662" y="354" font-family="JetBrains Mono, ui-monospace, monospace" font-size="13" fill="#2563EB" letter-spacing="2">AGENTS.MD · SHARED SOURCE</text>
+    <circle cx="672" cy="388" r="3.4" fill="#2563EB"/>
+    <text x="690" y="393" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#DCE6F7">build and test commands</text>
+    <circle cx="672" cy="418" r="3.4" fill="#2563EB"/>
+    <text x="690" y="423" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#DCE6F7">code style, security notes</text>
+    <circle cx="672" cy="448" r="3.4" fill="#2563EB"/>
+    <text x="690" y="453" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#DCE6F7">read by Codex, Cursor, Copilot</text>
+    <circle cx="672" cy="478" r="3.4" fill="#2563EB"/>
+    <text x="690" y="483" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#DCE6F7">Claude Code via the import</text>
+    <line x1="572" y1="420" x2="608" y2="420" stroke="#FAFAF8" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+    <path d="M 598 410 L 610 420 L 598 430" stroke="#FAFAF8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.7"/>
+  </g>
+
+  <g transform="translate(80, 550)">
+    <rect x="0" y="0" width="34" height="34" rx="7" fill="#1C1B18"/>
+    <path d="M7 26 L7 9 L17 19 L27 9 L27 26" stroke="#FAFAF8" stroke-width="3.6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+    <text x="46" y="24" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">Maskin</text>
+    <text x="46" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="#5A5751">maskin.io/docs/claude-md-vs-agents-md</text>
+  </g>
+</svg>
