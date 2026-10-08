@@ -258,7 +258,7 @@
     <p>The pragmatic split: if all the work happens inside one agent&rsquo;s turn, it&rsquo;s a skill. If work crosses agent turns, waits on an event, or hands off between agents, it&rsquo;s a workflow.</p>
 
     <h2><code>agent skills vs subagents</code> &mdash; one more the SERP conflates</h2>
-    <p>Subagents (Anthropic&rsquo;s Claude Code term, mirrored in other harnesses) are separate agent invocations spawned from a parent agent, each with its own context window. They&rsquo;re a <em>runtime primitive</em>, not a packaging primitive. A subagent might load skills. A subagent runs inside a workflow. But the subagent itself is neither.</p>
+    <p>Subagents (Anthropic&rsquo;s Claude Code term, mirrored in other harnesses) are separate agent invocations spawned from a parent agent, each with its own context window. They&rsquo;re a <em>runtime primitive</em>, not a packaging primitive. A subagent might load skills. A subagent runs inside a workflow. But the subagent itself is neither. Both Claude Code and Codex document subagents; <a href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a> compares what each one ships.</p>
     <p>Rule of thumb: <strong>skills are what you author. Subagents are what you spawn. Workflows are what you compose. MCP is what you call.</strong></p>
 
     <h2>The unclaimed slot: skills that fire against typed workspace state</h2>
