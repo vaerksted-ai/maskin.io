@@ -87,6 +87,9 @@
       { label: "Open source AI coding agent", href: "/alternatives/open-source-ai-coding-agent/" },
       { label: "n8n alternative", href: "/alternatives/n8n/" },
       { label: "Paperclip alternative", href: "/alternatives/paperclip/" }
+    ]},
+    { title: "Dansk", items: [
+      { label: "AI-automatisering", href: "/da/ai-automatisering/" }
     ]}
   ];
 
