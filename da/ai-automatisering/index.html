@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-automatisering: de første opgaver at automatisere | Maskin</title>
+<meta name="description" content="De fem første opgaver at automatisere med AI i en virksomhed, fire tests til at vælge, og et gennemgået eksempel på lead-opfølgning med godkendelse.">
+
+<link rel="canonical" href="https://maskin.io/da/ai-automatisering/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/da/ai-automatisering/">
+<meta property="og:title" content="AI-automatisering: de første opgaver at automatisere">
+<meta property="og:description" content="De fem første opgaver at automatisere med AI i en virksomhed, fire tests til at vælge, og et gennemgået eksempel på lead-opfølgning med godkendelse.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="da_DK">
+<meta property="article:published_time" content="2026-10-09T00:00:00Z">
+<meta property="article:modified_time" content="2026-10-09T00:00:00Z">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="AI-automatisering: de første opgaver at automatisere">
+<meta name="twitter:description" content="De fem første opgaver at automatisere med AI i en virksomhed, fire tests til at vælge, og et gennemgået eksempel på lead-opfølgning med godkendelse.">
+<meta name="twitter:image" content="https://maskin.io/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/da/ai-automatisering/#post",
+      "headline": "AI-automatisering: de første opgaver at automatisere",
+      "name": "AI-automatisering: de første opgaver at automatisere",
+      "description": "De fem første opgaver at automatisere med AI i en virksomhed, fire tests til at vælge, og et gennemgået eksempel på lead-opfølgning med godkendelse.",
+      "inLanguage": "da",
+      "url": "https://maskin.io/da/ai-automatisering/",
+      "mainEntityOfPage": "https://maskin.io/da/ai-automatisering/",
+      "image": "https://maskin.io/og-image.png",
+      "datePublished": "2026-10-09T00:00:00Z",
+      "dateModified": "2026-10-09T00:00:00Z",
+      "author": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": { "@type": "ImageObject", "url": "https://maskin.io/icon-512.png" }
+      },
+      "isPartOf": { "@type": "WebSite", "name": "Maskin", "url": "https://maskin.io/" },
+      "about": [
+        { "@type": "Thing", "name": "AI-automatisering" },
+        { "@type": "Thing", "name": "Workflow automatisering" },
+        { "@type": "Thing", "name": "Automatisering af arbejdsgange" },
+        { "@type": "Thing", "name": "AI kundeservice" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
+        { "@type": "ListItem", "position": 2, "name": "AI-automatisering", "item": "https://maskin.io/da/ai-automatisering/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Hvad er AI-automatisering?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI-automatisering er, når en AI-agent udfører et tilbagevendende stykke arbejde, hvor input varierer, for eksempel fri tekst i en mail. I modsætning til klassisk automatisering med faste regler kan agenten læse indholdet og vælge næste skridt. I praksis skriver den et udkast, og et menneske godkender, før noget sendes til kunder."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvilke opgaver skal man automatisere først?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start med opgaver, der sker ofte, har tydelige regler, er billige at rette og bruger data, agenten kan læse. Typiske første valg er opfølgning på leads, kundehenvendelser, ugentlige rapporter, mødenoter og rykkere på åbne opgaver. Vælg én, kør den i to uger, og mål, hvor ofte udkastene godkendes uændret."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvad er forskellen på AI-automatisering og en AI-agent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI-automatisering er målet: at et stykke arbejde bliver gjort uden manuelt arbejde. En AI-agent er et af midlerne: en software, der kan læse, beslutte og handle gennem værktøjer. Ikke al automatisering kræver en agent, men opgaver med fri tekst og vurderinger gør ofte. Definitionen står i guiden \"Hvad er en AI-agent?\"."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kan en AI agent klare kundeservice alene?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ikke som første skridt. Begynd med at lade AI sortere og skrive kladder, mens et menneske godkender. Først når en bestemt type henvendelse næsten altid godkendes uændret, kan den besvares uden gennemlæsning. Klager, refusioner og juridiske spørgsmål bør blive hos et menneske, fordi én forkert sætning her koster mere end tidsbesparelsen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Skal der stadig være et menneske involveret?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, i hvert fald i starten. Mennesket godkender det, der forlader virksomheden, og retter det, agenten er usikker på. Når du måler andelen af kladder, der godkendes uændret, kan du se, hvornår kontrollen trygt kan flyttes. Den beslutning bør bygge på tal, ikke på en fornemmelse."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Dansk</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Dansk"><p class="doc-sidebar__title">Dansk</p><ul class="doc-sidebar__list"><li><a class="is-active" href="/da/ai-automatisering/" aria-current="page">AI-automatisering</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/">Home</a> / AI-automatisering</p>
+    <p class="eyebrow">Guide</p>
+    <h1>AI-automatisering: de første opgaver at automatisere</h1>
+    <p class="lead"><strong>AI-automatisering betyder, at en AI-agent overtager et konkret, tilbagevendende stykke arbejde i din virksomhed, for eksempel at svare på henvendelser eller samle en ugentlig rapport.</strong> De bedste første opgaver er hyppige, har tydelige regler og koster lidt, hvis agenten tager fejl. Start med opfølgning på leads, og lad et menneske godkende alt, der forlader huset.</p>
+
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body"><strong>Vigtigste pointer</strong>
+        <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+          <li><strong>Vælg efter fire tests, ikke efter fornemmelse:</strong> hyppighed, tydelighed, pris for fejl og adgang til data.</li>
+          <li><strong>De fem første opgaver:</strong> opfølgning på leads, kundehenvendelser, ugentlige rapporter, mødenoter til opgaver og rykkere på åbne opgaver.</li>
+          <li><strong>Agenten udarbejder, mennesket sender.</strong> Mål, hvor ofte en kladde godkendes uændret, og flyt først kontrollen, når tallet er højt.</li>
+          <li><strong>Start med én opgave i to uger,</strong> ikke fem på én gang.</li>
+          <li><strong>Hold dig til folk, der selv har henvendt sig,</strong> indtil du har afklaret reglerne for koldt salg.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Hvad er forskellen på automatisering og AI-automatisering?</h2>
+    <p>Klassisk automatisering følger faste regler: når en formular er udfyldt, sendes en kvittering. Det virker, så længe input ligner sig selv. AI-automatisering tager fat, hvor input er fri tekst, og næste skridt afhænger af indholdet. En mail, der spørger om noget, du ikke har en skabelon til, kan en agent læse, forstå og svare på med et udkast.</p>
+    <p>Det er også grunden til, at AI-automatisering ofte er en agent og ikke et enkelt trin i en kæde. Definitionen af en agent og forskellen på agent, chatbot og assistent står i guiden “Hvad er en AI-agent?”. Resten af denne guide handler om det praktiske spørgsmål: hvad skal du give agenten først?</p>
+
+    <h2>Sådan vælger du den første opgave</h2>
+    <p>Brug de fire tests på hver kandidat. En opgave, der består tre af fire, er et godt sted at starte.</p>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead>
+        <tr><th>Test</th><th>Spørgsmålet</th><th>Godt tegn</th><th>Dårligt tegn</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Hyppighed</strong></td><td>Hvor ofte sker opgaven?</td><td>Flere gange om ugen</td><td>Kvartalsvis eller sjældnere</td></tr>
+        <tr><td><strong>Tydelighed</strong></td><td>Kan en ny kollega lære den med en halv side instruktion?</td><td>Ja</td><td>“Det er svært at forklare”</td></tr>
+        <tr><td><strong>Pris for fejl</strong></td><td>Hvad sker der, hvis første udkast er forkert?</td><td>Nogen retter en tekst</td><td>Kunden får forkert pris eller faktura</td></tr>
+        <tr><td><strong>Data</strong></td><td>Kan agenten læse det, den skal bruge?</td><td>Indbakke, kalender, kundepost</td><td>Findes kun i hovedet på én medarbejder</td></tr>
+      </tbody>
+    </table></div>
+    <p>Den mest oversete test er den sidste. Mange opgaver, der virker oplagte, falder på, at informationen ikke står noget sted. Agenten kan ikke gætte jeres prisniveau eller jeres undtagelser.</p>
+
+    <h3>Tæl i en uge, før du vælger</h3>
+    <p>Lav en simpel liste. Hver gang nogen i teamet laver noget, der gentager sig, skriver de tre ting: hvad, hvor mange minutter og hvor mange gange i ugen. Sortér efter minutter gange antal, og kør de tre øverste igennem de fire tests. Du vil typisk opdage, at de opgaver, der føles mest irriterende, ikke er dem, der æder mest tid. Det er den slags overblik, du ikke får fra et generelt svar fra en AI.</p>
+
+    <h2>De fem første opgaver at automatisere</h2>
+    <p>De fem opgaver, der oftest består testene, er:</p>
+    <ol>
+      <li>Opfølgning på henvendelser og leads</li>
+      <li>Kundehenvendelser i indbakken</li>
+      <li>Ugentlige rapporter og status</li>
+      <li>Mødenoter, der bliver til opgaver</li>
+      <li>Rykkere på åbne opgaver</li>
+    </ol>
+    <p>En bredere gennemgang af, hvilke jobs en agent kan tage i en dansk virksomhed, finder du i guiden “AI-agenter: guide for danske virksomheder”. Her handler det om rækkefølgen og om, hvad du skal beholde selv.</p>
+
+    <h3>1. Opfølgning på henvendelser og leads</h3>
+    <p>Den henvendelse, der kom fredag kl. 16, bliver ikke besvaret mandag, hvis ugen har været travl. Det er sjældent et spørgsmål om vilje, men om opmærksomhed. Agenten læser henvendelsen, slår kontakten op, foreslår tider fra kalenderen og skriver et udkast. Mennesket godkender. Hvis du kun vælger én opgave fra listen, så vælg denne, fordi effekten kan ses direkte i antal besvarede henvendelser. Hele forløbet gennemgås nedenfor.</p>
+
+    <h3>2. Kundehenvendelser i indbakken</h3>
+    <p>Her er gevinsten at sortere og forberede: agenten mærker mails efter type, skriver udkast til standardspørgsmål og sender resten videre til den rette kollega. Det kræver, at svarene på standardspørgsmål står skrevet et sted. Læs mere i afsnittet om AI kundeservice længere nede.</p>
+
+    <h3>3. Ugentlige rapporter og status</h3>
+    <p>Mandagens rapport er et godt kandidatjob: den har samme form hver uge, og fejl bliver set af et menneske, før de får konsekvenser. Agenten henter tallene fra de kilder, den har adgang til, og skriver tre-fire sætninger om, hvad der ændrede sig. Stil ét krav: hvert tal skal have en kilde, så du kan tjekke det på ti sekunder. En rapport uden kilder er en rapport, du ikke tør bruge. Agenten forklarer, hvad der skete; det er stadig dig, der beslutter, hvad I gør ved det.</p>
+
+    <h3>4. Mødenoter, der bliver til opgaver</h3>
+    <p>Mødet er forbi, og beslutningerne ligger i hovedet på fire mennesker. En agent kan skrive referat ud fra transskriptionen og foreslå opgaver med ejer og frist. I Maskin kan Skjald, Maskins egen mødenotetager, lægge mødet ind som et objekt, og en agent kan skrive en vidensside fra det, som et menneske godkender, før den gælder. Menneskets rolle er at rette ejer og frist, for det er nemt at gå galt i.</p>
+
+    <h3>5. Rykkere på åbne opgaver</h3>
+    <p>Den kedelige opgave ingen vil have: at spørge, om det er blevet gjort. Agenten finder opgaver, der ikke er rykket i et antal dage, og sender en kort besked til ejeren i Slack. Fordi beskeden går internt, er risikoen lav, og det er et godt sted at øve sig. Teamet vænner sig til, at en agent spørger, før den får lov at skrive til kunder.</p>
+    <p>Er teamet nervøst for AI, så start med nr. 5, 3 eller 4. De er interne og billige at rette. Er smerten, at henvendelser bliver liggende, så start med nr. 1.</p>
+
+    <h2>Eksempel: lead-opfølgning trin for trin</h2>
+    <p>Eksemplet er en skitse, ikke en kundecase. Det viser, hvordan en Loop med menneskelig godkendelse kan se ud. Det gælder kun folk, der selv har henvendt sig til jer. Koldt salg til folk, der ikke har kontaktet jer, følger andre regler. Markedsføringslovens § 10 kræver som udgangspunkt forudgående samtykke til markedsføring på e-mail, også når modtageren er en virksomhed. Tal med jeres rådgiver, før en agent sender noget til folk, der ikke har bedt om det.</p>
+    <p>En Loop i Maskin er en navngiven proces omkring objekter, med en indgang, faste trin og en lukkebetingelse. Maskin-teamet kører en variant af den på egen udgående kommunikation, og statusserne i eksemplet er lånt derfra.</p>
+    <ol>
+      <li><strong>Indgang.</strong> En henvendelse lander i den fælles indbakke. Agenten opretter en kontakt med status <em>ny henvendelse</em>. Maskin læser Gmail direkte gennem sin integration, uden et mellemled som Zapier eller Make.</li>
+      <li><strong>Læsning.</strong> Agenten læser mailen, finder tidligere kontakt med samme person og vurderer, hvad der bliver spurgt om, og hvor hastende det er. Den ser i kalenderen efter ledige tider.</li>
+      <li><strong>Kladde.</strong> Agenten skriver svaret på dansk i jeres tone og foreslår to-tre mødetider. Kladden gemmes på kontakten, og status bliver <em>kladde klar</em>.</li>
+      <li><strong>Godkendelse.</strong> En medarbejder læser kladden, retter, hvad der skal rettes, og godkender. Det er statusskiftet til <em>godkendt</em>, der udløser afsendelse. I opsætningen er det kun et menneske, der kan sætte den status, så agenten kan ikke godkende sin egen kladde.</li>
+      <li><strong>Afsendelse.</strong> Mailen sendes fra jeres egen Gmail-konto. Agenten sætter en markering, før den sender, så den samme mail aldrig går afsted to gange, hvis et trin kører igen.</li>
+      <li><strong>Opfølgning.</strong> Er der ikke svar efter tre dage, skriver agenten en kort påmindelse, som igen skal godkendes.</li>
+      <li><strong>Svar.</strong> Kommer der svar, bliver status <em>besvaret</em>, og kontakten overgår til sælgeren med hele historikken.</li>
+    </ol>
+    <p>Sådan kan en kladde se ud, før et menneske har rettet i den:</p>
+    <blockquote><p>Hej Mette, tak for din henvendelse om rådgivning til jeres lagerstyring. Jeg kan se, at I er to afdelinger, så det ville give mening at tage første samtale med begge til stede. Passer det torsdag kl. 10 eller fredag kl. 13? Skriv, hvis ingen af tiderne virker, så finder jeg en anden. Venlig hilsen Søren</p></blockquote>
+
+    <h3>Mål, hvor ofte kladden godkendes uændret</h3>
+    <p>Du bør ikke fjerne godkendelsen på baggrund af en fornemmelse. Tæl i stedet tre ting: kladder godkendt uændret, kladder rettet før godkendelse og kladder afvist. Maskin-teamet flytter først en Loop til et mere selvstændigt trin, når 80 procent af kladderne godkendes uændret over de seneste 200. Det er Maskin-teamets egen tærskel for sin egen Loop. En mindre virksomhed med få henvendelser kan ikke vente på 200 kladder, så vælg et mindre vindue, for eksempel de seneste 30, og vælg det, før du ser tallene. Hvorfor menneskelig godkendelse kun er reel, når den, der godkender, har overblik og tid, er beskrevet i <a href="https://maskin.io/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a> (engelsk).</p>
+
+    <h3>Det går typisk galt tre steder</h3>
+    <ul>
+      <li><strong>Agenten opfinder fakta.</strong> Den skriver en pris eller en leverance, I ikke har lovet. Løsningen er at give den en side med godkendte oplysninger og en regel: findes svaret ikke her, skriver agenten “mangler” og sender sagen til et menneske.</li>
+      <li><strong>Tonen er forkert.</strong> Gem tre rigtige mails, som I synes er gode, og lad agenten bruge dem som forbillede.</li>
+      <li><strong>Opfølgningen bliver for ivrig.</strong> Sæt et loft på antal påmindelser pr. kontakt, og stop automatisk, når personen har svaret.</li>
+    </ul>
+
+    <h2>Workflow automatisering eller AI-agent: hvornår er regler nok?</h2>
+    <p>Ikke alt kræver en agent. Hvis opgaven kan skrives som “hvis X, så Y” uden undtagelser, er faste regler billigere og mere pålidelige. Send en kvittering, når en formular udfyldes. Opret en opgave, når en faktura er forfalden. Her er en agent overkill.</p>
+    <p>Brug en agent, når input er fri tekst, eller når der skal træffes en vurdering. En hurtig test: kan du skrive reglen ned på ti linjer uden at skrive “medmindre” mere end to gange? Så er det regler. Ellers er det en agent. I praksis blander de fleste de to: regler til det forudsigelige og en agent til det, der kræver at forstå en tekst.</p>
+    <p>Maskin er ikke en træk-og-slip-bygger. Du sætter agenter, triggere og statusser op, så regn med, at første opsætning tager tid og kræver en person, der er tryg ved at konfigurere.</p>
+
+    <h2>Automatisering af arbejdsgange: sådan kommer du i gang på to uger</h2>
+    <ol>
+      <li><strong>Dag 1-2: tæl og vælg.</strong> Lav tælleskemaet fra tidligere og kør de tre øverste kandidater gennem de fire tests. Vælg én.</li>
+      <li><strong>Dag 3-5: skriv reglerne.</strong> Skriv en halv side om, hvordan en dygtig kollega løser opgaven: hvad der er normalt, hvad der er undtagelser, og hvornår man spørger om hjælp. Den side er agentens instruks.</li>
+      <li><strong>Uge 2: kør i skygge.</strong> Lad agenten lave kladder på rigtige henvendelser, men send ingenting. Sammenlign med, hvad teamet selv gjorde.</li>
+      <li><strong>Slutningen af uge 2: tænd for afsendelse med godkendelse.</strong> Stadig et menneske på knappen. Hold øje med de tre tal.</li>
+      <li><strong>Derefter:</strong> ét nyt job ad gangen.</li>
+    </ol>
+
+    <h2>AI kundeservice: kladder først, selvbetjening bagefter</h2>
+    <p>Mange springer direkte til en chatbot, der svarer kunderne. Det er den risikable ende. Gå i denne rækkefølge:</p>
+    <ul>
+      <li><strong>Sortering.</strong> Agenten mærker indkommende mails efter type og haster. Intet forlader huset.</li>
+      <li><strong>Kladder.</strong> Agenten skriver udkast til standardspørgsmål, og en medarbejder godkender.</li>
+      <li><strong>Selvstændig besvarelse.</strong> Først når kladderne i en bestemt type næsten altid godkendes uændret, kan netop den type sendes uden gennemlæsning.</li>
+    </ul>
+    <p>Klager, refusioner, juridiske spørgsmål og alt med penge bliver hos et menneske, uanset hvor godt tallene ser ud. Det er opgaver, hvor én forkert sætning koster mere, end hele automatiseringen har sparet.</p>
+
+    <h2>Ofte stillede spørgsmål</h2>
+
+    <h3>Hvad er AI-automatisering?</h3>
+    <p>AI-automatisering er, når en AI-agent udfører et tilbagevendende stykke arbejde, hvor input varierer, for eksempel fri tekst i en mail. I modsætning til klassisk automatisering med faste regler kan agenten læse indholdet og vælge næste skridt. I praksis skriver den et udkast, og et menneske godkender, før noget sendes til kunder.</p>
+
+    <h3>Hvilke opgaver skal man automatisere først?</h3>
+    <p>Start med opgaver, der sker ofte, har tydelige regler, er billige at rette og bruger data, agenten kan læse. Typiske første valg er opfølgning på leads, kundehenvendelser, ugentlige rapporter, mødenoter og rykkere på åbne opgaver. Vælg én, kør den i to uger, og mål, hvor ofte udkastene godkendes uændret.</p>
+
+    <h3>Hvad er forskellen på AI-automatisering og en AI-agent?</h3>
+    <p>AI-automatisering er målet: at et stykke arbejde bliver gjort uden manuelt arbejde. En AI-agent er et af midlerne: en software, der kan læse, beslutte og handle gennem værktøjer. Ikke al automatisering kræver en agent, men opgaver med fri tekst og vurderinger gør ofte. Definitionen står i guiden “Hvad er en AI-agent?”.</p>
+
+    <h3>Kan en AI agent klare kundeservice alene?</h3>
+    <p>Ikke som første skridt. Begynd med at lade AI sortere og skrive kladder, mens et menneske godkender. Først når en bestemt type henvendelse næsten altid godkendes uændret, kan den besvares uden gennemlæsning. Klager, refusioner og juridiske spørgsmål bør blive hos et menneske, fordi én forkert sætning her koster mere end tidsbesparelsen.</p>
+
+    <h3>Skal der stadig være et menneske involveret?</h3>
+    <p>Ja, i hvert fald i starten. Mennesket godkender det, der forlader virksomheden, og retter det, agenten er usikker på. Når du måler andelen af kladder, der godkendes uændret, kan du se, hvornår kontrollen trygt kan flyttes. Den beslutning bør bygge på tal, ikke på en fornemmelse.</p>
+
+    <h2>Næste skridt</h2>
+    <p>Tag tælleskemaet, vælg én opgave, og kør den i skygge. Hvis du vil se, hvordan en Loop med godkendelse, kontakter og statusser ser ud i praksis, kan du læse mere om Maskin på <a href="https://maskin.io/">maskin.io</a> (engelsk). Er du i gang med at vælge værktøj, kan guiden “Bedste AI-værktøjer til virksomheder” hjælpe med at sammenligne.</p>
+
+    <div class="related">
+      <p class="related__title">Læs videre (engelsk)</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/how-to-build-ai-sdr-loop/">
+          <div class="doc-card__title">How to build an AI SDR loop</div>
+          <div class="doc-card__desc">The full status ladder behind the lead follow-up example, step by step.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/learn/human-in-the-loop-ai/">
+          <div class="doc-card__title">Human in the loop AI</div>
+          <div class="doc-card__desc">Override rate as the honest test of whether approval is real.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/learn/agentic-workflow-vs-closed-loop/">
+          <div class="doc-card__title">Agentic workflow vs closed loop</div>
+          <div class="doc-card__desc">Three patterns, not two: where rules end and a loop begins.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+          <div class="doc-card__title">What is an agentic workspace?</div>
+          <div class="doc-card__desc">The category cornerstone, where the loop is the object of work.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Start med én opgave og et menneske på knappen</h2>
+      <p>Maskin er en open source-arbejdsplads, hvor agenter og mennesker arbejder på de samme objekter, og hvor godkendelse er et statusskifte. Apache 2.0 og kan selvhostes.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Selvhost fra GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book en prøve</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
