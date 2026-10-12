@@ -45,4 +45,12 @@ The wire an agent uses to reach the tools your team already uses: the CRM, the d
 Skill
 A packaged capability you attach to an agent: *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
 Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
+
+## FAQ
+
+### Can I use AI to create content for LinkedIn?
+Yes, as long as the substance is yours. In this loop the account owner answers interview questions about what actually happened, a voice skill for that account shapes the draft, an editor agent checks it, and the owner approves every post before it goes live. The AI does the reading, planning, and drafting. You bring the stories and keep the final say, including the right to kill a draft.
+
+### Why is there so much AI-generated content on LinkedIn?
+A post written from a prompt alone has nothing real behind it, so it reads like every other one. This loop starts from the other end: what your team shipped, what feedback came in, and what the account owners say in their interview. An editor agent checks every draft, and the owner can drop any draft that falls short before it goes live.
 Related loops on the marketplace
