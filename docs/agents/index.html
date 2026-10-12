@@ -36,6 +36,7 @@
       "headline": "Agents & sessions",
       "name": "Agents & sessions",
       "description": "How Maskin runs AI agents: Claude Code or Codex in ephemeral sandboxes, the session lifecycle, what triggers a session, file persistence, observability, and scaling.",
+      "dateModified": "2026-10-12T00:00:00Z",
       "inLanguage": "en",
       "url": "https://maskin.io/docs/agents/",
       "isPartOf": "https://maskin.io/docs/",
@@ -94,7 +95,7 @@
                            ├──→ failed
                            ├──→ timeout
                            └──→ user_stopped</code></pre>
-    <p>Sessions are non-blocking by default — they're created and run in the background. A blocking helper exists when you want the result inline (see <code>run_agent</code> below).</p>
+    <p>Sessions are non-blocking by default — they're created and run in the background. When you need the result inline, call <code>create_session</code> with <code>wait</code> set to <code>true</code>: it blocks until the session finishes (up to about 11 minutes) and returns the result.</p>
 
     <h2>What starts a session</h2>
     <ul>
@@ -102,7 +103,7 @@
       <li><strong>Thread reply</strong> — replying to an agent's own comment continues the thread in a new session.</li>
       <li><strong>Cron trigger</strong> — a scheduled <a href="/docs/concepts/">trigger</a> fires.</li>
       <li><strong>Event trigger</strong> — a workspace event matches a trigger's filter (e.g. a task enters a status).</li>
-      <li><strong>Explicit MCP call</strong> — <code>create_session</code> (non-blocking) or <code>run_agent</code> (blocking: spawns, polls to completion, returns the result with logs).</li>
+      <li><strong>Explicit MCP call</strong> — <code>create_session</code>. It returns straight away by default; with <code>wait</code> set to <code>true</code> it blocks until the session finishes and returns the result.</li>
     </ul>
 
     <h2>Memory and file persistence</h2>
