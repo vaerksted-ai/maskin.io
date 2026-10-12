@@ -19,14 +19,14 @@ pending → starting → running → completed
                            ├──→ timeout
                            └──→ user_stopped
 ```
-Sessions are non-blocking by default — they're created and run in the background. When you need the result inline, call `create_session` with `wait` set to `true`: it blocks until the session finishes and returns the result.
+Sessions are non-blocking by default — they're created and run in the background. When you need the result inline, call `create_session` with `wait` set to `true`: it blocks until the session finishes (up to about 11 minutes) and returns the result.
 
 ## What starts a session
 - **@mention** — mentioning an agent in a comment on an object; the notification also lands in the [notification-driven agent inbox](/docs/agent-inbox/) for review.
 - **Thread reply** — replying to an agent's own comment continues the thread in a new session.
 - **Cron trigger** — a scheduled [trigger](/docs/concepts/) fires.
 - **Event trigger** — a workspace event matches a trigger's filter (e.g. a task enters a status).
-- **Explicit MCP call** — `create_session` (non-blocking by default; with `wait` set to `true` it blocks and returns the result).
+- **Explicit MCP call** — `create_session`. It returns straight away by default; with `wait` set to `true` it blocks until the session finishes and returns the result.
 
 ## Memory and file persistence
 An agent's **skills**, **memory**, and **learnings** live in S3-compatible storage. They're pulled into the sandbox at the start of a session and pushed back when it completes, so an agent accumulates context across runs instead of starting cold each time. Any files an agent authors are stored the same way and can be attached to objects.
