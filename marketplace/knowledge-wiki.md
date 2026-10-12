@@ -31,7 +31,7 @@ That last line is the close condition. The loop is not done when the page is wri
 ## Why team wikis rot, and why this one does not
 Every team has tried the shared wiki. The pattern is always the same: a burst of writing at the start, a slow drift, and a final state where the newest pages are the least accurate and nobody trusts any of it. The cause is not laziness. It is that writing to the wiki is a separate job from doing the work, and separate jobs lose.
 This loop removes the separate job. Writing to the wiki is a byproduct of closing a bet, which the team is already doing. Reading from the wiki is a byproduct of starting work, because the agent reads it before it answers. Nobody has to remember the wiki exists, because it sits on the path of work the team already runs.
-The typed graph is what makes that possible. A page is not a floating document; it is attached to the object it describes. When the object changes, the link tells you which page to revisit. When a new agent joins, it does not read a stale onboarding doc. It reads the same graph the rest of the team operates on.
+The typed graph is what makes that possible. A page is not a floating document; it is attached to the object it describes. When the object changes, the link tells you which page to revisit. When a new agent joins, it does not read a stale onboarding doc. It reads the same graph the rest of the team operates on. Other loops read from that graph too: the [LinkedIn content loop](/marketplace/linkedin-content/) starts each fortnight from the shipped work, feedback, and signals already recorded there.
 
 ## Built with
 - **Signal sources** — closed bets, shipped decisions, customer calls, and the object graph the team already works on.

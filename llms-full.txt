@@ -2351,7 +2351,7 @@ Real human-on-the-loop is a set of visible artefacts, not a slogan. In a product
 - **Override rate and override latency visible per class.** The two metrics live on a dashboard the operator actually reads, watched per action class over time.
 - **Tiered approvals enforced at the governance layer.** The agent cannot escalate its own tier; policy is set outside the agent and enforced when the agent tries to act.
 - **An event-sourced audit trail.** Every action, every intervention, every halt is a typed event, so an auditor can reconstruct the oversight arrangement after the fact.
-Maskin’s workspace is built on a typed object graph — insights, bets, tasks, loops — with per-loop autonomy settings and an audit trail that treats every agent action as a typed transition. Gates live on the object, override rate is measurable per action class, and the audit trail is the graph’s own history. The deeper architecture write-up is the [ambient agent workspace piece](/docs/ambient-agent-workspace/). A concrete example of a human gate on a decision is [the human call on an at-risk account’s recovery bet](/docs/at-risk-account-alerts/), where a person decides whether the bet is right and commits the resources.
+Maskin’s workspace is built on a typed object graph — insights, bets, tasks, loops — with per-loop autonomy settings and an audit trail that treats every agent action as a typed transition. Gates live on the object, override rate is measurable per action class, and the audit trail is the graph’s own history. The deeper architecture write-up is the [ambient agent workspace piece](/docs/ambient-agent-workspace/). A concrete example of a human gate on a decision is [the human call on an at-risk account’s recovery bet](/docs/at-risk-account-alerts/), where a person decides whether the bet is right and commits the resources. A lighter-weight example is the [LinkedIn content loop](/marketplace/linkedin-content/): an editor agent checks every draft, and the account owner approves each post before it goes live.
 > ✓
 > **Key takeaways**
 > **HITL** means a human approves an AI output before it commits. **HOTL** means a human supervises an autonomous agent through review surfaces and escalation gates. The distance between the two prepositions is a design decision, not a semantic quibble.
@@ -2462,7 +2462,7 @@ Looking for where to find skills? Most results for “agent skills marketplace�
 ## A live example: skills that fire on workspace state
 In Maskin, skills are attached to an agent working inside a loop. They are not a top-level section of their own. The Marketplace lists loops; agents, MCP servers, and skills appear as the “built with” components of a loop listing.
 What makes the skill primitive in a Maskin workspace different from a folder you paste into a chat is the thing it can react to. A workspace-attached skill can fire against typed state in the object graph: an object entering a status, a field changing value, or an @mention landing on an object. The skill is not something an agent happens to have loaded; it is something that runs when the workspace reaches a state it was written for.
-Concretely, a skill attached to a discovery agent might fire when an interview note object moves to `ready`. It reads that object, applies the team’s synthesis template, and writes a drafted insight back to the graph. The next agent to work on the same topic reads from the same typed state, so the skill’s output is not stranded in a chat transcript.
+Concretely, a skill attached to a discovery agent might fire when an interview note object moves to `ready`. It reads that object, applies the team’s synthesis template, and writes a drafted insight back to the graph. The next agent to work on the same topic reads from the same typed state, so the skill’s output is not stranded in a chat transcript. Voice works the same way: in the [LinkedIn content loop](/marketplace/linkedin-content/), each account’s voice is a skill the loop applies to every draft, and its owner signs it off before anything posts in that voice.
 That is the difference between a skill as a document and a skill as a working part. Both use the same folder format. One is loaded by hand; the other is wired into the place the work actually happens. The [stateful orchestration substrate](/docs/what-is-a-stateful-orchestration-substrate/) is what carries that typed state between agents, and the [closed-loop workspace](/docs/closed-loop-workspace/) is the shape the whole arrangement forms.
 
 ## Are agent skills an open standard?
@@ -3744,7 +3744,7 @@ Full walkthrough of the outbound loop — signal to booked call on your own stac
 Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20Outbound%20loop) with subject “Waitlist: Outbound loop” and we’ll send it the moment it drops.
 
 ## What a cold email loop gets you
-The outbound loop closes the gap between “this account matched our ICP” and “a warm reply is in the account owner’s inbox.” It runs continuously against a signal feed, drafts personalised messages, sends only what a human has approved, and routes replies back to the humans who can close them. The wedge over closed AI SDR SaaS isn’t the model — it’s the loop shape and the audit trail.
+The outbound loop closes the gap between “this account matched our ICP” and “a warm reply is in the account owner’s inbox.” It runs continuously against a signal feed, drafts personalised messages, sends only what a human has approved, and routes replies back to the humans who can close them. The wedge over closed AI SDR SaaS isn’t the model — it’s the loop shape and the audit trail. The same workspace also runs the [LinkedIn content loop](/marketplace/linkedin-content/), which keeps a founder-voice LinkedIn presence going alongside outreach.
 - **Direct API costs run $50–200/mo** at typical OSS-stack volume; the closed SaaS bill is $2,000–5,000/mo per seat, and the honest split is roughly 10–15% API markup, 40% activation-and-plumbing services, 45% brand insulation.
 - **Every prospect, message, and reply is a queryable row.** The state lives on Maskin’s typed object graph, not a vendor dashboard. That’s the audit trail your GTM leader wants.
 - **Human-on-the-loop with a measured [override rate](/docs/learn/human-in-the-loop-ai/)** is the operational difference between a working loop and a demo. Stuck at 0% is rubber-stamping; above 20% is a broken model; the real gate sits in the middle band.
@@ -3811,7 +3811,7 @@ That last line is the close condition. The loop is not done when the page is wri
 ## Why team wikis rot, and why this one does not
 Every team has tried the shared wiki. The pattern is always the same: a burst of writing at the start, a slow drift, and a final state where the newest pages are the least accurate and nobody trusts any of it. The cause is not laziness. It is that writing to the wiki is a separate job from doing the work, and separate jobs lose.
 This loop removes the separate job. Writing to the wiki is a byproduct of closing a bet, which the team is already doing. Reading from the wiki is a byproduct of starting work, because the agent reads it before it answers. Nobody has to remember the wiki exists, because it sits on the path of work the team already runs.
-The typed graph is what makes that possible. A page is not a floating document; it is attached to the object it describes. When the object changes, the link tells you which page to revisit. When a new agent joins, it does not read a stale onboarding doc. It reads the same graph the rest of the team operates on.
+The typed graph is what makes that possible. A page is not a floating document; it is attached to the object it describes. When the object changes, the link tells you which page to revisit. When a new agent joins, it does not read a stale onboarding doc. It reads the same graph the rest of the team operates on. Other loops read from that graph too: the [LinkedIn content loop](/marketplace/linkedin-content/) starts each fortnight from the shipped work, feedback, and signals already recorded there.
 
 ## Built with
 - **Signal sources** — closed bets, shipped decisions, customer calls, and the object graph the team already works on.
@@ -3867,7 +3867,7 @@ Related loops on the marketplace
 # Close the loop from customer signal to shipped bet.
 Interviews, tickets, and reviews land as typed insight — the loop closes when a shaped bet ships against them.
 ![The product discovery loop — customer signal, typed insight, shaped bet, shipped and re-checked against the signal.](/og-image-product-discovery.png)
-The discovery loop closes on the outcome (a shipped bet mapped back to the signal that motivated it), not the activity (an interview scheduled). Every call transcript, support ticket, and review lands as a typed insight on the same graph as the bets you’re already shipping. Agents cluster themes and draft candidate bets; a human gates the read-through and the shaping. After ship, the loop re-checks the signal so you know whether the bet actually retired the pain. The same signal-to-bet pattern applies on the retention side: see [the same signal-to-bet pattern applied to churn](/docs/at-risk-account-alerts/).
+The discovery loop closes on the outcome (a shipped bet mapped back to the signal that motivated it), not the activity (an interview scheduled). Every call transcript, support ticket, and review lands as a typed insight on the same graph as the bets you’re already shipping. Agents cluster themes and draft candidate bets; a human gates the read-through and the shaping. After ship, the loop re-checks the signal so you know whether the bet actually retired the pain. The same signal-to-bet pattern applies on the retention side: see [the same signal-to-bet pattern applied to churn](/docs/at-risk-account-alerts/). Shipped bets are also the raw material for the [LinkedIn content loop](/marketplace/linkedin-content/), which turns what shipped this fortnight into posts the account owner approves.
 For product teams whose research folder never quite makes it into the roadmap.
 A full walkthrough of the product discovery loop — customer signal to shipped bet. Sign up to get it the moment it’s live.
 Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20product%20discovery%20loop) with subject “Waitlist: product discovery loop” and we’ll send it the moment it drops.
@@ -3882,3 +3882,55 @@ MCP
 The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
 Skill
 A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
+
+
+---
+
+> Source: https://maskin.io/marketplace/linkedin-content/
+
+# Run LinkedIn content in Maskin so your team keeps its voice and the final say while Maskin reads what happened this week, plans the calendar, drafts every post, and keeps a steady posting rhythm going.
+![The LinkedIn content loop: a seven-step cycle from interview to approved post to retro.](/og-image-linkedin-content.png)
+
+## The job
+Keep a founder-voice LinkedIn presence going from the moments already happening inside your business: a shipped feature, a customer win, a competitor move, a hard lesson. The result is a steady posting rhythm, planned two weeks at a time, and founder time back for the work only founders can do, instead of writing posts cold at 11pm on Sunday. The work is done when the post is live on LinkedIn and the next retro has read how it did, not when a draft is generated.
+**Replaces:** ghostwriter retainers · standalone “AI LinkedIn post generator” tools · a shared doc of half-drafted posts that decays · asking the founder to remember what to post about
+**Stays human:** the stories and opinions only you hold · the voice · the approval on every post · which drafts get killed
+
+## Human ↔ Maskin split
+| Your team keeps | Maskin runs |
+| --- | --- |
+| Answering the interview questions with the real stories and opinions | Reading the last two weeks of shipped work, feedback, and signals, then writing the questions |
+| The voice each post is written in | Planning the calendar and drafting the whole fortnight in one pass, in the right voice per account |
+| The approval on every post | An editor agent checking every draft before it reaches you |
+| The judgement to kill a weak draft | Reworking the drafts that get sent back |
+| On some accounts, pasting the approved post into LinkedIn | Posting for you on the others, then a retro every two weeks that reads how posts did |
+
+## How the loop runs
+1. Every two weeks, Maskin reads the last fortnight: what shipped, what feedback came in, and how recent posts did.
+2. From that, it writes interview questions for each account owner, so every post starts from something true.
+3. The account owners answer. The real stories, opinions, and numbers only they hold are the raw material, and this is the human step the whole fortnight hangs on.
+4. Once the answers are in, Maskin plans a calendar of up to 10 posts across personal accounts and the company page, and drafts all of them in one pass, each in that account’s voice, with media noted where a visual helps.
+5. An editor agent reads every draft the way a busy follower would and sends weak ones back for rework. Then the account owner reads each post, tweaks or kills it, and approves it.
+6. Approved posts go live on their scheduled day. On some accounts Maskin posts for you, and on others the owner pastes the approved text into LinkedIn.
+7. Two weeks later, the retro reads how the posts did and files what to do more and less of, and the next plan starts from it.
+
+## Trust surface
+- **Voice is a [workspace skill](/docs/learn/agent-skills/), not a prompt.** Each account (a founder’s personal profile, a teammate’s, the company page) has a voice skill the loop applies. If an account has no voice skill yet, one is drafted and approved by its owner first. Nobody posts in a voice its owner hasn’t signed off.
+- **Nothing goes out unapproved.** An editor agent checks every draft, and the account owner [approves each post](/docs/learn/human-in-the-loop-ai/) before it goes live.
+- **Weak drafts get killed, not shipped.** The editor sends weak drafts back for rework, and a draft that can’t be saved is dropped instead of posted.
+
+## Run it
+**Book a demo:** see the loop running on the Maskin Team’s own LinkedIn profiles and company page, then decide whether to run it on yours.
+
+## What’s inside the loop
+Loop
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome, not on *done for now*. Every listing on the Marketplace is a loop.
+**Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.**
+Agent
+A named role a model performs: an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
+MCP
+The wire an agent uses to reach the tools your team already uses: the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
+Skill
+A packaged capability you attach to an agent: *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
+Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
+Related loops on the marketplace
