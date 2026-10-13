@@ -1,0 +1,11 @@
+# Fixture
+
+## Docs
+
+- [Guide](https://maskin.io/docs/guide/): English guide.
+
+## Dansk
+
+- [Hub](https://maskin.io/da/): hub.
+- [Agenter](https://maskin.io/da/ai-agenter/): agenter.
+- [Automatisering](https://maskin.io/da/ai-automatisering/): automatisering.
