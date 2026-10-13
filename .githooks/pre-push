@@ -3,8 +3,11 @@
 # your machine. Opt in once per clone:
 #
 #   git config core.hooksPath .githooks
+#   chmod +x .githooks/pre-push
 #
-# Needs Node 18 or later. Bypass in an emergency with: git push --no-verify
+# (Git skips hooks that are not executable. If your checkout already has the executable
+# bit on this file, the chmod is a no-op.) Needs Node 18 or later.
+# Bypass in an emergency with: git push --no-verify
 set -e
 cd "$(git rev-parse --show-toplevel)"
 node scripts_lint_i18n.mjs
