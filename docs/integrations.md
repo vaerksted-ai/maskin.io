@@ -67,7 +67,7 @@ Maskin ships with ten first-party integrations. Three of them are auto-injected 
 - **Auth:** `oauth2_custom`.
 - **MCP:** attachable. Load the LinkedIn MCP for identity and messaging.
 - **What agents can do:** read profiles, read messages, send DMs, follow connection activity.
-- **Common use:** AI-SDR loops where an agent shapes an outbound draft on a signal and a human approves before the send.
+- **Common use:** AI-SDR loops where an agent shapes an outbound draft on a signal and a human approves before the send. Content loops are a second use: [a LinkedIn content loop that plans and drafts a fortnight of posts](/marketplace/linkedin-content/) for the account owner to approve. On some accounts the loop posts for you; on others the owner pastes the approved text into LinkedIn.
 
 ## Provider-only (no MCP surface)
 

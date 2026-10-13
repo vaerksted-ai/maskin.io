@@ -717,7 +717,7 @@ Maskin ships with ten first-party integrations. Three of them are auto-injected 
 - **Auth:** `oauth2_custom`.
 - **MCP:** attachable. Load the LinkedIn MCP for identity and messaging.
 - **What agents can do:** read profiles, read messages, send DMs, follow connection activity.
-- **Common use:** AI-SDR loops where an agent shapes an outbound draft on a signal and a human approves before the send.
+- **Common use:** AI-SDR loops where an agent shapes an outbound draft on a signal and a human approves before the send. Content loops are a second use: [a LinkedIn content loop that plans and drafts a fortnight of posts](/marketplace/linkedin-content/) for the account owner to approve. On some accounts the loop posts for you; on others the owner pastes the approved text into LinkedIn.
 
 ## Provider-only (no MCP surface)
 
@@ -2246,7 +2246,7 @@ The deeper architecture write-up sits in the [ambient agent workspace](/docs/amb
 Having the primitive isn’t enough. The gate has to be applied to the right actions, in the right shape, or it becomes decoration. Four design moves that separate a real approval gate from a compliance sticker.
 
 ### 1. Gate the material call, not the model call
-The thing that needs approval is the tool call that changes the world — the email being sent, the payment being moved, the record being deleted. Not the LLM inference that decided to propose it. Model reasoning without a side effect is reversible by definition; the side effect is not. Wire the gate on the tool, not on the agent’s reasoning step.
+The thing that needs approval is the tool call that changes the world — the email being sent, the payment being moved, the record being deleted. Not the LLM inference that decided to propose it. Model reasoning without a side effect is reversible by definition; the side effect is not. Wire the gate on the tool, not on the agent’s reasoning step. The same idea shows up in content work: in [a loop where the owner approves every post before it goes live](/marketplace/linkedin-content/), drafting and the editor check run freely, and the human approval sits in front of the post going public.
 
 ### 2. Give the reviewer enough context to actually decide
 A reviewer clicking approve on a payload they can’t evaluate is worse than no reviewer at all — you get the appearance of oversight and none of the substance. When you surface a pending action, surface with it: the intent (what the agent said it was doing), the payload (what will actually happen), the object the action touches (so the reviewer can see the surrounding work), and the blast radius (who it affects and whether it’s reversible).
@@ -3077,7 +3077,7 @@ That distinction is why a search for an "agent skills marketplace" is really two
 
 ## You browse skills; you run them inside loops
 Here is the split the noun hides. Whatever surface you use to find a skill is a **browse surface**. The place the skill actually does its work is a **run surface**, and the two are not the same product. You browse a skill the way you browse a package: read the description, check the author, decide. You *run* it inside something that gives it a job, a trigger, and a place to report back.
-That is the layer the category noun does not yet describe. Maskin's skill surface is a run surface: a skill attaches to an agent and ships as a ["built with" component of a loop](https://maskin.io/marketplace/), where the loop holds the trigger and the state. Maskin's Marketplace lists those loops — it is a catalogue of runnable loops, not a shelf of standalone skill folders, so you do not visit it to browse a plain skill directory; you use it to put a skill to work inside a defined process. The browse-versus-run distinction is also why the fast comparison people reach for — [agent skills versus MCP, cursor rules, and their neighbours](https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/) — matters: the instruction layers do different jobs, and only one of them carries state. If you want the layer-by-layer breakdown, that page is the hub for it.
+That is the layer the category noun does not yet describe. Maskin's skill surface is a run surface: a skill attaches to an agent and ships as a ["built with" component of a loop](https://maskin.io/marketplace/), where the loop holds the trigger and the state. Maskin's Marketplace lists those loops — it is a catalogue of runnable loops, not a shelf of standalone skill folders, so you do not visit it to browse a plain skill directory; you use it to put a skill to work inside a defined process. One example: [a voice skill that a LinkedIn content loop applies to every draft](/marketplace/linkedin-content/), with each account’s owner approving the posts. The browse-versus-run distinction is also why the fast comparison people reach for — [agent skills versus MCP, cursor rules, and their neighbours](https://maskin.io/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/) — matters: the instruction layers do different jobs, and only one of them carries state. If you want the layer-by-layer breakdown, that page is the hub for it.
 A marketplace of skills, in other words, is not automatically a marketplace of loops. Buying a skill and running a loop are different acts, and the products that do the first rarely do the second.
 
 ## Where a skill actually runs
