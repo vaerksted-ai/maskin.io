@@ -13,6 +13,15 @@ POSTHOG_PROJECT_KEY="phc_tfrEvZMAfNvPzmof6dHMndPEDuLe4wNdPDBTUJA66Zww"
 # and local builds work before Infra & DevOps sets the production key.
 TURNSTILE_SITEKEY_VALUE="${TURNSTILE_SITEKEY:-1x00000000000000000000AA}"
 
+# i18n source lint (Danish/Swedish pages): runs before dist is touched, so a failure
+# leaves the last good deployment live. Quiet when green (one line). Escape hatch for a
+# lint bug that blocks English deploys: set the Pages env var I18N_LINT=off.
+if [ "${I18N_LINT:-}" = "off" ]; then
+  echo "!!! I18N_LINT=off: i18n source lint SKIPPED. Remove the env var to re-enable the gate." >&2
+else
+  node scripts_lint_i18n.mjs --no-git
+fi
+
 rm -rf dist
 mkdir -p dist
 
@@ -47,7 +56,7 @@ fi
 
 # Top-level content subtrees. Add a new SEO cluster hub here (one line) and every
 # page under it ships automatically — no other build.sh edits required.
-CONTENT_DIRS=(docs changelog privacy terms support alternatives marketplace sprint deck solutions da)
+CONTENT_DIRS=(docs changelog privacy terms support alternatives marketplace sprint deck solutions da sv)
 for dir in "${CONTENT_DIRS[@]}"; do
   if [ -d "$dir" ]; then
     cp -r "$dir" "dist/$dir"

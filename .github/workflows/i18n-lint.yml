@@ -1,0 +1,55 @@
+name: i18n lint
+
+# Language-safety rails for the Danish and Swedish pages. Not a required check on main
+# (bots push straight to main; a path-filtered required check would leave other PRs pending).
+# The SEO Publisher waits for this check to be green before merging a da/sv PR.
+on:
+  pull_request:
+    paths:
+      - "da/**"
+      - "sv/**"
+      - "index.html"
+      - "sitemap.xml"
+      - "llms.txt"
+      - "build.sh"
+      - "i18n.json"
+      - "scripts_*"
+      - "scripts_*/**"
+      - "docs.css"
+      - "docs/docs.css"
+      - ".github/workflows/i18n-lint.yml"
+  push:
+    branches: [main]
+    paths:
+      - "da/**"
+      - "sv/**"
+      - "index.html"
+      - "sitemap.xml"
+      - "llms.txt"
+      - "build.sh"
+      - "i18n.json"
+      - "scripts_*"
+      - "scripts_*/**"
+      - "docs.css"
+      - "docs/docs.css"
+      - ".github/workflows/i18n-lint.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  i18n-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Lint unit tests
+        run: node --test scripts_lint_i18n.test.mjs
+      - name: Source lint
+        run: node scripts_lint_i18n.mjs
+      - name: Build
+        run: bash build.sh
