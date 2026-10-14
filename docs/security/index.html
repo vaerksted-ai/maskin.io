@@ -84,7 +84,7 @@
     <p>Every request authenticates with a bearer API key (prefixed <code>ank_</code>). Keys are stored only as <strong>SHA-256 hashes</strong> — the plaintext is shown once at creation and never again. Auth is <strong>stateless</strong>: no cookies or server sessions. Keys are per-actor and can be rotated with <code>regenerate_api_key</code>, which immediately invalidates the old value.</p>
 
     <h2>Authorization &amp; tenant isolation</h2>
-    <p>Workspace-scoped requests carry an <code>X-Workspace-Id</code> header, and every query is scoped to that workspace — data does not cross tenant boundaries. Membership is role-based: <code>owner</code>, <code>member</code>, and <code>viewer</code>.</p>
+    <p>Workspace-scoped requests carry an <code>X-Workspace-Id</code> header. Workspace isolation is enforced in the API, route by route, not by database-level row security, so it depends on each route checking the workspace. Gaps found in an internal review of the routes are being closed: some fixes are already on <code>main</code> and others are in review. Memberships carry a role (<code>owner</code>, <code>admin</code>, <code>member</code>, <code>viewer</code>). Owner and admin roles gate member management, invites, billing and workspace settings. The <code>viewer</code> role is defined but not yet enforced as read-only (planned).</p>
 
     <h2>Credential encryption at rest</h2>
     <p>Integration OAuth tokens and workspace LLM API keys are encrypted with <strong>AES-256-GCM</strong> using <code>INTEGRATION_ENCRYPTION_KEY</code> (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as <code>iv:authTag:ciphertext</code>. In the UI only the last four characters are ever shown, and secrets are never written to logs or exposed in agent output.</p>
@@ -94,7 +94,8 @@
     </div>
 
     <h2>Sandboxed agent execution</h2>
-    <p>Agent sessions run as <strong>ephemeral, non-root Docker containers</strong> (from the <code>agent-base</code> image), one per run, torn down on completion. To launch them the app uses the host Docker socket (<code>/var/run/docker.sock</code>) — treat access to that socket as root-equivalent and restrict it to the app. For stronger isolation, run sessions on dedicated <a href="/docs/agents/">agent servers</a> rather than the app host. For the policy layer above the sandbox &mdash; who signs off on agent actions, and how those approvals get recorded &mdash; see the <a href="/docs/learn/ai-agent-governance/">governance framework for AI agents</a>.</p>
+    <p>On the hosted path, each agent session runs in its own <strong>ephemeral microVM</strong> (libkrun, managed through microsandbox) on a dedicated <a href="/docs/agents/">agent server</a>, started from the <code>agent-base</code> image, one per run and stopped and removed when the session completes. The app hands sessions to the agent server over HTTPS and does not launch them through a Docker socket.</p>
+    <p>For local development, and for self-hosts that do not configure agent servers, sessions run as Docker containers on the app host instead. That path uses the host Docker socket (<code>/var/run/docker.sock</code>) — treat access to that socket as root-equivalent and restrict it to the app. For stronger isolation, run sessions on dedicated agent servers rather than the app host. For the policy layer above the sandbox &mdash; who signs off on agent actions, and how those approvals get recorded &mdash; see the <a href="/docs/learn/ai-agent-governance/">governance framework for AI agents</a>.</p>
 
     <h2>Webhook verification</h2>
     <p>Inbound webhooks are signature-verified per provider before processing:</p>
