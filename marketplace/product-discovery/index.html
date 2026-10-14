@@ -41,6 +41,10 @@
 
 <link rel="stylesheet" href="/docs/docs.css">
 
+<!-- lite-youtube-embed facade: thumbnail on load, iframe on click. Zero-cost until user clicks. -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.css">
+<script src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.js" defer></script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -69,6 +73,20 @@
       "keywords": "product discovery loop, customer signal to shipped bet, product discovery ai, typed insight"
     },
     {
+      "@type": "VideoObject",
+      "name": "Continuous Product Discovery, as a loop in Maskin",
+      "description": "Walkthrough of Maskin's product discovery loop: sources in, the same signal clustered across unrelated sources, a bet staged at opportunity, promoted to define.",
+      "thumbnailUrl": ["https://maskin.io/og-image-product-discovery.png"],
+      "uploadDate": "2026-09-22",
+      "embedUrl": "https://www.youtube.com/embed/FBs2yA1IdtM",
+      "contentUrl": "https://www.youtube.com/watch?v=FBs2yA1IdtM",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      }
+    },
+    {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
@@ -81,12 +99,10 @@
 </script>
 
 <style>
-  /* Product discovery loop page: hero visual, non-clickable video placeholder, plain waitlist shell (matches shell used on seo-publishing / outbound / knowledge-wiki), primitives grid, positioning line. */
+  /* Product discovery loop page: hero visual, lite-youtube video embed, plain waitlist shell (matches shell used on seo-publishing / outbound / knowledge-wiki), primitives grid, positioning line. */
   .hero-visual { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--rule); margin: 1.5rem 0 2rem; }
-  .video-embed { aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: var(--linen); border: 1px solid var(--rule); margin: 1.5rem 0 2rem; display: flex; align-items: center; justify-content: center; text-align: center; }
-  .video-embed__placeholder { padding: 2rem; color: var(--ink-2); font-family: var(--ff-serif); font-style: italic; }
-  .video-embed__badge { display: inline-block; font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); padding: .3rem .55rem; border: 1px solid var(--accent); border-radius: 6px; margin-bottom: .8rem; }
-  .video-embed__label { font-size: 1.05rem; }
+  .video-embed { aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: var(--linen); border: 1px solid var(--rule); margin: 1.5rem 0 2rem; }
+  .video-embed lite-youtube { width: 100%; height: 100%; border-radius: 14px; display: block; }
   .waitlist { display: flex; gap: .6rem; flex-wrap: wrap; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin: 0 0 .5rem; }
   .waitlist__input { flex: 1 1 240px; padding: .7rem .9rem; border: 1px solid var(--rule); border-radius: 8px; font: inherit; background: var(--linen); color: var(--ink); }
   .waitlist__input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
@@ -130,12 +146,9 @@
     <!-- POSITIONING LINE (verbatim from PMM copy deck section 4) -->
     <p class="positioning-line">For product teams whose research folder never quite makes it into the roadmap.</p>
 
-    <!-- VIDEO SLOT (non-clickable placeholder; no walkthrough video exists in this loop's series) -->
-    <div class="video-embed" role="figure" aria-label="Product discovery loop video, dropping this week">
-      <div class="video-embed__placeholder">
-        <div class="video-embed__badge">Video drops this week</div>
-        <p class="video-embed__label">A full walkthrough of the product discovery loop &mdash; customer signal to shipped bet.<br>Sign up to get it the moment it&rsquo;s live.</p>
-      </div>
+    <!-- VIDEO SLOT (lite-youtube facade on Video 2, pairing confirmed by PMM 2026-10-14) -->
+    <div class="video-embed" role="figure" aria-label="Video: Product discovery as a loop">
+      <lite-youtube videoid="FBs2yA1IdtM" playlabel="Play: Product discovery as a loop"></lite-youtube>
     </div>
 
     <!-- WAITLIST FORM (plain shell, matches shell used on seo-publishing / outbound / knowledge-wiki) -->
