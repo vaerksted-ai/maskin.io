@@ -68,7 +68,15 @@ A tracker you already use can hold this if you add fields by convention. Linear,
 
 ## How Maskin keeps that record
 Maskin is an open-source (Apache 2.0), MCP-native, self-hostable workspace. We build it, so weigh this section accordingly. Work moves as typed objects. A signal enters as an **insight**, from sources such as Slack, Intercom, PostHog or a scheduled scan. It is shaped into a **bet**, a testable hypothesis with a win condition ([bet-based product planning](/docs/bet-based-product-planning/) explains the method). The bet breaks into **tasks** that people and agents share, each with a driver (an owner, person or agent) and a comment thread. When the work ships, the outcome is checked against the win condition.
-For a PM already using Claude Code, two things matter. First, Maskin exposes its objects over MCP, and Claude Code connects to MCP servers, which is the route for pointing a session at the shared record instead of a private folder. The [MCP tools reference](/docs/mcp-tools/) lists what is exposed. Second, Maskin runs agent sessions on the Claude Code and Codex command-line tools, each in an isolated microVM, so the agents are the ones you already use. What changes is where the result is kept.
+For a PM already using Claude Code, two things matter. First, Maskin exposes its objects over MCP, and Claude Code connects to MCP servers, so you can point a session at the shared record instead of a private folder. The command, with your own host, key and workspace ID:
+```
+claude mcp add --transport http maskin \
+  https://<your-maskin-host>/mcp \
+  --header "Authorization: Bearer <MASKIN_API_KEY>" \
+  --header "X-Workspace-Id: <WORKSPACE_ID>"
+```
+Create the API key (the `ank_` value) under Settings, API keys, and copy the workspace ID from the Workspace settings page. Run `/reload-plugins`, then ask Claude to call `get_started`. This is checked against Anthropic's MCP docs and Maskin's server code, not a connect from a fresh Claude Code install. The [self-hosted setup guide](/docs/get-started/self-hosted/) has the full steps, and the [MCP tools reference](/docs/mcp-tools/) lists what is exposed.
+Second, Maskin runs agent sessions on the Claude Code and Codex command-line tools, each in an isolated microVM, so the agents are the ones you already use. If your engineers run both, [what changes when your team runs both Claude Code and Codex](/docs/claude-code-vs-codex/) covers keeping one record across them. What changes is where the result is kept.
 The [product discovery loop](/marketplace/product-discovery/) is the closest match to the PM job described above. Interviews, tickets and reviews arrive as typed insights, agents cluster themes and draft candidate bets, and a person reviews and shapes each bet before it is approved. After it ships, the loop re-checks the signal to see whether the bet retired the pain. The human gate is the point: the agent gathers evidence and you own the call. See [what an agentic workspace is](/docs/what-is-an-agentic-workspace/) for the full lifecycle and [the closed-loop workspace](/docs/closed-loop-workspace/) for the longer argument.
 Where Maskin is the wrong pick:
 - **You work alone.** A folder and a good CLAUDE.md are lighter and cost nothing.
