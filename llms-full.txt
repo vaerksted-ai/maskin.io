@@ -123,7 +123,7 @@ The hands-on Maskin quickstart: go from an empty instance to an agent doing real
 
 ## Before you begin
 You need a running Maskin instance with Claude connected to it over MCP. Which setup applies depends on how you run Maskin:
-- **Managed hosting:** your instance is already running, so there is no setup to do. Make sure Claude is connected to it over MCP, then start at Step 1.
+- **Managed hosting:** the Maskin Team runs the instance for you, so there is no server setup. Ask them for your MCP connection details, make sure Claude is connected, then start at Step 1.
 - **Self-hosted:** run your own instance with your Anthropic key saved and Claude connected. Both are covered in [Self-hosted setup](/docs/get-started/self-hosted/). Finish that first, then come back here.
 Quick check: ask Claude *"List the maskin MCP tools"* and confirm you get a list back.
 
