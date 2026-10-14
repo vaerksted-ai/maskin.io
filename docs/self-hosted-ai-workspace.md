@@ -1,57 +1,86 @@
 > Source: https://maskin.io/docs/self-hosted-ai-workspace/
 
 # Self-hosted AI workspace: bring your own model
-For product teams that need to control their own data and models, Maskin is fully self-hostable, Apache-2.0, and bring-your-own-model. Self-hosting is the structural answer for teams searching for an open source alternative to Claude Cowork, Codex, or ChatGPT workspaces — the capability without the vendor’s lock-in.
+A self-hosted AI workspace runs your product-management loops on your own infrastructure, under a license you can audit, and lets you choose which models execute the work. Maskin is Apache-2.0, self-hostable at no software cost, and model-agnostic at the protocol layer: bring Claude, Codex, a local model, or a fine-tuned one, and the closed loop runs the same. For teams that can’t send product data to a hosted vendor, or that need to point the workspace at models they control, that’s the structural answer — the same capability as a hosted agentic workspace, with data custody and model choice on your side of the line.
 > ✓
 > **Key takeaways**
-> Open source under Apache 2.0 — inspect every line, fork it, run it.
-> Self-host is always free; managed plans offer EU & US data residency.
-> Bring your own Claude, Codex, or custom model.
-> Agents run in sandboxed sessions, not against your private keys.
+> Self-hosting answers three buyer needs: data sovereignty, model freedom, and auditability.
+> Maskin is licensed Apache 2.0 — inspect every line, fork it, run it commercially.
+> Bring your own Claude, Codex, local, or fine-tuned model; the workspace is MCP-native and model-agnostic.
+> Agents run in sandboxed Docker sessions, isolated from your private keys and production state.
+> Self-host is always free; managed plans offer EU and US data residency.
 
-## Why self-host
-Three buyers ask for self-hosting: **data sovereignty** (the work never leaves your infrastructure), **model freedom** (you choose the models, including local ones), and **auditability** (the code is open and inspectable). Hosted vendor workspaces cannot answer these — your data and your model choice *are* the product.
-Open-core self-host is also a governance stance: the closed loop runs on objects you own, inside a repository you control, under a permissive license.
+## Why self-host an AI workspace at all
+Three buyers reach for self-hosting, and they want different things:
+- **Data sovereignty.** The work — customer feedback, churn signals, roadmap material — never leaves your infrastructure. No hosted vendor’s retention policy to trust, no third-party subprocessors to audit, no cross-border transfer question to answer.
+- **Model freedom.** You choose the models. Hosted workspaces tend to bundle the vendor’s model; self-hosting decouples the workspace from any single model provider, including local and fine-tuned models.
+- **Auditability.** The code is open and inspectable. For an AI tool that decides which agents see what and how loops are bounded, read-the-code becomes a governance feature, not a nicety.
+Hosted vendor workspaces can’t fully answer any of these — your data and your model choice are the product. Self-host is the control-plane answer, and open source is what makes each of the three claims verifiable rather than a promise.
 
-## Apache 2.0: inspect every line
-Apache 2.0 is a permissive open-source license — use it, modify it, run it commercially, keep your changes private or contribute them back. For an AI workspace, that license matters more than usual: the tool decides which agents see what, and you should be able to read how.
+## Open source is also a governance stance
+Open-core self-hosting isn’t only about cost. Running the tool you plan to hand your roadmap to, under a permissive license, means the loop’s boundaries are a property you can verify rather than a promise from a vendor. The vision driving Maskin is explicit about where governance lives: a small team keeps the judgment, and a fleet of agents does the closing — so the human stops being the bottleneck on the work and becomes the judge of the outcome (Maskin vision, ratified 2026-08-21). Judgment and oversight are the moat; self-hosting is how a team makes that oversight inspectable.
 
-## Bring your own model
-The workspace is model-agnostic at the protocol layer because it is [MCP-native](/docs/what-is-mcp-native/). You decide which model runs your agents: Claude for reasoning-heavy shaping, Codex or a local model for constrained tasks, or a fine-tuned model for your domain. See [how model providers and keys work](/docs/llm/).
+## Apache 2.0: what the license actually buys you
+Apache 2.0 is a permissive open-source license. You may use the software, modify it, run it commercially, and keep your own modifications private — with an explicit patent grant and no copyleft obligation to open your changes. For an AI workspace, the license matters more than it does for a normal tool, because the software decides how agents are wired in, how loops are bounded, and what data flows where. Being able to read that — and change it without relicensing your own work — is the difference between hosting someone’s black box and running your own system. Because the modifications you make to a self-hosted copy stay your own, Apache 2.0 is the license a security- or compliance-minded team can adopt without asking legal to unpick a copyleft dependency later.
 
-## Sandboxed agents
-Agents execute in **sandboxed sessions** — isolated environments that cannot touch your private keys or production state outside the workspace’s authority. Autonomous operation is safe because execution is contained, and every step is inspectable. See the [security model](/docs/security/) for auth, data isolation, and key handling.
+## Bring your own model: the protocol is the unlock
+Maskin is model-agnostic at the protocol layer because it is [MCP-native](/docs/what-is-mcp-native/): agents, the UI, and integrations all talk to one unified object model over one API (see the [architecture overview](/docs/architecture/)). Concretely, that means the model that executes a loop is a configuration choice, not an architectural commitment — see [how model providers and keys work](/docs/llm/). Agent sessions run in Docker containers that install the Claude Code CLI by default or the Codex CLI, and a browser sidecar is available for web tasks. Practical ways teams use that freedom:
+- **Claude** for reasoning-heavy shaping and bet definition.
+- **Codex** — or another constrained model — for well-bounded execution tasks.
+- **A local model** where data must never leave the machine at all.
+- **A fine-tuned model** for a domain where off-the-shelf behaviour isn’t good enough.
+Because the workspace participates in the open model ecosystem rather than wrapping a single provider, today’s choice doesn’t lock you to the same choice next quarter.
+The same principle runs through the whole surface: everything in Maskin is an object, and every object is reachable over one API — the UI and the agents serve the identical object model through the same routes. Authentication is built the same way for humans and agents: API-key auth with hashed keys and no browser sessions, so an agent can act as a first-class citizen of the workspace rather than a scripted imitation of a logged-in user (architecture decision record ADR-002, summarised in the [architecture overview](/docs/architecture/)). For a self-hosted deployment, that means the workspace behaves the same whether an operator, a CI pipeline, or an autonomous loop agent is driving it.
+
+## Sandboxed agents: the safety argument for going autonomous
+An autonomous AI workspace is only safe if execution is contained. Maskin runs agents in **sandboxed sessions** — ephemeral Docker containers that install the coding CLI, keep an isolated workspace, and can spin up a browser sidecar for web tasks. Nothing inside an agent’s sandbox can touch your private keys or production state outside the workspace’s own authority. That is the difference between an agent that “has access to everything” and an agent that executes inside a bounded environment with a close condition and human promote gates. See the [security model](/docs/security/) for auth, data isolation, and key handling.
+It’s also the pragmatic reason automation is tractable. Because sessions are ephemeral and bounded, the blast radius of any single failure is contained, and every step is inspectable on the way back out. The one real constraint: agents depend on Docker being present on the host — there is no agent runtime without a container runtime. When you evaluate self-host, plan that infrastructure dependency up front.
 
 ## Managed vs self-hosted
-| Factor | Self-hosted | Managed |
+The engineering is the same either way — the same unified object model, the same loops, the same sandboxed agent sessions. The choice is who runs the infrastructure and where the data lives.
+|  | Self-hosted | Managed (hosted) |
 | --- | --- | --- |
-| License | Apache 2.0 | Apache 2.0 + hosted |
+| License | Apache 2.0 (yours) | Apache 2.0 + hosted service |
 | Data residency | Your infrastructure | EU & US |
-| Model | Your choice | Your choice (BYO-model) |
-| Cost | Free (you run it) | From $20/seat/month |
-If you want the same loops without running infrastructure, [book a hosted trial](https://meshfirm.com/bookmagnus). If the *work* must never leave your infrastructure, self-host.
+| Model | Your choice (bring-your-own, incl. local & fine-tuned) | Your choice (bring-your-own) |
+| Agents | Sandboxed Docker sessions on your host | Sandboxed Docker sessions, operated for you |
+| Infrastructure | You run it | We run it |
+| Cost | Always free (you pay infra + model) | From $20/seat/month (agent credits included) |
+Self-host keeps everything inside your walls and costs nothing for software; managed gets you running without provisioning Docker hosts, with EU or US residency. Because the product is identical, moving between the two later is a deployment decision, not a migration. If you want the same loops without running infrastructure, [book a hosted trial](https://meshfirm.com/bookmagnus).
 
 ## Pricing
-- **Self-host** — always free.
-- **Pro** — $20/seat/month, agent credits included.
-- **Team** — $200/workspace/month, unlimited seats.
+- **Self-host** — always free. You pay only for your own infrastructure and model usage.
+- **Pro** — $20 per seat per month, agent credits included.
+- **Team** — $200 per workspace per month, unlimited seats.
 - **Enterprise** — your own LLM and infrastructure.
 
-## An open-source alternative to Claude Cowork / Codex
-The “open source alternative to X” searches are filling fast with desktop coding apps. What is missing is a closed-loop workspace for *product work*: signals in, bets shaped, tasks executed, outcomes validated — self-hostable and model-agnostic. The [open source alternative to Claude Cowork](/alternatives/open-source-alternative-to-claude-cowork/) page compares that shape against the vendor and open-source options directly. That is the niche Maskin occupies, and it sits in the composable camp of the agent-workspace market rather than the AI-employees one ([the two camps compared](/docs/composable-ai-agents-vs-ai-employees/)). For how the same object-model argument plays against the crowded coding-agent lane specifically, see the [self-hosted AI agent control plane](/alternatives/self-hosted-ai-agent-control-plane/) comparison — twelve OSS control planes shipped in 2026 that all stack as kanbans of coding tasks.
-For a wider read on where the self-host-persona OSS agent field sits in 2026 — stateful-agent frameworks, workflow-node builders, RAG chat frontends, coding-agent control planes — the [field survey of self-hosted AI agent repos](/alternatives/self-hosted-ai-agents/) is the honest category map, and names which shape fits which shape of work.
-Start with the [get-started guide](/docs/get-started/) or the [self-hosted setup guide](/docs/get-started/self-hosted/) to stand up an instance on your own hardware.
+## Who this competes with, and why it matters
+The “open-source alternative to X” searches are filling fast with desktop coding apps (the [open source alternative to Claude Cowork](/alternatives/open-source-alternative-to-claude-cowork/) page compares those options directly). What is rarer is a self-hostable, model-agnostic workspace for product work: signals in, bets shaped, tasks executed, outcomes validated. The closest named open-source rival in the agent-orchestration camp, [Paperclip](/alternatives/paperclip/), had roughly 95K GitHub stars when we read its repository on 1 October 2026 and sells “hire AI employees, run a company with AI” — the [full-company-simulation camp](/docs/composable-ai-agents-vs-ai-employees/). Maskin sits in the other camp: typed objects, event-driven triggers, agents that fire when data changes, and a closed loop that terminates against an outcome. For how the same object-model argument plays against the crowded coding-agent lane, see the [self-hosted AI agent control plane](/alternatives/self-hosted-ai-agent-control-plane/) comparison, and for the wider field of self-hosted agent repos, the [field survey of self-hosted AI agents](/alternatives/self-hosted-ai-agents/).
+The whole category is early — Tracxn counts roughly 60 native-AI product-management companies with about $500 million raised and one unicorn. Self-hostable closed-loop product workspaces are a thin slice of an early field — exactly the opening Maskin occupies.
+
+## Why this matters for agent adoption
+If you’re watching the market, the incumbents are also making data-and-model portability a live debate. Atlassian reports agentic automations up 7x in six months on its Teamwork Graph — evidence that agentic work is real demand, not demo. For a security- or sovereignty-constrained team, the question isn’t whether to adopt agents; it’s whether the platform it adopts lets the team keep custody of the data and the model choice. That is the self-hosted AI workspace’s whole reason to exist. For the category itself, start with [what is an agentic workspace](/docs/what-is-an-agentic-workspace/) and [the AI product management tool overview](/docs/ai-product-management-tool/).
+
+## Self-host it yourself
+Cloning and running Maskin is the fastest way to see whether a self-hosted workspace fits. The source is on GitHub under Apache 2.0 — fork it, run it on your own infrastructure, point it at the model you already use, and keep your data on your side of the line. No software license, no seat fee, no mandated model provider.
+Start at **[github.com/sindre-ai/maskin](https://github.com/sindre-ai/maskin)** — clone, run the onboarding guide, connect your model provider. The [self-hosted setup guide](/docs/get-started/self-hosted/) and the [get-started guide](/docs/get-started/) walk through it. Or, if you’d rather not provision Docker hosts, start on a [managed workspace](/) from $20/seat so you can move to full self-host later.
 
 ## FAQ
 
 ### How hard is self-hosting?
-Clone the repo, follow the onboarding guide, and connect your model provider — agents run in sandboxed sessions out of the box.
+Clone the repository and follow the onboarding guide, then connect your model provider; agents run in sandboxed Docker sessions out of the box. The one dependency to plan for is Docker on the host — the agent runtime won’t start without a container runtime.
 
-### Can I switch between self-hosted and managed later?
-Yes — the license and object model are yours; hosted and self-hosted are the same product.
+### Can I switch between managed and self-hosted later?
+Yes. The license and the object model are yours, and hosted and self-hosted are the same product — the same loops, objects, and agent sessions. The choice at any point is where data lives and who runs infrastructure, and that’s a decision you can revisit rather than a migration you’ll dread.
+
+### Can I bring my own model, even a local one?
+Yes. The workspace is MCP-native and model-agnostic: agents install the Claude Code or Codex CLI inside sandboxed sessions, and the protocol layer doesn’t presume a provider. A local or fine-tuned model is a configuration choice, which is what makes a fully on-prem, no-external-call deployment possible.
 
 ### Is self-host truly free?
-Yes — the open-source software is Apache 2.0; you pay for infrastructure only.
+Yes — the software is open source under Apache 2.0, so it costs nothing to run. You pay for your own infrastructure and for whatever model usage you generate. There’s no per-seat fee hiding behind the self-host floor.
+
+### Is a self-hosted workspace the same as running a desktop coding agent myself?
+Not the same layer. Desktop coding agents automate a coding session in your editor; a self-hosted workspace runs the product-management loop — signal in, bet shaped, tasks executed, outcome validated — with agents as the hands and a human judging the outcome. If your job is shipping code interactively, the coding tools are the right tool; if your job is running a governed product loop your team owns, that’s the workspace layer.
 Read next
 
 ## Run the closed loop on servers you control
