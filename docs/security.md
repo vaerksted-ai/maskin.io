@@ -7,14 +7,16 @@ How Maskin protects credentials, isolates tenants, and contains agent execution 
 Every request authenticates with a bearer API key (prefixed `ank_`). Keys are stored only as **SHA-256 hashes** — the plaintext is shown once at creation and never again. Auth is **stateless**: no cookies or server sessions. Keys are per-actor and can be rotated with `regenerate_api_key`, which immediately invalidates the old value.
 
 ## Authorization & tenant isolation
-Workspace-scoped requests carry an `X-Workspace-Id` header, and every query is scoped to that workspace — data does not cross tenant boundaries. Membership is role-based: `owner`, `member`, and `viewer`.
+Workspace-scoped requests carry an `X-Workspace-Id` header. Workspace isolation is enforced in the API, route by route, not by database-level row security, so it depends on each route checking the workspace. Gaps found in an internal review of the routes are being closed: some fixes are already on `main` and others are in review. Memberships carry a role (`owner`, `admin`, `member`, `viewer`). Owner and admin roles gate member management, invites, billing and workspace settings. The `viewer` role is defined but not yet enforced as read-only (planned).
 
 ## Credential encryption at rest
 Integration OAuth tokens and workspace LLM API keys are encrypted with **AES-256-GCM** using `INTEGRATION_ENCRYPTION_KEY` (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as `iv:authTag:ciphertext`. In the UI only the last four characters are ever shown, and secrets are never written to logs or exposed in agent output.
 > Set `INTEGRATION_ENCRYPTION_KEY` explicitly in production and keep it stable — rotating it makes previously stored credentials undecryptable, so connections must be re-established.
 
 ## Sandboxed agent execution
-Agent sessions run as **ephemeral, non-root Docker containers** (from the `agent-base` image), one per run, torn down on completion. To launch them the app uses the host Docker socket (`/var/run/docker.sock`) — treat access to that socket as root-equivalent and restrict it to the app. For stronger isolation, run sessions on dedicated [agent servers](/docs/agents/) rather than the app host. For the policy layer above the sandbox — who signs off on agent actions, and how those approvals get recorded — see the [governance framework for AI agents](/docs/learn/ai-agent-governance/).
+On the hosted path, each agent session runs in its own **ephemeral microVM** (libkrun, managed through microsandbox) on a dedicated [agent server](/docs/agents/), started from the `agent-base` image, one per run and stopped and removed when the session completes. The app hands sessions to the agent server over HTTPS and does not launch them through a Docker socket.
+
+For local development, and for self-hosts that do not configure agent servers, sessions run as Docker containers on the app host instead. That path uses the host Docker socket (`/var/run/docker.sock`) — treat access to that socket as root-equivalent and restrict it to the app. For stronger isolation, run sessions on dedicated agent servers rather than the app host. For the policy layer above the sandbox — who signs off on agent actions, and how those approvals get recorded — see the [governance framework for AI agents](/docs/learn/ai-agent-governance/).
 
 ## Webhook verification
 Inbound webhooks are signature-verified per provider before processing:
