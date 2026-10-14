@@ -1,7 +1,7 @@
 > Source: https://maskin.io/docs/security/
 
 # Security
-How Maskin protects credentials, isolates tenants, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.
+How Maskin protects credentials, separates workspaces in the API, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.
 
 ## Authentication
 Every request authenticates with a bearer API key (prefixed `ank_`). Keys are **stored as issued**, not hashed; hashing is planned. Auth is **stateless**: no cookies or server sessions. Keys are per-actor and can be rotated with `regenerate_api_key`, which immediately invalidates the old value.

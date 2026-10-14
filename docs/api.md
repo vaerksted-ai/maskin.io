@@ -16,7 +16,7 @@ Every request carries an API key; workspace-scoped routes also carry a workspace
 Authorization: Bearer <YOUR_API_KEY>     # ank_…
 X-Workspace-Id: <YOUR_WORKSPACE_ID>       # workspace UUID
 ```
-Keys are stored as SHA-256 hashes; auth is stateless (no cookies/sessions). A small allowlist needs no auth: `/api/health`, `/openapi.json`, signup, OAuth callbacks, and webhook ingest.
+Keys are stored as issued (hashing is planned); auth is stateless (no cookies/sessions). A small allowlist needs no auth: `/api/health`, `/openapi.json`, signup, OAuth callbacks, and webhook ingest.
 
 ## Resource groups
 | Mount | Purpose |
