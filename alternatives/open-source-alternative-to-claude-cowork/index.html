@@ -53,7 +53,7 @@
       "url": "https://maskin.io/alternatives/open-source-alternative-to-claude-cowork/",
       "inLanguage": "en",
       "datePublished": "2026-10-01T00:00:00Z",
-      "dateModified": "2026-10-01T00:00:00Z",
+      "dateModified": "2026-10-07T00:00:00Z",
       "image": [
         "https://maskin.io/og-image-open-source-alternative-to-claude-cowork.svg"
       ],
@@ -110,7 +110,7 @@
           "name": "Is there an open source alternative to Claude Cowork?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, two with different aims. OpenWork is an MIT-licensed desktop agent that works on your own files, the closest match to Cowork's experience. Maskin is an Apache 2.0 team workspace where agents work on shared product records. Pick by whether the work is one person's files or a team's shared loop."
+            "text": "Yes, three with different aims. OpenWork is an MIT-licensed desktop agent that works on your own files, the closest match to Cowork's experience. Multica is a team board where you assign issues to coding agents. Maskin is an Apache 2.0 team workspace where agents work on shared product records. Pick by whether the work is one person's files, a coding board, or a team's shared loop."
           }
         },
         {
@@ -118,7 +118,7 @@
           "name": "What is the best open source alternative to Claude Cowork?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "For one person handing tasks to an agent on local documents, OpenWork. For a team that needs a self-hosted workspace with shared records of what is being decided and built, Maskin. There is no single best option because Cowork-style agents and team workspaces solve different problems."
+            "text": "For one person handing tasks to an agent on local documents, OpenWork. For a team assigning issues to several coding agents, Multica. For a team that needs a self-hosted workspace with shared records of what is being decided and built, Maskin. There is no single best option because Cowork-style agents, agent boards, and team workspaces solve different problems."
           }
         },
         {
@@ -134,7 +134,15 @@
           "name": "Can Claude Cowork be self-hosted?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Cowork is a product Anthropic ships and runs, available in its desktop app on Pro, Max, and Team plans, and it runs on Claude, whose weights Anthropic does not publish. If you need to run the whole system on your own infrastructure, look at open-source options such as OpenWork for a personal desktop agent or Maskin for a team workspace."
+            "text": "No. Cowork is a product Anthropic ships and runs, available in its desktop app on Pro, Max, and Team plans, and it runs on Claude, whose weights Anthropic does not publish. If you need to run the whole system on your own infrastructure, look at open-source options such as OpenWork for a personal desktop agent, Multica for a team board of coding agents, or Maskin for a team workspace."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is Multica different from Maskin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multica is a board where you assign issues to coding agents that run on your own machines, and it has far more traction (about 52,000 GitHub stars on 7 October 2026). Maskin tracks the decision around the work: insight, bet with a win condition, task, outcome. Multica's license also adds limits on hosting it for third parties, which Maskin's plain Apache 2.0 does not."
           }
         },
         {
@@ -186,7 +194,7 @@
     <p class="doc-breadcrumb"><a href="/">Home</a> / <a href="/alternatives/">Alternatives</a> / Open source alternative to Claude Cowork</p>
     <p class="eyebrow">Comparison</p>
     <h1>Open source alternative to Claude Cowork</h1>
-    <p class="lead"><strong>The closest open-source alternative to Claude Cowork depends on the job.</strong> OpenWork is the nearest match if you want one person's agent working on local files. Maskin, which is Apache 2.0 and self-hostable, is the open-source answer if a team needs agents working on shared records of insights, bets, and tasks.</p>
+    <p class="lead"><strong>The closest open-source alternative to Claude Cowork depends on the job.</strong> OpenWork is the nearest match if you want one person's agent working on local files. Multica and Maskin suit teams: Multica for assigning coding work to agent CLIs, Maskin, which is Apache 2.0 and self-hostable, for agents working on shared records of insights, bets, and tasks.</p>
     <p>Looking for a project tracker instead? See the <a href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a>.</p>
 
   <figure style="margin:1.5rem 0">
@@ -198,10 +206,11 @@
     <div class="callout__body"><strong>Key takeaways</strong>
       <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
         <li><strong>Claude Cowork is a knowledge-work agent, not a coding tool.</strong> Anthropic describes it as a system you give a goal, which then &ldquo;works across your files and tools&rdquo; and returns &ldquo;polished work for your review.&rdquo; The open-source alternatives that fit that job are desktop agents, not trackers.</li>
-        <li><strong>Two different open-source answers.</strong> OpenWork is the personal-desktop answer (MIT-licensed app, local-first, 50+ model providers or local models). Maskin is the team-workspace answer (shared object model, closed loop from signal to validated outcome).</li>
-        <li><strong>Maskin is Apache 2.0 and free to self-host.</strong> Agent sessions run the Claude Code CLI by default, or the Codex CLI, so you also pay for the model usage behind them. Managed plans are listed in the <a href="https://maskin.io/#pricing">Maskin pricing section</a>.</li>
+        <li><strong>Three different open-source answers.</strong> OpenWork is the personal-desktop answer (MIT-licensed app, local-first, 50+ model providers or local models). Multica is the team board for coding agents (issues assigned to agent CLIs you already run). Maskin is the team-workspace answer (shared object model, closed loop from signal to validated outcome).</li>
+        <li><strong>Multica&rsquo;s license is not plain Apache 2.0.</strong> Its LICENSE is the Apache 2.0 text plus extra conditions, including a restriction on offering it as a hosted service to third parties without a commercial license. Read it before you build on it.</li>
+        <li><strong>Maskin is Apache 2.0 and free to <a href="/docs/self-hosted-ai-workspace/">self-host</a>.</strong> Agent sessions run the Claude Code CLI by default, or the Codex CLI, so you also pay for the model usage behind them. Managed plans are listed in the <a href="https://maskin.io/#pricing">Maskin pricing section</a>.</li>
         <li><strong>Maskin does not replace a desktop agent on your files.</strong> If your day is spreadsheets, contract reviews, and folders of documents handled by one person, start with OpenWork.</li>
-        <li><strong>Maskin is early.</strong> The public repo has 6 GitHub stars and 398 open issues and pull requests (GitHub API, 1 October 2026). Judge the architecture, not a track record.</li>
+        <li><strong>Maskin is early.</strong> The public repo has 6 GitHub stars and 398 open issues and pull requests (GitHub API, 1 October 2026). Multica had about 52,000 stars on 7 October 2026. Judge Maskin&rsquo;s architecture, not a track record.</li>
       </ul>
     </div>
   </div>
@@ -214,6 +223,7 @@
     </thead>
     <tbody>
       <tr><td>One person's agent working on local files and documents</td><td><a href="https://github.com/different-ai/openwork" target="_blank" rel="noopener">OpenWork</a></td><td>Desktop app for macOS, Windows, and Linux, local-first, bring your own keys or local models</td></tr>
+      <tr><td>A team board where you assign issues to coding agents you already run</td><td><a href="https://github.com/multica-ai/multica" target="_blank" rel="noopener">Multica</a></td><td>Agents appear as teammates on a board, run on your own machines through a daemon, self-hostable</td></tr>
       <tr><td>A team's agents working on shared product records, self-hosted</td><td>Maskin</td><td>Typed objects (insight, bet, task) shared by humans and agents, <a href="/docs/what-is-mcp-native/">MCP-native</a>, Apache 2.0</td></tr>
       <tr><td>An open-source project tracker</td><td>See the <a href="/alternatives/open-source-jira-alternative/">Jira alternative page</a></td><td>A different search intent, with a different comparison set</td></tr>
       <tr><td>AI employees with an org chart</td><td>See the <a href="/alternatives/paperclip/">Paperclip alternative page</a></td><td>Orchestrator-style tools, a different shape of problem</td></tr>
@@ -235,35 +245,40 @@
   <p>OpenWork is the open-source project that most directly targets the same search. Its <a href="https://github.com/different-ai/openwork" target="_blank" rel="noopener">README</a> calls it &ldquo;the free, open-source alternative to Claude Cowork and Codex: a desktop app for macOS, Windows, and Linux where AI agents do real work on your own files.&rdquo; The desktop app and core are MIT-licensed. It is local-first (&ldquo;Your files stay local. Cloud is optional.&rdquo;), supports 50+ providers, your own API keys, or local models via Ollama, and has an organizational control plane (OpenWork Den) under a separate enterprise license that is free for up to 5 users.</p>
   <p>Be clear about what that means. If you want Cowork's experience (an agent on your files, producing documents and finished work) without Anthropic's lock-in, OpenWork is the closer match than Maskin. We would rather say that here than have you find out after installing the wrong one.</p>
 
+  <h2>What Multica does well</h2>
+  <p><a href="https://github.com/multica-ai/multica" target="_blank" rel="noopener">Multica</a> is the open-source project closest to Maskin&rsquo;s shape, and it is far ahead on traction: about 52,000 GitHub stars when we read the repository on 7 October 2026. Its README describes &ldquo;a workspace where you assign work to AI coding agents the way you&rsquo;d assign it to a teammate.&rdquo; Agents get a name, a provider, and a runtime, show up on a board like anyone else, pick up issues, comment as they go, and hand work back for review. It drives the agent CLIs you already have installed (the README lists 26, including Claude Code, Codex, Cursor, and GitHub Copilot CLI) through a daemon on your own machine, and it is self-hostable with Docker Compose or Helm. It also ships desktop and mobile apps, GitHub and GitLab integrations, and Slack and Telegram channels.</p>
+  <p>Two things to check before you pick it. First, the license. Multica&rsquo;s LICENSE is the full Apache 2.0 text plus additional conditions: you may not use the source to provide a hosted service to third parties, or embed it in a product you sell, without a commercial license, and you may not remove its logo or name from the interface. Internal use inside one organization is allowed. That is a real difference from plain Apache 2.0, and GitHub does not classify the repo under a standard license. Second, the focus. The README is written around coding agents working issues into pull requests. It does not describe a bet, a win condition, or an outcome check at the end, which is the part Maskin is built around. If your team&rsquo;s problem is getting several coding agents onto a shared board, Multica is the stronger pick today.</p>
+  <p>Other projects use the same search words. <a href="https://github.com/eigent-ai/eigent" target="_blank" rel="noopener">Eigent</a> (Apache 2.0, about 15,500 stars on 7 October 2026) describes itself as an open-source Cowork desktop and a local, free alternative to Claude Cowork and Codex, so it sits on the OpenWork side of the split. We checked its license and description but have not run it, so we say no more than that.</p>
+
   <h2>Where Maskin fits, and where it doesn't</h2>
   <p>Maskin is a team workspace that agents write into. It is not a desktop agent that works through your Downloads folder.</p>
   <p>In Maskin, work enters as an <strong>insight</strong> from Slack, Intercom, PostHog, GitHub, Gmail, or a scheduled scan. Someone shapes it into a <strong>bet</strong>, a testable hypothesis with a win condition, owned jointly by a human and agents. The bet breaks into <strong>tasks</strong>, which agents execute in isolated, sandboxed sessions (the Claude Code CLI by default, or the Codex CLI, each inside an ephemeral microVM built on microsandbox and libkrun, with a browser sidecar for web work). When the work ships, the outcome is checked against the win condition and the requester is notified. Insights, bets, and tasks are all <strong>objects</strong> in one schema, connected by typed relationships, and served identically to the UI and to agents. That shared object model is what carries a decision across sessions and hands it between a human and an agent. The full walk-through is on the <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace explainer</a>.</p>
   <p>Three honest limits:</p>
   <ul>
     <li><strong>Not a personal-files agent.</strong> Maskin works on shared records and connected tools, not on a folder on one laptop.</li>
-    <li><strong>Cross-conversation agent memory is a known gap.</strong> Our own user feedback says other agent products handle this better, so do not pick Maskin for a single agent that remembers everything about you.</li>
+    <li><strong>Cross-conversation agent memory is a known gap.</strong> Our own user feedback says other agent products handle this better, so do not pick Maskin for a single agent that remembers everything about you. For what has to survive between scheduled runs and where Maskin stands today, read <a href="/docs/learn/agent-memory-across-sessions/">agent memory across sessions</a>.</li>
     <li><strong>A hard host requirement for agent sessions.</strong> Self-hosting means running the microsandbox and libkrun runtime on the agent-server host. Docker is used only for local development, and there is no fallback that runs agents without one of the two.</li>
   </ul>
   <p>Maskin also operates a level above the editor and repo. For where that line sits, see <a href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a> and the broader <a href="/docs/three-tiers-ai-native-work/">three tiers of AI-native work</a>.</p>
 
-  <h2>Maskin vs Claude Cowork vs OpenWork</h2>
+  <h2>Maskin vs Claude Cowork vs OpenWork vs Multica</h2>
   <table>
     <thead>
-      <tr><th></th><th>Maskin</th><th>Claude Cowork</th><th>OpenWork</th></tr>
+      <tr><th></th><th>Maskin</th><th>Claude Cowork</th><th>OpenWork</th><th>Multica</th></tr>
     </thead>
     <tbody>
-      <tr><td><strong>What it is</strong></td><td>Team workspace for product work</td><td>Autonomous task agent for knowledge work</td><td>Desktop agent on your own files</td></tr>
-      <tr><td><strong>Open source</strong></td><td>Yes, Apache 2.0</td><td>No</td><td>Yes, MIT desktop app and core (enterprise control plane under a separate license)</td></tr>
-      <tr><td><strong>Self-host</strong></td><td>Yes, free</td><td>No</td><td>Runs locally on your machine</td></tr>
-      <tr><td><strong>Models</strong></td><td>Claude Code CLI by default, or Codex CLI</td><td>Claude</td><td>50+ providers, your own keys, or local models</td></tr>
-      <tr><td><strong>Unit of work</strong></td><td>Shared typed objects: insight, bet, task</td><td>A task you hand off and review</td><td>Agent sessions on your files</td></tr>
-      <tr><td><strong>Built for</strong></td><td>Teams</td><td>Professionals and teams (Pro, Max, and Team plans)</td><td>Individuals, with an org control plane</td></tr>
-      <tr><td><strong>Weak spot</strong></td><td>Not a personal-files agent, memory gap, early traction</td><td>Vendor model and hosting</td><td>Not a shared team record</td></tr>
+      <tr><td><strong>What it is</strong></td><td>Team workspace for product work</td><td>Autonomous task agent for knowledge work</td><td>Desktop agent on your own files</td><td>Team board where agents take issues</td></tr>
+      <tr><td><strong>Open source</strong></td><td>Yes, Apache 2.0</td><td>No</td><td>Yes, MIT desktop app and core (enterprise control plane under a separate license)</td><td>Apache 2.0 text plus extra conditions on hosted service and branding</td></tr>
+      <tr><td><strong>Self-host</strong></td><td>Yes, free</td><td>No</td><td>Runs locally on your machine</td><td>Yes, Docker Compose or Helm</td></tr>
+      <tr><td><strong>Models</strong></td><td>Claude Code CLI by default, or Codex CLI</td><td>Claude</td><td>50+ providers, your own keys, or local models</td><td>The agent CLIs you install (26 listed in the README)</td></tr>
+      <tr><td><strong>Unit of work</strong></td><td>Shared typed objects: insight, bet, task</td><td>A task you hand off and review</td><td>Agent sessions on your files</td><td>An issue assigned to an agent</td></tr>
+      <tr><td><strong>Built for</strong></td><td>Teams</td><td>Professionals and teams (Pro, Max, and Team plans)</td><td>Individuals, with an org control plane</td><td>Teams working with coding agents</td></tr>
+      <tr><td><strong>Weak spot</strong></td><td>Not a personal-files agent, memory gap, early traction</td><td>Vendor model and hosting</td><td>Not a shared team record</td><td>Coding-agent focus, custom license limits third-party hosting</td></tr>
     </tbody>
   </table>
 
   <h2>Self-host or managed</h2>
-  <p>Maskin is Apache 2.0, so the choice is yours.</p>
+  <p>Maskin is Apache 2.0, so the choice is yours. The <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a> page covers the setup in full, and <a href="/alternatives/self-hosted-ai-agents/">self-hosted AI agents in 2026</a> maps the wider open-source landscape if you are still comparing projects.</p>
   <table>
     <thead>
       <tr><th></th><th>Self-hosted</th><th>Managed</th></tr>
@@ -278,23 +293,26 @@
 
   <h2>Getting started</h2>
   <ul>
-    <li><strong>Self-host.</strong> Clone the repo (<a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">github.com/sindre-ai/maskin</a>) and follow the onboarding. You need a host that can run the microsandbox and libkrun runtime for agent sessions. The <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace guide</a> covers the setup.</li>
+    <li><strong>Self-host.</strong> Clone the repo (<a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">github.com/sindre-ai/maskin</a>) and follow the onboarding, or start from the <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace guide</a>. You need a host that can run the microsandbox and libkrun runtime for agent sessions.</li>
     <li><strong>Start hosted.</strong> If you would rather not run infrastructure, <a href="https://maskin.io/signup">sign up for a hosted workspace</a>. Current plans are in the <a href="https://maskin.io/#pricing">pricing section</a>.</li>
   </ul>
 
   <h2>FAQ</h2>
 
   <h3>Is there an open source alternative to Claude Cowork?</h3>
-  <p>Yes, two with different aims. OpenWork is an MIT-licensed desktop agent that works on your own files, the closest match to Cowork's experience. Maskin is an Apache 2.0 team workspace where agents work on shared product records. Pick by whether the work is one person's files or a team's shared loop.</p>
+  <p>Yes, three with different aims. OpenWork is an MIT-licensed desktop agent that works on your own files, the closest match to Cowork's experience. Multica is a team board where you assign issues to coding agents. Maskin is an Apache 2.0 team workspace where agents work on shared product records. Pick by whether the work is one person's files, a coding board, or a team's shared loop.</p>
 
   <h3>What is the best open source alternative to Claude Cowork?</h3>
-  <p>For one person handing tasks to an agent on local documents, OpenWork. For a team that needs a self-hosted workspace with shared records of what is being decided and built, Maskin. There is no single best option because Cowork-style agents and team workspaces solve different problems.</p>
+  <p>For one person handing tasks to an agent on local documents, OpenWork. For a team assigning issues to several coding agents, Multica. For a team that needs a self-hosted workspace with shared records of what is being decided and built, Maskin. There is no single best option because Cowork-style agents, agent boards, and team workspaces solve different problems.</p>
 
   <h3>Is there a free alternative to Claude Cowork?</h3>
   <p>OpenWork's desktop app is free and MIT-licensed, and you bring your own model keys or run local models through Ollama. Maskin's software is free to self-host under Apache 2.0, though its agents run on the Claude Code or Codex CLI, so you pay for that model usage. In both cases, hosting and model usage are the real costs.</p>
 
   <h3>Can Claude Cowork be self-hosted?</h3>
-  <p>No. Cowork is a product Anthropic ships and runs, available in its desktop app on Pro, Max, and Team plans, and it runs on Claude, whose weights Anthropic does not publish. If you need to run the whole system on your own infrastructure, look at open-source options such as OpenWork for a personal desktop agent or Maskin for a team workspace.</p>
+  <p>No. Cowork is a product Anthropic ships and runs, available in its desktop app on Pro, Max, and Team plans, and it runs on Claude, whose weights Anthropic does not publish. If you need to run the whole system on your own infrastructure, look at open-source options such as OpenWork for a personal desktop agent, Multica for a team board of coding agents, or Maskin for a team workspace.</p>
+
+  <h3>How is Multica different from Maskin?</h3>
+  <p>Multica is a board where you assign issues to coding agents that run on your own machines, and it has far more traction (about 52,000 GitHub stars on 7 October 2026). Maskin tracks the decision around the work: insight, bet with a win condition, task, outcome. Multica's license also adds limits on hosting it for third parties, which Maskin's plain Apache 2.0 does not.</p>
 
   <h3>Can I bring my own model to Maskin?</h3>
   <p>Only within what Maskin runs today. Agent sessions use the Claude Code CLI by default, with the Codex CLI as an alternative, so you bring your own Anthropic or OpenAI access rather than an arbitrary model. Local models and fine-tunes are not a path we have validated. If running local models is a hard requirement, OpenWork supports them.</p>
