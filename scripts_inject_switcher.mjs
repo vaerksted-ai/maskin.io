@@ -118,11 +118,13 @@ const insertBefore = (s, needle, text) => { const i = s.indexOf(needle); return 
 export function injectPage(html, kind, manifest) {
   if (html.includes('data-lang-switcher')) return { html, changed: false };
   const { own, items } = switcherItems(html, manifest);
-  if (!items.length) return { html, changed: false };
-  const bar = barMarkup(own, items);
+  // Anchors are checked on every page, also when no switcher renders, so a broken page fails the
+  // build while the nav flags are off and not only on the day a flag flips.
   if (kind === 'docs') {
     const m = html.match(DOCNAV_BLOCK);
     if (!m || !m[0].includes(DOCS_ANCHOR)) throw new Error('docs-shell page has no theme-toggle li to anchor on');
+    if (!items.length) return { html, changed: false };
+    const bar = barMarkup(own, items);
     let nav = insertBefore(m[0], DOCS_ANCHOR, bar);
     nav = nav.replace(GITHUB_LI, '<li class="docnav__hide-sm">$1</li>');
     // The section tag (Docs, Alternatives, ...) next to the logo also has to go at 560px and
@@ -140,10 +142,12 @@ export function injectPage(html, kind, manifest) {
   const drawerAt = html.search(/<nav\b[^>]*id="navDrawer"/);
   const drawerEnd = drawerAt < 0 ? -1 : html.indexOf('</ul>', drawerAt);
   if (drawerEnd < 0) throw new Error('homepage has no ul inside nav#navDrawer to anchor on');
+  if (html.indexOf('</head>') < 0) throw new Error('homepage has no </head> to add the switcher CSS before');
+  if (!items.length) return { html, changed: false };
+  const bar = barMarkup(own, items);
   let out = html.slice(0, drawerEnd) + drawerMarkup(own, items) + html.slice(drawerEnd);
   out = out.slice(0, loginAt) + bar + out.slice(loginAt);
   const headEnd = out.indexOf('</head>');
-  if (headEnd < 0) throw new Error('homepage has no </head> to add the switcher CSS before');
   out = out.slice(0, headEnd) + HOME_CSS + '\n' + out.slice(headEnd);
   return { html: out, changed: true };
 }

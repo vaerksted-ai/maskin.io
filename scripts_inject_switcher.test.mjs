@@ -176,6 +176,14 @@ test('missing anchors fail: toggle li, nav__login li, drawer ul', () => {
   assert.throws(() => injectPage(homePage({ drawer: false }), 'home', m), /navDrawer/);
 });
 
+test('missing anchors fail also when no switcher renders (da off)', () => {
+  const m = manifest({ da: false });
+  assert.throws(() => injectPage(docsPage({ toggle: false }), 'docs', m), /theme-toggle/);
+  assert.throws(() => injectPage(homePage({ login: false }), 'home', m), /nav__login/);
+  assert.throws(() => injectPage(homePage({ drawer: false }), 'home', m), /navDrawer/);
+  assert.equal(injectPage(docsPage(), 'docs', m).changed, false, 'a complete page is still left alone');
+});
+
 test('injectDist: docs page and homepage get a switcher, skip-list pages are left alone', () => {
   const dist = tmpDist({
     'index.html': homePage(),
