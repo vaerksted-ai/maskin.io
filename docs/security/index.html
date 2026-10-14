@@ -78,7 +78,7 @@
 
     <p class="eyebrow">Self-hosting</p>
     <h1>Security</h1>
-    <p class="lead">How Maskin protects credentials, isolates tenants, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.</p>
+    <p class="lead">How Maskin protects credentials, separates workspaces in the API, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.</p>
 
     <h2>Authentication</h2>
     <p>Every request authenticates with a bearer API key (prefixed <code>ank_</code>). Keys are <strong>stored as issued</strong>, not hashed; hashing is planned. Auth is <strong>stateless</strong>: no cookies or server sessions. Keys are per-actor and can be rotated with <code>regenerate_api_key</code>, which immediately invalidates the old value.</p>

@@ -89,7 +89,7 @@
     <p>Every request carries an API key; workspace-scoped routes also carry a workspace ID:</p>
     <pre><code>Authorization: Bearer &lt;YOUR_API_KEY&gt;     # ank_…
 X-Workspace-Id: &lt;YOUR_WORKSPACE_ID&gt;       # workspace UUID</code></pre>
-    <p>Keys are stored as SHA-256 hashes; auth is stateless (no cookies/sessions). A small allowlist needs no auth: <code>/api/health</code>, <code>/openapi.json</code>, signup, OAuth callbacks, and webhook ingest.</p>
+    <p>Keys are stored as issued (hashing is planned); auth is stateless (no cookies/sessions). A small allowlist needs no auth: <code>/api/health</code>, <code>/openapi.json</code>, signup, OAuth callbacks, and webhook ingest.</p>
 
     <h2>Resource groups</h2>
     <div class="doc-table-wrap"><table class="doc-table">
