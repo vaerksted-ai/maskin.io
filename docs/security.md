@@ -15,7 +15,6 @@ Integration OAuth tokens and workspace LLM API keys are encrypted with **AES-256
 
 ## Sandboxed agent execution
 On the hosted path, each agent session runs in its own **ephemeral microVM** (libkrun, managed through microsandbox) on a dedicated [agent server](/docs/agents/), started from the `agent-base` image, one per run and stopped and removed when the session completes. The app hands sessions to the agent server over HTTPS and does not launch them through a Docker socket.
-
 For local development, and for self-hosts that do not configure agent servers, sessions run as Docker containers on the app host instead. That path uses the host Docker socket (`/var/run/docker.sock`) — treat access to that socket as root-equivalent and restrict it to the app. For stronger isolation, run sessions on dedicated agent servers rather than the app host. For the policy layer above the sandbox — who signs off on agent actions, and how those approvals get recorded — see the [governance framework for AI agents](/docs/learn/ai-agent-governance/).
 
 ## Webhook verification
