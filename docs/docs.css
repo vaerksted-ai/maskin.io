@@ -329,6 +329,18 @@ a:hover{text-decoration:underline}
 }
 .docs-cta-strip__link:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,.24);text-decoration:none;color:#fff!important}
 
+/* ─── LANGUAGE SWITCHER ──────────────────────────────────── */
+/* Injected at build by scripts_inject_switcher.mjs (never hand-written into a page).
+   Extends .docnav__tag: same border and 6px radius. The homepage carries its own copy of
+   these rules (inlined by the injector), keep the two in step. */
+.lang{display:inline-flex;align-items:center;gap:2px;border:1px solid var(--rule);border-radius:6px;padding:2px}
+.lang__item{display:inline-flex;align-items:center;font-size:.8rem;line-height:1.2;padding:.2rem .5rem;border-radius:4px;color:var(--ink-2);white-space:nowrap}
+.docnav__links a.lang__item{font-size:.8rem;color:var(--ink-2)}
+.docnav__links a.lang__item:hover{color:var(--ink);background:var(--linen);text-decoration:none}
+.docnav__links a.lang__item:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.lang__item[aria-current="true"]{color:var(--ink);background:var(--linen);font-weight:600}
+.lang__code{display:none;font-family:var(--ff-mono);font-size:.68rem;font-weight:500;letter-spacing:.04em}
+
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width:860px){
   .doc-layout{grid-template-columns:1fr}
@@ -341,6 +353,11 @@ a:hover{text-decoration:underline}
 @media (max-width:560px){
   .docnav__links{gap:.85rem}
   .docnav__links .docnav__hide-sm{display:none}
+  .docnav__tag.docnav__hide-sm{display:none}
+  .docnav__links.docnav__links--lang{gap:.5rem}
+  .lang__full{display:none}
+  .lang__code{display:inline}
+  .lang__item{padding:.2rem .4rem}
   .post-cta__actions{flex-direction:column}
   .docs-cta__actions{flex-direction:column;align-items:stretch}
   .docs-cta__primary{justify-content:center}
