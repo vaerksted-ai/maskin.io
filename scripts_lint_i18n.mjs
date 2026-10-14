@@ -1,11 +1,18 @@
 #!/usr/bin/env node
-// i18n source lint for the Danish and Swedish pages (checks L1 to L18, warnings W1 and W2).
-// Node 18 or later, zero dependencies. Reads i18n.json, da/**, sv/**, root index.html,
-// sitemap.xml, llms.txt, build.sh and _redirects. Exit 1 on any error, 0 otherwise.
+// i18n lint for the Danish and Swedish pages. Node 18 or later, zero dependencies.
+// Exit 1 on any error, 0 otherwise.
+//
+// Source mode (default): checks L1 to L18, warnings W1 and W2. Reads i18n.json, da/**, sv/**,
+// root index.html, sitemap.xml, llms.txt, build.sh and _redirects.
 //
 //   node scripts_lint_i18n.mjs [--root <dir>] [--no-git] [--today YYYY-MM-DD]
 //
 // --no-git skips the warnings (W1 needs git history, W2 is CI-only noise in the build).
+//
+// Dist mode: checks D1 to D5 on the rendered dist/ after build.sh has injected the switcher.
+//
+//   node scripts_lint_i18n.mjs --dist [<dist-dir>] [--root <dir>]
+//
 // Spec: "maskin.io site: tech spec for Danish and Swedish pages", sections 4 and 7.
 
 import fs from 'node:fs';
@@ -213,7 +220,10 @@ export function lint(opts = {}) {
     if (!t || t.startsWith('#')) continue;
     redirects.add(t.split(/\s+/)[0]);
   }
+  // Paths served by a production redirect that is not in this repo (the booking link).
+  const externalPaths = new Set(Array.isArray(manifest.external_paths) ? manifest.external_paths : []);
   const resolves = (p) => {
+    if (externalPaths.has(p)) return true;
     if (redirects.has(p) || redirects.has(p.endsWith('/') ? p.slice(0, -1) : p + '/')) return true;
     const rel = p.replace(/^\//, '');
     if (isFile(abs(rel)) && !p.endsWith('/')) return true;
@@ -535,6 +545,92 @@ export function lint(opts = {}) {
   return { errors, warnings, pageCount: pages.length };
 }
 
+// ---------------------------------------------------------------- dist lint
+
+// Switcher groups carry data-lang-switcher (div, no nested divs). Items carry class lang__item.
+function switcherGroups(h) {
+  const out = [];
+  for (const m of clean(h).matchAll(/<div\b([^>]*\bdata-lang-switcher\b[^>]*)>([\s\S]*?)<\/div>/gi)) {
+    const items = [];
+    for (const t of m[2].matchAll(/<(a|span)\b([^>]*)>/gi)) {
+      const a = parseAttrs(t[2]);
+      if ((a.class || '').split(/\s+/).includes('lang__item')) items.push({ tag: t[1].toLowerCase(), attrs: a });
+    }
+    out.push({ html: m[0], items });
+  }
+  return out;
+}
+
+export function lintDist(opts = {}) {
+  const root = path.resolve(opts.root ?? path.dirname(fileURLToPath(import.meta.url)));
+  const dist = path.resolve(opts.dist ?? path.join(root, 'dist'));
+  const errors = [];
+  const err = (id, where, msg) => errors.push({ id, where, msg });
+  const rootOf = (p) => path.join(dist, p.replace(/^\//, ''));
+  const resolvesInDist = (p) => {
+    if (p === '/') return isFile(path.join(dist, 'index.html'));
+    if (!p.endsWith('/') && isFile(rootOf(p))) return true;
+    if (isFile(path.join(rootOf(p), 'index.html'))) return true;
+    return !p.endsWith('/') && isFile(rootOf(p) + '.html');
+  };
+
+  let manifest;
+  try { manifest = JSON.parse(read(path.join(root, 'i18n.json'))); } catch (e) {
+    err('L1', 'i18n.json', `i18n.json is missing or does not parse: ${e.message}`);
+    return { errors, pageCount: 0, switcherCount: 0 };
+  }
+  if (!isDir(dist)) {
+    err('D5', 'dist', 'dist/ does not exist, run build.sh first');
+    return { errors, pageCount: 0, switcherCount: 0 };
+  }
+  const languages = manifest.languages && typeof manifest.languages === 'object' ? manifest.languages : {};
+  const pages = Array.isArray(manifest.pages) ? manifest.pages : [];
+
+  const files = walk(dist).filter((f) => f.endsWith('.html'));
+  let switcherCount = 0;
+  for (const f of files) {
+    const rel = path.relative(dist, f).split(path.sep).join('/');
+    const h = fs.readFileSync(f, 'utf8');
+
+    for (const g of switcherGroups(h)) {
+      switcherCount++;
+      // D1 every switcher href resolves to a file in dist
+      for (const it of g.items) {
+        if (it.tag !== 'a') continue;
+        const ip = internalPath(it.attrs.href ?? '');
+        if (ip === null || !resolvesInDist(ip)) err('D1', rel, `switcher link "${it.attrs.href ?? ''}" does not resolve to a file in dist`);
+      }
+      // D3 never fewer than 2 items
+      if (g.items.length < 2) err('D3', rel, `switcher group has ${g.items.length} item(s), needs at least 2`);
+      // D4 exactly one current item, and it is a span
+      const current = g.items.filter((it) => it.attrs['aria-current'] !== undefined);
+      if (current.length !== 1) err('D4', rel, `switcher group has ${current.length} aria-current items, needs exactly 1`);
+      else if (current[0].tag !== 'span') err('D4', rel, 'the aria-current switcher item is a link, it must be a span');
+    }
+
+    // D2 flag gate on rendered output: same scan as L17, but on dist (sees the injected links)
+    const blocks = [...navBlocks(h), ...switcherGroups(h).map((g) => g.html)];
+    for (const [lang, l] of Object.entries(languages)) {
+      if (l.nav !== false || rel.startsWith(`${lang}/`)) continue; // a language's own pages may link to themselves
+      const hit = blocks.flatMap(anchorHrefsOf).map(internalPath).find((ip) => ip && (ip === `/${lang}` || ip.startsWith(`/${lang}/`)));
+      if (hit) err('D2', rel, `header, nav, drawer or switcher links to ${hit} while ${lang}.nav is false`);
+    }
+  }
+
+  // D5 every manifest page exists in dist, and the English home keeps its canonical
+  for (const p of pages) {
+    if (typeof p.path === 'string' && !isFile(path.join(rootOf(p.path), 'index.html'))) {
+      err('D5', p.path, `${path.posix.join(p.path, 'index.html')} is missing from dist (silent 404)`);
+    }
+  }
+  const home = read(path.join(dist, 'index.html'));
+  const homeCanon = home === null ? [] : tags(clean(home), 'link').filter((a) => relTokens(a).includes('canonical'));
+  if (homeCanon.length !== 1 || homeCanon[0].href !== ORIGIN + '/') {
+    err('D5', '/', `dist/index.html canonical must be exactly ${ORIGIN}/`);
+  }
+  return { errors, pageCount: files.length, switcherCount };
+}
+
 // ---------------------------------------------------------------- small helpers
 
 function readdirRootHtml(root) {
@@ -612,6 +708,18 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const opt = { git: !argv.includes('--no-git') };
   const ri = argv.indexOf('--root');
   if (ri >= 0) opt.root = argv[ri + 1];
+  const di = argv.indexOf('--dist');
+  if (di >= 0) {
+    if (argv[di + 1] && !argv[di + 1].startsWith('--')) opt.dist = argv[di + 1];
+    const d = lintDist(opt);
+    for (const e of d.errors) console.error(`${e.id} ${e.where}: ${e.msg}`);
+    if (d.errors.length) {
+      console.error(`i18n-lint dist FAILED: ${d.errors.length} error(s)`);
+      process.exit(1);
+    }
+    console.log(`i18n-lint dist ok, ${d.pageCount} pages, ${d.switcherCount} switcher(s)`);
+    process.exit(0);
+  }
   const ti = argv.indexOf('--today');
   if (ti >= 0) opt.today = argv[ti + 1];
   const { errors, warnings, pageCount } = lint(opt);

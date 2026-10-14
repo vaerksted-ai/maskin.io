@@ -99,3 +99,20 @@ test('self-check: the real repo passes the source lint', () => {
   const result = lint({ root: here, git: false });
   assert.deepEqual(result.errors, []);
 });
+
+test('L8: a link to an external_paths entry resolves, the same link without the entry fails L8 only', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'i18n-lint-'));
+  copyDir(path.join(fixtures, 'pass'), dir);
+  try {
+    const hubFile = path.join(dir, 'da', 'index.html');
+    fs.writeFileSync(hubFile, fs.readFileSync(hubFile, 'utf8').replace('</ul>', '<li><a href="/bookseb">/bookseb</a></li>\n</ul>'));
+    assert.deepEqual(ids(run(dir)), ['L8']);
+    const manifestFile = path.join(dir, 'i18n.json');
+    const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+    manifest.external_paths = ['/bookseb'];
+    fs.writeFileSync(manifestFile, JSON.stringify(manifest));
+    assert.deepEqual(run(dir).errors, []);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
