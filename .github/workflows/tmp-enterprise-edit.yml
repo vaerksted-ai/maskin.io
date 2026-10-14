@@ -1,6 +1,8 @@
 name: Tmp enterprise edit
 on:
-  workflow_dispatch:
+  push:
+    branches: [docs/security-microvm-isolation]
+    paths: ['.github/workflows/tmp-enterprise-edit.yml']
 permissions:
   contents: write
 jobs:
