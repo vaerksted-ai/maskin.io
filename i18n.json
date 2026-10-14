@@ -8,6 +8,15 @@
   },
   "pages": [
     {
+      "path": "/da/",
+      "lang": "da",
+      "kind": "native",
+      "keyword": "maskin på dansk",
+      "lang_group": "home",
+      "reviewed_by": "",
+      "reviewed_on": ""
+    },
+    {
       "path": "/da/ai-automatisering/",
       "lang": "da",
       "kind": "native",
@@ -25,7 +34,9 @@
     "support",
     "sprint",
     "deck",
-    "docs/open-source-jira-alternative"
+    "docs/open-source-jira-alternative",
+    "404.html",
+    "da/404.html"
   ],
   "banned": [
     "Windows",
@@ -38,5 +49,8 @@
     "Teamabonnement",
     "Team-abonnemang",
     "Teamabonnemang"
+  ],
+  "external_paths": [
+    "/bookseb"
   ]
 }
