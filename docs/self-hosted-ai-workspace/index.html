@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Self-hosted AI workspace: bring your own model — Maskin</title>
-<meta name="description" content="Run Maskin's agentic AI workspace on your own infrastructure. Apache 2.0 and bring-your-own-model — the open-source alternative to Claude Cowork, Codex, or ChatGPT workspaces. Agents run in sandboxed sessions, never against your private keys.">
+<title>Self-hosted AI workspace: bring your own Claude or Codex — Maskin</title>
+<meta name="description" content="Run Maskin's agentic AI workspace on your own infrastructure. Apache 2.0, bring your own Claude or Codex access — the open-source alternative to Claude Cowork, Codex, or ChatGPT workspaces. Agents run in sandboxed microVM sessions.">
 
 <link rel="canonical" href="https://maskin.io/docs/self-hosted-ai-workspace/">
 
@@ -17,8 +17,8 @@
 
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/docs/self-hosted-ai-workspace/">
-<meta property="og:title" content="Self-hosted AI workspace: bring your own model">
-<meta property="og:description" content="Run Maskin's agentic AI workspace on your own infrastructure. Apache 2.0, bring your own Claude, Codex, or custom model, and keep data on servers you control.">
+<meta property="og:title" content="Self-hosted AI workspace: bring your own Claude or Codex">
+<meta property="og:description" content="Run Maskin's agentic AI workspace on your own infrastructure. Apache 2.0, bring your own Claude or Codex access, and keep data on servers you control.">
 <meta property="og:image" content="https://maskin.io/og-image.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -27,8 +27,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@maskin_io">
-<meta name="twitter:title" content="Self-hosted AI workspace: bring your own model">
-<meta name="twitter:description" content="Run Maskin's agentic AI workspace on your own infrastructure. Apache 2.0, bring your own Claude, Codex, or custom model.">
+<meta name="twitter:title" content="Self-hosted AI workspace: bring your own Claude or Codex">
+<meta name="twitter:description" content="Run Maskin's agentic AI workspace on your own infrastructure. Apache 2.0, bring your own Claude or Codex access.">
 <meta name="twitter:image" content="https://maskin.io/og-image.png?v=2">
 
 <!-- PostHog analytics. Autocapture (CTA clicks), pageviews, and scroll depth are on by default.
@@ -55,15 +55,15 @@
     {
       "@type": "BlogPosting",
       "@id": "https://maskin.io/docs/self-hosted-ai-workspace/#post",
-      "headline": "Self-hosted AI workspace: bring your own model",
-      "name": "Self-hosted AI workspace, bring your own model",
-      "description": "Run Maskin's agentic AI workspace on your own infrastructure. Apache 2.0 and bring-your-own-model — an open-source alternative to Claude Cowork, Codex, or ChatGPT workspaces.",
+      "headline": "Self-hosted AI workspace: bring your own Claude or Codex",
+      "name": "Self-hosted AI workspace: bring your own Claude or Codex",
+      "description": "Run Maskin's agentic AI workspace on your own infrastructure. Apache 2.0, bring your own Claude or Codex access — an open-source alternative to Claude Cowork, Codex, or ChatGPT workspaces.",
       "inLanguage": "en",
       "url": "https://maskin.io/docs/self-hosted-ai-workspace/",
       "mainEntityOfPage": "https://maskin.io/docs/self-hosted-ai-workspace/",
       "image": "https://maskin.io/og-image.png",
       "datePublished": "2026-08-21T00:00:00Z",
-      "dateModified": "2026-10-14T00:00:00Z",
+      "dateModified": "2026-10-15T00:00:00Z",
       "author": {
         "@type": "Organization",
         "name": "Maskin",
@@ -109,7 +109,7 @@
           "name": "How hard is self-hosting?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Clone the repository and follow the onboarding guide, then connect your model provider; agents run in sandboxed Docker sessions out of the box. The one dependency to plan for is Docker on the host, because the agent runtime won't start without a container runtime."
+            "text": "Clone the repository and follow the onboarding guide, then connect your Anthropic or OpenAI access; agents run in sandboxed microVM sessions. The one dependency to plan for is the agent-server host: it has to run the microsandbox and libkrun runtime, and agents won't start without it. Docker is for local development only."
           }
         },
         {
@@ -122,10 +122,10 @@
         },
         {
           "@type": "Question",
-          "name": "Can I bring my own model, even a local one?",
+          "name": "Can I bring my own model?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The workspace is MCP-native and model-agnostic: agents install the Claude Code or Codex CLI inside sandboxed sessions, and the protocol layer doesn't presume a provider. A local or fine-tuned model is a configuration choice."
+            "text": "Within what Maskin runs today. Agent sessions use the Claude Code CLI by default, with the Codex CLI as an alternative, so you bring your own Anthropic or OpenAI access rather than an arbitrary model. The MCP protocol layer is model-agnostic; the agent runtime is not. Local models and fine-tunes are not a path we have validated."
           }
         },
         {
@@ -159,19 +159,19 @@
 <div class="wrap doc-layout">
 <aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents & sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM & models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="is-active" href="/docs/self-hosted-ai-workspace/" aria-current="page">Self-hosted AI workspace</a></li><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li></ul></nav></aside>
   <main class="doc-content">
-    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Self-hosted AI workspace: bring your own model</p>
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Self-hosted AI workspace: bring your own Claude or Codex</p>
     <p class="eyebrow">Article · Self-hosting &amp; models</p>
-    <h1>Self-hosted AI workspace: bring your own model</h1>
-    <p class="lead">A self-hosted AI workspace runs your product-management loops on your own infrastructure, under a license you can audit, and lets you choose which models execute the work. Maskin is Apache-2.0, self-hostable at no software cost, and model-agnostic at the protocol layer: bring Claude, Codex, a local model, or a fine-tuned one, and the closed loop runs the same. For teams that can&rsquo;t send product data to a hosted vendor, or that need to point the workspace at models they control, that&rsquo;s the structural answer &mdash; the same capability as a hosted agentic workspace, with data custody and model choice on your side of the line.</p>
+    <h1>Self-hosted AI workspace: bring your own Claude or Codex</h1>
+    <p class="lead">A self-hosted AI workspace runs your product-management loops on your own infrastructure, under a license you can audit, with agents that use your own model access. Maskin is Apache-2.0 and self-hostable at no software cost. Agent sessions run the Claude Code CLI by default, or the Codex CLI, so you bring your own Anthropic or OpenAI access. For teams that can&rsquo;t send product data to a hosted vendor, that&rsquo;s the structural answer &mdash; the same capability as a hosted agentic workspace, with data custody on your side of the line.</p>
 
   <div class="callout callout--muted">
     <div class="callout__icon" aria-hidden="true">✓</div>
     <div class="callout__body"><strong>Key takeaways</strong>
       <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
-        <li>Self-hosting answers three buyer needs: data sovereignty, model freedom, and auditability.</li>
+        <li>Self-hosting answers three buyer needs: data sovereignty, control over your model access, and auditability.</li>
         <li>Maskin is licensed Apache 2.0 &mdash; inspect every line, fork it, run it commercially.</li>
-        <li>Bring your own Claude, Codex, local, or fine-tuned model; the workspace is MCP-native and model-agnostic.</li>
-        <li>Agents run in sandboxed Docker sessions, isolated from your private keys and production state.</li>
+        <li>Bring your own Anthropic or OpenAI access: agents run the Claude Code CLI by default, or the Codex CLI. The MCP protocol layer is model-agnostic; the agent runtime is not.</li>
+        <li>Agents run in sandboxed sessions, each in an ephemeral microVM (microsandbox and libkrun), isolated from your private keys and production state.</li>
         <li>Self-host is always free; managed plans offer EU and US data residency.</li>
       </ul>
     </div>
@@ -181,10 +181,10 @@
   <p>Three buyers reach for self-hosting, and they want different things:</p>
   <ul>
     <li><strong>Data sovereignty.</strong> The work &mdash; customer feedback, churn signals, roadmap material &mdash; never leaves your infrastructure. No hosted vendor&rsquo;s retention policy to trust, no third-party subprocessors to audit, no cross-border transfer question to answer.</li>
-    <li><strong>Model freedom.</strong> You choose the models. Hosted workspaces tend to bundle the vendor&rsquo;s model; self-hosting decouples the workspace from any single model provider, including local and fine-tuned models.</li>
+    <li><strong>Control over model access.</strong> Hosted workspaces tend to bundle the vendor&rsquo;s model. Self-hosting decouples the workspace from that bundle: you run the Claude Code or Codex CLI with your own Anthropic or OpenAI access, on your terms.</li>
     <li><strong>Auditability.</strong> The code is open and inspectable. For an AI tool that decides which agents see what and how loops are bounded, read-the-code becomes a governance feature, not a nicety.</li>
   </ul>
-  <p>Hosted vendor workspaces can&rsquo;t fully answer any of these &mdash; your data and your model choice are the product. Self-host is the control-plane answer, and open source is what makes each of the three claims verifiable rather than a promise.</p>
+  <p>Hosted vendor workspaces can&rsquo;t fully answer any of these &mdash; your data and your model access are the product. Self-host is the control-plane answer, and open source is what makes each of the three claims verifiable rather than a promise.</p>
 
   <h2>Open source is also a governance stance</h2>
   <p>Open-core self-hosting isn&rsquo;t only about cost. Running the tool you plan to hand your roadmap to, under a permissive license, means the loop&rsquo;s boundaries are a property you can verify rather than a promise from a vendor. The vision driving Maskin is explicit about where governance lives: a small team keeps the judgment, and a fleet of agents does the closing &mdash; so the human stops being the bottleneck on the work and becomes the judge of the outcome (Maskin vision, ratified 2026-08-21). Judgment and oversight are the moat; self-hosting is how a team makes that oversight inspectable.</p>
@@ -192,20 +192,19 @@
   <h2>Apache 2.0: what the license actually buys you</h2>
   <p>Apache 2.0 is a permissive open-source license. You may use the software, modify it, run it commercially, and keep your own modifications private &mdash; with an explicit patent grant and no copyleft obligation to open your changes. For an AI workspace, the license matters more than it does for a normal tool, because the software decides how agents are wired in, how loops are bounded, and what data flows where. Being able to read that &mdash; and change it without relicensing your own work &mdash; is the difference between hosting someone&rsquo;s black box and running your own system. Because the modifications you make to a self-hosted copy stay your own, Apache 2.0 is the license a security- or compliance-minded team can adopt without asking legal to unpick a copyleft dependency later.</p>
 
-  <h2>Bring your own model: the protocol is the unlock</h2>
-  <p>Maskin is model-agnostic at the protocol layer because it is <a href="/docs/what-is-mcp-native/">MCP-native</a>: agents, the UI, and integrations all talk to one unified object model over one API (see the <a href="/docs/architecture/">architecture overview</a>). Concretely, that means the model that executes a loop is a configuration choice, not an architectural commitment &mdash; see <a href="/docs/llm/">how model providers and keys work</a>. Agent sessions run in Docker containers that install the Claude Code CLI by default or the Codex CLI, and a browser sidecar is available for web tasks. Practical ways teams use that freedom:</p>
+  <h2>Bring your own model: what that means here</h2>
+  <p>Maskin is <a href="/docs/what-is-mcp-native/">MCP-native</a>: agents, the UI, and integrations all talk to one unified object model over one API (see the <a href="/docs/architecture/">architecture overview</a>). &ldquo;Model-agnostic&rdquo; is true of that protocol layer, not of the agent runtime. The agent image installs the Claude Code CLI by default, or the Codex CLI, and a browser sidecar is available for web tasks. So &ldquo;bring your own model&rdquo; means bring your own access to those two runtimes &mdash; see <a href="/docs/llm/">how model providers and keys work</a>. Practical ways teams use that:</p>
   <ul>
-    <li><strong>Claude</strong> for reasoning-heavy shaping and bet definition.</li>
-    <li><strong>Codex</strong> &mdash; or another constrained model &mdash; for well-bounded execution tasks.</li>
-    <li><strong>A local model</strong> where data must never leave the machine at all.</li>
-    <li><strong>A fine-tuned model</strong> for a domain where off-the-shelf behaviour isn&rsquo;t good enough.</li>
+    <li><strong>Claude Code</strong> for reasoning-heavy shaping and bet definition.</li>
+    <li><strong>Codex</strong> for well-bounded execution tasks.</li>
+    <li><strong>Your own keys and billing.</strong> You pay Anthropic or OpenAI directly for the model usage behind your agents, and you can change which CLI runs a task without changing the workspace.</li>
   </ul>
-  <p>Because the workspace participates in the open model ecosystem rather than wrapping a single provider, today&rsquo;s choice doesn&rsquo;t lock you to the same choice next quarter.</p>
-  <p>The same principle runs through the whole surface: everything in Maskin is an object, and every object is reachable over one API &mdash; the UI and the agents serve the identical object model through the same routes. Authentication is built the same way for humans and agents: API-key auth with hashed keys and no browser sessions, so an agent can act as a first-class citizen of the workspace rather than a scripted imitation of a logged-in user (architecture decision record ADR-002, summarised in the <a href="/docs/architecture/">architecture overview</a>). For a self-hosted deployment, that means the workspace behaves the same whether an operator, a CI pipeline, or an autonomous loop agent is driving it.</p>
+  <p>Local and fine-tuned models are not a path we have validated, so we don&rsquo;t claim them here. If running local models is a hard requirement, check that before you commit.</p>
+  <p>The same principle runs through the whole surface: everything in Maskin is an object, and every object is reachable over one API &mdash; the UI and the agents serve the identical object model through the same routes. Authentication is built the same way for humans and agents: API-key auth with no browser sessions, so an agent can act as a first-class citizen of the workspace rather than a scripted imitation of a logged-in user (architecture decision record ADR-002, summarised in the <a href="/docs/architecture/">architecture overview</a>). For a self-hosted deployment, that means the workspace behaves the same whether an operator, a CI pipeline, or an autonomous loop agent is driving it.</p>
 
   <h2>Sandboxed agents: the safety argument for going autonomous</h2>
-  <p>An autonomous AI workspace is only safe if execution is contained. Maskin runs agents in <strong>sandboxed sessions</strong> &mdash; ephemeral Docker containers that install the coding CLI, keep an isolated workspace, and can spin up a browser sidecar for web tasks. Nothing inside an agent&rsquo;s sandbox can touch your private keys or production state outside the workspace&rsquo;s own authority. That is the difference between an agent that &ldquo;has access to everything&rdquo; and an agent that executes inside a bounded environment with a close condition and human promote gates. See the <a href="/docs/security/">security model</a> for auth, data isolation, and key handling.</p>
-  <p>It&rsquo;s also the pragmatic reason automation is tractable. Because sessions are ephemeral and bounded, the blast radius of any single failure is contained, and every step is inspectable on the way back out. The one real constraint: agents depend on Docker being present on the host &mdash; there is no agent runtime without a container runtime. When you evaluate self-host, plan that infrastructure dependency up front.</p>
+  <p>An autonomous AI workspace is only safe if execution is contained. Maskin runs agents in <strong>sandboxed sessions</strong> &mdash; each in an ephemeral microVM built on microsandbox and libkrun, with the coding CLI installed, an isolated workspace, and a browser sidecar for web tasks. Nothing inside an agent&rsquo;s sandbox can touch your private keys or production state outside the workspace&rsquo;s own authority. That is the difference between an agent that &ldquo;has access to everything&rdquo; and an agent that executes inside a bounded environment with a close condition and human promote gates. See the <a href="/docs/security/">security model</a> for auth, data isolation, and key handling.</p>
+  <p>It&rsquo;s also the pragmatic reason automation is tractable. Because sessions are ephemeral and bounded, the blast radius of any single failure is contained, and every step is inspectable on the way back out. The one real constraint: self-hosting means running the microsandbox and libkrun runtime on the agent-server host. Docker is used only for local development, and there is no fallback that runs agents without a microVM runtime. When you evaluate self-host, plan that infrastructure dependency up front.</p>
 
   <h2>Managed vs self-hosted</h2>
   <p>The engineering is the same either way &mdash; the same unified object model, the same loops, the same sandboxed agent sessions. The choice is who runs the infrastructure and where the data lives.</p>
@@ -214,13 +213,13 @@
     <tbody>
       <tr><td>License</td><td>Apache 2.0 (yours)</td><td>Apache 2.0 + hosted service</td></tr>
       <tr><td>Data residency</td><td>Your infrastructure</td><td>EU &amp; US</td></tr>
-      <tr><td>Model</td><td>Your choice (bring-your-own, incl. local &amp; fine-tuned)</td><td>Your choice (bring-your-own)</td></tr>
-      <tr><td>Agents</td><td>Sandboxed Docker sessions on your host</td><td>Sandboxed Docker sessions, operated for you</td></tr>
+      <tr><td>Model</td><td>Claude Code CLI by default, or Codex CLI; your own Anthropic or OpenAI access</td><td>Claude Code CLI by default, or Codex CLI; your own Anthropic or OpenAI access</td></tr>
+      <tr><td>Agents</td><td>Sandboxed microVM sessions on your agent-server host</td><td>Sandboxed microVM sessions, operated for you</td></tr>
       <tr><td>Infrastructure</td><td>You run it</td><td>We run it</td></tr>
-      <tr><td>Cost</td><td>Always free (you pay infra + model)</td><td>From $20/seat/month (agent credits included)</td></tr>
+      <tr><td>Cost</td><td>Always free (you pay infra + model usage)</td><td>From $20/seat/month (agent credits included)</td></tr>
     </tbody>
   </table></div>
-  <p>Self-host keeps everything inside your walls and costs nothing for software; managed gets you running without provisioning Docker hosts, with EU or US residency. Because the product is identical, moving between the two later is a deployment decision, not a migration. If you want the same loops without running infrastructure, <a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">book a hosted trial</a>.</p>
+  <p>Self-host keeps everything inside your walls and costs nothing for software; managed gets you running without provisioning agent-server hosts, with EU or US residency. Because the product is identical, moving between the two later is a deployment decision, not a migration. If you want the same loops without running infrastructure, <a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">book a hosted trial</a>.</p>
 
   <h2>Pricing</h2>
   <ul>
@@ -231,23 +230,23 @@
   </ul>
 
   <h2>Who this competes with, and why it matters</h2>
-  <p>The &ldquo;open-source alternative to X&rdquo; searches are filling fast with desktop coding apps (the <a href="/alternatives/open-source-alternative-to-claude-cowork/">open source alternative to Claude Cowork</a> page compares those options directly). What is rarer is a self-hostable, model-agnostic workspace for product work: signals in, bets shaped, tasks executed, outcomes validated. The closest named open-source rival in the agent-orchestration camp, <a href="/alternatives/paperclip/">Paperclip</a>, had roughly 95K GitHub stars when we read its repository on 1 October 2026 and sells &ldquo;hire AI employees, run a company with AI&rdquo; &mdash; the <a href="/docs/composable-ai-agents-vs-ai-employees/">full-company-simulation camp</a>. Maskin sits in the other camp: typed objects, event-driven triggers, agents that fire when data changes, and a closed loop that terminates against an outcome. For how the same object-model argument plays against the crowded coding-agent lane, see the <a href="/alternatives/self-hosted-ai-agent-control-plane/">self-hosted AI agent control plane</a> comparison, and for the wider field of self-hosted agent repos, the <a href="/alternatives/self-hosted-ai-agents/">field survey of self-hosted AI agents</a>.</p>
+  <p>The &ldquo;open-source alternative to X&rdquo; searches are filling fast with desktop coding apps (the <a href="/alternatives/open-source-alternative-to-claude-cowork/">open source alternative to Claude Cowork</a> page compares those options directly). What is rarer is a self-hostable workspace for product work: signals in, bets shaped, tasks executed, outcomes validated. The closest named open-source rival in the agent-orchestration camp, <a href="/alternatives/paperclip/">Paperclip</a>, had roughly 95K GitHub stars when we read its repository on 1 October 2026 and sells &ldquo;hire AI employees, run a company with AI&rdquo; &mdash; the <a href="/docs/composable-ai-agents-vs-ai-employees/">full-company-simulation camp</a>. Maskin sits in the other camp: typed objects, event-driven triggers, agents that fire when data changes, and a closed loop that terminates against an outcome. For how the same object-model argument plays against the crowded coding-agent lane, see the <a href="/alternatives/self-hosted-ai-agent-control-plane/">self-hosted AI agent control plane</a> comparison, and for the wider field of self-hosted agent repos, the <a href="/alternatives/self-hosted-ai-agents/">field survey of self-hosted AI agents</a>.</p>
   <p>The whole category is early &mdash; Tracxn counts roughly 60 native-AI product-management companies with about $500 million raised and one unicorn. Self-hostable closed-loop product workspaces are a thin slice of an early field &mdash; exactly the opening Maskin occupies.</p>
 
   <h2>Why this matters for agent adoption</h2>
-  <p>If you&rsquo;re watching the market, the incumbents are also making data-and-model portability a live debate. Atlassian reports agentic automations up 7x in six months on its Teamwork Graph &mdash; evidence that agentic work is real demand, not demo. For a security- or sovereignty-constrained team, the question isn&rsquo;t whether to adopt agents; it&rsquo;s whether the platform it adopts lets the team keep custody of the data and the model choice. That is the self-hosted AI workspace&rsquo;s whole reason to exist. For the category itself, start with <a href="/docs/what-is-an-agentic-workspace/">what is an agentic workspace</a> and <a href="/docs/ai-product-management-tool/">the AI product management tool overview</a>.</p>
+  <p>If you&rsquo;re watching the market, the incumbents are also making data portability a live debate. Atlassian reports agentic automations up 7x in six months on its Teamwork Graph &mdash; evidence that agentic work is real demand, not demo. For a security- or sovereignty-constrained team, the question isn&rsquo;t whether to adopt agents; it&rsquo;s whether the platform it adopts lets the team keep custody of the data. That is the self-hosted AI workspace&rsquo;s whole reason to exist. For the category itself, start with <a href="/docs/what-is-an-agentic-workspace/">what is an agentic workspace</a> and <a href="/docs/ai-product-management-tool/">the AI product management tool overview</a>.</p>
 
   <h2>Self-host it yourself</h2>
-  <p>Cloning and running Maskin is the fastest way to see whether a self-hosted workspace fits. The source is on GitHub under Apache 2.0 &mdash; fork it, run it on your own infrastructure, point it at the model you already use, and keep your data on your side of the line. No software license, no seat fee, no mandated model provider.</p>
-  <p>Start at <strong><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">github.com/sindre-ai/maskin</a></strong> &mdash; clone, run the onboarding guide, connect your model provider. The <a href="/docs/get-started/self-hosted/">self-hosted setup guide</a> and the <a href="/docs/get-started/">get-started guide</a> walk through it. Or, if you&rsquo;d rather not provision Docker hosts, start on a <a href="/">managed workspace</a> from $20/seat so you can move to full self-host later.</p>
+  <p>Cloning and running Maskin is the fastest way to see whether a self-hosted workspace fits. The source is on GitHub under Apache 2.0 &mdash; fork it, run it on your own infrastructure, connect your own Claude or Codex access, and keep your data on your side of the line. No software license, no seat fee.</p>
+  <p>Start at <strong><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">github.com/sindre-ai/maskin</a></strong> &mdash; clone, run the onboarding guide, connect your Anthropic or OpenAI access. The <a href="/docs/get-started/self-hosted/">self-hosted setup guide</a> and the <a href="/docs/get-started/">get-started guide</a> walk through it. Or, if you&rsquo;d rather not provision agent-server hosts, start on a <a href="/">managed workspace</a> from $20/seat so you can move to full self-host later.</p>
 
   <h2>FAQ</h2>
   <h3>How hard is self-hosting?</h3>
-  <p>Clone the repository and follow the onboarding guide, then connect your model provider; agents run in sandboxed Docker sessions out of the box. The one dependency to plan for is Docker on the host &mdash; the agent runtime won&rsquo;t start without a container runtime.</p>
+  <p>Clone the repository and follow the onboarding guide, then connect your Anthropic or OpenAI access; agents run in sandboxed microVM sessions. The one dependency to plan for is the agent-server host: it has to run the microsandbox and libkrun runtime, and agents won&rsquo;t start without it. Docker is for local development only.</p>
   <h3>Can I switch between managed and self-hosted later?</h3>
   <p>Yes. The license and the object model are yours, and hosted and self-hosted are the same product &mdash; the same loops, objects, and agent sessions. The choice at any point is where data lives and who runs infrastructure, and that&rsquo;s a decision you can revisit rather than a migration you&rsquo;ll dread.</p>
-  <h3>Can I bring my own model, even a local one?</h3>
-  <p>Yes. The workspace is MCP-native and model-agnostic: agents install the Claude Code or Codex CLI inside sandboxed sessions, and the protocol layer doesn&rsquo;t presume a provider. A local or fine-tuned model is a configuration choice, which is what makes a fully on-prem, no-external-call deployment possible.</p>
+  <h3>Can I bring my own model?</h3>
+  <p>Within what Maskin runs today. Agent sessions use the Claude Code CLI by default, with the Codex CLI as an alternative, so you bring your own Anthropic or OpenAI access rather than an arbitrary model. The MCP protocol layer is model-agnostic; the agent runtime is not. Local models and fine-tunes are not a path we have validated.</p>
   <h3>Is self-host truly free?</h3>
   <p>Yes &mdash; the software is open source under Apache 2.0, so it costs nothing to run. You pay for your own infrastructure and for whatever model usage you generate. There&rsquo;s no per-seat fee hiding behind the self-host floor.</p>
   <h3>Is a self-hosted workspace the same as running a desktop coding agent myself?</h3>
@@ -261,7 +260,7 @@
         <div class="doc-card__arrow">Read &rarr;</div>
       </a><a class="doc-card" href="/docs/what-is-mcp-native/">
         <div class="doc-card__title">What is MCP-native?</div>
-        <div class="doc-card__desc">Why bring-your-own-model is real over an open protocol.</div>
+        <div class="doc-card__desc">The open protocol behind one object model for humans and agents.</div>
         <div class="doc-card__arrow">Read &rarr;</div>
       </a><a class="doc-card" href="/docs/ai-product-management-tool/">
         <div class="doc-card__title">AI product management tool</div>
@@ -272,7 +271,7 @@
     </div>
     <div class="post-cta">
       <h2>Run the closed loop on servers you control</h2>
-      <p>Self-host free and keep your data and model choice on your own infrastructure.</p>
+      <p>Self-host free and keep your data on your own infrastructure, with your own Claude or Codex access.</p>
       <div class="post-cta__actions">
         <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
         <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
