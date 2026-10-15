@@ -252,7 +252,7 @@ An agent's **skills**, **memory**, and **learnings** live in S3-compatible stora
 While a session runs, its output streams live over Server-Sent Events, and the full log is retained and paginated afterward. Each session records token usage — input, output, and cache-read/write — and a computed `totalCostUsd`, so you can see exactly what each run consumed. For the task-level view above per-call cost — traces, evals, and drift across the fleet — see the [workspace-as-trace approach to agent observability](/docs/agent-observability/).
 
 ## Scaling beyond one host
-For local development, sessions run as Docker containers on the app host. For higher throughput, set `AGENT_SERVERS` to a pool of remote agent servers (the path managed hosting uses): sessions are then enqueued and dispatched to the least-loaded server over HTTPS, with a warm pool to cut cold-start latency. See the [configuration reference](/docs/configuration/) for the relevant variables.
+Sessions run in ephemeral microVMs (libkrun, managed through microsandbox) on remote agent servers, the path managed hosting uses. Docker is for local development only, and there is no fallback that runs agents without the microVM runtime. Set `AGENT_SERVERS` to a pool of agent servers: sessions are then enqueued and dispatched to the least-loaded server over HTTPS, with a warm pool to cut cold-start latency. See the [configuration reference](/docs/configuration/) for the relevant variables.
 > Which model an agent uses is resolved per run: an agent-level key, a workspace custom LLM endpoint, a Claude OAuth subscription, a workspace Anthropic key, or a system fallback — in that order.
 
 
@@ -293,10 +293,10 @@ Every change appends to an immutable **events** table. That log is both the audi
 Writes emit PostgreSQL `NOTIFY`; the API `LISTEN`s and fans changes out to clients as **Server-Sent Events**, so the UI and live session logs update with no extra message queue. Behind a connection pooler, set `DATABASE_URL_DIRECT` to a non-pooled connection so LISTEN/NOTIFY keeps working (see [Troubleshooting](/docs/troubleshooting/)).
 
 ## Actors & auth
-Humans and agents are unified as **actors**. Requests authenticate with a bearer API key (stored as a SHA-256 hash) and carry `X-Workspace-Id`; every query is scoped to that workspace. Details on the [Security](/docs/security/) page.
+Humans and agents are unified as **actors**. Requests authenticate with a bearer API key and carry `X-Workspace-Id`; every query is scoped to that workspace. Details on the [Security](/docs/security/) page.
 
 ## Agent execution
-Each agent run is a **session** in an ephemeral, non-root Docker container built from `agent-base`. By default these run on the app host's Docker; set `AGENT_SERVERS` to distribute them across dedicated agent servers with a warm pool. See [Agents & sessions](/docs/agents/).
+Each agent run is a **session** in an ephemeral microVM (libkrun, managed through microsandbox) started from `agent-base` on a dedicated agent server. Set `AGENT_SERVERS` to point the app at your agent servers, which keep a warm pool. Docker is for local development only. See [Agents & sessions](/docs/agents/).
 
 ## MCP layer & extensions
 The `mcp` package exposes the workspace as MCP tools over `/mcp` — a thin layer over the same services the REST API uses, so both surfaces stay in lock-step ([MCP tools](/docs/mcp-tools/) / [API reference](/docs/api/)). **Integrations** add provider adapters, webhook handlers, and auto-injected MCPs; **extensions/modules** register new object types and routes under `/api/m/{extension-id}`.
@@ -516,7 +516,7 @@ Every request carries an API key; workspace-scoped routes also carry a workspace
 Authorization: Bearer <YOUR_API_KEY>     # ank_…
 X-Workspace-Id: <YOUR_WORKSPACE_ID>       # workspace UUID
 ```
-Keys are stored as SHA-256 hashes; auth is stateless (no cookies/sessions). A small allowlist needs no auth: `/api/health`, `/openapi.json`, signup, OAuth callbacks, and webhook ingest.
+Keys are stored as issued (hashing is planned); auth is stateless (no cookies/sessions). A small allowlist needs no auth: `/api/health`, `/openapi.json`, signup, OAuth callbacks, and webhook ingest.
 
 ## Resource groups
 | Mount | Purpose |
@@ -769,12 +769,12 @@ Maskin wires auth, MCP servers, and object-graph emissions directly — agents c
 > Source: https://maskin.io/docs/llm/
 
 # LLM & models
-Maskin defaults to Claude but lets you bring your own model. For every agent run it resolves a model through a fixed priority order, so you can set a default and override it where you need to.
+Maskin defaults to Claude. On the hosted service, trial, Pro and Team workspaces run on a Maskin-funded route, and Enterprise workspaces supply their own credential. For every agent run it resolves a model through a fixed priority order, so you can set a default and override it where you need to.
 
 ## Routing priority
 When a session starts, Maskin picks the first option that's configured, in this order:
 1. **Agent-level key** — an Anthropic key set directly on the agent actor.
-2. **Workspace custom LLM** — a bring-your-own endpoint configured on the workspace (OpenRouter or another OpenAI-compatible API).
+2. **Workspace custom endpoint** — Enterprise only. An endpoint configured on the workspace that speaks Anthropic's API format.
 3. **Claude OAuth** — a workspace-level Claude Pro / Max / Teams subscription.
 4. **Workspace Anthropic key** — an Anthropic API key saved in workspace settings.
 5. **System fallback** — the operator-configured OpenRouter fallback (with a daily token cap).
@@ -785,12 +785,12 @@ Two ways to give a workspace Claude access, both set **in the app** (Settings �
 - **Claude subscription** — import a Pro/Max/Teams subscription via the `import_claude_subscription` tool / Claude OAuth flow, then check it with `get_claude_subscription_status`.
 The default model is `claude-sonnet-4-6`, with a separate small/fast model for lightweight steps.
 
-## Bring your own model
-Set a **custom LLM** on the workspace to route agents to any OpenAI-compatible endpoint. The configuration carries:
+## Custom endpoint (Enterprise)
+Enterprise workspaces can also point agent sessions at their own Anthropic-compatible endpoint, using their own key. Set a **custom LLM** on the workspace to do it. The configuration carries:
 | Field | Purpose |
 | --- | --- |
-| base_url | The provider's API base (e.g. OpenRouter). |
-| api_key | Credential for that provider (encrypted at rest). |
+| base_url | The endpoint's API base. |
+| api_key | Credential for that endpoint (encrypted at rest). |
 | model | Main model id. |
 | small_fast_model | Cheaper model for lightweight steps. |
 This is set in workspace settings, not via environment variables.
@@ -824,8 +824,7 @@ docker compose -f docker-compose.prod.yml up -d --build
 - **postgres** — PostgreSQL 16 (use a managed instance in production where possible).
 - **seaweedfs** — S3-compatible storage (or point `S3_*` at AWS S3 / MinIO).
 - **agent-base** — the image used for agent sessions; built from `docker/agent-base/`.
-To run agent sessions on the host's Docker, the app container mounts the Docker socket
-      (`/var/run/docker.sock`). Restrict access to it.
+Production sessions run in microVMs on a dedicated agent server, not through the app host's Docker socket. If you mount `/var/run/docker.sock` for local development, restrict access to it.
 
 ## Essentials to set
 - `NODE_ENV=production`
@@ -836,8 +835,7 @@ To run agent sessions on the host's Docker, the app container mounts the Docker 
 Migrations run automatically on app start; you can also run `pnpm db:migrate` out of band.
 
 ## Agent execution at scale
-By default sessions are local Docker containers on the app host. For throughput, run dedicated
-      [agent servers](/docs/agents/) and point the app at them:
+Production sessions run in ephemeral microVMs (microsandbox and libkrun) on dedicated [agent servers](/docs/agents/). Docker on the app host is for local development only, and there is no fallback that runs agents without the microVM runtime. Point the app at your agent servers:
 - `AGENT_BASE_IMAGE` — a full registry path (e.g. `yourorg/agent-base:latest`), not the local tag.
 - `AGENT_SERVERS` — comma-separated `url|secret` entries; sessions are dispatched to the least-loaded server.
 - `AGENT_SERVER_SECRET`, `MASKIN_AGENT_SERVER_PUBLIC_HOST`, `AGENT_SERVER_MAX_SESSIONS` — agent-server auth, public host, and concurrency.
@@ -865,16 +863,16 @@ Full variable list: [configuration reference](/docs/configuration/).
 > Source: https://maskin.io/docs/security/
 
 # Security
-How Maskin protects credentials, isolates tenants, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.
+How Maskin protects credentials, separates workspaces in the API, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.
 
 ## Authentication
-Every request authenticates with a bearer API key (prefixed `ank_`). Auth is **stateless**: no cookies or server sessions. Keys are per-actor and can be rotated with `regenerate_api_key`, which immediately invalidates the old value.
+Every request authenticates with a bearer API key (prefixed `ank_`). Keys are **stored as issued**, not hashed; hashing is planned. Auth is **stateless**: no cookies or server sessions. Keys are per-actor and can be rotated with `regenerate_api_key`, which immediately invalidates the old value.
 
 ## Authorization & tenant isolation
-Workspace-scoped requests carry an `X-Workspace-Id` header. Workspace isolation is enforced in the API, route by route, not by database-level row security, so it depends on each route checking the workspace. Gaps found in an internal review of the routes are being closed: some fixes are already on `main` and others are in review. Memberships carry a role (`owner`, `admin`, `member`, `viewer`). Owner and admin roles gate member management, invites, billing and workspace settings. The `viewer` role is defined but not yet enforced as read-only (planned).
+Workspace-scoped requests carry an `X-Workspace-Id` header. Workspace isolation is enforced in the API, route by route, not by database-level row security, so it depends on each route checking the workspace. Memberships carry a role (`owner`, `admin`, `member`, `viewer`). Owner and admin roles gate member management, invites, billing and workspace settings. The `viewer` role is defined but not yet enforced as read-only (planned).
 
 ## Credential encryption at rest
-Integration OAuth tokens and workspace LLM API keys are encrypted with **AES-256-GCM** using `INTEGRATION_ENCRYPTION_KEY` (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as `iv:authTag:ciphertext`. In the UI only the last four characters are ever shown, and secrets are never written to logs or exposed in agent output.
+Integration credentials, including OAuth tokens, are encrypted with **AES-256-GCM** using `INTEGRATION_ENCRYPTION_KEY` (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as `iv:authTag:ciphertext`.
 > Set `INTEGRATION_ENCRYPTION_KEY` explicitly in production and keep it stable — rotating it makes previously stored credentials undecryptable, so connections must be re-established.
 
 ## Sandboxed agent execution
@@ -891,7 +889,7 @@ Inbound webhooks are signature-verified per provider before processing:
 | Gmail | Pub/Sub push with OIDC JWT verification. |
 
 ## Audit log
-Every change is recorded in an append-only event log (see [Architecture](/docs/architecture/)), giving you an immutable trail of who — human or agent — did what, and when.
+Every change is recorded in an event log that is insert-only by convention (see [Architecture](/docs/architecture/)), giving you a trail of who — human or agent — did what, and when.
 
 ## Hardening your deployment
 - Terminate **TLS** at your proxy/load balancer in front of the app.
@@ -915,7 +913,7 @@ The issues people hit most when self-hosting Maskin, and how to fix them. Most c
 Real-time updates use PostgreSQL `LISTEN/NOTIFY` streamed over SSE. Connection poolers (PgBouncer, Supabase's pooled port, etc.) break LISTEN/NOTIFY. Set `DATABASE_URL_DIRECT` to a **non-pooled** connection in addition to `DATABASE_URL`. Also make sure your proxy isn't buffering `/api/events` responses.
 
 ## Agent sessions fail to start
-- **Docker socket:** the app launches sessions via `/var/run/docker.sock` — confirm it's mounted into the app container and the process can access it.
+- **Runtime:** sessions run in microVMs (microsandbox and libkrun) on an agent server, and there is no fallback without that runtime, so confirm the agent server is up and running it. In local development only, sessions start through `/var/run/docker.sock`, so confirm it's mounted into the app container.
 - **Image missing:** the `agent-base` image must be built/pulled. In production, set `AGENT_BASE_IMAGE` to a full registry path (e.g. `yourorg/agent-base:latest`), not the local `:latest` tag.
 - **Scaling out:** if you use `AGENT_SERVERS`, check each server is reachable and its `AGENT_SERVER_SECRET` matches.
 
@@ -945,7 +943,7 @@ A workspace needs a model. Add an Anthropic key or Claude subscription, or a cus
 
 ## FAQ
 **Is Maskin open source?** Yes — Apache 2.0, on [GitHub](https://github.com/sindre-ai/maskin).
-**Can I use models other than Claude?** Yes. Point a workspace at any OpenAI-compatible endpoint (OpenRouter, Ollama, vLLM) via a custom LLM — see [LLM & models](/docs/llm/).
+**Can I use models other than Claude?** Agent sessions run Claude Code by default, or Codex, on your own Anthropic or OpenAI access. Enterprise workspaces can also point sessions at their own Anthropic-compatible endpoint, using their own key. Local models are not a path we have validated. See [LLM & models](/docs/llm/).
 **Where do I see what a run cost?** Each session records token usage and `totalCostUsd` — see [Agents & sessions](/docs/agents/).
 **Do I have to self-host?** No — managed hosting is available. [Book a meeting](https://meshfirm.com/bookmagnus).
 **Still stuck?** Open an issue on [GitHub](https://github.com/sindre-ai/maskin), or [contact Maskin support](/support/). For security reports, email the contact on the [Security](/docs/security/) page instead.
@@ -1900,7 +1898,7 @@ Not every product that advertises MCP support is MCP-native at the workspace lev
 - **The entire object model is exposed as MCP tools.** Not a subset — every object type the product knows about, every operation on it, every relationship type. A workspace with fifty typed objects and three exposed over MCP is MCP-integrated; all fifty exposed is MCP-native. Justin Poehnelt’s argument that *the audience for your application’s API is not just other programmers, it’s AI agents*[2](#fn2) is the individual-app version of this claim; the workspace version applies it at object-graph scale. The [full list of MCP tools Maskin exposes](/docs/mcp-tools/) shows what that looks like in practice.
 - **The workspace-graph is the human-review surface.** The same typed objects agents read and write are what the human opens, inspects, and reshapes. There is not a separate “AI dashboard” grafted on top of the “real” product; the graph *is* the product, and the review UI is the graph. That co-location is what makes the workspace-graph legible to both sides of the collaboration without translation.
 - **Triggers are event-driven, not just chat-driven.** Work enters the workspace when the state changes — a new signal arrives, a bet reaches a decision gate, an object hits a threshold — and an agent runs against the change. A chat prompt is one legitimate trigger, but only one. Cron and object-transition triggers are equal citizens.
-- **Agent sessions are sandboxed.** Each agent runs in an isolated execution context — typically a container — with its own scoped credentials and its own bounded lifetime, so an agent that misbehaves can only mutate the graph through the same typed operations any actor uses. The sandbox is not a hardening afterthought; it is what makes the judgment loop safe to run in production.
+- **Agent sessions are sandboxed.** Each agent runs in an isolated execution context — an ephemeral microVM — with its own scoped credentials and its own bounded lifetime, so an agent that misbehaves can only mutate the graph through the same typed operations any actor uses. The sandbox is not a hardening afterthought; it is what makes the judgment loop safe to run in production.
 Any one of these on its own is a feature. All four together, wired to the same object model, are the category.
 Exposing the graph as MCP tools is the reach half of the category, and it is worth naming what it is not. A tool is what an agent calls; the reusable judgment about how and when to call it is a different primitive — one a team authors once and carries between agents. That is where [agent skills](/docs/learn/agent-skills/) sit: not an MCP server and not a tool, but packaged repeatable behaviour that an agent loads when a task, or a change in workspace state, matches its description.
 
@@ -3523,7 +3521,7 @@ The two camps place different bets on the sandbox side of that cut. **The simula
 ## The three properties composable treats as first-class: determinism, safety, scale
 This is the core of the composable-camp argument, and it’s the same framing we use in our cornerstone and our MCP-native piece. It’s not marketing. It’s the three things you have to prove to run agents on real work.
 - **Determinism.** An event fires an agent; the agent acts; the outcome is a state change you can inspect in the object model and the event-sourced audit trail. Every transition is recorded, so behavior is explainable and auditable rather than opaque. The same trigger, on the same object state, produces the same downstream graph — barring model non-determinism, which is bounded by the agent’s narrow scope. In the simulation camp, determinism is much harder to reason about, because the “state” is a persona’s chat history and the “trigger” is often another persona’s message.
-- **Safety.** Agents execute in isolated sessions (Docker containers, in Maskin’s implementation) that can’t reach private keys or production state outside the workspace’s authority, and human promote gates bound the closed loop. The protocol defines what agents can reach; the sandbox defines how far they can go. Named escalation — Chase’s `notify` / `question` / `review` interrupts, or their equivalents — is how a human on-the-loop stays in control without becoming a bottleneck.[5](#fn5) In the simulation camp, safety is a function of persona-level trust: the “Sales Rep” gets to do sales-rep things, and the review model is usually chat-log-after-the-fact rather than action-before-the-fact.
+- **Safety.** Agents execute in isolated sessions (ephemeral microVMs, in Maskin’s implementation), and human promote gates bound the closed loop. The protocol defines what agents can reach; the sandbox defines how far they can go. Named escalation — Chase’s `notify` / `question` / `review` interrupts, or their equivalents — is how a human on-the-loop stays in control without becoming a bottleneck.[5](#fn5) In the simulation camp, safety is a function of persona-level trust: the “Sales Rep” gets to do sales-rep things, and the review model is usually chat-log-after-the-fact rather than action-before-the-fact.
 - **Scale.** A small team can run many agents because each one owns a narrow, well-defined role on typed objects. Load is delegated to many bounded loops rather than a few monolithic personas, sidestepping the wall where a handful of agents each carry too many responsibilities to be trusted. In the simulation camp, scale is a function of adding personas, which linearly increases the coordination overhead of the synthetic org and — in the products that lean hardest on the metaphor — introduces the same meeting-and-status-update friction the metaphor was borrowed from.
 The composable camp did not invent these properties. It’s the camp that decided to make them the first-class shape of the product rather than a compliance-and-observability layer stapled on later.
 

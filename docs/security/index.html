@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Security — self-hosted, tenant-isolated, AES-256 — Maskin</title>
+<title>Security — self-hosted, AES-256 — Maskin</title>
 <meta name="description" content="Maskin's security model: API-key authentication, workspace isolation and roles, AES-256-GCM credential encryption, sandboxed agent execution, webhook verification, the audit log, and responsible disclosure.">
 
 <link rel="canonical" href="https://maskin.io/docs/security/">
@@ -17,7 +17,7 @@
 
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/docs/security/">
-<meta property="og:title" content="Security — self-hosted, tenant-isolated, AES-256 — Maskin">
+<meta property="og:title" content="Security — self-hosted, AES-256 — Maskin">
 <meta property="og:description" content="Authentication, workspace isolation, encrypted credentials, sandboxed agents, and responsible disclosure.">
 <meta property="og:image" content="https://maskin.io/og-image.png?v=2">
 <meta property="og:site_name" content="Maskin">
@@ -78,16 +78,16 @@
 
     <p class="eyebrow">Self-hosting</p>
     <h1>Security</h1>
-    <p class="lead">How Maskin protects credentials, isolates tenants, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.</p>
+    <p class="lead">How Maskin protects credentials, separates workspaces in the API, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.</p>
 
     <h2>Authentication</h2>
-    <p>Every request authenticates with a bearer API key (prefixed <code>ank_</code>). Auth is <strong>stateless</strong>: no cookies or server sessions. Keys are per-actor and can be rotated with <code>regenerate_api_key</code>, which immediately invalidates the old value.</p>
+    <p>Every request authenticates with a bearer API key (prefixed <code>ank_</code>). Keys are <strong>stored as issued</strong>, not hashed; hashing is planned. Auth is <strong>stateless</strong>: no cookies or server sessions. Keys are per-actor and can be rotated with <code>regenerate_api_key</code>, which immediately invalidates the old value.</p>
 
     <h2>Authorization &amp; tenant isolation</h2>
-    <p>Workspace-scoped requests carry an <code>X-Workspace-Id</code> header. Workspace isolation is enforced in the API, route by route, not by database-level row security, so it depends on each route checking the workspace. Gaps found in an internal review of the routes are being closed: some fixes are already on <code>main</code> and others are in review. Memberships carry a role (<code>owner</code>, <code>admin</code>, <code>member</code>, <code>viewer</code>). Owner and admin roles gate member management, invites, billing and workspace settings. The <code>viewer</code> role is defined but not yet enforced as read-only (planned).</p>
+    <p>Workspace-scoped requests carry an <code>X-Workspace-Id</code> header. Workspace isolation is enforced in the API, route by route, not by database-level row security, so it depends on each route checking the workspace. Memberships carry a role (<code>owner</code>, <code>admin</code>, <code>member</code>, <code>viewer</code>). Owner and admin roles gate member management, invites, billing and workspace settings. The <code>viewer</code> role is defined but not yet enforced as read-only (planned).</p>
 
     <h2>Credential encryption at rest</h2>
-    <p>Integration OAuth tokens and workspace LLM API keys are encrypted with <strong>AES-256-GCM</strong> using <code>INTEGRATION_ENCRYPTION_KEY</code> (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as <code>iv:authTag:ciphertext</code>. In the UI only the last four characters are ever shown, and secrets are never written to logs or exposed in agent output.</p>
+    <p>Integration credentials, including OAuth tokens, are encrypted with <strong>AES-256-GCM</strong> using <code>INTEGRATION_ENCRYPTION_KEY</code> (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as <code>iv:authTag:ciphertext</code>.</p>
     <div class="callout">
       <span class="callout__icon">!</span>
       <span class="callout__body">Set <code>INTEGRATION_ENCRYPTION_KEY</code> explicitly in production and keep it stable — rotating it makes previously stored credentials undecryptable, so connections must be re-established.</span>
@@ -110,7 +110,7 @@
     </table></div>
 
     <h2>Audit log</h2>
-    <p>Every change is recorded in an append-only event log (see <a href="/docs/architecture/">Architecture</a>), giving you an immutable trail of who — human or agent — did what, and when.</p>
+    <p>Every change is recorded in an event log that is insert-only by convention (see <a href="/docs/architecture/">Architecture</a>), giving you a trail of who — human or agent — did what, and when.</p>
 
     <h2>Hardening your deployment</h2>
     <ul>
