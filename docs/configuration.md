@@ -33,7 +33,7 @@ Maskin is configured through environment variables. Only `DATABASE_URL` is stric
 Full per-provider setup is on the [Integrations setup](/docs/integrations/) page.
 
 ## LLM
-The Anthropic API key and any workspace custom-LLM endpoint are configured **in the app** (Settings → Integrations / LLM keys), stored encrypted per workspace — not via environment. The environment only configures the optional *system fallback* used when a workspace has no model configured:
+The Anthropic API key and any workspace custom-LLM endpoint are configured **in the app** (Settings → Integrations / LLM keys), per workspace — not via environment. The environment only configures the optional *system fallback* used when a workspace has no model configured:
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | MASKIN_FALLBACK_OPENROUTER_KEY | — | Enables the OpenRouter-based fallback model. |

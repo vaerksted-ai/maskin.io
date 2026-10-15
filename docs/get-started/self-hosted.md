@@ -25,7 +25,6 @@ Once you're in, you'll see the unified pipeline view: **Insights → Bets → Ta
 ## Step 2 — Paste your Anthropic API key
 1. Open **Settings → Integrations** (or **Settings → LLM keys**).
 2. Paste your Anthropic API key and **Save**.
-Only the last four characters are shown after saving.
 
 ## Step 3 — Get your Maskin API key and workspace ID
 1. Open **Settings → API keys**, click **Create key**, and copy the `ank_…` value.
