@@ -204,7 +204,7 @@ See `references/refund-policy.md` for the exceptions list.</code></pre>
     <p>A skill can therefore hold thousands of words of procedure while costing the agent one sentence until the moment it is needed. That is why skills scale where pasting an instruction block into a system prompt does not. The always-on version of that block is an instruction file such as <code>AGENTS.md</code> or <code>CLAUDE.md</code>, read at the start of every session; <a href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a> covers how those files differ across coding agents.</p>
 
     <h3>What a minimal skill looks like</h3>
-    <p>The smallest useful skill is a folder and one file. <code>SKILL.md</code> with a name, a description, and three or four lines of instruction is a complete skill. There is no build step, no manifest beyond the frontmatter, and no registration call. If the folder is in a location the agent reads, the skill exists.</p>
+    <p>The smallest useful skill is a folder and one file. <code>SKILL.md</code> with a name, a description, and three or four lines of instruction is a complete skill. There is no build step, no manifest beyond the frontmatter, and no registration call. If the folder is in a location the agent reads, the skill exists. For a set of skills built around one job, <a href="/docs/learn/claude-code-for-product-managers/">a PM&rsquo;s skills in Claude Code, job by job</a> walks through Anthropic&rsquo;s product-management plugin.</p>
 
     <h2>How agent skills relate to tools, prompts, rules, and workflows</h2>
     <p>These terms get used interchangeably in marketing copy and mean different things. The clean way to hold them apart:</p>
