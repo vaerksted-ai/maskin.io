@@ -1,0 +1,28 @@
+name: Splice launch video
+
+# Manual only. Probe step: prints tool versions so we know the runner can do the
+# v2 sidebar splice (Playwright record + ffmpeg re-encode). The real splice steps
+# are added once the v2 mock page is committed.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: ffmpeg and ffprobe versions
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          ffmpeg -version | head -n 1
+          ffprobe -version | head -n 1
+      - name: Playwright version
+        run: npx --yes playwright@1 --version
+      - name: Inspect v1 video
+        run: |
+          ls -l maskin-launch.mp4
+          ffprobe -v error -show_entries stream=codec_name,width,height,r_frame_rate,pix_fmt:format=duration,size -of default=nw=1 maskin-launch.mp4
