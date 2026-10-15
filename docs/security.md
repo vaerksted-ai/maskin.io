@@ -1,21 +1,21 @@
 > Source: https://maskin.io/docs/security/
 
 # Security
-How Maskin protects credentials, separates workspaces in the API, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.
+How Maskin protects credentials, isolates tenants, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.
 
 ## Authentication
-Every request authenticates with a bearer API key (prefixed `ank_`). Keys are **stored as issued**, not hashed; hashing is planned. Auth is **stateless**: no cookies or server sessions. Keys are per-actor and can be rotated with `regenerate_api_key`, which immediately invalidates the old value.
+Every request authenticates with a bearer API key (prefixed `ank_`). Auth is **stateless**: no cookies or server sessions. Keys are per-actor and can be rotated with `regenerate_api_key`, which immediately invalidates the old value.
 
 ## Authorization & tenant isolation
-Workspace-scoped requests carry an `X-Workspace-Id` header. Workspace isolation is enforced in the API, route by route, not by database-level row security, so it depends on each route checking the workspace. Memberships carry a role (`owner`, `admin`, `member`, `viewer`). Owner and admin roles gate member management, invites, billing and workspace settings. The `viewer` role is defined but not yet enforced as read-only (planned).
+Workspace-scoped requests carry an `X-Workspace-Id` header. Workspace isolation is enforced in the API, route by route, not by database-level row security, so it depends on each route checking the workspace. Gaps found in an internal review of the routes are being closed: some fixes are already on `main` and others are in review. Memberships carry a role (`owner`, `admin`, `member`, `viewer`). Owner and admin roles gate member management, invites, billing and workspace settings. The `viewer` role is defined but not yet enforced as read-only (planned).
 
 ## Credential encryption at rest
-Integration credentials, including OAuth tokens, are encrypted with **AES-256-GCM** using `INTEGRATION_ENCRYPTION_KEY` (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as `iv:authTag:ciphertext`.
+Integration OAuth tokens and workspace LLM API keys are encrypted with **AES-256-GCM** using `INTEGRATION_ENCRYPTION_KEY` (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as `iv:authTag:ciphertext`. In the UI only the last four characters are ever shown, and secrets are never written to logs or exposed in agent output.
 > Set `INTEGRATION_ENCRYPTION_KEY` explicitly in production and keep it stable — rotating it makes previously stored credentials undecryptable, so connections must be re-established.
 
 ## Sandboxed agent execution
-On the hosted path, each agent session runs in its own **ephemeral microVM** (libkrun, managed through microsandbox) on a dedicated [agent server](/docs/agents/), started from the `agent-base` image, one per run and stopped and removed when the session completes. The app hands sessions to the agent server over HTTPS and does not launch them through a Docker socket.
-For local development, and for self-hosts that do not configure agent servers, sessions run as Docker containers on the app host instead. That path uses the host Docker socket (`/var/run/docker.sock`) — treat access to that socket as root-equivalent and restrict it to the app. For stronger isolation, run sessions on dedicated agent servers rather than the app host. For the policy layer above the sandbox — who signs off on agent actions, and how those approvals get recorded — see the [governance framework for AI agents](/docs/learn/ai-agent-governance/).
+Each agent session runs in its own **ephemeral microVM** (libkrun, managed through microsandbox) on a dedicated [agent server](/docs/agents/), started from the `agent-base` image, one per run and stopped and removed when the session completes. The app hands sessions to the agent server over HTTPS and does not launch them through a Docker socket.
+Docker is for local development only. There is no fallback that runs agents without the microVM runtime, so a self-host needs an agent server running microsandbox and libkrun. Locally, treat access to the host Docker socket (`/var/run/docker.sock`) as root-equivalent and restrict it to the app. For the policy layer above the sandbox — who signs off on agent actions, and how those approvals get recorded — see the [governance framework for AI agents](/docs/learn/ai-agent-governance/).
 
 ## Webhook verification
 Inbound webhooks are signature-verified per provider before processing:
@@ -27,7 +27,7 @@ Inbound webhooks are signature-verified per provider before processing:
 | Gmail | Pub/Sub push with OIDC JWT verification. |
 
 ## Audit log
-Every change is recorded in an event log that is insert-only by convention (see [Architecture](/docs/architecture/)), giving you a trail of who — human or agent — did what, and when.
+Every change is recorded in an append-only event log (see [Architecture](/docs/architecture/)), giving you an immutable trail of who — human or agent — did what, and when.
 
 ## Hardening your deployment
 - Terminate **TLS** at your proxy/load balancer in front of the app.
