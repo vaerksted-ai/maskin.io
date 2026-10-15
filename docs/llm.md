@@ -12,9 +12,9 @@ When a session starts, Maskin picks the first option that's configured, in this 
 5. **System fallback** — the operator-configured OpenRouter fallback (with a daily token cap).
 
 ## Using Claude (the default)
-Two ways to give a workspace Claude access, both set **in the app** (Settings → Integrations / LLM keys) and stored encrypted per workspace:
+Two ways to give a workspace Claude access, both set **in the app** (Settings → Integrations / LLM keys):
 - **Anthropic API key** — paste your key; usage is billed to your Anthropic account.
-- **Claude subscription** — import a Pro/Max/Teams subscription via the `import_claude_subscription` tool / Claude OAuth flow, then check it with `get_claude_subscription_status`.
+- **Claude subscription** — import a Pro/Max/Teams subscription via the `import_claude_subscription` tool / Claude OAuth flow, then check it with `get_claude_subscription_status`. The subscription tokens are stored encrypted.
 The default model is `claude-sonnet-4-6`, with a separate small/fast model for lightweight steps.
 
 ## Custom endpoint (Enterprise)
@@ -22,7 +22,7 @@ Enterprise workspaces can also point agent sessions at their own Anthropic-compa
 | Field | Purpose |
 | --- | --- |
 | base_url | The endpoint's API base. |
-| api_key | Credential for that endpoint (encrypted at rest). |
+| api_key | Credential for that endpoint. |
 | model | Main model id. |
 | small_fast_model | Cheaper model for lightweight steps. |
 This is set in workspace settings, not via environment variables.
