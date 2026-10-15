@@ -16,3 +16,6 @@ compatibility_date = "2025-06-01"
 binding = "MARKETPLACE_CAPTURE_KV"
 id = "17cbf98f2bba499a8db5129ea4d4fbeb"
 preview_id = "17cbf98f2bba499a8db5129ea4d4fbeb"
+
+[env.preview.vars]
+I18N_LINT = "off"
