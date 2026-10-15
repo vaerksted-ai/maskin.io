@@ -84,7 +84,7 @@
     <p>Everyone in Maskin is an <strong>actor</strong> — and both people and AI agents are actors. They share the same shape: each has an identity, an API key, and a place in one or more workspaces. Agents add a <strong>system prompt</strong>, a <strong>tools</strong> configuration, optional <strong>memory</strong>, and an <strong>LLM provider</strong>. Because humans and agents are the same primitive, an agent can be assigned work, mentioned in a comment, or made the "driver" of an object exactly like a teammate.</p>
 
     <h2>Workspaces and members</h2>
-    <p>A <strong>workspace</strong> is an isolated tenant — your team's data lives inside it, and every object, file, and session is scoped to one. Membership is role-based: <code>owner</code>, <code>member</code>, or <code>viewer</code>. A workspace also carries its own <strong>settings</strong>: display names, the valid statuses per object type, custom field definitions, relationship types, and which extension modules are enabled. That's what makes a "development" workspace look different from a "growth" one (see <a href="/docs/get-started/self-hosted/">Self-hosted setup</a> for templates).</p>
+    <p>A <strong>workspace</strong> is your team's data boundary (enforced in the API, route by route) — every object, file, and session is scoped to one. Membership is role-based: <code>owner</code>, <code>member</code>, or <code>viewer</code>. A workspace also carries its own <strong>settings</strong>: display names, the valid statuses per object type, custom field definitions, relationship types, and which extension modules are enabled. That's what makes a "development" workspace look different from a "growth" one (see <a href="/docs/get-started/self-hosted/">Self-hosted setup</a> for templates).</p>
 
     <h2>Objects and the pipeline</h2>
     <p>Work is represented as <strong>objects</strong>. There's one object model with a <code>type</code> discriminator — the three built-in types form the pipeline:</p>
@@ -118,7 +118,7 @@
     </ul>
 
     <h2>Activity and real-time</h2>
-    <p>Every change is recorded in an append-only <strong>event log</strong>, which doubles as the audit trail and the source for unread tracking. The UI and agents stay live through a Postgres&nbsp;NOTIFY → Server-Sent-Events stream — no extra message broker required.</p>
+    <p>Every change is recorded in an insert-only (by convention) <strong>event log</strong>, which doubles as the audit trail and the source for unread tracking. The UI and agents stay live through a Postgres&nbsp;NOTIFY → Server-Sent-Events stream — no extra message broker required.</p>
 
     <nav class="doc-pagenav" aria-label="Page navigation">
       <a href="/docs/get-started/">← Get started</a>
