@@ -171,7 +171,7 @@
         <li>Self-hosting answers three buyer needs: data sovereignty, control over your model access, and auditability.</li>
         <li>Maskin is licensed Apache 2.0 &mdash; inspect every line, fork it, run it commercially.</li>
         <li>Bring your own Anthropic or OpenAI access: agents run the Claude Code CLI by default, or the Codex CLI. The MCP protocol layer is model-agnostic; the agent runtime is not.</li>
-        <li>Agents run in sandboxed sessions, each in an ephemeral microVM (microsandbox and libkrun), isolated from your private keys and production state.</li>
+        <li>Agents run in sandboxed sessions, each in an ephemeral microVM (microsandbox and libkrun).</li>
         <li>Self-host is always free; managed plans offer EU and US data residency.</li>
       </ul>
     </div>
@@ -203,7 +203,7 @@
   <p>The same principle runs through the whole surface: everything in Maskin is an object, and every object is reachable over one API &mdash; the UI and the agents serve the identical object model through the same routes. Authentication is built the same way for humans and agents: API-key auth with no browser sessions, so an agent can act as a first-class citizen of the workspace rather than a scripted imitation of a logged-in user (architecture decision record ADR-002, summarised in the <a href="/docs/architecture/">architecture overview</a>). For a self-hosted deployment, that means the workspace behaves the same whether an operator, a CI pipeline, or an autonomous loop agent is driving it.</p>
 
   <h2>Sandboxed agents: the safety argument for going autonomous</h2>
-  <p>An autonomous AI workspace is only safe if execution is contained. Maskin runs agents in <strong>sandboxed sessions</strong> &mdash; each in an ephemeral microVM built on microsandbox and libkrun, with the coding CLI installed, an isolated workspace, and a browser sidecar for web tasks. Nothing inside an agent&rsquo;s sandbox can touch your private keys or production state outside the workspace&rsquo;s own authority. That is the difference between an agent that &ldquo;has access to everything&rdquo; and an agent that executes inside a bounded environment with a close condition and human promote gates. See the <a href="/docs/security/">security model</a> for auth, data isolation, and key handling.</p>
+  <p>An autonomous AI workspace is only safe if execution is contained. Maskin runs agents in <strong>sandboxed sessions</strong> &mdash; each in an ephemeral microVM built on microsandbox and libkrun, with the coding CLI installed, an isolated workspace, and a browser sidecar for web tasks. That is the difference between an agent that &ldquo;has access to everything&rdquo; and an agent that executes inside a bounded environment with a close condition and human promote gates. See the <a href="/docs/security/">security model</a> for auth, data isolation, and key handling.</p>
   <p>It&rsquo;s also the pragmatic reason automation is tractable. Because sessions are ephemeral and bounded, the blast radius of any single failure is contained, and every step is inspectable on the way back out. The one real constraint: self-hosting means running the microsandbox and libkrun runtime on the agent-server host. Docker is used only for local development, and there is no fallback that runs agents without a microVM runtime. When you evaluate self-host, plan that infrastructure dependency up front.</p>
 
   <h2>Managed vs self-hosted</h2>
@@ -226,7 +226,7 @@
     <li><strong>Self-host</strong> &mdash; always free. You pay only for your own infrastructure and model usage.</li>
     <li><strong>Pro</strong> &mdash; $20 per seat per month, agent credits included.</li>
     <li><strong>Team</strong> &mdash; $200 per workspace per month, unlimited seats.</li>
-    <li><strong>Enterprise</strong> &mdash; your own LLM and infrastructure.</li>
+    <li><strong>Enterprise</strong> &mdash; bring your own Anthropic or OpenAI access.</li>
   </ul>
 
   <h2>Who this competes with, and why it matters</h2>

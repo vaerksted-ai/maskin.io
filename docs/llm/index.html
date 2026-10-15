@@ -84,7 +84,7 @@
     <p>When a session starts, Maskin picks the first option that's configured, in this order:</p>
     <ol>
       <li><strong>Agent-level key</strong> — an Anthropic key set directly on the agent actor.</li>
-      <li><strong>Workspace custom LLM</strong> — a bring-your-own endpoint configured on the workspace (OpenRouter, Ollama, vLLM, or any OpenAI-compatible API).</li>
+      <li><strong>Workspace custom LLM</strong> — a bring-your-own endpoint configured on the workspace (OpenRouter or another OpenAI-compatible API).</li>
       <li><strong>Claude OAuth</strong> — a workspace-level Claude Pro / Max / Teams subscription.</li>
       <li><strong>Workspace Anthropic key</strong> — an Anthropic API key saved in workspace settings.</li>
       <li><strong>System fallback</strong> — the operator-configured OpenRouter fallback (with a daily token cap).</li>
@@ -103,7 +103,7 @@
     <div class="doc-table-wrap"><table class="doc-table">
       <thead><tr><th>Field</th><th>Purpose</th></tr></thead>
       <tbody>
-        <tr><td><code>base_url</code></td><td>The provider's API base (e.g. OpenRouter, a local Ollama/vLLM server).</td></tr>
+        <tr><td><code>base_url</code></td><td>The provider's API base (e.g. OpenRouter).</td></tr>
         <tr><td><code>api_key</code></td><td>Credential for that provider (encrypted at rest).</td></tr>
         <tr><td><code>model</code></td><td>Main model id.</td></tr>
         <tr><td><code>small_fast_model</code></td><td>Cheaper model for lightweight steps.</td></tr>
