@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code vs Cursor: pick by job, keep one record | Maskin</title>
+<meta name="description" content="Claude Code vs Cursor compared from each vendor's own docs: how to choose by job, what breaks when a team uses both, and where the shared record lives.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/claude-code-vs-cursor/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/claude-code-vs-cursor/">
+<meta property="og:title" content="Claude Code vs Cursor: pick by job, then keep one record">
+<meta property="og:description" content="Claude Code starts in the terminal and Cursor starts in the editor. Choose by job, test both on your own repo, and keep one record when a team uses both.">
+<meta property="og:image" content="https://maskin.io/og-image-claude-code-vs-cursor.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Claude Code vs Cursor: pick by job, then keep one record">
+<meta name="twitter:description" content="Claude Code starts in the terminal and Cursor starts in the editor. Choose by job, test both on your own repo, and keep one record when a team uses both.">
+<meta name="twitter:image" content="https://maskin.io/og-image-claude-code-vs-cursor.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/claude-code-vs-cursor/#post",
+      "headline": "Claude Code vs Cursor: pick by job, then keep one record",
+      "name": "Claude Code vs Cursor: pick by job, then keep one record",
+      "description": "Claude Code vs Cursor compared from each vendor's own docs: how to choose by job, what breaks when a team uses both, and where the shared record lives.",
+      "url": "https://maskin.io/docs/claude-code-vs-cursor/",
+      "inLanguage": "en",
+      "datePublished": "2026-10-15T00:00:00Z",
+      "dateModified": "2026-10-15T00:00:00Z",
+      "image": [
+        "https://maskin.io/og-image-claude-code-vs-cursor.png"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/claude-code-vs-cursor/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Claude Code"
+        },
+        {
+          "@type": "Thing",
+          "name": "Cursor"
+        },
+        {
+          "@type": "Thing",
+          "name": "AGENTS.md"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Claude Code vs Cursor",
+          "item": "https://maskin.io/docs/claude-code-vs-cursor/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which is better, Claude Code or Cursor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Neither wins on every job, and no vendor documentation gives you a score for your code. Both read project instructions, connect to tools over MCP and run unattended. Decide on where you want to work, the account you already pay for, the models you may use, and a three-task test on your own merged pull requests."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Claude Code better than Cursor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We cannot say, and this page prints no benchmark because the result depends on your code, your prompts and the model versions on the day. Claude Code starts in the terminal and Cursor starts in the editor. If you prefer one of those, that is a better reason than a leaderboard."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you use Claude Code and Cursor together?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Teams run both side by side, and Anthropic’s overview page lists a Claude Code extension with an install link for Cursor, so one person can use both in the same window. The practical problems are two sets of instructions, two sets of guardrails and two histories. Share one AGENTS.md and keep decisions in a record outside both."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do Claude Code and Cursor read the same instructions file?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not by default. Cursor reads rules from .cursor/rules, or an AGENTS.md. Claude Code reads CLAUDE.md, and reads AGENTS.md only when no CLAUDE.md exists. To share one file, write an AGENTS.md and have your CLAUDE.md import it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which is cheaper, Claude Code or Cursor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on your plan and how much you use it, and both vendors change plans, models and usage pools often. Claude Code needs a Claude subscription, an Anthropic Console account or a supported cloud provider. Cursor’s documentation points to a Models and Pricing page for current terms. Compare the current pages against your own usage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do Claude Code and Cursor have usage limits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both are gated by the plan or account you sign in with. We print no numbers because limits change often and the pages we read do not give one figure that holds for everyone. If a limit blocks a long job, that is one reason teams end up on both, and a reason to record which job ran on which account."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Cursor or Claude Code better for teams?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Anthropic’s pricing page lists Team and Enterprise plans that include Claude Code. Cursor’s cloud agents page refers to Enterprise plans with team hooks; check Cursor’s own pricing page for its plan tiers. Which fits matters less than how your team already works, editor-first or terminal-first. Neither gives a team a shared record of decisions, owners and outcomes, so plan for that separately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Maskin run Cursor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Maskin runs its agent sessions on the Claude Code CLI or the Codex CLI. This page compares Cursor because many teams use it next to Claude Code, and the record argument applies whichever agent does the work."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Solutions"><p class="doc-sidebar__title">Solutions</p><ul class="doc-sidebar__list"><li><a class="" href="/solutions/product-teams/">Product teams</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All loops</a></li><li><a class="is-nested" href="/marketplace/seo-publishing/">The SEO publishing loop</a></li><li><a class="is-nested" href="/marketplace/outbound/">The outbound loop</a></li><li><a class="is-nested" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki loop</a></li><li><a class="is-nested" href="/marketplace/linkedin-content/">The LinkedIn content loop</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/composable-ai-agents-vs-ai-employees/">Composable AI agents vs AI employees</a></li><li><a class="" href="/docs/learn/human-in-the-loop/">Human in the loop</a></li><li><a class="is-nested" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a></li><li><a class="is-nested is-active" href="/docs/claude-code-vs-cursor/" aria-current="page">Claude Code vs Cursor</a></li><li><a class="is-nested" href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="is-nested" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="is-nested" href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/learn/claude-code-for-product-managers/">Claude Code for product managers</a></li><li><a class="is-nested" href="/docs/learn/claude-code-agent-teams/">Claude Code agent teams</a></li><li><a class="is-nested" href="/docs/learn/claude-code-team/">Claude Code team</a></li><li><a class="is-nested" href="/docs/learn/choose-a-knowledge-layer/">How to choose a knowledge layer</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="" href="/docs/at-risk-account-alerts/">At-risk account alerts</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="" href="/alternatives/open-source-alternative-to-claude-cowork/">Open source alternative to Claude Cowork</a></li><li><a class="" href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane</a></li><li><a class="" href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents</a></li><li><a class="" href="/alternatives/open-source-ai-coding-agent/">Open source AI coding agent</a></li><li><a class="" href="/alternatives/n8n/">n8n alternative</a></li><li><a class="" href="/alternatives/paperclip/">Paperclip alternative</a></li></ul></nav></aside>  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Claude Code vs Cursor</p>
+    <p class="eyebrow">Article &middot; Comparison</p>
+    <h1>Claude Code vs Cursor: pick by job, then keep one record</h1>
+<p class="lead">Claude Code is Anthropic&rsquo;s coding agent, and it starts in the terminal. Cursor is a coding agent built around the editor, with a command line tool and cloud agents added. Pick by where you want to work and which account you already pay for, and test both on your own repo.</p>
+<p><em>Read against Anthropic&rsquo;s <a href="https://code.claude.com/docs/en/overview" rel="noopener">Claude Code docs</a> and Cursor&rsquo;s <a href="https://cursor.com/docs" rel="noopener">documentation</a> on 2026-10-15. Both products change often, so check the vendor pages before you rely on a detail. This page prints no prices, usage limits or benchmark scores, because neither vendor gives you a number for your code and plans change too fast for a table here.</em></p>
+
+<div class="callout callout--muted"><div class="callout__icon" aria-hidden="true">&#10003;</div><div class="callout__body"><strong>Key takeaways</strong><ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+<li><strong>The split is where you work, not what the agent can do.</strong> Claude Code starts in a terminal and also runs in VS Code, JetBrains, a desktop app and the web. Cursor starts in the editor and also has a command line tool and cloud agents.</li>
+<li><strong>Both read project instructions, connect to tools over MCP and run unattended.</strong> The overlap is bigger than most comparison pages show.</li>
+<li><strong>Accounts and models differ.</strong> Claude Code signs in with a Claude subscription or an Anthropic Console account, and runs Claude models. Cursor&rsquo;s model list spans several providers, including Anthropic, OpenAI and Google.</li>
+<li><strong>You can use both without switching.</strong> Anthropic publishes a Claude Code extension with an install link for Cursor.</li>
+<li><strong>Neither tool is your team&rsquo;s record.</strong> What was decided, who owned it and whether it worked has to live outside both.</li>
+</ul></div></div>
+
+<figure style="margin:1.5rem 0">
+  <img src="/og-image-claude-code-vs-cursor.png" width="1200" height="630" alt="Two boxes, Claude Code (terminal first, CLAUDE.md) and Cursor (editor first, rules or AGENTS.md), both feeding one shared record that holds an owner, a decision with its reason, and an outcome condition." style="width:100%;height:auto;border-radius:10px;border:1px solid var(--rule)" loading="lazy">
+  <figcaption style="font-size:.85rem;color:var(--ink-3);margin-top:.5rem">A terminal agent and an editor agent can still write to one record.</figcaption>
+</figure>
+
+<h2>Claude Code vs Cursor at a glance</h2>
+<p>This table sticks to what each vendor&rsquo;s own pages state.</p>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead><tr><th></th><th>Claude Code</th><th>Cursor</th></tr></thead>
+<tbody>
+<tr><td>Starting point</td><td>Terminal</td><td>Editor (desktop app)</td></tr>
+<tr><td>Other places it runs</td><td>VS Code, JetBrains, desktop app, web and mobile</td><td>Command line tool (<code>agent</code>), cloud agents, web and iOS app, Slack, GitHub and Linear triggers</td></tr>
+<tr><td>Sign in</td><td>Claude subscription or Anthropic Console account; the terminal CLI, VS Code and JetBrains also support cloud providers such as Amazon Bedrock, Google Cloud and Microsoft Foundry</td><td>Cursor account</td></tr>
+<tr><td>Models</td><td>Claude models, from Anthropic or through a supported cloud provider</td><td>Models from several providers, listed in Cursor&rsquo;s docs</td></tr>
+<tr><td>Project instructions</td><td>CLAUDE.md; reads AGENTS.md when no CLAUDE.md is present</td><td>Rules in <code>.cursor/rules</code>, or AGENTS.md</td></tr>
+<tr><td>Modes</td><td>Plan mode in the terminal (Shift+Tab or <code>--permission-mode plan</code>), plan review in the VS Code extension</td><td>Agent, Plan and Ask modes</td></tr>
+<tr><td>Non-interactive mode</td><td><code>claude -p</code></td><td><code>agent -p</code></td></tr>
+<tr><td>Cloud and unattended runs</td><td>Claude Code on the web; routines that run in the cloud</td><td>Cloud agents in isolated VMs</td></tr>
+<tr><td>Extending it</td><td>Skills, hooks, MCP, subagents</td><td>Plugins, skills, MCP and rules; hooks in the editor agent, CLI and cloud agents</td></tr>
+</tbody>
+</table></div>
+<p>The Claude Code column comes from Anthropic&rsquo;s <a href="https://code.claude.com/docs/en/overview" rel="noopener">overview</a>, <a href="https://code.claude.com/docs/en/memory" rel="noopener">memory</a>, <a href="https://code.claude.com/docs/en/permission-modes" rel="noopener">permission modes</a> and <a href="https://code.claude.com/docs/en/third-party-integrations" rel="noopener">deployment options</a> pages. The Cursor column comes from Cursor&rsquo;s documentation home, <a href="https://cursor.com/docs/context/rules" rel="noopener">rules</a>, <a href="https://cursor.com/docs/cli/overview" rel="noopener">CLI</a>, <a href="https://cursor.com/docs/cloud-agent" rel="noopener">cloud agents</a> and <a href="https://cursor.com/docs/hooks" rel="noopener">hooks</a> pages.</p>
+
+<h2>How to choose between Claude Code and Cursor by job</h2>
+<p>Most pages answer &ldquo;which is better&rdquo; with a score. The question that decides your week is narrower: which one fits the job in front of you. Run these five checks in order and stop at the first one that settles it.</p>
+<ol>
+<li><strong>Where do you want to read the diff?</strong> If you review and edit in an editor all day and want the agent in the same window, Cursor starts there. If you live in a terminal, or want the agent to work while you do something else, Claude Code starts there. Both can go the other way, so this is a default, not a wall.</li>
+<li><strong>Which account do you already pay for?</strong> A team with a Claude plan already has Claude Code. A team on a Cursor plan already has Cursor. Adding the second for one month is the cheapest test you can run.</li>
+<li><strong>Which models must you use?</strong> Claude Code runs Claude models, from Anthropic or through a cloud provider your organization already uses. Cursor lists models from several providers in its docs. If your security team approved one provider, or you want to switch between model providers on one task, that is the check that matters most.</li>
+<li><strong>Does the work run while nobody is watching?</strong> Both have a non-interactive mode for scripts and CI (<code>claude -p</code> and <code>agent -p</code>) and a cloud option (Claude Code on the web, Cursor cloud agents). Compare how each one authenticates in your pipeline and where it clones your repo.</li>
+<li><strong>What do your existing customizations use?</strong> Hooks, skills and MCP servers exist on both sides in some form. Cursor rules are <code>.mdc</code> files with their own frontmatter. If your team has built a library on one, check the other tool&rsquo;s docs for the equivalent before you move.</li>
+</ol>
+<p>If none of the five settles it, you are choosing on output quality, and the only evidence that counts is your own. Take three merged pull requests (a small fix, a multi-file feature, a refactor), start each tool from the commit before the merge with the same ticket text, and compare the diffs, the test results and how often you had to step in. This is our method, not a measurement. Maskin has not benchmarked the two tools and makes no claim about which writes better code.</p>
+
+<h2>Can you use Claude Code and Cursor together?</h2>
+<p>Yes, and there are two ways. The first is side by side: some people on the team use Cursor, others use Claude Code, and an automated job runs on whichever account has headroom. The second is nested: Anthropic&rsquo;s overview page lists a Claude Code extension for VS Code with an &ldquo;Install for Cursor&rdquo; link, so one person can run Claude Code inside Cursor.</p>
+<p>Either way, a team hits the same frictions:</p>
+<p><strong>1. Two sets of instructions drift apart.</strong> Cursor reads rules from <code>.cursor/rules</code>, or an AGENTS.md. Claude Code reads CLAUDE.md, and per Anthropic&rsquo;s <a href="https://code.claude.com/docs/en/memory" rel="noopener">memory page</a> it reads AGENTS.md only when there is no CLAUDE.md. A repository with a rules folder and a CLAUDE.md gives each tool different guidance. The simplest fix is one AGENTS.md that Cursor reads directly and your CLAUDE.md imports (<a href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a> walks through that setup). We did not confirm from Cursor&rsquo;s pages whether Cursor reads CLAUDE.md, so do not assume it.</p>
+<p><strong>2. Guardrails live in two places.</strong> Anthropic&rsquo;s memory page says Claude Code treats CLAUDE.md as context, not enforced configuration, and points to a PreToolUse hook to block an action outright. Cursor has its own controls: its <a href="https://cursor.com/docs/cli/overview" rel="noopener">CLI page</a> documents sandbox settings, and its <a href="https://cursor.com/docs/hooks" rel="noopener">hooks page</a> says hooks apply to the editor agent, the CLI and cloud agents. If you want the same limits on both, you set and review them twice.</p>
+<p><strong>3. Session history is per product.</strong> Each Claude Code session starts with a fresh context window. Cursor lets you resume earlier chats from the CLI. We found no documented way to carry one tool&rsquo;s history into the other, and neither is a timeline a colleague can open. The same gap, from the memory side, is in <a href="/docs/learn/agent-memory-across-sessions/">agent memory across sessions</a>.</p>
+<p><strong>4. Decisions disappear into whichever tool made them.</strong> &ldquo;Why did we change the retry logic this way&rdquo; is answered in a chat on one laptop. A session is not a place to keep a decision.</p>
+<p><strong>5. Usage splits across two accounts.</strong> You cannot answer &ldquo;what did this feature cost in agent time&rdquo; from one place. Read the vendors&rsquo; current pricing pages for your plan rather than a table that would be stale by the time you read it here.</p>
+<p>Only the first has a fix inside the tools. The others need something above them. Claude Code&rsquo;s own experimental <a href="/docs/learn/claude-code-agent-teams/">agent teams</a> hit the same limit inside one session: the task list sits in local files, scoped to that session. Where shared instructions sit among the other layers is covered in <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">agent skills vs MCP vs Cursor rules vs workflows</a>.</p>
+
+<h2>And Codex?</h2>
+<p>Codex is OpenAI&rsquo;s coding agent, and it sits closest to Claude Code: terminal first, AGENTS.md for instructions, MCP, skills and subagents. Against Cursor, the same five checks apply, with the account and model checks doing most of the work. For the full Claude Code and Codex comparison, read <a href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a>.</p>
+
+<h2>Where the record lives</h2>
+<p>You do not need a product for this. You need four things written down in a place that outlives any one session and that both tools, and the people using them, can reach:</p>
+<ol>
+<li><strong>An owner per piece of work.</strong> One name, a person or an agent, on each item.</li>
+<li><strong>A decision with its reason.</strong> What you chose, what you rejected, who approved it. The result of your three-PR test is a decision.</li>
+<li><strong>A stated outcome condition.</strong> What &ldquo;done&rdquo; means in terms you can check later, not &ldquo;the agent said it finished&rdquo;.</li>
+<li><strong>Links between them.</strong> The request that started the work, the decision it led to, the changes that carried it out.</li>
+</ol>
+<p>A tracker works if you add those fields by convention. The catch is that most trackers have no slot for a decision&rsquo;s reason or an outcome condition, so they end up in comments where nobody can query them. Whichever tool you use, keep the record independent of the agent. The agent that ran the work should be one field on the item, not the item itself. Then switching from Cursor to Claude Code, or running both, changes one field.</p>
+
+<h3>An illustrative scenario</h3>
+<p>Take a team of four. Two developers use Cursor and two use Claude Code. In March one of them decides to pin a major version of a library because the upgrade breaks a plugin. The reasoning sits in one Cursor chat. In May a recurring dependency job, running on Claude Code, proposes the upgrade again. Nobody can say why it was pinned, so someone repeats the investigation.</p>
+<p>With a record that holds the pin as a decision with a reason and an outcome condition (&ldquo;revisit when the plugin supports the new major&rdquo;), whichever tool runs the job reads the same entry and skips the upgrade. This scenario is made up to show the gap. It is not a Maskin customer story.</p>
+
+<h2>How Maskin keeps the record</h2>
+<p>Maskin is an open-source (Apache 2.0), MCP-native, self-hostable <a href="/docs/what-is-an-agentic-workspace/">agentic workspace</a> where people and agents work on shared typed objects. A signal enters as an insight, gets shaped into a bet with a win condition, and breaks into tasks. Each object has a driver (an owner, person or agent) and a comment thread, and a bet closes against its stated condition. The objects are the work, not a log of it.</p>
+<p>Maskin runs its agent sessions on the Claude Code CLI by default, or on the Codex CLI, each inside an isolated microVM. Maskin does not run Cursor. Cursor&rsquo;s documentation says it supports MCP servers, so it can in principle connect to any MCP server, but we have not tested Cursor against Maskin and do not make that claim for you. Some honest limits: you bring your own Anthropic or OpenAI access, local models are not a path we have validated, and Maskin is early, so evaluate the architecture rather than a long track record.</p>
+<p>If you want to try it, you can <a href="/docs/self-hosted-ai-workspace/">self-host it</a>. For the longer argument, read <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a>. Related decisions: <a href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a> covers the instructions file, and <a href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a> covers where a workspace sits next to your editor. If you are a product manager deciding how much of this to learn, start with <a href="/docs/learn/claude-code-for-product-managers/">Claude Code for product managers</a>. For a wider look at open-source coding agents, see the <a href="/alternatives/open-source-ai-coding-agent/">open source AI coding agent alternatives</a>.</p>
+
+<h2>A quick decision rule</h2>
+<ul>
+<li><strong>Solo, one account, one repo:</strong> use the tool your account already includes. Run the three-PR test before you add a second subscription.</li>
+<li><strong>You review in the editor all day:</strong> start with Cursor. Add Claude Code for long jobs you want to leave running.</li>
+<li><strong>You live in the terminal, or run jobs in CI:</strong> start with Claude Code. Add Cursor if teammates prefer the editor.</li>
+<li><strong>A team split across both:</strong> make one AGENTS.md before you do anything else.</li>
+<li><strong>Two or more people, or you will need to explain a choice next quarter:</strong> add the four-field record. It works with either tool and it is the part that lasts.</li>
+</ul>
+
+<h2>FAQ</h2>
+<h3>Which is better, Claude Code or Cursor?</h3>
+<p>Neither wins on every job, and no vendor documentation gives you a score for your code. Both read project instructions, connect to tools over MCP and run unattended. Decide on where you want to work, the account you already pay for, the models you may use, and a three-task test on your own merged pull requests.</p>
+
+<h3>Is Claude Code better than Cursor?</h3>
+<p>We cannot say, and this page prints no benchmark because the result depends on your code, your prompts and the model versions on the day. Claude Code starts in the terminal and Cursor starts in the editor. If you prefer one of those, that is a better reason than a leaderboard.</p>
+
+<h3>Can you use Claude Code and Cursor together?</h3>
+<p>Yes. Teams run both side by side, and Anthropic&rsquo;s overview page lists a Claude Code extension with an install link for Cursor, so one person can use both in the same window. The practical problems are two sets of instructions, two sets of guardrails and two histories. Share one AGENTS.md and keep decisions in a record outside both.</p>
+
+<h3>Do Claude Code and Cursor read the same instructions file?</h3>
+<p>Not by default. Cursor reads rules from .cursor/rules, or an AGENTS.md. Claude Code reads CLAUDE.md, and reads AGENTS.md only when no CLAUDE.md exists. To share one file, write an AGENTS.md and have your CLAUDE.md import it.</p>
+
+<h3>Which is cheaper, Claude Code or Cursor?</h3>
+<p>It depends on your plan and how much you use it, and both vendors change plans, models and usage pools often. Claude Code needs a Claude subscription, an Anthropic Console account or a supported cloud provider. Cursor&rsquo;s documentation points to a Models and Pricing page for current terms. Compare the current pages against your own usage.</p>
+
+<h3>Do Claude Code and Cursor have usage limits?</h3>
+<p>Both are gated by the plan or account you sign in with. We print no numbers because limits change often and the pages we read do not give one figure that holds for everyone. If a limit blocks a long job, that is one reason teams end up on both, and a reason to record which job ran on which account.</p>
+
+<h3>Is Cursor or Claude Code better for teams?</h3>
+<p>Anthropic&rsquo;s pricing page lists Team and Enterprise plans that include Claude Code. Cursor&rsquo;s cloud agents page refers to Enterprise plans with team hooks; check Cursor&rsquo;s own pricing page for its plan tiers. Which fits matters less than how your team already works, editor-first or terminal-first. Neither gives a team a shared record of decisions, owners and outcomes, so plan for that separately.</p>
+
+<h3>Does Maskin run Cursor?</h3>
+<p>No. Maskin runs its agent sessions on the Claude Code CLI or the Codex CLI. This page compares Cursor because many teams use it next to Claude Code, and the record argument applies whichever agent does the work.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/docs/claude-code-vs-codex/">
+        <div class="doc-card__title">Claude Code vs Codex</div>
+        <div class="doc-card__desc">The same choose-by-job checks for the two terminal-first agents, and why a team ends up on both.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/ai-product-workspace-vs-coding-agent/">
+        <div class="doc-card__title">AI product workspace vs AI coding agent</div>
+        <div class="doc-card__desc">Where a workspace sits next to your coding agent, and why most teams run both.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+        <div class="doc-card__title">What is an agentic workspace?</div>
+        <div class="doc-card__desc">The cornerstone: the closed loop on shared typed objects.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Getting started is free</h2>
+      <p>Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of what was decided. The <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace cornerstone</a> and the <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a> guide are the two best next reads.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

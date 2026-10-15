@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code agent teams: when they are enough, and when you need a shared record | Maskin</title>
+<meta name="description" content="Claude Code agent teams explained from Anthropic's docs: what they do, when they are enough, and the four boundaries where a team needs a shared record.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/learn/claude-code-agent-teams/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/learn/claude-code-agent-teams/">
+<meta property="og:title" content="Claude Code agent teams: when they are enough, and when a team needs a shared record">
+<meta property="og:description" content="Agent teams coordinate teammates inside one session. Learn when that is enough, the lighter options to try first, and the four boundaries where a team needs a shared record.">
+<meta property="og:image" content="https://maskin.io/og-image-claude-code-agent-teams.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Claude Code agent teams: when they are enough, and when a team needs a shared record">
+<meta name="twitter:description" content="Agent teams coordinate teammates inside one session. Learn when that is enough, the lighter options to try first, and the four boundaries where a team needs a shared record.">
+<meta name="twitter:image" content="https://maskin.io/og-image-claude-code-agent-teams.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/learn/claude-code-agent-teams/#post",
+      "headline": "Claude Code agent teams: when they are enough, and when a team needs a shared record",
+      "name": "Claude Code agent teams: when they are enough, and when a team needs a shared record",
+      "description": "Claude Code agent teams explained from Anthropic's docs: what they do, when they are enough, and the four boundaries where a team needs a shared record.",
+      "url": "https://maskin.io/docs/learn/claude-code-agent-teams/",
+      "inLanguage": "en",
+      "datePublished": "2026-10-15T00:00:00Z",
+      "dateModified": "2026-10-15T00:00:00Z",
+      "image": [
+        "https://maskin.io/og-image-claude-code-agent-teams.png"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/learn/claude-code-agent-teams/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Claude Code"
+        },
+        {
+          "@type": "Thing",
+          "name": "Claude Code agent teams"
+        },
+        {
+          "@type": "Thing",
+          "name": "Subagents"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Claude Code agent teams",
+          "item": "https://maskin.io/docs/learn/claude-code-agent-teams/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are Claude Code agent teams?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Claude Code agent teams are an experimental feature in which one Claude Code session acts as team lead and spawns teammates. Each teammate is a separate Claude Code instance with its own context window. They coordinate through a shared task list and a mailbox for direct messages, and you can message any teammate yourself. The feature is off by default."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I enable Claude Code agent teams?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Set the environment variable CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS to 1, either in your shell or under \"env\" in settings.json. Then describe the task and the teammates you want in plain language. To open split panes instead of the default in-process view, set teammateMode in settings.json to auto or tmux; split panes need tmux or iTerm2."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between agent teams and subagents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Subagents return their results to the caller, though subagents Claude has named can also message each other. Agent teams add a shared task list that teammates self-claim from, plus a full Claude session per teammate that you can message directly. Subagents cost fewer tokens because results are summarized back. Teams cost more because every teammate is a separate Claude instance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many teammates should I use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Anthropic recommends starting with 3 to 5 teammates for most workflows, with roughly 5 to 6 tasks per teammate. Token costs scale linearly with the number of teammates, coordination overhead grows, and returns diminish beyond a point. The docs say three focused teammates often outperform five scattered ones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are Claude Code agent teams still experimental?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, as of the docs read on 2026-10-04. Anthropic labels them experimental and disabled by default, with known limitations around session resumption, task coordination and shutdown. Because the feature is experimental, details can change between Claude Code versions, so check the current docs for the version you run."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can several people or sessions share one agent team?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A session has exactly one team, scoped to that session, and you cannot share a team across sessions or promote a teammate to lead. The task list lives in local files and is never uploaded. If several people need the same view of the work, you need a record outside the session, such as a tracker or a workspace."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do Claude Code agent teams work in VS Code or on Windows?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The default in-process mode works in any terminal. Split-pane mode needs tmux or iTerm2, and the docs say it is not supported in VS Code's integrated terminal, Windows Terminal or Ghostty. The docs also note tmux has known limitations on some operating systems and works best on macOS."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Solutions"><p class="doc-sidebar__title">Solutions</p><ul class="doc-sidebar__list"><li><a class="" href="/solutions/product-teams/">Product teams</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All loops</a></li><li><a class="is-nested" href="/marketplace/seo-publishing/">The SEO publishing loop</a></li><li><a class="is-nested" href="/marketplace/outbound/">The outbound loop</a></li><li><a class="is-nested" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki loop</a></li><li><a class="is-nested" href="/marketplace/linkedin-content/">The LinkedIn content loop</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/composable-ai-agents-vs-ai-employees/">Composable AI agents vs AI employees</a></li><li><a class="" href="/docs/learn/human-in-the-loop/">Human in the loop</a></li><li><a class="is-nested" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a></li><li><a class="is-nested" href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="is-nested" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="is-nested" href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/learn/claude-code-for-product-managers/">Claude Code for product managers</a></li><li><a class="is-nested is-active" href="/docs/learn/claude-code-agent-teams/" aria-current="page">Claude Code agent teams</a></li><li><a class="is-nested" href="/docs/learn/claude-code-team/">Claude Code team</a></li><li><a class="is-nested" href="/docs/learn/choose-a-knowledge-layer/">How to choose a knowledge layer</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="" href="/docs/at-risk-account-alerts/">At-risk account alerts</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="" href="/alternatives/open-source-alternative-to-claude-cowork/">Open source alternative to Claude Cowork</a></li><li><a class="" href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane</a></li><li><a class="" href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents</a></li><li><a class="" href="/alternatives/open-source-ai-coding-agent/">Open source AI coding agent</a></li><li><a class="" href="/alternatives/n8n/">n8n alternative</a></li><li><a class="" href="/alternatives/paperclip/">Paperclip alternative</a></li></ul></nav></aside>  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Claude Code agent teams</p>
+    <p class="eyebrow">Article &middot; Explainer</p>
+    <h1>Claude Code agent teams: when they are enough, and when a team needs a shared record</h1>
+<p class="lead">Claude Code agent teams are an experimental feature: one session acts as team lead and spawns teammates, each with its own context window, coordinating through a shared task list and messages. They are enough for one developer, one repo, one sitting. They stop being enough when people, decisions or time must outlast the session.</p>
+<p><em>Read against <a href="https://code.claude.com/docs/en/agent-teams" rel="noopener">Anthropic&rsquo;s agent teams docs</a> and <a href="https://code.claude.com/docs/en/costs#agent-team-token-costs" rel="noopener">costs page</a> on 2026-10-04. The feature is experimental and the docs change often, so check them before you rely on any detail below.</em></p>
+<div class="callout callout--muted"><div class="callout__icon" aria-hidden="true">&#10003;</div><div class="callout__body"><strong>Key takeaways</strong><ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+<li><strong>Agent teams are a coordination feature inside one session.</strong> The lead, the teammates, the task list and the mailbox all belong to that session on that machine.</li>
+<li><strong>They are enough for bounded, parallel, one-person work:</strong> parallel code review, competing-hypothesis debugging, research, and new modules where each teammate owns different files.</li>
+<li><strong>They cost more.</strong> Anthropic says to start with 3 to 5 teammates, and its costs page puts teams at approximately 7x the tokens of a standard session when teammates run in plan mode.</li>
+<li><strong>Lighter rungs come first:</strong> a single session, subagents, git worktrees or cross-session messaging. Anthropic&rsquo;s own page says to check whether one of them does the job before you set up a team.</li>
+<li><strong>They stop being enough at four boundaries:</strong> the session ends, a second person needs to see the work, a decision needs a reason attached, or an outcome needs checking weeks later. The docs state the first two and part of the third. The rest is what the docs do not describe.</li>
+<li><strong>A shared record is a layer above any tool.</strong> It needs an owner per piece of work, a decision with its reason, and an outcome checked against a stated condition. A tracker you already use can do this. Maskin is one way to do it with typed objects.</li>
+</ul></div></div>
+<figure style="margin:1.5rem 0">
+  <img src="/og-image-claude-code-agent-teams.png" width="1200" height="630" alt="Two boxes. On the left, one session on one machine holding a team lead, teammates with a task list, and a mailbox. An arrow leads to a box on the right, the record, holding an owner, a decision with its reason, and an outcome condition." style="width:100%;height:auto;border-radius:10px;border:1px solid var(--rule)" loading="lazy">
+  <figcaption style="font-size:.85rem;color:var(--ink-3);margin-top:.5rem">Agent teams coordinate work inside one session. The record is the part that outlasts it.</figcaption>
+</figure>
+<h2>What Claude Code agent teams are</h2>
+<p>An agent team is four parts, per Anthropic&rsquo;s docs:</p>
+<ol>
+<li><strong>Team lead:</strong> the main session. It spawns teammates and coordinates the work.</li>
+<li><strong>Teammates:</strong> separate Claude Code instances, each with its own context window.</li>
+<li><strong>Task list:</strong> a shared list of work items with three states (pending, in progress, completed) and optional dependencies. Teammates can self-claim the next unblocked task.</li>
+<li><strong>Mailbox:</strong> messages between agents, stored as a JSON file per agent.</li>
+</ol>
+<p>You enable the feature by setting the environment variable <strong>CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS</strong> to 1, either in your shell or under &ldquo;env&rdquo; in settings.json. Without it, Claude does not spawn or propose teammates. Then you describe the task and the roles in plain language. The docs&rsquo; own starter prompt asks for three teammates to explore a command-line tool from three angles: one on UX, one on architecture, one playing devil&rsquo;s advocate.</p>
+<p>Two practical details that trip people up. First, Claude sometimes spawns subagents instead of a team, and both show up in the same agent panel, so if you wanted a team, say so explicitly. Second, the default display mode is in-process (all teammates inside your terminal, switch between them with the arrow keys). Split panes need tmux or iTerm2, and the docs list VS Code&rsquo;s integrated terminal, Windows Terminal and Ghostty as unsupported for split panes.</p>
+<h3>Agent teams vs subagents vs a shared record</h3>
+<p>Anthropic&rsquo;s own comparison is between subagents and agent teams. The third column is the one that does not exist inside either feature, and it is the subject of the rest of this page.</p>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead><tr><th></th><th>Subagents</th><th>Agent teams</th><th>Shared record (tracker or workspace)</th></tr></thead>
+<tbody>
+<tr><td>Who coordinates</td><td>Main agent manages all work</td><td>Lead, plus teammates that self-claim tasks</td><td>People and agents, against the same objects</td></tr>
+<tr><td>Communication</td><td>Results return to the caller; subagents Claude has named can also message each other</td><td>Teammates message each other directly</td><td>Comments and links on the work item</td></tr>
+<tr><td>Task tracking</td><td>Main agent</td><td>Shared task list</td><td>Typed work items with owners</td></tr>
+<tr><td>Talk to the worker yourself</td><td>Through the main agent</td><td>Yes, every teammate is a full session you can message</td><td>Yes, on the work item</td></tr>
+<tr><td>Where state lives</td><td>Inside the session</td><td>Local files, one team per session</td><td>A store outside any session</td></tr>
+<tr><td>Visible to a second person</td><td>No</td><td>Only on your machine</td><td>Yes, by design</td></tr>
+<tr><td>Survives the session</td><td>Within the session</td><td>Task list files persist locally; in-process teammates do not resume</td><td>Yes</td></tr>
+<tr><td>Best for</td><td>Focused jobs where only the result matters</td><td>Parallel work that needs discussion</td><td>Work that spans people, days and agents</td></tr>
+</tbody>
+</table></div>
+<p>Sources for the first two columns: Anthropic&rsquo;s <a href="https://code.claude.com/docs/en/agent-teams" rel="noopener">agent teams docs</a> (compare-with-subagents table, Architecture and Limitations sections) and the <a href="https://code.claude.com/docs/en/sub-agents" rel="noopener">subagents docs</a>. Named subagents blur the line a little, so the clean difference is not communication. It is what teams add: a shared task list with self-claiming, and a full session per teammate that you can talk to directly.</p>
+<h2>When plain agent teams are enough</h2>
+<p>The docs are candid about the costs. They say agent teams &ldquo;add coordination overhead&rdquo; and that for sequential tasks, same-file edits, or work with many dependencies, a single session or subagents are more effective. The strongest uses they list are research and review, new modules, debugging with competing hypotheses, and cross-layer changes.</p>
+<p>Use plain agent teams when all of these are true:</p>
+<ul>
+<li><strong>One person is steering.</strong> You are the only human who needs to know what happened.</li>
+<li><strong>The work fits one sitting.</strong> If the lead can finish and synthesize before you close the laptop, nothing needs to persist.</li>
+<li><strong>The pieces are independent.</strong> Each teammate owns different files. Two teammates editing the same file leads to overwrites, per the docs.</li>
+<li><strong>The output is a result, not a decision trail.</strong> A review summary or a bug diagnosis is consumed once.</li>
+</ul>
+<p>The docs&rsquo; competing-hypotheses example is a good fit. You spawn five teammates to investigate why an app exits after one message, and tell them to try to disprove each other&rsquo;s theories. The debate is the mechanism: sequential investigation anchors on the first plausible theory, and adversarial teammates counter that. You read the consensus, fix the bug, and move on. Nothing about it needs to outlive the session.</p>
+<p>If you are new to the feature, the docs recommend starting with review and research tasks that have clear boundaries and do not write code. That advice holds up. Parallel implementation is where coordination costs show.</p>
+<h3>Try the lighter rungs first</h3>
+<p>Before you set up a team, Anthropic&rsquo;s page tells you to check whether a lighter option does the job. Climb one rung at a time:</p>
+<ol>
+<li><strong>A single session.</strong> Sequential tasks, same-file edits and dependency-heavy work belong here.</li>
+<li><strong><a href="https://code.claude.com/docs/en/sub-agents" rel="noopener">Subagents</a>.</strong> Helpers for research or verification inside your session. Only a summary returns to your main context, so they cost fewer tokens than teammates.</li>
+<li><strong><a href="https://code.claude.com/docs/en/worktrees" rel="noopener">Git worktrees</a> or <a href="https://code.claude.com/docs/en/cross-session-messaging" rel="noopener">cross-session messaging</a>.</strong> You run several sessions yourself. With messaging, Claude can pass findings between them. No team machinery.</li>
+<li><strong>An agent team.</strong> Teammates share a task list, self-claim work and message each other, and you can message any of them.</li>
+<li><strong>A shared record.</strong> Add it when people, decisions or time outlast the session. It sits above all four rungs, because it holds what they produced, not how they ran.</li>
+</ol>
+<p>Each rung up costs more. Anthropic&rsquo;s <a href="https://code.claude.com/docs/en/costs#agent-team-token-costs" rel="noopener">costs page</a> says agent teams use approximately 7x more tokens than standard sessions when teammates run in plan mode. Its advice for keeping the bill down: use Sonnet for teammates, keep teams small, keep spawn prompts focused, and shut teammates down when their work is done.</p>
+<h2>Where agent teams stop: four boundaries</h2>
+<p>None of the following are bugs. The first two are documented limits of an experimental, per-session feature. The third is partly documented and partly a gap. The fourth is not in the docs at all; it is what a team has no place to store. Together they are where a second layer starts to matter.</p>
+<p><strong>1. The session ends.</strong> The docs say the team config directory is removed when the session ends. The task list directory persists locally and is never uploaded, so resumed sessions keep their tasks. But in-process teammates are not restored by <strong>/resume</strong> or <strong>/rewind</strong>, and after a resume the lead may try to message teammates that no longer exist. Work state survives on your disk. The teammates themselves do not come back.</p>
+<p><strong>2. A second person needs to see it.</strong> A session has exactly one team, scoped to that session. You cannot share a team across sessions. The task list is local files under your home directory. A colleague who runs their own session cannot open it. For several people on one repo, <a href="/docs/learn/claude-code-team/">Claude Code team</a> covers what travels through git and what needs a record. Teammates&rsquo; permission prompts also appear in the lead&rsquo;s session, so you approve them there.</p>
+<p><strong>3. A decision needs its reason.</strong> The docs describe the task list as three states plus dependencies. Nothing described there records why a plan was approved, who overruled whom, or what you decided to leave alone. The docs also note that task status can lag: teammates sometimes fail to mark tasks complete, which blocks dependent tasks, and you check by hand.</p>
+<p><strong>4. An outcome needs checking later.</strong> &ldquo;Completed&rdquo; in a task list means a teammate said it finished. Whether the change held up, whether the bug came back, whether the review caught what mattered: that is a separate question, and nothing the docs describe stores the answer.</p>
+<h2>What a shared record has to hold</h2>
+<p>You do not need a product to answer this. You need four things written down somewhere more durable than a session:</p>
+<ol>
+<li><strong>An owner per piece of work.</strong> One name, human or agent, on each item.</li>
+<li><strong>A decision with its reason.</strong> What was chosen, what was rejected, and who approved it.</li>
+<li><strong>A stated outcome condition.</strong> What &ldquo;done&rdquo; means in terms you can check later, not &ldquo;the agent said it finished&rdquo;.</li>
+<li><strong>Links between them.</strong> The signal that started the work, the decision it led to, the tasks that carried it out.</li>
+</ol>
+<p>Plenty of people already build this by hand. One Hacker News post, <a href="https://news.ycombinator.com/item?id=47242849" rel="noopener">What is the control plane for local AI agents?</a>, describes using GitHub Issues as a temporary backend for agent state: the agent opens or updates an issue at session start, posts findings as comments, and the human replies from a phone. The author&rsquo;s own complaint is that issue trackers were not built for an agent&rsquo;s high-frequency event loop, and they ask for something more purpose-built. Our read is that the gap is also structural: an issue has no slot for a decision&rsquo;s reason or an outcome condition unless you add one by convention.</p>
+<h3>An illustrative scenario</h3>
+<p>Take a team of three developers and a product manager. On Monday, one developer asks the lead to spawn three teammates to review a large pull request: security, performance, test coverage. The review is good. Two findings are real, one is deferred on purpose because a migration lands next week.</p>
+<p>On Wednesday the product manager asks why the deferred finding was not fixed. The answer is in Monday&rsquo;s session, on one laptop, in a lead&rsquo;s synthesis that was never written anywhere a second person could read. The task list says three tasks were completed. It does not say one was deferred and why.</p>
+<p>With a shared record, the review produces a work item with an owner, the deferral is a decision with a stated reason, and the follow-up check after the migration has an outcome condition. This scenario is made up to show the gap. It is not a Maskin customer story.</p>
+<h2>How the shape of the record differs</h2>
+<p>The question is not which tool is better. It is what each one keeps, for how long, and who can read it. Here are three shapes, described from each project&rsquo;s own material.</p>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead><tr><th></th><th>Claude Code agent teams</th><th>Gas Town</th><th>Maskin</th></tr></thead>
+<tbody>
+<tr><td>What it is</td><td>A feature inside Claude Code for coordinating teammates in one session</td><td>A multi-agent workspace manager by Steve Yegge, for Claude Code, Copilot, Codex, Gemini and others</td><td>An open-source workspace where people and agents work on shared typed objects</td></tr>
+<tr><td>Coordinator</td><td>The team lead session</td><td>A &ldquo;Mayor&rdquo; agent you talk to; per-project workers, a Refinery merge queue, and a Witness and a Deacon that supervise</td><td>People and agents as drivers (owners) of objects</td></tr>
+<tr><td>Where work state lives</td><td>Local task list and mailbox files, scoped to a session</td><td>&ldquo;Beads&rdquo;, a git-backed issue ledger, so work survives when a session ends</td><td>Typed objects (insight, bet, task) linked by relationships, readable by the UI, agents and people over the same API</td></tr>
+<tr><td>Unit of record</td><td>A task with three states</td><td>A code-repo issue</td><td>A signal, a decision with a win condition, and the tasks under it</td></tr>
+<tr><td>Stated scale</td><td>Start with 3 to 5 teammates</td><td>README contrasts &ldquo;4-10 agents become chaotic&rdquo; with &ldquo;scale comfortably to 20-30 agents&rdquo;</td><td>Not applicable. It holds the record above the sessions that do the work</td></tr>
+</tbody>
+</table></div>
+<p>Gas Town facts are from its <a href="https://github.com/gastownhall/gastown/blob/main/README.md" rel="noopener">README</a> and Yegge&rsquo;s <a href="https://yegge.ai/essays/welcome-to-gas-town/" rel="noopener">Welcome to Gas Town</a> essay, both read on 2026-10-04. The essay itself says the project was under three weeks old and that you probably do not want to use it yet, so read the table as a comparison of record shape, not of maturity. This page does not claim Maskin beats Gas Town or Anthropic&rsquo;s feature. They solve different parts of the problem. Gas Town keeps work state in the code repo, which is a good place for code-shaped work. Maskin keeps it as objects that a product manager and an agent can both open, which is a good place for decisions that are not code.</p>
+<h2>How Maskin keeps the record</h2>
+<p>Maskin is an open-source (Apache 2.0), MCP-native, self-hostable workspace. Work moves as typed objects: a signal enters as an insight, gets shaped into a bet with a win condition, and runs as tasks that people and agents share. Each object has a driver (an owner, person or agent) and a comment thread, and the bet closes with an outcome measured against its condition. The objects are the work, not a log of it, which is the property the four boundaries above are missing. The longer argument is in <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a>, and how a record doubles as an audit trail is in <a href="/docs/agent-observability/">agent observability</a>.</p>
+<p>Maskin&rsquo;s agent sessions use the Claude Code and Codex command-line tools and execute in isolated microVMs, so it sits alongside the tools you already run agent teams in. It is not a replacement for agent teams, and it does not make them unnecessary. Use agent teams to do a parallel burst of work. Use the record to hold who owns what, what was decided, and what happened after. Maskin is early, so evaluate the architecture, not a long track record. If you want to try it, you can <a href="/docs/self-hosted-ai-workspace/">self-host it</a>.</p>
+<p>For adjacent decisions, <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">agent skills vs MCP vs Cursor rules vs workflows</a> covers where shared instructions live, and <a href="/docs/learn/agent-memory-across-sessions/">agent memory across sessions</a> covers what an agent remembers from one session to the next. If you are comparing open-source coding agents more broadly, see the <a href="/alternatives/open-source-ai-coding-agent/">open source AI coding agent alternatives</a>.</p>
+<h2>A quick decision rule</h2>
+<ul>
+<li><strong>Solo, one repo, one sitting, independent pieces:</strong> agent teams, 3 to 5 teammates, start with review or research.</li>
+<li><strong>Solo, and a subagent or a second worktree session would do:</strong> skip the team. It costs less.</li>
+<li><strong>Solo but the work runs over several days:</strong> agent teams for the burst, and write the decisions and outcomes into whatever tracker you already have.</li>
+<li><strong>Two or more people, or you will need to explain it next week:</strong> add a shared record before you add more teammates. More agents without one means more output nobody can account for.</li>
+<li><strong>More than 5 agents at once:</strong> you are in coordination-overhead territory by Anthropic&rsquo;s own guidance. Fix the bookkeeping before the headcount.</li>
+</ul>
+<h2>FAQ</h2>
+<h3>What are Claude Code agent teams?</h3>
+<p>Claude Code agent teams are an experimental feature in which one Claude Code session acts as team lead and spawns teammates. Each teammate is a separate Claude Code instance with its own context window. They coordinate through a shared task list and a mailbox for direct messages, and you can message any teammate yourself. The feature is off by default.</p>
+<h3>How do I enable Claude Code agent teams?</h3>
+<p>Set the environment variable CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS to 1, either in your shell or under &ldquo;env&rdquo; in settings.json. Then describe the task and the teammates you want in plain language. To open split panes instead of the default in-process view, set teammateMode in settings.json to auto or tmux; split panes need tmux or iTerm2.</p>
+<h3>What is the difference between agent teams and subagents?</h3>
+<p>Subagents return their results to the caller, though subagents Claude has named can also message each other. Agent teams add a shared task list that teammates self-claim from, plus a full Claude session per teammate that you can message directly. Subagents cost fewer tokens because results are summarized back. Teams cost more because every teammate is a separate Claude instance.</p>
+<h3>How many teammates should I use?</h3>
+<p>Anthropic recommends starting with 3 to 5 teammates for most workflows, with roughly 5 to 6 tasks per teammate. Token costs scale linearly with the number of teammates, coordination overhead grows, and returns diminish beyond a point. The docs say three focused teammates often outperform five scattered ones.</p>
+<h3>Are Claude Code agent teams still experimental?</h3>
+<p>Yes, as of the docs read on 2026-10-04. Anthropic labels them experimental and disabled by default, with known limitations around session resumption, task coordination and shutdown. Because the feature is experimental, details can change between Claude Code versions, so check the current docs for the version you run.</p>
+<h3>Can several people or sessions share one agent team?</h3>
+<p>No. A session has exactly one team, scoped to that session, and you cannot share a team across sessions or promote a teammate to lead. The task list lives in local files and is never uploaded. If several people need the same view of the work, you need a record outside the session, such as a tracker or a workspace.</p>
+<h3>Do Claude Code agent teams work in VS Code or on Windows?</h3>
+<p>The default in-process mode works in any terminal. Split-pane mode needs tmux or iTerm2, and the docs say it is not supported in VS Code&rsquo;s integrated terminal, Windows Terminal or Ghostty. The docs also note tmux has known limitations on some operating systems and works best on macOS.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/docs/learn/agent-memory-across-sessions/">
+        <div class="doc-card__title">Agent memory across sessions</div>
+        <div class="doc-card__desc">What an agent can and cannot carry from one run to the next, and what a team record adds.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/claude-code-vs-cursor/">
+        <div class="doc-card__title">Claude Code vs Cursor</div>
+        <div class="doc-card__desc">Pick by job, test both on your own repo, and keep one record when a team uses both.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+        <div class="doc-card__title">What is an agentic workspace?</div>
+        <div class="doc-card__desc">The cornerstone: the closed loop on shared typed objects.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Getting started is free</h2>
+      <p>Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of what was decided. The <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace cornerstone</a> and the <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a> guide are the two best next reads.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

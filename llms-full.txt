@@ -179,7 +179,7 @@ A quick tour of the Maskin model so the rest of the docs — and the MCP tools �
 Everyone in Maskin is an **actor** — and both people and AI agents are actors. They share the same shape: each has an identity, an API key, and a place in one or more workspaces. Agents add a **system prompt**, a **tools** configuration, optional **memory**, and an **LLM provider**. Because humans and agents are the same primitive, an agent can be assigned work, mentioned in a comment, or made the "driver" of an object exactly like a teammate.
 
 ## Workspaces and members
-A **workspace** is an isolated tenant — your team's data lives inside it, and every object, file, and session is scoped to one. Membership is role-based: `owner`, `member`, or `viewer`. A workspace also carries its own **settings**: display names, the valid statuses per object type, custom field definitions, relationship types, and which extension modules are enabled. That's what makes a "development" workspace look different from a "growth" one (see [Self-hosted setup](/docs/get-started/self-hosted/) for templates).
+A **workspace** is your team's data boundary (enforced in the API, route by route) — every object, file, and session is scoped to one. Membership is role-based: `owner`, `member`, or `viewer`. A workspace also carries its own **settings**: display names, the valid statuses per object type, custom field definitions, relationship types, and which extension modules are enabled. That's what makes a "development" workspace look different from a "growth" one (see [Self-hosted setup](/docs/get-started/self-hosted/) for templates).
 
 ## Objects and the pipeline
 Work is represented as **objects**. There's one object model with a `type` discriminator — the three built-in types form the pipeline:
@@ -209,7 +209,7 @@ When an agent needs a human — approval, a decision, an input — it raises a *
 - **Extensions / modules** — pluggable add-ons (CRM, knowledge, notetaker, work) that introduce new object types and behaviour.
 
 ## Activity and real-time
-Every change is recorded in an append-only **event log**, which doubles as the audit trail and the source for unread tracking. The UI and agents stay live through a Postgres NOTIFY → Server-Sent-Events stream — no extra message broker required.
+Every change is recorded in an insert-only (by convention) **event log**, which doubles as the audit trail and the source for unread tracking. The UI and agents stay live through a Postgres NOTIFY → Server-Sent-Events stream — no extra message broker required.
 
 
 ---
@@ -286,13 +286,13 @@ Humans (web)  Agents (Claude Code)   External (Slack/GitHub/…)
 Insights, bets, tasks (and extension types) live in **one objects table** with a `type` discriminator; a separate **relationships** table connects them into a graph. This is why an agent and a human can operate on exactly the same records. See [Core concepts](/docs/concepts/).
 
 ## Event-sourced activity
-Every change appends to an immutable **events** table. That log is both the audit trail and the basis for unread tracking — state is derived, not overwritten. The same log doubles as the substrate for [the workspace-as-trace approach to agent observability](/docs/agent-observability/) — the agent-level trace is a side effect of the work, not a second pipeline.
+Every change appends to the **events** table, which is insert-only by convention. That log is both the audit trail and the basis for unread tracking — state is derived, not overwritten. The same log doubles as the substrate for [the workspace-as-trace approach to agent observability](/docs/agent-observability/) — the agent-level trace is a side effect of the work, not a second pipeline.
 
 ## Real-time without a broker
 Writes emit PostgreSQL `NOTIFY`; the API `LISTEN`s and fans changes out to clients as **Server-Sent Events**, so the UI and live session logs update with no extra message queue. Behind a connection pooler, set `DATABASE_URL_DIRECT` to a non-pooled connection so LISTEN/NOTIFY keeps working (see [Troubleshooting](/docs/troubleshooting/)).
 
 ## Actors & auth
-Humans and agents are unified as **actors**. Requests authenticate with a bearer API key and carry `X-Workspace-Id`; every query is scoped to that workspace. Details on the [Security](/docs/security/) page.
+Humans and agents are unified as **actors**. Requests authenticate with a bearer API key (stored as issued; hashing is planned) and carry `X-Workspace-Id`; workspace separation is enforced in the API, route by route. Details on the [Security](/docs/security/) page.
 
 ## Agent execution
 Each agent run is a **session** in an ephemeral microVM (libkrun, managed through microsandbox) started from `agent-base` on a dedicated agent server. Set `AGENT_SERVERS` to point the app at your agent servers, which keep a warm pool. Docker is for local development only. See [Agents & sessions](/docs/agents/).
@@ -1299,7 +1299,7 @@ Most comparison pages answer “which is better” with a score. The question th
 3. **Do you need to read or change the tool itself?** The Codex CLI repository is Apache-2.0. Anthropic’s overview page does not state a license for Claude Code. If you need to fork or audit the agent, that is a real difference. If you only need to use it, it is not.
 4. **Where does the work run?** In your terminal and editor: both. Unattended in the cloud: Claude Code has routines and a web surface, and Codex has codex cloud. Scripted in CI: `claude -p` and `codex exec` do the same job, so what matters is how you authenticate in the pipeline.
 5. **Which customization do you rely on?** Hooks, which run shell commands before or after actions, are a documented Claude Code feature. Plugins are a documented Codex feature. If your workflow depends on one of them, check the other tool’s docs for the equivalent before you move.
-If none of the five settles it, you are choosing on output quality, and the only evidence that counts is your own.
+If none of the five settles it, you are choosing on output quality, and the only evidence that counts is your own. If Cursor is also on your shortlist, [Claude Code vs Cursor](/docs/claude-code-vs-cursor/) runs the same choose-by-job checks for that pair.
 
 ### A bake-off on your own repo
 Head-to-head tests on the results page are run on someone else’s code, with model versions that have since changed. You can get a more useful answer in an afternoon.
@@ -1314,7 +1314,7 @@ One developer switching tools between jobs is easy. A team where some people pre
 **1. Two instruction files drift apart.** Codex reads AGENTS.md. Claude Code reads CLAUDE.md. Anthropic’s [memory page](https://code.claude.com/docs/en/memory) says Claude Code reads AGENTS.md as the project instructions when there is no CLAUDE.md in the working directory or above it (this needs Claude Code v2.1.277 or later). If both files exist, it reads only the CLAUDE.md files. So a repository that has both quietly gives each tool different rules. The documented fix is a CLAUDE.md that imports AGENTS.md, so there is one source of truth ([CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/) walks through that setup and what changes at team scale). Mind the size cap too: Codex stops adding instruction files once the combined size reaches 32 KiB by default, so a long root AGENTS.md can push out the more specific ones nested below it. Where those files sit among the other layers is covered in [agent skills vs MCP vs Cursor rules vs workflows](/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/).
 **2. Permissions live in two places.** Codex exposes approval modes through its `/permissions` command and runs in a sandbox. Claude Code has its own settings and hooks, and its memory page says it treats CLAUDE.md as context, not enforced configuration, and points to a PreToolUse hook to block an action outright. If you want the same guardrails on both, you configure and review them twice.
 **3. Session history is per vendor.** Each Claude Code session begins with a fresh context window, and what carries over is CLAUDE.md plus the notes Claude writes for itself. Codex sessions sit apart from those, and we found no documented way for the two tools to share history. Neither is a timeline a colleague can open. The same gap, from the memory side, is in [agent memory across sessions](/docs/learn/agent-memory-across-sessions/).
-**4. Decisions disappear into whichever tool made them.** “Why did we change the retry logic this way” is answered in a chat transcript on one laptop, in one vendor’s format. It is the same gap as with Claude Code agent teams: a session is not a place to keep a decision.
+**4. Decisions disappear into whichever tool made them.** “Why did we change the retry logic this way” is answered in a chat transcript on one laptop, in one vendor’s format. It is the same gap as with [Claude Code agent teams](/docs/learn/claude-code-agent-teams/): a session is not a place to keep a decision.
 **5. Cost and usage split across two bills.** You cannot answer “what did this feature cost us in agent time” from one place. Plans and limits differ by vendor and plan and change often, so read the current pricing pages rather than a table that would be stale by the time you read it here.
 Only the first of these has a fix inside the tools. The other four need something that sits above them.
 
@@ -1361,6 +1361,115 @@ It depends on your plan and how much you use it, and both vendors change plans a
 
 ### Do Claude Code and Codex have usage limits?
 Both are gated by the plan or API account you sign in with. We found no fixed numbers on the pages we read, and limits change often, so we print none. If a limit blocks a long-running job, that is one reason teams end up on both tools, and a reason to track which job ran on which account.
+Read next
+
+## Getting started is free
+Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of what was decided. The [agentic-workspace cornerstone](/docs/what-is-an-agentic-workspace/) and the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) guide are the two best next reads.
+
+
+---
+
+> Source: https://maskin.io/docs/claude-code-vs-cursor/
+
+# Claude Code vs Cursor: pick by job, then keep one record
+Claude Code is Anthropic’s coding agent, and it starts in the terminal. Cursor is a coding agent built around the editor, with a command line tool and cloud agents added. Pick by where you want to work and which account you already pay for, and test both on your own repo.
+*Read against Anthropic’s [Claude Code docs](https://code.claude.com/docs/en/overview) and Cursor’s [documentation](https://cursor.com/docs) on 2026-10-15. Both products change often, so check the vendor pages before you rely on a detail. This page prints no prices, usage limits or benchmark scores, because neither vendor gives you a number for your code and plans change too fast for a table here.*
+> ✓
+> **Key takeaways**
+> **The split is where you work, not what the agent can do.** Claude Code starts in a terminal and also runs in VS Code, JetBrains, a desktop app and the web. Cursor starts in the editor and also has a command line tool and cloud agents.
+> **Both read project instructions, connect to tools over MCP and run unattended.** The overlap is bigger than most comparison pages show.
+> **Accounts and models differ.** Claude Code signs in with a Claude subscription or an Anthropic Console account, and runs Claude models. Cursor’s model list spans several providers, including Anthropic, OpenAI and Google.
+> **You can use both without switching.** Anthropic publishes a Claude Code extension with an install link for Cursor.
+> **Neither tool is your team’s record.** What was decided, who owned it and whether it worked has to live outside both.
+![Two boxes, Claude Code (terminal first, CLAUDE.md) and Cursor (editor first, rules or AGENTS.md), both feeding one shared record that holds an owner, a decision with its reason, and an outcome condition.](/og-image-claude-code-vs-cursor.png)
+A terminal agent and an editor agent can still write to one record.
+
+## Claude Code vs Cursor at a glance
+This table sticks to what each vendor’s own pages state.
+|  | Claude Code | Cursor |
+| --- | --- | --- |
+| Starting point | Terminal | Editor (desktop app) |
+| Other places it runs | VS Code, JetBrains, desktop app, web and mobile | Command line tool (agent), cloud agents, web and iOS app, Slack, GitHub and Linear triggers |
+| Sign in | Claude subscription or Anthropic Console account; the terminal CLI, VS Code and JetBrains also support cloud providers such as Amazon Bedrock, Google Cloud and Microsoft Foundry | Cursor account |
+| Models | Claude models, from Anthropic or through a supported cloud provider | Models from several providers, listed in Cursor’s docs |
+| Project instructions | CLAUDE.md; reads AGENTS.md when no CLAUDE.md is present | Rules in .cursor/rules, or AGENTS.md |
+| Modes | Plan mode in the terminal (Shift+Tab or --permission-mode plan), plan review in the VS Code extension | Agent, Plan and Ask modes |
+| Non-interactive mode | claude -p | agent -p |
+| Cloud and unattended runs | Claude Code on the web; routines that run in the cloud | Cloud agents in isolated VMs |
+| Extending it | Skills, hooks, MCP, subagents | Plugins, skills, MCP and rules; hooks in the editor agent, CLI and cloud agents |
+The Claude Code column comes from Anthropic’s [overview](https://code.claude.com/docs/en/overview), [memory](https://code.claude.com/docs/en/memory), [permission modes](https://code.claude.com/docs/en/permission-modes) and [deployment options](https://code.claude.com/docs/en/third-party-integrations) pages. The Cursor column comes from Cursor’s documentation home, [rules](https://cursor.com/docs/context/rules), [CLI](https://cursor.com/docs/cli/overview), [cloud agents](https://cursor.com/docs/cloud-agent) and [hooks](https://cursor.com/docs/hooks) pages.
+
+## How to choose between Claude Code and Cursor by job
+Most pages answer “which is better” with a score. The question that decides your week is narrower: which one fits the job in front of you. Run these five checks in order and stop at the first one that settles it.
+1. **Where do you want to read the diff?** If you review and edit in an editor all day and want the agent in the same window, Cursor starts there. If you live in a terminal, or want the agent to work while you do something else, Claude Code starts there. Both can go the other way, so this is a default, not a wall.
+2. **Which account do you already pay for?** A team with a Claude plan already has Claude Code. A team on a Cursor plan already has Cursor. Adding the second for one month is the cheapest test you can run.
+3. **Which models must you use?** Claude Code runs Claude models, from Anthropic or through a cloud provider your organization already uses. Cursor lists models from several providers in its docs. If your security team approved one provider, or you want to switch between model providers on one task, that is the check that matters most.
+4. **Does the work run while nobody is watching?** Both have a non-interactive mode for scripts and CI (`claude -p` and `agent -p`) and a cloud option (Claude Code on the web, Cursor cloud agents). Compare how each one authenticates in your pipeline and where it clones your repo.
+5. **What do your existing customizations use?** Hooks, skills and MCP servers exist on both sides in some form. Cursor rules are `.mdc` files with their own frontmatter. If your team has built a library on one, check the other tool’s docs for the equivalent before you move.
+If none of the five settles it, you are choosing on output quality, and the only evidence that counts is your own. Take three merged pull requests (a small fix, a multi-file feature, a refactor), start each tool from the commit before the merge with the same ticket text, and compare the diffs, the test results and how often you had to step in. This is our method, not a measurement. Maskin has not benchmarked the two tools and makes no claim about which writes better code.
+
+## Can you use Claude Code and Cursor together?
+Yes, and there are two ways. The first is side by side: some people on the team use Cursor, others use Claude Code, and an automated job runs on whichever account has headroom. The second is nested: Anthropic’s overview page lists a Claude Code extension for VS Code with an “Install for Cursor” link, so one person can run Claude Code inside Cursor.
+Either way, a team hits the same frictions:
+**1. Two sets of instructions drift apart.** Cursor reads rules from `.cursor/rules`, or an AGENTS.md. Claude Code reads CLAUDE.md, and per Anthropic’s [memory page](https://code.claude.com/docs/en/memory) it reads AGENTS.md only when there is no CLAUDE.md. A repository with a rules folder and a CLAUDE.md gives each tool different guidance. The simplest fix is one AGENTS.md that Cursor reads directly and your CLAUDE.md imports ([CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/) walks through that setup). We did not confirm from Cursor’s pages whether Cursor reads CLAUDE.md, so do not assume it.
+**2. Guardrails live in two places.** Anthropic’s memory page says Claude Code treats CLAUDE.md as context, not enforced configuration, and points to a PreToolUse hook to block an action outright. Cursor has its own controls: its [CLI page](https://cursor.com/docs/cli/overview) documents sandbox settings, and its [hooks page](https://cursor.com/docs/hooks) says hooks apply to the editor agent, the CLI and cloud agents. If you want the same limits on both, you set and review them twice.
+**3. Session history is per product.** Each Claude Code session starts with a fresh context window. Cursor lets you resume earlier chats from the CLI. We found no documented way to carry one tool’s history into the other, and neither is a timeline a colleague can open. The same gap, from the memory side, is in [agent memory across sessions](/docs/learn/agent-memory-across-sessions/).
+**4. Decisions disappear into whichever tool made them.** “Why did we change the retry logic this way” is answered in a chat on one laptop. A session is not a place to keep a decision.
+**5. Usage splits across two accounts.** You cannot answer “what did this feature cost in agent time” from one place. Read the vendors’ current pricing pages for your plan rather than a table that would be stale by the time you read it here.
+Only the first has a fix inside the tools. The others need something above them. Claude Code’s own experimental [agent teams](/docs/learn/claude-code-agent-teams/) hit the same limit inside one session: the task list sits in local files, scoped to that session. Where shared instructions sit among the other layers is covered in [agent skills vs MCP vs Cursor rules vs workflows](/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/).
+
+## And Codex?
+Codex is OpenAI’s coding agent, and it sits closest to Claude Code: terminal first, AGENTS.md for instructions, MCP, skills and subagents. Against Cursor, the same five checks apply, with the account and model checks doing most of the work. For the full Claude Code and Codex comparison, read [Claude Code vs Codex](/docs/claude-code-vs-codex/).
+
+## Where the record lives
+You do not need a product for this. You need four things written down in a place that outlives any one session and that both tools, and the people using them, can reach:
+1. **An owner per piece of work.** One name, a person or an agent, on each item.
+2. **A decision with its reason.** What you chose, what you rejected, who approved it. The result of your three-PR test is a decision.
+3. **A stated outcome condition.** What “done” means in terms you can check later, not “the agent said it finished”.
+4. **Links between them.** The request that started the work, the decision it led to, the changes that carried it out.
+A tracker works if you add those fields by convention. The catch is that most trackers have no slot for a decision’s reason or an outcome condition, so they end up in comments where nobody can query them. Whichever tool you use, keep the record independent of the agent. The agent that ran the work should be one field on the item, not the item itself. Then switching from Cursor to Claude Code, or running both, changes one field.
+
+### An illustrative scenario
+Take a team of four. Two developers use Cursor and two use Claude Code. In March one of them decides to pin a major version of a library because the upgrade breaks a plugin. The reasoning sits in one Cursor chat. In May a recurring dependency job, running on Claude Code, proposes the upgrade again. Nobody can say why it was pinned, so someone repeats the investigation.
+With a record that holds the pin as a decision with a reason and an outcome condition (“revisit when the plugin supports the new major”), whichever tool runs the job reads the same entry and skips the upgrade. This scenario is made up to show the gap. It is not a Maskin customer story.
+
+## How Maskin keeps the record
+Maskin is an open-source (Apache 2.0), MCP-native, self-hostable [agentic workspace](/docs/what-is-an-agentic-workspace/) where people and agents work on shared typed objects. A signal enters as an insight, gets shaped into a bet with a win condition, and breaks into tasks. Each object has a driver (an owner, person or agent) and a comment thread, and a bet closes against its stated condition. The objects are the work, not a log of it.
+Maskin runs its agent sessions on the Claude Code CLI by default, or on the Codex CLI, each inside an isolated microVM. Maskin does not run Cursor. Cursor’s documentation says it supports MCP servers, so it can in principle connect to any MCP server, but we have not tested Cursor against Maskin and do not make that claim for you. Some honest limits: you bring your own Anthropic or OpenAI access, local models are not a path we have validated, and Maskin is early, so evaluate the architecture rather than a long track record.
+If you want to try it, you can [self-host it](/docs/self-hosted-ai-workspace/). For the longer argument, read [the closed-loop workspace](/docs/closed-loop-workspace/). Related decisions: [CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/) covers the instructions file, and [AI product workspace vs AI coding agent](/docs/ai-product-workspace-vs-coding-agent/) covers where a workspace sits next to your editor. If you are a product manager deciding how much of this to learn, start with [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/). For a wider look at open-source coding agents, see the [open source AI coding agent alternatives](/alternatives/open-source-ai-coding-agent/).
+
+## A quick decision rule
+- **Solo, one account, one repo:** use the tool your account already includes. Run the three-PR test before you add a second subscription.
+- **You review in the editor all day:** start with Cursor. Add Claude Code for long jobs you want to leave running.
+- **You live in the terminal, or run jobs in CI:** start with Claude Code. Add Cursor if teammates prefer the editor.
+- **A team split across both:** make one AGENTS.md before you do anything else.
+- **Two or more people, or you will need to explain a choice next quarter:** add the four-field record. It works with either tool and it is the part that lasts.
+
+## FAQ
+
+### Which is better, Claude Code or Cursor?
+Neither wins on every job, and no vendor documentation gives you a score for your code. Both read project instructions, connect to tools over MCP and run unattended. Decide on where you want to work, the account you already pay for, the models you may use, and a three-task test on your own merged pull requests.
+
+### Is Claude Code better than Cursor?
+We cannot say, and this page prints no benchmark because the result depends on your code, your prompts and the model versions on the day. Claude Code starts in the terminal and Cursor starts in the editor. If you prefer one of those, that is a better reason than a leaderboard.
+
+### Can you use Claude Code and Cursor together?
+Yes. Teams run both side by side, and Anthropic’s overview page lists a Claude Code extension with an install link for Cursor, so one person can use both in the same window. The practical problems are two sets of instructions, two sets of guardrails and two histories. Share one AGENTS.md and keep decisions in a record outside both.
+
+### Do Claude Code and Cursor read the same instructions file?
+Not by default. Cursor reads rules from .cursor/rules, or an AGENTS.md. Claude Code reads CLAUDE.md, and reads AGENTS.md only when no CLAUDE.md exists. To share one file, write an AGENTS.md and have your CLAUDE.md import it.
+
+### Which is cheaper, Claude Code or Cursor?
+It depends on your plan and how much you use it, and both vendors change plans, models and usage pools often. Claude Code needs a Claude subscription, an Anthropic Console account or a supported cloud provider. Cursor’s documentation points to a Models and Pricing page for current terms. Compare the current pages against your own usage.
+
+### Do Claude Code and Cursor have usage limits?
+Both are gated by the plan or account you sign in with. We print no numbers because limits change often and the pages we read do not give one figure that holds for everyone. If a limit blocks a long job, that is one reason teams end up on both, and a reason to record which job ran on which account.
+
+### Is Cursor or Claude Code better for teams?
+Anthropic’s pricing page lists Team and Enterprise plans that include Claude Code. Cursor’s cloud agents page refers to Enterprise plans with team hooks; check Cursor’s own pricing page for its plan tiers. Which fits matters less than how your team already works, editor-first or terminal-first. Neither gives a team a shared record of decisions, owners and outcomes, so plan for that separately.
+
+### Does Maskin run Cursor?
+No. Maskin runs its agent sessions on the Claude Code CLI or the Codex CLI. This page compares Cursor because many teams use it next to Claude Code, and the record argument applies whichever agent does the work.
 Read next
 
 ## Getting started is free
@@ -1554,7 +1663,7 @@ Model Context Protocol is Anthropic’s open standard for how an agent talks to 
 An *agent skill*, in Anthropic’s Skills framing (adopted across Claude, Cursor, Codex, VS Code), is a packaged capability the model loads when it recognizes a matching use case. Concretely: a folder with a `SKILL.md` file (YAML frontmatter describing when to invoke), optional scripts, and often a `plugin.json` bundling multiple skills into an installable unit. Anthropic’s docs formalized the format; Addy Osmani’s `agent-skills` repo — the top-ranking result on the head term today — turned it into shared vocabulary. A skill is *not* a tool. It’s a capability packaging that may compose several tools, prompt fragments, and scripts into one thing the model can pattern-match against. For the standalone definition — the `SKILL.md` format, the three-level loading model, and a worked example — we’ve written that up in [What are agent skills](/docs/learn/agent-skills/).
 
 ### Cursor rules / AGENTS.md
-Cursor rules (`.cursor/rules/*.mdc`) and their cross-editor cousin `AGENTS.md` are behavioral directives scoped to a repo (or a path inside a repo). They tell the agent *how to act*: which conventions to follow, which paths to avoid, which tooling to prefer. Rules don’t add capability — the agent could already do the thing. Rules constrain style, safety, and defaults so the agent behaves like the team behind the repo. In Anthropic’s own documentation these overlap with *policies*; in Cursor they surface as rule files the editor injects into every prompt. For which tools actually read `AGENTS.md` versus `CLAUDE.md`, and how to keep one source of truth, see [CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/).
+Cursor rules (`.cursor/rules/*.mdc`) and their cross-editor cousin `AGENTS.md` are behavioral directives scoped to a repo (or a path inside a repo). They tell the agent *how to act*: which conventions to follow, which paths to avoid, which tooling to prefer. Rules don’t add capability — the agent could already do the thing. Rules constrain style, safety, and defaults so the agent behaves like the team behind the repo. In Anthropic’s own documentation these overlap with *policies*; in Cursor they surface as rule files the editor injects into every prompt. For which tools actually read `AGENTS.md` versus `CLAUDE.md`, and how to keep one source of truth, see [CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/). For how Cursor and Claude Code compare as whole tools when a team runs both, see [Claude Code vs Cursor](/docs/claude-code-vs-cursor/).
 
 ### Workflows
 A workflow is the composition layer: multiple agents (or one agent across multiple steps) coordinated by triggers, state transitions, and hand-offs. Some frameworks call these *chains* (LangChain), *graphs* (LangGraph), *flows* (CrewAI), or *orchestrations* (Temporal-shaped). The common thread: something outside any single agent invocation decides who runs, in what order, and on which event. Workflows answer *who runs when*, not *what any one agent can do*. Visual workflow builders like n8n are the example many readers have in mind for this layer; if you’re [choosing among n8n alternatives](/alternatives/n8n/), the deciding question is what your runs have to leave behind.
@@ -1591,7 +1700,7 @@ The `agent skills vs workflows` autocomplete gets confused because both feel lik
 The pragmatic split: if all the work happens inside one agent’s turn, it’s a skill. If work crosses agent turns, waits on an event, or hands off between agents, it’s a workflow.
 
 ## `agent skills vs subagents` — one more the SERP conflates
-Subagents (Anthropic’s Claude Code term, mirrored in other harnesses) are separate agent invocations spawned from a parent agent, each with its own context window. They’re a *runtime primitive*, not a packaging primitive. A subagent might load skills. A subagent runs inside a workflow. But the subagent itself is neither. Both Claude Code and Codex document subagents; [Claude Code vs Codex](/docs/claude-code-vs-codex/) compares what each one ships.
+Subagents (Anthropic’s Claude Code term, mirrored in other harnesses) are separate agent invocations spawned from a parent agent, each with its own context window. They’re a *runtime primitive*, not a packaging primitive. A subagent might load skills. A subagent runs inside a workflow. But the subagent itself is neither. Both Claude Code and Codex document subagents; [Claude Code vs Codex](/docs/claude-code-vs-codex/) compares what each one ships. Claude Code’s experimental [agent teams](/docs/learn/claude-code-agent-teams/) add a shared task list and a full session per teammate on top of that primitive.
 Rule of thumb: **skills are what you author. Subagents are what you spawn. Workflows are what you compose. MCP is what you call.**
 
 ## The unclaimed slot: skills that fire against typed workspace state
@@ -1663,7 +1772,7 @@ The table shows what each tool reads from a repository, taken from each vendor�
 | GitHub Copilot | Yes, nearest file wins | Yes, one file at the repo root | Also reads .github/copilot-instructions.md |
 | Gemini CLI | Only if you add it to context.fileName | Only if you add it to context.fileName | Default file is GEMINI.md |
 Sources: [Claude Code memory docs](https://code.claude.com/docs/en/memory), [Codex AGENTS.md guide](https://developers.openai.com/codex/guides/agents-md), [Cursor rules docs](https://cursor.com/docs/context/rules), [GitHub Copilot repository instructions](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions), [Gemini CLI context files](https://geminicli.com/docs/cli/gemini-md/) and [agents.md](https://agents.md).
-The agents.md site lists more than twenty supporting tools, including Codex, Cursor, Gemini CLI, GitHub Copilot, Aider, Zed, Windsurf, Warp and VS Code. Claude Code now reads `AGENTS.md` itself, which makes the old advice to symlink one file to the other unnecessary in most setups. For the two agents compared head to head, see [Claude Code vs Codex](/docs/claude-code-vs-codex/).
+The agents.md site lists more than twenty supporting tools, including Codex, Cursor, Gemini CLI, GitHub Copilot, Aider, Zed, Windsurf, Warp and VS Code. Claude Code now reads `AGENTS.md` itself, which makes the old advice to symlink one file to the other unnecessary in most setups. For the two agents compared head to head, see [Claude Code vs Codex](/docs/claude-code-vs-codex/), or [Claude Code vs Cursor](/docs/claude-code-vs-cursor/) if your team uses the editor-first agent.
 
 ## Which setup should you pick?
 Pick by how many different agents touch the repo:
@@ -1703,7 +1812,7 @@ The practical rule: never rely on a nested file to cancel a root rule. Write eac
 The agents.md site suggests a project overview, build and test commands, code style, testing instructions and security notes. Add to that list only what the agent cannot discover by reading the repo. A rule the agent already follows costs context and buys nothing. A rule you cannot check (“write clean code”) buys nothing either. Write rules you could verify in a pull request, such as “run pnpm test before committing” or “never edit files under vendor/”.
 
 ## What changes at team scale
-For one developer with one repo, the answer above is the whole story. A team hits four problems that no filename choice fixes. A product manager running Claude Code meets the same gap one step earlier, because an instruction file carries rules and not the decisions and reasons behind them; [using Claude Code as a product manager](/docs/learn/claude-code-for-product-managers/) covers where a team record takes over.
+For one developer with one repo, the answer above is the whole story. A team hits four problems that no filename choice fixes. A product manager running Claude Code meets the same gap one step earlier, because an instruction file carries rules and not the decisions and reasons behind them; [using Claude Code as a product manager](/docs/learn/claude-code-for-product-managers/) covers where a team record takes over. For the people side of the same gap (who owns the instruction file and where decisions live), see [Claude Code team: share context and decisions, not six setups](/docs/learn/claude-code-team/).
 **1. The same rule lives in many places.** Say a team has six repos and uses Claude Code, Codex and Copilot. A rule about commit messages or review etiquette is true everywhere, yet it sits in six `AGENTS.md` files. Someone updates three. (This is an illustration, not a customer story.) The import trick merges files inside one repo. It does nothing across repos.
 **2. There is no shared, writable home above the repo.** The options that exist are per person or per organization: a user-level file such as `~/.claude/CLAUDE.md`, an organization-managed `CLAUDE.md`, or a shared rules folder symlinked into `.claude/rules/`. Anthropic’s docs describe all three. They work, but each reaches only people who set it up, and a symlinked rules folder that points outside the repo needs a one-time approval per project.
 **3. Personal and shared rules collide.** `CLAUDE.local.md` is the documented place for private per-project preferences, and only Claude Code reads it. Codex has its own override file, `AGENTS.override.md`, which Claude Code ignores. Each tool has its own private-override convention, so personal rules do not travel between tools.
@@ -2751,7 +2860,7 @@ Persistence is the point. The workspace graph is what makes it possible, and it 
 ## FAQ
 
 ### Does Claude Code have memory?
-Claude Code has project memory: files such as [CLAUDE.md and AGENTS.md](/docs/claude-md-vs-agents-md/) that carry instructions into a session, and a memory tool for managed agents. That is real, but it is memory of instructions and project context, not memory of runs. On its own it does not persist what your scheduled agent decided, what you corrected, or what it produced last Monday. If your scheduled run starts from scratch, the gap is on the run side, not the project side.
+Claude Code has project memory: files such as [CLAUDE.md and AGENTS.md](/docs/claude-md-vs-agents-md/) that carry instructions into a session, and a memory tool for managed agents. That is real, but it is memory of instructions and project context, not memory of runs. On its own it does not persist what your scheduled agent decided, what you corrected, or what it produced last Monday. If your scheduled run starts from scratch, the gap is on the run side, not the project side. The same limit applies to [Claude Code agent teams](/docs/learn/claude-code-agent-teams/): the shared task list sits in local files scoped to one session, so a colleague cannot open it.
 
 ### How do agents remember across sessions?
 By writing their state somewhere that outlives the process, then reading it back at the start of the next run. That store has to hold three things to work: the decisions made, the corrections applied, and the artifacts produced. Anything less and the agent re-derives context it already had, which is where drift and repeated mistakes come from.
@@ -2762,7 +2871,7 @@ Three categories: decisions (what was chosen and why), corrections (what a human
 ### Is a vector database the same as agent memory?
 No. A vector database is one storage format for long-term memory, and a useful one for recall. But it holds text, not structure, and it does not carry the status, the provenance, or the audit trail a decision needs. Treating a vector store as "the memory" is the mistake that keeps agents stateless: you can retrieve a paragraph, but you cannot tell whether a choice is settled.
 Persistence is not a feature you buy and bolt on at the end. It is a property of where the agent runs, and it is the difference between an agent that improves every week and one that starts over every Monday.
-If you are a product manager starting with Claude Code, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers where its memory ends and a team record takes over. If your team splits sessions across two tools, [when a team uses both Claude Code and Codex](/docs/claude-code-vs-codex/) shows why each tool's session history stays separate.
+If you are a product manager starting with Claude Code, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers where its memory ends and a team record takes over. If your team splits sessions across two tools, [when a team uses both Claude Code and Codex](/docs/claude-code-vs-codex/) shows why each tool's session history stays separate. If several people on one team each keep their own Claude Code notes, [running Claude Code as a team](/docs/learn/claude-code-team/) covers what travels through git and where the shared record of owners and decisions lives.
 
 ## Persistence is where the agent runs
 Maskin carries decisions, corrections, and artifacts on a typed object graph every run reads and writes — so Monday starts where Friday stopped. Open source under Apache 2.0. Self-host free, bring your own model.
@@ -2813,7 +2922,7 @@ That last sentence is the whole next section.
 Anthropic is direct about this: each session begins with a fresh context window, and two mechanisms carry knowledge forward.
 - **CLAUDE.md files** are instructions you write. A project CLAUDE.md is shared with teammates through version control, so sharing it means putting the folder in git. A CLAUDE.local.md holds personal preferences and stays out of it.
 - **Auto memory** is notes Claude writes for itself from your corrections. It is stored under your home directory, and Anthropic states that it is machine-local: files are not shared across machines or cloud environments. Only the first 200 lines or 25KB of its index load at the start of a session.
-For a PM, that means your corrections, your glossary and your style are remembered on your laptop. Your teammate's Claude Code does not know them unless you handed over the folder. The reasoning behind last Tuesday's call to cut a feature sits in a chat session, not in either file. [Agent memory across sessions](/docs/learn/agent-memory-across-sessions/) covers what an agent can and cannot carry from one run to the next.
+For a PM, that means your corrections, your glossary and your style are remembered on your laptop. Your teammate's Claude Code does not know them unless you handed over the folder. The reasoning behind last Tuesday's call to cut a feature sits in a chat session, not in either file. [Agent memory across sessions](/docs/learn/agent-memory-across-sessions/) covers what an agent can and cannot carry from one run to the next. If you run [Claude Code agent teams](/docs/learn/claude-code-agent-teams/), the same holds: the task list is local files under your home directory, and a colleague’s session cannot open it. If your whole team uses Claude Code, [how to run Claude Code as a team](/docs/learn/claude-code-team/) covers what travels through git and where the record of owners and decisions should live.
 
 ## When Claude Code alone is enough
 Do not add anything if all of these are true:
@@ -2848,7 +2957,7 @@ claude mcp add --transport http maskin \
   --header "X-Workspace-Id: <WORKSPACE_ID>"
 ```
 Create the API key (the `ank_` value) under Settings, API keys, and copy the workspace ID from the Workspace settings page. Run `/reload-plugins`, then ask Claude to call `get_started`. This is checked against Anthropic's MCP docs and Maskin's server code, not a connect from a fresh Claude Code install. The [self-hosted setup guide](/docs/get-started/self-hosted/) has the full steps, and the [MCP tools reference](/docs/mcp-tools/) lists what is exposed.
-Second, Maskin runs agent sessions on the Claude Code and Codex command-line tools, each in an isolated microVM, so the agents are the ones you already use. If your engineers run both, [what changes when your team runs both Claude Code and Codex](/docs/claude-code-vs-codex/) covers keeping one record across them. What changes is where the result is kept.
+Second, Maskin runs agent sessions on the Claude Code and Codex command-line tools, each in an isolated microVM, so the agents are the ones you already use. If your engineers run both, [what changes when your team runs both Claude Code and Codex](/docs/claude-code-vs-codex/) covers keeping one record across them, and [Claude Code vs Cursor](/docs/claude-code-vs-cursor/) does the same if some of them work in Cursor. What changes is where the result is kept.
 The [product discovery loop](/marketplace/product-discovery/) is the closest match to the PM job described above. Interviews, tickets and reviews arrive as typed insights, agents cluster themes and draft candidate bets, and a person reviews and shapes each bet before it is approved. After it ships, the loop re-checks the signal to see whether the bet retired the pain. The human gate is the point: the agent gathers evidence and you own the call. See [what an agentic workspace is](/docs/what-is-an-agentic-workspace/) for the full lifecycle and [the closed-loop workspace](/docs/closed-loop-workspace/) for the longer argument.
 Where Maskin is the wrong pick:
 - **You work alone.** A folder and a good CLAUDE.md are lighter and cost nothing.
@@ -2889,6 +2998,252 @@ Anthropic says most surfaces require a Claude subscription or an Anthropic Conso
 
 ## Keep the record where the whole team can read it
 Maskin keeps owners, decisions and outcome checks on typed objects that people and agents share, exposed over MCP. Open source under Apache 2.0. Self-host free.
+
+
+---
+
+> Source: https://maskin.io/docs/learn/claude-code-agent-teams/
+
+# Claude Code agent teams: when they are enough, and when a team needs a shared record
+Claude Code agent teams are an experimental feature: one session acts as team lead and spawns teammates, each with its own context window, coordinating through a shared task list and messages. They are enough for one developer, one repo, one sitting. They stop being enough when people, decisions or time must outlast the session.
+*Read against [Anthropic’s agent teams docs](https://code.claude.com/docs/en/agent-teams) and [costs page](https://code.claude.com/docs/en/costs#agent-team-token-costs) on 2026-10-04. The feature is experimental and the docs change often, so check them before you rely on any detail below.*
+> ✓
+> **Key takeaways**
+> **Agent teams are a coordination feature inside one session.** The lead, the teammates, the task list and the mailbox all belong to that session on that machine.
+> **They are enough for bounded, parallel, one-person work:** parallel code review, competing-hypothesis debugging, research, and new modules where each teammate owns different files.
+> **They cost more.** Anthropic says to start with 3 to 5 teammates, and its costs page puts teams at approximately 7x the tokens of a standard session when teammates run in plan mode.
+> **Lighter rungs come first:** a single session, subagents, git worktrees or cross-session messaging. Anthropic’s own page says to check whether one of them does the job before you set up a team.
+> **They stop being enough at four boundaries:** the session ends, a second person needs to see the work, a decision needs a reason attached, or an outcome needs checking weeks later. The docs state the first two and part of the third. The rest is what the docs do not describe.
+> **A shared record is a layer above any tool.** It needs an owner per piece of work, a decision with its reason, and an outcome checked against a stated condition. A tracker you already use can do this. Maskin is one way to do it with typed objects.
+![Two boxes. On the left, one session on one machine holding a team lead, teammates with a task list, and a mailbox. An arrow leads to a box on the right, the record, holding an owner, a decision with its reason, and an outcome condition.](/og-image-claude-code-agent-teams.png)
+Agent teams coordinate work inside one session. The record is the part that outlasts it.
+
+## What Claude Code agent teams are
+An agent team is four parts, per Anthropic’s docs:
+1. **Team lead:** the main session. It spawns teammates and coordinates the work.
+2. **Teammates:** separate Claude Code instances, each with its own context window.
+3. **Task list:** a shared list of work items with three states (pending, in progress, completed) and optional dependencies. Teammates can self-claim the next unblocked task.
+4. **Mailbox:** messages between agents, stored as a JSON file per agent.
+You enable the feature by setting the environment variable **CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS** to 1, either in your shell or under “env” in settings.json. Without it, Claude does not spawn or propose teammates. Then you describe the task and the roles in plain language. The docs’ own starter prompt asks for three teammates to explore a command-line tool from three angles: one on UX, one on architecture, one playing devil’s advocate.
+Two practical details that trip people up. First, Claude sometimes spawns subagents instead of a team, and both show up in the same agent panel, so if you wanted a team, say so explicitly. Second, the default display mode is in-process (all teammates inside your terminal, switch between them with the arrow keys). Split panes need tmux or iTerm2, and the docs list VS Code’s integrated terminal, Windows Terminal and Ghostty as unsupported for split panes.
+
+### Agent teams vs subagents vs a shared record
+Anthropic’s own comparison is between subagents and agent teams. The third column is the one that does not exist inside either feature, and it is the subject of the rest of this page.
+|  | Subagents | Agent teams | Shared record (tracker or workspace) |
+| --- | --- | --- | --- |
+| Who coordinates | Main agent manages all work | Lead, plus teammates that self-claim tasks | People and agents, against the same objects |
+| Communication | Results return to the caller; subagents Claude has named can also message each other | Teammates message each other directly | Comments and links on the work item |
+| Task tracking | Main agent | Shared task list | Typed work items with owners |
+| Talk to the worker yourself | Through the main agent | Yes, every teammate is a full session you can message | Yes, on the work item |
+| Where state lives | Inside the session | Local files, one team per session | A store outside any session |
+| Visible to a second person | No | Only on your machine | Yes, by design |
+| Survives the session | Within the session | Task list files persist locally; in-process teammates do not resume | Yes |
+| Best for | Focused jobs where only the result matters | Parallel work that needs discussion | Work that spans people, days and agents |
+Sources for the first two columns: Anthropic’s [agent teams docs](https://code.claude.com/docs/en/agent-teams) (compare-with-subagents table, Architecture and Limitations sections) and the [subagents docs](https://code.claude.com/docs/en/sub-agents). Named subagents blur the line a little, so the clean difference is not communication. It is what teams add: a shared task list with self-claiming, and a full session per teammate that you can talk to directly.
+
+## When plain agent teams are enough
+The docs are candid about the costs. They say agent teams “add coordination overhead” and that for sequential tasks, same-file edits, or work with many dependencies, a single session or subagents are more effective. The strongest uses they list are research and review, new modules, debugging with competing hypotheses, and cross-layer changes.
+Use plain agent teams when all of these are true:
+- **One person is steering.** You are the only human who needs to know what happened.
+- **The work fits one sitting.** If the lead can finish and synthesize before you close the laptop, nothing needs to persist.
+- **The pieces are independent.** Each teammate owns different files. Two teammates editing the same file leads to overwrites, per the docs.
+- **The output is a result, not a decision trail.** A review summary or a bug diagnosis is consumed once.
+The docs’ competing-hypotheses example is a good fit. You spawn five teammates to investigate why an app exits after one message, and tell them to try to disprove each other’s theories. The debate is the mechanism: sequential investigation anchors on the first plausible theory, and adversarial teammates counter that. You read the consensus, fix the bug, and move on. Nothing about it needs to outlive the session.
+If you are new to the feature, the docs recommend starting with review and research tasks that have clear boundaries and do not write code. That advice holds up. Parallel implementation is where coordination costs show.
+
+### Try the lighter rungs first
+Before you set up a team, Anthropic’s page tells you to check whether a lighter option does the job. Climb one rung at a time:
+1. **A single session.** Sequential tasks, same-file edits and dependency-heavy work belong here.
+2. **[Subagents](https://code.claude.com/docs/en/sub-agents).** Helpers for research or verification inside your session. Only a summary returns to your main context, so they cost fewer tokens than teammates.
+3. **[Git worktrees](https://code.claude.com/docs/en/worktrees) or [cross-session messaging](https://code.claude.com/docs/en/cross-session-messaging).** You run several sessions yourself. With messaging, Claude can pass findings between them. No team machinery.
+4. **An agent team.** Teammates share a task list, self-claim work and message each other, and you can message any of them.
+5. **A shared record.** Add it when people, decisions or time outlast the session. It sits above all four rungs, because it holds what they produced, not how they ran.
+Each rung up costs more. Anthropic’s [costs page](https://code.claude.com/docs/en/costs#agent-team-token-costs) says agent teams use approximately 7x more tokens than standard sessions when teammates run in plan mode. Its advice for keeping the bill down: use Sonnet for teammates, keep teams small, keep spawn prompts focused, and shut teammates down when their work is done.
+
+## Where agent teams stop: four boundaries
+None of the following are bugs. The first two are documented limits of an experimental, per-session feature. The third is partly documented and partly a gap. The fourth is not in the docs at all; it is what a team has no place to store. Together they are where a second layer starts to matter.
+**1. The session ends.** The docs say the team config directory is removed when the session ends. The task list directory persists locally and is never uploaded, so resumed sessions keep their tasks. But in-process teammates are not restored by **/resume** or **/rewind**, and after a resume the lead may try to message teammates that no longer exist. Work state survives on your disk. The teammates themselves do not come back.
+**2. A second person needs to see it.** A session has exactly one team, scoped to that session. You cannot share a team across sessions. The task list is local files under your home directory. A colleague who runs their own session cannot open it. For several people on one repo, [Claude Code team](/docs/learn/claude-code-team/) covers what travels through git and what needs a record. Teammates’ permission prompts also appear in the lead’s session, so you approve them there.
+**3. A decision needs its reason.** The docs describe the task list as three states plus dependencies. Nothing described there records why a plan was approved, who overruled whom, or what you decided to leave alone. The docs also note that task status can lag: teammates sometimes fail to mark tasks complete, which blocks dependent tasks, and you check by hand.
+**4. An outcome needs checking later.** “Completed” in a task list means a teammate said it finished. Whether the change held up, whether the bug came back, whether the review caught what mattered: that is a separate question, and nothing the docs describe stores the answer.
+
+## What a shared record has to hold
+You do not need a product to answer this. You need four things written down somewhere more durable than a session:
+1. **An owner per piece of work.** One name, human or agent, on each item.
+2. **A decision with its reason.** What was chosen, what was rejected, and who approved it.
+3. **A stated outcome condition.** What “done” means in terms you can check later, not “the agent said it finished”.
+4. **Links between them.** The signal that started the work, the decision it led to, the tasks that carried it out.
+Plenty of people already build this by hand. One Hacker News post, [What is the control plane for local AI agents?](https://news.ycombinator.com/item?id=47242849), describes using GitHub Issues as a temporary backend for agent state: the agent opens or updates an issue at session start, posts findings as comments, and the human replies from a phone. The author’s own complaint is that issue trackers were not built for an agent’s high-frequency event loop, and they ask for something more purpose-built. Our read is that the gap is also structural: an issue has no slot for a decision’s reason or an outcome condition unless you add one by convention.
+
+### An illustrative scenario
+Take a team of three developers and a product manager. On Monday, one developer asks the lead to spawn three teammates to review a large pull request: security, performance, test coverage. The review is good. Two findings are real, one is deferred on purpose because a migration lands next week.
+On Wednesday the product manager asks why the deferred finding was not fixed. The answer is in Monday’s session, on one laptop, in a lead’s synthesis that was never written anywhere a second person could read. The task list says three tasks were completed. It does not say one was deferred and why.
+With a shared record, the review produces a work item with an owner, the deferral is a decision with a stated reason, and the follow-up check after the migration has an outcome condition. This scenario is made up to show the gap. It is not a Maskin customer story.
+
+## How the shape of the record differs
+The question is not which tool is better. It is what each one keeps, for how long, and who can read it. Here are three shapes, described from each project’s own material.
+|  | Claude Code agent teams | Gas Town | Maskin |
+| --- | --- | --- | --- |
+| What it is | A feature inside Claude Code for coordinating teammates in one session | A multi-agent workspace manager by Steve Yegge, for Claude Code, Copilot, Codex, Gemini and others | An open-source workspace where people and agents work on shared typed objects |
+| Coordinator | The team lead session | A “Mayor” agent you talk to; per-project workers, a Refinery merge queue, and a Witness and a Deacon that supervise | People and agents as drivers (owners) of objects |
+| Where work state lives | Local task list and mailbox files, scoped to a session | “Beads”, a git-backed issue ledger, so work survives when a session ends | Typed objects (insight, bet, task) linked by relationships, readable by the UI, agents and people over the same API |
+| Unit of record | A task with three states | A code-repo issue | A signal, a decision with a win condition, and the tasks under it |
+| Stated scale | Start with 3 to 5 teammates | README contrasts “4-10 agents become chaotic” with “scale comfortably to 20-30 agents” | Not applicable. It holds the record above the sessions that do the work |
+Gas Town facts are from its [README](https://github.com/gastownhall/gastown/blob/main/README.md) and Yegge’s [Welcome to Gas Town](https://yegge.ai/essays/welcome-to-gas-town/) essay, both read on 2026-10-04. The essay itself says the project was under three weeks old and that you probably do not want to use it yet, so read the table as a comparison of record shape, not of maturity. This page does not claim Maskin beats Gas Town or Anthropic’s feature. They solve different parts of the problem. Gas Town keeps work state in the code repo, which is a good place for code-shaped work. Maskin keeps it as objects that a product manager and an agent can both open, which is a good place for decisions that are not code.
+
+## How Maskin keeps the record
+Maskin is an open-source (Apache 2.0), MCP-native, self-hostable workspace. Work moves as typed objects: a signal enters as an insight, gets shaped into a bet with a win condition, and runs as tasks that people and agents share. Each object has a driver (an owner, person or agent) and a comment thread, and the bet closes with an outcome measured against its condition. The objects are the work, not a log of it, which is the property the four boundaries above are missing. The longer argument is in [the closed-loop workspace](/docs/closed-loop-workspace/), and how a record doubles as an audit trail is in [agent observability](/docs/agent-observability/).
+Maskin’s agent sessions use the Claude Code and Codex command-line tools and execute in isolated microVMs, so it sits alongside the tools you already run agent teams in. It is not a replacement for agent teams, and it does not make them unnecessary. Use agent teams to do a parallel burst of work. Use the record to hold who owns what, what was decided, and what happened after. Maskin is early, so evaluate the architecture, not a long track record. If you want to try it, you can [self-host it](/docs/self-hosted-ai-workspace/).
+For adjacent decisions, [agent skills vs MCP vs Cursor rules vs workflows](/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/) covers where shared instructions live, and [agent memory across sessions](/docs/learn/agent-memory-across-sessions/) covers what an agent remembers from one session to the next. If you are comparing open-source coding agents more broadly, see the [open source AI coding agent alternatives](/alternatives/open-source-ai-coding-agent/).
+
+## A quick decision rule
+- **Solo, one repo, one sitting, independent pieces:** agent teams, 3 to 5 teammates, start with review or research.
+- **Solo, and a subagent or a second worktree session would do:** skip the team. It costs less.
+- **Solo but the work runs over several days:** agent teams for the burst, and write the decisions and outcomes into whatever tracker you already have.
+- **Two or more people, or you will need to explain it next week:** add a shared record before you add more teammates. More agents without one means more output nobody can account for.
+- **More than 5 agents at once:** you are in coordination-overhead territory by Anthropic’s own guidance. Fix the bookkeeping before the headcount.
+
+## FAQ
+
+### What are Claude Code agent teams?
+Claude Code agent teams are an experimental feature in which one Claude Code session acts as team lead and spawns teammates. Each teammate is a separate Claude Code instance with its own context window. They coordinate through a shared task list and a mailbox for direct messages, and you can message any teammate yourself. The feature is off by default.
+
+### How do I enable Claude Code agent teams?
+Set the environment variable CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS to 1, either in your shell or under “env” in settings.json. Then describe the task and the teammates you want in plain language. To open split panes instead of the default in-process view, set teammateMode in settings.json to auto or tmux; split panes need tmux or iTerm2.
+
+### What is the difference between agent teams and subagents?
+Subagents return their results to the caller, though subagents Claude has named can also message each other. Agent teams add a shared task list that teammates self-claim from, plus a full Claude session per teammate that you can message directly. Subagents cost fewer tokens because results are summarized back. Teams cost more because every teammate is a separate Claude instance.
+
+### How many teammates should I use?
+Anthropic recommends starting with 3 to 5 teammates for most workflows, with roughly 5 to 6 tasks per teammate. Token costs scale linearly with the number of teammates, coordination overhead grows, and returns diminish beyond a point. The docs say three focused teammates often outperform five scattered ones.
+
+### Are Claude Code agent teams still experimental?
+Yes, as of the docs read on 2026-10-04. Anthropic labels them experimental and disabled by default, with known limitations around session resumption, task coordination and shutdown. Because the feature is experimental, details can change between Claude Code versions, so check the current docs for the version you run.
+
+### Can several people or sessions share one agent team?
+No. A session has exactly one team, scoped to that session, and you cannot share a team across sessions or promote a teammate to lead. The task list lives in local files and is never uploaded. If several people need the same view of the work, you need a record outside the session, such as a tracker or a workspace.
+
+### Do Claude Code agent teams work in VS Code or on Windows?
+The default in-process mode works in any terminal. Split-pane mode needs tmux or iTerm2, and the docs say it is not supported in VS Code’s integrated terminal, Windows Terminal or Ghostty. The docs also note tmux has known limitations on some operating systems and works best on macOS.
+Read next
+
+## Getting started is free
+Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of what was decided. The [agentic-workspace cornerstone](/docs/what-is-an-agentic-workspace/) and the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) guide are the two best next reads.
+
+
+---
+
+> Source: https://maskin.io/docs/learn/claude-code-team/
+
+# Claude Code team: how to share context and decisions, not six private setups
+**How do you use Claude Code as a team, and not as six people with six private setups?** Move three things out of private laptops: the setup (settings, skills, hooks), the context (what Claude should know about the project) and the record (who owns what, what was decided and why). The first two travel in your repository. The third needs a home you pick on purpose.
+This guide covers how people and Claude Code work together. It does not cover plans, seats or prices. For those, start with Anthropic’s own page, [Use Claude Code with your Team or Enterprise plan](https://support.claude.com/en/articles/11845131-use-claude-code-with-your-team-or-enterprise-plan).
+*Read against [Anthropic’s Claude Code docs](https://code.claude.com/docs/en/settings) on 2026-10-15. The product changes often, so check the docs for the version you run before relying on any detail below.*
+> ✓
+> **Key takeaways**
+> **Most of the setup already travels through git.** Commit the shared settings file and project skills, and every teammate who clones gets them.
+> **Claude’s own notes do not travel.** Anthropic’s docs say auto memory is machine-local and not shared across machines. Something one person taught Claude stays on that person’s laptop until someone writes it into a shared file.
+> **/team-onboarding spreads a setup, not a decision.** It builds a guide from one person’s last 30 days of usage. It does not keep owners or decisions current.
+> **A rule file is a request, not a lock.** Anthropic’s docs say Claude treats CLAUDE.md as context, not enforced configuration. Use a hook when something must never happen.
+> **The gap is the record.** Who owns what, what was chosen, what was rejected, and whether it worked. Nothing in Claude Code’s team features is described as keeping that, so pick a home for it.
+![Three columns. In git: settings.json, CLAUDE.md and project skills, which reach every teammate who clones. On a laptop: auto memory and settings.local.json, which stay with one person. Needs a record: an owner, a decision with its reason, and an outcome check, which have no home by default.](/og-image-claude-code-team.svg)
+Git carries the setup. Laptops hold private notes. The record is the part a team has to place on purpose.
+
+## What a team shares by default, and what it doesn’t
+Here is what reaches a teammate who clones your repository, based on Anthropic’s settings, memory and skills docs:
+| What you want to share | Where it lives | Reaches teammates? |
+| --- | --- | --- |
+| Permissions, hooks, plugins | .claude/settings.json in the repo | Yes, once committed |
+| Your personal overrides | .claude/settings.local.json | No, kept out of commits |
+| Project rules and conventions | CLAUDE.md in the repo | Yes, once committed |
+| Reusable procedures | .claude/skills/ in the repo | Yes, once committed |
+| What Claude learned from your corrections | Auto memory under ~/.claude/projects/ | No, machine-local |
+| Who owns what, and why a call was made | Nowhere by default | No |
+The last two rows are the whole problem. The first four are configuration, and git handles configuration well. The last two are knowledge about the work, and nobody has decided where it goes.
+
+## Step 1: Commit the setup so there is one
+Anthropic’s settings docs describe four places a setting can live: managed (set by your organization), user, shared project and project local. The one that makes a team is the shared project file, `.claude/settings.json`. Commit it and everyone who clones gets the same permissions, hooks and plugins. Each person can still override it for themselves in `.claude/settings.local.json`, which Claude Code keeps out of commits, so personal exceptions never need a pull request.
+Two details that surprise teams:
+- **Some committed keys wait for trust.** Allow rules and most environment variables apply only after each teammate trusts the folder. Until then they still see permission prompts. If a rule “isn’t working” for a new hire, check this first.
+- **The session reads the file from where it starts.** Claude Code reads the shared file from the session’s primary working directory, so start at the repository root.
+Do the same for skills. A skill committed at `.claude/skills/<name>/SKILL.md` is available to everyone who clones. Plugins are the other route, and organizations can push skills and a managed CLAUDE.md to every machine through managed settings. For a small team, committing to the repo is enough and needs no admin. If you are new to skills, [what are agent skills?](/docs/learn/agent-skills/) explains the format.
+
+## Step 2: One context file, with an owner
+Instructions belong in one committed CLAUDE.md (or AGENTS.md) that says how to build, test and name things. Which filename to use and how nested files combine is a separate question, covered in [CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/). This page assumes you have one and asks a different question: who keeps it true?
+Give it an owner, a person’s name, not “the team”. Treat changes like code: a pull request, one reviewer. Without an owner the file only grows, and a long file with contradicting lines is worse than a short one.
+Then deal with auto memory, because it is where private knowledge builds up. Claude saves notes about your corrections and preferences on its own, in a directory under your home folder. The docs state those files are not shared across machines. So if Dana tells Claude “tests need Docker running” and Sam never does, Dana’s Claude knows and Sam’s does not, and neither of them has written it down. A habit that fixes this: when Claude saves a memory that would help everyone, move it into CLAUDE.md in a pull request and let the private note go.
+Remember what the file can and cannot do. If a rule must hold every time, such as “never touch the billing migrations”, a CLAUDE.md line is a request. Anthropic’s docs point to a PreToolUse hook for blocking an action, and a hook can live in the committed settings file.
+
+## What /team-onboarding does, and what it doesn’t
+If you searched “claude code team onboarding”, you probably meant this. `/team-onboarding` is a built-in Claude Code command. Per Anthropic’s [commands reference](https://code.claude.com/docs/en/commands), it analyzes your sessions, commands and MCP server usage from the past 30 days and writes a markdown guide that a teammate can paste as a first message to get set up fast. For claude.ai subscribers on Pro, Max, Team and Enterprise plans, it also returns a share link teammates can open directly in Claude Code.
+It is useful for the problem it targets: a new person does not know which commands, skills and connected tools the experienced person reaches for. One command beats a Slack thread of tips.
+What it does not do follows from how it works:
+- **It describes one person’s habits.** The input is one person’s recent usage. It reflects how that person works, which may not be how the team agreed to work.
+- **It is a snapshot.** A guide made today does not update when conventions change. Third-party explainers such as [ClaudeLog](https://claudelog.com/faqs/what-is-team-onboarding-in-claude-code/) suggest regenerating it periodically for the same reason.
+- **It holds no decisions or owners.** Usage history shows what someone did, not what the team chose, what it rejected, or who answers for an area.
+Treat it as a good first-day handout. It spreads a setup. It does not keep decisions or owners current, and nothing in Anthropic’s description claims it does.
+
+## Step 3: Give decisions and owners a home
+This is the step teams skip, and it is the one that stops the six-private-setups drift from coming back. You need three things written somewhere more durable than a session and more visible than a laptop:
+1. **An owner per area or piece of work.** One name, a person or an agent.
+2. **A decision with its reason.** What was chosen, what was rejected, who approved it.
+3. **An outcome you can check.** What “this worked” means, stated before you ship, so someone can look later.
+A record this small is enough to start:
+- **Decision:** one sentence.
+- **Why, and what we rejected:** two lines.
+- **Owner:** one name.
+- **Check by:** a date.
+- **Outcome:** filled in later, against the condition you set.
+Where it lives is a real choice, and none of these is wrong:
+- **A decisions folder in the repo.** Good for code-shaped calls. Reviewable, versioned, next to the code. Weak for people who do not live in git.
+- **The tracker you already use.** Works if you add fields or a template for the reason and the check date. Without them, an issue says what was done but not why.
+- **A workspace built for it.** Maskin is one option. It is an open-source, MCP-native workspace where people and agents work on typed objects: a signal comes in as an insight, becomes a bet with a stated win condition, and runs as tasks. Each object has a driver (the owner) and a comment thread, and the bet closes with an outcome measured against its condition. Its agent sessions run the Claude Code and Codex command-line tools in isolated microVMs, so it sits beside the tools your developers already use. It is early, so judge the design, not a long track record. The longer argument is in [the closed-loop workspace](/docs/closed-loop-workspace/), and you can [self-host it](/docs/self-hosted-ai-workspace/).
+The choice matters less than having one and saying where it is.
+
+### An illustrative week
+This scenario is made up to show the gap. It is not a Maskin customer story.
+A team of four developers and a product manager all use Claude Code. On Monday, Sam asks Claude to refactor the export module and tells it to leave the legacy CSV path alone because a customer still depends on it. Claude saves a note. On Wednesday, Dana runs a cleanup and removes the legacy path. Her Claude had no such note, and CLAUDE.md never mentioned it.
+Nothing in the shared setup was wrong. The settings matched, the skills matched, the CLAUDE.md was clean. What was missing was a decision with a reason and an owner: “Keep the legacy CSV export until the customer migrates. Owner: Sam. Check: end of quarter.” With that in the record, and the one-line rule promoted into CLAUDE.md, Dana’s session starts with the answer.
+
+## Common ways this goes wrong
+- **Everyone commits to CLAUDE.md and nobody prunes it.** Rules pile up and start to contradict. Anthropic warns that when two instructions conflict, Claude may pick one arbitrarily. Give the file an owner and a size budget.
+- **Personal settings leak into the shared file.** Keep preferences in the local file. Review changes to the committed settings like code, since they change what every session is allowed to do.
+- **A guide replaces a conversation.** A generated onboarding guide gets a person running. It does not tell them what the team decided last month.
+- **Treating the several-agents feature as the team answer.** Having Claude coordinate several agents in one session is a different thing from coordinating several people. If you are asking about that, read [Claude Code agent teams](/docs/learn/claude-code-agent-teams/).
+- **Memory without a decision trail.** Notes from past sessions help an agent remember. They do not tell a human reviewer why something was decided. For that distinction, see [agent memory across sessions](/docs/learn/agent-memory-across-sessions/).
+
+## A first-week checklist
+1. Commit `.claude/settings.json` with the permissions and hooks the whole team needs. Tell people to use `settings.local.json` for the rest.
+2. Name one owner for CLAUDE.md. Cut it to rules you could check in a pull request.
+3. Move any project skills your best user has into `.claude/skills/` and commit them.
+4. Run `/team-onboarding` on your most experienced user’s machine and hand the result to the next hire, as a starting point, not a standard.
+5. Pick the home for decisions. Write the first five from the last month, with an owner and a check date each.
+6. Add one line to your pull request template: “Does this change a decision? If so, update the record.”
+7. Review the record and CLAUDE.md together once a month. A short review beats a rewrite.
+
+## FAQ
+
+### What does Claude Code team onboarding do?
+/team-onboarding is a Claude Code command that reads your last 30 days of sessions, commands and MCP server usage and writes a markdown guide a teammate can paste as a first message. On Pro, Max, Team and Enterprise plans it also returns a share link. It shares one person's setup. It does not track decisions or owners.
+
+### How do you use Claude Code as a team?
+Share the setup through git: commit the shared settings file, project skills and one CLAUDE.md with a named owner. Then pick a place for decisions and owners, since Claude's own memory is private to each machine. A decisions folder, your tracker or a workspace all work, as long as everyone knows which one.
+
+### Do teammates share Claude Code settings?
+Yes, through the repository. Commit .claude/settings.json and teammates who clone it get the same permissions, hooks and plugins. Each person can override it in .claude/settings.local.json, which stays out of commits. Some committed keys, such as allow rules, apply only after each teammate trusts the folder.
+
+### Does Claude Code share memory between teammates?
+No. Anthropic's docs say auto memory is machine-local and its files are not shared across machines. CLAUDE.md is the shared channel, because you commit it. If Claude learns something the whole team needs, move it into CLAUDE.md through a pull request.
+
+### Can I make Claude Code follow a team rule every time?
+Not with a rule file alone. Anthropic's docs say Claude treats CLAUDE.md as context, not enforced configuration. To block an action regardless of what Claude decides, use a PreToolUse hook in the committed settings, and keep CLAUDE.md for guidance.
+
+### How is this different from Claude Code agent teams?
+Agent teams put several Claude sessions to work on one task, coordinated by a lead. This page is about several people and their agents sharing context and decisions over weeks. They solve different problems. The agent teams feature is covered in [Claude Code agent teams](/docs/learn/claude-code-agent-teams/).
+Read next
+
+## Getting started is free
+Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of who owns what and what was decided. The [agentic-workspace cornerstone](/docs/what-is-an-agentic-workspace/) and the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) guide are the two best next reads.
 
 
 ---
