@@ -331,7 +331,7 @@ a:hover{text-decoration:underline}
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width:860px){
-  .doc-layout{grid-template-columns:1fr}
+  .doc-layout{grid-template-columns:minmax(0,1fr)}
   .doc-sidebar{
     position:static;border-bottom:1px solid var(--rule);
     padding-bottom:1.25rem;margin-bottom:.5rem;
@@ -339,7 +339,9 @@ a:hover{text-decoration:underline}
   .doc-sidebar__group{margin-bottom:1rem}
 }
 @media (max-width:560px){
-  .docnav__links{gap:.85rem}
+  .docnav__inner{gap:.5rem}
+  .docnav__links{gap:.6rem}
+  .docnav__cta{padding:.35rem .65rem}
   .docnav__links .docnav__hide-sm{display:none}
   .post-cta__actions{flex-direction:column}
   .docs-cta__actions{flex-direction:column;align-items:stretch}
@@ -348,6 +350,10 @@ a:hover{text-decoration:underline}
   .docs-cta-strip__link{justify-content:center}
 }
 
+/* Phones: the "Docs" label duplicates the Docs link, so drop it to keep the bar inside the viewport. */
+@media (max-width:420px){
+  .docnav__tag{display:none}
+}
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;scroll-behavior:auto!important}
 }
