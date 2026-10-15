@@ -245,10 +245,10 @@
       <tr><td><strong>Unit of work</strong></td><td>An issue inside an org with goals, projects, and titled agents</td><td>A typed object: insight, bet, or task, linked by relationships</td></tr>
       <tr><td><strong>What wakes an agent</strong></td><td>Assigned work, follow-up messages, optional timer heartbeats, routines</td><td>A trigger: a schedule, a one-shot reminder, or an event on the object graph. No heartbeat</td></tr>
       <tr><td><strong>Who owns the outcome</strong></td><td>The human board approves hires and review stages</td><td>A named driver, human or agent, owns each bet and its win condition</td></tr>
-      <tr><td><strong>Runtime</strong></td><td>Adapters run agents you already have; optional sandbox providers</td><td>A fresh sandboxed Docker container per agent session</td></tr>
+      <tr><td><strong>Runtime</strong></td><td>Adapters run agents you already have; optional sandbox providers</td><td>A fresh sandboxed microVM per agent session</td></tr>
       <tr><td><strong>Cost control</strong></td><td>Budgets by company, agent, and project with hard stops</td><td>Workspace-level plan limits; no per-agent hard stop in the docs we reviewed</td></tr>
       <tr><td><strong>The record</strong></td><td>Activity log, task threads, run history, documents, work products</td><td>Typed objects and their event history; the objects are the work</td></tr>
-      <tr><td><strong>Install</strong></td><td>One npx command, Node.js 24.11+, embedded Postgres locally</td><td>Self-host with Docker on the host</td></tr>
+      <tr><td><strong>Install</strong></td><td>One npx command, Node.js 24.11+, embedded Postgres locally</td><td>Self-host with an agent server running microsandbox and libkrun</td></tr>
       <tr><td><strong>License</strong></td><td>MIT</td><td>Apache 2.0</td></tr>
       <tr><td><strong>Maturity</strong></td><td>About 95.5K stars, repository created March 2026</td><td>Early; evaluate the architecture, not a long track record</td></tr>
     </tbody>
@@ -260,13 +260,13 @@
     <li><strong>Per-agent budget hard stops are a hard requirement.</strong> Paperclip documents them by company, agent, project, goal, provider, and model. Maskin's cost controls sit at the workspace level, so Paperclip wins this row.</li>
     <li><strong>You already run a mixed fleet of agent CLIs</strong> and want one dashboard over all of them. Paperclip's adapter model is built to hire agents you already run. Maskin's agents run in its own sandboxed sessions, and outside agents reach it over MCP.</li>
     <li><strong>You want the community.</strong> Paperclip has a large user base, a Discord, and a plugin ecosystem. Maskin has none of that at comparable scale.</li>
-    <li><strong>You want to be running in five minutes.</strong> One npx command beats cloning a repo and standing up Docker.</li>
+    <li><strong>You want to be running in five minutes.</strong> One npx command beats cloning a repo and standing up an agent server.</li>
   </ul>
   <h2>Where a typed-object workspace fits instead</h2>
   <p>Three situations tip the decision toward Maskin.</p>
   <p><strong>The work is a decision with a life of weeks.</strong> A customer signal becomes an insight, the insight is shaped into a bet with a win condition and an owner, the bet breaks into tasks, and it closes with a measured outcome. The bet is the thing you query later, and it stays put when you swap the agent or the model. <a href="/docs/closed-loop-workspace/">The closed-loop workspace</a> describes that loop.</p>
   <p><strong>More than one human edits the same state.</strong> In Maskin, people and agents read and write the same objects over the same API, and a human gate attaches to the object: you decide where a person promotes, approves, or closes. See <a href="/docs/learn/human-in-the-loop-ai/">human in the loop AI</a>.</p>
-  <p><strong>You want agents bounded by triggers, not wake-ups.</strong> Maskin agents fire on schedules, reminders, or events, run in an isolated container, and exit. That is deliberate and it has a cost: polling has to be modeled as a schedule. The longer architectural argument is in <a href="/docs/composable-ai-agents-vs-ai-employees/">composable AI agents vs AI employees</a>.</p>
+  <p><strong>You want agents bounded by triggers, not wake-ups.</strong> Maskin agents fire on schedules, reminders, or events, run in an isolated microVM, and exit. That is deliberate and it has a cost: polling has to be modeled as a schedule. The longer architectural argument is in <a href="/docs/composable-ai-agents-vs-ai-employees/">composable AI agents vs AI employees</a>.</p>
   <h3>A worked example: customer feedback to a shipped fix</h3>
   <p>Take onboarding complaints arriving in Slack and Intercom.</p>
   <p>On Paperclip you would set a goal such as "reduce onboarding drop-off," hire an analyst agent and a PM agent under a CEO agent, and add a daily routine that creates a tracked issue to triage new feedback. The agents comment in threads, write documents, and the board approves a review stage. Everything lands in the activity log, organized by project and goal.</p>
@@ -284,7 +284,7 @@
   <h2>Using Paperclip and Maskin together</h2>
   <p>These are not mutually exclusive. Paperclip's README says you can connect your own MCP server as a connection, and Maskin exposes its objects over MCP (see the <a href="/docs/mcp-tools/">MCP tools reference</a>). So a design where Paperclip keeps managing the agent fleet and writes outcomes into Maskin bets is technically plausible. We have not published a tested recipe, so treat it as something to prototype, not a documented integration.</p>
   <h2>Maskin in one pass</h2>
-  <p>Maskin is open source under Apache 2.0, MCP-native, and built for team knowledge work. Agents run in isolated, sandboxed container sessions. Insights, bets, and tasks live in one schema linked by typed relationships, and the UI and the agents read the same objects. Self-hosting is free with no open-core gate on the software, and the current implementation requires Docker on the host. Maskin is early, so evaluate the architecture rather than a long vendor track record. For the self-hosted setup see <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a>. For other open-source comparisons by job, see the <a href="/alternatives/">alternatives hub</a>.</p>
+  <p>Maskin is open source under Apache 2.0, MCP-native, and built for team knowledge work. Agents run in isolated, sandboxed microVM sessions. Insights, bets, and tasks live in one schema linked by typed relationships, and the UI and the agents read the same objects. Self-hosting is free with no open-core gate on the software, and self-hosting needs an agent server running microsandbox and libkrun (Docker is for local development only). Maskin is early, so evaluate the architecture rather than a long vendor track record. For the self-hosted setup see <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a>. For other open-source comparisons by job, see the <a href="/alternatives/">alternatives hub</a>.</p>
   <h2>Getting started</h2>
   <ul>
     <li><strong><a href="/docs/self-hosted-ai-workspace/">Self-host</a> free forever.</strong> Clone the repo (Apache 2.0), follow the onboarding, and run agents in sandboxed sessions on your own infrastructure.</li>
