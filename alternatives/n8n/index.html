@@ -203,7 +203,7 @@
   <p><strong>The record.</strong> What n8n's docs describe storing is the run, the session, and the agent's memory. A business record that outlives any one agent (the account, the decision, the owner, the outcome) is something you model yourself, in a database or another store you wire in. That is the gap Maskin is built around, and it deserves its own section.</p>
   <h2>What n8n's docs say it stores about a run</h2>
   <p>The unit n8n stores is the execution, which its docs define as a single run of a workflow. Here is what the docs say about keeping them.</p>
-  <table>
+  <div class="doc-table-wrap"><table>
     <thead>
       <tr><th>Setting</th><th>Default</th><th>What it does</th></tr>
     </thead>
@@ -214,7 +214,7 @@
       <tr><td><strong>EXECUTIONS_DATA_MAX_AGE</strong></td><td>336 hours</td><td>Age at which a finished execution is deleted</td></tr>
       <tr><td><strong>EXECUTIONS_DATA_PRUNE_MAX_COUNT</strong></td><td>10,000</td><td>Maximum executions kept; 0 means no limit</td></tr>
     </tbody>
-  </table>
+  </table></div>
   <p>Source: <a href="https://docs.n8n.io/deploy/host-n8n/configure-n8n/basic-configuration/use-environment-variables/executions" target="_blank" rel="noopener">n8n execution environment variables</a>. The <a href="https://docs.n8n.io/deploy/host-n8n/configure-n8n/scaling/manage-execution-data" target="_blank" rel="noopener">manage execution data page</a> adds that annotated executions (for example, ones with tags or ratings) are never pruned, and that n8n recommends not saving unnecessary data so the database does not grow without limit. You can also attach your own fields to an execution with the Code node and filter by them later (<a href="https://docs.n8n.io/build/understand-workflows/understand-executions/customize-executions-data" target="_blank" rel="noopener">customize executions data</a>).</p>
   <p>Read that as a design statement: the execution is a log of one run, kept for diagnostics, and tuned to stay small. That is the right design for a workflow engine. It also means the answer to "what did this agent decide about this customer in March, and did it work?" is something you build: a table or sheet, written by nodes you add, with a schema you invent and maintain.</p>
   <p>Maskin starts from the other end. In a loop, a signal enters as an insight (from Slack, Intercom, PostHog, GitHub, Gmail, or a scheduled scan), gets shaped into a bet with a win condition, runs as tasks that humans and agents share, and closes with the outcome measured against that condition. Insights, bets, and tasks are objects in one schema, linked by typed relationships, and the UI and the agents read the same objects over the same API. The objects are the work, not a log of it, so there is no log-retention setting to tune.</p>
@@ -243,7 +243,7 @@
   <h3>Closed-loop workspaces</h3>
   <p><strong>Maskin</strong> is the entry here. It is the one on this page where the output of a run is a typed object a person owns, rather than a log, a canvas, or code.</p>
   <h2>How the shapes compare</h2>
-  <table>
+  <div class="doc-table-wrap"><table>
     <thead>
       <tr><th></th><th>Hosted builders</th><th>Open-source engines</th><th>No-code AI agent platforms</th><th>Maskin</th></tr>
     </thead>
@@ -255,7 +255,7 @@
       <tr><td><strong>Integration breadth</strong></td><td>Very broad</td><td>Broad</td><td>Varies</td><td>Narrower; MCP-native</td></tr>
       <tr><td><strong>Best for</strong></td><td>Non-technical teams, no ops</td><td>Teams that want control of the runtime</td><td>First agent in an afternoon</td><td>Agent work that needs owners and outcomes</td></tr>
     </tbody>
-  </table>
+  </table></div>
   <h2>Where the closed-loop shape wins</h2>
   <p>Three situations tip the decision.</p>
   <p><strong>The record outlives the agent.</strong> If the question after every run is "who is responsible for this, and did it work?", an execution log or an agent's session memory answers part of it: what ran, and what the agent remembers. A bet with a driver and a win condition answers the rest, and it stays put when you swap the agent or the model. See <a href="/docs/learn/agentic-workflow-vs-closed-loop/">agentic workflow vs the closed loop</a> for the longer argument.</p>

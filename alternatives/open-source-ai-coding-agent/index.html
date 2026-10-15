@@ -177,7 +177,7 @@
     <h2>The shortlist, by tier</h2>
     <h3>Tier 1 — Runtimes: one developer, one coding loop</h3>
     <p>A runtime is the thing that holds a coding session. You describe an object of work (a bug, a feature, a refactor), it drafts a change, tests, iterates, and commits. Below is the OSS shortlist. Every entry has a live GitHub repo, an install path that doesn't require signing up for a hosted service, and a public first-commit date. </p>
-    <table>
+    <div class="doc-table-wrap"><table>
       <thead><tr><th>Name</th><th>Licence</th><th>Install shape</th><th>One-line differentiator</th></tr></thead>
       <tbody>
         <tr><td><strong>OpenCode</strong></td><td>Apache-2.0</td><td>CLI (<code>opencode</code>)</td><td>Terminal-native. Model-agnostic (you bring the API key). The runtime most listicles rank at pos-2 for a reason — tight loop, no editor lock-in.</td></tr>
@@ -188,7 +188,7 @@
         <tr><td><strong>Continue</strong></td><td>Apache-2.0</td><td>VS Code + JetBrains extension</td><td>IDE-first. Configurable per-project via a single YAML. Less agent, more autocomplete-plus-context.</td></tr>
         <tr><td><strong>Goose (Block)</strong></td><td>Apache-2.0</td><td>CLI + desktop</td><td>Backed by Block (Square/Cash App). Extension-heavy — tool use through MCP is the design spine.</td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p>What separates them, in one line each: <strong>OpenCode</strong> is terminal-first and model-agnostic; <strong>Kilo</strong> is editor-embedded and multi-agent inside a repo; <strong>OpenHands</strong> treats sandboxed execution as the design centre; <strong>Aider</strong> is git-native (every change is a commit); <strong>Cline</strong> is the fork root of the VS-Code-native tree; <strong>Continue</strong> is autocomplete-plus-context more than agent; <strong>Goose</strong> is MCP-forward with Block backing it.</p>
     <p>If you're a single developer choosing a runtime, this is where the SERP's top 15 listicles do a reasonable job — they compare features inside this tier.</p>
     <h3>Tier 2 — Control planes: many runtimes, many sessions, one operator</h3>
