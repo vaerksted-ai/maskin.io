@@ -123,7 +123,7 @@ The hands-on Maskin quickstart: go from an empty instance to an agent doing real
 
 ## Before you begin
 You need a running Maskin instance with Claude connected to it over MCP. Which setup applies depends on how you run Maskin:
-- **Managed hosting:** your instance is already running, so there is no setup to do. Make sure Claude is connected to it over MCP, then start at Step 1.
+- **Managed hosting:** the Maskin Team runs the instance for you, so there is no server setup. Ask them for your MCP connection details, make sure Claude is connected, then start at Step 1.
 - **Self-hosted:** run your own instance with your Anthropic key saved and Claude connected. Both are covered in [Self-hosted setup](/docs/get-started/self-hosted/). Finish that first, then come back here.
 Quick check: ask Claude *"List the maskin MCP tools"* and confirm you get a list back.
 
@@ -774,7 +774,7 @@ Maskin defaults to Claude but lets you bring your own model. For every agent run
 ## Routing priority
 When a session starts, Maskin picks the first option that's configured, in this order:
 1. **Agent-level key** — an Anthropic key set directly on the agent actor.
-2. **Workspace custom LLM** — a bring-your-own endpoint configured on the workspace (OpenRouter, Ollama, vLLM, or any OpenAI-compatible API).
+2. **Workspace custom LLM** — a bring-your-own endpoint configured on the workspace (OpenRouter or another OpenAI-compatible API).
 3. **Claude OAuth** — a workspace-level Claude Pro / Max / Teams subscription.
 4. **Workspace Anthropic key** — an Anthropic API key saved in workspace settings.
 5. **System fallback** — the operator-configured OpenRouter fallback (with a daily token cap).
@@ -789,7 +789,7 @@ The default model is `claude-sonnet-4-6`, with a separate small/fast model for l
 Set a **custom LLM** on the workspace to route agents to any OpenAI-compatible endpoint. The configuration carries:
 | Field | Purpose |
 | --- | --- |
-| base_url | The provider's API base (e.g. OpenRouter, a local Ollama/vLLM server). |
+| base_url | The provider's API base (e.g. OpenRouter). |
 | api_key | Credential for that provider (encrypted at rest). |
 | model | Main model id. |
 | small_fast_model | Cheaper model for lightweight steps. |
@@ -1706,7 +1706,7 @@ The practical rule: never rely on a nested file to cancel a root rule. Write eac
 The agents.md site suggests a project overview, build and test commands, code style, testing instructions and security notes. Add to that list only what the agent cannot discover by reading the repo. A rule the agent already follows costs context and buys nothing. A rule you cannot check (“write clean code”) buys nothing either. Write rules you could verify in a pull request, such as “run pnpm test before committing” or “never edit files under vendor/”.
 
 ## What changes at team scale
-For one developer with one repo, the answer above is the whole story. A team hits four problems that no filename choice fixes.
+For one developer with one repo, the answer above is the whole story. A team hits four problems that no filename choice fixes. A product manager running Claude Code meets the same gap one step earlier, because an instruction file carries rules and not the decisions and reasons behind them; [using Claude Code as a product manager](/docs/learn/claude-code-for-product-managers/) covers where a team record takes over.
 **1. The same rule lives in many places.** Say a team has six repos and uses Claude Code, Codex and Copilot. A rule about commit messages or review etiquette is true everywhere, yet it sits in six `AGENTS.md` files. Someone updates three. (This is an illustration, not a customer story.) The import trick merges files inside one repo. It does nothing across repos.
 **2. There is no shared, writable home above the repo.** The options that exist are per person or per organization: a user-level file such as `~/.claude/CLAUDE.md`, an organization-managed `CLAUDE.md`, or a shared rules folder symlinked into `.claude/rules/`. Anthropic’s docs describe all three. They work, but each reaches only people who set it up, and a symlinked rules folder that points outside the repo needs a one-time approval per project.
 **3. Personal and shared rules collide.** `CLAUDE.local.md` is the documented place for private per-project preferences, and only Claude Code reads it. Codex has its own override file, `AGENTS.override.md`, which Claude Code ignores. Each tool has its own private-override convention, so personal rules do not travel between tools.
@@ -2446,7 +2446,7 @@ Skills load in three levels, and the levels are the point.
 A skill can therefore hold thousands of words of procedure while costing the agent one sentence until the moment it is needed. That is why skills scale where pasting an instruction block into a system prompt does not. The always-on version of that block is an instruction file such as `AGENTS.md` or `CLAUDE.md`, read at the start of every session; [CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/) covers how those files differ across coding agents.
 
 ### What a minimal skill looks like
-The smallest useful skill is a folder and one file. `SKILL.md` with a name, a description, and three or four lines of instruction is a complete skill. There is no build step, no manifest beyond the frontmatter, and no registration call. If the folder is in a location the agent reads, the skill exists.
+The smallest useful skill is a folder and one file. `SKILL.md` with a name, a description, and three or four lines of instruction is a complete skill. There is no build step, no manifest beyond the frontmatter, and no registration call. If the folder is in a location the agent reads, the skill exists. For a set of skills built around one job, [a PM’s skills in Claude Code, job by job](/docs/learn/claude-code-for-product-managers/) walks through Anthropic’s product-management plugin.
 
 ## How agent skills relate to tools, prompts, rules, and workflows
 These terms get used interchangeably in marketing copy and mean different things. The clean way to hold them apart:
@@ -3620,7 +3620,7 @@ Every step lands as a state transition on a typed object — insights, tasks, ev
 
 ## Prerequisites
 - A running Maskin instance (self-hosted under Apache 2.0 or a hosted trial — [Get started](/docs/get-started/)).
-- A model key configured on the workspace (Anthropic, OpenAI, or a local model — see [LLM & models](/docs/llm/)).
+- A model key configured on the workspace (your own Anthropic or OpenAI access — see [LLM & models](/docs/llm/)).
 - A Unipile account for the LinkedIn sender lane, or a Postmark/Resend account plus a warmed email domain for email.
 - An enrichment provider your account already uses (Apollo, Clay, or Tavily are the common shapes) — wired in as an MCP tool the research step can call.
 - A human on-call for the approval gate until the override rate settles.
@@ -3684,7 +3684,7 @@ The loop shape is the same — signal, research, draft, approval, send, reply, c
 As typed objects and relationships. The signal is an insight object created by a trigger; the draft is a task in `needs_approval` linked to the insight; the send is a task transition to `sending`; the reply is an event on the parent insight; the outcome is a status write on the insight itself. All of it lives on the same object graph as the rest of the workspace, so an agent can walk from insight to task to reply to outcome without leaving the substrate, and a human can review any step of any loop without opening a separate tool. The [Core concepts](/docs/concepts/) page has the full object-model reference.
 
 ### What model should I use for the drafting step?
-Whichever your team can hold taste on. Draft quality is a prompt-and-voice problem more than a raw-capability problem; a well-prompted mid-tier model with the sender’s writing samples in context outperforms a frontier model prompted generically. Because Maskin is [MCP-native](/docs/what-is-mcp-native/), the model call is a workspace configuration, not a code change: swap Anthropic for OpenAI or a local model without touching the loop shape. Keep the override rate as the honest evaluation metric — the model that produces the healthiest middle-band override rate in your reviewer’s hands is the right one, regardless of the leaderboard.
+Whichever your team can hold taste on. Draft quality is a prompt-and-voice problem more than a raw-capability problem; a well-prompted mid-tier model with the sender’s writing samples in context outperforms a frontier model prompted generically. Because Maskin is [MCP-native](/docs/what-is-mcp-native/), the model call is a workspace configuration, not a code change: swap Anthropic for OpenAI without touching the loop shape. Keep the override rate as the honest evaluation metric — the model that produces the healthiest middle-band override rate in your reviewer’s hands is the right one, regardless of the leaderboard.
 
 ### How does this connect to the open-source AI SDR comparison?
 The companion page, [Open source AI SDR: the honest map](/alternatives/open-source-ai-sdr/), covers the six OSS AI SDR repos on GitHub in 2026 (MatthewDailey/open-sdr, OpenOutreach, ZeroGTM, Signal, personizeai/revenue-os, kandksolvefast/ai-sdr-agent), the $50-200/mo vs $2k-5k/mo cost split against closed SaaS, and the failure modes of running outbound without a real approval gate. This page is the concrete build side: given you have accepted the loop framing and want to run it on your own object graph, this is how the seven steps get wired inside Maskin.

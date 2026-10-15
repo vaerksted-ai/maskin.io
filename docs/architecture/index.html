@@ -110,10 +110,10 @@
     <p>Writes emit PostgreSQL <code>NOTIFY</code>; the API <code>LISTEN</code>s and fans changes out to clients as <strong>Server-Sent Events</strong>, so the UI and live session logs update with no extra message queue. Behind a connection pooler, set <code>DATABASE_URL_DIRECT</code> to a non-pooled connection so LISTEN/NOTIFY keeps working (see <a href="/docs/troubleshooting/">Troubleshooting</a>).</p>
 
     <h2>Actors &amp; auth</h2>
-    <p>Humans and agents are unified as <strong>actors</strong>. Requests authenticate with a bearer API key (stored as a SHA-256 hash) and carry <code>X-Workspace-Id</code>; every query is scoped to that workspace. Details on the <a href="/docs/security/">Security</a> page.</p>
+    <p>Humans and agents are unified as <strong>actors</strong>. Requests authenticate with a bearer API key and carry <code>X-Workspace-Id</code>; every query is scoped to that workspace. Details on the <a href="/docs/security/">Security</a> page.</p>
 
     <h2>Agent execution</h2>
-    <p>Each agent run is a <strong>session</strong> in an ephemeral, non-root Docker container built from <code>agent-base</code>. By default these run on the app host's Docker; set <code>AGENT_SERVERS</code> to distribute them across dedicated agent servers with a warm pool. See <a href="/docs/agents/">Agents &amp; sessions</a>.</p>
+    <p>Each agent run is a <strong>session</strong> in an ephemeral microVM (libkrun, managed through microsandbox) started from <code>agent-base</code> on a dedicated agent server. Set <code>AGENT_SERVERS</code> to point the app at your agent servers, which keep a warm pool. Docker is for local development only. See <a href="/docs/agents/">Agents &amp; sessions</a>.</p>
 
     <h2>MCP layer &amp; extensions</h2>
     <p>The <code>mcp</code> package exposes the workspace as MCP tools over <code>/mcp</code> — a thin layer over the same services the REST API uses, so both surfaces stay in lock-step (<a href="/docs/mcp-tools/">MCP tools</a> / <a href="/docs/api/">API reference</a>). <strong>Integrations</strong> add provider adapters, webhook handlers, and auto-injected MCPs; <strong>extensions/modules</strong> register new object types and routes under <code>/api/m/{extension-id}</code>.</p>

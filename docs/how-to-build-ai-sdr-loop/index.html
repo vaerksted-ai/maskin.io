@@ -185,7 +185,7 @@
           "name": "What model should I use for the drafting step?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Whichever your team can hold taste on. Draft quality is a prompt-and-voice problem more than a raw-capability problem; a well-prompted mid-tier model with the sender's writing samples in context outperforms a frontier model prompted generically. Because Maskin is MCP-native, the model call is a workspace configuration, not a code change: swap Anthropic for OpenAI or a local model without touching the loop shape. Keep the override rate as the honest evaluation metric &mdash; the model that produces the healthiest middle-band override rate in your reviewer's hands is the right one, regardless of the leaderboard."
+            "text": "Whichever your team can hold taste on. Draft quality is a prompt-and-voice problem more than a raw-capability problem; a well-prompted mid-tier model with the sender's writing samples in context outperforms a frontier model prompted generically. Because Maskin is MCP-native, the model call is a workspace configuration, not a code change: swap Anthropic for OpenAI without touching the loop shape. Keep the override rate as the honest evaluation metric &mdash; the model that produces the healthiest middle-band override rate in your reviewer's hands is the right one, regardless of the leaderboard."
           }
         },
         {
@@ -236,7 +236,7 @@
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
   <li>A running Maskin instance (self-hosted under Apache 2.0 or a hosted trial &mdash; <a href="/docs/get-started/">Get started</a>).</li>
-  <li>A model key configured on the workspace (Anthropic, OpenAI, or a local model &mdash; see <a href="/docs/llm/">LLM &amp; models</a>).</li>
+  <li>A model key configured on the workspace (your own Anthropic or OpenAI access &mdash; see <a href="/docs/llm/">LLM &amp; models</a>).</li>
   <li>A Unipile account for the LinkedIn sender lane, or a Postmark/Resend account plus a warmed email domain for email.</li>
   <li>An enrichment provider your account already uses (Apollo, Clay, or Tavily are the common shapes) &mdash; wired in as an MCP tool the research step can call.</li>
   <li>A human on-call for the approval gate until the override rate settles.</li>
@@ -300,7 +300,7 @@
 <h3>Where does the loop actually live in Maskin?</h3>
 <p>As typed objects and relationships. The signal is an insight object created by a trigger; the draft is a task in <code>needs_approval</code> linked to the insight; the send is a task transition to <code>sending</code>; the reply is an event on the parent insight; the outcome is a status write on the insight itself. All of it lives on the same object graph as the rest of the workspace, so an agent can walk from insight to task to reply to outcome without leaving the substrate, and a human can review any step of any loop without opening a separate tool. The <a href="/docs/concepts/">Core concepts</a> page has the full object-model reference.</p>
 <h3>What model should I use for the drafting step?</h3>
-<p>Whichever your team can hold taste on. Draft quality is a prompt-and-voice problem more than a raw-capability problem; a well-prompted mid-tier model with the sender&rsquo;s writing samples in context outperforms a frontier model prompted generically. Because Maskin is <a href="/docs/what-is-mcp-native/">MCP-native</a>, the model call is a workspace configuration, not a code change: swap Anthropic for OpenAI or a local model without touching the loop shape. Keep the override rate as the honest evaluation metric &mdash; the model that produces the healthiest middle-band override rate in your reviewer&rsquo;s hands is the right one, regardless of the leaderboard.</p>
+<p>Whichever your team can hold taste on. Draft quality is a prompt-and-voice problem more than a raw-capability problem; a well-prompted mid-tier model with the sender&rsquo;s writing samples in context outperforms a frontier model prompted generically. Because Maskin is <a href="/docs/what-is-mcp-native/">MCP-native</a>, the model call is a workspace configuration, not a code change: swap Anthropic for OpenAI without touching the loop shape. Keep the override rate as the honest evaluation metric &mdash; the model that produces the healthiest middle-band override rate in your reviewer&rsquo;s hands is the right one, regardless of the leaderboard.</p>
 <h3>How does this connect to the open-source AI SDR comparison?</h3>
 <p>The companion page, <a href="/alternatives/open-source-ai-sdr/">Open source AI SDR: the honest map</a>, covers the six OSS AI SDR repos on GitHub in 2026 (MatthewDailey/open-sdr, OpenOutreach, ZeroGTM, Signal, personizeai/revenue-os, kandksolvefast/ai-sdr-agent), the $50-200/mo vs $2k-5k/mo cost split against closed SaaS, and the failure modes of running outbound without a real approval gate. This page is the concrete build side: given you have accepted the loop framing and want to run it on your own object graph, this is how the seven steps get wired inside Maskin.</p>
 

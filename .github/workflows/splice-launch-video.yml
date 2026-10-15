@@ -1,0 +1,71 @@
+name: Splice launch video
+
+# Records video/v2-sidebar-mock.html frame by frame with Playwright, splices it into
+# maskin-launch.mp4 with ffmpeg and commits maskin-launch-v2.mp4 back to the branch it ran on.
+# Push trigger is limited to the task branch (workflow_dispatch needs the file on main).
+# The commit-back is skipped on main, where the video is only kept as a run artifact.
+# The commit-back only touches maskin-launch-v2.mp4, which is not in the paths below, so it does not re-trigger this workflow.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feat/task-79815e5c-splice-v2-sidebar
+    paths:
+      - .github/workflows/splice-launch-video.yml
+      - video/**
+
+permissions:
+  contents: write
+
+jobs:
+  splice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          ffmpeg -version | head -n 1
+      - name: Inspect v1 video
+        run: |
+          ls -l maskin-launch.mp4
+          ffprobe -v error -show_entries stream=codec_type,codec_name,width,height,r_frame_rate,pix_fmt,color_space,color_range:format=duration,size -of default=nw=1 maskin-launch.mp4
+      - name: Install Playwright and Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pw" playwright@1
+          cd "$RUNNER_TEMP/pw"
+          npx playwright --version
+          npx playwright install --with-deps chromium
+      - name: Record the v2 sidebar mock (870 frames, exact)
+        run: NODE_PATH="$RUNNER_TEMP/pw/node_modules" node video/record-v2-sidebar.cjs frames
+      - name: Splice into maskin-launch-v2.mp4
+        run: bash video/splice-v2.sh
+      - name: Check the result
+        run: |
+          ls -l maskin-launch-v2.mp4
+          ffprobe -v error -show_entries stream=codec_type,codec_name,width,height,r_frame_rate,pix_fmt,color_space:format=duration,size -of default=nw=1 maskin-launch-v2.mp4
+          mkdir -p seams
+          for t in 16.9 17.25 17.6 33.0 45.7 45.9 46.1; do
+            ffmpeg -y -hide_banner -loglevel error -ss "$t" -i maskin-launch-v2.mp4 -frames:v 1 "seams/v2-t${t}.png"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: maskin-launch-v2
+          path: |
+            maskin-launch-v2.mp4
+            seams/*.png
+      - name: Commit maskin-launch-v2.mp4 to the branch
+        if: github.ref != 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add maskin-launch-v2.mp4
+          if git diff --cached --quiet; then
+            echo "maskin-launch-v2.mp4 unchanged"
+            exit 0
+          fi
+          git commit -m "video: splice v2 sidebar into maskin-launch.mp4 as maskin-launch-v2.mp4 (seams t=17.0 to 17.5 and t=46.0)"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
