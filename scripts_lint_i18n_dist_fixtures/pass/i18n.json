@@ -1,0 +1,12 @@
+{
+  "languages": {
+    "da": { "locale": "da_DK", "hub": "/da/", "enabled": true, "nav": true },
+    "sv": { "locale": "sv_SE", "hub": "/sv/", "enabled": false, "nav": false }
+  },
+  "groups": { "home": { "en": "/", "da": "/da/" } },
+  "pages": [
+    { "path": "/da/", "lang": "da", "kind": "native", "keyword": "ai til virksomheder", "reviewed_by": "Test Reviewer", "reviewed_on": "2026-10-01" }
+  ],
+  "switcher_skip": [],
+  "banned": []
+}

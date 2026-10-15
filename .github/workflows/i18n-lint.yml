@@ -47,9 +47,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Lint unit tests
-        run: node --test scripts_lint_i18n.test.mjs
+      - name: Lint and injector unit tests
+        run: node --test scripts_lint_i18n.test.mjs scripts_lint_i18n_dist.test.mjs scripts_inject_switcher.test.mjs
       - name: Source lint
         run: node scripts_lint_i18n.mjs
       - name: Build
         run: bash build.sh
+      - name: Dist lint
+        run: node scripts_lint_i18n.mjs --dist dist
