@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code team: share context and decisions, not six setups | Maskin</title>
+<meta name="description" content="How to run Claude Code as a team: commit the shared setup, name an owner for CLAUDE.md, and give decisions a home. Covers /team-onboarding. No plan or price advice.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/learn/claude-code-team/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/learn/claude-code-team/">
+<meta property="og:title" content="Claude Code team: how to share context and decisions, not six private setups">
+<meta property="og:description" content="Teams share Claude Code settings, skills and CLAUDE.md through git, but not Claude's own notes. Learn what travels, what /team-onboarding does, and where decisions and owners should live.">
+<meta property="og:image" content="https://maskin.io/og-image-claude-code-team.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Claude Code team: how to share context and decisions, not six private setups">
+<meta name="twitter:description" content="Teams share Claude Code settings, skills and CLAUDE.md through git, but not Claude's own notes. Learn what travels, what /team-onboarding does, and where decisions and owners should live.">
+<meta name="twitter:image" content="https://maskin.io/og-image-claude-code-team.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/learn/claude-code-team/#post",
+      "headline": "Claude Code team: how to share context and decisions, not six private setups",
+      "name": "Claude Code team: how to share context and decisions, not six private setups",
+      "description": "How to run Claude Code as a team: commit the shared setup, name an owner for CLAUDE.md, and give decisions a home. Covers /team-onboarding. No plan or price advice.",
+      "url": "https://maskin.io/docs/learn/claude-code-team/",
+      "inLanguage": "en",
+      "datePublished": "2026-10-15T00:00:00Z",
+      "dateModified": "2026-10-15T00:00:00Z",
+      "image": [
+        "https://maskin.io/og-image-claude-code-team.png"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/learn/claude-code-team/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Claude Code"
+        },
+        {
+          "@type": "Thing",
+          "name": "Claude Code team"
+        },
+        {
+          "@type": "Thing",
+          "name": "CLAUDE.md"
+        },
+        {
+          "@type": "Thing",
+          "name": "Team onboarding"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Claude Code team",
+          "item": "https://maskin.io/docs/learn/claude-code-team/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does Claude Code team onboarding do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "/team-onboarding is a Claude Code command that reads your last 30 days of sessions, commands and MCP server usage and writes a markdown guide a teammate can paste as a first message. On Pro, Max, Team and Enterprise plans it also returns a share link. It shares one person's setup. It does not track decisions or owners."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you use Claude Code as a team?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Share the setup through git: commit the shared settings file, project skills and one CLAUDE.md with a named owner. Then pick a place for decisions and owners, since Claude's own memory is private to each machine. A decisions folder, your tracker or a workspace all work, as long as everyone knows which one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do teammates share Claude Code settings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, through the repository. Commit .claude/settings.json and teammates who clone it get the same permissions, hooks and plugins. Each person can override it in .claude/settings.local.json, which stays out of commits. Some committed keys, such as allow rules, apply only after each teammate trusts the folder."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Claude Code share memory between teammates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Anthropic's docs say auto memory is machine-local and its files are not shared across machines. CLAUDE.md is the shared channel, because you commit it. If Claude learns something the whole team needs, move it into CLAUDE.md through a pull request."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I make Claude Code follow a team rule every time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not with a rule file alone. Anthropic's docs say Claude treats CLAUDE.md as context, not enforced configuration. To block an action regardless of what Claude decides, use a PreToolUse hook in the committed settings, and keep CLAUDE.md for guidance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from Claude Code agent teams?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Agent teams put several Claude sessions to work on one task, coordinated by a lead. This page is about several people and their agents sharing context and decisions over weeks. They solve different problems. The agent teams feature is covered in Claude Code agent teams."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Solutions"><p class="doc-sidebar__title">Solutions</p><ul class="doc-sidebar__list"><li><a class="" href="/solutions/product-teams/">Product teams</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All loops</a></li><li><a class="is-nested" href="/marketplace/seo-publishing/">The SEO publishing loop</a></li><li><a class="is-nested" href="/marketplace/outbound/">The outbound loop</a></li><li><a class="is-nested" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki loop</a></li><li><a class="is-nested" href="/marketplace/linkedin-content/">The LinkedIn content loop</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/composable-ai-agents-vs-ai-employees/">Composable AI agents vs AI employees</a></li><li><a class="" href="/docs/learn/human-in-the-loop/">Human in the loop</a></li><li><a class="is-nested" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a></li><li><a class="is-nested" href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="is-nested" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="is-nested" href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/learn/claude-code-for-product-managers/">Claude Code for product managers</a></li><li><a class="is-nested" href="/docs/learn/claude-code-agent-teams/">Claude Code agent teams</a></li><li><a class="is-nested is-active" href="/docs/learn/claude-code-team/" aria-current="page">Claude Code team</a></li><li><a class="is-nested" href="/docs/learn/choose-a-knowledge-layer/">How to choose a knowledge layer</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="" href="/docs/at-risk-account-alerts/">At-risk account alerts</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="" href="/alternatives/open-source-alternative-to-claude-cowork/">Open source alternative to Claude Cowork</a></li><li><a class="" href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane</a></li><li><a class="" href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents</a></li><li><a class="" href="/alternatives/open-source-ai-coding-agent/">Open source AI coding agent</a></li><li><a class="" href="/alternatives/n8n/">n8n alternative</a></li><li><a class="" href="/alternatives/paperclip/">Paperclip alternative</a></li></ul></nav></aside>  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Claude Code team</p>
+    <p class="eyebrow">Article &middot; Guide</p>
+    <h1>Claude Code team: how to share context and decisions, not six private setups</h1>
+<p class="lead"><strong>How do you use Claude Code as a team, and not as six people with six private setups?</strong> Move three things out of private laptops: the setup (settings, skills, hooks), the context (what Claude should know about the project) and the record (who owns what, what was decided and why). The first two travel in your repository. The third needs a home you pick on purpose.</p>
+<p>This guide covers how people and Claude Code work together. It does not cover plans, seats or prices. For those, start with Anthropic&rsquo;s own page, <a href="https://support.claude.com/en/articles/11845131-use-claude-code-with-your-team-or-enterprise-plan" rel="noopener">Use Claude Code with your Team or Enterprise plan</a>.</p>
+<p><em>Read against <a href="https://code.claude.com/docs/en/settings" rel="noopener">Anthropic&rsquo;s Claude Code docs</a> on 2026-10-15. The product changes often, so check the docs for the version you run before relying on any detail below.</em></p>
+<div class="callout callout--muted"><div class="callout__icon" aria-hidden="true">&#10003;</div><div class="callout__body"><strong>Key takeaways</strong><ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+<li><strong>Most of the setup already travels through git.</strong> Commit the shared settings file and project skills, and every teammate who clones gets them.</li>
+<li><strong>Claude&rsquo;s own notes do not travel.</strong> Anthropic&rsquo;s docs say auto memory is machine-local and not shared across machines. Something one person taught Claude stays on that person&rsquo;s laptop until someone writes it into a shared file.</li>
+<li><strong>/team-onboarding spreads a setup, not a decision.</strong> It builds a guide from one person&rsquo;s last 30 days of usage. It does not keep owners or decisions current.</li>
+<li><strong>A rule file is a request, not a lock.</strong> Anthropic&rsquo;s docs say Claude treats CLAUDE.md as context, not enforced configuration. Use a hook when something must never happen.</li>
+<li><strong>The gap is the record.</strong> Who owns what, what was chosen, what was rejected, and whether it worked. Nothing in Claude Code&rsquo;s team features is described as keeping that, so pick a home for it.</li>
+</ul></div></div>
+<figure style="margin:1.5rem 0">
+  <img src="/og-image-claude-code-team.svg" width="1200" height="630" alt="Three columns. In git: settings.json, CLAUDE.md and project skills, which reach every teammate who clones. On a laptop: auto memory and settings.local.json, which stay with one person. Needs a record: an owner, a decision with its reason, and an outcome check, which have no home by default." style="width:100%;height:auto;border-radius:10px;border:1px solid var(--rule)" loading="lazy">
+  <figcaption style="font-size:.85rem;color:var(--ink-3);margin-top:.5rem">Git carries the setup. Laptops hold private notes. The record is the part a team has to place on purpose.</figcaption>
+</figure>
+<h2>What a team shares by default, and what it doesn&rsquo;t</h2>
+<p>Here is what reaches a teammate who clones your repository, based on Anthropic&rsquo;s settings, memory and skills docs:</p>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead><tr><th>What you want to share</th><th>Where it lives</th><th>Reaches teammates?</th></tr></thead>
+<tbody>
+<tr><td>Permissions, hooks, plugins</td><td><code>.claude/settings.json</code> in the repo</td><td>Yes, once committed</td></tr>
+<tr><td>Your personal overrides</td><td><code>.claude/settings.local.json</code></td><td>No, kept out of commits</td></tr>
+<tr><td>Project rules and conventions</td><td><code>CLAUDE.md</code> in the repo</td><td>Yes, once committed</td></tr>
+<tr><td>Reusable procedures</td><td><code>.claude/skills/</code> in the repo</td><td>Yes, once committed</td></tr>
+<tr><td>What Claude learned from your corrections</td><td>Auto memory under <code>~/.claude/projects/</code></td><td>No, machine-local</td></tr>
+<tr><td>Who owns what, and why a call was made</td><td>Nowhere by default</td><td>No</td></tr>
+</tbody>
+</table></div>
+<p>The last two rows are the whole problem. The first four are configuration, and git handles configuration well. The last two are knowledge about the work, and nobody has decided where it goes.</p>
+<h2>Step 1: Commit the setup so there is one</h2>
+<p>Anthropic&rsquo;s settings docs describe four places a setting can live: managed (set by your organization), user, shared project and project local. The one that makes a team is the shared project file, <code>.claude/settings.json</code>. Commit it and everyone who clones gets the same permissions, hooks and plugins. Each person can still override it for themselves in <code>.claude/settings.local.json</code>, which Claude Code keeps out of commits, so personal exceptions never need a pull request.</p>
+<p>Two details that surprise teams:</p>
+<ul>
+<li><strong>Some committed keys wait for trust.</strong> Allow rules and most environment variables apply only after each teammate trusts the folder. Until then they still see permission prompts. If a rule &ldquo;isn&rsquo;t working&rdquo; for a new hire, check this first.</li>
+<li><strong>The session reads the file from where it starts.</strong> Claude Code reads the shared file from the session&rsquo;s primary working directory, so start at the repository root.</li>
+</ul>
+<p>Do the same for skills. A skill committed at <code>.claude/skills/&lt;name&gt;/SKILL.md</code> is available to everyone who clones. Plugins are the other route, and organizations can push skills and a managed CLAUDE.md to every machine through managed settings. For a small team, committing to the repo is enough and needs no admin. If you are new to skills, <a href="/docs/learn/agent-skills/">what are agent skills?</a> explains the format.</p>
+<h2>Step 2: One context file, with an owner</h2>
+<p>Instructions belong in one committed CLAUDE.md (or AGENTS.md) that says how to build, test and name things. Which filename to use and how nested files combine is a separate question, covered in <a href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a>. This page assumes you have one and asks a different question: who keeps it true?</p>
+<p>Give it an owner, a person&rsquo;s name, not &ldquo;the team&rdquo;. Treat changes like code: a pull request, one reviewer. Without an owner the file only grows, and a long file with contradicting lines is worse than a short one.</p>
+<p>Then deal with auto memory, because it is where private knowledge builds up. Claude saves notes about your corrections and preferences on its own, in a directory under your home folder. The docs state those files are not shared across machines. So if Dana tells Claude &ldquo;tests need Docker running&rdquo; and Sam never does, Dana&rsquo;s Claude knows and Sam&rsquo;s does not, and neither of them has written it down. A habit that fixes this: when Claude saves a memory that would help everyone, move it into CLAUDE.md in a pull request and let the private note go.</p>
+<p>Remember what the file can and cannot do. If a rule must hold every time, such as &ldquo;never touch the billing migrations&rdquo;, a CLAUDE.md line is a request. Anthropic&rsquo;s docs point to a PreToolUse hook for blocking an action, and a hook can live in the committed settings file.</p>
+<h2>What /team-onboarding does, and what it doesn&rsquo;t</h2>
+<p>If you searched &ldquo;claude code team onboarding&rdquo;, you probably meant this. <code>/team-onboarding</code> is a built-in Claude Code command. Per Anthropic&rsquo;s <a href="https://code.claude.com/docs/en/commands" rel="noopener">commands reference</a>, it analyzes your sessions, commands and MCP server usage from the past 30 days and writes a markdown guide that a teammate can paste as a first message to get set up fast. For claude.ai subscribers on Pro, Max, Team and Enterprise plans, it also returns a share link teammates can open directly in Claude Code.</p>
+<p>It is useful for the problem it targets: a new person does not know which commands, skills and connected tools the experienced person reaches for. One command beats a Slack thread of tips.</p>
+<p>What it does not do follows from how it works:</p>
+<ul>
+<li><strong>It describes one person&rsquo;s habits.</strong> The input is one person&rsquo;s recent usage. It reflects how that person works, which may not be how the team agreed to work.</li>
+<li><strong>It is a snapshot.</strong> A guide made today does not update when conventions change. Third-party explainers such as <a href="https://claudelog.com/faqs/what-is-team-onboarding-in-claude-code/" rel="noopener">ClaudeLog</a> suggest regenerating it periodically for the same reason.</li>
+<li><strong>It holds no decisions or owners.</strong> Usage history shows what someone did, not what the team chose, what it rejected, or who answers for an area.</li>
+</ul>
+<p>Treat it as a good first-day handout. It spreads a setup. It does not keep decisions or owners current, and nothing in Anthropic&rsquo;s description claims it does.</p>
+<h2>Step 3: Give decisions and owners a home</h2>
+<p>This is the step teams skip, and it is the one that stops the six-private-setups drift from coming back. You need three things written somewhere more durable than a session and more visible than a laptop:</p>
+<ol>
+<li><strong>An owner per area or piece of work.</strong> One name, a person or an agent.</li>
+<li><strong>A decision with its reason.</strong> What was chosen, what was rejected, who approved it.</li>
+<li><strong>An outcome you can check.</strong> What &ldquo;this worked&rdquo; means, stated before you ship, so someone can look later.</li>
+</ol>
+<p>A record this small is enough to start:</p>
+<ul>
+<li><strong>Decision:</strong> one sentence.</li>
+<li><strong>Why, and what we rejected:</strong> two lines.</li>
+<li><strong>Owner:</strong> one name.</li>
+<li><strong>Check by:</strong> a date.</li>
+<li><strong>Outcome:</strong> filled in later, against the condition you set.</li>
+</ul>
+<p>Where it lives is a real choice, and none of these is wrong:</p>
+<ul>
+<li><strong>A decisions folder in the repo.</strong> Good for code-shaped calls. Reviewable, versioned, next to the code. Weak for people who do not live in git.</li>
+<li><strong>The tracker you already use.</strong> Works if you add fields or a template for the reason and the check date. Without them, an issue says what was done but not why.</li>
+<li><strong>A workspace built for it.</strong> Maskin is one option. It is an open-source, MCP-native workspace where people and agents work on typed objects: a signal comes in as an insight, becomes a bet with a stated win condition, and runs as tasks. Each object has a driver (the owner) and a comment thread, and the bet closes with an outcome measured against its condition. Its agent sessions run the Claude Code and Codex command-line tools in isolated microVMs, so it sits beside the tools your developers already use. It is early, so judge the design, not a long track record. The longer argument is in <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a>, and you can <a href="/docs/self-hosted-ai-workspace/">self-host it</a>.</li>
+</ul>
+<p>The choice matters less than having one and saying where it is.</p>
+<h3>An illustrative week</h3>
+<p>This scenario is made up to show the gap. It is not a Maskin customer story.</p>
+<p>A team of four developers and a product manager all use Claude Code. On Monday, Sam asks Claude to refactor the export module and tells it to leave the legacy CSV path alone because a customer still depends on it. Claude saves a note. On Wednesday, Dana runs a cleanup and removes the legacy path. Her Claude had no such note, and CLAUDE.md never mentioned it.</p>
+<p>Nothing in the shared setup was wrong. The settings matched, the skills matched, the CLAUDE.md was clean. What was missing was a decision with a reason and an owner: &ldquo;Keep the legacy CSV export until the customer migrates. Owner: Sam. Check: end of quarter.&rdquo; With that in the record, and the one-line rule promoted into CLAUDE.md, Dana&rsquo;s session starts with the answer.</p>
+<h2>Common ways this goes wrong</h2>
+<ul>
+<li><strong>Everyone commits to CLAUDE.md and nobody prunes it.</strong> Rules pile up and start to contradict. Anthropic warns that when two instructions conflict, Claude may pick one arbitrarily. Give the file an owner and a size budget.</li>
+<li><strong>Personal settings leak into the shared file.</strong> Keep preferences in the local file. Review changes to the committed settings like code, since they change what every session is allowed to do.</li>
+<li><strong>A guide replaces a conversation.</strong> A generated onboarding guide gets a person running. It does not tell them what the team decided last month.</li>
+<li><strong>Treating the several-agents feature as the team answer.</strong> Having Claude coordinate several agents in one session is a different thing from coordinating several people. If you are asking about that, read <a href="/docs/learn/claude-code-agent-teams/">Claude Code agent teams</a>.</li>
+<li><strong>Memory without a decision trail.</strong> Notes from past sessions help an agent remember. They do not tell a human reviewer why something was decided. For that distinction, see <a href="/docs/learn/agent-memory-across-sessions/">agent memory across sessions</a>.</li>
+</ul>
+<h2>A first-week checklist</h2>
+<ol>
+<li>Commit <code>.claude/settings.json</code> with the permissions and hooks the whole team needs. Tell people to use <code>settings.local.json</code> for the rest.</li>
+<li>Name one owner for CLAUDE.md. Cut it to rules you could check in a pull request.</li>
+<li>Move any project skills your best user has into <code>.claude/skills/</code> and commit them.</li>
+<li>Run <code>/team-onboarding</code> on your most experienced user&rsquo;s machine and hand the result to the next hire, as a starting point, not a standard.</li>
+<li>Pick the home for decisions. Write the first five from the last month, with an owner and a check date each.</li>
+<li>Add one line to your pull request template: &ldquo;Does this change a decision? If so, update the record.&rdquo;</li>
+<li>Review the record and CLAUDE.md together once a month. A short review beats a rewrite.</li>
+</ol>
+<h2>FAQ</h2>
+<h3>What does Claude Code team onboarding do?</h3>
+<p>/team-onboarding is a Claude Code command that reads your last 30 days of sessions, commands and MCP server usage and writes a markdown guide a teammate can paste as a first message. On Pro, Max, Team and Enterprise plans it also returns a share link. It shares one person's setup. It does not track decisions or owners.</p>
+<h3>How do you use Claude Code as a team?</h3>
+<p>Share the setup through git: commit the shared settings file, project skills and one CLAUDE.md with a named owner. Then pick a place for decisions and owners, since Claude's own memory is private to each machine. A decisions folder, your tracker or a workspace all work, as long as everyone knows which one.</p>
+<h3>Do teammates share Claude Code settings?</h3>
+<p>Yes, through the repository. Commit .claude/settings.json and teammates who clone it get the same permissions, hooks and plugins. Each person can override it in .claude/settings.local.json, which stays out of commits. Some committed keys, such as allow rules, apply only after each teammate trusts the folder.</p>
+<h3>Does Claude Code share memory between teammates?</h3>
+<p>No. Anthropic's docs say auto memory is machine-local and its files are not shared across machines. CLAUDE.md is the shared channel, because you commit it. If Claude learns something the whole team needs, move it into CLAUDE.md through a pull request.</p>
+<h3>Can I make Claude Code follow a team rule every time?</h3>
+<p>Not with a rule file alone. Anthropic's docs say Claude treats CLAUDE.md as context, not enforced configuration. To block an action regardless of what Claude decides, use a PreToolUse hook in the committed settings, and keep CLAUDE.md for guidance.</p>
+<h3>How is this different from Claude Code agent teams?</h3>
+<p>Agent teams put several Claude sessions to work on one task, coordinated by a lead. This page is about several people and their agents sharing context and decisions over weeks. They solve different problems. The agent teams feature is covered in <a href="/docs/learn/claude-code-agent-teams/">Claude Code agent teams</a>.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/docs/claude-md-vs-agents-md/">
+        <div class="doc-card__title">CLAUDE.md vs AGENTS.md</div>
+        <div class="doc-card__desc">Which instruction file to keep, how nested files combine, and what changes at team scale.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/learn/claude-code-for-product-managers/">
+        <div class="doc-card__title">Claude Code for product managers</div>
+        <div class="doc-card__desc">What it covers for PM work, and the four points where a shared team record takes over.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+        <div class="doc-card__title">What is an agentic workspace?</div>
+        <div class="doc-card__desc">The cornerstone: the closed loop on shared typed objects.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Getting started is free</h2>
+      <p>Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of who owns what and what was decided. The <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace cornerstone</a> and the <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a> guide are the two best next reads.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
