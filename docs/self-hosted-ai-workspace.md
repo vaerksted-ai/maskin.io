@@ -7,7 +7,7 @@ A self-hosted AI workspace runs your product-management loops on your own infras
 > Self-hosting answers three buyer needs: data sovereignty, control over your model access, and auditability.
 > Maskin is licensed Apache 2.0 — inspect every line, fork it, run it commercially.
 > Bring your own Anthropic or OpenAI access: agents run the Claude Code CLI by default, or the Codex CLI. The MCP protocol layer is model-agnostic; the agent runtime is not.
-> Agents run in sandboxed sessions, each in an ephemeral microVM (microsandbox and libkrun), isolated from your private keys and production state.
+> Agents run in sandboxed sessions, each in an ephemeral microVM (microsandbox and libkrun).
 > Self-host is always free; managed plans offer EU and US data residency.
 
 ## Why self-host an AI workspace at all
@@ -32,7 +32,7 @@ Local and fine-tuned models are not a path we have validated, so we don’t clai
 The same principle runs through the whole surface: everything in Maskin is an object, and every object is reachable over one API — the UI and the agents serve the identical object model through the same routes. Authentication is built the same way for humans and agents: API-key auth with no browser sessions, so an agent can act as a first-class citizen of the workspace rather than a scripted imitation of a logged-in user (architecture decision record ADR-002, summarised in the [architecture overview](/docs/architecture/)). For a self-hosted deployment, that means the workspace behaves the same whether an operator, a CI pipeline, or an autonomous loop agent is driving it.
 
 ## Sandboxed agents: the safety argument for going autonomous
-An autonomous AI workspace is only safe if execution is contained. Maskin runs agents in **sandboxed sessions** — each in an ephemeral microVM built on microsandbox and libkrun, with the coding CLI installed, an isolated workspace, and a browser sidecar for web tasks. Nothing inside an agent’s sandbox can touch your private keys or production state outside the workspace’s own authority. That is the difference between an agent that “has access to everything” and an agent that executes inside a bounded environment with a close condition and human promote gates. See the [security model](/docs/security/) for auth, data isolation, and key handling.
+An autonomous AI workspace is only safe if execution is contained. Maskin runs agents in **sandboxed sessions** — each in an ephemeral microVM built on microsandbox and libkrun, with the coding CLI installed, an isolated workspace, and a browser sidecar for web tasks. That is the difference between an agent that “has access to everything” and an agent that executes inside a bounded environment with a close condition and human promote gates. See the [security model](/docs/security/) for auth, data isolation, and key handling.
 It’s also the pragmatic reason automation is tractable. Because sessions are ephemeral and bounded, the blast radius of any single failure is contained, and every step is inspectable on the way back out. The one real constraint: self-hosting means running the microsandbox and libkrun runtime on the agent-server host. Docker is used only for local development, and there is no fallback that runs agents without a microVM runtime. When you evaluate self-host, plan that infrastructure dependency up front.
 
 ## Managed vs self-hosted
@@ -51,7 +51,7 @@ Self-host keeps everything inside your walls and costs nothing for software; man
 - **Self-host** — always free. You pay only for your own infrastructure and model usage.
 - **Pro** — $20 per seat per month, agent credits included.
 - **Team** — $200 per workspace per month, unlimited seats.
-- **Enterprise** — your own LLM and infrastructure.
+- **Enterprise** — bring your own Anthropic or OpenAI access.
 
 ## Who this competes with, and why it matters
 The “open-source alternative to X” searches are filling fast with desktop coding apps (the [open source alternative to Claude Cowork](/alternatives/open-source-alternative-to-claude-cowork/) page compares those options directly). What is rarer is a self-hostable workspace for product work: signals in, bets shaped, tasks executed, outcomes validated. The closest named open-source rival in the agent-orchestration camp, [Paperclip](/alternatives/paperclip/), had roughly 95K GitHub stars when we read its repository on 1 October 2026 and sells “hire AI employees, run a company with AI” — the [full-company-simulation camp](/docs/composable-ai-agents-vs-ai-employees/). Maskin sits in the other camp: typed objects, event-driven triggers, agents that fire when data changes, and a closed loop that terminates against an outcome. For how the same object-model argument plays against the crowded coding-agent lane, see the [self-hosted AI agent control plane](/alternatives/self-hosted-ai-agent-control-plane/) comparison, and for the wider field of self-hosted agent repos, the [field survey of self-hosted AI agents](/alternatives/self-hosted-ai-agents/).

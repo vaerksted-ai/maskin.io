@@ -6,7 +6,7 @@ Maskin defaults to Claude but lets you bring your own model. For every agent run
 ## Routing priority
 When a session starts, Maskin picks the first option that's configured, in this order:
 1. **Agent-level key** — an Anthropic key set directly on the agent actor.
-2. **Workspace custom LLM** — a bring-your-own endpoint configured on the workspace (OpenRouter, Ollama, vLLM, or any OpenAI-compatible API).
+2. **Workspace custom LLM** — a bring-your-own endpoint configured on the workspace (OpenRouter or another OpenAI-compatible API).
 3. **Claude OAuth** — a workspace-level Claude Pro / Max / Teams subscription.
 4. **Workspace Anthropic key** — an Anthropic API key saved in workspace settings.
 5. **System fallback** — the operator-configured OpenRouter fallback (with a daily token cap).
@@ -21,7 +21,7 @@ The default model is `claude-sonnet-4-6`, with a separate small/fast model for l
 Set a **custom LLM** on the workspace to route agents to any OpenAI-compatible endpoint. The configuration carries:
 | Field | Purpose |
 | --- | --- |
-| base_url | The provider's API base (e.g. OpenRouter, a local Ollama/vLLM server). |
+| base_url | The provider's API base (e.g. OpenRouter). |
 | api_key | Credential for that provider (encrypted at rest). |
 | model | Main model id. |
 | small_fast_model | Cheaper model for lightweight steps. |
