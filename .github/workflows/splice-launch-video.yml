@@ -1,10 +1,16 @@
 name: Splice launch video
 
-# Manual only. Probe step: prints tool versions so we know the runner can do the
-# v2 sidebar splice (Playwright record + ffmpeg re-encode). The real splice steps
-# are added once the v2 mock page is committed.
+# Manual, plus a push trigger on the task branch only (workflow_dispatch is not
+# available for a workflow file that is not on main yet). Probe step: prints tool
+# versions so we know the runner can do the v2 sidebar splice (Playwright record +
+# ffmpeg re-encode). The real splice steps are added once the v2 mock page is committed.
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - feat/task-79815e5c-splice-v2-sidebar
+    paths:
+      - .github/workflows/splice-launch-video.yml
 
 permissions:
   contents: write
