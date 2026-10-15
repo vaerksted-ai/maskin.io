@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LLM &amp; models — BYO Anthropic, OpenAI, or local — Maskin</title>
-<meta name="description" content="How Maskin chooses which model runs an agent: the five-tier routing order, Claude OAuth subscriptions, workspace Anthropic keys, bring-your-own custom endpoints, and the system fallback.">
+<title>LLM &amp; models: Claude routing and Enterprise endpoints — Maskin</title>
+<meta name="description" content="How Maskin chooses which model runs an agent: the five-tier routing order, Claude OAuth subscriptions, workspace Anthropic keys, Enterprise custom endpoints, and the system fallback.">
 
 <link rel="canonical" href="https://maskin.io/docs/llm/">
 
@@ -17,8 +17,8 @@
 
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/docs/llm/">
-<meta property="og:title" content="LLM &amp; models — BYO Anthropic, OpenAI, or local — Maskin">
-<meta property="og:description" content="Maskin's five-tier model routing: Claude OAuth, workspace keys, bring-your-own endpoints, and fallback.">
+<meta property="og:title" content="LLM &amp; models: Claude routing and Enterprise endpoints — Maskin">
+<meta property="og:description" content="Maskin's five-tier model routing: Claude OAuth, workspace keys, Enterprise endpoints, and fallback.">
 <meta property="og:image" content="https://maskin.io/og-image.png?v=2">
 <meta property="og:site_name" content="Maskin">
 
@@ -35,7 +35,7 @@
       "@type": "TechArticle",
       "headline": "LLM & models",
       "name": "LLM & models",
-      "description": "How Maskin chooses which model runs an agent: the five-tier routing order, Claude OAuth subscriptions, workspace Anthropic keys, bring-your-own custom endpoints, and the system fallback.",
+      "description": "How Maskin chooses which model runs an agent: the five-tier routing order, Claude OAuth subscriptions, workspace Anthropic keys, Enterprise custom endpoints, and the system fallback.",
       "inLanguage": "en",
       "url": "https://maskin.io/docs/llm/",
       "isPartOf": "https://maskin.io/docs/",
@@ -78,13 +78,13 @@
 
     <p class="eyebrow">Self-hosting</p>
     <h1>LLM &amp; models</h1>
-    <p class="lead">Maskin defaults to Claude but lets you bring your own model. For every agent run it resolves a model through a fixed priority order, so you can set a default and override it where you need to.</p>
+    <p class="lead">Maskin defaults to Claude. On the hosted service, trial, Pro and Team workspaces run on a Maskin-funded route, and Enterprise workspaces supply their own credential. For every agent run it resolves a model through a fixed priority order, so you can set a default and override it where you need to.</p>
 
     <h2>Routing priority</h2>
     <p>When a session starts, Maskin picks the first option that's configured, in this order:</p>
     <ol>
       <li><strong>Agent-level key</strong> — an Anthropic key set directly on the agent actor.</li>
-      <li><strong>Workspace custom LLM</strong> — a bring-your-own endpoint configured on the workspace (OpenRouter or another OpenAI-compatible API).</li>
+      <li><strong>Workspace custom endpoint</strong> — Enterprise only. An endpoint configured on the workspace that speaks Anthropic's API format.</li>
       <li><strong>Claude OAuth</strong> — a workspace-level Claude Pro / Max / Teams subscription.</li>
       <li><strong>Workspace Anthropic key</strong> — an Anthropic API key saved in workspace settings.</li>
       <li><strong>System fallback</strong> — the operator-configured OpenRouter fallback (with a daily token cap).</li>
@@ -98,13 +98,13 @@
     </ul>
     <p>The default model is <code>claude-sonnet-4-6</code>, with a separate small/fast model for lightweight steps.</p>
 
-    <h2>Bring your own model</h2>
-    <p>Set a <strong>custom LLM</strong> on the workspace to route agents to any OpenAI-compatible endpoint. The configuration carries:</p>
+    <h2>Custom endpoint (Enterprise)</h2>
+    <p>Enterprise workspaces can also point agent sessions at their own Anthropic-compatible endpoint, using their own key. Set a <strong>custom LLM</strong> on the workspace to do it. The configuration carries:</p>
     <div class="doc-table-wrap"><table class="doc-table">
       <thead><tr><th>Field</th><th>Purpose</th></tr></thead>
       <tbody>
-        <tr><td><code>base_url</code></td><td>The provider's API base (e.g. OpenRouter).</td></tr>
-        <tr><td><code>api_key</code></td><td>Credential for that provider (encrypted at rest).</td></tr>
+        <tr><td><code>base_url</code></td><td>The endpoint's API base.</td></tr>
+        <tr><td><code>api_key</code></td><td>Credential for that endpoint (encrypted at rest).</td></tr>
         <tr><td><code>model</code></td><td>Main model id.</td></tr>
         <tr><td><code>small_fast_model</code></td><td>Cheaper model for lightweight steps.</td></tr>
       </tbody>
