@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maskin integrations: the full provider registry — Maskin Docs</title>
-<meta name="description" content="Maskin ships with ten first-party integrations. Three of them are auto-injected into every agent session, six are attachable MCP servers the agent must load, and one is provider-only with no MCP surface. This page documents the product registry — what Maskin supports out of the box — so it stays acc">
+<meta name="description" content="Maskin ships with twelve first-party integrations: four added to agent sessions automatically, six attachable MCP servers, Skjald, and Google Search Console.">
 
 <link rel="canonical" href="https://maskin.io/docs/integrations/">
 
@@ -18,7 +18,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/docs/integrations/">
 <meta property="og:title" content="Maskin integrations: the full provider registry — Maskin Docs">
-<meta property="og:description" content="Maskin ships with ten first-party integrations. Three of them are auto-injected into every agent session, six are attachable MCP servers the agent must load, and one is provider-only with no MCP surface. This page documents the product registry — what Maskin supports out of the box — so it stays acc">
+<meta property="og:description" content="Maskin ships with twelve first-party integrations: four added to agent sessions automatically, six attachable MCP servers, Skjald, and Google Search Console.">
 <meta property="og:image" content="https://maskin.io/og-image-integrations.png">
 <meta property="og:site_name" content="Maskin">
 
@@ -35,9 +35,9 @@
       "@type": "TechArticle",
       "@id": "https://maskin.io/docs/integrations/#article",
       "headline": "Maskin integrations: the full provider registry",
-      "description": "Maskin ships with ten first-party integrations. Three of them are auto-injected into every agent session, six are attachable MCP servers the agent must load, and one is provider-only with no MCP surface. This page documents the product registry — what Maskin supports out of the box — so it stays acc",
+      "description": "Maskin ships with twelve first-party integrations: four added to agent sessions automatically, six attachable MCP servers, Skjald, and Google Search Console.",
       "datePublished": "2026-09-25T00:00:00Z",
-      "dateModified": "2026-09-25T00:00:00Z",
+      "dateModified": "2026-10-18T00:00:00Z",
       "author": {
         "@type": "Organization",
         "name": "Maskin",
@@ -93,7 +93,7 @@
           "name": "How many integrations does Maskin support?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ten first-party integrations, split by how each exposes MCP to agents: three auto-inject providers (GitHub, Slack, PostHog), six attachable MCP servers (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn), and one provider-only integration (Skjald, Maskin's first-party meeting notetaker). This is the product registry — a given workspace may have fewer providers actually connected."
+            "text": "Twelve first-party integrations, split by how each exposes MCP to agents: four auto-inject providers (GitHub, Slack, PostHog, Resend), six attachable MCP servers (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn), one provider-only integration (Skjald, Maskin's first-party meeting notetaker) and one connect-only integration (Google Search Console). This is the product registry — a given workspace may have fewer providers actually connected."
           }
         },
         {
@@ -101,7 +101,7 @@
           "name": "What is the difference between an auto-inject and an attachable MCP server in Maskin?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "An auto-inject provider (GitHub, Slack, PostHog) is loaded into every agent session automatically — the agent sees those tools without any setup. An attachable provider (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn) exposes an mcp.server that the agent must explicitly load in its tool config before it can call any of that provider's tools. Both surface the same way once loaded; the difference is whether the agent has to opt in."
+            "text": "An auto-inject provider (GitHub, Slack, PostHog, Resend) is added to agent sessions automatically — the agent sees those tools without any setup. An attachable provider (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn) exposes an mcp.server that the agent must explicitly load in its tool config before it can call any of that provider's tools. Both surface the same way once loaded; the difference is whether the agent has to opt in."
           }
         },
         {
@@ -109,7 +109,7 @@
           "name": "Which Maskin integrations expose MCP to agents?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nine of the ten first-party providers expose MCP: GitHub, Slack, and PostHog are auto-injected into every agent session, while Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, and LinkedIn are attachable MCP servers the agent loads on demand. Skjald is the only registered provider without an MCP surface — it participates in agent workflows by emitting meeting created/updated events onto the object graph instead."
+            "text": "Ten of the twelve first-party providers expose MCP: GitHub, Slack, PostHog, and Resend are auto-injected, while Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, and LinkedIn are attachable MCP servers the agent loads on demand. Skjald has no MCP surface — it participates in agent workflows by emitting meeting created/updated events onto the object graph instead. Google Search Console is connect-only for now and gives agents no tools."
           }
         },
         {
@@ -125,7 +125,15 @@
           "name": "How does Skjald differ from Maskin's other integrations?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Skjald is Maskin's own first-party meeting notetaker, not a third-party service. Instead of exposing an MCP server for agents to call, it produces meeting objects (transcripts, notes) on the graph and emits status events (created, updated, notesready) that agents can subscribe to. Agents work with Skjald output the same way they work with any other object state change — by reading the object and reacting to its status transitions."
+            "text": "Skjald is Maskin's own first-party meeting notetaker, not a third-party service. Instead of exposing an MCP server for agents to call, it produces meeting objects (transcripts, notes) on the graph and emits status events (created, updated, notes_ready) that agents can subscribe to. Agents work with Skjald output the same way they work with any other object state change — by reading the object and reacting to its status transitions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can agents read Google Search Console data through Maskin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not through the provider itself yet. Google Search Console connects over OAuth and shows up in the registry, but it exposes no MCP tools and emits no events, so an agent session has nothing to call on it. Check this page for changes before you design a loop that depends on it."
           }
         }
       ]
@@ -145,41 +153,49 @@
     <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Integrations</p>
     <p class="eyebrow">Reference</p>
     <h1>Maskin integrations: the full provider registry</h1>
-    <p class="lead">Maskin ships with ten first-party integrations. Three of them are auto-injected into every agent session, six are attachable MCP servers the agent must load, and one is provider-only with no MCP surface. This page documents the <strong>product registry</strong> — what Maskin supports out of the box — so it stays accurate whether or not a given workspace has each provider connected.</p>
+    <p class="lead">Maskin ships with twelve first-party integrations. Four of them are added to agent sessions automatically, six are attachable MCP servers the agent must load, one is provider-only with no MCP surface, and one is connect-only with no agent tools yet. This page documents the <strong>product registry</strong> — what Maskin supports out of the box — so it stays accurate whether or not a given workspace has each provider connected.</p>
     <div class="callout callout--muted">
       <div class="callout__icon" aria-hidden="true">&#10003;</div>
       <div class="callout__body">
         <strong>Key takeaways</strong>
         <ul>
-          <li><strong>10 first-party integrations, split by MCP exposure:</strong> 3 auto-inject, 6 attachable, 1 provider-only.</li>
-          <li><strong>Auto-inject (3):</strong> GitHub, Slack, PostHog — live in every agent session with no attach step.</li>
+          <li><strong>12 first-party integrations, split by MCP exposure:</strong> 4 auto-inject, 6 attachable, 1 provider-only, 1 connect-only.</li>
+          <li><strong>Auto-inject (4):</strong> GitHub, Slack, PostHog, Resend — available to agents with no attach step.</li>
           <li><strong>Attachable (6):</strong> Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn — each carries an <code>mcp.server</code> the agent must load.</li>
           <li><strong>Provider-only (1):</strong> Skjald — Maskin's first-party meeting notetaker; emits <code>meeting</code> events onto the graph but exposes no MCP.</li>
+          <li><strong>Connect-only (1):</strong> Google Search Console — connects through OAuth; it exposes no MCP tools to agents yet.</li>
           <li><strong>Four auth types across the registry:</strong> <code>oauth2</code>, <code>oauth2_custom</code>, <code>api_key</code>, <code>manual</code>. The registry lists what the product supports; a workspace's connected set can be smaller.</li>
         </ul>
       </div>
     </div>
-    <h2>Auto-inject providers (live in every agent session)</h2>
+    <h2>Auto-inject providers (available without an attach step)</h2>
     <h3>GitHub</h3>
     <ul>
       <li><strong>Auth:</strong> <code>oauth2_custom</code> (GitHub App).</li>
-      <li><strong>MCP:</strong> auto-inject. Every agent session sees the GitHub MCP server without an attach step.</li>
+      <li><strong>MCP:</strong> auto-inject. Agent sessions see the GitHub MCP server without an attach step.</li>
       <li><strong>What agents can do:</strong> read/write issues and PRs, create branches, push files, search code and PRs, open reviews, list commits. The full surface of the GitHub MCP tool set.</li>
       <li><strong>Common use:</strong> engineering loops (code review, issue triage), and cross-role loops that reference commits or PRs as <code>signal</code> objects.</li>
     </ul>
     <h3>Slack</h3>
     <ul>
       <li><strong>Auth:</strong> <code>oauth2</code>.</li>
-      <li><strong>MCP:</strong> auto-inject. Every agent session can post to channels, DM users, read history, list channels, add reactions.</li>
+      <li><strong>MCP:</strong> auto-inject. Agent sessions can post to channels, DM users, read history, list channels, add reactions.</li>
       <li><strong>What agents can do:</strong> send messages, read thread replies, open DM conversations, get channel history, add reactions to messages.</li>
       <li><strong>Common use:</strong> notifying humans of state changes on objects (the <code>driver_id</code> on a status transition triggers a Slack DM), running scheduled digests, capturing threads back onto objects as comments.</li>
     </ul>
     <h3>PostHog</h3>
     <ul>
       <li><strong>Auth:</strong> <code>api_key</code>.</li>
-      <li><strong>MCP:</strong> auto-inject. Every agent session can query events, insights, feature flags, dashboards, and the full PostHog analytics surface.</li>
+      <li><strong>MCP:</strong> auto-inject. Agent sessions can query events, insights, feature flags, dashboards, and the full PostHog analytics surface.</li>
       <li><strong>What agents can do:</strong> execute product analytics queries (SQL and event-based), read insights and dashboards, resolve errors, inspect feature flags and experiments.</li>
       <li><strong>Common use:</strong> product-analytics loops — an agent surfaces regressions on cohort trends, or drafts a hypothesis from an event-shape change and posts it as an <code>insight</code>.</li>
+    </ul>
+    <h3>Resend</h3>
+    <ul>
+      <li><strong>Auth:</strong> <code>manual</code> (you paste a Resend API key).</li>
+      <li><strong>MCP:</strong> auto-inject. Resend's own MCP server is added to agent sessions without an attach step.</li>
+      <li><strong>Events:</strong> emits a <code>resend.email</code> event when an email is received, so loops can react to inbound mail the way they react to any other object change.</li>
+      <li><strong>Common use:</strong> loops that send or answer email from the workspace. We suggest a human approves anything that goes out under your name.</li>
     </ul>
     <h2>Attachable providers (agents must load the MCP server)</h2>
     <h3>Linear</h3>
@@ -194,7 +210,7 @@
       <li><strong>Auth:</strong> <code>oauth2</code>.</li>
       <li><strong>MCP:</strong> attachable. Load <code>gmail.mcp</code> for read/send/search.</li>
       <li><strong>What agents can do:</strong> read messages, send messages, search threads, manage drafts and labels.</li>
-      <li><strong>Common use:</strong> support-inbox loops, SDR follow-up sequences (with HITL on send), meeting-scheduling loops paired with Calendar.</li>
+      <li><strong>Common use:</strong> support-inbox loops, SDR follow-up sequences (a human approves each send), meeting-scheduling loops paired with Calendar.</li>
     </ul>
     <h3>Google Calendar</h3>
     <ul>
@@ -233,39 +249,49 @@
       <li><strong>What it does:</strong> first-party meeting notetaker — attaches to meetings, produces transcripts and notes as <code>meeting</code> objects (not files). Registered but not connected in every workspace.</li>
       <li><strong>Common use:</strong> meeting → knowledge loops. A meeting object's <code>status → notes_ready</code> transition triggers a distiller agent that writes a <code>knowledge</code> page from the transcript and validates it under a human gate.</li>
     </ul>
+    <h2>Connect-only (no agent tools yet)</h2>
+    <h3>Google Search Console</h3>
+    <ul>
+      <li><strong>Auth:</strong> <code>oauth2</code>.</li>
+      <li><strong>MCP:</strong> none yet. Connecting it links a Google account to the workspace through OAuth, but the provider does not hand agents Search Console tools, and it emits no events.</li>
+      <li><strong>What to expect:</strong> treat it as a connection the workspace holds for search-performance data. If your loop needs Search Console numbers inside an agent session today, that is not something this provider does by itself.</li>
+    </ul>
     <h2>Auth types at a glance</h2>
     <table>
       <thead><tr><th>Auth type</th><th>Providers</th></tr></thead>
       <tbody>
-        <tr><td><code>oauth2</code></td><td>Linear, Slack, Gmail, Google Calendar, Google Meet</td></tr>
+        <tr><td><code>oauth2</code></td><td>Linear, Slack, Gmail, Google Calendar, Google Meet, Google Search Console</td></tr>
         <tr><td><code>oauth2_custom</code></td><td>GitHub, Ubersuggest, LinkedIn</td></tr>
         <tr><td><code>api_key</code></td><td>PostHog</td></tr>
-        <tr><td><code>manual</code></td><td>Skjald</td></tr>
+        <tr><td><code>manual</code></td><td>Skjald, Resend</td></tr>
       </tbody>
     </table>
     <h2>MCP exposure at a glance</h2>
     <table>
       <thead><tr><th>Exposure</th><th>Providers</th><th>Count</th></tr></thead>
       <tbody>
-        <tr><td>Auto-inject (live in every agent session)</td><td>GitHub, Slack, PostHog</td><td>3</td></tr>
+        <tr><td>Auto-inject (no attach step)</td><td>GitHub, Slack, PostHog, Resend</td><td>4</td></tr>
         <tr><td>Attachable (agent must load <code>mcp.server</code>)</td><td>Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn</td><td>6</td></tr>
         <tr><td>Provider-only (no MCP surface)</td><td>Skjald</td><td>1</td></tr>
+        <tr><td>Connect-only (no agent tools yet)</td><td>Google Search Console</td><td>1</td></tr>
       </tbody>
     </table>
     <p>Once a provider is connected, agents work through the same verbs on every object type. The <a href="/docs/mcp-tools/">verbs agents call once a provider is connected</a> are listed in the MCP tools reference.</p>
     <h2>FAQ</h2>
     <h3>How many integrations does Maskin support?</h3>
-    <p>Ten first-party integrations, split by how each exposes MCP to agents: three auto-inject providers (GitHub, Slack, PostHog), six attachable MCP servers (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn), and one provider-only integration (Skjald, Maskin's first-party meeting notetaker). This is the product registry — a given workspace may have fewer providers actually connected.</p>
+    <p>Twelve first-party integrations, split by how each exposes MCP to agents: four auto-inject providers (GitHub, Slack, PostHog, Resend), six attachable MCP servers (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn), one provider-only integration (Skjald, Maskin's first-party meeting notetaker) and one connect-only integration (Google Search Console). This is the product registry — a given workspace may have fewer providers actually connected.</p>
     <h3>What is the difference between an auto-inject and an attachable MCP server in Maskin?</h3>
-    <p>An auto-inject provider (GitHub, Slack, PostHog) is loaded into every agent session automatically — the agent sees those tools without any setup. An attachable provider (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn) exposes an <code>mcp.server</code> that the agent must explicitly load in its tool config before it can call any of that provider's tools. Both surface the same way once loaded; the difference is whether the agent has to opt in.</p>
+    <p>An auto-inject provider (GitHub, Slack, PostHog, Resend) is added to agent sessions automatically — the agent sees those tools without any setup. An attachable provider (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn) exposes an <code>mcp.server</code> that the agent must explicitly load in its tool config before it can call any of that provider's tools. Both surface the same way once loaded; the difference is whether the agent has to opt in.</p>
     <h3>Which Maskin integrations expose MCP to agents?</h3>
-    <p>Nine of the ten first-party providers expose MCP: GitHub, Slack, and PostHog are auto-injected into every agent session, while Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, and LinkedIn are attachable MCP servers the agent loads on demand. Skjald is the only registered provider without an MCP surface — it participates in agent workflows by emitting <code>meeting</code> created/updated events onto the object graph instead.</p>
+    <p>Ten of the twelve first-party providers expose MCP: GitHub, Slack, PostHog, and Resend are auto-injected, while Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, and LinkedIn are attachable MCP servers the agent loads on demand. Skjald has no MCP surface — it participates in agent workflows by emitting <code>meeting</code> created/updated events onto the object graph instead. Google Search Console is connect-only for now and gives agents no tools.</p>
     <h3>Does Maskin need Zapier or another middleware to connect to these services?</h3>
     <p>No. Every integration on this page is a first-party Maskin provider — the auth, the MCP server (where present), and the object-graph emissions are all built into Maskin. There is no Zapier, Make, or generic iPaaS layer between the agent and the provider; agents call the provider's MCP tools directly.</p>
     <h3>How does Skjald differ from Maskin's other integrations?</h3>
     <p>Skjald is Maskin's own first-party meeting notetaker, not a third-party service. Instead of exposing an MCP server for agents to call, it produces <code>meeting</code> objects (transcripts, notes) on the graph and emits status events (<code>created</code>, <code>updated</code>, <code>notes_ready</code>) that agents can subscribe to. Agents work with Skjald output the same way they work with any other object state change — by reading the object and reacting to its status transitions.</p>
+    <h3>Can agents read Google Search Console data through Maskin?</h3>
+    <p>Not through the provider itself yet. Google Search Console connects over OAuth and shows up in the registry, but it exposes no MCP tools and emits no events, so an agent session has nothing to call on it. Check this page for changes before you design a loop that depends on it.</p>
     <div class="post-cta">
-      <h2>Ten first-party providers, no middleware</h2>
+      <h2>Twelve first-party providers, no middleware</h2>
       <p>Maskin wires auth, MCP servers, and object-graph emissions directly — agents call provider tools with no Zapier in between. Open source under Apache 2.0. Self-host free, bring your own model.</p>
       <div class="post-cta__actions">
         <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
