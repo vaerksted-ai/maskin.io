@@ -117,7 +117,7 @@ Anthropic recommends starting with 3 to 5 teammates for most workflows, with rou
 Yes, as of the docs read on 2026-10-04. Anthropic labels them experimental and disabled by default, with known limitations around session resumption, task coordination and shutdown. Because the feature is experimental, details can change between Claude Code versions, so check the current docs for the version you run.
 
 ### Can several people or sessions share one agent team?
-No. A session has exactly one team, scoped to that session, and you cannot share a team across sessions or promote a teammate to lead. The task list lives in local files and is never uploaded. If several people need the same view of the work, you need a record outside the session, such as a tracker or a workspace.
+No. A session has exactly one team, scoped to that session, and you cannot share a team across sessions or promote a teammate to lead. The task list lives in local files and is never uploaded. If several people need the same view of the work, you need a record outside the session, such as a tracker or a workspace. For the people side, read about [sharing Claude Code across a human team](/docs/learn/claude-code-team/).
 
 ### Do Claude Code agent teams work in VS Code or on Windows?
 The default in-process mode works in any terminal. Split-pane mode needs tmux or iTerm2, and the docs say it is not supported in VS Code’s integrated terminal, Windows Terminal or Ghostty. The docs also note tmux has known limitations on some operating systems and works best on macOS.
