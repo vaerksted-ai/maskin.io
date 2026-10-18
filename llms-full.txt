@@ -2768,7 +2768,7 @@ One empirical anchor is worth naming: per Guardrail Technologies' 2026 audit of 
 An agent identity is an actor — the same primitive as a human user, with its own id and its own permissions. Not a service account owned by a human; a first-class entry in the actor table. Two consequences:
 - **Every action carries the acting actor's id.** When a loop's Prospector agent creates a `bet`, the driver on that bet is the Prospector agent. When it changes a contact's status, the transition event carries the Prospector's id. Not "created by the automation"; created by *this* actor.
 - **Retiring an agent is one revocation, not a hunt.** Delete an agent actor, or flip it to `deactivated`, and every trigger it was attached to stops firing under its identity. No orphaned automations.
-The practical test: pick any object in your workspace and ask, "who drove the last five transitions on this?" The answer should be five actor ids — some human, some agent — each with a name you can click on and a permission list you can read.
+The practical test: pick any object in your workspace and ask, "who drove the last five transitions on this?" The answer should be five actor ids — some human, some agent — each with a name you can click on and a permission list you can read. It is the same record a team keeps after a multi-agent run, which is where [Claude Code agent teams](/docs/learn/claude-code-agent-teams/) end up: owners, decisions with reasons, and outcome checks.
 
 ### 2. Permissions, sentence-shaped
 Permissions belong to actors and are named in the shape of an action, not a feature.
