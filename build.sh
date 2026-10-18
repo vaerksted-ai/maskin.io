@@ -39,7 +39,7 @@ shopt -u nullglob
 # Marketplace listing visuals (hero + loop-flow) live at the repo root; not covered by the og-image-* glob.
 cp hero-seo-publishing.png loop-flow-seo-publishing.png loop-flow-seo-publishing.svg dist/
 cp llms.txt llms-full.txt dist/
-cp maskin-launch.mp4 dist/
+cp maskin-launch.mp4 maskin-launch-v2.mp4 dist/
 # IndexNow key file(s): served at https://maskin.io/<key>.txt so api.indexnow.org
 # can verify ownership before accepting a URL submission.
 shopt -s nullglob

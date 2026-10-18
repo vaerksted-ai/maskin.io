@@ -768,7 +768,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
   align-items:start;
 }
-.pricing-grid--4{grid-template-columns:repeat(4,1fr)}
+.pricing-grid--4{grid-template-columns:repeat(4,minmax(0,1fr))}
 .pricing-card--enterprise{border-top:3px solid var(--accent)}
 .pricing-card{
   padding:1.5rem;border:1.5px solid var(--rule);border-radius:12px;
@@ -1169,7 +1169,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         "Shared workspace for humans and AI agents",
         "Unified pipeline: Insights → Bets → Tasks",
         "Triggers, agents, and threads",
-        "Bring your own model (Anthropic, OpenAI, local via Ollama)",
+        "Your own Anthropic or OpenAI access on self-hosted and Enterprise workspaces",
         "Open source under Apache 2.0",
         "Self-host or managed, EU & US data residency"
       ],
@@ -1177,7 +1177,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       "offers": [
         { "@type": "Offer", "name": "Self-hosted", "price": "0", "priceCurrency": "USD", "description": "Open source under Apache 2.0. Always free to self-host." },
         { "@type": "Offer", "name": "Trial", "price": "0", "priceCurrency": "USD", "description": "14-day free trial. 1 workspace, up to 5 members. No credit card." },
-        { "@type": "Offer", "name": "Pro", "price": "20", "priceCurrency": "USD", "description": "Per seat / month. Unlimited workspaces and members, bring your own model key, EU & US data residency." },
+        { "@type": "Offer", "name": "Pro", "price": "20", "priceCurrency": "USD", "description": "Per seat / month. Unlimited workspaces and members, agent credits included, EU & US data residency." },
         { "@type": "Offer", "name": "Team", "price": "200", "priceCurrency": "USD", "description": "Per workspace / month, flat. Unlimited seats, self-host option, dedicated onboarding, SLA." }
       ]
     },
@@ -1192,9 +1192,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         { "@type": "Question", "name": "What's a \"bet\"?", "acceptedAnswer": { "@type": "Answer", "text": "A scoped hypothesis with a goal, evidence, and a timeline. Borrowed from Shape Up. It's the unit where leadership judgment compounds — signals get surfaced, priorities get chosen, outcomes get tracked. Bets replace the backlog." } },
         { "@type": "Question", "name": "What's a \"loop\"?", "acceptedAnswer": { "@type": "Answer", "text": "A closed cycle your team runs over and over: a trigger fires it, agents do the work, a human approves the parts that need a judgement call, the work ships, and the outcome feeds back in to sharpen the next pass — not recurring workflow execution inside one product. Every listing in the marketplace is a loop: wire the primitives once and it runs without anyone remembering to kick it off." } },
         { "@type": "Question", "name": "What's a \"trigger\"?", "acceptedAnswer": { "@type": "Answer", "text": "What fires a loop: a signal, a schedule, or a click. A signal is something changing in the workspace (a new insight, a status flip, a comment). A schedule is a cron on the wall clock. A click is a human hitting go. Every loop has at least one trigger — no trigger, no run." } },
-        { "@type": "Question", "name": "What models can I use?", "acceptedAnswer": { "@type": "Answer", "text": "Bring your own. Anthropic, OpenAI, local via Ollama — anything that speaks a standard API. Your key, your spend, your rate limits. No markup." } },
-        { "@type": "Question", "name": "Where does my data live? Does it train anything?", "acceptedAnswer": { "@type": "Answer", "text": "Hosted: isolated tenants in EU or US regions. Self-host: wherever you put the container. Either way your prompts and context are never used as training data — they belong to you." } },
-        { "@type": "Question", "name": "What does it cost?", "acceptedAnswer": { "@type": "Answer", "text": "14-day free trial — no credit card needed. After that: $20/seat/month (Pro), $200/workspace/month flat (Team, unlimited seats), or Enterprise with your own LLM and infrastructure. Self-host is always free under Apache 2.0." } }
+        { "@type": "Question", "name": "What models can I use?", "acceptedAnswer": { "@type": "Answer", "text": "Agent sessions run Claude Code by default, or Codex. Trial, Pro and Team workspaces use a Maskin-funded route. Self-hosted and Enterprise workspaces use your own Anthropic or OpenAI access: your key, your spend, your rate limits, no markup. Local models are not a path we have validated." } },
+        { "@type": "Question", "name": "Where does my data live? Does it train anything?", "acceptedAnswer": { "@type": "Answer", "text": "Hosted: EU or US regions, with workspace separation enforced in the API. Self-host: wherever you put the container. Either way your prompts and context are never used as training data — they belong to you." } },
+        { "@type": "Question", "name": "What does it cost?", "acceptedAnswer": { "@type": "Answer", "text": "14-day free trial — no credit card needed. After that: $20/seat/month (Pro), $200/workspace/month flat (Team, unlimited seats), or Enterprise with your own Anthropic or OpenAI access and infrastructure. Self-host is always free under Apache 2.0." } }
       ]
     }
   ]
@@ -1368,8 +1368,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <svg viewBox="0 0 20 20" fill="none" width="18" height="18"><rect x="3" y="5" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 9h6M7 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
         <div class="trust-item__text">
-          <strong>Bring your own model</strong>
-          <span>Anthropic · OpenAI · Ollama</span>
+          <strong>Your own model access</strong>
+          <span>Self-host &amp; Enterprise · Anthropic · OpenAI</span>
         </div>
       </div>
 
@@ -1419,7 +1419,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           </div>
         </div>
         <video id="demoVideo" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:10px" playsinline muted preload="metadata">
-          <source src="maskin-launch.mp4" type="video/mp4">
+          <source src="maskin-launch-v2.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <button class="demo-unmute" id="demoUnmute" type="button" aria-label="Turn sound on">
@@ -1744,7 +1744,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
       <div class="feature-card reveal reveal--d2">
         <div class="feature-card__title">Open &amp; no lock-in</div>
-        <div class="feature-card__body">Apache 2.0. Self-host or managed. Bring your own model key — Anthropic, OpenAI, or local via Ollama. No markup on AI spend. No proprietary data format you can't export.</div>
+        <div class="feature-card__body">Apache 2.0. Self-host or managed. Self-hosted and Enterprise run on your own Anthropic or OpenAI access, with no markup on AI spend. No proprietary data format you can't export.</div>
       </div>
     </div>
   </div>
@@ -1766,7 +1766,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
       <div class="feature-card reveal reveal--d1">
         <div class="feature-card__title">Your prompts never become our data</div>
-        <div class="feature-card__body">Bring your own model key and your prompts and context go straight to your provider — not through us. Nothing is ever used to train a model. Hosted tenants are isolated, with EU &amp; US data residency.</div>
+        <div class="feature-card__body">On self-hosted and Enterprise setups, your prompts and context go straight to your own Anthropic or OpenAI account — not through us. Nothing is ever used to train a model. On hosted, workspace separation is enforced in the API, with EU &amp; US data residency.</div>
       </div>
       <div class="feature-card reveal reveal--d2">
         <div class="feature-card__title">SOC 2 — on our roadmap</div>
@@ -1839,21 +1839,21 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="faq-item__q">What models can I use?
           <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
         </div>
-        <div class="faq-item__a">Bring your own. Anthropic, OpenAI, local via Ollama — anything that speaks a standard API. Your key, your spend, your rate limits. No markup.</div>
+        <div class="faq-item__a">Agent sessions run Claude Code by default, or Codex. Trial, Pro and Team workspaces use a Maskin-funded route. Self-hosted and Enterprise workspaces use your own Anthropic or OpenAI access: your key, your spend, your rate limits, no markup. Local models are not a path we have validated.</div>
       </div>
 
       <div class="faq-item">
         <div class="faq-item__q">Where does my data live? Does it train anything?
           <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
         </div>
-        <div class="faq-item__a">Hosted: isolated tenants in EU or US regions. Self-host: wherever you put the container. Either way your prompts and context are never used as training data — they belong to you.</div>
+        <div class="faq-item__a">Hosted: EU or US regions, with workspace separation enforced in the API. Self-host: wherever you put the container. Either way your prompts and context are never used as training data — they belong to you.</div>
       </div>
 
       <div class="faq-item">
         <div class="faq-item__q">What does it cost?
           <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
         </div>
-        <div class="faq-item__a">14-day free trial — no credit card needed. After that: $20/seat/month (Pro), $200/workspace/month flat (Team, unlimited seats), or Enterprise with your own LLM and infrastructure. Self-host is always free under Apache 2.0.</div>
+        <div class="faq-item__a">14-day free trial — no credit card needed. After that: $20/seat/month (Pro), $200/workspace/month flat (Team, unlimited seats), or Enterprise with your own Anthropic or OpenAI access and infrastructure. Self-host is always free under Apache 2.0.</div>
       </div>
 
     </div>
@@ -1866,7 +1866,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <div class="reveal" style="text-align:center">
       <div class="section-tag">Pricing</div>
       <h2 class="section-title">Start free. Scale when<br>it's earning its keep.</h2>
-      <p class="section-sub" style="margin-top:.875rem">14-day free trial. No credit card. Bring your own model key — no markup on AI spend. Self-host is always free under Apache 2.0.</p>
+      <p class="section-sub" style="margin-top:.875rem">14-day free trial. No credit card. Agent credits are included on Pro and Team; Enterprise brings its own Anthropic or OpenAI access. Self-host is always free under Apache 2.0.</p>
     </div>
 
     <div class="pricing-grid pricing-grid--4 reveal" style="margin-top:4rem">
@@ -1899,7 +1899,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <li>Unlimited members</li>
           <li>Full marketplace access</li>
           <li>$20 in tokens included / seat / month</li>
-          <li>Bring your own model key</li>
+          <li>Agent credits included</li>
           <li>Priority support</li>
           <li>EU &amp; US data residency</li>
         </ul>
@@ -1917,7 +1917,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <li>Unlimited seats — flat price</li>
           <li>$200 in tokens included / month</li>
           <li>Self-host option</li>
-          <li>Bring your own model key</li>
+          <li>Agent credits included</li>
           <li>Dedicated onboarding</li>
           <li>SLA &amp; invoicing</li>
         </ul>
@@ -1927,12 +1927,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <div class="pricing-card pricing-card--enterprise">
         <div class="pricing-card__header">
           <span class="pricing-card__name">Enterprise</span>
-          <div class="pricing-card__price"><span class="pricing-card__amount">BYOL</span></div>
+          <div class="pricing-card__price"><span class="pricing-card__amount">Custom</span></div>
         </div>
-        <p class="pricing-card__tagline">Bring your own LLM. Run on your own infrastructure. Full control.</p>
+        <p class="pricing-card__tagline">Bring your own Anthropic or OpenAI access. Run on your own infrastructure. Full control.</p>
         <ul class="pricing-card__features">
           <li>Everything in Team</li>
-          <li>Bring your own model — any provider</li>
+          <li>Bring your own Anthropic or OpenAI access</li>
           <li>Self-host on your infra</li>
           <li>SSO &amp; fine-grained access control (planned)</li>
           <li>Custom data residency</li>
@@ -1943,7 +1943,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
     </div>
 
-    <p class="pricing-note reveal">14-day free trial · no credit card required. <strong>Self-host is always free</strong> — Apache 2.0.<br>Included tokens cover everyday usage out of the box; connect your own model key for heavier workloads — no markup, your spend, your rate limits.</p>
+    <p class="pricing-note reveal">14-day free trial · no credit card required. <strong>Self-host is always free</strong> — Apache 2.0.<br>Included agent credits cover everyday usage on Pro and Team. Self-hosted and Enterprise workspaces use their own Anthropic or OpenAI access — no markup, your spend, your rate limits.</p>
   </div>
 </section>
 

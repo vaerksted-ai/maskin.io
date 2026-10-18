@@ -177,7 +177,7 @@
     <h2>The shortlist, by tier</h2>
     <h3>Tier 1 — Runtimes: one developer, one coding loop</h3>
     <p>A runtime is the thing that holds a coding session. You describe an object of work (a bug, a feature, a refactor), it drafts a change, tests, iterates, and commits. Below is the OSS shortlist. Every entry has a live GitHub repo, an install path that doesn't require signing up for a hosted service, and a public first-commit date. </p>
-    <table>
+    <div class="doc-table-wrap"><table>
       <thead><tr><th>Name</th><th>Licence</th><th>Install shape</th><th>One-line differentiator</th></tr></thead>
       <tbody>
         <tr><td><strong>OpenCode</strong></td><td>Apache-2.0</td><td>CLI (<code>opencode</code>)</td><td>Terminal-native. Model-agnostic (you bring the API key). The runtime most listicles rank at pos-2 for a reason — tight loop, no editor lock-in.</td></tr>
@@ -188,7 +188,7 @@
         <tr><td><strong>Continue</strong></td><td>Apache-2.0</td><td>VS Code + JetBrains extension</td><td>IDE-first. Configurable per-project via a single YAML. Less agent, more autocomplete-plus-context.</td></tr>
         <tr><td><strong>Goose (Block)</strong></td><td>Apache-2.0</td><td>CLI + desktop</td><td>Backed by Block (Square/Cash App). Extension-heavy — tool use through MCP is the design spine.</td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p>What separates them, in one line each: <strong>OpenCode</strong> is terminal-first and model-agnostic; <strong>Kilo</strong> is editor-embedded and multi-agent inside a repo; <strong>OpenHands</strong> treats sandboxed execution as the design centre; <strong>Aider</strong> is git-native (every change is a commit); <strong>Cline</strong> is the fork root of the VS-Code-native tree; <strong>Continue</strong> is autocomplete-plus-context more than agent; <strong>Goose</strong> is MCP-forward with Block backing it.</p>
     <p>If you're a single developer choosing a runtime, this is where the SERP's top 15 listicles do a reasonable job — they compare features inside this tier.</p>
     <h3>Tier 2 — Control planes: many runtimes, many sessions, one operator</h3>
@@ -200,7 +200,7 @@
     <p>The shape of the question this tier answers: "how do the non-engineering agents on my team hand work to — and read work from — the coding agents?" A runtime doesn't answer this. A control plane doesn't either. A product workspace does, and Maskin is the only OSS one this section knows about; if you know another, the PR button on the repo is open.</p>
     <p><strong>Try Maskin →</strong> Self-host from GitHub (<a href="https://github.com/sindre-ai/maskin"><code>sindre-ai/maskin</code></a>) — Apache-2.0, MCP-native, one Docker Compose away. Or read the tier boundary in the <a href="https://maskin.io/docs/ai-product-workspace-vs-coding-agent/">workspace-vs-coding-agent doc</a> before you install.</p>
     <h2>How to pick — three questions</h2>
-    <p><strong>1. What's the object of work?</strong> If it's a file, a diff, a repo — you want a Tier 1 runtime (and if you are weighing those against the vendor-run agents, <a href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a> covers that choice). If it's a session (session over which repo, on which sandbox) — Tier 2 control plane. If it's a shipped outcome that spans engineering and non-engineering roles — Tier 3 workspace.</p>
+    <p><strong>1. What's the object of work?</strong> If it's a file, a diff, a repo — you want a Tier 1 runtime (and if you are weighing those against the vendor-run agents, <a href="/docs/claude-code-vs-codex/">choosing between Claude Code and Codex by job</a> covers that choice, and <a href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a> covers the editor-first one). If it's a session (session over which repo, on which sandbox) — Tier 2 control plane. If it's a shipped outcome that spans engineering and non-engineering roles — Tier 3 workspace.</p>
     <p><strong>2. What ends the loop?</strong> A runtime's loop ends at "tests pass and commit lands." A control plane's loop ends at "session closed with a legible audit trail across all repos." A workspace's loop ends at "the bet the engineering work was serving is resolved as succeeded or failed." Pick the tier whose end-state is what you're actually trying to reach.</p>
     <p><strong>3. How much of the loop does the tool close on its own?</strong> Some Tier 1 runtimes are essentially very good autocomplete (Continue). Some close full features under human review (OpenHands, Aider). Same tier, different closure rates. A shortlist that ignores this gets you a benchmark answer, not a fit answer.</p>
     <h2>FAQ (people-also-ask)</h2>

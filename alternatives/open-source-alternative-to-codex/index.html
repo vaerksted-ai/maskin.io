@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Open source Codex alternative — closed-loop workspace — Maskin</title>
-<meta name="description" content="Open source Codex alternative for teams whose loop ends on outcome measured against a bet, not PR merged. Apache 2.0, MCP-native, self-hostable, model-agnostic.">
+<meta name="description" content="Open source Codex alternative for teams whose loop ends on outcome measured against a bet, not PR merged. Apache 2.0, MCP-native, self-hostable, model-agnostic at the MCP protocol layer.">
 
 <!-- Canonical -->
 <link rel="canonical" href="https://maskin.io/alternatives/open-source-alternative-to-codex/">
@@ -21,7 +21,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/alternatives/open-source-alternative-to-codex/">
 <meta property="og:title" content="Open source Codex alternative — closed-loop knowledge-work workspace">
-<meta property="og:description" content="Codex&rsquo;s loop terminates on PR merged. Maskin&rsquo;s terminates on outcome validated against a bet. Apache 2.0, MCP-native, self-hostable, model-agnostic.">
+<meta property="og:description" content="Codex&rsquo;s loop terminates on PR merged. Maskin&rsquo;s terminates on outcome validated against a bet. Apache 2.0, MCP-native, self-hostable, model-agnostic at the MCP protocol layer.">
 <meta property="og:image" content="https://maskin.io/og-image-open-source-alternative-to-codex.svg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -118,7 +118,7 @@
           "name": "Can I bring my own model?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The workspace is model-agnostic at the MCP protocol layer, so the model decision is decoupled from the platform. Codex for coding-heavy tasks, Claude for shaping and reasoning, a local model for constrained tasks, or your own fine-tune for domain work — all inside the same workspace, on the same objects. This is the one thing a closed, vendor-hosted alternative structurally cannot offer."
+            "text": "Within what Maskin runs today. The workspace is model-agnostic at the MCP protocol layer, but the agent runtime is not: agent sessions run the Claude Code CLI by default, or the Codex CLI, on your own Anthropic or OpenAI access. Codex for coding-heavy tasks and Claude for shaping and reasoning can both work inside the same workspace, on the same objects. Local and fine-tuned models are not a path we have validated. This is the one thing a closed, vendor-hosted alternative structurally cannot offer."
           }
         },
         {
@@ -162,7 +162,7 @@
       <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
         <li><strong>This is the workspace question, not the coding-agent question.</strong> Different intent, different comparison set. Codex, Claude Cowork, and the wave of open-source desktop coding apps answer the coding-agent question well. This page answers the loop-on-typed-objects question that the coding-agent pattern does not model.</li>
         <li><strong>Apache 2.0, self-host free forever</strong>, or hosted with EU/US data residency. Self-hosting is not an open-core trick &mdash; the whole workspace is under the license.</li>
-        <li><strong>Model-agnostic at the MCP protocol layer.</strong> Bring Codex, Claude, a local model, or your own fine-tune. Vendor-hosted platforms structurally cannot offer this because model choice is part of their product.</li>
+        <li><strong>Model-agnostic at the MCP protocol layer.</strong> Agent sessions run Claude Code by default, or the Codex CLI, on your own Anthropic or OpenAI access. Vendor-hosted platforms structurally cannot offer this because model choice is part of their product.</li>
         <li><strong>The wedge is the object of work.</strong> Codex&rsquo;s loop terminates on PR merged; Maskin&rsquo;s loop terminates on outcome validated against a bet&rsquo;s win condition. Codex-shaped coding work still runs; the loop-native piece is the extension.</li>
         <li><strong>Honest about traction.</strong> Maskin is early. Evaluate architecture and positioning, not a mature vendor track record.</li>
       </ul>
@@ -182,7 +182,7 @@
   <p>For teams that hit that ceiling, three cuts show up:</p>
   <ul>
     <li><strong>The object of work.</strong> Codex&rsquo;s terminal event is a merged PR. The workspace question terminates on outcome measured against a shaped bet&rsquo;s win condition. Those are different objects. When a team&rsquo;s work is &ldquo;ship a decision and measure whether the decision worked,&rdquo; a task-and-PR graph carries half the loop and drops the other half at the merge.</li>
-    <li><strong>Model choice.</strong> Codex is built around OpenAI&rsquo;s models. That is a strength inside its lane and a constraint the moment the team would rather send some tasks to Claude, others to a smaller local model, or a domain-specific fine-tune. A genuinely alternative workspace decouples the model from the platform so the decision is yours per-task, not the vendor&rsquo;s for everything.</li>
+    <li><strong>Model choice.</strong> Codex is built around OpenAI&rsquo;s models. That is a strength inside its lane and a constraint the moment the team would rather send some tasks to Claude and others to Codex, on your own access. A genuinely alternative workspace decouples the model from the platform so the decision is yours per agent, not the vendor&rsquo;s for everything.</li>
     <li><strong>Data residency and inspectability.</strong> The loop, the state, and the transcripts live inside the vendor&rsquo;s cloud. If a compliance boundary or governance policy says otherwise, the platform&rsquo;s answer is take-it-or-leave-it. Self-hosting is the only structural answer, and open source is the guarantee that what the loop does is knowable rather than a promise.</li>
   </ul>
   <p>The SERP is honest about the ceiling too. Coding-agent control planes are a crowded lane &mdash; twelve named entrants shipped February through August 2026 &mdash; and they all converge on the same vocabulary: self-host, MCP, approval queue, audit log, sandboxed execution. Those are commodity now, and any page (including this one) that argues on those alone is arguing about the wrong thing. The durable differentiator is the shape of work: kanban-of-coding-tasks vs loop-on-typed-objects. If you&rsquo;re evaluating that lane specifically, the <a href="/alternatives/self-hosted-ai-agent-control-plane/">self-hosted AI agent control plane</a> comparison walks all twelve entrants side-by-side on license, runtime, and object model.</p>
@@ -192,7 +192,7 @@
 
   <h2>Maskin vs Codex vs open-source coding-agent control planes</h2>
   <p>Because the Codex search is genuinely ambiguous between the coding-agent question and the workspace question, the honest comparison spans both.</p>
-  <table>
+  <div class="doc-table-wrap"><table>
     <thead>
       <tr><th></th><th>Maskin</th><th>Codex</th><th>Open-source coding-agent control plane</th></tr>
     </thead>
@@ -205,31 +205,31 @@
       <tr><td><strong>Validation</strong></td><td>Outcome measured against win condition</td><td>PR merged</td><td>PR merged</td></tr>
       <tr><td><strong>Who owns work</strong></td><td>Jointly owned human + agent</td><td>The requesting developer</td><td>The requesting developer</td></tr>
       <tr><td><strong>Open source</strong></td><td>Apache 2.0</td><td>No</td><td>Usually yes</td></tr>
-      <tr><td><strong>Bring your own model</strong></td><td>Yes (MCP-native)</td><td>No (OpenAI models)</td><td>Varies; increasingly yes</td></tr>
+      <tr><td><strong>Your own Anthropic or OpenAI access</strong></td><td>Yes (self-host and Enterprise)</td><td>No (OpenAI models)</td><td>Varies; increasingly yes</td></tr>
       <tr><td><strong>Data residency</strong></td><td>Your infra, or EU/US</td><td>Vendor</td><td>Your infra</td></tr>
     </tbody>
-  </table>
+  </table></div>
   <p>The honest read: Codex gives you a polished, vendor-hosted loop for the coding-task-through-PR shape. Open-source control planes give you the same shape self-hosted, with the license and the model choice. Maskin is the one whose loop terminates past the PR, on the outcome the shaped bet was scoped to &mdash; which is why the fit is knowledge-work teams, not coding-task-through-PR teams. For the wider category, see all <a href="/alternatives/">open-source alternatives to Codex and closed AI coding platforms</a>.</p>
 
   <h2>Self-host or managed</h2>
   <p>Maskin is open source under Apache 2.0, so the deployment choice is yours rather than the vendor&rsquo;s.</p>
-  <table>
+  <div class="doc-table-wrap"><table>
     <thead>
       <tr><th></th><th>Self-hosted</th><th>Managed (hosted)</th></tr>
     </thead>
     <tbody>
       <tr><td><strong>License</strong></td><td>Apache 2.0</td><td>Apache 2.0 software + hosted service</td></tr>
       <tr><td><strong>Data residency</strong></td><td>Your infrastructure</td><td>EU &amp; US</td></tr>
-      <tr><td><strong>Model</strong></td><td>Your choice</td><td>Your choice (bring your own model)</td></tr>
-      <tr><td><strong>Cost</strong></td><td>Free &mdash; you run it</td><td>Pro from $20/seat/month; Team $200/workspace/month (unlimited seats); Enterprise runs on your own LLM and infrastructure</td></tr>
+      <tr><td><strong>Model</strong></td><td>Claude Code or Codex CLI, on your own Anthropic or OpenAI access</td><td>Maskin-funded route on Pro and Team; your own access on Enterprise</td></tr>
+      <tr><td><strong>Cost</strong></td><td>Free &mdash; you run it</td><td>Pro from $20/seat/month; Team $200/workspace/month (unlimited seats); Enterprise brings its own Anthropic or OpenAI access and runs on your infrastructure</td></tr>
       <tr><td><strong>Who it suits</strong></td><td>Teams that need full control and already run infra</td><td>Teams that want the loop without operating it</td></tr>
     </tbody>
-  </table>
+  </table></div>
 
   <h2>Getting started</h2>
   <ul>
-    <li><strong><a href="/docs/self-hosted-ai-workspace/">Self-host</a> free forever.</strong> Clone the repo (Apache 2.0), follow the onboarding, and run agents in sandboxed container sessions on your own infrastructure. The current implementation requires Docker on the host.</li>
-    <li><strong>Start a hosted trial.</strong> Managed plans with EU &amp; US data residency start at Pro $20/seat/month (agent credits included); Team is $200/workspace/month with unlimited seats; Enterprise runs on your own LLM and infrastructure.</li>
+    <li><strong><a href="/docs/self-hosted-ai-workspace/">Self-host</a> free forever.</strong> Clone the repo (Apache 2.0), follow the onboarding, and run agents in sandboxed microVM sessions on an agent server you run (microsandbox and libkrun). Docker is for local development only.</li>
+    <li><strong>Start a hosted trial.</strong> Managed plans with EU &amp; US data residency start at Pro $20/seat/month (agent credits included); Team is $200/workspace/month with unlimited seats; Enterprise brings its own Anthropic or OpenAI access and runs on your infrastructure.</li>
   </ul>
 
   <h2>FAQ</h2>
@@ -241,7 +241,7 @@
   <p>Open-source coding-agent control planes (amux, Preloop, Crewship, Nora, and the wave that shipped Feb&ndash;Aug 2026) answer the same shape Codex does &mdash; task in, PR out &mdash; with self-hosting and model choice added. Maskin does not compete with them on that shape. It sits above it: the shaped bet carries the win condition past the PR, and the object graph carries state a task graph cannot. Approval queues, MCP support, sandboxed execution, and self-hosting are commodity on that SERP; the object of work is where the honest difference lives.</p>
 
   <h3>Can I bring my own model?</h3>
-  <p>Yes. The workspace is model-agnostic at the <a href="/docs/what-is-mcp-native/">MCP protocol layer</a>, so the model decision is decoupled from the platform. Codex for coding-heavy tasks, Claude for shaping and reasoning, a local model for constrained tasks, or your own fine-tune for domain work &mdash; all inside the same workspace, on the same objects. This is the one thing a closed, vendor-hosted alternative structurally cannot offer.</p>
+  <p>Within what Maskin runs today. The workspace is model-agnostic at the <a href="/docs/what-is-mcp-native/">MCP protocol layer</a>, but the agent runtime is not: agent sessions run the Claude Code CLI by default, or the Codex CLI, on your own Anthropic or OpenAI access. Codex for coding-heavy tasks and Claude for shaping and reasoning can both work inside the same workspace, on the same objects. Local and fine-tuned models are not a path we have validated. This is the one thing a closed, vendor-hosted alternative structurally cannot offer.</p>
 
   <h3>Does Maskin replace my coding tools?</h3>
   <p>No. Maskin operates a level above the editor, the repo, and the coding agent. It runs the loop around your coding tools &mdash; insights become bets, bets become tasks, agents execute in sandboxed sessions, outcomes get validated &mdash; while your editor, coding agent, and repo stay exactly where they are. For code-level help inside a file or task-to-PR work, Codex or a desktop coding assistant is still the right tool.</p>

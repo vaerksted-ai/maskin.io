@@ -17,7 +17,7 @@ Every step lands as a state transition on a typed object — insights, tasks, ev
 
 ## Prerequisites
 - A running Maskin instance (self-hosted under Apache 2.0 or a hosted trial — [Get started](/docs/get-started/)).
-- A model key configured on the workspace (Anthropic, OpenAI, or a local model — see [LLM & models](/docs/llm/)).
+- A model key configured on the workspace (your own Anthropic or OpenAI access — see [LLM & models](/docs/llm/)).
 - A Unipile account for the LinkedIn sender lane, or a Postmark/Resend account plus a warmed email domain for email.
 - An enrichment provider your account already uses (Apollo, Clay, or Tavily are the common shapes) — wired in as an MCP tool the research step can call.
 - A human on-call for the approval gate until the override rate settles.
@@ -81,7 +81,7 @@ The loop shape is the same — signal, research, draft, approval, send, reply, c
 As typed objects and relationships. The signal is an insight object created by a trigger; the draft is a task in `needs_approval` linked to the insight; the send is a task transition to `sending`; the reply is an event on the parent insight; the outcome is a status write on the insight itself. All of it lives on the same object graph as the rest of the workspace, so an agent can walk from insight to task to reply to outcome without leaving the substrate, and a human can review any step of any loop without opening a separate tool. The [Core concepts](/docs/concepts/) page has the full object-model reference.
 
 ### What model should I use for the drafting step?
-Whichever your team can hold taste on. Draft quality is a prompt-and-voice problem more than a raw-capability problem; a well-prompted mid-tier model with the sender’s writing samples in context outperforms a frontier model prompted generically. Because Maskin is [MCP-native](/docs/what-is-mcp-native/), the model call is a workspace configuration, not a code change: swap Anthropic for OpenAI or a local model without touching the loop shape. Keep the override rate as the honest evaluation metric — the model that produces the healthiest middle-band override rate in your reviewer’s hands is the right one, regardless of the leaderboard.
+Whichever your team can hold taste on. Draft quality is a prompt-and-voice problem more than a raw-capability problem; a well-prompted mid-tier model with the sender’s writing samples in context outperforms a frontier model prompted generically. Because Maskin is [MCP-native](/docs/what-is-mcp-native/), the model call is a workspace configuration, not a code change: swap Anthropic for OpenAI without touching the loop shape. Keep the override rate as the honest evaluation metric — the model that produces the healthiest middle-band override rate in your reviewer’s hands is the right one, regardless of the leaderboard.
 
 ### How does this connect to the open-source AI SDR comparison?
 The companion page, [Open source AI SDR: the honest map](/alternatives/open-source-ai-sdr/), covers the six OSS AI SDR repos on GitHub in 2026 (MatthewDailey/open-sdr, OpenOutreach, ZeroGTM, Signal, personizeai/revenue-os, kandksolvefast/ai-sdr-agent), the $50-200/mo vs $2k-5k/mo cost split against closed SaaS, and the failure modes of running outbound without a real approval gate. This page is the concrete build side: given you have accepted the loop framing and want to run it on your own object graph, this is how the seven steps get wired inside Maskin.

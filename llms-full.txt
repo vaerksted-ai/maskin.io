@@ -59,7 +59,6 @@ Once you're in, you'll see the unified pipeline view: **Insights → Bets → Ta
 ## Step 2 — Paste your Anthropic API key
 1. Open **Settings → Integrations** (or **Settings → LLM keys**).
 2. Paste your Anthropic API key and **Save**.
-Only the last four characters are shown after saving.
 
 ## Step 3 — Get your Maskin API key and workspace ID
 1. Open **Settings → API keys**, click **Create key**, and copy the `ank_…` value.
@@ -180,7 +179,7 @@ A quick tour of the Maskin model so the rest of the docs — and the MCP tools �
 Everyone in Maskin is an **actor** — and both people and AI agents are actors. They share the same shape: each has an identity, an API key, and a place in one or more workspaces. Agents add a **system prompt**, a **tools** configuration, optional **memory**, and an **LLM provider**. Because humans and agents are the same primitive, an agent can be assigned work, mentioned in a comment, or made the "driver" of an object exactly like a teammate.
 
 ## Workspaces and members
-A **workspace** is an isolated tenant — your team's data lives inside it, and every object, file, and session is scoped to one. Membership is role-based: `owner`, `member`, or `viewer`. A workspace also carries its own **settings**: display names, the valid statuses per object type, custom field definitions, relationship types, and which extension modules are enabled. That's what makes a "development" workspace look different from a "growth" one (see [Self-hosted setup](/docs/get-started/self-hosted/) for templates).
+A **workspace** is your team's data boundary (enforced in the API, route by route) — every object, file, and session is scoped to one. Membership is role-based: `owner`, `member`, or `viewer`. A workspace also carries its own **settings**: display names, the valid statuses per object type, custom field definitions, relationship types, and which extension modules are enabled. That's what makes a "development" workspace look different from a "growth" one (see [Self-hosted setup](/docs/get-started/self-hosted/) for templates).
 
 ## Objects and the pipeline
 Work is represented as **objects**. There's one object model with a `type` discriminator — the three built-in types form the pipeline:
@@ -210,7 +209,7 @@ When an agent needs a human — approval, a decision, an input — it raises a *
 - **Extensions / modules** — pluggable add-ons (CRM, knowledge, notetaker, work) that introduce new object types and behaviour.
 
 ## Activity and real-time
-Every change is recorded in an append-only **event log**, which doubles as the audit trail and the source for unread tracking. The UI and agents stay live through a Postgres NOTIFY → Server-Sent-Events stream — no extra message broker required.
+Every change is recorded in an insert-only (by convention) **event log**, which doubles as the audit trail and the source for unread tracking. The UI and agents stay live through a Postgres NOTIFY → Server-Sent-Events stream — no extra message broker required.
 
 
 ---
@@ -252,7 +251,7 @@ An agent's **skills**, **memory**, and **learnings** live in S3-compatible stora
 While a session runs, its output streams live over Server-Sent Events, and the full log is retained and paginated afterward. Each session records token usage — input, output, and cache-read/write — and a computed `totalCostUsd`, so you can see exactly what each run consumed. For the task-level view above per-call cost — traces, evals, and drift across the fleet — see the [workspace-as-trace approach to agent observability](/docs/agent-observability/).
 
 ## Scaling beyond one host
-For local development, sessions run as Docker containers on the app host. For higher throughput, set `AGENT_SERVERS` to a pool of remote agent servers (the path managed hosting uses): sessions are then enqueued and dispatched to the least-loaded server over HTTPS, with a warm pool to cut cold-start latency. See the [configuration reference](/docs/configuration/) for the relevant variables.
+Sessions run in ephemeral microVMs (libkrun, managed through microsandbox) on remote agent servers, the path managed hosting uses. Docker is for local development only, and there is no fallback that runs agents without the microVM runtime. Set `AGENT_SERVERS` to a pool of agent servers: sessions are then enqueued and dispatched to the least-loaded server over HTTPS, with a warm pool to cut cold-start latency. See the [configuration reference](/docs/configuration/) for the relevant variables.
 > Which model an agent uses is resolved per run: an agent-level key, a workspace custom LLM endpoint, a Claude OAuth subscription, a workspace Anthropic key, or a system fallback — in that order.
 
 
@@ -287,16 +286,16 @@ Humans (web)  Agents (Claude Code)   External (Slack/GitHub/…)
 Insights, bets, tasks (and extension types) live in **one objects table** with a `type` discriminator; a separate **relationships** table connects them into a graph. This is why an agent and a human can operate on exactly the same records. See [Core concepts](/docs/concepts/).
 
 ## Event-sourced activity
-Every change appends to an immutable **events** table. That log is both the audit trail and the basis for unread tracking — state is derived, not overwritten. The same log doubles as the substrate for [the workspace-as-trace approach to agent observability](/docs/agent-observability/) — the agent-level trace is a side effect of the work, not a second pipeline.
+Every change appends to the **events** table, which is insert-only by convention. That log is both the audit trail and the basis for unread tracking — state is derived, not overwritten. The same log doubles as the substrate for [the workspace-as-trace approach to agent observability](/docs/agent-observability/) — the agent-level trace is a side effect of the work, not a second pipeline.
 
 ## Real-time without a broker
 Writes emit PostgreSQL `NOTIFY`; the API `LISTEN`s and fans changes out to clients as **Server-Sent Events**, so the UI and live session logs update with no extra message queue. Behind a connection pooler, set `DATABASE_URL_DIRECT` to a non-pooled connection so LISTEN/NOTIFY keeps working (see [Troubleshooting](/docs/troubleshooting/)).
 
 ## Actors & auth
-Humans and agents are unified as **actors**. Requests authenticate with a bearer API key (stored as a SHA-256 hash) and carry `X-Workspace-Id`; every query is scoped to that workspace. Details on the [Security](/docs/security/) page.
+Humans and agents are unified as **actors**. Requests authenticate with a bearer API key (stored as issued; hashing is planned) and carry `X-Workspace-Id`; workspace separation is enforced in the API, route by route. Details on the [Security](/docs/security/) page.
 
 ## Agent execution
-Each agent run is a **session** in an ephemeral, non-root Docker container built from `agent-base`. By default these run on the app host's Docker; set `AGENT_SERVERS` to distribute them across dedicated agent servers with a warm pool. See [Agents & sessions](/docs/agents/).
+Each agent run is a **session** in an ephemeral microVM (libkrun, managed through microsandbox) started from `agent-base` on a dedicated agent server. Set `AGENT_SERVERS` to point the app at your agent servers, which keep a warm pool. Docker is for local development only. See [Agents & sessions](/docs/agents/).
 
 ## MCP layer & extensions
 The `mcp` package exposes the workspace as MCP tools over `/mcp` — a thin layer over the same services the REST API uses, so both surfaces stay in lock-step ([MCP tools](/docs/mcp-tools/) / [API reference](/docs/api/)). **Integrations** add provider adapters, webhook handlers, and auto-injected MCPs; **extensions/modules** register new object types and routes under `/api/m/{extension-id}`.
@@ -516,7 +515,7 @@ Every request carries an API key; workspace-scoped routes also carry a workspace
 Authorization: Bearer <YOUR_API_KEY>     # ank_…
 X-Workspace-Id: <YOUR_WORKSPACE_ID>       # workspace UUID
 ```
-Keys are stored as SHA-256 hashes; auth is stateless (no cookies/sessions). A small allowlist needs no auth: `/api/health`, `/openapi.json`, signup, OAuth callbacks, and webhook ingest.
+Keys are stored as issued (hashing is planned); auth is stateless (no cookies/sessions). A small allowlist needs no auth: `/api/health`, `/openapi.json`, signup, OAuth callbacks, and webhook ingest.
 
 ## Resource groups
 | Mount | Purpose |
@@ -613,7 +612,7 @@ Maskin is configured through environment variables. Only `DATABASE_URL` is stric
 Full per-provider setup is on the [Integrations setup](/docs/integrations/) page.
 
 ## LLM
-The Anthropic API key and any workspace custom-LLM endpoint are configured **in the app** (Settings → Integrations / LLM keys), stored encrypted per workspace — not via environment. The environment only configures the optional *system fallback* used when a workspace has no model configured:
+The Anthropic API key and any workspace custom-LLM endpoint are configured **in the app** (Settings → Integrations / LLM keys), per workspace — not via environment. The environment only configures the optional *system fallback* used when a workspace has no model configured:
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | MASKIN_FALLBACK_OPENROUTER_KEY | — | Enables the OpenRouter-based fallback model. |
@@ -651,71 +650,78 @@ The Anthropic API key and any workspace custom-LLM endpoint are configured **in 
 > Source: https://maskin.io/docs/integrations/
 
 # Maskin integrations: the full provider registry
-Maskin ships with ten first-party integrations. Three of them are auto-injected into every agent session, six are attachable MCP servers the agent must load, and one is provider-only with no MCP surface. This page documents the **product registry** — what Maskin supports out of the box — so it stays accurate whether or not a given workspace has each provider connected.
+Maskin's registry holds twelve first-party integrations. Tools for four of them (GitHub, Slack, PostHog and Resend) are available to every agent once the integration is connected. Other integrations are added per agent. One, Skjald, is provider-only with no agent tools. One, Google Search Console, is a search-data sync that is coming and has no agent tools. This page documents the **product registry**: what Maskin supports out of the box, so it stays accurate whether or not a given workspace has each provider connected.
 > ✓
 > **Key takeaways**
-> **10 first-party integrations, split by MCP exposure:** 3 auto-inject, 6 attachable, 1 provider-only.
-> **Auto-inject (3):** GitHub, Slack, PostHog — live in every agent session with no attach step.
-> **Attachable (6):** Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn — each carries an `mcp.server` the agent must load.
-> **Provider-only (1):** Skjald — Maskin's first-party meeting notetaker; emits `meeting` events onto the graph but exposes no MCP.
+> **12 first-party integrations, split by how agents get them:** 4 available to every agent once connected, 6 added per agent, 1 provider-only, 1 search-data sync (coming).
+> **Available to every agent once connected (4):** GitHub, Slack, PostHog, Resend.
+> **Added per agent (6):** Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn. Each carries an `mcp.server` the agent must load.
+> **Provider-only (1):** Skjald, Maskin's first-party meeting notetaker. It emits `meeting` events onto the graph but exposes no MCP.
+> **Search-data sync, coming (1):** Google Search Console. It is a data sync, not an agent tool.
 > **Four auth types across the registry:** `oauth2`, `oauth2_custom`, `api_key`, `manual`. The registry lists what the product supports; a workspace's connected set can be smaller.
 
-## Auto-inject providers (live in every agent session)
+## Available to every agent once connected
 
 ### GitHub
 - **Auth:** `oauth2_custom` (GitHub App).
-- **MCP:** auto-inject. Every agent session sees the GitHub MCP server without an attach step.
+- **MCP:** the GitHub tool set is available to every agent once GitHub is connected.
 - **What agents can do:** read/write issues and PRs, create branches, push files, search code and PRs, open reviews, list commits. The full surface of the GitHub MCP tool set.
 - **Common use:** engineering loops (code review, issue triage), and cross-role loops that reference commits or PRs as `signal` objects.
 
 ### Slack
 - **Auth:** `oauth2`.
-- **MCP:** auto-inject. Every agent session can post to channels, DM users, read history, list channels, add reactions.
+- **MCP:** the Slack tool set is available to every agent once Slack is connected. Agents can post to channels, DM users, read history, list channels, add reactions.
 - **What agents can do:** send messages, read thread replies, open DM conversations, get channel history, add reactions to messages.
 - **Common use:** notifying humans of state changes on objects (the `driver_id` on a status transition triggers a Slack DM), running scheduled digests, capturing threads back onto objects as comments.
 
 ### PostHog
 - **Auth:** `api_key`.
-- **MCP:** auto-inject. Every agent session can query events, insights, feature flags, dashboards, and the full PostHog analytics surface.
+- **MCP:** the PostHog tool set is available to every agent once PostHog is connected. Agents can query events, insights, feature flags, dashboards, and the full PostHog analytics surface.
 - **What agents can do:** execute product analytics queries (SQL and event-based), read insights and dashboards, resolve errors, inspect feature flags and experiments.
-- **Common use:** product-analytics loops — an agent surfaces regressions on cohort trends, or drafts a hypothesis from an event-shape change and posts it as an `insight`.
+- **Common use:** product-analytics loops. An agent surfaces regressions on cohort trends, or drafts a hypothesis from an event-shape change and posts it as an `insight`.
 
-## Attachable providers (agents must load the MCP server)
+### Resend
+- **Auth:** `manual`. You bring your own Resend account and paste your own API key.
+- **MCP:** tools for Resend are available to every agent once Resend is connected.
+- **Events:** emits a `resend.email` event when an email is received, so loops can react to inbound mail the way they react to any other object change.
+- **Common use:** loops that react to inbound mail or send email from your own Resend account. We suggest a human approves anything that goes out under your name.
+
+## Added per agent (the agent must load the MCP server)
 
 ### Linear
 - **Auth:** `oauth2`.
-- **MCP:** attachable. Load `linear.mcp` in the agent's tool config.
+- **MCP:** added per agent. Load `linear.mcp` in the agent's tool config.
 - **What agents can do:** read/write issues, projects, and teams; comment; transition status; list cycles.
 - **Common use:** engineering-team loops that mirror Linear issues into Maskin objects, or agents that write back to Linear from a Maskin bet.
 
 ### Gmail
 - **Auth:** `oauth2`.
-- **MCP:** attachable. Load `gmail.mcp` for read/send/search.
+- **MCP:** added per agent. Load `gmail.mcp` for read/send/search.
 - **What agents can do:** read messages, send messages, search threads, manage drafts and labels.
-- **Common use:** support-inbox loops, SDR follow-up sequences (with HITL on send), meeting-scheduling loops paired with Calendar.
+- **Common use:** support-inbox loops, SDR follow-up sequences (with a human approving each send), meeting-scheduling loops paired with Calendar.
 
 ### Google Calendar
 - **Auth:** `oauth2`.
-- **MCP:** attachable. Load `google-calendar.mcp` for read/write on events.
+- **MCP:** added per agent. Load `google-calendar.mcp` for read/write on events.
 - **What agents can do:** read events, create events, invite attendees, propose times.
 - **Common use:** meeting-scheduling loops, capacity-planning agents that read the calendar to guard against double-booking.
 
 ### Google Meet
 - **Auth:** `oauth2`.
-- **MCP:** attachable. Load `google-meet.mcp` for meeting-lifecycle access.
+- **MCP:** added per agent. Load `google-meet.mcp` for meeting-lifecycle access.
 - **What agents can do:** read meeting metadata, join links, participant lists.
 - **Common use:** paired with the Skjald notetaker or Calendar to close a meeting-scheduled → meeting-held → notes-captured loop. Registered but not connected in every workspace; workspace-verified examples are not printed for this provider here.
 
 ### Ubersuggest
 - **Auth:** `oauth2_custom`.
-- **MCP:** attachable. Load `ubersuggest.mcp` for SEO keyword, SERP, and backlink data.
+- **MCP:** added per agent. Load `ubersuggest.mcp` for SEO keyword, SERP, and backlink data.
 - **What agents can do:** run keyword research, pull SERP analyses, read backlinks and competitors, run site audits, look up traffic value.
-- **Common use:** SEO loops — an agent scans a keyword cluster weekly, files new `insight` objects on demand surges, drafts briefs.
+- **Common use:** SEO loops. An agent scans a keyword cluster weekly, files new `insight` objects on demand surges, drafts briefs.
 
 ### LinkedIn
 - **Registry name:** LinkedIn (provider id: `linkedin-unipile`).
 - **Auth:** `oauth2_custom`.
-- **MCP:** attachable. Load the LinkedIn MCP for identity and messaging.
+- **MCP:** added per agent. Load the LinkedIn MCP for identity and messaging.
 - **What agents can do:** read profiles, read messages, send DMs, follow connection activity.
 - **Common use:** AI-SDR loops where an agent shapes an outbound draft on a signal and a human approves before the send. Content loops are a second use: [a LinkedIn content loop that plans and drafts a fortnight of posts](/marketplace/linkedin-content/) for the account owner to approve. On some accounts the loop posts for you; on others the owner pastes the approved text into LinkedIn.
 
@@ -724,43 +730,58 @@ Maskin ships with ten first-party integrations. Three of them are auto-injected 
 ### Skjald
 - **Auth:** manual.
 - **MCP:** **no MCP surface.** Skjald does not expose an attachable MCP server. It emits `meeting` created/updated events onto the graph; agents subscribe to those events like they subscribe to any other object state change.
-- **What it does:** first-party meeting notetaker — attaches to meetings, produces transcripts and notes as `meeting` objects (not files). Registered but not connected in every workspace.
+- **What it does:** first-party meeting notetaker. It attaches to meetings and produces transcripts and notes as `meeting` objects (not files). Registered but not connected in every workspace.
 - **Common use:** meeting → knowledge loops. A meeting object's `status → notes_ready` transition triggers a distiller agent that writes a `knowledge` page from the transcript and validates it under a human gate.
+
+## Search-data sync (coming, no agent tools)
+
+### Google Search Console
+- **Auth:** `oauth2` (Google sign-in).
+- **Status:** coming. It is a registry entry that is not yet announced as available.
+- **MCP:** none. The provider does not hand agents Search Console tools, and it emits no events.
+- **What to expect:** Search Console is a data sync, not an agent tool. If a loop needs to query Search Console live inside an agent session, this provider does not do that.
 
 ## Auth types at a glance
 | Auth type | Providers |
 | --- | --- |
-| oauth2 | Linear, Slack, Gmail, Google Calendar, Google Meet |
+| oauth2 | Linear, Slack, Gmail, Google Calendar, Google Meet, Google Search Console |
 | oauth2_custom | GitHub, Ubersuggest, LinkedIn |
 | api_key | PostHog |
-| manual | Skjald |
+| manual | Skjald, Resend |
 
-## MCP exposure at a glance
-| Exposure | Providers | Count |
+## How agents get each provider at a glance
+| How agents get it | Providers | Count |
 | --- | --- | --- |
-| Auto-inject (live in every agent session) | GitHub, Slack, PostHog | 3 |
-| Attachable (agent must load mcp.server) | Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn | 6 |
+| Available to every agent once connected | GitHub, Slack, PostHog, Resend | 4 |
+| Added per agent (agent must load mcp.server) | Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn | 6 |
 | Provider-only (no MCP surface) | Skjald | 1 |
+| Search-data sync, coming (no agent tools) | Google Search Console | 1 |
 Once a provider is connected, agents work through the same verbs on every object type. The [verbs agents call once a provider is connected](/docs/mcp-tools/) are listed in the MCP tools reference.
 
 ## FAQ
 
 ### How many integrations does Maskin support?
-Ten first-party integrations, split by how each exposes MCP to agents: three auto-inject providers (GitHub, Slack, PostHog), six attachable MCP servers (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn), and one provider-only integration (Skjald, Maskin's first-party meeting notetaker). This is the product registry — a given workspace may have fewer providers actually connected.
+Twelve first-party integrations in the registry, split by how agents get them: four whose tools are available to every agent once connected (GitHub, Slack, PostHog, Resend), six added per agent (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn), one provider-only integration (Skjald, Maskin's first-party meeting notetaker) and one search-data sync that is coming (Google Search Console). This is the product registry. A given workspace may have fewer providers actually connected.
 
-### What is the difference between an auto-inject and an attachable MCP server in Maskin?
-An auto-inject provider (GitHub, Slack, PostHog) is loaded into every agent session automatically — the agent sees those tools without any setup. An attachable provider (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn) exposes an `mcp.server` that the agent must explicitly load in its tool config before it can call any of that provider's tools. Both surface the same way once loaded; the difference is whether the agent has to opt in.
+### What is the difference between an always-available and a per-agent MCP server in Maskin?
+For GitHub, Slack, PostHog and Resend, the tools are available to every agent once the integration is connected. For Linear, Gmail, Google Calendar, Google Meet, Ubersuggest and LinkedIn, the provider exposes an `mcp.server` that the agent must explicitly load in its tool config before it can call any of that provider's tools. Both surface the same way once loaded; the difference is whether the agent has to opt in.
 
 ### Which Maskin integrations expose MCP to agents?
-Nine of the ten first-party providers expose MCP: GitHub, Slack, and PostHog are auto-injected into every agent session, while Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, and LinkedIn are attachable MCP servers the agent loads on demand. Skjald is the only registered provider without an MCP surface — it participates in agent workflows by emitting `meeting` created/updated events onto the object graph instead.
+Ten of the twelve first-party providers expose MCP: GitHub, Slack, PostHog, and Resend are available to every agent once connected, while Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, and LinkedIn are added per agent. Skjald has no MCP surface. It participates in agent workflows by emitting `meeting` created/updated events onto the object graph. Google Search Console gives agents no tools.
 
 ### Does Maskin need Zapier or another middleware to connect to these services?
-No. Every integration on this page is a first-party Maskin provider — the auth, the MCP server (where present), and the object-graph emissions are all built into Maskin. There is no Zapier, Make, or generic iPaaS layer between the agent and the provider; agents call the provider's MCP tools directly.
+No. Every integration on this page is a first-party Maskin provider. The auth, the MCP server (where present), and the object-graph emissions are all built into Maskin. There is no Zapier, Make, or generic iPaaS layer between the agent and the provider; agents call the provider's MCP tools directly.
 
 ### How does Skjald differ from Maskin's other integrations?
-Skjald is Maskin's own first-party meeting notetaker, not a third-party service. Instead of exposing an MCP server for agents to call, it produces `meeting` objects (transcripts, notes) on the graph and emits status events (`created`, `updated`, `notes_ready`) that agents can subscribe to. Agents work with Skjald output the same way they work with any other object state change — by reading the object and reacting to its status transitions.
+Skjald is Maskin's own first-party meeting notetaker, not a third-party service. Instead of exposing an MCP server for agents to call, it produces `meeting` objects (transcripts, notes) on the graph and emits status events (`created`, `updated`, `notes_ready`) that agents can subscribe to. Agents work with Skjald output the same way they work with any other object state change: by reading the object and reacting to its status transitions.
 
-## Ten first-party providers, no middleware
+### Can agents read Google Search Console data through Maskin?
+Not through agent tools. Google Search Console is coming as a search-data sync, and the provider exposes no MCP tools and emits no events, so an agent session has nothing to call on it directly.
+
+### How does Resend work in Maskin?
+You bring your own Resend account and API key. Tools for Resend are available to every agent once Resend is connected, and when an email arrives, Maskin emits an email-received event that can trigger an automation.
+
+## Twelve first-party providers, no middleware
 Maskin wires auth, MCP servers, and object-graph emissions directly — agents call provider tools with no Zapier in between. Open source under Apache 2.0. Self-host free, bring your own model.
 
 
@@ -769,28 +790,28 @@ Maskin wires auth, MCP servers, and object-graph emissions directly — agents c
 > Source: https://maskin.io/docs/llm/
 
 # LLM & models
-Maskin defaults to Claude but lets you bring your own model. For every agent run it resolves a model through a fixed priority order, so you can set a default and override it where you need to.
+Maskin defaults to Claude. On the hosted service, trial, Pro and Team workspaces run on a Maskin-funded route, and Enterprise workspaces supply their own credential. For every agent run it resolves a model through a fixed priority order, so you can set a default and override it where you need to.
 
 ## Routing priority
 When a session starts, Maskin picks the first option that's configured, in this order:
 1. **Agent-level key** — an Anthropic key set directly on the agent actor.
-2. **Workspace custom LLM** — a bring-your-own endpoint configured on the workspace (OpenRouter, Ollama, vLLM, or any OpenAI-compatible API).
+2. **Workspace custom endpoint** — Enterprise only. An endpoint configured on the workspace that speaks Anthropic's API format.
 3. **Claude OAuth** — a workspace-level Claude Pro / Max / Teams subscription.
 4. **Workspace Anthropic key** — an Anthropic API key saved in workspace settings.
 5. **System fallback** — the operator-configured OpenRouter fallback (with a daily token cap).
 
 ## Using Claude (the default)
-Two ways to give a workspace Claude access, both set **in the app** (Settings → Integrations / LLM keys) and stored encrypted per workspace:
+Two ways to give a workspace Claude access, both set **in the app** (Settings → Integrations / LLM keys):
 - **Anthropic API key** — paste your key; usage is billed to your Anthropic account.
-- **Claude subscription** — import a Pro/Max/Teams subscription via the `import_claude_subscription` tool / Claude OAuth flow, then check it with `get_claude_subscription_status`.
+- **Claude subscription** — import a Pro/Max/Teams subscription via the `import_claude_subscription` tool / Claude OAuth flow, then check it with `get_claude_subscription_status`. The subscription tokens are stored encrypted.
 The default model is `claude-sonnet-4-6`, with a separate small/fast model for lightweight steps.
 
-## Bring your own model
-Set a **custom LLM** on the workspace to route agents to any OpenAI-compatible endpoint. The configuration carries:
+## Custom endpoint (Enterprise)
+Enterprise workspaces can also point agent sessions at their own Anthropic-compatible endpoint, using their own key. Set a **custom LLM** on the workspace to do it. The configuration carries:
 | Field | Purpose |
 | --- | --- |
-| base_url | The provider's API base (e.g. OpenRouter, a local Ollama/vLLM server). |
-| api_key | Credential for that provider (encrypted at rest). |
+| base_url | The endpoint's API base. |
+| api_key | Credential for that endpoint. |
 | model | Main model id. |
 | small_fast_model | Cheaper model for lightweight steps. |
 This is set in workspace settings, not via environment variables.
@@ -824,8 +845,7 @@ docker compose -f docker-compose.prod.yml up -d --build
 - **postgres** — PostgreSQL 16 (use a managed instance in production where possible).
 - **seaweedfs** — S3-compatible storage (or point `S3_*` at AWS S3 / MinIO).
 - **agent-base** — the image used for agent sessions; built from `docker/agent-base/`.
-To run agent sessions on the host's Docker, the app container mounts the Docker socket
-      (`/var/run/docker.sock`). Restrict access to it.
+Production sessions run in microVMs on a dedicated agent server, not through the app host's Docker socket. If you mount `/var/run/docker.sock` for local development, restrict access to it.
 
 ## Essentials to set
 - `NODE_ENV=production`
@@ -836,8 +856,7 @@ To run agent sessions on the host's Docker, the app container mounts the Docker 
 Migrations run automatically on app start; you can also run `pnpm db:migrate` out of band.
 
 ## Agent execution at scale
-By default sessions are local Docker containers on the app host. For throughput, run dedicated
-      [agent servers](/docs/agents/) and point the app at them:
+Production sessions run in ephemeral microVMs (microsandbox and libkrun) on dedicated [agent servers](/docs/agents/). Docker on the app host is for local development only, and there is no fallback that runs agents without the microVM runtime. Point the app at your agent servers:
 - `AGENT_BASE_IMAGE` — a full registry path (e.g. `yourorg/agent-base:latest`), not the local tag.
 - `AGENT_SERVERS` — comma-separated `url|secret` entries; sessions are dispatched to the least-loaded server.
 - `AGENT_SERVER_SECRET`, `MASKIN_AGENT_SERVER_PUBLIC_HOST`, `AGENT_SERVER_MAX_SESSIONS` — agent-server auth, public host, and concurrency.
@@ -865,21 +884,21 @@ Full variable list: [configuration reference](/docs/configuration/).
 > Source: https://maskin.io/docs/security/
 
 # Security
-How Maskin protects credentials, isolates tenants, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.
+How Maskin protects credentials, separates workspaces in the API, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.
 
 ## Authentication
-Every request authenticates with a bearer API key (prefixed `ank_`). Keys are stored only as **SHA-256 hashes** — the plaintext is shown once at creation and never again. Auth is **stateless**: no cookies or server sessions. Keys are per-actor and can be rotated with `regenerate_api_key`, which immediately invalidates the old value.
+Every request authenticates with a bearer API key (prefixed `ank_`). Keys are **stored as issued**, not hashed; hashing is planned. Auth is **stateless**: no cookies or server sessions. Keys are per-actor and can be rotated with `regenerate_api_key`, which immediately invalidates the old value.
 
 ## Authorization & tenant isolation
-Workspace-scoped requests carry an `X-Workspace-Id` header. Workspace isolation is enforced in the API, route by route, not by database-level row security, so it depends on each route checking the workspace. Gaps found in an internal review of the routes are being closed: some fixes are already on `main` and others are in review. Memberships carry a role (`owner`, `admin`, `member`, `viewer`). Owner and admin roles gate member management, invites, billing and workspace settings. The `viewer` role is defined but not yet enforced as read-only (planned).
+Workspace-scoped requests carry an `X-Workspace-Id` header. Workspace isolation is enforced in the API, route by route, not by database-level row security, so it depends on each route checking the workspace. Memberships carry a role (`owner`, `admin`, `member`, `viewer`). Owner and admin roles gate member management, invites, billing and workspace settings. Viewers can read a workspace. Changing objects, files, comments and workspace settings is blocked for the viewer role.
 
 ## Credential encryption at rest
-Integration OAuth tokens and workspace LLM API keys are encrypted with **AES-256-GCM** using `INTEGRATION_ENCRYPTION_KEY` (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as `iv:authTag:ciphertext`. In the UI only the last four characters are ever shown, and secrets are never written to logs or exposed in agent output.
+Integration credentials, including OAuth tokens, are encrypted with **AES-256-GCM** using `INTEGRATION_ENCRYPTION_KEY` (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as `iv:authTag:ciphertext`.
 > Set `INTEGRATION_ENCRYPTION_KEY` explicitly in production and keep it stable — rotating it makes previously stored credentials undecryptable, so connections must be re-established.
 
 ## Sandboxed agent execution
-On the hosted path, each agent session runs in its own **ephemeral microVM** (libkrun, managed through microsandbox) on a dedicated [agent server](/docs/agents/), started from the `agent-base` image, one per run and stopped and removed when the session completes. The app hands sessions to the agent server over HTTPS and does not launch them through a Docker socket.
-For local development, and for self-hosts that do not configure agent servers, sessions run as Docker containers on the app host instead. That path uses the host Docker socket (`/var/run/docker.sock`) — treat access to that socket as root-equivalent and restrict it to the app. For stronger isolation, run sessions on dedicated agent servers rather than the app host. For the policy layer above the sandbox — who signs off on agent actions, and how those approvals get recorded — see the [governance framework for AI agents](/docs/learn/ai-agent-governance/).
+Each agent session runs in its own **ephemeral microVM** (libkrun, managed through microsandbox) on a dedicated [agent server](/docs/agents/), started from the `agent-base` image, one per run and stopped and removed when the session completes. The app hands sessions to the agent server over HTTPS and does not launch them through a Docker socket.
+Docker is for local development only. There is no fallback that runs agents without the microVM runtime, so a self-host needs an agent server running microsandbox and libkrun. Locally, treat access to the host Docker socket (`/var/run/docker.sock`) as root-equivalent and restrict it to the app. For the policy layer above the sandbox — who signs off on agent actions, and how those approvals get recorded — see the [governance framework for AI agents](/docs/learn/ai-agent-governance/).
 
 ## Webhook verification
 Inbound webhooks are signature-verified per provider before processing:
@@ -891,7 +910,7 @@ Inbound webhooks are signature-verified per provider before processing:
 | Gmail | Pub/Sub push with OIDC JWT verification. |
 
 ## Audit log
-Every change is recorded in an append-only event log (see [Architecture](/docs/architecture/)), giving you an immutable trail of who — human or agent — did what, and when.
+Every change is recorded in an event log that is insert-only by convention (see [Architecture](/docs/architecture/)), giving you a trail of who — human or agent — did what, and when.
 
 ## Hardening your deployment
 - Terminate **TLS** at your proxy/load balancer in front of the app.
@@ -915,7 +934,7 @@ The issues people hit most when self-hosting Maskin, and how to fix them. Most c
 Real-time updates use PostgreSQL `LISTEN/NOTIFY` streamed over SSE. Connection poolers (PgBouncer, Supabase's pooled port, etc.) break LISTEN/NOTIFY. Set `DATABASE_URL_DIRECT` to a **non-pooled** connection in addition to `DATABASE_URL`. Also make sure your proxy isn't buffering `/api/events` responses.
 
 ## Agent sessions fail to start
-- **Docker socket:** the app launches sessions via `/var/run/docker.sock` — confirm it's mounted into the app container and the process can access it.
+- **Runtime:** sessions run in microVMs (microsandbox and libkrun) on an agent server, and there is no fallback without that runtime, so confirm the agent server is up and running it. In local development only, sessions start through `/var/run/docker.sock`, so confirm it's mounted into the app container.
 - **Image missing:** the `agent-base` image must be built/pulled. In production, set `AGENT_BASE_IMAGE` to a full registry path (e.g. `yourorg/agent-base:latest`), not the local `:latest` tag.
 - **Scaling out:** if you use `AGENT_SERVERS`, check each server is reachable and its `AGENT_SERVER_SECRET` matches.
 
@@ -945,7 +964,7 @@ A workspace needs a model. Add an Anthropic key or Claude subscription, or a cus
 
 ## FAQ
 **Is Maskin open source?** Yes — Apache 2.0, on [GitHub](https://github.com/sindre-ai/maskin).
-**Can I use models other than Claude?** Yes. Point a workspace at any OpenAI-compatible endpoint (OpenRouter, Ollama, vLLM) via a custom LLM — see [LLM & models](/docs/llm/).
+**Can I use models other than Claude?** Agent sessions run Claude Code by default, or Codex, on your own Anthropic or OpenAI access. Enterprise workspaces can also point sessions at their own Anthropic-compatible endpoint, using their own key. Local models are not a path we have validated. See [LLM & models](/docs/llm/).
 **Where do I see what a run cost?** Each session records token usage and `totalCostUsd` — see [Agents & sessions](/docs/agents/).
 **Do I have to self-host?** No — managed hosting is available. [Book a meeting](https://meshfirm.com/bookmagnus).
 **Still stuck?** Open an issue on [GitHub](https://github.com/sindre-ai/maskin), or [contact Maskin support](/support/). For security reports, email the contact on the [Security](/docs/security/) page instead.
@@ -1232,7 +1251,7 @@ The practical implication for a team choosing between them: if the pain is “I 
 ## The honest case for running both
 Most teams that build software will run both, and that is the right answer. A coding agent (or a coding-agent control plane above several of them) on the code, an AI product workspace on the decisions the code is meant to serve. The coding agent ships PRs; the workspace shapes the bets those PRs are working under, validates the outcomes, and closes the loop.
 Where the tiers collide is when a team tries to run a decision loop out of a coding-agent control plane alone — the kanban is the roadmap, the PR is the outcome, and the team narrates the results in a weekly meeting. That works up to the point where signal starts arriving from more sources than a human can reduce to task descriptions on the same day, or where a shipped PR that nobody measured leaves the team unable to tell whether the last cycle was a win. Beyond that point, the coding-agent tier is being asked to be a workspace, and the diagnostic bites: no win condition on the task, no outcome measured against it, no loop that terminates on a business result.
-The right move is not to demand more of the coding-agent tier. It is to put the decision loop on a tier that models it, and let the coding agent do what a coding agent does well.
+The right move is not to demand more of the coding-agent tier. It is to put the decision loop on a tier that models it, and let the coding agent do what a coding agent does well. The [product delivery loop](/marketplace/product-delivery/) is the working version: a developer agent inside a bet-level delivery loop, with review, a release check, and a person approving the merge to main.
 
 ## FAQ
 
@@ -1302,7 +1321,7 @@ Most comparison pages answer “which is better” with a score. The question th
 3. **Do you need to read or change the tool itself?** The Codex CLI repository is Apache-2.0. Anthropic’s overview page does not state a license for Claude Code. If you need to fork or audit the agent, that is a real difference. If you only need to use it, it is not.
 4. **Where does the work run?** In your terminal and editor: both. Unattended in the cloud: Claude Code has routines and a web surface, and Codex has codex cloud. Scripted in CI: `claude -p` and `codex exec` do the same job, so what matters is how you authenticate in the pipeline.
 5. **Which customization do you rely on?** Hooks, which run shell commands before or after actions, are a documented Claude Code feature. Plugins are a documented Codex feature. If your workflow depends on one of them, check the other tool’s docs for the equivalent before you move.
-If none of the five settles it, you are choosing on output quality, and the only evidence that counts is your own.
+If none of the five settles it, you are choosing on output quality, and the only evidence that counts is your own. If Cursor is also on your shortlist, [Claude Code vs Cursor](/docs/claude-code-vs-cursor/) runs the same choose-by-job checks for that pair.
 
 ### A bake-off on your own repo
 Head-to-head tests on the results page are run on someone else’s code, with model versions that have since changed. You can get a more useful answer in an afternoon.
@@ -1317,7 +1336,7 @@ One developer switching tools between jobs is easy. A team where some people pre
 **1. Two instruction files drift apart.** Codex reads AGENTS.md. Claude Code reads CLAUDE.md. Anthropic’s [memory page](https://code.claude.com/docs/en/memory) says Claude Code reads AGENTS.md as the project instructions when there is no CLAUDE.md in the working directory or above it (this needs Claude Code v2.1.277 or later). If both files exist, it reads only the CLAUDE.md files. So a repository that has both quietly gives each tool different rules. The documented fix is a CLAUDE.md that imports AGENTS.md, so there is one source of truth ([CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/) walks through that setup and what changes at team scale). Mind the size cap too: Codex stops adding instruction files once the combined size reaches 32 KiB by default, so a long root AGENTS.md can push out the more specific ones nested below it. Where those files sit among the other layers is covered in [agent skills vs MCP vs Cursor rules vs workflows](/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/).
 **2. Permissions live in two places.** Codex exposes approval modes through its `/permissions` command and runs in a sandbox. Claude Code has its own settings and hooks, and its memory page says it treats CLAUDE.md as context, not enforced configuration, and points to a PreToolUse hook to block an action outright. If you want the same guardrails on both, you configure and review them twice.
 **3. Session history is per vendor.** Each Claude Code session begins with a fresh context window, and what carries over is CLAUDE.md plus the notes Claude writes for itself. Codex sessions sit apart from those, and we found no documented way for the two tools to share history. Neither is a timeline a colleague can open. The same gap, from the memory side, is in [agent memory across sessions](/docs/learn/agent-memory-across-sessions/).
-**4. Decisions disappear into whichever tool made them.** “Why did we change the retry logic this way” is answered in a chat transcript on one laptop, in one vendor’s format. It is the same gap as with Claude Code agent teams: a session is not a place to keep a decision.
+**4. Decisions disappear into whichever tool made them.** “Why did we change the retry logic this way” is answered in a chat transcript on one laptop, in one vendor’s format. It is the same gap as with [Claude Code agent teams](/docs/learn/claude-code-agent-teams/): a session is not a place to keep a decision. The Claude Code side of this is covered in [how a team shares setup and decisions around Claude Code](/docs/learn/claude-code-team/).
 **5. Cost and usage split across two bills.** You cannot answer “what did this feature cost us in agent time” from one place. Plans and limits differ by vendor and plan and change often, so read the current pricing pages rather than a table that would be stale by the time you read it here.
 Only the first of these has a fix inside the tools. The other four need something that sits above them.
 
@@ -1364,6 +1383,115 @@ It depends on your plan and how much you use it, and both vendors change plans a
 
 ### Do Claude Code and Codex have usage limits?
 Both are gated by the plan or API account you sign in with. We found no fixed numbers on the pages we read, and limits change often, so we print none. If a limit blocks a long-running job, that is one reason teams end up on both tools, and a reason to track which job ran on which account.
+Read next
+
+## Getting started is free
+Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of what was decided. The [agentic-workspace cornerstone](/docs/what-is-an-agentic-workspace/) and the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) guide are the two best next reads.
+
+
+---
+
+> Source: https://maskin.io/docs/claude-code-vs-cursor/
+
+# Claude Code vs Cursor: pick by job, then keep one record
+Claude Code is Anthropic’s coding agent, and it starts in the terminal. Cursor is a coding agent built around the editor, with a command line tool and cloud agents added. Pick by where you want to work and which account you already pay for, and test both on your own repo.
+*Read against Anthropic’s [Claude Code docs](https://code.claude.com/docs/en/overview) and Cursor’s [documentation](https://cursor.com/docs) on 2026-10-15. Both products change often, so check the vendor pages before you rely on a detail. This page prints no prices, usage limits or benchmark scores, because neither vendor gives you a number for your code and plans change too fast for a table here.*
+> ✓
+> **Key takeaways**
+> **The split is where you work, not what the agent can do.** Claude Code starts in a terminal and also runs in VS Code, JetBrains, a desktop app and the web. Cursor starts in the editor and also has a command line tool and cloud agents.
+> **Both read project instructions, connect to tools over MCP and run unattended.** The overlap is bigger than most comparison pages show.
+> **Accounts and models differ.** Claude Code signs in with a Claude subscription or an Anthropic Console account, and runs Claude models. Cursor’s model list spans several providers, including Anthropic, OpenAI and Google.
+> **You can use both without switching.** Anthropic publishes a Claude Code extension with an install link for Cursor.
+> **Neither tool is your team’s record.** What was decided, who owned it and whether it worked has to live outside both.
+![Two boxes, Claude Code (terminal first, CLAUDE.md) and Cursor (editor first, rules or AGENTS.md), both feeding one shared record that holds an owner, a decision with its reason, and an outcome condition.](/og-image-claude-code-vs-cursor.png)
+A terminal agent and an editor agent can still write to one record.
+
+## Claude Code vs Cursor at a glance
+This table sticks to what each vendor’s own pages state.
+|  | Claude Code | Cursor |
+| --- | --- | --- |
+| Starting point | Terminal | Editor (desktop app) |
+| Other places it runs | VS Code, JetBrains, desktop app, web and mobile | Command line tool (agent), cloud agents, web and iOS app, Slack, GitHub and Linear triggers |
+| Sign in | Claude subscription or Anthropic Console account; the terminal CLI, VS Code and JetBrains also support cloud providers such as Amazon Bedrock, Google Cloud and Microsoft Foundry | Cursor account |
+| Models | Claude models, from Anthropic or through a supported cloud provider | Models from several providers, listed in Cursor’s docs |
+| Project instructions | CLAUDE.md; reads AGENTS.md when no CLAUDE.md is present | Rules in .cursor/rules, or AGENTS.md |
+| Modes | Plan mode in the terminal (Shift+Tab or --permission-mode plan), plan review in the VS Code extension | Agent, Plan and Ask modes |
+| Non-interactive mode | claude -p | agent -p |
+| Cloud and unattended runs | Claude Code on the web; routines that run in the cloud | Cloud agents in isolated VMs |
+| Extending it | Skills, hooks, MCP, subagents | Plugins, skills, MCP and rules; hooks in the editor agent, CLI and cloud agents |
+The Claude Code column comes from Anthropic’s [overview](https://code.claude.com/docs/en/overview), [memory](https://code.claude.com/docs/en/memory), [permission modes](https://code.claude.com/docs/en/permission-modes) and [deployment options](https://code.claude.com/docs/en/third-party-integrations) pages. The Cursor column comes from Cursor’s documentation home, [rules](https://cursor.com/docs/context/rules), [CLI](https://cursor.com/docs/cli/overview), [cloud agents](https://cursor.com/docs/cloud-agent) and [hooks](https://cursor.com/docs/hooks) pages.
+
+## How to choose between Claude Code and Cursor by job
+Most pages answer “which is better” with a score. The question that decides your week is narrower: which one fits the job in front of you. Run these five checks in order and stop at the first one that settles it.
+1. **Where do you want to read the diff?** If you review and edit in an editor all day and want the agent in the same window, Cursor starts there. If you live in a terminal, or want the agent to work while you do something else, Claude Code starts there. Both can go the other way, so this is a default, not a wall.
+2. **Which account do you already pay for?** A team with a Claude plan already has Claude Code. A team on a Cursor plan already has Cursor. Adding the second for one month is the cheapest test you can run.
+3. **Which models must you use?** Claude Code runs Claude models, from Anthropic or through a cloud provider your organization already uses. Cursor lists models from several providers in its docs. If your security team approved one provider, or you want to switch between model providers on one task, that is the check that matters most.
+4. **Does the work run while nobody is watching?** Both have a non-interactive mode for scripts and CI (`claude -p` and `agent -p`) and a cloud option (Claude Code on the web, Cursor cloud agents). Compare how each one authenticates in your pipeline and where it clones your repo.
+5. **What do your existing customizations use?** Hooks, skills and MCP servers exist on both sides in some form. Cursor rules are `.mdc` files with their own frontmatter. If your team has built a library on one, check the other tool’s docs for the equivalent before you move.
+If none of the five settles it, you are choosing on output quality, and the only evidence that counts is your own. Take three merged pull requests (a small fix, a multi-file feature, a refactor), start each tool from the commit before the merge with the same ticket text, and compare the diffs, the test results and how often you had to step in. This is our method, not a measurement. Maskin has not benchmarked the two tools and makes no claim about which writes better code.
+
+## Can you use Claude Code and Cursor together?
+Yes, and there are two ways. The first is side by side: some people on the team use Cursor, others use Claude Code, and an automated job runs on whichever account has headroom. The second is nested: Anthropic’s overview page lists a Claude Code extension for VS Code with an “Install for Cursor” link, so one person can run Claude Code inside Cursor.
+Either way, a team hits the same frictions:
+**1. Two sets of instructions drift apart.** Cursor reads rules from `.cursor/rules`, or an AGENTS.md. Claude Code reads CLAUDE.md, and per Anthropic’s [memory page](https://code.claude.com/docs/en/memory) it reads AGENTS.md only when there is no CLAUDE.md. A repository with a rules folder and a CLAUDE.md gives each tool different guidance. The simplest fix is one AGENTS.md that Cursor reads directly and your CLAUDE.md imports ([CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/) walks through that setup). We did not confirm from Cursor’s pages whether Cursor reads CLAUDE.md, so do not assume it.
+**2. Guardrails live in two places.** Anthropic’s memory page says Claude Code treats CLAUDE.md as context, not enforced configuration, and points to a PreToolUse hook to block an action outright. Cursor has its own controls: its [CLI page](https://cursor.com/docs/cli/overview) documents sandbox settings, and its [hooks page](https://cursor.com/docs/hooks) says hooks apply to the editor agent, the CLI and cloud agents. If you want the same limits on both, you set and review them twice.
+**3. Session history is per product.** Each Claude Code session starts with a fresh context window. Cursor lets you resume earlier chats from the CLI. We found no documented way to carry one tool’s history into the other, and neither is a timeline a colleague can open. The same gap, from the memory side, is in [agent memory across sessions](/docs/learn/agent-memory-across-sessions/).
+**4. Decisions disappear into whichever tool made them.** “Why did we change the retry logic this way” is answered in a chat on one laptop. A session is not a place to keep a decision.
+**5. Usage splits across two accounts.** You cannot answer “what did this feature cost in agent time” from one place. Read the vendors’ current pricing pages for your plan rather than a table that would be stale by the time you read it here.
+Only the first has a fix inside the tools. The others need something above them. Claude Code’s own experimental [agent teams](/docs/learn/claude-code-agent-teams/) hit the same limit inside one session: the task list sits in local files, scoped to that session. Where shared instructions sit among the other layers is covered in [agent skills vs MCP vs Cursor rules vs workflows](/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/).
+
+## And Codex?
+Codex is OpenAI’s coding agent, and it sits closest to Claude Code: terminal first, AGENTS.md for instructions, MCP, skills and subagents. Against Cursor, the same five checks apply, with the account and model checks doing most of the work. For the full Claude Code and Codex comparison, read [Claude Code vs Codex](/docs/claude-code-vs-codex/).
+
+## Where the record lives
+You do not need a product for this. You need four things written down in a place that outlives any one session and that both tools, and the people using them, can reach:
+1. **An owner per piece of work.** One name, a person or an agent, on each item.
+2. **A decision with its reason.** What you chose, what you rejected, who approved it. The result of your three-PR test is a decision.
+3. **A stated outcome condition.** What “done” means in terms you can check later, not “the agent said it finished”.
+4. **Links between them.** The request that started the work, the decision it led to, the changes that carried it out.
+A tracker works if you add those fields by convention. The catch is that most trackers have no slot for a decision’s reason or an outcome condition, so they end up in comments where nobody can query them. Whichever tool you use, keep the record independent of the agent. The agent that ran the work should be one field on the item, not the item itself. Then switching from Cursor to Claude Code, or running both, changes one field.
+
+### An illustrative scenario
+Take a team of four. Two developers use Cursor and two use Claude Code. In March one of them decides to pin a major version of a library because the upgrade breaks a plugin. The reasoning sits in one Cursor chat. In May a recurring dependency job, running on Claude Code, proposes the upgrade again. Nobody can say why it was pinned, so someone repeats the investigation.
+With a record that holds the pin as a decision with a reason and an outcome condition (“revisit when the plugin supports the new major”), whichever tool runs the job reads the same entry and skips the upgrade. This scenario is made up to show the gap. It is not a Maskin customer story.
+
+## How Maskin keeps the record
+Maskin is an open-source (Apache 2.0), MCP-native, self-hostable [agentic workspace](/docs/what-is-an-agentic-workspace/) where people and agents work on shared typed objects. A signal enters as an insight, gets shaped into a bet with a win condition, and breaks into tasks. Each object has a driver (an owner, person or agent) and a comment thread, and a bet closes against its stated condition. The objects are the work, not a log of it.
+Maskin runs its agent sessions on the Claude Code CLI by default, or on the Codex CLI, each inside an isolated microVM. Maskin does not run Cursor. Cursor’s documentation says it supports MCP servers, so it can in principle connect to any MCP server, but we have not tested Cursor against Maskin and do not make that claim for you. Some honest limits: you bring your own Anthropic or OpenAI access, local models are not a path we have validated, and Maskin is early, so evaluate the architecture rather than a long track record.
+If you want to try it, you can [self-host it](/docs/self-hosted-ai-workspace/). For the longer argument, read [the closed-loop workspace](/docs/closed-loop-workspace/). Related decisions: [CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/) covers the instructions file, and [AI product workspace vs AI coding agent](/docs/ai-product-workspace-vs-coding-agent/) covers where a workspace sits next to your editor. If you are a product manager deciding how much of this to learn, start with [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/). For a wider look at open-source coding agents, see the [open source AI coding agent alternatives](/alternatives/open-source-ai-coding-agent/).
+
+## A quick decision rule
+- **Solo, one account, one repo:** use the tool your account already includes. Run the three-PR test before you add a second subscription.
+- **You review in the editor all day:** start with Cursor. Add Claude Code for long jobs you want to leave running.
+- **You live in the terminal, or run jobs in CI:** start with Claude Code. Add Cursor if teammates prefer the editor.
+- **A team split across both:** make one AGENTS.md before you do anything else.
+- **Two or more people, or you will need to explain a choice next quarter:** add the four-field record. It works with either tool and it is the part that lasts.
+
+## FAQ
+
+### Which is better, Claude Code or Cursor?
+Neither wins on every job, and no vendor documentation gives you a score for your code. Both read project instructions, connect to tools over MCP and run unattended. Decide on where you want to work, the account you already pay for, the models you may use, and a three-task test on your own merged pull requests.
+
+### Is Claude Code better than Cursor?
+We cannot say, and this page prints no benchmark because the result depends on your code, your prompts and the model versions on the day. Claude Code starts in the terminal and Cursor starts in the editor. If you prefer one of those, that is a better reason than a leaderboard.
+
+### Can you use Claude Code and Cursor together?
+Yes. Teams run both side by side, and Anthropic’s overview page lists a Claude Code extension with an install link for Cursor, so one person can use both in the same window. The practical problems are two sets of instructions, two sets of guardrails and two histories. Share one AGENTS.md and keep decisions in a record outside both.
+
+### Do Claude Code and Cursor read the same instructions file?
+Not by default. Cursor reads rules from .cursor/rules, or an AGENTS.md. Claude Code reads CLAUDE.md, and reads AGENTS.md only when no CLAUDE.md exists. To share one file, write an AGENTS.md and have your CLAUDE.md import it.
+
+### Which is cheaper, Claude Code or Cursor?
+It depends on your plan and how much you use it, and both vendors change plans, models and usage pools often. Claude Code needs a Claude subscription, an Anthropic Console account or a supported cloud provider. Cursor’s documentation points to a Models and Pricing page for current terms. Compare the current pages against your own usage.
+
+### Do Claude Code and Cursor have usage limits?
+Both are gated by the plan or account you sign in with. We print no numbers because limits change often and the pages we read do not give one figure that holds for everyone. If a limit blocks a long job, that is one reason teams end up on both, and a reason to record which job ran on which account.
+
+### Is Cursor or Claude Code better for teams?
+Anthropic’s pricing page lists Team and Enterprise plans that include Claude Code. Cursor’s cloud agents page refers to Enterprise plans with team hooks; check Cursor’s own pricing page for its plan tiers. Which fits matters less than how your team already works, editor-first or terminal-first. Neither gives a team a shared record of decisions, owners and outcomes, so plan for that separately.
+
+### Does Maskin run Cursor?
+No. Maskin runs its agent sessions on the Claude Code CLI or the Codex CLI. This page compares Cursor because many teams use it next to Claude Code, and the record argument applies whichever agent does the work.
 Read next
 
 ## Getting started is free
@@ -1557,7 +1685,7 @@ Model Context Protocol is Anthropic’s open standard for how an agent talks to 
 An *agent skill*, in Anthropic’s Skills framing (adopted across Claude, Cursor, Codex, VS Code), is a packaged capability the model loads when it recognizes a matching use case. Concretely: a folder with a `SKILL.md` file (YAML frontmatter describing when to invoke), optional scripts, and often a `plugin.json` bundling multiple skills into an installable unit. Anthropic’s docs formalized the format; Addy Osmani’s `agent-skills` repo — the top-ranking result on the head term today — turned it into shared vocabulary. A skill is *not* a tool. It’s a capability packaging that may compose several tools, prompt fragments, and scripts into one thing the model can pattern-match against. For the standalone definition — the `SKILL.md` format, the three-level loading model, and a worked example — we’ve written that up in [What are agent skills](/docs/learn/agent-skills/).
 
 ### Cursor rules / AGENTS.md
-Cursor rules (`.cursor/rules/*.mdc`) and their cross-editor cousin `AGENTS.md` are behavioral directives scoped to a repo (or a path inside a repo). They tell the agent *how to act*: which conventions to follow, which paths to avoid, which tooling to prefer. Rules don’t add capability — the agent could already do the thing. Rules constrain style, safety, and defaults so the agent behaves like the team behind the repo. In Anthropic’s own documentation these overlap with *policies*; in Cursor they surface as rule files the editor injects into every prompt. For which tools actually read `AGENTS.md` versus `CLAUDE.md`, and how to keep one source of truth, see [CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/).
+Cursor rules (`.cursor/rules/*.mdc`) and their cross-editor cousin `AGENTS.md` are behavioral directives scoped to a repo (or a path inside a repo). They tell the agent *how to act*: which conventions to follow, which paths to avoid, which tooling to prefer. Rules don’t add capability — the agent could already do the thing. Rules constrain style, safety, and defaults so the agent behaves like the team behind the repo. In Anthropic’s own documentation these overlap with *policies*; in Cursor they surface as rule files the editor injects into every prompt. For which tools actually read `AGENTS.md` versus `CLAUDE.md`, and how to keep one source of truth, see [CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/). For how Cursor and Claude Code compare as whole tools when a team runs both, see [Claude Code vs Cursor](/docs/claude-code-vs-cursor/).
 
 ### Workflows
 A workflow is the composition layer: multiple agents (or one agent across multiple steps) coordinated by triggers, state transitions, and hand-offs. Some frameworks call these *chains* (LangChain), *graphs* (LangGraph), *flows* (CrewAI), or *orchestrations* (Temporal-shaped). The common thread: something outside any single agent invocation decides who runs, in what order, and on which event. Workflows answer *who runs when*, not *what any one agent can do*. Visual workflow builders like n8n are the example many readers have in mind for this layer; if you’re [choosing among n8n alternatives](/alternatives/n8n/), the deciding question is what your runs have to leave behind.
@@ -1594,7 +1722,7 @@ The `agent skills vs workflows` autocomplete gets confused because both feel lik
 The pragmatic split: if all the work happens inside one agent’s turn, it’s a skill. If work crosses agent turns, waits on an event, or hands off between agents, it’s a workflow.
 
 ## `agent skills vs subagents` — one more the SERP conflates
-Subagents (Anthropic’s Claude Code term, mirrored in other harnesses) are separate agent invocations spawned from a parent agent, each with its own context window. They’re a *runtime primitive*, not a packaging primitive. A subagent might load skills. A subagent runs inside a workflow. But the subagent itself is neither. Both Claude Code and Codex document subagents; [Claude Code vs Codex](/docs/claude-code-vs-codex/) compares what each one ships.
+Subagents (Anthropic’s Claude Code term, mirrored in other harnesses) are separate agent invocations spawned from a parent agent, each with its own context window. They’re a *runtime primitive*, not a packaging primitive. A subagent might load skills. A subagent runs inside a workflow. But the subagent itself is neither. Both Claude Code and Codex document subagents; [Claude Code vs Codex](/docs/claude-code-vs-codex/) compares what each one ships. The experimental [Claude Code agent teams](/docs/learn/claude-code-agent-teams/) feature adds a shared task list and a full session per teammate on top of that primitive.
 Rule of thumb: **skills are what you author. Subagents are what you spawn. Workflows are what you compose. MCP is what you call.**
 
 ## The unclaimed slot: skills that fire against typed workspace state
@@ -1666,7 +1794,7 @@ The table shows what each tool reads from a repository, taken from each vendor�
 | GitHub Copilot | Yes, nearest file wins | Yes, one file at the repo root | Also reads .github/copilot-instructions.md |
 | Gemini CLI | Only if you add it to context.fileName | Only if you add it to context.fileName | Default file is GEMINI.md |
 Sources: [Claude Code memory docs](https://code.claude.com/docs/en/memory), [Codex AGENTS.md guide](https://developers.openai.com/codex/guides/agents-md), [Cursor rules docs](https://cursor.com/docs/context/rules), [GitHub Copilot repository instructions](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions), [Gemini CLI context files](https://geminicli.com/docs/cli/gemini-md/) and [agents.md](https://agents.md).
-The agents.md site lists more than twenty supporting tools, including Codex, Cursor, Gemini CLI, GitHub Copilot, Aider, Zed, Windsurf, Warp and VS Code. Claude Code now reads `AGENTS.md` itself, which makes the old advice to symlink one file to the other unnecessary in most setups. For the two agents compared head to head, see [Claude Code vs Codex](/docs/claude-code-vs-codex/).
+The agents.md site lists more than twenty supporting tools, including Codex, Cursor, Gemini CLI, GitHub Copilot, Aider, Zed, Windsurf, Warp and VS Code. Claude Code now reads `AGENTS.md` itself, which makes the old advice to symlink one file to the other unnecessary in most setups. For the two agents compared head to head, see [Claude Code vs Codex](/docs/claude-code-vs-codex/), or [Claude Code vs Cursor](/docs/claude-code-vs-cursor/) if your team uses the editor-first agent.
 
 ## Which setup should you pick?
 Pick by how many different agents touch the repo:
@@ -1706,7 +1834,7 @@ The practical rule: never rely on a nested file to cancel a root rule. Write eac
 The agents.md site suggests a project overview, build and test commands, code style, testing instructions and security notes. Add to that list only what the agent cannot discover by reading the repo. A rule the agent already follows costs context and buys nothing. A rule you cannot check (“write clean code”) buys nothing either. Write rules you could verify in a pull request, such as “run pnpm test before committing” or “never edit files under vendor/”.
 
 ## What changes at team scale
-For one developer with one repo, the answer above is the whole story. A team hits four problems that no filename choice fixes.
+For one developer with one repo, the answer above is the whole story. A team hits four problems that no filename choice fixes. A product manager running Claude Code meets the same gap one step earlier, because an instruction file carries rules and not the decisions and reasons behind them; [using Claude Code as a product manager](/docs/learn/claude-code-for-product-managers/) covers where a team record takes over. For the people side of the same gap (who owns the instruction file and where decisions live), see [Claude Code team: share context and decisions, not six setups](/docs/learn/claude-code-team/). Once several agents run at the same time on those shared files, conventions matter more still; [Claude Code agent teams](/docs/learn/claude-code-agent-teams/) covers how teammates read the same instruction files.
 **1. The same rule lives in many places.** Say a team has six repos and uses Claude Code, Codex and Copilot. A rule about commit messages or review etiquette is true everywhere, yet it sits in six `AGENTS.md` files. Someone updates three. (This is an illustration, not a customer story.) The import trick merges files inside one repo. It does nothing across repos.
 **2. There is no shared, writable home above the repo.** The options that exist are per person or per organization: a user-level file such as `~/.claude/CLAUDE.md`, an organization-managed `CLAUDE.md`, or a shared rules folder symlinked into `.claude/rules/`. Anthropic’s docs describe all three. They work, but each reaches only people who set it up, and a symlinked rules folder that points outside the repo needs a one-time approval per project.
 **3. Personal and shared rules collide.** `CLAUDE.local.md` is the documented place for private per-project preferences, and only Claude Code reads it. Codex has its own override file, `AGENTS.override.md`, which Claude Code ignores. Each tool has its own private-override convention, so personal rules do not travel between tools.
@@ -1900,7 +2028,7 @@ Not every product that advertises MCP support is MCP-native at the workspace lev
 - **The entire object model is exposed as MCP tools.** Not a subset — every object type the product knows about, every operation on it, every relationship type. A workspace with fifty typed objects and three exposed over MCP is MCP-integrated; all fifty exposed is MCP-native. Justin Poehnelt’s argument that *the audience for your application’s API is not just other programmers, it’s AI agents*[2](#fn2) is the individual-app version of this claim; the workspace version applies it at object-graph scale. The [full list of MCP tools Maskin exposes](/docs/mcp-tools/) shows what that looks like in practice.
 - **The workspace-graph is the human-review surface.** The same typed objects agents read and write are what the human opens, inspects, and reshapes. There is not a separate “AI dashboard” grafted on top of the “real” product; the graph *is* the product, and the review UI is the graph. That co-location is what makes the workspace-graph legible to both sides of the collaboration without translation.
 - **Triggers are event-driven, not just chat-driven.** Work enters the workspace when the state changes — a new signal arrives, a bet reaches a decision gate, an object hits a threshold — and an agent runs against the change. A chat prompt is one legitimate trigger, but only one. Cron and object-transition triggers are equal citizens.
-- **Agent sessions are sandboxed.** Each agent runs in an isolated execution context — typically a container — with its own scoped credentials and its own bounded lifetime, so an agent that misbehaves can only mutate the graph through the same typed operations any actor uses. The sandbox is not a hardening afterthought; it is what makes the judgment loop safe to run in production.
+- **Agent sessions are sandboxed.** Each agent runs in an isolated execution context — an ephemeral microVM — with its own scoped credentials and its own bounded lifetime, so an agent that misbehaves can only mutate the graph through the same typed operations any actor uses. The sandbox is not a hardening afterthought; it is what makes the judgment loop safe to run in production.
 Any one of these on its own is a feature. All four together, wired to the same object model, are the category.
 Exposing the graph as MCP tools is the reach half of the category, and it is worth naming what it is not. A tool is what an agent calls; the reusable judgment about how and when to call it is a different primitive — one a team authors once and carries between agents. That is where [agent skills](/docs/learn/agent-skills/) sit: not an MCP server and not a tool, but packaged repeatable behaviour that an agent loads when a task, or a change in workspace state, matches its description.
 
@@ -2446,7 +2574,7 @@ Skills load in three levels, and the levels are the point.
 A skill can therefore hold thousands of words of procedure while costing the agent one sentence until the moment it is needed. That is why skills scale where pasting an instruction block into a system prompt does not. The always-on version of that block is an instruction file such as `AGENTS.md` or `CLAUDE.md`, read at the start of every session; [CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/) covers how those files differ across coding agents.
 
 ### What a minimal skill looks like
-The smallest useful skill is a folder and one file. `SKILL.md` with a name, a description, and three or four lines of instruction is a complete skill. There is no build step, no manifest beyond the frontmatter, and no registration call. If the folder is in a location the agent reads, the skill exists.
+The smallest useful skill is a folder and one file. `SKILL.md` with a name, a description, and three or four lines of instruction is a complete skill. There is no build step, no manifest beyond the frontmatter, and no registration call. If the folder is in a location the agent reads, the skill exists. For a set of skills built around one job, [a PM’s skills in Claude Code, job by job](/docs/learn/claude-code-for-product-managers/) walks through Anthropic’s product-management plugin.
 
 ## How agent skills relate to tools, prompts, rules, and workflows
 These terms get used interchangeably in marketing copy and mean different things. The clean way to hold them apart:
@@ -2564,7 +2692,7 @@ A concrete example from Maskin's own dogfooding — the SEO content loop that pr
 - **Close condition:** the piece reaches `published` status with the primary keyword, title, and metadata locked. Not "the writer said it was done." A promoted `content` object with a specific measurable state.
 Run that loop against a different trigger and the same shape produces a discovery loop, a competitor-intel loop, a signal-triage loop, a churn-recovery loop ([at-risk account alerts](/docs/at-risk-account-alerts/)). The primitives don't change; the trigger and typed objects do. That is what "[loop engineering](https://addyosmani.com/blog/loop-engineering/)" (Addy Osmani, Jun 2026) points at when it says the job shifted from *prompting the agent* to *designing the system that prompts the agent* — but productized as first-class objects a team configures, not code a developer writes.
 **Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.**
-The important word is *across*. A workflow inside a ticket tracker terminates when a ticket closes. A loop terminates when the typed outcome it exists to produce — the shipped bet, the approved content, the qualified pipeline — reaches a state a human can inspect, regardless of which tool the underlying work happened in.
+The important word is *across*. A workflow inside a ticket tracker terminates when a ticket closes. A loop terminates when the typed outcome it exists to produce — the shipped bet, the approved content, the qualified pipeline — reaches a state a human can inspect, regardless of which tool the underlying work happened in. Software delivery as a closed loop is a concrete case: the [product delivery loop](/marketplace/product-delivery/) has named human gates (the merge to main and the final call on the bet) and closes on a verdict against the success criteria written first.
 
 ## When workflow is fine, when agent is fine, when a loop is the answer
 The honest cases for each — not a strawman.
@@ -2640,7 +2768,7 @@ One empirical anchor is worth naming: per Guardrail Technologies' 2026 audit of 
 An agent identity is an actor — the same primitive as a human user, with its own id and its own permissions. Not a service account owned by a human; a first-class entry in the actor table. Two consequences:
 - **Every action carries the acting actor's id.** When a loop's Prospector agent creates a `bet`, the driver on that bet is the Prospector agent. When it changes a contact's status, the transition event carries the Prospector's id. Not "created by the automation"; created by *this* actor.
 - **Retiring an agent is one revocation, not a hunt.** Delete an agent actor, or flip it to `deactivated`, and every trigger it was attached to stops firing under its identity. No orphaned automations.
-The practical test: pick any object in your workspace and ask, "who drove the last five transitions on this?" The answer should be five actor ids — some human, some agent — each with a name you can click on and a permission list you can read.
+The practical test: pick any object in your workspace and ask, "who drove the last five transitions on this?" The answer should be five actor ids — some human, some agent — each with a name you can click on and a permission list you can read. It is the same record a team keeps after a multi-agent run, which is where [Claude Code agent teams](/docs/learn/claude-code-agent-teams/) end up: owners, decisions with reasons, and outcome checks.
 
 ### 2. Permissions, sentence-shaped
 Permissions belong to actors and are named in the shape of an action, not a feature.
@@ -2732,7 +2860,7 @@ If you want your agent to pick up where it left off, there are exactly three cat
 A decision is what the agent chose, plus the reason it chose it. Most setups store the first half and drop the second. Your agent logs "sent the follow-up email," but not "sent it to the tier-2 segment because the tier-1 list was rejected on Tuesday." Next run, it cannot tell a settled choice from an open one, so it either repeats the work or quietly reverses a decision a human already approved. The reason is the part that carries forward. The action is just the receipt.
 
 ### 2. Corrections
-A correction is the gap between what the agent produced and what a human accepted. This is the most valuable signal in the system, and it is almost always thrown away. When you edit the agent's draft, retitle its ticket, or reject its outreach, you hand it the one piece of feedback it cannot generate on its own. If that edit lives in your head or in a chat window, the next run makes the same mistake at the same rate. A correction that gets written down turns into a rule. A correction that does not, turns into a recurring bug.
+A correction is the gap between what the agent produced and what a human accepted. This is the most valuable signal in the system, and it is almost always thrown away. When you edit the agent's draft, retitle its ticket, or reject its outreach, you hand it the one piece of feedback it cannot generate on its own. If that edit lives in your head or in a chat window, the next run makes the same mistake at the same rate. A correction that gets written down turns into a rule. A correction that does not, turns into a recurring bug. Claude Code shows the failure plainly: [auto memory stays on one machine; here is how a team shares it](/docs/learn/claude-code-team/), because a correction one person gave never reaches a teammate until it is moved into the shared file.
 
 ### 3. Artifacts
 An artifact is the output itself, stored where the next run can find and reuse it rather than regenerate it. The research memo, the drafted ticket, the built page. If run one produced something useful and run two cannot address it, you paid twice for the same work. Artifacts double as the audit trail: they are how you answer "what did the agent actually do last week?" without guessing.
@@ -2754,7 +2882,7 @@ Persistence is the point. The workspace graph is what makes it possible, and it 
 ## FAQ
 
 ### Does Claude Code have memory?
-Claude Code has project memory: files such as [CLAUDE.md and AGENTS.md](/docs/claude-md-vs-agents-md/) that carry instructions into a session, and a memory tool for managed agents. That is real, but it is memory of instructions and project context, not memory of runs. On its own it does not persist what your scheduled agent decided, what you corrected, or what it produced last Monday. If your scheduled run starts from scratch, the gap is on the run side, not the project side.
+Claude Code has project memory: files such as [CLAUDE.md and AGENTS.md](/docs/claude-md-vs-agents-md/) that carry instructions into a session, and a memory tool for managed agents. That is real, but it is memory of instructions and project context, not memory of runs. On its own it does not persist what your scheduled agent decided, what you corrected, or what it produced last Monday. If your scheduled run starts from scratch, the gap is on the run side, not the project side. The same limit applies to [Claude Code agent teams](/docs/learn/claude-code-agent-teams/): the shared task list sits in local files scoped to one session, so a colleague cannot open it.
 
 ### How do agents remember across sessions?
 By writing their state somewhere that outlives the process, then reading it back at the start of the next run. That store has to hold three things to work: the decisions made, the corrections applied, and the artifacts produced. Anything less and the agent re-derives context it already had, which is where drift and repeated mistakes come from.
@@ -2765,7 +2893,7 @@ Three categories: decisions (what was chosen and why), corrections (what a human
 ### Is a vector database the same as agent memory?
 No. A vector database is one storage format for long-term memory, and a useful one for recall. But it holds text, not structure, and it does not carry the status, the provenance, or the audit trail a decision needs. Treating a vector store as "the memory" is the mistake that keeps agents stateless: you can retrieve a paragraph, but you cannot tell whether a choice is settled.
 Persistence is not a feature you buy and bolt on at the end. It is a property of where the agent runs, and it is the difference between an agent that improves every week and one that starts over every Monday.
-If you are a product manager starting with Claude Code, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers where its memory ends and a team record takes over. If your team splits sessions across two tools, [when a team uses both Claude Code and Codex](/docs/claude-code-vs-codex/) shows why each tool's session history stays separate.
+If you are a product manager starting with Claude Code, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers where its memory ends and a team record takes over. If your team splits sessions across two tools, [when a team uses both Claude Code and Codex](/docs/claude-code-vs-codex/) shows why each tool's session history stays separate. If several people on one team each keep their own Claude Code notes, [running Claude Code as a team](/docs/learn/claude-code-team/) covers what travels through git and where the shared record of owners and decisions lives.
 
 ## Persistence is where the agent runs
 Maskin carries decisions, corrections, and artifacts on a typed object graph every run reads and writes — so Monday starts where Friday stopped. Open source under Apache 2.0. Self-host free, bring your own model.
@@ -2816,7 +2944,7 @@ That last sentence is the whole next section.
 Anthropic is direct about this: each session begins with a fresh context window, and two mechanisms carry knowledge forward.
 - **CLAUDE.md files** are instructions you write. A project CLAUDE.md is shared with teammates through version control, so sharing it means putting the folder in git. A CLAUDE.local.md holds personal preferences and stays out of it.
 - **Auto memory** is notes Claude writes for itself from your corrections. It is stored under your home directory, and Anthropic states that it is machine-local: files are not shared across machines or cloud environments. Only the first 200 lines or 25KB of its index load at the start of a session.
-For a PM, that means your corrections, your glossary and your style are remembered on your laptop. Your teammate's Claude Code does not know them unless you handed over the folder. The reasoning behind last Tuesday's call to cut a feature sits in a chat session, not in either file. [Agent memory across sessions](/docs/learn/agent-memory-across-sessions/) covers what an agent can and cannot carry from one run to the next.
+For a PM, that means your corrections, your glossary and your style are remembered on your laptop. Your teammate's Claude Code does not know them unless you handed over the folder. The reasoning behind last Tuesday's call to cut a feature sits in a chat session, not in either file. [Agent memory across sessions](/docs/learn/agent-memory-across-sessions/) covers what an agent can and cannot carry from one run to the next. If you run [Claude Code agent teams](/docs/learn/claude-code-agent-teams/), the same holds: the task list is local files under your home directory, and a colleague’s session cannot open it. If your whole team uses Claude Code, [how to run Claude Code as a team](/docs/learn/claude-code-team/) covers what travels through git and where the record of owners and decisions should live.
 
 ## When Claude Code alone is enough
 Do not add anything if all of these are true:
@@ -2839,7 +2967,7 @@ You do not need a product for this. You need four things written down somewhere 
 2. **A decision with its reason.** What was chosen, what was rejected, who approved.
 3. **A stated outcome condition.** What "worked" means in terms you can check later.
 4. **Links between them.** The signal that started it, the decision it led to, the tasks that carried it out.
-A tracker you already use can hold this if you add fields by convention. Linear, Notion and GitHub Issues all work. The weak point is the convention: nobody enforces it, so the reason and the outcome condition are the first fields to go blank.
+A tracker you already use can hold this if you add fields by convention. Linear, Notion and GitHub Issues all work. The weak point is the convention: nobody enforces it, so the reason and the outcome condition are the first fields to go blank. If you want the build and the verdict attached to the same bet, the [product delivery loop](/marketplace/product-delivery/) lets a team run the build and the verdict as one loop.
 
 ## How Maskin keeps that record
 Maskin is an open-source (Apache 2.0), MCP-native, self-hostable workspace. We build it, so weigh this section accordingly. Work moves as typed objects. A signal enters as an **insight**, from sources such as Slack, Intercom, PostHog or a scheduled scan. It is shaped into a **bet**, a testable hypothesis with a win condition ([bet-based product planning](/docs/bet-based-product-planning/) explains the method). The bet breaks into **tasks** that people and agents share, each with a driver (an owner, person or agent) and a comment thread. When the work ships, the outcome is checked against the win condition.
@@ -2851,7 +2979,7 @@ claude mcp add --transport http maskin \
   --header "X-Workspace-Id: <WORKSPACE_ID>"
 ```
 Create the API key (the `ank_` value) under Settings, API keys, and copy the workspace ID from the Workspace settings page. Run `/reload-plugins`, then ask Claude to call `get_started`. This is checked against Anthropic's MCP docs and Maskin's server code, not a connect from a fresh Claude Code install. The [self-hosted setup guide](/docs/get-started/self-hosted/) has the full steps, and the [MCP tools reference](/docs/mcp-tools/) lists what is exposed.
-Second, Maskin runs agent sessions on the Claude Code and Codex command-line tools, each in an isolated microVM, so the agents are the ones you already use. If your engineers run both, [what changes when your team runs both Claude Code and Codex](/docs/claude-code-vs-codex/) covers keeping one record across them. What changes is where the result is kept.
+Second, Maskin runs agent sessions on the Claude Code and Codex command-line tools, each in an isolated microVM, so the agents are the ones you already use. If your engineers run both, [what changes when your team runs both Claude Code and Codex](/docs/claude-code-vs-codex/) covers keeping one record across them, and [Claude Code vs Cursor](/docs/claude-code-vs-cursor/) does the same if some of them work in Cursor. What changes is where the result is kept.
 The [product discovery loop](/marketplace/product-discovery/) is the closest match to the PM job described above. Interviews, tickets and reviews arrive as typed insights, agents cluster themes and draft candidate bets, and a person reviews and shapes each bet before it is approved. After it ships, the loop re-checks the signal to see whether the bet retired the pain. The human gate is the point: the agent gathers evidence and you own the call. See [what an agentic workspace is](/docs/what-is-an-agentic-workspace/) for the full lifecycle and [the closed-loop workspace](/docs/closed-loop-workspace/) for the longer argument.
 Where Maskin is the wrong pick:
 - **You work alone.** A folder and a good CLAUDE.md are lighter and cost nothing.
@@ -2892,6 +3020,253 @@ Anthropic says most surfaces require a Claude subscription or an Anthropic Conso
 
 ## Keep the record where the whole team can read it
 Maskin keeps owners, decisions and outcome checks on typed objects that people and agents share, exposed over MCP. Open source under Apache 2.0. Self-host free.
+
+
+---
+
+> Source: https://maskin.io/docs/learn/claude-code-agent-teams/
+
+# Claude Code agent teams: when they are enough, and when a team needs a shared record
+Claude Code agent teams are an experimental feature: one session acts as team lead and spawns teammates, each with its own context window, coordinating through a shared task list and messages. They are enough for one developer, one repo, one sitting. They stop being enough when people, decisions or time must outlast the session.
+*Read against [Anthropic’s agent teams docs](https://code.claude.com/docs/en/agent-teams) and [costs page](https://code.claude.com/docs/en/costs#agent-team-token-costs) on 2026-10-04. The feature is experimental and the docs change often, so check them before you rely on any detail below.*
+> ✓
+> **Key takeaways**
+> **Agent teams are a coordination feature inside one session.** The lead, the teammates, the task list and the mailbox all belong to that session on that machine.
+> **They are enough for bounded, parallel, one-person work:** parallel code review, competing-hypothesis debugging, research, and new modules where each teammate owns different files.
+> **They cost more.** Anthropic says to start with 3 to 5 teammates, and its costs page puts teams at approximately 7x the tokens of a standard session when teammates run in plan mode.
+> **Lighter rungs come first:** a single session, subagents, git worktrees or cross-session messaging. Anthropic’s own page says to check whether one of them does the job before you set up a team.
+> **They stop being enough at four boundaries:** the session ends, a second person needs to see the work, a decision needs a reason attached, or an outcome needs checking weeks later. The docs state the first two and part of the third. The rest is what the docs do not describe.
+> **A shared record is a layer above any tool.** It needs an owner per piece of work, a decision with its reason, and an outcome checked against a stated condition. A tracker you already use can do this. Maskin is one way to do it with typed objects.
+![Two boxes. On the left, one session on one machine holding a team lead, teammates with a task list, and a mailbox. An arrow leads to a box on the right, the record, holding an owner, a decision with its reason, and an outcome condition.](/og-image-claude-code-agent-teams.png)
+Agent teams coordinate work inside one session. The record is the part that outlasts it.
+
+## What Claude Code agent teams are
+An agent team is four parts, per Anthropic’s docs:
+1. **Team lead:** the main session. It spawns teammates and coordinates the work.
+2. **Teammates:** separate Claude Code instances, each with its own context window.
+3. **Task list:** a shared list of work items with three states (pending, in progress, completed) and optional dependencies. Teammates can self-claim the next unblocked task.
+4. **Mailbox:** messages between agents, stored as a JSON file per agent.
+You enable the feature by setting the environment variable **CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS** to 1, either in your shell or under “env” in settings.json. Without it, Claude does not spawn or propose teammates. Then you describe the task and the roles in plain language. The docs’ own starter prompt asks for three teammates to explore a command-line tool from three angles: one on UX, one on architecture, one playing devil’s advocate.
+Two practical details that trip people up. First, Claude sometimes spawns subagents instead of a team, and both show up in the same agent panel, so if you wanted a team, say so explicitly. Second, the default display mode is in-process (all teammates inside your terminal, switch between them with the arrow keys). Split panes need tmux or iTerm2, and the docs list VS Code’s integrated terminal, Windows Terminal and Ghostty as unsupported for split panes.
+
+### Agent teams vs subagents vs a shared record
+Anthropic’s own comparison is between subagents and agent teams. The third column is the one that does not exist inside either feature, and it is the subject of the rest of this page.
+|  | Subagents | Agent teams | Shared record (tracker or workspace) |
+| --- | --- | --- | --- |
+| Who coordinates | Main agent manages all work | Lead, plus teammates that self-claim tasks | People and agents, against the same objects |
+| Communication | Results return to the caller; subagents Claude has named can also message each other | Teammates message each other directly | Comments and links on the work item |
+| Task tracking | Main agent | Shared task list | Typed work items with owners |
+| Talk to the worker yourself | Through the main agent | Yes, every teammate is a full session you can message | Yes, on the work item |
+| Where state lives | Inside the session | Local files, one team per session | A store outside any session |
+| Visible to a second person | No | Only on your machine | Yes, by design |
+| Survives the session | Within the session | Task list files persist locally; in-process teammates do not resume | Yes |
+| Best for | Focused jobs where only the result matters | Parallel work that needs discussion | Work that spans people, days and agents |
+Sources for the first two columns: Anthropic’s [agent teams docs](https://code.claude.com/docs/en/agent-teams) (compare-with-subagents table, Architecture and Limitations sections) and the [subagents docs](https://code.claude.com/docs/en/sub-agents). Named subagents blur the line a little, so the clean difference is not communication. It is what teams add: a shared task list with self-claiming, and a full session per teammate that you can talk to directly.
+
+## When plain agent teams are enough
+The docs are candid about the costs. They say agent teams “add coordination overhead” and that for sequential tasks, same-file edits, or work with many dependencies, a single session or subagents are more effective. The strongest uses they list are research and review, new modules, debugging with competing hypotheses, and cross-layer changes.
+Use plain agent teams when all of these are true:
+- **One person is steering.** You are the only human who needs to know what happened.
+- **The work fits one sitting.** If the lead can finish and synthesize before you close the laptop, nothing needs to persist.
+- **The pieces are independent.** Each teammate owns different files. Two teammates editing the same file leads to overwrites, per the docs.
+- **The output is a result, not a decision trail.** A review summary or a bug diagnosis is consumed once.
+The docs’ competing-hypotheses example is a good fit. You spawn five teammates to investigate why an app exits after one message, and tell them to try to disprove each other’s theories. The debate is the mechanism: sequential investigation anchors on the first plausible theory, and adversarial teammates counter that. You read the consensus, fix the bug, and move on. Nothing about it needs to outlive the session.
+If you are new to the feature, the docs recommend starting with review and research tasks that have clear boundaries and do not write code. That advice holds up. Parallel implementation is where coordination costs show.
+
+### Try the lighter rungs first
+Before you set up a team, Anthropic’s page tells you to check whether a lighter option does the job. Climb one rung at a time:
+1. **A single session.** Sequential tasks, same-file edits and dependency-heavy work belong here.
+2. **[Subagents](https://code.claude.com/docs/en/sub-agents).** Helpers for research or verification inside your session. Only a summary returns to your main context, so they cost fewer tokens than teammates.
+3. **[Git worktrees](https://code.claude.com/docs/en/worktrees) or [cross-session messaging](https://code.claude.com/docs/en/cross-session-messaging).** You run several sessions yourself. With messaging, Claude can pass findings between them. No team machinery.
+4. **An agent team.** Teammates share a task list, self-claim work and message each other, and you can message any of them.
+5. **A shared record.** Add it when people, decisions or time outlast the session. It sits above all four rungs, because it holds what they produced, not how they ran.
+Each rung up costs more. Anthropic’s [costs page](https://code.claude.com/docs/en/costs#agent-team-token-costs) says agent teams use approximately 7x more tokens than standard sessions when teammates run in plan mode. Its advice for keeping the bill down: use Sonnet for teammates, keep teams small, keep spawn prompts focused, and shut teammates down when their work is done. If your team also runs Codex, [Claude Code vs Codex](/docs/claude-code-vs-codex/) covers what changes when a team runs both.
+
+## Where agent teams stop: four boundaries
+None of the following are bugs. The first two are documented limits of an experimental, per-session feature. The third is partly documented and partly a gap. The fourth is not in the docs at all; it is what a team has no place to store. Together they are where a second layer starts to matter.
+**1. The session ends.** The docs say the team config directory is removed when the session ends. The task list directory persists locally and is never uploaded, so resumed sessions keep their tasks. But in-process teammates are not restored by **/resume** or **/rewind**, and after a resume the lead may try to message teammates that no longer exist. Work state survives on your disk. The teammates themselves do not come back.
+**2. A second person needs to see it.** A session has exactly one team, scoped to that session. You cannot share a team across sessions. The task list is local files under your home directory. A colleague who runs their own session cannot open it. For several people on one repo, [Claude Code team](/docs/learn/claude-code-team/) covers what travels through git and what needs a record. Teammates’ permission prompts also appear in the lead’s session, so you approve them there.
+**3. A decision needs its reason.** The docs describe the task list as three states plus dependencies. Nothing described there records why a plan was approved, who overruled whom, or what you decided to leave alone. The docs also note that task status can lag: teammates sometimes fail to mark tasks complete, which blocks dependent tasks, and you check by hand.
+**4. An outcome needs checking later.** “Completed” in a task list means a teammate said it finished. Whether the change held up, whether the bug came back, whether the review caught what mattered: that is a separate question, and nothing the docs describe stores the answer.
+
+## What a shared record has to hold
+You do not need a product to answer this. You need four things written down somewhere more durable than a session:
+1. **An owner per piece of work.** One name, human or agent, on each item.
+2. **A decision with its reason.** What was chosen, what was rejected, and who approved it.
+3. **A stated outcome condition.** What “done” means in terms you can check later, not “the agent said it finished”.
+4. **Links between them.** The signal that started the work, the decision it led to, the tasks that carried it out.
+Shared instructions for several people are a separate question. [CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/) covers which file to keep them in.
+Plenty of people already build this by hand. One Hacker News post, [What is the control plane for local AI agents?](https://news.ycombinator.com/item?id=47242849), describes using GitHub Issues as a temporary backend for agent state: the agent opens or updates an issue at session start, posts findings as comments, and the human replies from a phone. The author’s own complaint is that issue trackers were not built for an agent’s high-frequency event loop, and they ask for something more purpose-built. Our read is that the gap is also structural: an issue has no slot for a decision’s reason or an outcome condition unless you add one by convention.
+
+### An illustrative scenario
+Take a team of three developers and a product manager. If you are the product manager, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers what you can do with Claude Code on your own. On Monday, one developer asks the lead to spawn three teammates to review a large pull request: security, performance, test coverage. The review is good. Two findings are real, one is deferred on purpose because a migration lands next week.
+On Wednesday the product manager asks why the deferred finding was not fixed. The answer is in Monday’s session, on one laptop, in a lead’s synthesis that was never written anywhere a second person could read. The task list says three tasks were completed. It does not say one was deferred and why.
+With a shared record, the review produces a work item with an owner, the deferral is a decision with a stated reason, and the follow-up check after the migration has an outcome condition. This scenario is made up to show the gap. It is not a Maskin customer story.
+
+## How the shape of the record differs
+The question is not which tool is better. It is what each one keeps, for how long, and who can read it. Here are three shapes, described from each project’s own material.
+|  | Claude Code agent teams | Gas Town | Maskin |
+| --- | --- | --- | --- |
+| What it is | A feature inside Claude Code for coordinating teammates in one session | A multi-agent workspace manager by Steve Yegge, for Claude Code, Copilot, Codex, Gemini and others | An open-source workspace where people and agents work on shared typed objects |
+| Coordinator | The team lead session | A “Mayor” agent you talk to; per-project workers, a Refinery merge queue, and a Witness and a Deacon that supervise | People and agents as drivers (owners) of objects |
+| Where work state lives | Local task list and mailbox files, scoped to a session | “Beads”, a git-backed issue ledger, so work survives when a session ends | Typed objects (insight, bet, task) linked by relationships, readable by the UI, agents and people over the same API |
+| Unit of record | A task with three states | A code-repo issue | A signal, a decision with a win condition, and the tasks under it |
+| Stated scale | Start with 3 to 5 teammates | README contrasts “4-10 agents become chaotic” with “scale comfortably to 20-30 agents” | Not applicable. It holds the record above the sessions that do the work |
+Gas Town facts are from its [README](https://github.com/gastownhall/gastown/blob/main/README.md) and Yegge’s [Welcome to Gas Town](https://yegge.ai/essays/welcome-to-gas-town/) essay, both read on 2026-10-04. The essay itself says the project was under three weeks old and that you probably do not want to use it yet, so read the table as a comparison of record shape, not of maturity. This page does not claim Maskin beats Gas Town or Anthropic’s feature. They solve different parts of the problem. Gas Town keeps work state in the code repo, which is a good place for code-shaped work. Maskin keeps it as objects that a product manager and an agent can both open, which is a good place for decisions that are not code.
+
+## How Maskin keeps the record
+Maskin is an open-source (Apache 2.0), MCP-native, self-hostable workspace. Work moves as typed objects: a signal enters as an insight, gets shaped into a bet with a win condition, and runs as tasks that people and agents share. Each object has a driver (an owner, person or agent) and a comment thread, and the bet closes with an outcome measured against its condition. The objects are the work, not a log of it, which is the property the four boundaries above are missing. The longer argument is in [the closed-loop workspace](/docs/closed-loop-workspace/), and how a record doubles as an audit trail is in [agent observability](/docs/agent-observability/).
+Maskin’s agent sessions use the Claude Code and Codex command-line tools and execute in isolated microVMs, so it sits alongside the tools you already run agent teams in. It is not a replacement for agent teams, and it does not make them unnecessary. Use agent teams to do a parallel burst of work. Use the record to hold who owns what, what was decided, and what happened after. Maskin is early, so evaluate the architecture, not a long track record. If you want to try it, you can [self-host it](/docs/self-hosted-ai-workspace/).
+For adjacent decisions, [agent skills vs MCP vs Cursor rules vs workflows](/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/) covers where shared instructions live, and [agent memory across sessions](/docs/learn/agent-memory-across-sessions/) covers what an agent remembers from one session to the next. If you are comparing open-source coding agents more broadly, see the [open source AI coding agent alternatives](/alternatives/open-source-ai-coding-agent/).
+
+## A quick decision rule
+- **Solo, one repo, one sitting, independent pieces:** agent teams, 3 to 5 teammates, start with review or research.
+- **Solo, and a subagent or a second worktree session would do:** skip the team. It costs less.
+- **Solo but the work runs over several days:** agent teams for the burst, and write the decisions and outcomes into whatever tracker you already have.
+- **Two or more people, or you will need to explain it next week:** add a shared record before you add more teammates. More agents without one means more output nobody can account for.
+- **More than 5 agents at once:** you are in coordination-overhead territory by Anthropic’s own guidance. Fix the bookkeeping before the headcount.
+
+## FAQ
+
+### What are Claude Code agent teams?
+Claude Code agent teams are an experimental feature in which one Claude Code session acts as team lead and spawns teammates. Each teammate is a separate Claude Code instance with its own context window. They coordinate through a shared task list and a mailbox for direct messages, and you can message any teammate yourself. The feature is off by default.
+
+### How do I enable Claude Code agent teams?
+Set the environment variable CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS to 1, either in your shell or under “env” in settings.json. Then describe the task and the teammates you want in plain language. To open split panes instead of the default in-process view, set teammateMode in settings.json to auto or tmux; split panes need tmux or iTerm2.
+
+### What is the difference between agent teams and subagents?
+Subagents return their results to the caller, though subagents Claude has named can also message each other. Agent teams add a shared task list that teammates self-claim from, plus a full Claude session per teammate that you can message directly. Subagents cost fewer tokens because results are summarized back. Teams cost more because every teammate is a separate Claude instance.
+
+### How many teammates should I use?
+Anthropic recommends starting with 3 to 5 teammates for most workflows, with roughly 5 to 6 tasks per teammate. Token costs scale linearly with the number of teammates, coordination overhead grows, and returns diminish beyond a point. The docs say three focused teammates often outperform five scattered ones.
+
+### Are Claude Code agent teams still experimental?
+Yes, as of the docs read on 2026-10-04. Anthropic labels them experimental and disabled by default, with known limitations around session resumption, task coordination and shutdown. Because the feature is experimental, details can change between Claude Code versions, so check the current docs for the version you run.
+
+### Can several people or sessions share one agent team?
+No. A session has exactly one team, scoped to that session, and you cannot share a team across sessions or promote a teammate to lead. The task list lives in local files and is never uploaded. If several people need the same view of the work, you need a record outside the session, such as a tracker or a workspace. For the people side, read about [sharing Claude Code across a human team](/docs/learn/claude-code-team/).
+
+### Do Claude Code agent teams work in VS Code or on Windows?
+The default in-process mode works in any terminal. Split-pane mode needs tmux or iTerm2, and the docs say it is not supported in VS Code’s integrated terminal, Windows Terminal or Ghostty. The docs also note tmux has known limitations on some operating systems and works best on macOS.
+Read next
+
+## Getting started is free
+Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of what was decided. The [agentic-workspace cornerstone](/docs/what-is-an-agentic-workspace/) and the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) guide are the two best next reads.
+
+
+---
+
+> Source: https://maskin.io/docs/learn/claude-code-team/
+
+# Claude Code team: how to share context and decisions, not six private setups
+**How do you use Claude Code as a team, and not as six people with six private setups?** Move three things out of private laptops: the setup (settings, skills, hooks), the context (what Claude should know about the project) and the record (who owns what, what was decided and why). The first two travel in your repository. The third needs a home you pick on purpose.
+This guide covers how people and Claude Code work together. It does not cover plans, seats or prices. For those, start with Anthropic’s own page, [Use Claude Code with your Team or Enterprise plan](https://support.claude.com/en/articles/11845131-use-claude-code-with-your-team-or-enterprise-plan).
+*Read against [Anthropic’s Claude Code docs](https://code.claude.com/docs/en/settings) on 2026-10-15. The product changes often, so check the docs for the version you run before relying on any detail below.*
+> ✓
+> **Key takeaways**
+> **Most of the setup already travels through git.** Commit the shared settings file and project skills, and every teammate who clones gets them.
+> **Claude’s own notes do not travel.** Anthropic’s docs say auto memory is machine-local and not shared across machines. Something one person taught Claude stays on that person’s laptop until someone writes it into a shared file.
+> **/team-onboarding spreads a setup, not a decision.** It builds a guide from one person’s last 30 days of usage. It does not keep owners or decisions current.
+> **A rule file is a request, not a lock.** Anthropic’s docs say Claude treats CLAUDE.md as context, not enforced configuration. Use a hook when something must never happen.
+> **The gap is the record.** Who owns what, what was chosen, what was rejected, and whether it worked. Nothing in Claude Code’s team features is described as keeping that, so pick a home for it.
+![Three columns. In git: settings.json, CLAUDE.md and project skills, which reach every teammate who clones. On a laptop: auto memory and settings.local.json, which stay with one person. Needs a record: an owner, a decision with its reason, and an outcome check, which have no home by default.](/og-image-claude-code-team.svg)
+Git carries the setup. Laptops hold private notes. The record is the part a team has to place on purpose.
+
+## What a team shares by default, and what it doesn’t
+Here is what reaches a teammate who clones your repository, based on Anthropic’s settings, memory and skills docs:
+| What you want to share | Where it lives | Reaches teammates? |
+| --- | --- | --- |
+| Permissions, hooks, plugins | .claude/settings.json in the repo | Yes, once committed |
+| Your personal overrides | .claude/settings.local.json | No, kept out of commits |
+| Project rules and conventions | CLAUDE.md in the repo | Yes, once committed |
+| Reusable procedures | .claude/skills/ in the repo | Yes, once committed |
+| What Claude learned from your corrections | Auto memory under ~/.claude/projects/ | No, machine-local |
+| Who owns what, and why a call was made | Nowhere by default | No |
+The last two rows are the whole problem. The first four are configuration, and git handles configuration well. The last two are knowledge about the work, and nobody has decided where it goes.
+
+## Step 1: Commit the setup so there is one
+Anthropic’s settings docs describe four places a setting can live: managed (set by your organization), user, shared project and project local. The one that makes a team is the shared project file, `.claude/settings.json`. Commit it and everyone who clones gets the same permissions, hooks and plugins. Each person can still override it for themselves in `.claude/settings.local.json`, which Claude Code keeps out of commits, so personal exceptions never need a pull request.
+Two details that surprise teams:
+- **Some committed keys wait for trust.** Allow rules and most environment variables apply only after each teammate trusts the folder. Until then they still see permission prompts. If a rule “isn’t working” for a new hire, check this first.
+- **The session reads the file from where it starts.** Claude Code reads the shared file from the session’s primary working directory, so start at the repository root.
+Do the same for skills. A skill committed at `.claude/skills/<name>/SKILL.md` is available to everyone who clones. Plugins are the other route, and organizations can push skills and a managed CLAUDE.md to every machine through managed settings. For a small team, committing to the repo is enough and needs no admin. If you are new to skills, [what are agent skills?](/docs/learn/agent-skills/) explains the format.
+
+## Step 2: One context file, with an owner
+Instructions belong in one committed CLAUDE.md (or AGENTS.md) that says how to build, test and name things. Which filename to use and how nested files combine is a separate question, covered in [CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/). This page assumes you have one and asks a different question: who keeps it true?
+Give it an owner, a person’s name, not “the team”. Treat changes like code: a pull request, one reviewer. Without an owner the file only grows, and a long file with contradicting lines is worse than a short one.
+Then deal with auto memory, because it is where private knowledge builds up. Claude saves notes about your corrections and preferences on its own, in a directory under your home folder. The docs state those files are not shared across machines. So if Dana tells Claude “tests need Docker running” and Sam never does, Dana’s Claude knows and Sam’s does not, and neither of them has written it down. A habit that fixes this: when Claude saves a memory that would help everyone, move it into CLAUDE.md in a pull request and let the private note go.
+Remember what the file can and cannot do. If a rule must hold every time, such as “never touch the billing migrations”, a CLAUDE.md line is a request. Anthropic’s docs point to a PreToolUse hook for blocking an action, and a hook can live in the committed settings file.
+
+## What /team-onboarding does, and what it doesn’t
+If you searched “claude code team onboarding”, you probably meant this. `/team-onboarding` is a built-in Claude Code command. Per Anthropic’s [commands reference](https://code.claude.com/docs/en/commands), it analyzes your sessions, commands and MCP server usage from the past 30 days and writes a markdown guide that a teammate can paste as a first message to get set up fast. For claude.ai subscribers on Pro, Max, Team and Enterprise plans, it also returns a share link teammates can open directly in Claude Code.
+It is useful for the problem it targets: a new person does not know which commands, skills and connected tools the experienced person reaches for. One command beats a Slack thread of tips.
+What it does not do follows from how it works:
+- **It describes one person’s habits.** The input is one person’s recent usage. It reflects how that person works, which may not be how the team agreed to work.
+- **It is a snapshot.** A guide made today does not update when conventions change. Third-party explainers such as [ClaudeLog](https://claudelog.com/faqs/what-is-team-onboarding-in-claude-code/) suggest regenerating it periodically for the same reason.
+- **It holds no decisions or owners.** Usage history shows what someone did, not what the team chose, what it rejected, or who answers for an area.
+Treat it as a good first-day handout. It spreads a setup. It does not keep decisions or owners current, and nothing in Anthropic’s description claims it does.
+
+## Step 3: Give decisions and owners a home
+This is the step teams skip, and it is the one that stops the six-private-setups drift from coming back. You need three things written somewhere more durable than a session and more visible than a laptop:
+1. **An owner per area or piece of work.** One name, a person or an agent.
+2. **A decision with its reason.** What was chosen, what was rejected, who approved it.
+3. **An outcome you can check.** What “this worked” means, stated before you ship, so someone can look later.
+A record this small is enough to start:
+- **Decision:** one sentence.
+- **Why, and what we rejected:** two lines.
+- **Owner:** one name.
+- **Check by:** a date.
+- **Outcome:** filled in later, against the condition you set.
+Where it lives is a real choice, and none of these is wrong:
+- **A decisions folder in the repo.** Good for code-shaped calls. Reviewable, versioned, next to the code. Weak for people who do not live in git.
+- **The tracker you already use.** Works if you add fields or a template for the reason and the check date. Without them, an issue says what was done but not why.
+- **A workspace built for it.** Maskin is one option. It is an open-source, MCP-native workspace where people and agents work on typed objects: a signal comes in as an insight, becomes a bet with a stated win condition, and runs as tasks. Each object has a driver (the owner) and a comment thread, and the bet closes with an outcome measured against its condition. Its agent sessions run the Claude Code and Codex command-line tools in isolated microVMs, so it sits beside the tools your developers already use. It is early, so judge the design, not a long track record. The longer argument is in [the closed-loop workspace](/docs/closed-loop-workspace/), and you can [self-host it](/docs/self-hosted-ai-workspace/).
+The choice matters less than having one and saying where it is.
+
+### An illustrative week
+This scenario is made up to show the gap. It is not a Maskin customer story.
+A team of four developers and a product manager all use Claude Code. On Monday, Sam asks Claude to refactor the export module and tells it to leave the legacy CSV path alone because a customer still depends on it. Claude saves a note. On Wednesday, Dana runs a cleanup and removes the legacy path. Her Claude had no such note, and CLAUDE.md never mentioned it.
+Nothing in the shared setup was wrong. The settings matched, the skills matched, the CLAUDE.md was clean. What was missing was a decision with a reason and an owner: “Keep the legacy CSV export until the customer migrates. Owner: Sam. Check: end of quarter.” With that in the record, and the one-line rule promoted into CLAUDE.md, Dana’s session starts with the answer.
+
+## Common ways this goes wrong
+- **Everyone commits to CLAUDE.md and nobody prunes it.** Rules pile up and start to contradict. Anthropic warns that when two instructions conflict, Claude may pick one arbitrarily. Give the file an owner and a size budget.
+- **Personal settings leak into the shared file.** Keep preferences in the local file. Review changes to the committed settings like code, since they change what every session is allowed to do.
+- **A guide replaces a conversation.** A generated onboarding guide gets a person running. It does not tell them what the team decided last month.
+- **Treating the several-agents feature as the team answer.** Having Claude coordinate several agents in one session is a different thing from coordinating several people. If you are asking about that, read [Claude Code agent teams](/docs/learn/claude-code-agent-teams/).
+- **Memory without a decision trail.** Notes from past sessions help an agent remember. They do not tell a human reviewer why something was decided. For that distinction, see [agent memory across sessions](/docs/learn/agent-memory-across-sessions/).
+
+## A first-week checklist
+1. Commit `.claude/settings.json` with the permissions and hooks the whole team needs. Tell people to use `settings.local.json` for the rest.
+2. Name one owner for CLAUDE.md. Cut it to rules you could check in a pull request.
+3. Move any project skills your best user has into `.claude/skills/` and commit them.
+4. Run `/team-onboarding` on your most experienced user’s machine and hand the result to the next hire, as a starting point, not a standard.
+5. Pick the home for decisions. Write the first five from the last month, with an owner and a check date each.
+6. Add one line to your pull request template: “Does this change a decision? If so, update the record.”
+7. Review the record and CLAUDE.md together once a month. A short review beats a rewrite.
+
+## FAQ
+
+### What does Claude Code team onboarding do?
+/team-onboarding is a Claude Code command that reads your last 30 days of sessions, commands and MCP server usage and writes a markdown guide a teammate can paste as a first message. On Pro, Max, Team and Enterprise plans it also returns a share link. It shares one person's setup. It does not track decisions or owners.
+
+### How do you use Claude Code as a team?
+Share the setup through git: commit the shared settings file, project skills and one CLAUDE.md with a named owner. Then pick a place for decisions and owners, since Claude's own memory is private to each machine. A decisions folder, your tracker or a workspace all work, as long as everyone knows which one.
+
+### Do teammates share Claude Code settings?
+Yes, through the repository. Commit .claude/settings.json and teammates who clone it get the same permissions, hooks and plugins. Each person can override it in .claude/settings.local.json, which stays out of commits. Some committed keys, such as allow rules, apply only after each teammate trusts the folder.
+
+### Does Claude Code share memory between teammates?
+No. Anthropic's docs say auto memory is machine-local and its files are not shared across machines. CLAUDE.md is the shared channel, because you commit it. If Claude learns something the whole team needs, move it into CLAUDE.md through a pull request.
+
+### Can I make Claude Code follow a team rule every time?
+Not with a rule file alone. Anthropic's docs say Claude treats CLAUDE.md as context, not enforced configuration. To block an action regardless of what Claude decides, use a PreToolUse hook in the committed settings, and keep CLAUDE.md for guidance.
+
+### How is this different from Claude Code agent teams?
+Agent teams put several Claude sessions to work on one task, coordinated by a lead. This page is about several people and their agents sharing context and decisions over weeks. They solve different problems. The agent teams feature is covered in [Claude Code agent teams](/docs/learn/claude-code-agent-teams/).
+Read next
+
+## Getting started is free
+Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of who owns what and what was decided. The [agentic-workspace cornerstone](/docs/what-is-an-agentic-workspace/) and the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) guide are the two best next reads.
 
 
 ---
@@ -3523,7 +3898,7 @@ The two camps place different bets on the sandbox side of that cut. **The simula
 ## The three properties composable treats as first-class: determinism, safety, scale
 This is the core of the composable-camp argument, and it’s the same framing we use in our cornerstone and our MCP-native piece. It’s not marketing. It’s the three things you have to prove to run agents on real work.
 - **Determinism.** An event fires an agent; the agent acts; the outcome is a state change you can inspect in the object model and the event-sourced audit trail. Every transition is recorded, so behavior is explainable and auditable rather than opaque. The same trigger, on the same object state, produces the same downstream graph — barring model non-determinism, which is bounded by the agent’s narrow scope. In the simulation camp, determinism is much harder to reason about, because the “state” is a persona’s chat history and the “trigger” is often another persona’s message.
-- **Safety.** Agents execute in isolated sessions (Docker containers, in Maskin’s implementation) that can’t reach private keys or production state outside the workspace’s authority, and human promote gates bound the closed loop. The protocol defines what agents can reach; the sandbox defines how far they can go. Named escalation — Chase’s `notify` / `question` / `review` interrupts, or their equivalents — is how a human on-the-loop stays in control without becoming a bottleneck.[5](#fn5) In the simulation camp, safety is a function of persona-level trust: the “Sales Rep” gets to do sales-rep things, and the review model is usually chat-log-after-the-fact rather than action-before-the-fact.
+- **Safety.** Agents execute in isolated sessions (ephemeral microVMs, in Maskin’s implementation), and human promote gates bound the closed loop. The protocol defines what agents can reach; the sandbox defines how far they can go. Named escalation — Chase’s `notify` / `question` / `review` interrupts, or their equivalents — is how a human on-the-loop stays in control without becoming a bottleneck.[5](#fn5) In the simulation camp, safety is a function of persona-level trust: the “Sales Rep” gets to do sales-rep things, and the review model is usually chat-log-after-the-fact rather than action-before-the-fact.
 - **Scale.** A small team can run many agents because each one owns a narrow, well-defined role on typed objects. Load is delegated to many bounded loops rather than a few monolithic personas, sidestepping the wall where a handful of agents each carry too many responsibilities to be trusted. In the simulation camp, scale is a function of adding personas, which linearly increases the coordination overhead of the synthetic org and — in the products that lean hardest on the metaphor — introduces the same meeting-and-status-update friction the metaphor was borrowed from.
 The composable camp did not invent these properties. It’s the camp that decided to make them the first-class shape of the product rather than a compliance-and-observability layer stapled on later.
 
@@ -3620,7 +3995,7 @@ Every step lands as a state transition on a typed object — insights, tasks, ev
 
 ## Prerequisites
 - A running Maskin instance (self-hosted under Apache 2.0 or a hosted trial — [Get started](/docs/get-started/)).
-- A model key configured on the workspace (Anthropic, OpenAI, or a local model — see [LLM & models](/docs/llm/)).
+- A model key configured on the workspace (your own Anthropic or OpenAI access — see [LLM & models](/docs/llm/)).
 - A Unipile account for the LinkedIn sender lane, or a Postmark/Resend account plus a warmed email domain for email.
 - An enrichment provider your account already uses (Apollo, Clay, or Tavily are the common shapes) — wired in as an MCP tool the research step can call.
 - A human on-call for the approval gate until the override rate settles.
@@ -3684,7 +4059,7 @@ The loop shape is the same — signal, research, draft, approval, send, reply, c
 As typed objects and relationships. The signal is an insight object created by a trigger; the draft is a task in `needs_approval` linked to the insight; the send is a task transition to `sending`; the reply is an event on the parent insight; the outcome is a status write on the insight itself. All of it lives on the same object graph as the rest of the workspace, so an agent can walk from insight to task to reply to outcome without leaving the substrate, and a human can review any step of any loop without opening a separate tool. The [Core concepts](/docs/concepts/) page has the full object-model reference.
 
 ### What model should I use for the drafting step?
-Whichever your team can hold taste on. Draft quality is a prompt-and-voice problem more than a raw-capability problem; a well-prompted mid-tier model with the sender’s writing samples in context outperforms a frontier model prompted generically. Because Maskin is [MCP-native](/docs/what-is-mcp-native/), the model call is a workspace configuration, not a code change: swap Anthropic for OpenAI or a local model without touching the loop shape. Keep the override rate as the honest evaluation metric — the model that produces the healthiest middle-band override rate in your reviewer’s hands is the right one, regardless of the leaderboard.
+Whichever your team can hold taste on. Draft quality is a prompt-and-voice problem more than a raw-capability problem; a well-prompted mid-tier model with the sender’s writing samples in context outperforms a frontier model prompted generically. Because Maskin is [MCP-native](/docs/what-is-mcp-native/), the model call is a workspace configuration, not a code change: swap Anthropic for OpenAI without touching the loop shape. Keep the override rate as the honest evaluation metric — the model that produces the healthiest middle-band override rate in your reviewer’s hands is the right one, regardless of the leaderboard.
 
 ### How does this connect to the open-source AI SDR comparison?
 The companion page, [Open source AI SDR: the honest map](/alternatives/open-source-ai-sdr/), covers the six OSS AI SDR repos on GitHub in 2026 (MatthewDailey/open-sdr, OpenOutreach, ZeroGTM, Signal, personizeai/revenue-os, kandksolvefast/ai-sdr-agent), the $50-200/mo vs $2k-5k/mo cost split against closed SaaS, and the failure modes of running outbound without a real approval gate. This page is the concrete build side: given you have accepted the loop framing and want to run it on your own object graph, this is how the seven steps get wired inside Maskin.
@@ -3792,7 +4167,7 @@ Read next
 # A wiki your agents read before they answer.
 Team memory that new hires and new agents bootstrap from — indexed, typed, MCP-native.
 ![The LLM knowledge wiki loop — a closed bet becomes a typed, interlinked wiki page that agents read before they answer.](/og-image-knowledge-wiki.png)
-The knowledge wiki loop keeps a living, agent-readable record of every decision your team ships. A closed bet fires the loop; agents write the verdict, index the artifacts, and link them to the object they came from; a human gates the taste-sensitive summaries. Every future agent your team spawns reads from the same graph before it answers — so the wiki isn’t a Notion side-project that rots the moment its author changes roles, it’s the same substrate the rest of your team already operates on.
+The knowledge wiki loop keeps a living, agent-readable record of every decision your team ships. A closed bet (one that has run through the [product delivery loop](/marketplace/product-delivery/), for instance) fires the loop; agents write the verdict, index the artifacts, and link them to the object they came from; a human gates the taste-sensitive summaries. Every future agent your team spawns reads from the same graph before it answers — so the wiki isn’t a Notion side-project that rots the moment its author changes roles, it’s the same substrate the rest of your team already operates on.
 For product teams tired of re-answering the same question because the last answer lived in someone’s DMs.
 A full walkthrough of the LLM knowledge wiki loop — how a closed bet becomes a citable page your agents read before they answer. Sign up below to get it in your inbox the moment it’s live.
 Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20LLM%20knowledge%20wiki%20loop) with subject “Waitlist: LLM knowledge wiki loop” and we’ll send it the moment it drops.
@@ -3876,7 +4251,7 @@ Related loops on the marketplace
 # Close the loop from customer signal to shipped bet.
 Interviews, tickets, and reviews land as typed insight — the loop closes when a shaped bet ships against them.
 ![The product discovery loop — customer signal, typed insight, shaped bet, shipped and re-checked against the signal.](/og-image-product-discovery.png)
-The discovery loop closes on the outcome (a shipped bet mapped back to the signal that motivated it), not the activity (an interview scheduled). Every call transcript, support ticket, and review lands as a typed insight on the same graph as the bets you’re already shipping. Agents cluster themes and draft candidate bets; a human gates the read-through and the shaping. After ship, the loop re-checks the signal so you know whether the bet actually retired the pain. The same signal-to-bet pattern applies on the retention side: see [the same signal-to-bet pattern applied to churn](/docs/at-risk-account-alerts/). Shipped bets are also the raw material for the [LinkedIn content loop](/marketplace/linkedin-content/), which turns what shipped this fortnight into posts the account owner approves. If you synthesize research in Claude Code today, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers what that setup does well and where a team record takes over.
+The discovery loop closes on the outcome (a shipped bet mapped back to the signal that motivated it), not the activity (an interview scheduled). Every call transcript, support ticket, and review lands as a typed insight on the same graph as the bets you’re already shipping. Agents cluster themes and draft candidate bets; a human gates the read-through and the shaping. After ship, the loop re-checks the signal so you know whether the bet actually retired the pain. The same signal-to-bet pattern applies on the retention side: see [the same signal-to-bet pattern applied to churn](/docs/at-risk-account-alerts/). Shipped bets are also the raw material for the [LinkedIn content loop](/marketplace/linkedin-content/), which turns what shipped this fortnight into posts the account owner approves. Once a bet is shaped, the [product delivery loop](/marketplace/product-delivery/) picks it up: it plans the work, builds and reviews every change, and checks the result against the success criteria you wrote first. If you synthesize research in Claude Code today, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers what that setup does well and where a team record takes over.
 For product teams whose research folder never quite makes it into the roadmap.
 A full walkthrough of the product discovery loop — customer signal to shipped bet. Sign up to get it the moment it’s live.
 Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20product%20discovery%20loop) with subject “Waitlist: product discovery loop” and we’ll send it the moment it drops.
@@ -3951,3 +4326,90 @@ Yes, as long as the substance is yours. In this loop the account owner answers i
 ### Why is there so much AI-generated content on LinkedIn?
 A post written from a prompt alone has nothing real behind it, so it reads like every other one. This loop starts from the other end: what your team shipped, what feedback came in, and what the account owners say in their interview. An editor agent checks every draft, and the owner can drop any draft that falls short before it goes live.
 Related loops on the marketplace
+
+
+---
+
+> Source: https://maskin.io/marketplace/product-delivery/
+
+# Bets in. Verified code out.
+Run agentic software development in Maskin so your team owns the bet and the final call, while Maskin plans the work, builds it, reviews every change, and checks the result against the success criteria you wrote first.
+![The product delivery loop — bets in, verified code out.](/og-image-product-delivery.png)
+A shaped bet goes in, code checked against the bet’s own success criteria comes out, and a human approves the one step that deploys.
+
+## The job
+A bet is only done when the change is live and the numbers say it worked. Most teams lose that second half. The ticket closes when the code merges, nobody goes back to check the result, and the next planning meeting starts from memory.
+This loop keeps both halves attached. Success criteria are written and checked for measurability before any work starts. The work is planned into tasks with an owner each. Every change gets reviewed against its task. The release gets a final check before it can reach main. After it ships, the loop reads your product data and your customer feedback and posts a verdict on the bet. Your team keeps the shaping taste, the merge approval, and the last word on whether the bet won.
+It is the output side of the [product discovery loop](/marketplace/product-discovery/): discovery turns customer signal into a shaped bet, delivery turns that bet into shipped, verified code. The [bet-based planning](/docs/bet-based-product-planning/) method sits underneath both.
+**Replaces:** sprint-planning ceremonies · a delivery lead chasing status across tickets and pull requests · hand-run release checklists · close-out reviews nobody gets round to.
+**Stays human:** which bets are worth shaping · approving the merge to main · the final call on every bet (succeeded, failed, paused, archived).
+
+## Your team and Maskin: who does what
+| Your team keeps | Maskin runs |
+| --- | --- |
+| The taste on which bets are worth shaping | Checking the success criteria can actually be measured before work starts |
+| Approving the merge to main | Breaking the bet into tasks, with an owner and a branch for each |
+| The final call on the bet | Building each task and opening the pull request |
+| What goes back into discovery | Reviewing every change against the task it came from |
+| The decision to pause or kill a bet | Checking the release, then reading product data and customer feedback after it ships |
+
+## How the loop runs
+1. A bet is shaped and ready to build. Maskin checks that its Won and Lost criteria can be measured with the data you already collect, and flags any that can’t.
+2. Maskin locks the spec, breaks the bet into tasks, gives each task an owner and sets up the branch the work lands on.
+3. Each task goes to the agent that owns it. For code, a developer agent writes the change and opens a pull request.
+4. A reviewer agent checks each pull request against its task’s acceptance criteria and merges it into the bet’s branch.
+5. When the last task passes review, Maskin runs one review across the whole bet.
+6. A release check scores the risk of the bet’s pull request. A human approves the merge to main. Nothing deploys without that approval.
+7. After it is live, Maskin reads your product data and posts a Won, Lost or Inconclusive verdict on the bet.
+8. It then reads what customers and your own team said and posts a second verdict next to the first.
+9. You make the final call. Anything that came up outside the bet’s scope goes back into discovery as a new signal, so the next bet starts from what this one learned.
+
+## What you can rely on
+- **Human gates:** you approve the merge to main, and you make the final call on every bet. Agents never close a bet themselves.
+- **Your code stays yours:** Maskin works through your repository and your pull requests. The history lives in your repo and on the bet, not in a shadow system.
+- **Fails safely:** if a change fails review or the release check, it stops there and goes back to the task. A safety-net sweep also catches any merged pull request whose bet was left open.
+
+## Pick per bet, not per team
+You don’t have to move everything. Run this loop on the bets that suit it, such as AI-heavy work or small teams with tight engineering time, and keep the rest in Jira or Linear. Both paths read from the same shaped bet and write the result back to the same place. The [product teams guide](/solutions/product-teams/) walks through both paths.
+
+## Frequently asked questions
+
+### What is agentic software development?
+Software work where AI agents each own a step: planning, building, reviewing, checking the release. In Maskin they work from a shaped bet and its success criteria, and a person approves what reaches main.
+
+### Does it replace my engineers?
+No. Your team decides which bets are worth shaping, approves the merge to main, and makes the final call on every bet. The agents take the planning, building and review steps in between.
+
+### Do I have to leave Jira or Linear?
+No. Pick per bet. Run this loop on the bets that suit it and keep the rest in Jira or Linear. Both read from the same shaped bet and write the result back to the same place.
+
+### Can anything reach production without a person?
+No. A release check scores the risk of the bet’s pull request, and a person approves the merge to main. Nothing deploys without that approval.
+
+### Where does my code live?
+In your repository. Maskin works through your repo and your pull requests, so the history stays there and on the bet.
+
+### How do I know the bet worked?
+You write the Won and Lost criteria first, and Maskin checks they can be measured with data you already collect. After release it reads your product data and posts a Won, Lost or Inconclusive verdict, then reads customer and team feedback and posts a second one. You make the final call.
+
+## Proof
+The Maskin Team ships Maskin through this loop. Shaping, planning, building, review, release check and verdict all run inside the product described on this page.
+
+## Run it
+See the loop run, then decide whether to run it on your repo. Or [start your workspace](https://maskin.io/signup).
+
+## Related loops
+- [The product discovery loop](/marketplace/product-discovery/): what feeds this loop.
+- [The LLM knowledge wiki loop](/marketplace/knowledge-wiki/): the context agents read before they plan.
+- [The SEO publishing loop](/marketplace/seo-publishing/): another shaped bet turned into a shipped page.
+
+## What this loop is built with
+Named the same on every loop page so the shape is portable. Below the fold on purpose — the loop is what closes; the primitives are just the parts. Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
+Loop
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.
+Agent
+A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
+MCP
+The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
+Skill
+A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
