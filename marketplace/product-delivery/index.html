@@ -69,6 +69,59 @@
       "keywords": "agentic software development, agentic software engineering, product delivery loop, verified code, AI code review"
     },
     {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is agentic software development?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Software work where AI agents each own a step: planning, building, reviewing, checking the release. In Maskin they work from a shaped bet and its success criteria, and a person approves what reaches main."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it replace my engineers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Your team decides which bets are worth shaping, approves the merge to main, and makes the final call on every bet. The agents take the planning, building and review steps in between."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have to leave Jira or Linear?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Pick per bet. Run this loop on the bets that suit it and keep the rest in Jira or Linear. Both read from the same shaped bet and write the result back to the same place."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can anything reach production without a person?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A release check scores the risk of the bet’s pull request, and a person approves the merge to main. Nothing deploys without that approval."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does my code live?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In your repository. Maskin works through your repo and your pull requests, so the history stays there and on the bet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know the bet worked?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You write the Won and Lost criteria first, and Maskin checks they can be measured with data you already collect. After release it reads your product data and posts a Won, Lost or Inconclusive verdict, then reads customer and team feedback and posts a second one. You make the final call."
+          }
+        }
+      ]
+    },
+    {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
@@ -155,6 +208,25 @@
 
     <h2>Pick per bet, not per team</h2>
     <p>You don&rsquo;t have to move everything. Run this loop on the bets that suit it, such as AI-heavy work or small teams with tight engineering time, and keep the rest in Jira or Linear. Both paths read from the same shaped bet and write the result back to the same place. The <a href="/solutions/product-teams/">product teams guide</a> walks through both paths.</p>
+
+    <h2>Frequently asked questions</h2>
+    <h3>What is agentic software development?</h3>
+    <p>Software work where AI agents each own a step: planning, building, reviewing, checking the release. In Maskin they work from a shaped bet and its success criteria, and a person approves what reaches main.</p>
+
+    <h3>Does it replace my engineers?</h3>
+    <p>No. Your team decides which bets are worth shaping, approves the merge to main, and makes the final call on every bet. The agents take the planning, building and review steps in between.</p>
+
+    <h3>Do I have to leave Jira or Linear?</h3>
+    <p>No. Pick per bet. Run this loop on the bets that suit it and keep the rest in Jira or Linear. Both read from the same shaped bet and write the result back to the same place.</p>
+
+    <h3>Can anything reach production without a person?</h3>
+    <p>No. A release check scores the risk of the bet&rsquo;s pull request, and a person approves the merge to main. Nothing deploys without that approval.</p>
+
+    <h3>Where does my code live?</h3>
+    <p>In your repository. Maskin works through your repo and your pull requests, so the history stays there and on the bet.</p>
+
+    <h3>How do I know the bet worked?</h3>
+    <p>You write the Won and Lost criteria first, and Maskin checks they can be measured with data you already collect. After release it reads your product data and posts a Won, Lost or Inconclusive verdict, then reads customer and team feedback and posts a second one. You make the final call.</p>
 
     <h2>Proof</h2>
     <p>The Maskin Team ships Maskin through this loop. Shaping, planning, building, review, release check and verdict all run inside the product described on this page.</p>

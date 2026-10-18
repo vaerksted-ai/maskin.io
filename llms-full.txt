@@ -4371,6 +4371,26 @@ It is the output side of the [product discovery loop](/marketplace/product-disco
 ## Pick per bet, not per team
 You don’t have to move everything. Run this loop on the bets that suit it, such as AI-heavy work or small teams with tight engineering time, and keep the rest in Jira or Linear. Both paths read from the same shaped bet and write the result back to the same place. The [product teams guide](/solutions/product-teams/) walks through both paths.
 
+## Frequently asked questions
+
+### What is agentic software development?
+Software work where AI agents each own a step: planning, building, reviewing, checking the release. In Maskin they work from a shaped bet and its success criteria, and a person approves what reaches main.
+
+### Does it replace my engineers?
+No. Your team decides which bets are worth shaping, approves the merge to main, and makes the final call on every bet. The agents take the planning, building and review steps in between.
+
+### Do I have to leave Jira or Linear?
+No. Pick per bet. Run this loop on the bets that suit it and keep the rest in Jira or Linear. Both read from the same shaped bet and write the result back to the same place.
+
+### Can anything reach production without a person?
+No. A release check scores the risk of the bet’s pull request, and a person approves the merge to main. Nothing deploys without that approval.
+
+### Where does my code live?
+In your repository. Maskin works through your repo and your pull requests, so the history stays there and on the bet.
+
+### How do I know the bet worked?
+You write the Won and Lost criteria first, and Maskin checks they can be measured with data you already collect. After release it reads your product data and posts a Won, Lost or Inconclusive verdict, then reads customer and team feedback and posts a second one. You make the final call.
+
 ## Proof
 The Maskin Team ships Maskin through this loop. Shaping, planning, building, review, release check and verdict all run inside the product described on this page.
 
