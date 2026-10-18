@@ -56,6 +56,7 @@ ORDER = [
   "marketplace/knowledge-wiki/index.html",
   "marketplace/product-discovery/index.html",
   "marketplace/linkedin-content/index.html",
+  "marketplace/product-delivery/index.html",
 ]
 
 class MD(HTMLParser):

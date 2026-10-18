@@ -19,6 +19,7 @@
       { label: "The outbound loop", href: "/marketplace/outbound/", nested: true },
       { label: "The LLM knowledge wiki loop", href: "/marketplace/knowledge-wiki/", nested: true },
       { label: "The LinkedIn content loop", href: "/marketplace/linkedin-content/", nested: true },
+      { label: "The product delivery loop", href: "/marketplace/product-delivery/", nested: true },
       // TEMP-SWAP (task 9bf88671): /marketplace/product-discovery/ + "The product discovery loop"
       // is published-not-live in the Public Marketplace bet. Mirrors commits 512b1f1 / 2a327bd's
       // Related-loops treatment. Revert to product-discovery in the same push that flips it live.
