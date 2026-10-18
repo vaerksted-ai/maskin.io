@@ -25,6 +25,7 @@ ORDER = [
   "docs/three-tiers-ai-native-work/index.html",
   "docs/ai-product-workspace-vs-coding-agent/index.html",
   "docs/claude-code-vs-codex/index.html",
+  "docs/claude-code-vs-cursor/index.html",
   "docs/agentic-workspace-vs-knowledge-space/index.html",
   "docs/closed-loop-workspace/index.html",
   "docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/index.html",
@@ -40,6 +41,8 @@ ORDER = [
   "docs/learn/ai-agent-governance/index.html",
   "docs/learn/agent-memory-across-sessions/index.html",
   "docs/learn/claude-code-for-product-managers/index.html",
+  "docs/learn/claude-code-agent-teams/index.html",
+  "docs/learn/claude-code-team/index.html",
   "docs/learn/choose-a-knowledge-layer/index.html",
   "docs/agent-skills-marketplace/index.html",
   "docs/knowledge-wiki-vs-vector-database/index.html",
@@ -53,6 +56,7 @@ ORDER = [
   "marketplace/knowledge-wiki/index.html",
   "marketplace/product-discovery/index.html",
   "marketplace/linkedin-content/index.html",
+  "marketplace/product-delivery/index.html",
 ]
 
 class MD(HTMLParser):

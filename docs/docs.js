@@ -19,6 +19,7 @@
       { label: "The outbound loop", href: "/marketplace/outbound/", nested: true },
       { label: "The LLM knowledge wiki loop", href: "/marketplace/knowledge-wiki/", nested: true },
       { label: "The LinkedIn content loop", href: "/marketplace/linkedin-content/", nested: true },
+      { label: "The product delivery loop", href: "/marketplace/product-delivery/", nested: true },
       // TEMP-SWAP (task 9bf88671): /marketplace/product-discovery/ + "The product discovery loop"
       // is published-not-live in the Public Marketplace bet. Mirrors commits 512b1f1 / 2a327bd's
       // Related-loops treatment. Revert to product-discovery in the same push that flips it live.
@@ -57,6 +58,7 @@
       { label: "AI product management tool", href: "/docs/ai-product-management-tool/", nested: true },
       { label: "AI product workspace vs AI coding agent", href: "/docs/ai-product-workspace-vs-coding-agent/", nested: true },
       { label: "Claude Code vs Codex", href: "/docs/claude-code-vs-codex/", nested: true },
+      { label: "Claude Code vs Cursor", href: "/docs/claude-code-vs-cursor/", nested: true },
       { label: "Agentic workspace vs knowledge space", href: "/docs/agentic-workspace-vs-knowledge-space/", nested: true },
       { label: "The closed-loop workspace", href: "/docs/closed-loop-workspace/", nested: true },
       { label: "Agent skills vs MCP vs cursor rules vs workflows", href: "/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/" },
@@ -71,6 +73,8 @@
       { label: "AI agent governance", href: "/docs/learn/ai-agent-governance/" },
       { label: "Agent memory across sessions", href: "/docs/learn/agent-memory-across-sessions/" },
       { label: "Claude Code for product managers", href: "/docs/learn/claude-code-for-product-managers/" },
+      { label: "Claude Code agent teams", href: "/docs/learn/claude-code-agent-teams/", nested: true },
+      { label: "Claude Code team", href: "/docs/learn/claude-code-team/", nested: true },
       { label: "How to choose a knowledge layer", href: "/docs/learn/choose-a-knowledge-layer/", nested: true },
       { label: "Agent skills marketplace", href: "/docs/agent-skills-marketplace/" },
       { label: "Knowledge wiki vs vector database", href: "/docs/knowledge-wiki-vs-vector-database/" },

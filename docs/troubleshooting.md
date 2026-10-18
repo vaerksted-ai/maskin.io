@@ -7,7 +7,7 @@ The issues people hit most when self-hosting Maskin, and how to fix them. Most c
 Real-time updates use PostgreSQL `LISTEN/NOTIFY` streamed over SSE. Connection poolers (PgBouncer, Supabase's pooled port, etc.) break LISTEN/NOTIFY. Set `DATABASE_URL_DIRECT` to a **non-pooled** connection in addition to `DATABASE_URL`. Also make sure your proxy isn't buffering `/api/events` responses.
 
 ## Agent sessions fail to start
-- **Docker socket:** the app launches sessions via `/var/run/docker.sock` — confirm it's mounted into the app container and the process can access it.
+- **Runtime:** sessions run in microVMs (microsandbox and libkrun) on an agent server, and there is no fallback without that runtime, so confirm the agent server is up and running it. In local development only, sessions start through `/var/run/docker.sock`, so confirm it's mounted into the app container.
 - **Image missing:** the `agent-base` image must be built/pulled. In production, set `AGENT_BASE_IMAGE` to a full registry path (e.g. `yourorg/agent-base:latest`), not the local `:latest` tag.
 - **Scaling out:** if you use `AGENT_SERVERS`, check each server is reachable and its `AGENT_SERVER_SECRET` matches.
 
@@ -37,7 +37,7 @@ A workspace needs a model. Add an Anthropic key or Claude subscription, or a cus
 
 ## FAQ
 **Is Maskin open source?** Yes — Apache 2.0, on [GitHub](https://github.com/sindre-ai/maskin).
-**Can I use models other than Claude?** Yes. Point a workspace at any OpenAI-compatible endpoint (OpenRouter, Ollama, vLLM) via a custom LLM — see [LLM & models](/docs/llm/).
+**Can I use models other than Claude?** Agent sessions run Claude Code by default, or Codex, on your own Anthropic or OpenAI access. Enterprise workspaces can also point sessions at their own Anthropic-compatible endpoint, using their own key. Local models are not a path we have validated. See [LLM & models](/docs/llm/).
 **Where do I see what a run cost?** Each session records token usage and `totalCostUsd` — see [Agents & sessions](/docs/agents/).
 **Do I have to self-host?** No — managed hosting is available. [Book a meeting](https://meshfirm.com/bookmagnus).
 **Still stuck?** Open an issue on [GitHub](https://github.com/sindre-ai/maskin), or [contact Maskin support](/support/). For security reports, email the contact on the [Security](/docs/security/) page instead.

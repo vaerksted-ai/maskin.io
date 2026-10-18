@@ -27,16 +27,16 @@ Humans (web)  Agents (Claude Code)   External (Slack/GitHub/…)
 Insights, bets, tasks (and extension types) live in **one objects table** with a `type` discriminator; a separate **relationships** table connects them into a graph. This is why an agent and a human can operate on exactly the same records. See [Core concepts](/docs/concepts/).
 
 ## Event-sourced activity
-Every change appends to an immutable **events** table. That log is both the audit trail and the basis for unread tracking — state is derived, not overwritten. The same log doubles as the substrate for [the workspace-as-trace approach to agent observability](/docs/agent-observability/) — the agent-level trace is a side effect of the work, not a second pipeline.
+Every change appends to the **events** table, which is insert-only by convention. That log is both the audit trail and the basis for unread tracking — state is derived, not overwritten. The same log doubles as the substrate for [the workspace-as-trace approach to agent observability](/docs/agent-observability/) — the agent-level trace is a side effect of the work, not a second pipeline.
 
 ## Real-time without a broker
 Writes emit PostgreSQL `NOTIFY`; the API `LISTEN`s and fans changes out to clients as **Server-Sent Events**, so the UI and live session logs update with no extra message queue. Behind a connection pooler, set `DATABASE_URL_DIRECT` to a non-pooled connection so LISTEN/NOTIFY keeps working (see [Troubleshooting](/docs/troubleshooting/)).
 
 ## Actors & auth
-Humans and agents are unified as **actors**. Requests authenticate with a bearer API key (stored as a SHA-256 hash) and carry `X-Workspace-Id`; every query is scoped to that workspace. Details on the [Security](/docs/security/) page.
+Humans and agents are unified as **actors**. Requests authenticate with a bearer API key (stored as issued; hashing is planned) and carry `X-Workspace-Id`; workspace separation is enforced in the API, route by route. Details on the [Security](/docs/security/) page.
 
 ## Agent execution
-Each agent run is a **session** in an ephemeral, non-root Docker container built from `agent-base`. By default these run on the app host's Docker; set `AGENT_SERVERS` to distribute them across dedicated agent servers with a warm pool. See [Agents & sessions](/docs/agents/).
+Each agent run is a **session** in an ephemeral microVM (libkrun, managed through microsandbox) started from `agent-base` on a dedicated agent server. Set `AGENT_SERVERS` to point the app at your agent servers, which keep a warm pool. Docker is for local development only. See [Agents & sessions](/docs/agents/).
 
 ## MCP layer & extensions
 The `mcp` package exposes the workspace as MCP tools over `/mcp` — a thin layer over the same services the REST API uses, so both surfaces stay in lock-step ([MCP tools](/docs/mcp-tools/) / [API reference](/docs/api/)). **Integrations** add provider adapters, webhook handlers, and auto-injected MCPs; **extensions/modules** register new object types and routes under `/api/m/{extension-id}`.

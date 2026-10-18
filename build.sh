@@ -15,9 +15,10 @@ TURNSTILE_SITEKEY_VALUE="${TURNSTILE_SITEKEY:-1x00000000000000000000AA}"
 
 # i18n source lint (Danish/Swedish pages): runs before dist is touched, so a failure
 # leaves the last good deployment live. Quiet when green (one line). Escape hatch for a
-# lint bug that blocks English deploys: set the Pages env var I18N_LINT=off.
+# lint bug that blocks English deploys: set the Pages env var I18N_LINT=off. It skips the
+# dist lint further down as well; the switcher injection is not a lint and always runs.
 if [ "${I18N_LINT:-}" = "off" ]; then
-  echo "!!! I18N_LINT=off: i18n source lint SKIPPED. Remove the env var to re-enable the gate." >&2
+  echo "!!! I18N_LINT=off: i18n source lint and dist lint SKIPPED. Remove the env var to re-enable the gate." >&2
 else
   node scripts_lint_i18n.mjs --no-git
 fi
@@ -38,7 +39,7 @@ shopt -u nullglob
 # Marketplace listing visuals (hero + loop-flow) live at the repo root; not covered by the og-image-* glob.
 cp hero-seo-publishing.png loop-flow-seo-publishing.png loop-flow-seo-publishing.svg dist/
 cp llms.txt llms-full.txt dist/
-cp maskin-launch.mp4 dist/
+cp maskin-launch.mp4 maskin-launch-v2.mp4 dist/
 # IndexNow key file(s): served at https://maskin.io/<key>.txt so api.indexnow.org
 # can verify ownership before accepting a URL submission.
 shopt -s nullglob
@@ -167,4 +168,12 @@ if [ -f "$GET_STARTED_HTML" ]; then
   fi
 fi
 
-echo "Build complete. PostHog + Turnstile keys + docs-shell CTAs injected."
+# Language switcher: injected over all of dist (docs shell, homepage, da/), after the steps
+# above so the CTA li is already in place. Fails the build if a page lacks its anchor and is not
+# in switcher_skip (i18n.json). Then the dist lint checks the rendered output (D1 to D5).
+node scripts_inject_switcher.mjs dist
+if [ "${I18N_LINT:-}" != "off" ]; then
+  node scripts_lint_i18n.mjs --dist dist
+fi
+
+echo "Build complete. PostHog + Turnstile keys + docs-shell CTAs + language switcher injected."
