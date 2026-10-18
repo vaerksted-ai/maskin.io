@@ -3080,7 +3080,7 @@ Before you set up a team, Anthropic’s page tells you to check whether a lighte
 3. **[Git worktrees](https://code.claude.com/docs/en/worktrees) or [cross-session messaging](https://code.claude.com/docs/en/cross-session-messaging).** You run several sessions yourself. With messaging, Claude can pass findings between them. No team machinery.
 4. **An agent team.** Teammates share a task list, self-claim work and message each other, and you can message any of them.
 5. **A shared record.** Add it when people, decisions or time outlast the session. It sits above all four rungs, because it holds what they produced, not how they ran.
-Each rung up costs more. Anthropic’s [costs page](https://code.claude.com/docs/en/costs#agent-team-token-costs) says agent teams use approximately 7x more tokens than standard sessions when teammates run in plan mode. Its advice for keeping the bill down: use Sonnet for teammates, keep teams small, keep spawn prompts focused, and shut teammates down when their work is done.
+Each rung up costs more. Anthropic’s [costs page](https://code.claude.com/docs/en/costs#agent-team-token-costs) says agent teams use approximately 7x more tokens than standard sessions when teammates run in plan mode. Its advice for keeping the bill down: use Sonnet for teammates, keep teams small, keep spawn prompts focused, and shut teammates down when their work is done. If your team also runs Codex, [Claude Code vs Codex](/docs/claude-code-vs-codex/) covers what changes when a team runs both.
 
 ## Where agent teams stop: four boundaries
 None of the following are bugs. The first two are documented limits of an experimental, per-session feature. The third is partly documented and partly a gap. The fourth is not in the docs at all; it is what a team has no place to store. Together they are where a second layer starts to matter.
@@ -3095,10 +3095,11 @@ You do not need a product to answer this. You need four things written down some
 2. **A decision with its reason.** What was chosen, what was rejected, and who approved it.
 3. **A stated outcome condition.** What “done” means in terms you can check later, not “the agent said it finished”.
 4. **Links between them.** The signal that started the work, the decision it led to, the tasks that carried it out.
+Shared instructions for several people are a separate question. [CLAUDE.md vs AGENTS.md](/docs/claude-md-vs-agents-md/) covers which file to keep them in.
 Plenty of people already build this by hand. One Hacker News post, [What is the control plane for local AI agents?](https://news.ycombinator.com/item?id=47242849), describes using GitHub Issues as a temporary backend for agent state: the agent opens or updates an issue at session start, posts findings as comments, and the human replies from a phone. The author’s own complaint is that issue trackers were not built for an agent’s high-frequency event loop, and they ask for something more purpose-built. Our read is that the gap is also structural: an issue has no slot for a decision’s reason or an outcome condition unless you add one by convention.
 
 ### An illustrative scenario
-Take a team of three developers and a product manager. On Monday, one developer asks the lead to spawn three teammates to review a large pull request: security, performance, test coverage. The review is good. Two findings are real, one is deferred on purpose because a migration lands next week.
+Take a team of three developers and a product manager. If you are the product manager, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers what you can do with Claude Code on your own. On Monday, one developer asks the lead to spawn three teammates to review a large pull request: security, performance, test coverage. The review is good. Two findings are real, one is deferred on purpose because a migration lands next week.
 On Wednesday the product manager asks why the deferred finding was not fixed. The answer is in Monday’s session, on one laptop, in a lead’s synthesis that was never written anywhere a second person could read. The task list says three tasks were completed. It does not say one was deferred and why.
 With a shared record, the review produces a work item with an owner, the deferral is a decision with a stated reason, and the follow-up check after the migration has an outcome condition. This scenario is made up to show the gap. It is not a Maskin customer story.
 
@@ -4166,7 +4167,7 @@ Read next
 # A wiki your agents read before they answer.
 Team memory that new hires and new agents bootstrap from — indexed, typed, MCP-native.
 ![The LLM knowledge wiki loop — a closed bet becomes a typed, interlinked wiki page that agents read before they answer.](/og-image-knowledge-wiki.png)
-The knowledge wiki loop keeps a living, agent-readable record of every decision your team ships. A closed bet fires the loop; agents write the verdict, index the artifacts, and link them to the object they came from; a human gates the taste-sensitive summaries. Every future agent your team spawns reads from the same graph before it answers — so the wiki isn’t a Notion side-project that rots the moment its author changes roles, it’s the same substrate the rest of your team already operates on.
+The knowledge wiki loop keeps a living, agent-readable record of every decision your team ships. A closed bet (one that has run through the [product delivery loop](/marketplace/product-delivery/), for instance) fires the loop; agents write the verdict, index the artifacts, and link them to the object they came from; a human gates the taste-sensitive summaries. Every future agent your team spawns reads from the same graph before it answers — so the wiki isn’t a Notion side-project that rots the moment its author changes roles, it’s the same substrate the rest of your team already operates on.
 For product teams tired of re-answering the same question because the last answer lived in someone’s DMs.
 A full walkthrough of the LLM knowledge wiki loop — how a closed bet becomes a citable page your agents read before they answer. Sign up below to get it in your inbox the moment it’s live.
 Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20LLM%20knowledge%20wiki%20loop) with subject “Waitlist: LLM knowledge wiki loop” and we’ll send it the moment it drops.
@@ -4250,7 +4251,7 @@ Related loops on the marketplace
 # Close the loop from customer signal to shipped bet.
 Interviews, tickets, and reviews land as typed insight — the loop closes when a shaped bet ships against them.
 ![The product discovery loop — customer signal, typed insight, shaped bet, shipped and re-checked against the signal.](/og-image-product-discovery.png)
-The discovery loop closes on the outcome (a shipped bet mapped back to the signal that motivated it), not the activity (an interview scheduled). Every call transcript, support ticket, and review lands as a typed insight on the same graph as the bets you’re already shipping. Agents cluster themes and draft candidate bets; a human gates the read-through and the shaping. After ship, the loop re-checks the signal so you know whether the bet actually retired the pain. The same signal-to-bet pattern applies on the retention side: see [the same signal-to-bet pattern applied to churn](/docs/at-risk-account-alerts/). Shipped bets are also the raw material for the [LinkedIn content loop](/marketplace/linkedin-content/), which turns what shipped this fortnight into posts the account owner approves. If you synthesize research in Claude Code today, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers what that setup does well and where a team record takes over.
+The discovery loop closes on the outcome (a shipped bet mapped back to the signal that motivated it), not the activity (an interview scheduled). Every call transcript, support ticket, and review lands as a typed insight on the same graph as the bets you’re already shipping. Agents cluster themes and draft candidate bets; a human gates the read-through and the shaping. After ship, the loop re-checks the signal so you know whether the bet actually retired the pain. The same signal-to-bet pattern applies on the retention side: see [the same signal-to-bet pattern applied to churn](/docs/at-risk-account-alerts/). Shipped bets are also the raw material for the [LinkedIn content loop](/marketplace/linkedin-content/), which turns what shipped this fortnight into posts the account owner approves. Once a bet is shaped, the [product delivery loop](/marketplace/product-delivery/) picks it up: it plans the work, builds and reviews every change, and checks the result against the success criteria you wrote first. If you synthesize research in Claude Code today, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers what that setup does well and where a team record takes over.
 For product teams whose research folder never quite makes it into the roadmap.
 A full walkthrough of the product discovery loop — customer signal to shipped bet. Sign up to get it the moment it’s live.
 Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20product%20discovery%20loop) with subject “Waitlist: product discovery loop” and we’ll send it the moment it drops.
@@ -4325,3 +4326,69 @@ Yes, as long as the substance is yours. In this loop the account owner answers i
 ### Why is there so much AI-generated content on LinkedIn?
 A post written from a prompt alone has nothing real behind it, so it reads like every other one. This loop starts from the other end: what your team shipped, what feedback came in, and what the account owners say in their interview. An editor agent checks every draft, and the owner can drop any draft that falls short before it goes live.
 Related loops on the marketplace
+
+
+---
+
+> Source: https://maskin.io/marketplace/product-delivery/
+
+# Bets in. Verified code out.
+Run agentic software development in Maskin so your team owns the bet and the final call, while Maskin plans the work, builds it, reviews every change, and checks the result against the success criteria you wrote first.
+A shaped bet goes in, code checked against the bet’s own success criteria comes out, and a human approves the one step that deploys.
+
+## The job
+A bet is only done when the change is live and the numbers say it worked. Most teams lose that second half. The ticket closes when the code merges, nobody goes back to check the result, and the next planning meeting starts from memory.
+This loop keeps both halves attached. Success criteria are written and checked for measurability before any work starts. The work is planned into tasks with an owner each. Every change gets reviewed against its task. The release gets a final check before it can reach main. After it ships, the loop reads your product data and your customer feedback and posts a verdict on the bet. Your team keeps the shaping taste, the merge approval, and the last word on whether the bet won.
+It is the output side of the [product discovery loop](/marketplace/product-discovery/): discovery turns customer signal into a shaped bet, delivery turns that bet into shipped, verified code. The [bet-based planning](/docs/bet-based-product-planning/) method sits underneath both.
+**Replaces:** sprint-planning ceremonies · a delivery lead chasing status across tickets and pull requests · hand-run release checklists · close-out reviews nobody gets round to.
+**Stays human:** which bets are worth shaping · approving the merge to main · the final call on every bet (succeeded, failed, paused, archived).
+
+## Your team and Maskin: who does what
+| Your team keeps | Maskin runs |
+| --- | --- |
+| The taste on which bets are worth shaping | Checking the success criteria can actually be measured before work starts |
+| Approving the merge to main | Breaking the bet into tasks, with an owner and a branch for each |
+| The final call on the bet | Building each task and opening the pull request |
+| What goes back into discovery | Reviewing every change against the task it came from |
+| The decision to pause or kill a bet | Checking the release, then reading product data and customer feedback after it ships |
+
+## How the loop runs
+1. A bet is shaped and ready to build. Maskin checks that its Won and Lost criteria can be measured with the data you already collect, and flags any that can’t.
+2. Maskin locks the spec, breaks the bet into tasks, gives each task an owner and sets up the branch the work lands on.
+3. Each task goes to the agent that owns it. For code, a developer agent writes the change and opens a pull request.
+4. A reviewer agent checks each pull request against its task’s acceptance criteria and merges it into the bet’s branch.
+5. When the last task passes review, Maskin runs one review across the whole bet.
+6. A release check scores the risk of the bet’s pull request. A human approves the merge to main. Nothing deploys without that approval.
+7. After it is live, Maskin reads your product data and posts a Won, Lost or Inconclusive verdict on the bet.
+8. It then reads what customers and your own team said and posts a second verdict next to the first.
+9. You make the final call. Anything that came up outside the bet’s scope goes back into discovery as a new signal, so the next bet starts from what this one learned.
+
+## What you can rely on
+- **Human gates:** you approve the merge to main, and you make the final call on every bet. Agents never close a bet themselves.
+- **Your code stays yours:** Maskin works through your repository and your pull requests. The history lives in your repo and on the bet, not in a shadow system.
+- **Fails safely:** if a change fails review or the release check, it stops there and goes back to the task. A safety-net sweep also catches any merged pull request whose bet was left open.
+
+## Pick per bet, not per team
+You don’t have to move everything. Run this loop on the bets that suit it, such as AI-heavy work or small teams with tight engineering time, and keep the rest in Jira or Linear. Both paths read from the same shaped bet and write the result back to the same place. The [product teams guide](/solutions/product-teams/) walks through both paths.
+
+## Proof
+The Maskin Team ships Maskin through this loop. Shaping, planning, building, review, release check and verdict all run inside the product described on this page.
+
+## Run it
+See the loop run, then decide whether to run it on your repo. Or [start your workspace](https://maskin.io/signup).
+
+## Related loops
+- [The product discovery loop](/marketplace/product-discovery/): what feeds this loop.
+- [The LLM knowledge wiki loop](/marketplace/knowledge-wiki/): the context agents read before they plan.
+- [The SEO publishing loop](/marketplace/seo-publishing/): another shaped bet turned into a shipped page.
+
+## What this loop is built with
+Named the same on every loop page so the shape is portable. Below the fold on purpose — the loop is what closes; the primitives are just the parts. Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
+Loop
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.
+Agent
+A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
+MCP
+The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
+Skill
+A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
