@@ -16,8 +16,3 @@ compatibility_date = "2025-06-01"
 binding = "MARKETPLACE_CAPTURE_KV"
 id = "17cbf98f2bba499a8db5129ea4d4fbeb"
 preview_id = "17cbf98f2bba499a8db5129ea4d4fbeb"
-
-# TEMPORARY (task a770cb65): preview builds skip the i18n lint while the Danish
-# reviewer is pending. Remove with the commit that adds reviewed_by/reviewed_on.
-[env.preview.vars]
-I18N_LINT = "off"
