@@ -2,6 +2,7 @@
 
 # Bets in. Verified code out.
 Run agentic software development in Maskin so your team owns the bet and the final call, while Maskin plans the work, builds it, reviews every change, and checks the result against the success criteria you wrote first.
+![The product delivery loop — bets in, verified code out.](/og-image-product-delivery.png)
 A shaped bet goes in, code checked against the bet’s own success criteria comes out, and a human approves the one step that deploys.
 
 ## The job

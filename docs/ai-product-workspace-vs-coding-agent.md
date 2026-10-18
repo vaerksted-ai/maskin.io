@@ -56,7 +56,7 @@ The practical implication for a team choosing between them: if the pain is “I 
 ## The honest case for running both
 Most teams that build software will run both, and that is the right answer. A coding agent (or a coding-agent control plane above several of them) on the code, an AI product workspace on the decisions the code is meant to serve. The coding agent ships PRs; the workspace shapes the bets those PRs are working under, validates the outcomes, and closes the loop.
 Where the tiers collide is when a team tries to run a decision loop out of a coding-agent control plane alone — the kanban is the roadmap, the PR is the outcome, and the team narrates the results in a weekly meeting. That works up to the point where signal starts arriving from more sources than a human can reduce to task descriptions on the same day, or where a shipped PR that nobody measured leaves the team unable to tell whether the last cycle was a win. Beyond that point, the coding-agent tier is being asked to be a workspace, and the diagnostic bites: no win condition on the task, no outcome measured against it, no loop that terminates on a business result.
-The right move is not to demand more of the coding-agent tier. It is to put the decision loop on a tier that models it, and let the coding agent do what a coding agent does well.
+The right move is not to demand more of the coding-agent tier. It is to put the decision loop on a tier that models it, and let the coding agent do what a coding agent does well. The [product delivery loop](/marketplace/product-delivery/) is the working version: a developer agent inside a bet-level delivery loop, with review, a release check, and a person approving the merge to main.
 
 ## FAQ
 

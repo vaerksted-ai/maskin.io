@@ -1251,7 +1251,7 @@ The practical implication for a team choosing between them: if the pain is “I 
 ## The honest case for running both
 Most teams that build software will run both, and that is the right answer. A coding agent (or a coding-agent control plane above several of them) on the code, an AI product workspace on the decisions the code is meant to serve. The coding agent ships PRs; the workspace shapes the bets those PRs are working under, validates the outcomes, and closes the loop.
 Where the tiers collide is when a team tries to run a decision loop out of a coding-agent control plane alone — the kanban is the roadmap, the PR is the outcome, and the team narrates the results in a weekly meeting. That works up to the point where signal starts arriving from more sources than a human can reduce to task descriptions on the same day, or where a shipped PR that nobody measured leaves the team unable to tell whether the last cycle was a win. Beyond that point, the coding-agent tier is being asked to be a workspace, and the diagnostic bites: no win condition on the task, no outcome measured against it, no loop that terminates on a business result.
-The right move is not to demand more of the coding-agent tier. It is to put the decision loop on a tier that models it, and let the coding agent do what a coding agent does well.
+The right move is not to demand more of the coding-agent tier. It is to put the decision loop on a tier that models it, and let the coding agent do what a coding agent does well. The [product delivery loop](/marketplace/product-delivery/) is the working version: a developer agent inside a bet-level delivery loop, with review, a release check, and a person approving the merge to main.
 
 ## FAQ
 
@@ -2692,7 +2692,7 @@ A concrete example from Maskin's own dogfooding — the SEO content loop that pr
 - **Close condition:** the piece reaches `published` status with the primary keyword, title, and metadata locked. Not "the writer said it was done." A promoted `content` object with a specific measurable state.
 Run that loop against a different trigger and the same shape produces a discovery loop, a competitor-intel loop, a signal-triage loop, a churn-recovery loop ([at-risk account alerts](/docs/at-risk-account-alerts/)). The primitives don't change; the trigger and typed objects do. That is what "[loop engineering](https://addyosmani.com/blog/loop-engineering/)" (Addy Osmani, Jun 2026) points at when it says the job shifted from *prompting the agent* to *designing the system that prompts the agent* — but productized as first-class objects a team configures, not code a developer writes.
 **Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.**
-The important word is *across*. A workflow inside a ticket tracker terminates when a ticket closes. A loop terminates when the typed outcome it exists to produce — the shipped bet, the approved content, the qualified pipeline — reaches a state a human can inspect, regardless of which tool the underlying work happened in.
+The important word is *across*. A workflow inside a ticket tracker terminates when a ticket closes. A loop terminates when the typed outcome it exists to produce — the shipped bet, the approved content, the qualified pipeline — reaches a state a human can inspect, regardless of which tool the underlying work happened in. Software delivery as a closed loop is a concrete case: the [product delivery loop](/marketplace/product-delivery/) has named human gates (the merge to main and the final call on the bet) and closes on a verdict against the success criteria written first.
 
 ## When workflow is fine, when agent is fine, when a loop is the answer
 The honest cases for each — not a strawman.
@@ -2967,7 +2967,7 @@ You do not need a product for this. You need four things written down somewhere 
 2. **A decision with its reason.** What was chosen, what was rejected, who approved.
 3. **A stated outcome condition.** What "worked" means in terms you can check later.
 4. **Links between them.** The signal that started it, the decision it led to, the tasks that carried it out.
-A tracker you already use can hold this if you add fields by convention. Linear, Notion and GitHub Issues all work. The weak point is the convention: nobody enforces it, so the reason and the outcome condition are the first fields to go blank.
+A tracker you already use can hold this if you add fields by convention. Linear, Notion and GitHub Issues all work. The weak point is the convention: nobody enforces it, so the reason and the outcome condition are the first fields to go blank. If you want the build and the verdict attached to the same bet, the [product delivery loop](/marketplace/product-delivery/) lets a team run the build and the verdict as one loop.
 
 ## How Maskin keeps that record
 Maskin is an open-source (Apache 2.0), MCP-native, self-hostable workspace. We build it, so weigh this section accordingly. Work moves as typed objects. A signal enters as an **insight**, from sources such as Slack, Intercom, PostHog or a scheduled scan. It is shaped into a **bet**, a testable hypothesis with a win condition ([bet-based product planning](/docs/bet-based-product-planning/) explains the method). The bet breaks into **tasks** that people and agents share, each with a driver (an owner, person or agent) and a comment thread. When the work ships, the outcome is checked against the win condition.
@@ -4334,6 +4334,7 @@ Related loops on the marketplace
 
 # Bets in. Verified code out.
 Run agentic software development in Maskin so your team owns the bet and the final call, while Maskin plans the work, builds it, reviews every change, and checks the result against the success criteria you wrote first.
+![The product delivery loop — bets in, verified code out.](/og-image-product-delivery.png)
 A shaped bet goes in, code checked against the bet’s own success criteria comes out, and a human approves the one step that deploys.
 
 ## The job

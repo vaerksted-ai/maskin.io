@@ -64,7 +64,7 @@ You do not need a product for this. You need four things written down somewhere 
 2. **A decision with its reason.** What was chosen, what was rejected, who approved.
 3. **A stated outcome condition.** What "worked" means in terms you can check later.
 4. **Links between them.** The signal that started it, the decision it led to, the tasks that carried it out.
-A tracker you already use can hold this if you add fields by convention. Linear, Notion and GitHub Issues all work. The weak point is the convention: nobody enforces it, so the reason and the outcome condition are the first fields to go blank.
+A tracker you already use can hold this if you add fields by convention. Linear, Notion and GitHub Issues all work. The weak point is the convention: nobody enforces it, so the reason and the outcome condition are the first fields to go blank. If you want the build and the verdict attached to the same bet, the [product delivery loop](/marketplace/product-delivery/) lets a team run the build and the verdict as one loop.
 
 ## How Maskin keeps that record
 Maskin is an open-source (Apache 2.0), MCP-native, self-hostable workspace. We build it, so weigh this section accordingly. Work moves as typed objects. A signal enters as an **insight**, from sources such as Slack, Intercom, PostHog or a scheduled scan. It is shaped into a **bet**, a testable hypothesis with a win condition ([bet-based product planning](/docs/bet-based-product-planning/) explains the method). The bet breaks into **tasks** that people and agents share, each with a driver (an owner, person or agent) and a comment thread. When the work ships, the outcome is checked against the win condition.
