@@ -25,7 +25,7 @@ Apache 2.0 is a permissive open-source license. You may use the software, modify
 
 ## Bring your own model: what that means here
 Maskin is [MCP-native](/docs/what-is-mcp-native/): agents, the UI, and integrations all talk to one unified object model over one API (see the [architecture overview](/docs/architecture/)). “Model-agnostic” is true of that protocol layer, not of the agent runtime. The agent image installs the Claude Code CLI by default, or the Codex CLI, and a browser sidecar is available for web tasks. So “bring your own model” means bring your own access to those two runtimes — see [how model providers and keys work](/docs/llm/). Practical ways teams use that:
-- **Claude Code** for reasoning-heavy shaping and bet definition.
+- **Claude Code** for reasoning-heavy shaping and bet definition. If your team also runs Cursor, [Claude Code vs Cursor](/docs/claude-code-vs-cursor/) covers how to pick by job and keep one shared record.
 - **Codex** for well-bounded execution tasks.
 - **Your own keys and billing.** You pay Anthropic or OpenAI directly for the model usage behind your agents, and you can change which CLI runs a task without changing the workspace.
 Local and fine-tuned models are not a path we have validated, so we don’t claim them here. If running local models is a hard requirement, check that before you commit.
