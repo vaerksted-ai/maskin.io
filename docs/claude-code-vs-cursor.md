@@ -26,7 +26,7 @@ This table sticks to what each vendor’s own pages state.
 | Non-interactive mode | claude -p | agent -p |
 | Cloud and unattended runs | Claude Code on the web; routines that run in the cloud | Cloud agents in isolated VMs |
 | Extending it | Skills, hooks, MCP, subagents | Plugins, skills, MCP and rules; hooks in the editor agent, CLI and cloud agents |
-The Claude Code column comes from Anthropic’s [overview](https://code.claude.com/docs/en/overview), [memory](https://code.claude.com/docs/en/memory), [permission modes](https://code.claude.com/docs/en/permission-modes) and [deployment options](https://code.claude.com/docs/en/third-party-integrations) pages. The Cursor column comes from Cursor’s documentation home, [rules](https://cursor.com/docs/context/rules), [CLI](https://cursor.com/docs/cli/overview), [cloud agents](https://cursor.com/docs/cloud-agent) and [hooks](https://cursor.com/docs/hooks) pages.
+The Claude Code column comes from Anthropic’s [overview](https://code.claude.com/docs/en/overview), [memory](https://code.claude.com/docs/en/memory), [permission modes](https://code.claude.com/docs/en/permission-modes) and [deployment options](https://code.claude.com/docs/en/third-party-integrations) pages. The Cursor column comes from Cursor’s documentation home, [rules](https://cursor.com/docs/rules), [CLI](https://cursor.com/docs/cli/overview), [cloud agents](https://cursor.com/docs/cloud-agent) and [hooks](https://cursor.com/docs/hooks) pages.
 
 ## How to choose between Claude Code and Cursor by job
 Most pages answer “which is better” with a score. The question that decides your week is narrower: which one fits the job in front of you. Run these five checks in order and stop at the first one that settles it.
