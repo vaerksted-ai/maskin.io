@@ -40,6 +40,7 @@ ORDER = [
   "docs/learn/agent-skills/index.html",
   "docs/learn/agentic-workflow-vs-closed-loop/index.html",
   "docs/learn/ai-agent-governance/index.html",
+  "docs/learn/agent-orchestration/index.html",
   "docs/learn/agent-memory-across-sessions/index.html",
   "docs/learn/claude-code-for-product-managers/index.html",
   "docs/learn/claude-code-agent-teams/index.html",

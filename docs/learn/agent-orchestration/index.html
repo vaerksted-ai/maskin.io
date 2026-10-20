@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent orchestration vs agentic loop vs control plane — Maskin</title>
+<meta name="description" content="Agent orchestration coordinates multiple AI agents. How it differs from the agentic loop and the agent control plane, and which one a small team needs first.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/learn/agent-orchestration/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/learn/agent-orchestration/">
+<meta property="og:title" content="Agent orchestration vs agentic loop vs control plane — Maskin">
+<meta property="og:description" content="Agent orchestration coordinates multiple AI agents. How it differs from the agentic loop and the agent control plane, and which one a small team needs first.">
+<meta property="og:image" content="https://maskin.io/og-image-agent-orchestration.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Agent orchestration vs agentic loop vs control plane — Maskin">
+<meta name="twitter:description" content="Agent orchestration coordinates multiple AI agents. How it differs from the agentic loop and the agent control plane, and which one a small team needs first.">
+<meta name="twitter:image" content="https://maskin.io/og-image-agent-orchestration.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+<style>
+  .hero-visual { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--rule); margin: 1.5rem 0 2rem; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/learn/agent-orchestration/#post",
+      "headline": "Agent orchestration, agentic loops, and control planes: what the coordination layer actually is — and which one a small team needs",
+      "description": "Agent orchestration coordinates multiple AI agents. How it differs from the agentic loop and the agent control plane, and which one a small team needs first.",
+      "datePublished": "2026-10-20T00:00:00Z",
+      "dateModified": "2026-10-20T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "image": "https://maskin.io/og-image-agent-orchestration.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/learn/agent-orchestration/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Agent orchestration"
+        },
+        {
+          "@type": "Thing",
+          "name": "Agentic loop"
+        },
+        {
+          "@type": "Thing",
+          "name": "Agent control plane"
+        }
+      ],
+      "keywords": "agent orchestration, agentic loop, agent control plane"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Agent orchestration, agentic loops, and control planes: what the coordination layer actually is — and which one a small team needs",
+          "item": "https://maskin.io/docs/learn/agent-orchestration/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is agent orchestration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Agent orchestration is the pattern for coordinating multiple AI agents — routing tasks between agents, sharing state, handling handoffs, and recovering from errors. In practice it means picking a framework (LangGraph, CrewAI, AutoGen, the OpenAI Agents SDK, or similar) that models the graph of agents and how work flows through it. Orchestration is the how they fit together layer, distinct from the shape of the work each agent runs and from the governance around the whole thing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between agent orchestration and an agentic loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An agentic loop is the shape of the work one agent runs to completion — perceive, decide, act, check, close. Agent orchestration is how you coordinate multiple loops when a job branches across agents. A loop can exist without orchestration (one agent, one job), but orchestration without well-shaped loops produces agents that lose state at every handoff. Model the loop first, add orchestration when work genuinely branches."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an agent control plane?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An agent control plane is the governance surface around a fleet of agents. It answers three questions: which agents are allowed to do what, who authorised any given action, and what is the audit trail of what actually happened. A control plane is not a loop and not an orchestrator — it is the layer an operator uses to keep agents running safely once more than one person cares what they did. Enterprise vendors sell it as GRC; a small team needs it as typed permissions plus driver attribution plus an audit trail on the object graph."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is agent orchestration the same as workflow orchestration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A workflow is a fixed sequence of steps a human drew ahead of time. Agent orchestration lets the runtime decide the path based on what the agents observe — the graph is a set of possibilities the agents choose between, not a straight line. The vs workflow comparison shows up all over the autocomplete for agent orchestration because buyers are trying to place the new pattern against the older one. Short answer: workflows are static, agent orchestration is dynamic."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an orchestration framework to run agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — you need a well-shaped loop. A single agent running a bounded loop with a close condition and inspectable state is often enough to retire real work. Reach for an orchestration framework only when your job actually branches across agents that need to hand work between each other. Otherwise the framework is complexity you have to feed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does an agentic loop work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An agentic loop runs four moves in a cycle: perceive (read current state), decide (choose the next action), act (call a tool, write to a store, hand off), and check (verify the action produced the intended change). The loop continues until a close condition is met, then reports the outcome. The check step is what separates a loop from a chatbot — a chatbot returns a paragraph and stops; a loop keeps running until the work is done."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between agent orchestration and MCP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Agent orchestration is how you coordinate multiple agents; MCP (Model Context Protocol) is how any one agent reaches the tools and data it needs. They are complementary, not competing. An orchestrator decides which agent runs next; MCP is the protocol that agent uses to actually do anything. A well-designed system usually has both — MCP as the wire agents use for tools, orchestration as the shape of how many agents coordinate. See what MCP-native means."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a></li><li><a class="is-nested" href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a></li><li><a class="is-nested" href="/docs/learn/claude-code-agent-teams/">Claude Code agent teams</a></li><li><a class="is-nested" href="/docs/learn/claude-code-team/">Claude Code team</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="is-nested" href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="is-active" href="/docs/learn/agent-orchestration/" aria-current="page">Agent orchestration</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li></ul></nav></aside>    <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Agent orchestration</p>
+    <p class="eyebrow">Guide</p>
+    <h1>Agent orchestration, agentic loops, and control planes: what the coordination layer actually is — and which one a small team needs</h1>
+    <p class="lead">Agent orchestration is the coordination layer between multiple AI agents — the pattern deciding which one runs, when, and how they share state. It sits alongside the <em>agentic loop</em> (the shape of one agent&#39;s work) and the <em>agent control plane</em> (governance around the loops); a small team should model the loop first.</p>
+    <img class="hero-visual" src="/og-image-agent-orchestration.png" alt="Agent orchestration, the agentic loop and the control plane as a three-layer stack: loop first, orchestration when work branches, control plane when a second person cares." width="1200" height="630">
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul>
+<li>The market uses three overlapping terms — <strong>agent orchestration</strong>, <strong>agentic loop</strong>, and <strong>agent control plane</strong> — for what is actually one coordination layer with three concerns.</li>
+<li><strong>Orchestration is a framework problem</strong>: how you wire multiple agents together (LangGraph, CrewAI, AutoGen, the OpenAI Agents SDK, and their peers).</li>
+<li><strong>The agentic loop is a work-shape problem</strong>: how a single job runs to completion instead of stopping at a single prompt.</li>
+<li><strong>The control plane is a governance problem</strong>: who let this agent do that, and can we prove it.</li>
+<li>Sequence the layers: model the loop first, adopt an orchestration framework only when work genuinely branches across agents, add a control plane the moment a second person needs to know what the agents did.</li>
+<li>Today&#39;s ranking answers are almost all vendor listicles (for orchestration) or enterprise-GRC pitches (for governance). The definitional slot — how the three relate — is unclaimed.</li>
+</ul>
+      </div>
+    </div>
+    <h2>The three frames, defined</h2>
+<p>The vocabulary is used interchangeably in the wild, but the concepts are distinct. The shortest useful cut is three items:</p>
+<ol>
+<li><strong>Agent orchestration</strong> — the coordination mechanism between multiple agents (handoffs, routing, shared state, error handling). The frame most vendors sell.</li>
+<li><strong>Agentic loop</strong> — the shape of the work itself: a bounded cycle of perceive, decide, act, check, and either continue or close. The frame most builders actually operate.</li>
+<li><strong>Agent control plane</strong> — the governance layer around the loops and the orchestration: permissions, attribution, audit trail, budgets, kill switch. The frame most compliance teams need.</li>
+</ol>
+<p>Read that as a stack, not a menu. A loop is what runs. Orchestration is how many loops fit together when the work branches. A control plane is the surface an operator uses to say <em>which loops are allowed, run by whom, against what</em>. Miss one and the other two eventually break: a loop with no orchestration cannot fan out; orchestration with no control plane is unsafe in production; a control plane with no loop is a policy engine wrapped around nothing.</p>
+<h2>Orchestration vs loop vs control plane, at a glance</h2>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th></th><th>Agent orchestration</th><th>Agentic loop</th><th>Agent control plane</th></tr></thead><tbody><tr><td><strong>Problem it solves</strong></td><td>How do multiple agents work together</td><td>How does one job run to completion</td><td>Who is allowed to run what, and can we prove it</td></tr><tr><td><strong>Primary buyer</strong></td><td>Developer picking a framework</td><td>Builder shaping the work</td><td>Team operating agents in production</td></tr><tr><td><strong>Primitive</strong></td><td>Graph, DAG, handoff, router</td><td>Cycle: perceive → decide → act → check → close</td><td>Policy, permission, audit event</td></tr><tr><td><strong>Typical vendor / project</strong></td><td>LangGraph, CrewAI, AutoGen, OpenAI Agents SDK</td><td>Anthropic&#39;s harness pattern, Claude Code, home-rolled</td><td>agentcontrol.dev, IBM watsonx orchestrate, sim.ai, Maskin</td></tr><tr><td><strong>Failure mode when missing</strong></td><td>One agent dead-ends when work needs to branch</td><td>Prompt returns a paragraph, not a result</td><td>Nobody can answer &quot;who let this agent do that&quot;</td></tr><tr><td><strong>When it starts to matter</strong></td><td>The moment work branches across roles</td><td>Always — from agent #1</td><td>The moment a second person cares</td></tr></tbody></table></div>
+<p>The rest of this piece takes each row in turn, then answers which one a small team needs first.</p>
+<h2>Agent orchestration: the framework problem</h2>
+<p>The search term <em>agent orchestration</em> is where most of the informational demand sits — around 1,000 US searches a month at KD 44, with an autocomplete field dominated by comparisons (<em>vs harness</em>, <em>vs workflow</em>, <em>vs choreography</em>, <em>vs code</em>) and the biggest ranking page being a DA-37 listicle out-ranking IBM, Redis, AWS, and GitHub (Ubersuggest, 2026-09-18). That tells you two things. The category is real, and it is not yet owned by an authoritative definition — the SERP is still a shortlist of frameworks.</p>
+<p>At the level below the search bar, orchestration is a wiring problem. When one agent stops being enough — usually because the job branches (research, then draft, then critique) or because the tool surface is too wide for one context window — you need a mechanism to hand work between agents without losing state. That mechanism is what LangGraph, CrewAI, AutoGen, the OpenAI Agents SDK, and their peers package. Each ships an opinion on how graphs, handoffs, and shared memory should work.</p>
+<p>Two clarifications worth making explicit, because the SERP does not:</p>
+<ul>
+<li><strong>Orchestration is not the same as workflow.</strong> A workflow is a fixed set of steps someone drew ahead of time. Agent orchestration lets the <em>runtime</em> decide the path based on what the agents observe. That is what the &quot;graph vs DAG&quot; argument in the frameworks is really about. The workflow side of that split is worked through in <a href="/docs/learn/agentic-workflow-vs-closed-loop/">agentic workflow vs the closed loop</a>.</li>
+<li><strong>Orchestration is not the same as coordination inside a single agent.</strong> A single agent picking which tool to call is a loop concern, not an orchestration concern. If you find yourself reaching for an orchestrator when one agent with better tool use would do, the loop is what you need to fix first.</li>
+</ul>
+<p>The practical upshot: pick an orchestration framework when — and only when — work genuinely branches across roles a single agent should not play. Otherwise the framework buys you complexity you have to feed.</p>
+<h2>The agentic loop: the work-shape problem</h2>
+<p>The autocomplete on <em>agentic loop</em> is the clearest signal that the buyer knows something the orchestration listicles miss. People search <em>agentic loop meaning</em>, <em>agentic loop engineering</em>, <em>agentic loop diagram</em>, <em>agentic loop lifecycle</em>. They are not shopping for a framework, they are trying to model the work. That is the frame Addy Osmani has been driving under the banner <em>loop engineering</em>: <strong>a prompt is not a job; work is a loop.</strong></p>
+<p>A loop is the shape of a single job an agent runs. The classic version, adapted from the OODA and control-theory literature, has four moves:</p>
+<ol>
+<li><strong>Perceive</strong> — read the current state (a task, a signal, an incoming message, a piece of code).</li>
+<li><strong>Decide</strong> — choose the next action against a goal.</li>
+<li><strong>Act</strong> — take the action (call a tool, write to a store, hand off to another agent).</li>
+<li><strong>Check</strong> — verify the action produced the intended change, and decide whether to continue, iterate, or close.</li>
+</ol>
+<p>The check step is what separates a loop from a chatbot. A chatbot returns a paragraph and stops; a loop keeps running until the outcome is verified against a close condition, then reports back. Anthropic&#39;s own harness patterns and the Claude Code agent loop describe exactly this cycle — perceive, act, check, close — because it is what a real agent needs to do work instead of narrate it.</p>
+<p>Two things routinely make loops unsafe in practice, and both are structural:</p>
+<ul>
+<li><strong>No close condition.</strong> A loop with no ceiling on iterations or spend keeps burning until someone notices. A well-shaped loop has a close condition — a specific state that says <em>the job is done</em> — before it ever runs.</li>
+<li><strong>No inspectable state.</strong> If the loop&#39;s intermediate work lives only in a hidden scratchpad, nobody can see what happened. The fix is to make each move create or update a typed object, so the whole loop is a trail of real work you can read. This is the argument for a <a href="/docs/what-is-a-stateful-orchestration-substrate/">stateful orchestration substrate</a> — persistent state as a first-class part of the loop, not an afterthought — and the reason we treat <a href="/docs/agent-observability/">the workspace itself as the trace</a>.</li>
+</ul>
+<p>For a small team, the loop is the primitive to model first. You can run a loop with no orchestration framework and no control plane, and it will still be safer and more useful than a hundred single-shot prompts. The design side of this, triggers, checks, stopping conditions and human gates, is covered in <a href="/docs/what-is-loop-engineering/">what loop engineering is</a>.</p>
+<h2>The agent control plane: the governance problem</h2>
+<p>The third frame is the youngest, the softest on the SERP, and the fastest-forming. <em>Agent control plane</em> runs at roughly 110 US searches a month at KD 15 — the softest slot of the coordination-layer sweep — and its ranking-page mix is already a category conversation: IBM at position two, a DA-14 property (agentcontrol.dev) at position three positioning itself as &quot;the open-source control plane for AI agents&quot;, the humanlayer/agentcontrolplane repo at position four, and a Reddit thread titled <em>Agent control planes feel like an inevitable category</em> at position five (Ubersuggest, 2026-09-18). A category is forming faster than the framework listicles have noticed.</p>
+<p>A control plane is <em>not</em> the loop and <em>not</em> the orchestrator. It is the surface an operator uses to answer three questions the loop cannot answer on its own:</p>
+<ul>
+<li><strong>Who let this agent do that?</strong> Which policy, which permission, which human approval routed the loop&#39;s action.</li>
+<li><strong>Can we prove it?</strong> The audit trail of what the agent did, when, and against which object — inspectable after the fact.</li>
+<li><strong>What is it allowed to do next?</strong> The permission model that decides which tools, data, and destinations any given agent can touch.</li>
+</ul>
+<p>The market&#39;s ranking answers to this question are almost all sold to a CISO. The commercial term <em>ai agent governance</em> carries the highest CPC in the coordination-layer sweep — $51.65 — because every enterprise-GRC vendor is chasing it (Ubersuggest, 2026-09-18). That framing is real; it is also wrong for a small team. When ten people share a workspace and each of them is spawning agents, the governance surface a small team actually needs is not an SSO/SCIM/SOC2 procurement cycle. It is typed permissions, driver attribution, and an audit trail that lives on the object graph, so a teammate can open the work an agent did and see who let it happen without a compliance ticket. That is what a <a href="/alternatives/self-hosted-ai-agent-control-plane/">self-hosted AI agent control plane for knowledge work</a> looks like when it is not a GRC platform in disguise, and <a href="/docs/learn/ai-agent-governance/">AI agent governance for small teams</a> walks the permissions, attribution and audit primitives one by one.</p>
+<p>One load-bearing distinction sits next to the control plane: the safety literature converges on a <em>human-in-the-loop</em> pattern where a human backs the irreversible or taste-driven decisions. The control plane is what makes that pattern real — it is where the loop asks for the human, records the answer, and holds the audit. The deeper piece on <a href="/docs/learn/human-in-the-loop-ai/">when human in the loop AI is real and when it is theatre</a> works through the honest metric (override rate). For the coordination-layer purpose here, it is enough to say the control plane is the surface the loop uses to reach the human, and the audit lives there when the human answers.</p>
+<h2>Which one does a small team actually need?</h2>
+<p>The listicles cannot answer this question because they are selling one of the three. The honest answer for a small team building with agents in 2026 is a sequence, not a shortlist:</p>
+<ol>
+<li><strong>Start with the loop.</strong> Shape one job as a bounded cycle with a close condition, inspectable state, and a place for a human to gate the taste-sensitive move. This works with no framework and no platform. If you cannot cleanly describe the perceive-decide-act-check moves of your first agent, an orchestration framework will not save you.</li>
+<li><strong>Add orchestration when work genuinely branches.</strong> The trigger is not &quot;I have more than one agent&quot; — it is &quot;these agents need to hand work between them and share state, and doing it by hand is losing information&quot;. Pick the lightest framework that matches your language and runtime. Wire graphs, not DAGs, so the runtime can decide the path.</li>
+<li><strong>Add a control plane the moment a second person cares.</strong> Not later. <em>A second person cares</em> happens the first time a teammate asks what an agent did overnight, the first time an agent touches production, or the first time the answer to &quot;who let this agent do that&quot; cannot be recovered from a chat log. Do not wait for a compliance ticket.</li>
+</ol>
+<p>The order matters because each layer depends on the previous being real. An orchestration graph over unshaped loops is a fast way to produce agents that lose state at every handoff. A control plane over ungoverned orchestration is a policy engine sitting on top of work nobody can trace. Model the loop, coordinate loops when work branches, govern the coordination when someone else has to trust it.</p>
+<p>This is why the coordination layer in Maskin is loop-first by design. Every unit of work — an insight, a bet, a task — is a typed object on a shared graph. Agents run bounded loops against those objects, humans gate the moves that need taste, and the workspace itself is the audit trail. Orchestration is a pattern you compose over the same object model rather than a separate framework you fight; governance is a property of the workspace rather than an add-on you procure. The wider frame this belongs to — humans and agents co-operating on the same typed objects — is the <a href="/docs/what-is-an-agentic-workspace/">agentic workspace</a> the loop lives in, and the argument that the loop is the diagnostic sits in <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a>.</p>
+
+    <h2>FAQ</h2>
+    <h3>What is agent orchestration?</h3>
+    <p>Agent orchestration is the pattern for coordinating multiple AI agents — routing tasks between agents, sharing state, handling handoffs, and recovering from errors. In practice it means picking a framework (LangGraph, CrewAI, AutoGen, the OpenAI Agents SDK, or similar) that models the graph of agents and how work flows through it. Orchestration is the <em>how they fit together</em> layer, distinct from the shape of the work each agent runs and from the governance around the whole thing.</p>
+    <h3>What is the difference between agent orchestration and an agentic loop?</h3>
+    <p>An agentic loop is the shape of the work one agent runs to completion — perceive, decide, act, check, close. Agent orchestration is how you coordinate multiple loops when a job branches across agents. A loop can exist without orchestration (one agent, one job), but orchestration without well-shaped loops produces agents that lose state at every handoff. Model the loop first, add orchestration when work genuinely branches.</p>
+    <h3>What is an agent control plane?</h3>
+    <p>An agent control plane is the governance surface around a fleet of agents. It answers three questions: which agents are allowed to do what, who authorised any given action, and what is the audit trail of what actually happened. A control plane is not a loop and not an orchestrator — it is the layer an operator uses to keep agents running safely once more than one person cares what they did. Enterprise vendors sell it as GRC; a small team needs it as typed permissions plus driver attribution plus an audit trail on the object graph.</p>
+    <h3>Is agent orchestration the same as workflow orchestration?</h3>
+    <p>No. A workflow is a fixed sequence of steps a human drew ahead of time. Agent orchestration lets the <em>runtime</em> decide the path based on what the agents observe — the graph is a set of possibilities the agents choose between, not a straight line. The <em>vs workflow</em> comparison shows up all over the autocomplete for <em>agent orchestration</em> because buyers are trying to place the new pattern against the older one. Short answer: workflows are static, agent orchestration is dynamic.</p>
+    <h3>Do I need an orchestration framework to run agents?</h3>
+    <p>No — you need a well-shaped loop. A single agent running a bounded loop with a close condition and inspectable state is often enough to retire real work. Reach for an orchestration framework only when your job actually branches across agents that need to hand work between each other. Otherwise the framework is complexity you have to feed.</p>
+    <h3>How does an agentic loop work?</h3>
+    <p>An agentic loop runs four moves in a cycle: perceive (read current state), decide (choose the next action), act (call a tool, write to a store, hand off), and check (verify the action produced the intended change). The loop continues until a close condition is met, then reports the outcome. The check step is what separates a loop from a chatbot — a chatbot returns a paragraph and stops; a loop keeps running until the work is done.</p>
+    <h3>What is the difference between agent orchestration and MCP?</h3>
+    <p>Agent orchestration is how you coordinate multiple agents; MCP (Model Context Protocol) is how any one agent reaches the tools and data it needs. They are complementary, not competing. An orchestrator decides which agent runs next; MCP is the protocol that agent uses to actually do anything. A well-designed system usually has both — MCP as the wire agents use for tools, orchestration as the shape of how many agents coordinate. See <a href="/docs/what-is-mcp-native/">what MCP-native means</a>.</p>
+    <h2>Where to go next</h2>
+<p>If this piece is the map, the deeper pieces on each frame are the terrain:</p>
+<ul>
+<li><strong>The loop as the shape of real work.</strong> <a href="/docs/closed-loop-workspace/">The closed-loop workspace: what tier 4 of AI-native work actually is</a> argues that the loop is the diagnostic — a system either closes or it does not.</li>
+<li><strong>Governance for small teams, not the CISO.</strong> <a href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane for knowledge work</a> names the small-team surface directly; <a href="/docs/learn/ai-agent-governance/">AI agent governance for small teams</a> goes deeper on permissions, attribution, and audit.</li>
+<li><strong>The OSS landscape, honestly categorised.</strong> <a href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents in 2026</a> is the map of who is actually shipping what across orchestration, loops, and control planes.</li>
+<li><strong>The observability side.</strong> <a href="/docs/agent-observability/">Agent observability: when the workspace is the trace</a> — because the object graph you run loops on is also the trace an operator reads.</li>
+<li><strong>Packaged capability.</strong> <a href="/docs/learn/agent-skills/">What are agent skills?</a> covers the SKILL.md primitive an agent invokes inside a loop, and how it differs from tools, prompts and workflows.</li>
+</ul>
+<p>The frame we start from at Maskin: <strong>a prompt is not a job — work is a loop.</strong> Orchestration is a pattern you compose over loops when work branches. A control plane is the governance surface once a second person cares. Model the loop first; the rest of the coordination layer earns its keep from there.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/learn/agentic-workflow-vs-closed-loop/">
+          <div class="doc-card__title">Agentic workflow vs the closed loop</div>
+          <div class="doc-card__desc">&mdash; the workflow, agent and closed-loop split behind the orchestration debate.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/learn/ai-agent-governance/">
+          <div class="doc-card__title">AI agent governance for small teams</div>
+          <div class="doc-card__desc">&mdash; permissions, attribution and audit, the control-plane layer in depth.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/learn/agent-skills/">
+          <div class="doc-card__title">What are agent skills?</div>
+          <div class="doc-card__desc">&mdash; the packaged capability an agent invokes inside a loop.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Model the loop first</h2>
+      <p>Maskin is loop-first by design: every unit of work is a typed object, agents run bounded loops against it, humans gate the calls that need taste, and the workspace is the audit trail. Open source under Apache 2.0. Self-host free, bring your own model.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
