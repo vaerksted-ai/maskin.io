@@ -195,7 +195,7 @@
   <h2>Bring your own model: what that means here</h2>
   <p>Maskin is <a href="/docs/what-is-mcp-native/">MCP-native</a>: agents, the UI, and integrations all talk to one unified object model over one API (see the <a href="/docs/architecture/">architecture overview</a>). &ldquo;Model-agnostic&rdquo; is true of that protocol layer, not of the agent runtime. The agent image installs the Claude Code CLI by default, or the Codex CLI, and a browser sidecar is available for web tasks. So &ldquo;bring your own model&rdquo; means bring your own access to those two runtimes &mdash; see <a href="/docs/llm/">how model providers and keys work</a>. Practical ways teams use that:</p>
   <ul>
-    <li><strong>Claude Code</strong> for reasoning-heavy shaping and bet definition.</li>
+    <li><strong>Claude Code</strong> for reasoning-heavy shaping and bet definition. If your team also runs Cursor, <a href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a> covers how to pick by job and keep one shared record.</li>
     <li><strong>Codex</strong> for well-bounded execution tasks.</li>
     <li><strong>Your own keys and billing.</strong> You pay Anthropic or OpenAI directly for the model usage behind your agents, and you can change which CLI runs a task without changing the workspace.</li>
   </ul>
