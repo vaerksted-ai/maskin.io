@@ -53,7 +53,7 @@
       "url": "https://maskin.io/alternatives/open-source-alternative-to-claude-cowork/",
       "inLanguage": "en",
       "datePublished": "2026-10-01T00:00:00Z",
-      "dateModified": "2026-10-07T00:00:00Z",
+      "dateModified": "2026-10-21T00:00:00Z",
       "image": [
         "https://maskin.io/og-image-open-source-alternative-to-claude-cowork.svg"
       ],
@@ -134,7 +134,7 @@
           "name": "Can Claude Cowork be self-hosted?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Cowork is a product Anthropic ships and runs, available in its desktop app on Pro, Max, and Team plans, and it runs on Claude, whose weights Anthropic does not publish. If you need to run the whole system on your own infrastructure, look at open-source options such as OpenWork for a personal desktop agent, Multica for a team board of coding agents, or Maskin for a team workspace."
+            "text": "No. Cowork is now part of Claude, which Anthropic ships and runs, and it runs on Claude, whose weights Anthropic does not publish. If you need to run the whole system on your own infrastructure, look at open-source options such as OpenWork for a personal desktop agent, Multica for a team board of coding agents, or Maskin for a team workspace."
           }
         },
         {
@@ -231,13 +231,13 @@
   </table></div>
 
   <h2>What Claude Cowork actually is</h2>
-  <p>Claude Cowork is Anthropic's autonomous task product. Per <a href="https://claude.com/product/cowork" target="_blank" rel="noopener">Anthropic's own product page</a>, you give it a goal and it works across your files and tools, breaks larger projects into parallel workflows, runs tasks unattended, and hands back finished work for review. The examples Anthropic leads with are weekly reports, spreadsheet reconciliation, bulk contract review, and call-note analysis. It runs as a desktop app on macOS, Windows, ChromeOS, and Linux, has a built-in browser for web tasks, and is available on Pro, Max, and Team plans at the time of writing, with Enterprise admins managing it in organization settings.</p>
+  <p>Claude Cowork is Anthropic's autonomous task feature, and since 16 September 2026 it is part of Claude rather than a separate product. Anthropic's <a href="https://claude.com/blog/cowork-is-now-claude" target="_blank" rel="noopener">announcement</a> says Cowork and chat are merging into one Claude. Per <a href="https://claude.com/product/cowork" target="_blank" rel="noopener">Anthropic's own product page</a>, you give it a goal and it works across your files and tools, breaks larger projects into parallel workflows, runs tasks unattended, and hands back finished work for review. The examples Anthropic leads with are weekly reports, spreadsheet reconciliation, bulk contract review, and call-note analysis. Anthropic says it needs a paid plan and is rolling out across the Claude web, desktop, and mobile apps. Check Anthropic's pages for current availability and pricing, since both are still changing.</p>
   <p>That is a good product, and it is worth saying so before arguing for anything else. The unit of work is a task someone hands off and reviews, and for a lot of people and teams, that is exactly right.</p>
 
   <h2>Where teams outgrow it</h2>
   <p>Three limits show up when the reason for looking at an alternative is control, not features.</p>
-  <p><strong>The model and the hosting are the vendor's.</strong> Cowork runs on Claude inside Anthropic's product, and Anthropic does not publish Claude's weights, so you cannot run Cowork end to end on your own infrastructure. If self-hosting is the constraint, you need an open-source platform you can run yourself.</p>
-  <p><strong>The work lives in a task, not in a shared product record.</strong> A task you hand off and review is a good unit for delegated work, even on a Team plan. A team deciding what to build needs something else: the signal that started the work, the decision to pursue it, who owns it, and whether it worked. That is a shared object model, and a task queue does not give you one.</p>
+  <p><strong>The model and the hosting are the vendor's.</strong> Cowork is part of Claude and runs inside Anthropic's product, and Anthropic does not publish Claude's weights, so you cannot run Cowork end to end on your own infrastructure. If self-hosting is the constraint, you need an open-source platform you can run yourself.</p>
+  <p><strong>The work lives in a task, not in a shared product record.</strong> A task you hand off and review is a good unit for delegated work, even when a whole team uses it. A team deciding what to build needs something else: the signal that started the work, the decision to pursue it, who owns it, and whether it worked. That is a shared object model, and a task queue does not give you one.</p>
   <p><strong>You cannot inspect or host the loop.</strong> If a governance or compliance rule requires the system to run inside your boundary, a closed product cannot meet it. Open source plus self-hosting is the structural answer.</p>
   <p><a href="https://www.linkedin.com/posts/krumhausen_the-ai-agent-workspace-market-is-splitting-activity-7448474897564975104-O7Nq" target="_blank" rel="noopener">Sebastian Krumhausen's April 2026 post on the agent-workspace market</a> names the position Maskin sits in: composable infrastructure, built from typed objects, event-driven triggers, and small auditable agents, as opposed to a simulated company of AI employees. A self-hostable, open-source answer belongs in that camp.</p>
   <p>If your question is about Codex rather than Cowork, the <a href="/alternatives/open-source-alternative-to-codex/">open source Codex alternative</a> page makes the same team-workspace case for Codex users. If what you want is to run the control layer on your own infrastructure, <a href="/alternatives/self-hosted-ai-agent-control-plane/">self-hosted AI agent control planes</a> compares the open-source options.</p>
@@ -273,7 +273,7 @@
       <tr><td><strong>Self-host</strong></td><td>Yes, free</td><td>No</td><td>Runs locally on your machine</td><td>Yes, Docker Compose or Helm</td></tr>
       <tr><td><strong>Models</strong></td><td>Claude Code CLI by default, or Codex CLI</td><td>Claude</td><td>50+ providers, your own keys, or local models</td><td>The agent CLIs you install (26 listed in the README)</td></tr>
       <tr><td><strong>Unit of work</strong></td><td>Shared typed objects: insight, bet, task</td><td>A task you hand off and review</td><td>Agent sessions on your files</td><td>An issue assigned to an agent</td></tr>
-      <tr><td><strong>Built for</strong></td><td>Teams</td><td>Professionals and teams (Pro, Max, and Team plans)</td><td>Individuals, with an org control plane</td><td>Teams working with coding agents</td></tr>
+      <tr><td><strong>Built for</strong></td><td>Teams</td><td>Professionals and teams, as part of a paid Claude plan</td><td>Individuals, with an org control plane</td><td>Teams working with coding agents</td></tr>
       <tr><td><strong>Weak spot</strong></td><td>Not a personal-files agent, memory gap, early traction</td><td>Vendor model and hosting</td><td>Not a shared team record</td><td>Coding-agent focus, custom license limits third-party hosting</td></tr>
     </tbody>
   </table></div>
@@ -310,7 +310,7 @@
   <p>OpenWork's desktop app is free and MIT-licensed, and you bring your own model keys or run local models through Ollama. Maskin's software is free to self-host under Apache 2.0, though its agents run on the Claude Code or Codex CLI, so you pay for that model usage. In both cases, hosting and model usage are the real costs.</p>
 
   <h3>Can Claude Cowork be self-hosted?</h3>
-  <p>No. Cowork is a product Anthropic ships and runs, available in its desktop app on Pro, Max, and Team plans, and it runs on Claude, whose weights Anthropic does not publish. If you need to run the whole system on your own infrastructure, look at open-source options such as OpenWork for a personal desktop agent, Multica for a team board of coding agents, or Maskin for a team workspace.</p>
+  <p>No. Cowork is now part of Claude, which Anthropic ships and runs, and it runs on Claude, whose weights Anthropic does not publish. If you need to run the whole system on your own infrastructure, look at open-source options such as OpenWork for a personal desktop agent, Multica for a team board of coding agents, or Maskin for a team workspace.</p>
 
   <h3>How is Multica different from Maskin?</h3>
   <p>Multica is a board where you assign issues to coding agents that run on your own machines, and it has far more traction (about 52,000 GitHub stars on 7 October 2026). Maskin tracks the decision around the work: insight, bet with a win condition, task, outcome. Multica's license also adds limits on hosting it for third parties, which Maskin's plain Apache 2.0 does not.</p>
