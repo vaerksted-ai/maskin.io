@@ -1,6 +1,6 @@
 // Cloudflare Pages Function — /api/waitlist (DEPRECATED forward shim).
 //
-// The canonical capture surface is /api/marketplace-email-capture. This route
+// The canonical capture surface is /capture/marketplace-email. This route
 // is kept alive for one release so live legacy callers get a response instead
 // of a 404 while their pages are being rewired. It forwards to the canonical
 // handler and relays that handler's status and body verbatim.
@@ -13,10 +13,10 @@
 //
 // It deliberately does NOT synthesise consent. A legacy caller that omits the
 // consent field receives the canonical 400 (consent_required) — the same
-// answer it would get posting to /api/marketplace-email-capture directly.
+// answer it would get posting to /capture/marketplace-email directly.
 // Deprecation: flag for removal once no page in the repo posts here.
 
-import { onRequestPost as capturePost } from "./marketplace-email-capture";
+import { onRequestPost as capturePost } from "../capture/marketplace-email";
 
 const LEGACY_SLUG_MAP = {
   // legacy workflow slugs -> canonical loop slugs
@@ -56,7 +56,7 @@ export async function onRequestPost(context) {
   const upstream = await capturePost({
     ...context,
     request: new Request(
-      new URL("/api/marketplace-email-capture", context.request.url),
+      new URL("/capture/marketplace-email", context.request.url),
       {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -72,7 +72,7 @@ export async function onRequestPost(context) {
       "content-type": "application/json",
       "access-control-allow-origin": "*",
       deprecation: "true",
-      link: '</api/marketplace-email-capture>; rel="successor-version"',
+      link: '</capture/marketplace-email>; rel="successor-version"',
     },
   });
 }

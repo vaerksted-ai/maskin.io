@@ -1,6 +1,6 @@
 // Shared client wiring for every /marketplace/<slug>/ loop landing page.
 // Fires two PostHog events and drives the email-capture form state machine
-// against /api/marketplace-email-capture.
+// against /capture/marketplace-email.
 //
 // Events (spec §Analytics; PostHog must never see the legacy `workflow_slug` /
 // `marketplace_workflow_page_view` names):
@@ -161,7 +161,7 @@
       setStatus(form, "Adding you to the list\u2026", "submitting");
       if (submit) submit.disabled = true;
 
-      fetch("/api/marketplace-email-capture", {
+      fetch("/capture/marketplace-email", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({

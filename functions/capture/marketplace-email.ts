@@ -1,4 +1,4 @@
-// Cloudflare Pages Function — /api/marketplace-email-capture
+// Cloudflare Pages Function — /capture/marketplace-email
 // Reverses ADR-002 (first server-side surface on maskin.io) — CTO deliverability-
 // verdict'd at bet [Public Marketplace](https://maskin.io/e2877e32-2c11-489e-96c8-a76200908ed4/objects/69573594-fa90-4385-a43a-3908279ddf26).
 // Flow: Turnstile verify -> KV dedupe on sha256(email) -> Resend send -> 200.
