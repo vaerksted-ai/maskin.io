@@ -95,7 +95,8 @@
       { label: "Self-hosted AI agents", href: "/alternatives/self-hosted-ai-agents/" },
       { label: "Open source AI coding agent", href: "/alternatives/open-source-ai-coding-agent/" },
       { label: "n8n alternative", href: "/alternatives/n8n/" },
-      { label: "Paperclip alternative", href: "/alternatives/paperclip/" }
+      { label: "Paperclip alternative", href: "/alternatives/paperclip/" },
+      { label: "OpenClaw alternative", href: "/alternatives/openclaw/" }
     ]},
     { title: "Dansk", items: [
       { label: "AI-automatisering", href: "/da/ai-automatisering/" }

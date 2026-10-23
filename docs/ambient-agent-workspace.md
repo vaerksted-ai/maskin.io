@@ -23,7 +23,7 @@ Chat is a pull model — the human asks, the model answers, both wait. Backgroun
 When a builder accepts that chat is the wrong default and reaches for the next question — *then what?* — the best-published taxonomy is Nilesh Barla’s June 2026 piece at Adaline Labs.[2](#fn2) It names four post-chat patterns already in-market, each with named exemplars:
 - **Verb surface** — AI hidden behind a command the user is already invoking. Cursor cmd-K, Linear sub-issues, GitHub Copilot inline. The model runs on the verb, not on a separate prompt.
 - **Generative canvas** — the output is an editable artefact the user can revise directly. v0, Claude Artifacts, NotebookLM, OpenAI Canvas.
-- **Delegated agent** — task in, PR or notification out. Claude Code, Codex, OpenClaw. The unit of output is a shipped artefact, not a message.
+- **Delegated agent** — task in, PR or notification out. Claude Code, Codex, [OpenClaw](/alternatives/openclaw/). The unit of output is a shipped artefact, not a message.
 - **Ambient capture** — a background listener that produces artefacts silently. Granola, Circleback, WWDC’s screenshot flow.
 Chase’s parallel taxonomy at LangChain names the **Agent Inbox** as the primary UX for the ambient pattern, with three interrupt types the agent can raise to the human: **notify** (something happened, no response required), **question** (I need input to proceed), **review** (I drafted something, approve or edit it).[3](#fn3) Both taxonomies are cited across the 2026 SERP, and both explicitly acknowledge that they haven’t closed the category.
 
