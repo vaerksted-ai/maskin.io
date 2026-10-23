@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="t d">
+  <title id="t">Competitive intelligence loop</title>
+  <desc id="d">One competitor signal is classified into two lanes. A battlecard update for sales and a shaped bet for product. Sales enablement and a PM each approve, and both lanes close.</desc>
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <text x="80" y="88" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="20" letter-spacing="4" fill="#8A8780">COMPETITIVE INTELLIGENCE LOOP</text>
+  <text x="80" y="160" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">One signal. Two lanes.</text>
+  <text x="80" y="222" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">Both close.</text>
+  <g font-family="JetBrains Mono, ui-monospace, monospace" font-size="15" fill="#FAFAF8">
+    <rect x="80" y="340" width="230" height="110" rx="8" fill="#181715" stroke="#7A7770" stroke-width="1.4"/>
+    <text x="195" y="386" text-anchor="middle">competitor signal</text>
+    <text x="195" y="412" text-anchor="middle" font-size="12" fill="#8A8780">changelog · pricing · release</text>
+    <rect x="470" y="300" width="290" height="80" rx="8" fill="#181715" stroke="#7A7770" stroke-width="1.4"/>
+    <text x="615" y="336" text-anchor="middle">battlecard update</text>
+    <text x="615" y="360" text-anchor="middle" font-size="12" fill="#8A8780">sales enablement approves</text>
+    <rect x="470" y="410" width="290" height="80" rx="8" fill="#131720" stroke="#2563EB" stroke-width="2"/>
+    <text x="615" y="446" text-anchor="middle">shaped bet</text>
+    <text x="615" y="470" text-anchor="middle" font-size="12" fill="#7FA6EE">a PM approves</text>
+    <rect x="900" y="300" width="220" height="80" rx="8" fill="#181715" stroke="#7A7770" stroke-width="1.4"/>
+    <text x="1010" y="336" text-anchor="middle">sales channel</text>
+    <text x="1010" y="360" text-anchor="middle" font-size="12" fill="#8A8780">battlecard ships</text>
+    <rect x="900" y="410" width="220" height="80" rx="8" fill="#131720" stroke="#2563EB" stroke-width="2"/>
+    <text x="1010" y="446" text-anchor="middle">measured outcome</text>
+    <text x="1010" y="470" text-anchor="middle" font-size="12" fill="#7FA6EE">win condition checked</text>
+  </g>
+  <g stroke="#2563EB" stroke-width="2" fill="none" marker-end="url(#arr)">
+    <path d="M 310 380 L 380 340 L 466 340"/>
+    <path d="M 310 410 L 380 450 L 466 450"/>
+    <path d="M 760 340 L 896 340"/>
+    <path d="M 760 450 L 896 450"/>
+  </g>
+  <g transform="translate(80, 550)">
+    <rect x="0" y="0" width="34" height="34" rx="7" fill="#1C1B18"/>
+    <path d="M7 26 L7 9 L17 19 L27 9 L27 26" stroke="#FAFAF8" stroke-width="3.6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+    <text x="46" y="24" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">Maskin</text>
+    <text x="46" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="#5A5751">maskin.io/loops/competitive-intelligence</text>
+  </g>
+</svg>
