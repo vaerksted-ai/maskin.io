@@ -9,6 +9,7 @@ const KNOWN_LOOP_SLUGS = new Set([
   "outbound",
   "knowledge-wiki",
   "product-discovery",
+  "competitive-intelligence",
 ]);
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -207,6 +208,8 @@ function prettyLoopName(slug: string): string {
       return "LLM knowledge wiki";
     case "product-discovery":
       return "product discovery";
+    case "competitive-intelligence":
+      return "competitive intelligence";
     default:
       return slug;
   }
