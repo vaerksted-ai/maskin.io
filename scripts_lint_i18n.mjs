@@ -2,7 +2,7 @@
 // i18n lint for the Danish and Swedish pages. Node 18 or later, zero dependencies.
 // Exit 1 on any error, 0 otherwise.
 //
-// Source mode (default): checks L1 to L18, warnings W1 and W2. Reads i18n.json, da/**, sv/**,
+// Source mode (default): checks L1 to L18 (L14 retired), warnings W1 and W2. Reads i18n.json, da/**, sv/**,
 // root index.html, sitemap.xml, llms.txt, build.sh and _redirects.
 //
 //   node scripts_lint_i18n.mjs [--root <dir>] [--no-git] [--today YYYY-MM-DD]
@@ -26,9 +26,6 @@ const SLUG_RE = /^\/(da|sv)\/([a-z0-9]+(-[a-z0-9]+)*\/)?$/;
 // Spec pattern, with the trailing word boundary made Unicode-aware: a plain \b treats the
 // Danish ae/oe/aa letters as non-word, so "§ 10 kræver" would read as a price in kr.
 const PRICE_RE = /(\$|€|£)\s?\d|\d\s?(kr\.?|SEK|DKK|EUR|USD)(?![\p{L}\p{N}])/u;
-// Pages that were already live on main when S0 shipped. Only these may be grandfathered
-// past L14 (no named native reviewer). Do not extend this list.
-const GRANDFATHER_ALLOWED = ['/da/ai-automatisering/'];
 // Live pieces needed (besides the hub) before a language may show in header, nav or switcher.
 const NAV_MIN_PAGES = { da: 2, sv: 1 };
 // How llms.txt names each language section (heading must contain one of these words).
@@ -459,22 +456,6 @@ export function lint(opts = {}) {
     if (/href\s*=\s*["']#["']/i.test(clean(h))) err('L13', p.path, 'contains href="#"');
     const robots = tags(clean(h), 'meta').filter((a) => ['robots', 'googlebot'].includes((a.name || '').toLowerCase()));
     if (robots.some((a) => /noindex/i.test(a.content || ''))) err('L13', p.path, 'has a noindex robots meta');
-  }
-
-  // ---- L14 native review gate
-  for (const p of pages) {
-    if (typeof p.path !== 'string') continue;
-    if (p.grandfathered === true) {
-      if (!GRANDFATHER_ALLOWED.includes(p.path)) {
-        err('L14', p.path, 'grandfathered is only allowed for pages already live on main at S0');
-      } else if (!String(p.grandfathered_reason || '').trim()) {
-        err('L14', p.path, 'grandfathered page needs a one-line grandfathered_reason');
-      }
-      continue;
-    }
-    if (!String(p.reviewed_by || '').trim() || !String(p.reviewed_on || '').trim()) {
-      err('L14', p.path, 'needs non-empty reviewed_by and reviewed_on');
-    }
   }
 
   // ---- L15 keywords

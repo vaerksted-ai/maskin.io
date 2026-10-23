@@ -24,27 +24,19 @@
       "path": "/da/",
       "lang": "da",
       "kind": "native",
-      "keyword": "ai til virksomheder",
-      "reviewed_by": "Test Reviewer",
-      "reviewed_on": "2026-10-01"
+      "keyword": "ai til virksomheder"
     },
     {
       "path": "/da/ai-agenter/",
       "lang": "da",
       "kind": "native",
-      "keyword": "ai agenter",
-      "reviewed_by": "Test Reviewer",
-      "reviewed_on": "2026-10-01"
+      "keyword": "ai agenter"
     },
     {
       "path": "/da/ai-automatisering/",
       "lang": "da",
       "kind": "native",
-      "keyword": "ai automatisering",
-      "reviewed_by": "",
-      "reviewed_on": "",
-      "grandfathered": true,
-      "grandfathered_reason": "Live before the native-review rule."
+      "keyword": "ai automatisering"
     }
   ],
   "switcher_skip": [],

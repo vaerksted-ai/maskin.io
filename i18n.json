@@ -12,19 +12,13 @@
       "lang": "da",
       "kind": "native",
       "keyword": "maskin på dansk",
-      "lang_group": "home",
-      "reviewed_by": "review waived by Sebastian Krumhausen",
-      "reviewed_on": "2026-10-18"
+      "lang_group": "home"
     },
     {
       "path": "/da/ai-automatisering/",
       "lang": "da",
       "kind": "native",
-      "keyword": "ai automatisering",
-      "reviewed_by": "",
-      "reviewed_on": "",
-      "grandfathered": true,
-      "grandfathered_reason": "Went live 2026-10-09 before the native-review rule; Danish sign-off is tracked separately."
+      "keyword": "ai automatisering"
     }
   ],
   "switcher_skip": [
