@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="t d">
+  <title id="t">AI customer feedback loop</title>
+  <desc id="d">Four steps in a loop: customer feedback becomes a shaped bet, the bet ships, and the customer is notified. The outcome feeds the next cycle.</desc>
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <text x="80" y="88" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="13" letter-spacing="4" fill="#8A8780">AI&#160;CUSTOMER&#160;FEEDBACK&#160;LOOP</text>
+  <text x="80" y="168" font-family="'Newsreader', 'Times New Roman', serif" font-size="60" font-weight="500" fill="#FAFAF8">From &#8220;someone said something&#8221;</text>
+  <text x="80" y="236" font-family="'Newsreader', 'Times New Roman', serif" font-size="60" font-style="italic" font-weight="400" fill="#FAFAF8">to &#8220;we shipped it and told them.&#8221;</text>
+
+  <g font-family="'JetBrains Mono', ui-monospace, monospace" font-size="15" fill="#FAFAF8">
+    <rect x="80"  y="330" width="220" height="84" rx="8" fill="#181715" stroke="#7A7770" stroke-width="1.4"/>
+    <text x="190" y="366" text-anchor="middle">feedback</text>
+    <text x="190" y="390" text-anchor="middle" font-size="12" fill="#8A8780">signal</text>
+
+    <rect x="350" y="330" width="220" height="84" rx="8" fill="#181715" stroke="#7A7770" stroke-width="1.4"/>
+    <text x="460" y="366" text-anchor="middle">bet</text>
+    <text x="460" y="390" text-anchor="middle" font-size="12" fill="#8A8780">win condition + driver</text>
+
+    <rect x="620" y="330" width="220" height="84" rx="8" fill="#181715" stroke="#7A7770" stroke-width="1.4"/>
+    <text x="730" y="366" text-anchor="middle">shipped change</text>
+    <text x="730" y="390" text-anchor="middle" font-size="12" fill="#8A8780">measured outcome</text>
+
+    <rect x="890" y="330" width="230" height="84" rx="8" fill="#181715" stroke="#2563EB" stroke-width="2.4"/>
+    <text x="1005" y="366" text-anchor="middle">customer told</text>
+    <text x="1005" y="390" text-anchor="middle" font-size="12" fill="#8A8780">the loop closes</text>
+  </g>
+
+  <g stroke="#2563EB" stroke-width="2" fill="none" marker-end="url(#arr)">
+    <line x1="302" y1="372" x2="346" y2="372"/>
+    <line x1="572" y1="372" x2="616" y2="372"/>
+    <line x1="842" y1="372" x2="886" y2="372"/>
+  </g>
+  <path d="M 1005 418 L 1005 490 L 190 490 L 190 420" stroke="#2563EB" stroke-width="2" fill="none" stroke-dasharray="6 6" marker-end="url(#arr)" opacity="0.8"/>
+  <text x="600" y="526" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="13" letter-spacing="2" fill="#8A8780">THE OUTCOME FEEDS THE NEXT CYCLE</text>
+
+  <text x="80" y="590" font-family="'Schibsted Grotesk', system-ui, sans-serif" font-size="20" font-weight="600" fill="#FAFAF8">Maskin</text>
+  <text x="166" y="590" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="13" fill="#8A8780">maskin.io/loops/ai-customer-feedback-loop</text>
+</svg>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI customer feedback loop: from feedback to shipped fix | Maskin</title>
+<meta name="description" content="An AI customer feedback loop turns feedback into a shaped bet, ships it, and tells the customer. See how it runs on typed objects and why it beats an inbox.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/loops/ai-customer-feedback-loop/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/loops/ai-customer-feedback-loop/">
+<meta property="og:title" content="AI customer feedback loop: from &ldquo;someone said something&rdquo; to &ldquo;we shipped it and told them&rdquo;">
+<meta property="og:description" content="Feedback becomes a shaped bet, the bet ships, and the customer is told. How an AI customer feedback loop runs on typed objects and closes where an inbox only queues.">
+<meta property="og:image" content="https://maskin.io/og-image-ai-customer-feedback-loop.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Diagram: customer feedback becomes a bet, the bet ships, the customer is told, and the outcome feeds the next cycle">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-10-23T00:00:00Z">
+<meta property="article:modified_time" content="2026-10-23T00:00:00Z">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="AI customer feedback loop: from feedback to shipped fix">
+<meta name="twitter:description" content="Feedback becomes a shaped bet, the bet ships, and the customer is told. The loop runs on typed objects and finishes where an inbox only queues.">
+<meta name="twitter:image" content="https://maskin.io/og-image-ai-customer-feedback-loop.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "AI customer feedback loop: from “someone said something” to “we shipped it and told them”",
+      "name": "AI customer feedback loop: from feedback to shipped fix",
+      "description": "An AI customer feedback loop turns feedback into a shaped bet, ships it, and tells the customer. See how it runs on typed objects and why it beats an inbox.",
+      "url": "https://maskin.io/loops/ai-customer-feedback-loop/",
+      "inLanguage": "en",
+      "datePublished": "2026-10-23T00:00:00Z",
+      "dateModified": "2026-10-23T00:00:00Z",
+      "image": [
+        "https://maskin.io/og-image-ai-customer-feedback-loop.png"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "mainEntityOfPage": "https://maskin.io/loops/ai-customer-feedback-loop/",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": {
+        "@type": "Product",
+        "name": "Maskin"
+      },
+      "keywords": "AI customer feedback loop, customer feedback loop, closed loop feedback, feedback to bet, notify customers when shipped"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Marketplace",
+          "item": "https://maskin.io/marketplace/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI customer feedback loop",
+          "item": "https://maskin.io/loops/ai-customer-feedback-loop/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an AI customer feedback loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An AI customer feedback loop is a closed cycle that turns customer feedback into a shipped change and then notifies the customer that it is live: feedback, bet, shipped, notified. Agents carry the mechanical steps (synthesising signal, shaping a bet, executing, gathering evidence) while a human keeps the taste gate on which feedback deserves a bet and whether the outcome counts as a win. It is the difference between storing feedback and closing the loop on it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from a feedback tool or idea board?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A feedback tool captures, sorts, and stores customer input; a feedback loop closes the circle by shipping a change and telling the customer. Idea boards and ticketing systems are intake and storage: feedback lands in a queue and is drained by human attention. A loop converts feedback into a time-bounded bet with a win condition, ships it, and notifies the customer. Storage is the input of a feedback loop, not its output."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do we still need a human in the loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and the loop is built around that. A human keeps the taste decisions: which feedback warrants a bet and whether the shipped outcome genuinely counts as a win against the win condition. The agent runs the continuous, mechanical work: capturing signal, shaping a draft, executing, closing the notification. Unattended automation without a gate is how feedback processes reinforce their own bias, so the human gate stays mandatory for taste."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to get a feedback loop running?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Once the source and notification channels are connected, a feedback loop can start closing within a day: connect a feedback source such as Intercom, define the shaping criteria and a win condition, approve a first bet, and the loop closes on shipping. The tooling handles the trigger and the object model; the real setup time is deciding what counts as a win and who approves bets, which is a product judgement, not a technical one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the loop handle feedback volume on its own?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An agent can synthesise and shape high volume, surfacing the few signals that deserve a bet rather than converting every message into work. The win condition is what keeps volume controlled: feedback that cannot be shaped into a bounded, testable bet is not scheduled. Sending every message through to shipping would be the opposite of a loop, because a loop shapes down to signal. The human gate is the volume control."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Marketplace</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All loops</a></li><li><a class="" href="/marketplace/seo-publishing/">The SEO publishing loop</a></li><li><a class="" href="/marketplace/outbound/">The outbound loop</a></li><li><a class="" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki loop</a></li><li><a class="" href="/marketplace/linkedin-content/">The LinkedIn content loop</a></li><li><a class="" href="/marketplace/product-delivery/">The product delivery loop</a></li><li><a class="is-active" href="/loops/ai-customer-feedback-loop/" aria-current="page">AI customer feedback loop</a></li><!-- TEMP-SWAP (task 9bf88671): revert to href="/marketplace/product-discovery/" + "The product discovery loop" when the loop flips live. Mirrors commits 512b1f1 / 2a327bd. --><li><a class="" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="" href="/docs/at-risk-account-alerts/">At-risk account alerts</a></li><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/learn/human-in-the-loop/">Human in the loop</a></li><li><a class="" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/">Home</a> / <a href="/marketplace/">Marketplace</a> / AI customer feedback loop</p>
+    <p class="eyebrow">Loop</p>
+    <h1>AI customer feedback loop: from &ldquo;someone said something&rdquo; to &ldquo;we shipped it and told them&rdquo;</h1>
+  <p class="lead">An AI customer feedback loop closes the circle from a customer&rsquo;s pain to a shipped fix they are told about: feedback becomes a shaped bet, the bet ships, and the customer is notified that the change they asked for is live. The differentiator is that the loop runs on typed objects and finishes by telling the customer, where a feedback-inbox or ticketing tool collects and queues but never closes the loop.</p>
+
+  <figure style="margin:1.5rem 0">
+    <img src="/og-image-ai-customer-feedback-loop.svg" width="1200" height="630" alt="Diagram: customer feedback becomes a bet with a win condition, the bet ships as a measured change, the customer is told, and the outcome feeds the next cycle" style="max-width:100%;height:auto;border-radius:8px">
+  </figure>
+
+  <div class="callout callout--muted">
+    <div class="callout__icon" aria-hidden="true">&#10003;</div>
+    <div class="callout__body"><strong>Key takeaways</strong>
+      <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+        <li>A customer feedback loop is feedback &rarr; bet &rarr; shipped change &rarr; customer notified, repeated.</li>
+        <li><strong>The win is the last step:</strong> the customer learns their feedback produced a shipped change, which builds trust and repeated signal.</li>
+        <li>The loop runs on <a href="/docs/concepts/">typed objects</a> (feedback, bet, task), so an agent can carry it from signal to shipped change and close it.</li>
+        <li>The differentiator vs a feedback-inbox or ticketing tool is closure. A tool that queues is not a loop.</li>
+        <li>Feedback &rarr; bet &rarr; shipped &rarr; notified is one of Maskin&rsquo;s five <a href="/marketplace/">marketplace loops</a>, alongside <a href="/docs/at-risk-account-alerts/">churn &amp; expansion</a>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>What an AI customer feedback loop actually is</h2>
+  <p>An AI customer feedback loop is a closed cycle that turns what customers tell you into change you ship and then close with them: feedback becomes a shaped <a href="/docs/bet-based-product-planning/">bet</a>, the bet ships, and the customer is notified that the change is live. The loop exists so that feedback does not die in a queue. That is the single most common failure of feedback management, and the reason customers stop bothering to tell you anything.</p>
+  <p>Almost every product team already has feedback tools: a support inbox, an idea board, a ticketing system. What those tools have in common is that they are intake and storage. They capture feedback, maybe sort and prioritise it, and then hand it to a human to remember to do something about. The loop is missing at two points: nobody turns feedback into a shaped, time-bounded bet the team actually commits to, and nobody notifies the customer when it ships. An AI feedback loop replaces both gaps with automation over a shared object model (<a href="/docs/architecture/">Maskin architecture</a>, 2026).</p>
+
+  <h2>The four moments that make it a loop</h2>
+  <p><strong>Feedback becomes a bet.</strong> Raw feedback (a support ticket, an Intercom chat, a product review) arrives as a signal. The first automated step is synthesis: group the signal, judge its weight, and shape it into a bet with a win condition. Crucially, the feedback is not parked in an inbox; it is converted into a concrete piece of work with a definition of success (Maskin architecture, 2026). For the same step run on interviews and reviews, see the <a href="/marketplace/product-discovery/">product discovery loop</a>.</p>
+  <p><strong>The bet ships.</strong> A shaped bet carries a driver and a win condition, so the work can be executed and validated. A human and an agent jointly own the bet: the agent runs it and gathers evidence, the human judges the outcome. When it ships, the result is measured against the win condition, not against anyone&rsquo;s memory of what was intended (<a href="/docs/what-is-loop-engineering/">loop engineering</a>, 2026).</p>
+  <p><strong>The customer is notified.</strong> The step that makes this a loop rather than a pipeline is closing with the customer. When the bet ships, the person or segment that raised the feedback is told the change they asked for is live. This is what makes it a loop: a customer who is told their input produced a shipped change is more likely to keep giving high-signal feedback, and less likely to feel like they are shouting into a tool.</p>
+  <p><strong>The loop repeats.</strong> The shipped change and its outcome feed the next cycle. Patterns accumulate across loops (repeated requests, recurring themes), which sharpens the next shaping step. The learning is recorded on the objects, so the loop gets better every revolution instead of starting from scratch.</p>
+
+  <h2>Why a closed loop beats a feedback inbox</h2>
+  <p>A feedback-inbox or ticketing tool is organised around capture; a feedback loop is organised around closure. The inbox&rsquo;s mental model is a queue to be drained, and drained queues rarely get fully drained. Feedback lands, gets triaged, and competes for attention with everything else, and the customer never learns what happened. The queue grows toward aspiration until it stops meaning anything, the same decay that breaks product backlogs (Shape Up, Basecamp, 2019). <a href="/docs/bet-vs-backlog/">Bet vs backlog</a> covers that decay in detail.</p>
+  <p>Two properties separate the loop from a fancier inbox. The first is that feedback is converted into a bet, so it is not just stored; it is committed to with a time-box and a win condition. The second is that the loop notifies the customer on shipping, so it does not rely on a human to remember to close the loop. An inbox optimises for capturing everything; a loop optimises for shipping the few things that matter and telling the person who asked.</p>
+
+  <h2>The object model that makes the loop automatable</h2>
+  <p>A feedback loop that finishes on its own needs the underlying work to be machine-readable. Maskin runs the loop on typed objects in a unified model (feedback, bets, and tasks are all objects connected by typed relationships), driven by triggers that fire an agent when the relevant object changes state (Maskin architecture, 2026).</p>
+  <p>Concretely: a trigger sees a piece of feedback meet a threshold, an agent shapes it into a bet with a win condition, a human approves the bet, the agent executes it, and a notification goes out through a connected channel when it ships. Inputs and notifications can cross connectors such as Slack, Intercom, PostHog, HubSpot, or GitHub, so the loop runs inside the tools the team already lives in (Maskin architecture, 2026; see the <a href="/docs/integrations/">integrations reference</a>).</p>
+  <p>The human stays on the taste decisions (which feedback deserves a bet, and whether the outcome counts as a win) while the mechanical steps run on their own. That is the same division the industry is lining up behind: agents run the loop, humans judge the outcome. Big tooling players are converging on it in 2026, with Atlassian opening its Teamwork Graph as an agent layer and reporting agentic automations up 7x in six months (Atlassian, Team &rsquo;26, 2026; Notion, 2026; Linear, 2026). The <a href="/docs/what-is-an-agentic-workspace/">agentic workspace</a> is the category this sits in.</p>
+
+  <h2>The honest case for making feedback a loop</h2>
+  <p>Feedback loops fail in three places, and knowing them keeps the tool honest. First, shaping: if the win condition is vague, the bet is a ticket and the loop stalls. Second, the <a href="/docs/learn/human-in-the-loop/">human gate</a>: if no human ever approves the bet, automation ships nothing, or worse, ships junk. The gate is what keeps the loop safe. Third, notification: skippable, unhelpful close-outs train the customer that feedback still vanishes.</p>
+  <p>The loop design handles all three by making them explicit steps on the object, but a loop only works as well as the people on the taste gates. The capability is real, and the market is forming around it: Tracxn counts ~60 companies in native-AI-in-product-management with ~$500M raised and one unicorn, with 2026 funding up ~170% year-over-year (Tracxn, 2026). The edge is not the AI. It is that the loop finishes and tells the customer.</p>
+
+  <h2>FAQ</h2>
+  <h3>What is an AI customer feedback loop?</h3>
+  <p>An AI customer feedback loop is a closed cycle that turns customer feedback into a shipped change and then notifies the customer that it is live: feedback &rarr; bet &rarr; shipped &rarr; notified. Agents carry the mechanical steps (synthesising signal, shaping a bet, executing, gathering evidence) while a human keeps the taste gate on which feedback deserves a bet and whether the outcome counts as a win. It is the difference between storing feedback and closing the loop on it.</p>
+  <h3>How is this different from a feedback tool or idea board?</h3>
+  <p>A feedback tool captures, sorts, and stores customer input; a feedback loop closes the circle by shipping a change and telling the customer. Idea boards and ticketing systems are intake and storage: feedback lands in a queue and is drained by human attention. A loop converts feedback into a time-bounded bet with a win condition, ships it, and notifies the customer. Storage is the input of a feedback loop, not its output.</p>
+  <h3>Do we still need a human in the loop?</h3>
+  <p>Yes, and the loop is built around that. A human keeps the taste decisions: which feedback warrants a bet and whether the shipped outcome genuinely counts as a win against the win condition. The agent runs the continuous, mechanical work: capturing signal, shaping a draft, executing, closing the notification. Unattended automation without a gate is how feedback processes reinforce their own bias, so the human gate stays mandatory for taste (loop engineering, 2026).</p>
+  <h3>How long does it take to get a feedback loop running?</h3>
+  <p>Once the source and notification channels are connected, a feedback loop can start closing within a day: connect a feedback source such as Intercom, define the shaping criteria and a win condition, approve a first bet, and the loop closes on shipping. The tooling handles the trigger and the object model; the real setup time is deciding what counts as a win and who approves bets, which is a product judgement, not a technical one.</p>
+  <h3>Can the loop handle feedback volume on its own?</h3>
+  <p>An agent can synthesise and shape high volume, surfacing the few signals that deserve a bet rather than converting every message into work. The win condition is what keeps volume controlled: feedback that cannot be shaped into a bounded, testable bet is not scheduled. Sending every message through to shipping would be the opposite of a loop, because a loop shapes down to signal. The human gate is the volume control (Maskin architecture, 2026).</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/marketplace/product-discovery/">
+        <div class="doc-card__title">The product discovery loop</div>
+        <div class="doc-card__desc">Customer signal to shipped bet: interviews, tickets and reviews clustered into candidate bets.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/at-risk-account-alerts/">
+        <div class="doc-card__title">At-risk account alerts</div>
+        <div class="doc-card__desc">The churn &amp; expansion loop, the sibling that turns usage signals into recovery bets.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/bet-based-product-planning/">
+        <div class="doc-card__title">Bet-based product planning</div>
+        <div class="doc-card__desc">Why feedback becomes a time-boxed bet with a win condition, not a backlog ticket.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+        <div class="doc-card__title">What is an agentic workspace?</div>
+        <div class="doc-card__desc">The category cornerstone, where the loop is the object of work.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Close the loop on what customers tell you</h2>
+      <p>If a feedback queue is quietly growing and customers never hear back, that is not a feedback strategy; it is a filter for losing signal. Stand up the loop where feedback becomes a shaped bet and customers are notified when it ships. Maskin self-hosts free or runs a hosted trial for a paid team, and the feedback-to-notification loop runs on typed objects with human taste gates. Browse the <a href="/docs/">full docs</a> for the object-model spec.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
