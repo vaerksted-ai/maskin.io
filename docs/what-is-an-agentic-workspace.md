@@ -31,7 +31,7 @@ This is the structural difference from a task tracker with a summariser bolted o
 
 ## How it fits a product team
 Small teams operate many agents through an abstraction layer and get pulled in only for decisions that need a human. Pre-built closed loops handle the rest (see [AI product management tool](/docs/ai-product-management-tool/) and [Bet-based product planning](/docs/bet-based-product-planning/)):
-- **Customer feedback** — feedback from Slack/Intercom becomes an insight, then a bet, then a shipped change, with the customer notified.
+- **[Customer feedback](/loops/ai-customer-feedback-loop/)** — feedback from Slack/Intercom becomes an insight, then a bet, then a shipped change, with the customer notified.
 - **Market signals** — Reddit, X, LinkedIn and forums are monitored, synthesised into insights and turned into bets.
 - **Churn & expansion** — usage drops and error spikes are watched; at-risk accounts trigger an alert with full context.
 - **Lost deals → roadmap** — closed-lost reasons are weighted by ARR and shaped into roadmap bets.

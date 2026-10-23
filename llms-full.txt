@@ -1006,7 +1006,7 @@ This is where the loop closes. Nightly automation and event-driven triggers brin
 ## How an AI product management tool runs the loop
 Here is what closing the loop looks like in practice rather than in a demo. Maskin’s loop is its product core: insight — bet — task — feedback, driven by triggers and closed by validation, with human-promote gates that keep a human in control of the decisions that need judgement.
 - **Triggers bring work in.** Connect sources — Slack, Intercom, PostHog, HubSpot, Reddit, X, LinkedIn, and competitor changelogs — and the loop reacts when the data changes, instead of waiting for a meeting.
-- **Marketplace loops wire the agents.** Ready-made loops cover customer feedback, market signals, churn and expansion, lost deals, roadmaps, and competitive intelligence, so the agents run the capture and synthesis you would otherwise do manually.
+- **Marketplace loops wire the agents.** Ready-made loops cover [customer feedback](/loops/ai-customer-feedback-loop/), market signals, churn and expansion, lost deals, roadmaps, and competitive intelligence, so the agents run the capture and synthesis you would otherwise do manually.
 - **Validation is built in.** When a bet ships, its outcome is measured against the win condition and the requester is notified. The loop stops when it is done rather than running until someone notices.
 The point is the shape, not the feature list. Every stage of the learning loop — capture, decision, execution, validation — is modelled as a real object and a real relationship, so agents and humans work the same data. That is the difference between an AI product management tool and a task tracker with a narrator.
 
@@ -1088,7 +1088,7 @@ This is the structural difference from a task tracker with a summariser bolted o
 
 ## How it fits a product team
 Small teams operate many agents through an abstraction layer and get pulled in only for decisions that need a human. Pre-built closed loops handle the rest (see [AI product management tool](/docs/ai-product-management-tool/) and [Bet-based product planning](/docs/bet-based-product-planning/)):
-- **Customer feedback** — feedback from Slack/Intercom becomes an insight, then a bet, then a shipped change, with the customer notified.
+- **[Customer feedback](/loops/ai-customer-feedback-loop/)** — feedback from Slack/Intercom becomes an insight, then a bet, then a shipped change, with the customer notified.
 - **Market signals** — Reddit, X, LinkedIn and forums are monitored, synthesised into insights and turned into bets.
 - **Churn & expansion** — usage drops and error spikes are watched; at-risk accounts trigger an alert with full context.
 - **Lost deals → roadmap** — closed-lost reasons are weighted by ARR and shaped into roadmap bets.
