@@ -67,7 +67,7 @@ Here is the decision in one question: do you want a system that holds everything
 - **Tracxn** — sector data on native-AI-in-product-management tools; ~60 companies, ~$500M raised, one unicorn, and 2026 funding up ~170% year-over-year (2026).
 - **Atlassian** — Teamwork Graph as an agent context layer via Rovo; agentic automations up 7x in six months (2026).
 - **Notion** — Custom Agents and Developer Platform releases opening the workspace to agent execution (2026).
-- **Linear** — agent grounded in roadmap, code, and issues, callable from Slack (2026).
+- **Linear** — agent grounded in roadmap, code, and issues, callable from Slack (2026). See the [open source Linear alternative](/alternatives/open-source-linear-alternative/).
 - **Maskin** — product model and architecture: bets, tasks, insights as typed objects in a unified graph, Apache 2.0 ([maskin.io](/)).
 Read next
 

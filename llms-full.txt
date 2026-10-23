@@ -980,7 +980,7 @@ This piece is the tier-2 leg of the [three tiers of AI-native work](/docs/three-
 > ✓
 > **Key takeaways**
 > **Product teams run on a learning loop** — signal capture, decision, execution, validation. An AI product management tool earns its place by closing that loop, not by narrating it.
-> **Incumbent suites bolt generative-AI summaries onto task trackers; the object model never changes.** Atlassian, Notion, and Linear have all pivoted toward agent orchestration, but the tracker-with-narrator pattern still dominates what most tools ship.
+> **Incumbent suites bolt generative-AI summaries onto task trackers; the object model never changes.** Atlassian, Notion, and [Linear](/alternatives/open-source-linear-alternative/) have all pivoted toward agent orchestration, but the tracker-with-narrator pattern still dominates what most tools ship.
 > **Maskin’s unit of work is the bet** — a testable hypothesis with a clear win condition, shaped from raw insight and jointly owned by a human and agents.
 > **The category is a small, fast-forming wedge:** ~60 native-AI-in-product-management companies, ~$500M raised, one unicorn, with 2026 funding up ~170% year-over-year.
 > **Maskin is open source under Apache 2.0**, self-host free, with hosted Pro at $20/seat.
