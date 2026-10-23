@@ -32,6 +32,7 @@
     "knowledge-wiki": 1,
     "product-discovery": 1,
     "linkedin-content": 1,
+    "competitive-intelligence": 1,
   };
 
   function normalizeReferrer(ref) {

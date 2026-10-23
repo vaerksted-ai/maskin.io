@@ -59,6 +59,7 @@ ORDER = [
   "marketplace/product-discovery/index.html",
   "marketplace/linkedin-content/index.html",
   "marketplace/product-delivery/index.html",
+  "marketplace/competitive-intelligence/index.html",
 ]
 
 class MD(HTMLParser):
