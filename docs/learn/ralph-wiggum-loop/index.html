@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ralph Wiggum loop: how it works and when it needs a verdict — Maskin</title>
+<meta name="description" content="The Ralph Wiggum loop runs a coding agent on the same prompt until it's done. How it works in Claude Code, where it stops, and what a closed loop adds.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/learn/ralph-wiggum-loop/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/learn/ralph-wiggum-loop/">
+<meta property="og:title" content="Ralph Wiggum loop vs a closed loop">
+<meta property="og:description" content="The Ralph Wiggum loop runs a coding agent on the same prompt until it's done. How it works in Claude Code, where it stops, and what a closed loop adds.">
+<meta property="og:image" content="https://maskin.io/og-image-ralph-wiggum-loop.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Ralph Wiggum loop vs a closed loop">
+<meta name="twitter:description" content="The Ralph Wiggum loop runs a coding agent on the same prompt until it's done. How it works in Claude Code, where it stops, and what a closed loop adds.">
+<meta name="twitter:image" content="https://maskin.io/og-image-ralph-wiggum-loop.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/learn/ralph-wiggum-loop/#post",
+      "headline": "Ralph Wiggum loop: how it works, and when \"keep trying\" needs a close condition and a verdict",
+      "description": "The Ralph Wiggum loop runs a coding agent on the same prompt until it's done. How it works in Claude Code, where it stops, and what a closed loop adds.",
+      "datePublished": "2026-10-23T00:00:00Z",
+      "dateModified": "2026-10-23T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "image": "https://maskin.io/og-image-ralph-wiggum-loop.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/learn/ralph-wiggum-loop/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Ralph Wiggum loop"
+        },
+        {
+          "@type": "Thing",
+          "name": "closed loop"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI coding agents"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Ralph Wiggum loop: how it works, and when \"keep trying\" needs a close condition and a verdict",
+          "item": "https://maskin.io/docs/learn/ralph-wiggum-loop/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Ralph Wiggum loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Ralph Wiggum loop is a way to run an AI coding agent unattended by feeding it the same prompt in a loop until the task is done. Each pass starts a fresh session, reads the spec, plan and code left by earlier passes, does one piece of work and exits. Geoffrey Huntley named and popularised it in July 2025."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who created the Ralph Wiggum loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Geoffrey Huntley, a software engineer, described and named the technique in his July 2025 post \"Ralph Wiggum as a software engineer\" on ghuntley.com. He sums it up as \"Ralph is a Bash loop\". Anthropic's Claude Code plugin credits him and links to the original post."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is it called the Ralph Wiggum loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It's named after Ralph Wiggum from The Simpsons: cheerful, persistent and not always right, but he keeps trying. The technique works the same way. Each pass might be wrong, but the loop keeps going, and tests and the prompt steer it back on course."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I use the Ralph loop in Claude Code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Install Anthropic's ralph-wiggum plugin and run /ralph-loop with your prompt, a --completion-promise phrase and a --max-iterations limit. A Stop hook blocks Claude from exiting and feeds the same prompt back until it prints the phrase or hits the limit. /cancel-ralph stops it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the Ralph loop actually work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, for the right work. It does well on greenfield builds and tasks with a clear, machine-checkable target such as a test suite. Its own creator says it needs an experienced engineer steering and isn't suited to existing codebases. Anthropic's plugin docs say it's a poor fit for tasks that need human judgment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ralph loop vs loop engineering: what's the difference?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Ralph loop is one specific technique: retry the same prompt until a stop signal fires. Loop engineering is the wider practice of designing the whole system around agents: what starts the work, what it reads and writes, where people review it, and what condition closes it. A Ralph loop can be one step inside an engineered loop."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I not use a Ralph loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Skip it when success is a judgment rather than a check, when you're working in a large existing codebase, when debugging production, or when nobody will review the output. In those cases, put a close condition, an owner and a verdict around the work first, then decide whether a retry loop helps inside it."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a></li><li><a class="is-nested" href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a></li><li><a class="is-nested" href="/docs/learn/claude-code-agent-teams/">Claude Code agent teams</a></li><li><a class="is-nested" href="/docs/learn/claude-code-team/">Claude Code team</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="is-nested" href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-orchestration/">Agent orchestration</a></li><li><a class="is-nested is-active" href="/docs/learn/ralph-wiggum-loop/" aria-current="page">Ralph Wiggum loop</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="" href="/docs/at-risk-account-alerts/">At-risk account alerts</a></li></ul></nav></aside>    <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Ralph Wiggum loop</p>
+    <p class="eyebrow">Article &middot; Learn</p>
+    <h1>Ralph Wiggum loop: how it works, and when &quot;keep trying&quot; needs a close condition and a verdict</h1>
+    <p class="lead"><strong>The Ralph Wiggum loop is a technique for running an AI coding agent unattended: you feed the same prompt to the agent over and over, in a loop, until the work is done.</strong> Geoffrey Huntley, who named it, describes it in one line: &quot;Ralph is a Bash loop.&quot; Each pass starts fresh, reads the files and progress the last pass left behind, does one more piece of work and exits. It&#39;s very good at grinding toward a goal a machine can check, like a test suite going green. It doesn&#39;t decide what &quot;done&quot; means for anyone else. That needs a close condition written before the work starts, an owner, and a verdict someone signs.</p>
+    <h2>Key takeaways</h2>
+    <ul>
+    <li><strong>Ralph is a loop, not a product.</strong> The original is a single shell line that pipes a prompt file into a coding agent forever. Plugins and CLIs add stop conditions and limits on top.</li>
+    <li><strong>It works because each pass is fresh.</strong> The agent&#39;s memory lives in files on disk (the spec, the plan, the code, the tests), not in one long conversation that fills up.</li>
+    <li><strong>Its stop signal is a check the machine can run.</strong> Tests pass, a build succeeds, or the agent prints an agreed phrase. That&#39;s a real strength for well-defined coding tasks.</li>
+    <li><strong>Its limits are written down by its own makers.</strong> Huntley says he wouldn&#39;t use it on an existing codebase. Anthropic&#39;s plugin README lists &quot;tasks requiring human judgment&quot; and &quot;unclear success criteria&quot; as poor fits.</li>
+    <li><strong>A closed loop adds three things on top:</strong> a close condition agreed before work starts, a named owner, and a verdict recorded by a person or a check they trust.</li>
+    <li><strong>Use both.</strong> Ralph inside, for the grinding. A closed loop around it, for deciding whether the result counts.</li>
+    </ul>
+    <h2>Where the Ralph Wiggum loop comes from</h2>
+    <p>Geoffrey Huntley published <a href="https://ghuntley.com/ralph/">Ralph Wiggum as a &quot;software engineer&quot;</a> on 14 July 2025. The name comes from the Simpsons character: cheerful, persistent, not always right, but he keeps going. The original form is a single line:</p>
+    <p><strong>while :; do cat PROMPT.md | claude-code ; done</strong></p>
+    <p>That&#39;s it. A prompt file goes in, the agent works, the agent exits, the loop starts it again with the same prompt. Huntley&#39;s point is that the loop is dumb on purpose and the skill is in the prompt. He compares fixing a misbehaving Ralph to tuning a guitar: when it goes wrong, you don&#39;t blame the loop, you add a sign to the prompt that steers the next pass.</p>
+    <p>The term spread fast. US searches for &quot;ralph wiggum loop&quot; went from almost nothing in late 2025 to about 8,100 a month at the January 2026 peak, and have held around 2,000 to 2,400 since. Huntley tells the story himself in a podcast interview, <a href="https://open.spotify.com/episode/3Gzsga210K1kW0GPr4RjH9">Inventing the Ralph Wiggum Loop</a>.</p>
+    <h2>How a Ralph loop works, step by step</h2>
+    <p>A working Ralph setup has four parts. The loop is the least interesting of them.</p>
+    <ol>
+    <li><strong>A spec.</strong> What you&#39;re building, written as files the agent can read: requirements, constraints, the tech stack. This is the part you spend the most time on.</li>
+    <li><strong>A plan file.</strong> A running to-do list the agent updates each pass. It&#39;s how pass 40 knows what pass 39 finished.</li>
+    <li><strong>One task per pass.</strong> Huntley&#39;s rule is &quot;only one thing&quot; per loop. Each pass picks the most important unfinished item, does it, records progress and exits. Small tasks keep the context window clear.</li>
+    <li><strong>Back-pressure.</strong> Tests, type checks, linters and builds that fail loudly when the agent gets something wrong. Without them, the loop happily stacks broken code on broken code.</li>
+    </ol>
+    <p>Then the loop runs. Each pass is a fresh session with an empty context, so the agent never drowns in its own earlier output. Its memory is the repository.</p>
+    <h3>Running it in Claude Code</h3>
+    <p>You don&#39;t have to write the shell loop yourself. Anthropic ships a <a href="https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum">ralph-wiggum plugin</a> for Claude Code that runs the loop inside one session. You start it once:</p>
+    <p><strong>/ralph-loop &quot;Build the CSV importer per SPEC.md&quot; --completion-promise &quot;DONE&quot; --max-iterations 20</strong></p>
+    <p>The plugin uses a Stop hook. When Claude tries to finish, the hook blocks the exit and feeds the same prompt back in. The loop ends when Claude outputs the completion phrase (matched exactly) or when it hits the iteration limit. <strong>/cancel-ralph</strong> stops it by hand. Always set a max-iterations value. Without one, the loop only ends when the agent says the magic word.</p>
+    <p>Community CLIs and plugins do the same for Codex, OpenCode, Cursor and Copilot. The mechanics differ. The idea doesn&#39;t.</p>
+    <h2>What Ralph is good at</h2>
+    <p>Be fair to the technique, because it works. Its strengths are real:</p>
+    <ul>
+    <li><strong>Greenfield builds.</strong> Huntley&#39;s own flagship example is a new programming language, built with Ralph. He also reports an engineer delivering a contract MVP for a few hundred dollars of model usage. That&#39;s his report, not a benchmark, but it shows the shape: lots of well-specified work, done cheaply, overnight.</li>
+    <li><strong>Grinding against a test suite.</strong> If &quot;done&quot; means &quot;all these tests pass&quot;, Ralph will keep going long after a person would have stopped for coffee.</li>
+    <li><strong>Long tasks that overflow one session.</strong> Because each pass is fresh, there&#39;s no slow decline as one conversation fills up.</li>
+    <li><strong>Mechanical migrations.</strong> Port these 200 files, fix these 400 lint errors, raise test coverage on this module. Clear target, cheap to check.</li>
+    </ul>
+    <h2>Where Ralph stops, in its makers&#39; own words</h2>
+    <p>The limits aren&#39;t a critic&#39;s invention. They&#39;re in the primary sources.</p>
+    <ul>
+    <li><strong>Existing codebases.</strong> Huntley writes that there&#39;s &quot;no way in heck&quot; he&#39;d use Ralph on an existing codebase. Ralph shines where nothing can break yet.</li>
+    <li><strong>It needs a senior engineer steering.</strong> He&#39;s clear that someone experienced has to write the spec, read the output and tune the prompt. Ralph will periodically produce a broken codebase, and someone has to notice.</li>
+    <li><strong>Human judgment and fuzzy success.</strong> Anthropic&#39;s plugin README lists &quot;tasks requiring human judgment&quot;, &quot;unclear success criteria&quot; and &quot;production debugging&quot; under not good for.</li>
+    </ul>
+    <p>Put those together and there&#39;s a pattern. Ralph is excellent when &quot;done&quot; is something a machine can check. It has nothing to say when &quot;done&quot; is a judgment: is this the right feature, does this copy land, did this change fix the customer&#39;s problem, should we ship it.</p>
+    <p>That&#39;s the line between a retry loop and a closed loop.</p>
+    <h2>Ralph loop vs a closed loop</h2>
+    <p>A closed loop is a unit of work with a stated start, a stated finish, an owner and a recorded result. The <a href="/docs/learn/agentic-workflow-vs-closed-loop/">agentic workflow vs closed loop</a> page covers the full pattern. Here&#39;s how it compares to Ralph:</p>
+    <table>
+    <thead>
+    <tr>
+    <th></th>
+    <th>Ralph loop</th>
+    <th>Closed loop</th>
+    </tr>
+    </thead>
+    <tbody><tr>
+    <td>What repeats</td>
+    <td>The same prompt, until a stop signal</td>
+    <td>The work, until a close condition is met</td>
+    </tr>
+    <tr>
+    <td>What &quot;done&quot; means</td>
+    <td>Tests pass, or the agent prints a phrase</td>
+    <td>A condition written before the work started, in words the team agreed</td>
+    </tr>
+    <tr>
+    <td>Who decides it&#39;s done</td>
+    <td>The agent, or a script</td>
+    <td>A named owner, a person or a check they trust</td>
+    </tr>
+    <tr>
+    <td>Where the result lives</td>
+    <td>Commits and a plan file in one repo</td>
+    <td>A record the team can read: status, owner, verdict, reasons</td>
+    </tr>
+    <tr>
+    <td>What happens on failure</td>
+    <td>Retry, or hit the iteration cap</td>
+    <td>A verdict that says failed and why, so the next cycle learns</td>
+    </tr>
+    <tr>
+    <td>Best for</td>
+    <td>Mechanical work with a machine-checkable target</td>
+    <td>Work where &quot;done&quot; is a judgment, or where the result has to outlive the session</td>
+    </tr>
+    </tbody></table>
+    <p>The two aren&#39;t rivals. A Ralph loop can be one step inside a closed loop, the grinding step. The closed loop decides whether what came out counts.</p>
+    <h2>The three things &quot;keep trying&quot; can&#39;t give you</h2>
+    <h3>1. A close condition written before the work starts</h3>
+    <p>A completion promise is a phrase the agent prints. A close condition is a sentence the team agreed on before anyone started, describing what has to be true in the world. &quot;All tests in /importer pass&quot; is a completion promise. &quot;A customer can import their 50,000-row file without contacting support, checked on three real files&quot; is a close condition.</p>
+    <p>The difference matters because an agent under pressure to finish will find the cheapest way to make the stop signal fire. If the signal is a phrase, it can print the phrase. If the signal is a test, it can weaken the test. A close condition written in advance, in plain language, is much harder to game, and a person can read it later and see whether it was met.</p>
+    <h3>2. An owner</h3>
+    <p>Every Ralph run has an operator, the person who started it. That&#39;s not the same as an owner. An owner answers for the outcome after the loop stops: they read what came out, decide whether it counts, and are the person you ask in three weeks when something&#39;s wrong. Without one, overnight output tends to land in a branch nobody feels responsible for.</p>
+    <h3>3. A verdict</h3>
+    <p>A verdict is the recorded answer to &quot;did this work?&quot;: succeeded, failed or inconclusive, with a reason, signed by a person or by a check they&#39;ve agreed to trust. It&#39;s the step that turns a run into something the team learns from. A loop that ends at &quot;max iterations reached&quot; tells you it stopped, not whether it worked.</p>
+    <p>This is the same reason <a href="/docs/learn/human-in-the-loop-ai/">human-in-the-loop AI</a> puts a person at the decision points rather than at every step. The person doesn&#39;t need to watch Ralph type. They need to sign the verdict.</p>
+    <h2>What a closed loop around Ralph looks like</h2>
+    <p>Here&#39;s how we run loops in Maskin, an open-source workspace where people and agents work on the same typed objects. This is how our own work runs, so it&#39;s first-hand.</p>
+    <p>A loop in Maskin has an entry condition and a close condition written in plain language when the loop is created. Work items join it, agents do the steps, and an item leaves the loop only when the close condition is met. For example, the loop that ships this very page has this close condition: &quot;A live page has been indexed and rank-checked at least 30 days after going live, or it is archived.&quot; Publishing isn&#39;t done. Being found is.</p>
+    <p>Bigger pieces of work run as bets. A bet states up front what it&#39;s testing and what success looks like. Every bet has a driver, the person or agent who owns it. When it ends, the result is recorded as a verdict, and moving a bet to succeeded or failed is reserved for a person, not an agent.</p>
+    <p>Put Ralph inside that and you get a clean split:</p>
+    <ol>
+    <li><strong>Before:</strong> the owner writes the close condition and the success criteria on the task or bet.</li>
+    <li><strong>During:</strong> a Ralph loop grinds through the mechanical work against its tests, as many passes as it takes.</li>
+    <li><strong>After:</strong> the owner, or a reviewer agent with a person signing off, checks the result against the condition written in step 1 and records the verdict.</li>
+    </ol>
+    <p>The agent gets to keep trying. The team gets to know whether it worked.</p>
+    <h2>How to run a Ralph loop safely</h2>
+    <p>If you&#39;re about to start one tonight, this checklist covers the failures people hit most:</p>
+    <ul>
+    <li><strong>Write the spec first.</strong> If you can&#39;t describe done in a file, the loop can&#39;t either.</li>
+    <li><strong>Set a max-iterations cap.</strong> Treat it as a budget, not a formality.</li>
+    <li><strong>Make back-pressure strict.</strong> Tests, type checks and builds that fail on every mistake. Don&#39;t let the agent edit its own tests without review.</li>
+    <li><strong>One task per pass.</strong> Keep the plan file short and ordered.</li>
+    <li><strong>Run it in a sandbox or container.</strong> Unattended agents with broad permissions on your machine are a bad idea.</li>
+    <li><strong>Commit every pass.</strong> So you can see where it went wrong and roll back.</li>
+    <li><strong>Write the close condition somewhere other than the prompt.</strong> And name who signs the verdict when it stops.</li>
+    </ul>
+    <h2>FAQ</h2>
+    <h3>What is the Ralph Wiggum loop?</h3>
+    <p>The Ralph Wiggum loop is a way to run an AI coding agent unattended by feeding it the same prompt in a loop until the task is done. Each pass starts a fresh session, reads the spec, plan and code left by earlier passes, does one piece of work and exits. Geoffrey Huntley named and popularised it in July 2025.</p>
+    <h3>Who created the Ralph Wiggum loop?</h3>
+    <p>Geoffrey Huntley, a software engineer, described and named the technique in his July 2025 post &quot;Ralph Wiggum as a software engineer&quot; on ghuntley.com. He sums it up as &quot;Ralph is a Bash loop&quot;. Anthropic&#39;s Claude Code plugin credits him and links to the original post.</p>
+    <h3>Why is it called the Ralph Wiggum loop?</h3>
+    <p>It&#39;s named after Ralph Wiggum from The Simpsons: cheerful, persistent and not always right, but he keeps trying. The technique works the same way. Each pass might be wrong, but the loop keeps going, and tests and the prompt steer it back on course.</p>
+    <h3>How do I use the Ralph loop in Claude Code?</h3>
+    <p>Install Anthropic&#39;s ralph-wiggum plugin and run /ralph-loop with your prompt, a --completion-promise phrase and a --max-iterations limit. A Stop hook blocks Claude from exiting and feeds the same prompt back until it prints the phrase or hits the limit. /cancel-ralph stops it.</p>
+    <h3>Does the Ralph loop actually work?</h3>
+    <p>Yes, for the right work. It does well on greenfield builds and tasks with a clear, machine-checkable target such as a test suite. Its own creator says it needs an experienced engineer steering and isn&#39;t suited to existing codebases. Anthropic&#39;s plugin docs say it&#39;s a poor fit for tasks that need human judgment.</p>
+    <h3>Ralph loop vs loop engineering: what&#39;s the difference?</h3>
+    <p>A Ralph loop is one specific technique: retry the same prompt until a stop signal fires. <a href="/docs/what-is-loop-engineering/">Loop engineering</a> is the wider practice of designing the whole system around agents: what starts the work, what it reads and writes, where people review it, and what condition closes it. A Ralph loop can be one step inside an engineered loop.</p>
+    <h3>When should I not use a Ralph loop?</h3>
+    <p>Skip it when success is a judgment rather than a check, when you&#39;re working in a large existing codebase, when debugging production, or when nobody will review the output. In those cases, put a close condition, an owner and a verdict around the work first, then decide whether a retry loop helps inside it.</p>
+    <h2>Where to go next</h2>
+    <ul>
+    <li><a href="/docs/what-is-loop-engineering/">What is loop engineering in AI</a>: designing the system that prompts the agent, not just the prompt.</li>
+    <li><a href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a>: the five parts of a closed loop and when each pattern fits.</li>
+    <li><a href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a>: where a person&#39;s judgment belongs in agent work.</li>
+    </ul>
+    <p><strong>Want your agents&#39; work to end in a verdict, not just a stop?</strong> <a href="/docs/learn/agentic-workflow-vs-closed-loop/">See how loops close in Maskin</a>, or <a href="/docs/self-hosted-ai-workspace/">self-host it</a> and run your first loop.</p>
+    
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/what-is-loop-engineering/">
+          <div class="doc-card__title">What is loop engineering in AI?</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/learn/agentic-workflow-vs-closed-loop/">
+          <div class="doc-card__title">Agentic workflow vs the closed loop</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/learn/human-in-the-loop-ai/">
+          <div class="doc-card__title">Human in the loop AI: when it's real, when it's theater</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/learn/agent-orchestration/">
+          <div class="doc-card__title">Agent orchestration, agentic loops and control planes</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>End agent work in a verdict, not just a stop</h2>
+      <p>Maskin is the open-source, MCP-native workspace where a loop carries a close condition, an owner and a recorded verdict. Apache 2.0. Self-host free, bring your own model.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="/docs/learn/agentic-workflow-vs-closed-loop/">See how loops close</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
