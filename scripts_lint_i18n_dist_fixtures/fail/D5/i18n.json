@@ -5,8 +5,8 @@
   },
   "groups": { "home": { "en": "/", "da": "/da/" } },
   "pages": [
-    { "path": "/da/", "lang": "da", "kind": "native", "keyword": "ai til virksomheder", "reviewed_by": "Test Reviewer", "reviewed_on": "2026-10-01" },
-    { "path": "/da/ai-agenter/", "lang": "da", "kind": "native", "keyword": "ai agenter", "reviewed_by": "Test Reviewer", "reviewed_on": "2026-10-01" }
+    { "path": "/da/", "lang": "da", "kind": "native", "keyword": "ai til virksomheder" },
+    { "path": "/da/ai-agenter/", "lang": "da", "kind": "native", "keyword": "ai agenter" }
   ],
   "switcher_skip": [],
   "banned": []

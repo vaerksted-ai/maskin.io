@@ -5,7 +5,7 @@
   },
   "groups": { "home": { "en": "/", "da": "/da/" } },
   "pages": [
-    { "path": "/da/", "lang": "da", "kind": "native", "keyword": "ai til virksomheder", "reviewed_by": "Test Reviewer", "reviewed_on": "2026-10-01" }
+    { "path": "/da/", "lang": "da", "kind": "native", "keyword": "ai til virksomheder" }
   ],
   "switcher_skip": [],
   "banned": []

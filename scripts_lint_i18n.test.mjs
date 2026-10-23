@@ -64,7 +64,8 @@ const failNames = fs.readdirSync(path.join(fixtures, 'fail'));
 
 test('every check L1 to L18 has a failing fixture', () => {
   const covered = new Set(failNames.map((n) => n.split('-')[0]));
-  for (let i = 1; i <= 18; i++) assert.ok(covered.has(`L${i}`), `no failing fixture for L${i}`);
+  // L14 (native review gate) was removed 2026-10-23; the id stays retired so the others keep their numbers.
+  for (let i = 1; i <= 18; i++) if (i !== 14) assert.ok(covered.has(`L${i}`), `no failing fixture for L${i}`);
 });
 
 for (const name of failNames) {
