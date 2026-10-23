@@ -19,6 +19,24 @@
       "lang": "da",
       "kind": "native",
       "keyword": "ai automatisering"
+    },
+    {
+      "path": "/da/hvad-er-en-ai-agent/",
+      "lang": "da",
+      "kind": "native",
+      "keyword": "hvad er en ai agent"
+    },
+    {
+      "path": "/da/ai-agenter/",
+      "lang": "da",
+      "kind": "native",
+      "keyword": "ai agenter"
+    },
+    {
+      "path": "/da/ai-vaerktoejer/",
+      "lang": "da",
+      "kind": "native",
+      "keyword": "ai værktøjer"
     }
   ],
   "switcher_skip": [
@@ -46,6 +64,7 @@
     "Teamabonnemang"
   ],
   "external_paths": [
-    "/bookseb"
+    "/bookseb",
+    "/signup"
   ]
 }

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-agenter: guide for danske virksomheder | Maskin</title>
+<meta name="description" content="AI agenter i praksis: fem opgaver en dansk virksomhed kan give til en AI-agent, hvor grænsen går, og hvordan I kommer i gang med godkendelser.">
+
+<link rel="canonical" href="https://maskin.io/da/ai-agenter/">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/da/ai-agenter/">
+<meta property="og:title" content="AI-agenter: guide for danske virksomheder">
+<meta property="og:description" content="AI agenter i praksis: fem opgaver en dansk virksomhed kan give til en AI-agent, hvor grænsen går, og hvordan I kommer i gang med godkendelser.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="da_DK">
+<meta property="article:published_time" content="2026-10-23T00:00:00Z">
+<meta property="article:modified_time" content="2026-10-23T00:00:00Z">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="AI-agenter: guide for danske virksomheder">
+<meta name="twitter:description" content="AI agenter i praksis: fem opgaver en dansk virksomhed kan give til en AI-agent, hvor grænsen går, og hvordan I kommer i gang med godkendelser.">
+<meta name="twitter:image" content="https://maskin.io/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/da/ai-agenter/#post",
+      "headline": "AI-agenter: guide for danske virksomheder",
+      "name": "AI-agenter: guide for danske virksomheder",
+      "description": "AI agenter i praksis: fem opgaver en dansk virksomhed kan give til en AI-agent, hvor grænsen går, og hvordan I kommer i gang med godkendelser.",
+      "inLanguage": "da",
+      "url": "https://maskin.io/da/ai-agenter/",
+      "mainEntityOfPage": "https://maskin.io/da/ai-agenter/",
+      "image": "https://maskin.io/og-image.png",
+      "datePublished": "2026-10-23T00:00:00Z",
+      "dateModified": "2026-10-23T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "AI-agenter"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI-agenter i virksomheder"
+        },
+        {
+          "@type": "Thing",
+          "name": "Menneskelig godkendelse"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Forside",
+          "item": "https://maskin.io/da/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AI-agenter",
+          "item": "https://maskin.io/da/ai-agenter/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Hvad kan man bruge en AI-agent til i en virksomhed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Til opgaver, der gentager sig, har varierende input og kan kontrolleres hurtigt: opfølgning på leads, ugentlige rapporter, sortering af indbakken, mødereferater og udkast til kundesvar. Agenten forbereder arbejdet, og et menneske godkender det, der forlader virksomheden. Opgaver uden skrevne regler eller med store konsekvenser ved fejl bør vente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvad koster en AI-agent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prisen består af modelforbrug, platform eller drift, opsætning og gennemgangstid. Gennemgangstiden glemmes oftest og er ofte den største post. Regn på den enkelte opgave: tid i dag, gange antal pr. måned, mod tid til at godkende plus opsætning. Hvis gennemgangen tager lige så lang tid som opgaven, er den ikke værd at automatisere."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Er AI-agenter sikre at bruge med persondata?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Det afhænger af opsætningen, ikke af teknologien alene. Afklar, hvilken modeludbyder der får data, og hvor de behandles. Kræv en databehandleraftale, hvis der indgår persondata. Giv agenten mindst mulig adgang, og gem en log. Er kravene strenge, kan selvhosting være en mulighed. Vurder det med jeres egen rådgiver."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kan en AI-agent erstatte en medarbejder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ikke som helhed. En agent kan overtage enkelte, afgrænsede opgaver, men kan ikke bære ansvar, forstå en kunderelation eller træffe beslutninger med konsekvenser. Realistisk frigør den tid fra rutinearbejde, så medarbejderen bruger mere tid på vurdering og kontakt. Tænk i opgaver, ikke i stillinger."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvor starter man med AI-agenter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Med én opgave, der gentager sig og er nem at kontrollere, fx en ugentlig intern rapport. Skriv den ned som en vejledning, giv en person ansvaret, giv agenten læseadgang, og kør med godkendelse på alt i fire uger. Mål gennemgangstid og rettelser, før I tilføjer en ny opgave."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvad er forskellen på en AI-agent og en chatbot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En chatbot svarer, når nogen skriver til den. En AI-agent kan selv gå i gang ud fra en hændelse, bruge værktøjer og udføre flere trin. Den fulde forklaring og forskellen på agent, assistent og chatbot står i Hvad er en AI-agent?."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/da/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/da/">Forside</a></li><li><a href="/docs/" lang="en">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener" lang="en">GitHub</a></li><li class="docnav__hide-sm"><a href="/bookseb" target="_blank" rel="noopener">Book et møde</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Skift mellem lyst og mørkt tema" title="Skift mellem lyst og mørkt tema"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/da/">&larr; Forside</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Dansk"><p class="doc-sidebar__title">Dansk</p><ul class="doc-sidebar__list"><li><a href="/da/">Maskin på dansk</a></li><li><a href="/da/hvad-er-en-ai-agent/">Hvad er en AI agent?</a></li><li><a class="is-active" aria-current="page" href="/da/ai-agenter/">AI-agenter</a></li><li><a href="/da/ai-automatisering/">AI-automatisering</a></li><li><a href="/da/ai-vaerktoejer/">AI-værktøjer</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Relateret (engelsk)"><p class="doc-sidebar__title">Relateret (engelsk)</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/" lang="en">What is an agentic workspace?</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/" lang="en">Human in the loop AI</a></li><li><a class="" href="/docs/integrations/" lang="en">Integrations</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/da/">Forside</a> / AI-agenter</p>
+    <p class="eyebrow">Guide</p>
+    <h1>AI-agenter: guide for danske virksomheder</h1>
+    <p class="lead"><strong>AI-agenter er programmer, der får et mål, bruger jeres egne værktøjer og udfører flere trin selv, i stedet for kun at svare på et spørgsmål.</strong> I praksis tager de sig af tilbagevendende opgaver som leadopfølgning, rapporter og indbakke, mens et menneske godkender det, der forlader virksomheden. Denne guide viser hvilke opgaver, hvor grænsen går, og hvordan I kommer i gang. Selve definitionen står i <a href="/da/hvad-er-en-ai-agent/">Hvad er en AI-agent?</a>.</p>
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body"><strong>Vigtigste pointer</strong>
+        <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+          <li>Giv en AI-agent opgaver, der gentager sig, har varierende input og kan måles: leadopfølgning, ugentlige rapporter, indbakke, mødereferater og udkast til kundesvar.</li>
+          <li>Alt, der forlader virksomheden, bør et menneske godkende i starten. Løsn først op, når I har set, hvor ofte godkenderen retter agenten.</li>
+          <li>Agenter gætter, når de mangler oplysninger. Giv dem kilder at henvise til, og lad dem sige "ved ikke".</li>
+          <li>Den skjulte udgift er gennemgangstid, ikke modelforbrug. Regn på begge dele, før I vælger opgave.</li>
+          <li>Vælg ét job, kør det i fire uger med godkendelse på alt, og mål derefter. Byg ikke fem på én gang.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Hvilke opgaver kan en AI-agent tage i en dansk virksomhed?</h2>
+    <p>De fem opgaver nedenfor er dem, hvor en agent oftest giver mening for en virksomhed med 11 til 200 ansatte. De har tre ting til fælles: de gentager sig, input varierer fra gang til gang, og resultatet kan kontrolleres af et menneske på få minutter.</p>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead>
+        <tr><th>Opgave</th><th>Udløser</th><th>Agentens arbejde</th><th>Menneskets godkendelse</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Leadopfølgning</td><td>Ny henvendelse</td><td>Slår kontakten op, skriver udkast, foreslår næste skridt</td><td>Sælger godkender udkastet</td></tr>
+        <tr><td>Ugentlig rapport</td><td>Mandag morgen</td><td>Henter tal, sammenligner med sidste uge, skriver status</td><td>Stikprøve af tallene</td></tr>
+        <tr><td>Indbakke</td><td>Ny mail</td><td>Sorterer, mærker, foreslår svar</td><td>Godkender alt, der sendes ud</td></tr>
+        <tr><td>Mødereferat</td><td>Mødet slutter</td><td>Skriver referat og handlingspunkter</td><td>Mødelederen godkender, før det deles</td></tr>
+        <tr><td>Kundesvar</td><td>Ny sag</td><td>Finder tidligere svar, skriver udkast</td><td>Medarbejderen sender</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Opfølgning på nye leads</h3>
+    <p>En henvendelse kommer ind via formular eller mail. Agenten slår virksomheden op i jeres CRM og på jeres egen hjemmeside, finder tidligere kontakt, skriver et udkast til svar og foreslår næste skridt, fx at booke et møde. Sælgeren læser udkastet og sender det.</p>
+    <p>Her går det oftest galt ved pris og leveringstid. Agenten skriver pænt, men forkert. Løsningen er at give den adgang til de oplysninger, I har godkendt, og at lade den markere, når svaret ikke findes i dem. Den fulde gennemgang med et konkret eksempel står i <a href="/da/ai-automatisering/">AI-automatisering: de første opgaver at automatisere</a>.</p>
+
+    <h3>Ugentlige rapporter</h3>
+    <p>Agenten henter tal fra regneark, CRM eller økonomisystem, sammenligner med forrige uge og skriver fem linjer om, hvad der har ændret sig, og hvorfor det er værd at kigge på. Det er en af de sikreste første opgaver, fordi rapporten er intern, og fejl opdages hurtigt.</p>
+    <p>Kræv, at rapporten viser kilden til hvert tal: hvilket felt, hvilken dato. Så kan den, der læser, kontrollere et tal på ti sekunder, og I opdager med det samme, hvis agenten har hentet det forkerte felt. Stikprøv de første uger.</p>
+
+    <h3>Indbakken</h3>
+    <p>Mange virksomheder har en fælles postkasse som info@ eller kontakt@. Agenten sorterer mails i kategorier (tilbud, faktura, support, andet), mærker dem og foreslår et svar. Sorteringen kan køre uden godkendelse, men svar skal et menneske godkende.</p>
+    <p>Giv aldrig agenten ret til at slette. Lad den kun mærke og flytte, så en fejlsortering kan rettes. Og gem en log over, hvad den har gjort.</p>
+
+    <h3>Mødereferater og opfølgning</h3>
+    <p>Når et møde er slut, skriver agenten et referat ud fra transskriptionen, samler handlingspunkter pr. person og laver et udkast til opfølgningsmail. Mødelederen godkender, før noget deles.</p>
+    <p>Afklar først, hvordan I håndterer optagelse og hvor transskriptionen behandles. Det er et spørgsmål om deltagernes accept og om, hvem der får adgang til teksten, ikke noget agenten kan afgøre selv.</p>
+
+    <h3>Udkast til kundeservice</h3>
+    <p>Ved en ny sag finder agenten tidligere svar og relevante vidensartikler og skriver et udkast. Medarbejderen retter og sender. Sæt en hård regel: agenten må ikke love refusion, erstatning eller levering. Sådanne løfter er altid et menneskes beslutning.</p>
+
+    <h2>Hvad kan en AI-agent ikke?</h2>
+    <p>Det er her, de fleste guides bliver korte. Det er også her, I taber tid og tillid, hvis I ikke er forberedt.</p>
+    <ul>
+      <li><strong>Den gætter.</strong> Mangler den en oplysning, vil den ofte formulere et svar, der lyder sikkert, men er forkert. Modgiften er kilder og lov til at sige "ved ikke".</li>
+      <li><strong>Den er kun så god som jeres data.</strong> Et rodet CRM giver rodede udkast. En agent gør ikke jeres data bedre, den gør dem mere synlige.</li>
+      <li><strong>Den har intet ansvar.</strong> Nogen i virksomheden skal eje resultatet af hver opgave og have navn på. Ellers retter ingen op, når den fejler.</li>
+      <li><strong>Gennemgang tager tid.</strong> Hvis et menneske skal læse alt, spares der mindre end forventet. Mål tiden, før I konkluderer noget.</li>
+      <li><strong>Forbindelser knækker.</strong> Systemer skifter login, felter omdøbes, og en integration, der virkede i går, stopper i dag. Tjek, at nogen får besked, når en kørsel fejler.</li>
+      <li><strong>Den skal ikke have flere rettigheder end nødvendigt.</strong> Start med læseadgang. Giv skriveadgang, når I har set agenten arbejde.</li>
+    </ul>
+    <p>Opgaver, der ikke egner sig: beslutninger med juridiske eller økonomiske konsekvenser uden menneskelig godkendelse, opgaver der sker få gange om året, og opgaver hvor reglerne ikke er skrevet ned nogen steder. Kan en ny kollega ikke løse opgaven ud fra en skriftlig vejledning, kan en agent det heller ikke.</p>
+
+    <h2>Sådan fordeler I godkendelserne</h2>
+    <p>Det vigtigste valg er ikke hvilken model I bruger, men hvem der godkender hvad. En brugbar tommelfingerregel er at give hver type handling et af tre niveauer, i stedet for ét niveau til hele agenten:</p>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead>
+        <tr><th>Niveau</th><th>Hvad det betyder</th><th>Eksempler</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Selvkørende</td><td>Agenten gør det uden godkendelse</td><td>Sortere og mærke mails, hente tal til en intern rapport</td></tr>
+        <tr><td>Stikprøve</td><td>Agenten gør det, et menneske kigger efter på udvalgte tilfælde</td><td>Intern ugerapport, referat til eget brug</td></tr>
+        <tr><td>Godkendelse</td><td>Intet sker, før et menneske har sagt ja</td><td>Mails til kunder, ændringer i priser, betalinger</td></tr>
+      </tbody>
+    </table></div>
+    <p>Start alt på godkendelse. Når I over nogle uger kan se, hvor sjældent godkenderen retter noget i en bestemt type handling, kan I flytte den et niveau ned. Gå aldrig den anden vej uden at kunne se tallene.</p>
+    <p>Det er også sådan <a href="https://maskin.io/" lang="en">Maskin</a> er bygget. Dokumentationen beskriver niveauet som en egenskab ved selve handlingen, ikke noget agenten selv kan vælge, og man kan følge pr. handlingstype, hvor ofte et menneske overstyrer agenten. Tankegangen bag står (på engelsk) i <a href="/docs/learn/human-in-the-loop-ai/" lang="en">What is human in the loop AI</a>.</p>
+
+    <h2>Hvad koster det at køre en AI-agent?</h2>
+    <p>Maskin-teamet opgiver ingen priser her, fordi priser og planer skifter. Men regnestykket har fire dele, uanset hvilket værktøj I vælger:</p>
+    <ol>
+      <li><strong>Modelforbrug.</strong> Betaling til udbyderen af sprogmodellen, typisk efter forbrug.</li>
+      <li><strong>Platform eller værktøj.</strong> Abonnement, eller drift hvis I selv hoster.</li>
+      <li><strong>Opsætning.</strong> Timer til at koble værktøjer på, skrive instruktioner og teste.</li>
+      <li><strong>Gennemgang.</strong> Den tid, et menneske bruger på at læse og godkende. Den bliver oftest glemt, og den er ofte den største.</li>
+    </ol>
+    <p>Et regneeksempel med tænkte tal, der kun skal vise metoden: en virksomhed får 20 nye leads om ugen og bruger 12 minutter på hver opfølgning, altså 4 timer. Med en agent bruger sælgeren 3 minutter pr. lead på at læse og godkende, altså 1 time. Besparelsen er 3 timer om ugen. Er opsætningen 10 timer, er den tjent ind efter godt 3 uger, før modelforbrug og platform. Sæt jeres egne tal ind. Hvis gennemgangen tager lige så lang tid som selve opgaven, er det en dårlig første opgave.</p>
+
+    <h2>Persondata og kontrol</h2>
+    <p>Før en agent rører kundedata, bør I kunne svare på fem spørgsmål, uanset leverandør:</p>
+    <ul>
+      <li>Hvilken modeludbyder får data, og hvor behandles de?</li>
+      <li>Er der en databehandleraftale, hvis der indgår persondata?</li>
+      <li>Kan I styre adgang pr. agent, så den kun ser det nødvendige?</li>
+      <li>Er der en log over, hvad agenten har gjort og hvornår?</li>
+      <li>Kan I selv hoste, hvis kravene kræver det?</li>
+    </ul>
+    <p>Om Maskin oplyser Maskin-teamet følgende på maskin.io: Maskin er åben kildekode under Apache 2.0, og selvhosting er gratis. Det kan køres med én docker-compose-fil. Den hostede udgave har datalokation i EU og USA. Og I medbringer selv modellen: Anthropic, OpenAI eller Ollama. Jeres prompts går til jeres egen udbyder, ikke gennem Maskin. Det er ikke juridisk rådgivning, og I bør selv vurdere, om det opfylder jeres krav.</p>
+
+    <h2>Sammenlign jeres muligheder</h2>
+    <p>Ikke alle opgaver kræver en agent. Det er værd at vælge det enkleste værktøj, der løser opgaven.</p>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead>
+        <tr><th>Mulighed</th><th>Passer til</th><th>Styrke</th><th>Grænse</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Chatassistent (fx ChatGPT, Microsoft Copilot)</td><td>Enkeltpersoner, der selv stiller spørgsmål</td><td>Ingen opsætning</td><td>Gør kun noget, når nogen skriver. Ingen fælles historik</td></tr>
+        <tr><td>Automatisering med faste trin (fx Zapier, Make, n8n)</td><td>Opgaver hvor reglerne altid er ens</td><td>Forudsigelig</td><td>Knækker ved uventet input og kan ikke vurdere</td></tr>
+        <tr><td>AI-agent på en fælles platform</td><td>Opgaver med varierende input, hvor der skal bruges skøn</td><td>Håndterer variation og kan udløses af hændelser</td><td>Kræver opsætning, godkendelser og en ejer</td></tr>
+        <tr><td>Konsulentbygget løsning</td><td>Særlige systemer eller krav</td><td>Skræddersyet</td><td>Afhængighed af leverandøren og løbende vedligehold</td></tr>
+      </tbody>
+    </table></div>
+    <p>Er opgaven "når der kommer en faktura, læg den i mappen", er en fast automatisering bedre end en agent. Er opgaven "læs henvendelsen og vurder, hvad der skal svares", er en agent det rigtige. For en liste med flere værktøjer, se <a href="/da/ai-vaerktoejer/">Bedste AI-værktøjer til virksomheder</a>. Forskellen på agent og assistent er forklaret i <a href="/da/hvad-er-en-ai-agent/">Hvad er en AI-agent?</a>.</p>
+
+    <h2>Sådan kommer I i gang</h2>
+    <p>Fem skridt, i den rækkefølge:</p>
+    <ol>
+      <li>Vælg én opgave fra listen ovenfor, og skriv den ned som en vejledning til en ny kollega.</li>
+      <li>Navngiv en ejer, som får besked, hvis den fejler.</li>
+      <li>Giv agenten læseadgang og de godkendte kilder, ikke mere.</li>
+      <li>Kør i fire uger med godkendelse på alt, og notér hver gang et menneske retter noget.</li>
+      <li>Mål gennemgangstid og rettelser, og flyt kun handlinger ned i niveau, hvis tallene bakker det op.</li>
+    </ol>
+
+    <h2>Hvor Maskin passer ind</h2>
+    <p>Maskin er et åbent arbejdsrum, hvor agenter arbejder mod en fælles, struktureret registrering af indsigter, beslutninger og opgaver. Agenterne kører på hændelser, ikke på prompts: en ny indsigt, en opgave der lukker, eller en beslutning der skifter status. De kan give mennesker tre slags besked: at noget er sket, at de har et spørgsmål, eller at de beder om en godkendelse.</p>
+    <p>Arbejdet er organiseret i Loops. Maskin-teamet beskriver en Loop som et lukket kredsløb: en udløser starter det, agenter udfører arbejdet, et menneske godkender, arbejdet leveres, og resultatet føres tilbage. Se også <a href="/docs/ambient-agent-workspace/" lang="en">Ambient agent workspace</a> (på engelsk).</p>
+    <p>Maskin er ikke en træk-og-slip-bygger, hvor man samler bokse på et lærred. En agent er en rolle med instruktioner, værktøjer og godkendelsespunkter, og den passer bedst, når flere i et team skal arbejde mod den samme registrering. Hjemmeside og dokumentation er på engelsk i dag. Kildekoden ligger på <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a>, og I kan prøve Maskin på <a href="https://maskin.io/" lang="en">maskin.io</a>.</p>
+    <h2>Ofte stillede spørgsmål</h2>
+
+    <h3>Hvad kan man bruge en AI-agent til i en virksomhed?</h3>
+    <p>Til opgaver, der gentager sig, har varierende input og kan kontrolleres hurtigt: opfølgning på leads, ugentlige rapporter, sortering af indbakken, mødereferater og udkast til kundesvar. Agenten forbereder arbejdet, og et menneske godkender det, der forlader virksomheden. Opgaver uden skrevne regler eller med store konsekvenser ved fejl bør vente.</p>
+
+    <h3>Hvad koster en AI-agent?</h3>
+    <p>Prisen består af modelforbrug, platform eller drift, opsætning og gennemgangstid. Gennemgangstiden glemmes oftest og er ofte den største post. Regn på den enkelte opgave: tid i dag, gange antal pr. måned, mod tid til at godkende plus opsætning. Hvis gennemgangen tager lige så lang tid som opgaven, er den ikke værd at automatisere.</p>
+
+    <h3>Er AI-agenter sikre at bruge med persondata?</h3>
+    <p>Det afhænger af opsætningen, ikke af teknologien alene. Afklar, hvilken modeludbyder der får data, og hvor de behandles. Kræv en databehandleraftale, hvis der indgår persondata. Giv agenten mindst mulig adgang, og gem en log. Er kravene strenge, kan selvhosting være en mulighed. Vurder det med jeres egen rådgiver.</p>
+
+    <h3>Kan en AI-agent erstatte en medarbejder?</h3>
+    <p>Ikke som helhed. En agent kan overtage enkelte, afgrænsede opgaver, men kan ikke bære ansvar, forstå en kunderelation eller træffe beslutninger med konsekvenser. Realistisk frigør den tid fra rutinearbejde, så medarbejderen bruger mere tid på vurdering og kontakt. Tænk i opgaver, ikke i stillinger.</p>
+
+    <h3>Hvor starter man med AI-agenter?</h3>
+    <p>Med én opgave, der gentager sig og er nem at kontrollere, fx en ugentlig intern rapport. Skriv den ned som en vejledning, giv en person ansvaret, giv agenten læseadgang, og kør med godkendelse på alt i fire uger. Mål gennemgangstid og rettelser, før I tilføjer en ny opgave.</p>
+
+    <h3>Hvad er forskellen på en AI-agent og en chatbot?</h3>
+    <p>En chatbot svarer, når nogen skriver til den. En AI-agent kan selv gå i gang ud fra en hændelse, bruge værktøjer og udføre flere trin. Den fulde forklaring og forskellen på agent, assistent og chatbot står i <a href="/da/hvad-er-en-ai-agent/">Hvad er en AI-agent?</a>.</p>
+
+    <div class="post-cta">
+      <h2>Start med ét job og et menneske på knappen</h2>
+      <p>Maskin er en open source-arbejdsplads, hvor agenter og mennesker arbejder på de samme objekter, og hvor godkendelse er et statusskifte. Apache 2.0 og kan selvhostes.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Selvhost fra GitHub</a>
+        <a class="btn-secondary" href="/bookseb" target="_blank" rel="noopener">Book en prøve</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
