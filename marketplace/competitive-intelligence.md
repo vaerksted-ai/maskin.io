@@ -43,6 +43,7 @@ Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20Competitive%20in
 **[Book a demo](https://meshfirm.com/bookmagnus)**: see the loop running on our own competitor set, then decide whether to run it on yours.
 
 ## How the loop closes
+The mechanics, the object model and the honest limits are in the [competitive intelligence loop deep doc](/loops/competitive-intelligence/).
 - **Fires when** a competitor changelog, pricing page, GitHub release, or Product Hunt launch changes. Diffs on the page, not scrapes of the marketing copy.
 - **Classifies into one or both lanes.** An agent asks two independent questions of every captured change: does this need a battlecard update, and does it reveal a product gap. Tags one, the other, or both.
 - **Drafts both lanes in parallel.** The battlecard update (new claim, counter, objection handling) and the shaped bet (with a win condition like *“ship response X, close-rate against competitor Y improves by Z pp on the affected segment”*).

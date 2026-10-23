@@ -1005,7 +1005,7 @@ This is where the loop closes. Nightly automation and event-driven triggers brin
 
 ## How an AI product management tool runs the loop
 Here is what closing the loop looks like in practice rather than in a demo. Maskin’s loop is its product core: insight — bet — task — feedback, driven by triggers and closed by validation, with human-promote gates that keep a human in control of the decisions that need judgement.
-- **Triggers bring work in.** Connect sources — Slack, Intercom, PostHog, HubSpot, Reddit, X, LinkedIn, and competitor changelogs — and the loop reacts when the data changes, instead of waiting for a meeting.
+- **Triggers bring work in.** Connect sources — Slack, Intercom, PostHog, HubSpot, Reddit, X, LinkedIn, and [competitor changelogs](/loops/competitive-intelligence/) — and the loop reacts when the data changes, instead of waiting for a meeting.
 - **Marketplace loops wire the agents.** Ready-made loops cover [customer feedback](/loops/ai-customer-feedback-loop/), market signals, churn and expansion, lost deals, roadmaps, and [competitive intelligence](/marketplace/competitive-intelligence/), so the agents run the capture and synthesis you would otherwise do manually.
 - **Validation is built in.** When a bet ships, its outcome is measured against the win condition and the requester is notified. The loop stops when it is done rather than running until someone notices.
 The point is the shape, not the feature list. Every stage of the learning loop — capture, decision, execution, validation — is modelled as a real object and a real relationship, so agents and humans work the same data. That is the difference between an AI product management tool and a task tracker with a narrator.
@@ -1092,7 +1092,7 @@ Small teams operate many agents through an abstraction layer and get pulled in o
 - **Market signals** — Reddit, X, LinkedIn and forums are monitored, synthesised into insights and turned into bets.
 - **Churn & expansion** — usage drops and error spikes are watched; at-risk accounts trigger an alert with full context.
 - **Lost deals → roadmap** — closed-lost reasons are weighted by ARR and shaped into roadmap bets.
-- **Competitive intelligence** — vendor changelogs and pricing pages route battlecards to sales and feature gaps to product.
+- **Competitive intelligence** — vendor changelogs and pricing pages [route battlecards to sales and feature gaps to product](/loops/competitive-intelligence/).
 - **Team knowledge** — [a wiki your agents read before they answer](/marketplace/knowledge-wiki/) compiles closed bets and shipped decisions into a living record every future agent picks up on the same graph (see [LLM wiki vs RAG](/docs/llm-wiki-vs-rag/) for how that compiled layer differs from query-time retrieval).
 - **Product discovery** — [the product discovery loop — signal to shipped bet](/marketplace/product-discovery/) keeps interviews, tickets, and reviews on the same typed graph as the bets you’re already shipping, so the loop closes on a validated bet instead of an opportunity board.
 
@@ -4800,6 +4800,7 @@ Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20Competitive%20in
 **[Book a demo](https://meshfirm.com/bookmagnus)**: see the loop running on our own competitor set, then decide whether to run it on yours.
 
 ## How the loop closes
+The mechanics, the object model and the honest limits are in the [competitive intelligence loop deep doc](/loops/competitive-intelligence/).
 - **Fires when** a competitor changelog, pricing page, GitHub release, or Product Hunt launch changes. Diffs on the page, not scrapes of the marketing copy.
 - **Classifies into one or both lanes.** An agent asks two independent questions of every captured change: does this need a battlecard update, and does it reveal a product gap. Tags one, the other, or both.
 - **Drafts both lanes in parallel.** The battlecard update (new claim, counter, objection handling) and the shaped bet (with a win condition like *“ship response X, close-rate against competitor Y improves by Z pp on the affected segment”*).
