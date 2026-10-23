@@ -19,7 +19,7 @@ In Maskin, work enters through **triggers** — a Slack message, a new customer 
 
 ## The closed loop: insight → bet → task → shipped → repeat
 Maskin’s core loop has four moves:
-1. **Insight** — raw signal enters the workspace (from Slack, Intercom, PostHog, HubSpot, Reddit, X, LinkedIn, competitor changelogs).
+1. **Insight** — raw signal enters the workspace (from Slack, Intercom, PostHog, HubSpot, Reddit, X, LinkedIn, [competitor changelogs](/marketplace/competitive-intelligence/)).
 2. **Bet** — the signal is shaped into a testable bet with a clear win condition.
 3. **Task** — the bet breaks into work the team and agents execute.
 4. **Shipped + validated** — when it goes live the loop closes: outcomes are measured and the customer or requester who prompted it is notified.

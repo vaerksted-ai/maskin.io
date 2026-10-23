@@ -32,7 +32,7 @@ This is where the loop closes. Nightly automation and event-driven triggers brin
 ## How an AI product management tool runs the loop
 Here is what closing the loop looks like in practice rather than in a demo. Maskin’s loop is its product core: insight — bet — task — feedback, driven by triggers and closed by validation, with human-promote gates that keep a human in control of the decisions that need judgement.
 - **Triggers bring work in.** Connect sources — Slack, Intercom, PostHog, HubSpot, Reddit, X, LinkedIn, and competitor changelogs — and the loop reacts when the data changes, instead of waiting for a meeting.
-- **Marketplace loops wire the agents.** Ready-made loops cover [customer feedback](/loops/ai-customer-feedback-loop/), market signals, churn and expansion, lost deals, roadmaps, and competitive intelligence, so the agents run the capture and synthesis you would otherwise do manually.
+- **Marketplace loops wire the agents.** Ready-made loops cover [customer feedback](/loops/ai-customer-feedback-loop/), market signals, churn and expansion, lost deals, roadmaps, and [competitive intelligence](/marketplace/competitive-intelligence/), so the agents run the capture and synthesis you would otherwise do manually.
 - **Validation is built in.** When a bet ships, its outcome is measured against the win condition and the requester is notified. The loop stops when it is done rather than running until someone notices.
 The point is the shape, not the feature list. Every stage of the learning loop — capture, decision, execution, validation — is modelled as a real object and a real relationship, so agents and humans work the same data. That is the difference between an AI product management tool and a task tracker with a narrator.
 
