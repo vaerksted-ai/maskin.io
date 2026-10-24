@@ -1,11 +1,11 @@
 > Source: https://maskin.io/docs/mcp-tools/
 
 # MCP tools in Maskin: verbs, object types, and the typed workspace graph
-MCP tools are the callable operations a Model Context Protocol server exposes to AI agents, each one a verb with a typed input schema, such as `create_objects` or `get_objects`. Maskin's MCP server exposes about 64 of them. This reference groups the verbs by cluster and documents two core object types they operate on: `knowledge` and `loop`.
+MCP tools are the callable operations a Model Context Protocol server exposes to AI agents, each one a verb with a typed input schema, such as `create_objects` or `get_objects`. Maskin's MCP server has 89 built-in tools, 12 of which drive an agent's own computer. This reference groups the verbs by cluster and documents two core object types they operate on: `knowledge` and `loop`.
 > ✓
 > **Key takeaways**
 > MCP tools are verbs; object types are nouns. A tool call names both — the tool declares the operation, the type declares the shape being written or read.
-> Maskin's MCP server exposes ~64 tools across eight clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup.
+> Maskin's MCP server has 89 built-in tools. 12 of them drive an agent's own computer and are gated by a workspace flag, so not every workspace gets them (77 without). Extensions can add more tools per workspace. The main clusters are: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup.
 > Edges have three write paths: `create_objects` and `update_objects` take an `edges` parameter for object-to-object links, and `create_relationship` writes one edge at a time between objects or files.
 > Conversations (chats with participants) and comments (events on an object) are different channels with different length limits: 8,000 characters for a conversation message, 2,000 for a comment.
 > Object types (`insight`, `bet`, `task`, `knowledge`, `loop`, `content`, plus custom types) are workspace-configurable — call `get_workspace_schema` to see the live list, valid statuses, and metadata fields.
@@ -15,7 +15,7 @@ MCP tools are the callable operations a Model Context Protocol server exposes to
 ## The MCP tools Maskin exposes
 Maskin's MCP server surfaces its verbs under the `mcp__maskin__` namespace. Each tool has a JSONSchema-defined parameter shape and validates its input server-side; type-specific validity (statuses, required fields, enum values) is enforced on the write path against `settings.statuses.<type>` and workspace-configured field schemas.
 Coding agents are MCP clients too. On [the open-source AI coding agent shortlist](/alternatives/open-source-ai-coding-agent/), Cline is MCP-native and Goose builds its tool use on MCP, so either can call the verbs below.
-The eight clusters are:
+The main clusters are:
 - Object operations — create, read, update, delete typed rows in the graph.
 - Relationship operations — write, enumerate, traverse, and delete edges.
 - Schema and discovery — inspect live type, status, and field configuration.
@@ -169,13 +169,13 @@ This call stands up the loop container, its descriptive entry/close prose, and i
 ## FAQ
 
 ### What are MCP tools?
-MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed JSONSchema-defined input and a documented output. A tool call names both the verb and the shape it operates on: e.g. `create_objects` with a node of `type: "knowledge"`. Maskin's MCP server exposes about 64 tools across eight clusters: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup. Every read or write against the workspace graph flows through one of them.
+MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed JSONSchema-defined input and a documented output. A tool call names both the verb and the shape it operates on: e.g. `create_objects` with a node of `type: "knowledge"`. Maskin's MCP server has 89 built-in tools. 12 of them drive an agent's own computer and are gated by a workspace flag, so not every workspace gets them (77 without). The main clusters are: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup. Every read or write against the workspace graph flows through one of them.
 
 ### What is the difference between MCP tools and MCP resources?
 Tools are verbs — write-path actions with side effects. Resources are read-only URIs a server exposes for context lookup without invoking an action. In Maskin, first-class typed rows (`knowledge`, `loop`, `insight`, `bet`, `task`, and custom types) are operated on by tools like `create_objects` and `update_objects`; opaque blobs (uploads, generated files, screenshots) are stored via `create_file` and attached to objects. Prefer a typed `knowledge` object when the content is human-readable reference material; prefer a file when it is a raw artifact.
 
 ### How do I list all MCP tools?
-MCP clients (Claude, Claude Code, Cursor, ChatGPT, VS Code) surface the full manifest under the connected server — every tool has a name, description, and JSONSchema parameter shape. Programmatically, an MCP client discovers tools by calling `tools/list` on the server; the response is the source of truth for what is callable, and Maskin adds tools without breaking older ones. For a functional view of Maskin's tools, see the eight clusters above (object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup).
+MCP clients (Claude, Claude Code, Cursor, ChatGPT, VS Code) surface the full manifest under the connected server — every tool has a name, description, and JSONSchema parameter shape. Programmatically, an MCP client discovers tools by calling `tools/list` on the server; the response is the source of truth for what is callable, and Maskin adds tools without breaking older ones. For a functional view of Maskin's tools, see the main clusters above (object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup).
 
 ### How do MCP tools relate to Maskin's object types?
 MCP tools are verbs; object types are nouns. The tool declares the operation (`create`, `update`, `list`, `search`); the type declares the shape being operated on. A single call names both — e.g. `create_objects` with a node of `type: "knowledge"` and a valid `metadata` payload for that type (loops are the exception and go through `create_loop`). Type-specific validity (statuses, required fields, enum values) is enforced server-side on the write path against the workspace schema. Discover the type set with `get_workspace_schema`.
