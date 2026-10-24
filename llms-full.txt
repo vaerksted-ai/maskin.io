@@ -650,14 +650,13 @@ The Anthropic API key and any workspace custom-LLM endpoint are configured **in 
 > Source: https://maskin.io/docs/integrations/
 
 # Maskin integrations: the full provider registry
-Maskin's registry holds twelve first-party integrations. Tools for four of them (GitHub, Slack, PostHog and Resend) are available to every agent once the integration is connected. Other integrations are added per agent. One, Skjald, is provider-only with no agent tools. One, Google Search Console, is a search-data sync that is coming and has no agent tools. This page documents the **product registry**: what Maskin supports out of the box, so it stays accurate whether or not a given workspace has each provider connected.
+Maskin's registry holds twelve first-party integrations. Tools for four of them (GitHub, Slack, PostHog and Resend) are available to every agent once the integration is connected. Seven more are added per agent, including Google Search Console, which gives agents two read-only tools. One, Skjald, is provider-only with no agent tools. This page documents the **product registry**: what Maskin supports out of the box, so it stays accurate whether or not a given workspace has each provider connected.
 > ✓
 > **Key takeaways**
-> **12 first-party integrations, split by how agents get them:** 4 available to every agent once connected, 6 added per agent, 1 provider-only, 1 search-data sync (coming).
+> **12 first-party integrations, split by how agents get them:** 4 available to every agent once connected, 7 added per agent, 1 provider-only.
 > **Available to every agent once connected (4):** GitHub, Slack, PostHog, Resend.
-> **Added per agent (6):** Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn. Each carries an `mcp.server` the agent must load.
+> **Added per agent (7):** Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn, Google Search Console. Each carries an `mcp.server` the agent must load.
 > **Provider-only (1):** Skjald, Maskin's first-party meeting notetaker. It emits `meeting` events onto the graph but exposes no MCP.
-> **Search-data sync, coming (1):** Google Search Console. It is a data sync, not an agent tool.
 > **Four auth types across the registry:** `oauth2`, `oauth2_custom`, `api_key`, `manual`. The registry lists what the product supports; a workspace's connected set can be smaller.
 
 ## Available to every agent once connected
@@ -725,6 +724,12 @@ Maskin's registry holds twelve first-party integrations. Tools for four of them 
 - **What agents can do:** read profiles, read messages, send DMs, follow connection activity.
 - **Common use:** AI-SDR loops where an agent shapes an outbound draft on a signal and a human approves before the send. Content loops are a second use: [a LinkedIn content loop that plans and drafts a fortnight of posts](/marketplace/linkedin-content/) for the account owner to approve. On some accounts the loop posts for you; on others the owner pastes the approved text into LinkedIn.
 
+### Google Search Console
+- **Auth:** `oauth2` (Google sign-in), read-only Search Console scope.
+- **MCP:** added per agent. Load the Google Search Console MCP server in the agent's tool config.
+- **What agents can do:** two read-only tools. `inspect_url` returns Google's URL Inspection result for a page. `list_sites` lists the properties the connected account can see. No write tools.
+- **Common use:** SEO loops that check whether a live page is indexed next to its search demand.
+
 ## Provider-only (no MCP surface)
 
 ### Skjald
@@ -732,14 +737,6 @@ Maskin's registry holds twelve first-party integrations. Tools for four of them 
 - **MCP:** **no MCP surface.** Skjald does not expose an attachable MCP server. It emits `meeting` created/updated events onto the graph; agents subscribe to those events like they subscribe to any other object state change.
 - **What it does:** first-party meeting notetaker. It attaches to meetings and produces transcripts and notes as `meeting` objects (not files). Registered but not connected in every workspace.
 - **Common use:** meeting → knowledge loops. A meeting object's `status → notes_ready` transition triggers a distiller agent that writes a `knowledge` page from the transcript and validates it under a human gate.
-
-## Search-data sync (coming, no agent tools)
-
-### Google Search Console
-- **Auth:** `oauth2` (Google sign-in).
-- **Status:** coming. It is a registry entry that is not yet announced as available.
-- **MCP:** none. The provider does not hand agents Search Console tools, and it emits no events.
-- **What to expect:** Search Console is a data sync, not an agent tool. If a loop needs to query Search Console live inside an agent session, this provider does not do that.
 
 ## Auth types at a glance
 | Auth type | Providers |
@@ -753,21 +750,20 @@ Maskin's registry holds twelve first-party integrations. Tools for four of them 
 | How agents get it | Providers | Count |
 | --- | --- | --- |
 | Available to every agent once connected | GitHub, Slack, PostHog, Resend | 4 |
-| Added per agent (agent must load mcp.server) | Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn | 6 |
+| Added per agent (agent must load mcp.server) | Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn, Google Search Console | 7 |
 | Provider-only (no MCP surface) | Skjald | 1 |
-| Search-data sync, coming (no agent tools) | Google Search Console | 1 |
 Once a provider is connected, agents work through the same verbs on every object type. The [verbs agents call once a provider is connected](/docs/mcp-tools/) are listed in the MCP tools reference.
 
 ## FAQ
 
 ### How many integrations does Maskin support?
-Twelve first-party integrations in the registry, split by how agents get them: four whose tools are available to every agent once connected (GitHub, Slack, PostHog, Resend), six added per agent (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn), one provider-only integration (Skjald, Maskin's first-party meeting notetaker) and one search-data sync that is coming (Google Search Console). This is the product registry. A given workspace may have fewer providers actually connected.
+Twelve first-party integrations in the registry, split by how agents get them: four whose tools are available to every agent once connected (GitHub, Slack, PostHog, Resend), seven added per agent (Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn, Google Search Console) and one provider-only integration (Skjald, Maskin's first-party meeting notetaker). This is the product registry. A given workspace may have fewer providers actually connected.
 
 ### What is the difference between an always-available and a per-agent MCP server in Maskin?
-For GitHub, Slack, PostHog and Resend, the tools are available to every agent once the integration is connected. For Linear, Gmail, Google Calendar, Google Meet, Ubersuggest and LinkedIn, the provider exposes an `mcp.server` that the agent must explicitly load in its tool config before it can call any of that provider's tools. Both surface the same way once loaded; the difference is whether the agent has to opt in.
+For GitHub, Slack, PostHog and Resend, the tools are available to every agent once the integration is connected. For Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn and Google Search Console, the provider exposes an `mcp.server` that the agent must explicitly load in its tool config before it can call any of that provider's tools. Both surface the same way once loaded; the difference is whether the agent has to opt in.
 
 ### Which Maskin integrations expose MCP to agents?
-Ten of the twelve first-party providers expose MCP: GitHub, Slack, PostHog, and Resend are available to every agent once connected, while Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, and LinkedIn are added per agent. Skjald has no MCP surface. It participates in agent workflows by emitting `meeting` created/updated events onto the object graph. Google Search Console gives agents no tools.
+Eleven of the twelve first-party providers expose MCP: GitHub, Slack, PostHog, and Resend are available to every agent once connected, while Linear, Gmail, Google Calendar, Google Meet, Ubersuggest, LinkedIn, and Google Search Console are added per agent. Skjald has no MCP surface. It participates in agent workflows by emitting `meeting` created/updated events onto the object graph.
 
 ### Does Maskin need Zapier or another middleware to connect to these services?
 No. Every integration on this page is a first-party Maskin provider. The auth, the MCP server (where present), and the object-graph emissions are all built into Maskin. There is no Zapier, Make, or generic iPaaS layer between the agent and the provider; agents call the provider's MCP tools directly.
@@ -776,7 +772,7 @@ No. Every integration on this page is a first-party Maskin provider. The auth, t
 Skjald is Maskin's own first-party meeting notetaker, not a third-party service. Instead of exposing an MCP server for agents to call, it produces `meeting` objects (transcripts, notes) on the graph and emits status events (`created`, `updated`, `notes_ready`) that agents can subscribe to. Agents work with Skjald output the same way they work with any other object state change: by reading the object and reacting to its status transitions.
 
 ### Can agents read Google Search Console data through Maskin?
-Not through agent tools. Google Search Console is coming as a search-data sync, and the provider exposes no MCP tools and emits no events, so an agent session has nothing to call on it directly.
+Yes, read-only. Google Search Console is added per agent, and the agent must load its MCP server. It has two tools: `inspect_url`, which returns Google's URL Inspection result for a page, and `list_sites`, which lists the properties the connected account can see. There are no write tools.
 
 ### How does Resend work in Maskin?
 You bring your own Resend account and API key. Tools for Resend are available to every agent once Resend is connected, and when an email arrives, Maskin emits an email-received event that can trigger an automation.
