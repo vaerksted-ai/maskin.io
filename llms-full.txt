@@ -4317,8 +4317,8 @@ Typed objects under the personas, event triggers under the meetings. Apache 2.0,
 
 > Source: https://maskin.io/docs/how-to-build-ai-sdr-loop/
 
-# How to build an AI SDR loop in Maskin (MCP + Unipile, HITL approval on outbound)
-**An AI SDR is a loop, not a product.** Seven repeatable steps — signal, research, draft, human approval, send, reply routing, close — run on Maskin's typed object graph, with the sender lane called through MCP (Unipile for LinkedIn, a mail provider for email) and a human on every outbound approval until the override rate stabilises. This guide is the concrete build side; the honest map of the OSS AI SDR repos and where each one fits sits in the companion comparison, [Open source AI SDR: the honest map](/alternatives/open-source-ai-sdr/).
+# How to build an AI SDR agent loop in Maskin (MCP + Unipile, HITL approval on outbound)
+**An AI SDR agent is a loop, not a product.** Seven repeatable steps — signal, research, draft, human approval, send, reply routing, close — run on Maskin's typed object graph, with the sender lane called through MCP (Unipile for LinkedIn, a mail provider for email) and a human on every outbound approval until the override rate stabilises. This guide is the concrete build side; the honest map of the OSS AI SDR repos and where each one fits sits in the companion comparison, [Open source AI SDR: the honest map](/alternatives/open-source-ai-sdr/).
 > ✓
 > **Key takeaways**
 > **The unit of work is the loop, not the message.** Every AI SDR failure mode — ghost drafts, silent sends, blacklisted domains — is a broken step in the loop, not a bad model.
@@ -4376,6 +4376,13 @@ Once the seven steps are wired, the loop runs continuously on the triggers you d
 - **The close-rate on outcomes.** Meeting-booked over sent, per segment, per week. This is the number that tells you whether the loop is actually earning its API budget.
 The workspace-graph pattern makes all three levers observable without extra tooling — the state is on the objects, the audit trail is the graph’s own history. If you’re running this loop at scale (dozens of parallel loops, multiple humans on the taste gates), the [ambient agent workspace](/docs/ambient-agent-workspace/) piece has the full pattern; if you want the OSS-vs-closed cost picture and the six real repos on GitHub, that’s [Open source AI SDR](/alternatives/open-source-ai-sdr/).
 
+## Override rate: the number that tells you when to loosen the gate
+Override rate is the fraction of drafts the reviewer does not send as written, measured over the last N drafts. Every approval on the graph is an event, so you can compute it from task history instead of a separate dashboard. Track three numbers per segment:
+- **Verbatim approval rate.** Drafts approved with the body unchanged from what the agent wrote.
+- **Edit-and-approve rate.** Drafts the reviewer reworded before approving. The edited version is what sends, and the diff is worth reading: repeated edits to the same phrase are a prompt fix waiting to happen.
+- **Reject rate.** Drafts moved to a rejected status with a comment. The drafting agent can read its own rejection history on the next run, which is how the loop learns the sender’s taste.
+The two failure bands are the ones from [Human in the loop AI](/docs/learn/human-in-the-loop-ai/): a rate stuck at 0% means the reviewer has stopped reading, and a rate stuck above 20% means the model is the problem. Pick your own threshold and window before you start (for example, “verbatim approval above 80% across the last 200 drafts in a segment”), write it on the loop, and only then move that segment from approving every draft to sampling. Move rungs on the number, not on the calendar, and move back when the rate drifts. Agents should not be able to approve their own drafts: set the send step to require a human actor on the approval transition, so every approval carries a name.
+
 ## Common failure modes to watch for
 - **Rubber-stamped approvals.** Override rate at 0% for a week means the reviewer isn’t reading. Force a sample-audit, or the first bad prompt cascades.
 - **Silent sends.** A send failure that never surfaces looks identical to a slow recipient. Every send transition writes a typed event — success or failure — and stuck tasks alert the account owner.
@@ -4384,6 +4391,15 @@ The workspace-graph pattern makes all three levers observable without extra tool
 - **Unsubscribe as a soft label.** Suppression is a state transition, not a tag. Miss this and the compliance failure will find you.
 
 ## FAQ
+
+### What is an AI SDR agent?
+An AI SDR (sales development representative) agent is software that does the repeatable parts of the SDR job: it watches for buying signals, researches the prospect, drafts outreach and routes replies. Unlike a fixed sequence that sends message A on day 1 and message B on day 3, an agent reads what has happened to a prospect and decides the next step. The version that holds up in production keeps a human approving every outbound send, so the agent drafts and a person ships.
+
+### How do you build an AI SDR agent?
+Connect a sender lane and a state store to your agent runtime: Unipile through MCP for LinkedIn (or a warmed email domain), and Maskin’s object graph to hold each prospect’s state. Then build the seven steps on this page: a trigger creates an insight, a research session enriches it, the agent drafts a task in `needs_approval`, a human approves, the agent sends through the MCP, replies come back as events, and a written close condition ends the loop.
+
+### Is there an open-source AI SDR agent?
+Not one you will find on the first page of search results. Results for “ai sdr” are closed-source SaaS comparison lists, and a Reddit thread titled “Has anyone found an AI SDR that actually works?” ranks third. Open-source projects exist on GitHub but have not reached search results yet, which is why the question keeps getting asked. Maskin is Apache 2.0 and MCP-native, so the loop on this page runs on infrastructure you control end to end. The [open source AI SDR page](/alternatives/open-source-ai-sdr/) maps the repo landscape with sources.
 
 ### Do I really need a human approval gate on outbound?
 Yes, on any outbound of consequence. The failure mode of an AI SDR without a real approval gate isn’t a bad message — it’s your domain landing on a blacklist because one prompt regression sent 500 off-tone messages to a segment. Human-on-the-loop with a measured [override rate](/docs/learn/human-in-the-loop-ai/) is the operational difference between a working AI SDR loop and a demo. You can sample the approval (review 10% of drafts rather than 100%) once the override rate has stabilised at a healthy middle band, but sending unreviewed at day one is how OSS AI SDRs earn a bad reputation they don’t deserve.
