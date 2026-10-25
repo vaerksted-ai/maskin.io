@@ -1,6 +1,6 @@
 {
   "languages": {
-    "da": { "locale": "da_DK", "hub": "/da/", "enabled": true, "nav": false },
+    "da": { "locale": "da_DK", "hub": "/da/", "enabled": true, "nav": true },
     "sv": { "locale": "sv_SE", "hub": "/sv/", "enabled": false, "nav": false }
   },
   "groups": {
