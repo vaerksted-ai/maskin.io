@@ -17,6 +17,7 @@
       { label: "All loops", href: "/marketplace/" },
       { label: "The SEO publishing loop", href: "/marketplace/seo-publishing/", nested: true },
       { label: "The outbound loop", href: "/marketplace/outbound/", nested: true },
+      { label: "The lead qualification loop", href: "/marketplace/lead-qualification/", nested: true },
       { label: "The LLM knowledge wiki loop", href: "/marketplace/knowledge-wiki/", nested: true },
       { label: "The LinkedIn content loop", href: "/marketplace/linkedin-content/", nested: true },
       { label: "The product delivery loop", href: "/marketplace/product-delivery/", nested: true },

@@ -61,6 +61,7 @@ ORDER = [
   "docs/how-to-build-ai-sdr-loop/index.html",
   "marketplace/seo-publishing/index.html",
   "marketplace/outbound/index.html",
+  "marketplace/lead-qualification/index.html",
   "marketplace/knowledge-wiki/index.html",
   "marketplace/product-discovery/index.html",
   "marketplace/linkedin-content/index.html",
