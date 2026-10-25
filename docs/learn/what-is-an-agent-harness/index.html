@@ -131,7 +131,7 @@
           "name": "What is an agent harness in simple words?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": ""
+            "text": "An agent harness is the software wrapped around an AI model that lets it act, not just answer. It gives the model instructions, tools, a place to work, a way to track progress and a loop that keeps it going until the task is done. The model is the brain. The harness is everything else that makes it an agent."
           }
         },
         {
@@ -139,7 +139,7 @@
           "name": "What does an agent harness do?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": ""
+            "text": "It runs the agent loop: sends the model a prompt and context, executes the tools the model asks for, feeds results back, and repeats. Along the way it manages what fits in the context window, enforces permissions, saves progress, and runs checks such as tests so the agent can correct its own mistakes."
           }
         },
         {
@@ -147,7 +147,7 @@
           "name": "What is the difference between an agent and a harness?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": ""
+            "text": "An agent is the whole system that acts on a task. A harness is the agent minus the model. In the shorthand LangChain uses, Agent = Model + Harness. Swap the model and keep the harness, and you have a different agent with the same tools and rules."
           }
         },
         {
@@ -155,7 +155,7 @@
           "name": "Is Claude Code an agent harness?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": ""
+            "text": "Yes. Claude Code wraps Claude models with a system prompt, file and shell tools, project instruction files, permissions, hooks and an agent loop tuned for software work. Anthropic also offers the Claude Agent SDK, which it describes as a general-purpose agent harness, for building agents outside a terminal."
           }
         },
         {
@@ -163,7 +163,7 @@
           "name": "What is the difference between an agent harness and an agent framework?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": ""
+            "text": "A framework gives you building blocks: model wrappers, tool definitions and abstractions you assemble yourself. A harness is higher level and opinionated: it comes with default prompts, planning tools, filesystem access and tool handling already wired in. LangChain is a framework. Deep Agents, built on it, is a harness."
           }
         },
         {
@@ -171,7 +171,7 @@
           "name": "What is harness engineering?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": ""
+            "text": "Harness engineering is improving an agent by changing everything around the model: instructions, tools, context handling, permissions, hooks and automated checks. The aim is for the agent to get things right more often and to catch its own mistakes before a person has to, without changing the model itself."
           }
         },
         {
@@ -179,7 +179,7 @@
           "name": "Is MCP part of an agent harness?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": ""
+            "text": "MCP is how a harness connects to outside tools and data. The harness is the MCP host, with a client inside it: it discovers tools on MCP servers and calls them when the model asks. MCP itself is the wire, not the harness, so any MCP-capable harness can use the same servers."
           }
         }
       ]
@@ -285,25 +285,18 @@
 <p>The harness does the work. The record says why it was done, who owns it, and whether it worked. If you swap the harness next quarter, the record stays.</p>
 <h2>FAQ</h2>
 <h3>What is an agent harness in simple words?</h3>
-<p></p>
 <p>An agent harness is the software wrapped around an AI model that lets it act, not just answer. It gives the model instructions, tools, a place to work, a way to track progress and a loop that keeps it going until the task is done. The model is the brain. The harness is everything else that makes it an agent.</p>
 <h3>What does an agent harness do?</h3>
-<p></p>
 <p>It runs the agent loop: sends the model a prompt and context, executes the tools the model asks for, feeds results back, and repeats. Along the way it manages what fits in the context window, enforces permissions, saves progress, and runs checks such as tests so the agent can correct its own mistakes.</p>
 <h3>What is the difference between an agent and a harness?</h3>
-<p></p>
 <p>An agent is the whole system that acts on a task. A harness is the agent minus the model. In the shorthand LangChain uses, Agent = Model + Harness. Swap the model and keep the harness, and you have a different agent with the same tools and rules.</p>
 <h3>Is Claude Code an agent harness?</h3>
-<p></p>
 <p>Yes. Claude Code wraps Claude models with a system prompt, file and shell tools, project instruction files, permissions, hooks and an agent loop tuned for software work. Anthropic also offers the Claude Agent SDK, which it describes as a general-purpose agent harness, for building agents outside a terminal.</p>
 <h3>What is the difference between an agent harness and an agent framework?</h3>
-<p></p>
 <p>A framework gives you building blocks: model wrappers, tool definitions and abstractions you assemble yourself. A harness is higher level and opinionated: it comes with default prompts, planning tools, filesystem access and tool handling already wired in. LangChain is a framework. Deep Agents, built on it, is a harness.</p>
 <h3>What is harness engineering?</h3>
-<p></p>
 <p>Harness engineering is improving an agent by changing everything around the model: instructions, tools, context handling, permissions, hooks and automated checks. The aim is for the agent to get things right more often and to catch its own mistakes before a person has to, without changing the model itself.</p>
 <h3>Is MCP part of an agent harness?</h3>
-<p></p>
 <p>MCP is how a harness connects to outside tools and data. The harness is the MCP host, with a client inside it: it discovers tools on MCP servers and calls them when the model asks. MCP itself is the wire, not the harness, so any MCP-capable harness can use the same servers.</p>
 <h2>Where to go next</h2>
 <ul>
