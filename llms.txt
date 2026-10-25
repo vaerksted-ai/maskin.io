@@ -97,6 +97,7 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 - [Hvad er en AI agent? Forklaret til dig, der skal beslutte, om virksomheden har brug for en (dansk)](https://maskin.io/da/hvad-er-en-ai-agent/): Danish-language explainer of what an AI agent is, how it differs from a chatbot, an AI assistant and plain automation, three example tasks, what an agent costs to run (model use, setup, oversight, platform), what can go wrong, and a five-question readiness check.
 - [AI-agenter: guide for danske virksomheder (dansk)](https://maskin.io/da/ai-agenter/): Danish-language guide to which tasks a company with 11 to 200 employees can give an AI agent (lead follow-up, weekly reports, inbox, meeting notes, customer replies), what agents cannot do, a three-tier approval model, a cost breakdown with a worked example, and the data questions to ask a vendor.
 - [Bedste AI-værktøjer til virksomheder: 4 slags og hvordan I vælger (dansk)](https://maskin.io/da/ai-vaerktoejer/): Danish-language overview of the four kinds of AI tool for a business (general assistant, automation engine, single-task tool, shared workspace for agents), five questions for choosing, what to ask a vendor about data, and where Maskin fits and does not fit.
+- [AI-agenter: guide för svenska företag (svenska)](https://maskin.io/sv/ai-agenter/): Swedish-language guide to which jobs a company with 11 to 200 employees can give an AI agent (follow-up on enquiries, weekly reports, inbox, meeting minutes, customer replies), what agents cannot do, a three-tier approval model, a cost breakdown with a worked example using invented numbers, and the data questions to ask a vendor.
 
 ## Dansk (Danish)
 
@@ -104,6 +105,11 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 - [AI-agenter: guide for danske virksomheder](https://maskin.io/da/ai-agenter/): Hvilke opgaver en dansk virksomhed kan give til en AI-agent, hvor grænsen går, og hvordan godkendelser fordeles.
 - [AI-automatisering: de første opgaver at automatisere](https://maskin.io/da/ai-automatisering/): De fem første opgaver, fire tests til at vælge, og et gennemgået eksempel på lead-opfølgning med godkendelse.
 - [Bedste AI-værktøjer til virksomheder](https://maskin.io/da/ai-vaerktoejer/): De fire slags AI-værktøjer, fem spørgsmål til at vælge, og hvad man skal spørge leverandøren om data.
+
+## Svenska (Swedish)
+
+- [Maskin på svenska](https://maskin.io/sv/): Kort presentation av Maskin på svenska: en öppen arbetsyta där AI-agenter och människor arbetar på samma objekt och en människa godkänner innan något lämnar företaget.
+- [AI-agenter: guide för svenska företag](https://maskin.io/sv/ai-agenter/): Vilka jobb ett svenskt företag kan ge till en AI-agent, var gränsen går, hur godkännandena fördelas och vad det kostar.
 
 ## Start here
 
