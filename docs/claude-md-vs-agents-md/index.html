@@ -260,7 +260,7 @@ Use plan mode for changes under src/billing/.</code></pre>
       <li><strong>Set Project instructions to <code>claude-md-and-agents-md</code>.</strong> Loads both files together. It lives in your user or managed settings, so it does not travel with the repo and cannot protect teammates.</li>
     </ul>
     <p>One mistake to avoid: a <code>CLAUDE.md</code> that says &ldquo;read AGENTS.md&rdquo; in plain words. Claude sees the file only if it decides to open it. Use the import.</p>
-    <p>After any change, run <code>/context</code> in Claude Code and confirm <code>CLAUDE.md</code> appears under Memory files. When the fallback is doing the work, an interactive session prints a line such as &ldquo;no CLAUDE.md found; AGENTS.md loaded&rdquo; with the path.</p>
+    <p>After any change, run <code>/context</code> in Claude Code and confirm <code>CLAUDE.md</code> appears under Memory files. When the fallback is doing the work, an interactive session prints a line such as &ldquo;no CLAUDE.md found; AGENTS.md loaded&rdquo; with the path. For what else loads at the start of a session, and what stays on one machine, see <a href="/docs/learn/claude-code-memory/">Claude Code memory</a>.</p>
 
     <h2>What happens when files nest</h2>
     <p>Monorepos break the &ldquo;same behavior everywhere&rdquo; assumption fastest:</p>

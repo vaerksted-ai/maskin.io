@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code memory: CLAUDE.md, auto memory and sharing | Maskin</title>
+<meta name="description" content="Claude Code memory is CLAUDE.md plus auto memory. Where each is stored, what loads each session, how to turn it off, and how a team shares what Claude learns.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/learn/claude-code-memory/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/learn/claude-code-memory/">
+<meta property="og:title" content="Claude Code memory: one person’s notes, or a record the whole team shares">
+<meta property="og:description" content="Claude Code memory is two things: CLAUDE.md files you write and auto memory Claude writes. Only CLAUDE.md can be shared with a team. Where each lives and how to share what Claude learns.">
+<meta property="og:image" content="https://maskin.io/og-image-claude-code-memory.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Claude Code memory: one person’s notes, or a record the whole team shares">
+<meta name="twitter:description" content="Claude Code memory is two things: CLAUDE.md files you write and auto memory Claude writes. Only CLAUDE.md can be shared with a team. Where each lives and how to share what Claude learns.">
+<meta name="twitter:image" content="https://maskin.io/og-image-claude-code-memory.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/learn/claude-code-memory/#post",
+      "headline": "Claude Code memory: one person’s notes, or a record the whole team shares",
+      "name": "Claude Code memory: one person’s notes, or a record the whole team shares",
+      "description": "Claude Code memory is CLAUDE.md plus auto memory. Where each is stored, what loads each session, how to turn it off, and how a team shares what Claude learns.",
+      "url": "https://maskin.io/docs/learn/claude-code-memory/",
+      "inLanguage": "en",
+      "datePublished": "2026-10-25T00:00:00Z",
+      "dateModified": "2026-10-25T00:00:00Z",
+      "image": [
+        "https://maskin.io/og-image-claude-code-memory.png"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/learn/claude-code-memory/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Claude Code"
+        },
+        {
+          "@type": "Thing",
+          "name": "Claude Code memory"
+        },
+        {
+          "@type": "Thing",
+          "name": "CLAUDE.md"
+        },
+        {
+          "@type": "Thing",
+          "name": "Auto memory"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Claude Code memory",
+          "item": "https://maskin.io/docs/learn/claude-code-memory/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does Claude Code have memory across sessions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Each session starts with a fresh context window, but two things carry over: CLAUDE.md files you write, and auto memory, notes Claude saves about your corrections and preferences. Both load at the start of every session. Auto memory loads the first 200 lines or 25KB of its MEMORY.md index, and reads topic files on demand."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is Claude Code memory stored?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Auto memory is stored in ~/.claude/projects/<project>/memory/ on your machine, with a MEMORY.md index and one file per memory. The project folder comes from your git repository, so all worktrees share it. CLAUDE.md files live in your project (./CLAUDE.md or ./.claude/CLAUDE.md), your home folder (~/.claude/CLAUDE.md) or a managed system path."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between Claude Code memory and CLAUDE.md?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CLAUDE.md is instructions you write: build commands, conventions, rules. Auto memory is notes Claude writes itself: your preferences, corrections and context it couldn't get from the code. CLAUDE.md can be committed and shared with a team. Auto memory stays on one machine. Both are treated as context, not enforced rules."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a team share Claude Code memory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not auto memory: Anthropic's docs say it's machine-local and not shared across machines. A team shares through committed files instead: a project CLAUDE.md, .claude/rules/ and project skills. Organizations can also push a managed CLAUDE.md to every machine. The practical habit is to move useful auto memories into CLAUDE.md through a pull request."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I turn off or clear Claude Code memory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Open /memory in a session and use the auto memory toggle, set autoMemoryEnabled to false in a project's settings, or set CLAUDE_CODE_DISABLE_AUTO_MEMORY=1. To clear it, delete files in ~/.claude/projects/<project>/memory/ or edit them through /memory. They're plain markdown files."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the Claude API memory tool the same as Claude Code memory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The memory tool is an API feature for developers building their own agents. Claude requests file operations under a /memories path and your application stores them wherever you choose. Claude Code's memory is built in: CLAUDE.md files and auto memory on your machine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does Claude ignore my CLAUDE.md?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually because the file is long, vague or contradicts itself. Anthropic's docs recommend under 200 lines, specific instructions such as \"run npm test before committing\", and removing conflicting lines, because Claude may pick one arbitrarily. Run /context to confirm the file loaded. For anything that must always hold, use a hook instead."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Solutions"><p class="doc-sidebar__title">Solutions</p><ul class="doc-sidebar__list"><li><a class="" href="/solutions/product-teams/">Product teams</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All loops</a></li><li><a class="is-nested" href="/marketplace/seo-publishing/">The SEO publishing loop</a></li><li><a class="is-nested" href="/marketplace/outbound/">The outbound loop</a></li><li><a class="is-nested" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki loop</a></li><li><a class="is-nested" href="/marketplace/linkedin-content/">The LinkedIn content loop</a></li><li><a class="is-nested" href="/marketplace/product-delivery/">The product delivery loop</a></li><li><a class="" href="/loops/ai-customer-feedback-loop/">AI customer feedback loop</a></li><li><a class="" href="/marketplace/competitive-intelligence/">The competitive intelligence loop</a></li><li><a class="is-nested" href="/loops/competitive-intelligence/">Competitive intelligence loop: how it works</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/composable-ai-agents-vs-ai-employees/">Composable AI agents vs AI employees</a></li><li><a class="" href="/docs/learn/human-in-the-loop/">Human in the loop</a></li><li><a class="is-nested" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a></li><li><a class="is-nested" href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="is-nested" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="is-nested" href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-orchestration/">Agent orchestration</a></li><li><a class="is-nested" href="/docs/learn/ralph-wiggum-loop/">Ralph Wiggum loop</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/learn/claude-code-for-product-managers/">Claude Code for product managers</a></li><li><a class="is-nested" href="/docs/learn/claude-code-agent-teams/">Claude Code agent teams</a></li><li><a class="is-nested" href="/docs/learn/claude-code-team/">Claude Code team</a></li><li><a class="is-nested is-active" href="/docs/learn/claude-code-memory/" aria-current="page">Claude Code memory</a></li><li><a class="is-nested" href="/docs/learn/choose-a-knowledge-layer/">How to choose a knowledge layer</a></li><li><a class="" href="/docs/learn/what-is-an-agent-harness/">What is an agent harness?</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="is-nested" href="/docs/mcp-tools-vs-resources/">MCP tools vs resources vs prompts</a></li><li><a class="" href="/docs/mcp-vs-api/">MCP vs API</a></li><li><a class="" href="/docs/at-risk-account-alerts/">At-risk account alerts</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-linear-alternative/">Open source Linear alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="" href="/alternatives/open-source-alternative-to-claude-cowork/">Open source alternative to Claude Cowork</a></li><li><a class="" href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane</a></li><li><a class="" href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents</a></li><li><a class="" href="/alternatives/open-source-ai-coding-agent/">Open source AI coding agent</a></li><li><a class="" href="/alternatives/n8n/">n8n alternative</a></li><li><a class="" href="/alternatives/paperclip/">Paperclip alternative</a></li><li><a class="" href="/alternatives/openclaw/">OpenClaw alternative</a></li></ul></nav></aside>  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Claude Code memory</p>
+    <p class="eyebrow">Article &middot; Guide</p>
+    <h1>Claude Code memory: one person&rsquo;s notes, or a record the whole team shares</h1>
+<p class="lead"><strong>Claude Code memory is two things: CLAUDE.md files you write, and auto memory, the notes Claude writes for itself.</strong> Both load at the start of every session. Only CLAUDE.md can be shared with your team through git; auto memory is, in Anthropic&rsquo;s words, &ldquo;not shared across machines or cloud environments.&rdquo;</p>
+<p>So what Claude learns from you stays on your laptop. For a team, the fix is a habit of moving useful notes into shared files, plus a shared record for the decisions and owners that don&rsquo;t belong in either.</p>
+<p><em>Checked against Anthropic&rsquo;s Claude Code memory docs on 22 October 2026. The product changes often, so check the docs for the version you run.</em></p>
+<div class="callout callout--muted"><div class="callout__icon" aria-hidden="true">&#10003;</div><div class="callout__body"><strong>Key takeaways</strong><ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+<li><strong>There are two memory systems.</strong> CLAUDE.md is instructions you write. Auto memory is notes Claude writes. Both load into every session as context.</li>
+<li><strong>Neither is enforced.</strong> Anthropic&rsquo;s docs say Claude treats both &ldquo;as context, not enforced configuration.&rdquo; Use a hook when something must never happen.</li>
+<li><strong>Auto memory is private to one machine.</strong> It lives under ~/.claude/projects/ and is shared across worktrees of the same repo, but not with teammates.</li>
+<li><strong>Only the start of the index loads.</strong> The first 200 lines or 25KB of MEMORY.md, whichever comes first. Topic files are read on demand.</li>
+<li><strong>CLAUDE.md is the shared layer.</strong> Commit it, keep it under about 200 lines, and give it an owner.</li>
+<li><strong>Decisions and owners need a third place.</strong> Neither file is built to hold who owns what, what was decided and why, and whether it worked.</li>
+</ul></div></div>
+<figure style="margin:1.5rem 0">
+  <img src="/og-image-claude-code-memory.svg" width="1200" height="630" alt="Claude Code memory in two layers. CLAUDE.md, written by you and committed to git, is shared with your team. Auto memory, written by Claude under ~/.claude/projects/, stays on one machine. Decisions and owners need a third place: a shared record." style="width:100%;height:auto;border-radius:10px;border:1px solid var(--rule)" loading="lazy">
+  <figcaption style="font-size:.85rem;color:var(--ink-3);margin-top:.5rem">CLAUDE.md travels through git. Auto memory stays on one machine. Decisions and owners need a record you place on purpose.</figcaption>
+</figure>
+<h2>The layers of Claude Code memory at a glance</h2>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead><tr><th>Layer</th><th>Who writes it</th><th>Where it lives</th><th>Shared with your team?</th><th>Loaded when</th></tr></thead>
+<tbody>
+<tr><td>Managed CLAUDE.md</td><td>Your IT or platform team</td><td>A system path set by your organization</td><td>Yes, every user on managed machines</td><td>Every session, first</td></tr>
+<tr><td>Project CLAUDE.md</td><td>You and your team</td><td>./CLAUDE.md or ./.claude/CLAUDE.md</td><td>Yes, through git</td><td>Every session</td></tr>
+<tr><td>Project rules</td><td>You and your team</td><td>.claude/rules/*.md</td><td>Yes, through git</td><td>Every session, or only for matching files</td></tr>
+<tr><td>User CLAUDE.md</td><td>You</td><td>~/.claude/CLAUDE.md</td><td>No</td><td>Every session, every project</td></tr>
+<tr><td>CLAUDE.local.md</td><td>You</td><td>Project root, gitignored</td><td>No</td><td>Every session in that project</td></tr>
+<tr><td>Auto memory</td><td>Claude</td><td>~/.claude/projects/&lt;project&gt;/memory/</td><td>No, machine-local</td><td>MEMORY.md index at start, topic files on demand</td></tr>
+</tbody>
+</table></div>
+<p>The first three rows travel with your repository or your organization&rsquo;s setup. The last three stay with one person.</p>
+<h2>How CLAUDE.md works</h2>
+<p>CLAUDE.md is a plain markdown file of instructions Claude reads at the start of every session. Anthropic&rsquo;s docs suggest keeping it to things Claude should hold every time: build and test commands, conventions, project layout and &ldquo;always do X&rdquo; rules. Multi-step procedures belong in a skill, and instructions for one part of the codebase belong in a path-scoped rule.</p>
+<p>A few details that matter in practice:</p>
+<ul>
+<li><strong>Files stack, they don&rsquo;t override.</strong> Claude Code loads CLAUDE.md from your working directory and every directory above it, and joins them together. Files in subdirectories load when Claude starts working in that folder.</li>
+<li><strong>Imports keep it organized, not smaller.</strong> You can pull in another file with an @path import, up to four hops deep. Imported files still load at launch, so they still cost context.</li>
+<li><strong>Shorter works better.</strong> The docs target under 200 lines per file and warn that if two instructions contradict each other, &ldquo;Claude may pick one arbitrarily.&rdquo;</li>
+<li><strong>AGENTS.md works too.</strong> Claude Code can read AGENTS.md in place of CLAUDE.md. Which file wins and how to use both is covered in <a href=&ldquo;/docs/claude-md-vs-agents-md/&rdquo;>CLAUDE.md vs AGENTS.md</a>.</li>
+<li><strong>You can check what loaded.</strong> Run /context in a session and look under Memory files.</li>
+</ul>
+<h2>How auto memory works</h2>
+<p>Auto memory is on by default in local sessions. As you work, Claude decides what&rsquo;s worth keeping and saves it as small markdown files. Anthropic&rsquo;s docs list four kinds:</p>
+<ol>
+<li><strong>User:</strong> your role, expertise and working preferences.</li>
+<li><strong>Feedback:</strong> corrections you give and approaches you confirm.</li>
+<li><strong>Project:</strong> ongoing work, deadlines and decisions Claude can&rsquo;t work out from the code or git history.</li>
+<li><strong>Reference:</strong> where to find things outside the project, like an issue tracker or dashboard.</li>
+</ol>
+<p>Claude skips anything it can read from the codebase and anything your CLAUDE.md already says.</p>
+<p>The files live in ~/.claude/projects/&lt;project&gt;/memory/, with a MEMORY.md index and one topic file per memory. The project path comes from the git repository, so every worktree and subdirectory of the same repo shares one memory folder. When you see &ldquo;Saved 2 memories&rdquo; or &ldquo;Recalled 2 memories&rdquo; in the interface, that&rsquo;s Claude writing to or reading from this folder.</p>
+<p>Only the first 200 lines or 25KB of MEMORY.md load at the start of a session. Claude Code nudges Claude to keep the index short, one line per entry, with detail moved into topic files that Claude reads only when it needs them.</p>
+<h3>Managing auto memory</h3>
+<ul>
+<li><strong>See and edit it:</strong> run /memory to browse and open the files. They&rsquo;re plain markdown, so you can also edit or delete them directly.</li>
+<li><strong>Turn it off:</strong> use the toggle in /memory, set autoMemoryEnabled to false in a project&rsquo;s settings, or set the environment variable CLAUDE_CODE_DISABLE_AUTO_MEMORY=1.</li>
+<li><strong>Move it:</strong> set autoMemoryDirectory in your settings to an absolute path or one starting with ~/.</li>
+<li><strong>Clear it:</strong> delete files in the memory folder. Memory files are kept out of Claude Code&rsquo;s automatic cleanup of old session transcripts, so they stay until you or Claude removes them.</li>
+</ul>
+<h3>Claude Code memory vs the Claude API memory tool</h3>
+<p>The second result for &ldquo;claude code memory&rdquo; is often Anthropic&rsquo;s <a href=&ldquo;https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool&rdquo; rel=&ldquo;noopener&rdquo;>memory tool</a> for the Claude API. It&rsquo;s a different thing. The memory tool is for developers building their own agents: Claude asks to read and write files under a /memories path, and your application decides where they&rsquo;re stored. It isn&rsquo;t something you switch on inside Claude Code.</p>
+<h2>Where Claude Code memory stops for a team</h2>
+<p>For one developer, this setup works well. Claude picks up your habits, and CLAUDE.md holds the project&rsquo;s rules. The gaps show up when four or five people use Claude Code on the same codebase.</p>
+<h3>Gap 1: what Claude learns from you stays with you</h3>
+<p>Say Dana tells Claude &ldquo;integration tests need the local queue running,&rdquo; and Claude saves it to auto memory. Dana&rsquo;s Claude now knows. Sam&rsquo;s Claude doesn&rsquo;t, and nobody wrote it down anywhere Sam can see. Multiply that by a team and a few months, and you get five private versions of what the project needs. This isn&rsquo;t a bug. The docs are clear that auto memory is machine-local by design.</p>
+<h3>Gap 2: CLAUDE.md drifts without an owner</h3>
+<p>The shared file is only as good as its upkeep. Everyone adds lines, nobody removes them, and soon it&rsquo;s 400 lines with two rules that contradict each other. The docs' advice is to review it periodically and remove outdated or conflicting lines. That only happens if someone owns the job.</p>
+<h3>Gap 3: decisions don&rsquo;t fit in either file</h3>
+<p>Auto memory&rsquo;s &ldquo;project&rdquo; type can hold a decision for you. CLAUDE.md can state a rule for everyone. Neither is built to hold the full story a team needs later:</p>
+<ul>
+<li>what was decided, and what was rejected</li>
+<li>why, and who approved it</li>
+<li>who owns the area now</li>
+<li>whether it worked</li>
+</ul>
+<p>Put that in CLAUDE.md and it bloats a file meant to stay under 200 lines and load into every session. Leave it in auto memory and it&rsquo;s on one laptop. Either way, a teammate (or a teammate&rsquo;s Claude) asking &ldquo;why do we do it this way?&rdquo; has nowhere to look.</p>
+<h2>How to share what Claude Code knows across a team</h2>
+<p>Here&rsquo;s a setup that keeps the useful parts of memory shared and the private parts private.</p>
+<h3>Step 1: commit one CLAUDE.md, and name its owner</h3>
+<p>Put one project CLAUDE.md (or AGENTS.md) in the repository. Give it a named owner, a person rather than &ldquo;the team,&rdquo; and treat changes like code: a pull request and one reviewer. Keep it to build commands, conventions and hard-won gotchas. If it passes 200 lines, move parts into path-scoped rules under .claude/rules/.</p>
+<h3>Step 2: promote useful auto memories</h3>
+<p>Make it a habit: when Claude says it saved a memory, glance at it. If it would help everyone, like the queue tip above, open a pull request that adds it to CLAUDE.md, then delete the private note. If it&rsquo;s personal, like &ldquo;I prefer short commit messages,&rdquo; leave it where it is or move it to CLAUDE.local.md or your user CLAUDE.md.</p>
+<p>A quick test for each note:</p>
+<ul>
+<li><strong>Would a new teammate need this to be productive?</strong> Shared file.</li>
+<li><strong>Is it about how I like to work?</strong> Keep it private.</li>
+<li><strong>Is it a decision with a reason and an owner?</strong> It belongs in the shared record in step 4.</li>
+</ul>
+<h3>Step 3: enforce what must hold, don&rsquo;t just write it down</h3>
+<p>A CLAUDE.md line saying &ldquo;never touch the billing migrations&rdquo; is a request. Anthropic points to a PreToolUse hook for blocking an action no matter what Claude decides. For organizations, managed settings can deny tools or paths on every machine. Write guidance in CLAUDE.md. Enforce rules in settings and hooks.</p>
+<h3>Step 4: give decisions and owners a shared record</h3>
+<p>The last layer is the one Claude Code doesn&rsquo;t try to be. You need somewhere your team and its agents can read and write that holds a decision, its reason, its owner and its outcome. Options that work:</p>
+<ul>
+<li><strong>A decisions folder in the repo.</strong> Reviewable and versioned next to the code. Hard for people who don&rsquo;t work in git.</li>
+<li><strong>Your issue tracker,</strong> with a template for the reason and a check-by date. Without the template, issues say what was done but not why.</li>
+<li><strong>A shared workspace built for it.</strong> Maskin is one. It&rsquo;s an open-source workspace where people and agents work on the same typed objects: an insight, a bet with a stated success condition, the tasks under it, and the knowledge the team has validated. Each has a driver, the person or agent who owns it, and a comment thread. It gives your team and its agents a shared record they read and write, separate from what any one Claude Code session remembers. Its agent sessions run the Claude Code and Codex command-line tools in isolated microVMs. It&rsquo;s early, so judge the design rather than a track record.</li>
+</ul>
+<p>Whichever you pick, add one line to CLAUDE.md saying where decisions live, so every teammate&rsquo;s Claude knows where to look.</p>
+<p>For how a team shares settings, skills and onboarding in Claude Code, see <a href=&ldquo;/docs/learn/claude-code-team/&rdquo;>Claude Code team</a>. For memory across sessions with any agent, not just Claude Code, see <a href=&ldquo;/docs/learn/agent-memory-across-sessions/&rdquo;>agent memory across sessions</a>.</p>
+<h2>FAQ</h2>
+<h3>Does Claude Code have memory across sessions?</h3>
+<p>Yes. Each session starts with a fresh context window, but two things carry over: CLAUDE.md files you write, and auto memory, notes Claude saves about your corrections and preferences. Both load at the start of every session. Auto memory loads the first 200 lines or 25KB of its MEMORY.md index, and reads topic files on demand.</p>
+<h3>Where is Claude Code memory stored?</h3>
+<p>Auto memory is stored in ~/.claude/projects/&lt;project&gt;/memory/ on your machine, with a MEMORY.md index and one file per memory. The project folder comes from your git repository, so all worktrees share it. CLAUDE.md files live in your project (./CLAUDE.md or ./.claude/CLAUDE.md), your home folder (~/.claude/CLAUDE.md) or a managed system path.</p>
+<h3>What is the difference between Claude Code memory and CLAUDE.md?</h3>
+<p>CLAUDE.md is instructions you write: build commands, conventions, rules. Auto memory is notes Claude writes itself: your preferences, corrections and context it couldn&rsquo;t get from the code. CLAUDE.md can be committed and shared with a team. Auto memory stays on one machine. Both are treated as context, not enforced rules.</p>
+<h3>Can a team share Claude Code memory?</h3>
+<p>Not auto memory: Anthropic&rsquo;s docs say it&rsquo;s machine-local and not shared across machines. A team shares through committed files instead: a project CLAUDE.md, .claude/rules/ and project skills. Organizations can also push a managed CLAUDE.md to every machine. The practical habit is to move useful auto memories into CLAUDE.md through a pull request.</p>
+<h3>How do I turn off or clear Claude Code memory?</h3>
+<p>Open /memory in a session and use the auto memory toggle, set autoMemoryEnabled to false in a project&rsquo;s settings, or set CLAUDE_CODE_DISABLE_AUTO_MEMORY=1. To clear it, delete files in ~/.claude/projects/&lt;project&gt;/memory/ or edit them through /memory. They&rsquo;re plain markdown files.</p>
+<h3>Is the Claude API memory tool the same as Claude Code memory?</h3>
+<p>No. The memory tool is an API feature for developers building their own agents. Claude requests file operations under a /memories path and your application stores them wherever you choose. Claude Code&rsquo;s memory is built in: CLAUDE.md files and auto memory on your machine.</p>
+<h3>Why does Claude ignore my CLAUDE.md?</h3>
+<p>Usually because the file is long, vague or contradicts itself. Anthropic&rsquo;s docs recommend under 200 lines, specific instructions such as &ldquo;run npm test before committing&rdquo;, and removing conflicting lines, because Claude may pick one arbitrarily. Run /context to confirm the file loaded. For anything that must always hold, use a hook instead.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/docs/learn/claude-code-team/">
+        <div class="doc-card__title">Claude Code team</div>
+        <div class="doc-card__desc">Sharing setup, context and decisions instead of six private setups.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/claude-md-vs-agents-md/">
+        <div class="doc-card__title">CLAUDE.md vs AGENTS.md</div>
+        <div class="doc-card__desc">Which instruction file to use and how they combine.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/learn/agent-memory-across-sessions/">
+        <div class="doc-card__title">Agent memory across sessions</div>
+        <div class="doc-card__desc">What has to persist for any agent, not just Claude Code.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Want a record your whole team and its agents read and write?</h2>
+      <p>Self-host Maskin and give decisions and owners a home outside any one laptop. The <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a> guide covers the setup, and the <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace cornerstone</a> explains the model.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="/docs/self-hosted-ai-workspace/" data-cta="self-host-in-body">Self-host Maskin</a>
+        <a class="btn-secondary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Maskin on GitHub</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
