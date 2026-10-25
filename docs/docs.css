@@ -350,6 +350,11 @@ a:hover{text-decoration:underline}
   }
   .doc-sidebar__group{margin-bottom:1rem}
 }
+/* Switcher pages only (.docnav__links--lang): the bar needs about 705px with every link, so the secondary links go at 767px and below, not 560. */
+@media (max-width:767px){
+  .docnav__links--lang .docnav__hide-sm{display:none}
+  .docnav__tag.docnav__hide-sm{display:none}
+}
 @media (max-width:560px){
   .docnav__inner{gap:.5rem}
   .docnav__links{gap:.6rem}
