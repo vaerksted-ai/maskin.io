@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open source AI agents in 2026: lanes, licenses, what to run | Maskin</title>
+<meta name="description" content="Open source AI agents sorted into four lanes (frameworks, assistants, visual builders, team workspaces) with licenses checked against each repo. Includes n8n and Dify restrictions.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/alternatives/open-source-ai-agents/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/alternatives/open-source-ai-agents/">
+<meta property="og:title" content="Open source AI agents in 2026: what to run, under which license, and where the work lives">
+<meta property="og:description" content="Open source AI agents sorted into four lanes (frameworks, assistants, visual builders, team workspaces) with licenses checked against each repo. Includes n8n and Dify restrictions.">
+<meta property="og:image" content="https://maskin.io/og-image-open-source-ai-agents.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Open source AI agents in 2026: what to run, under which license, and where the work lives">
+<meta name="twitter:description" content="Open source AI agents sorted into four lanes (frameworks, assistants, visual builders, team workspaces) with licenses checked against each repo. Includes n8n and Dify restrictions.">
+<meta name="twitter:image" content="https://maskin.io/og-image-open-source-ai-agents.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Open source AI agents in 2026: what to run, under which license, and where the work lives",
+      "name": "Open source AI agents in 2026: what to run, under which license, and where the work lives",
+      "description": "Open source AI agents sorted into four lanes (frameworks, assistants, visual builders, team workspaces) with licenses checked against each repo. Includes n8n and Dify restrictions.",
+      "url": "https://maskin.io/alternatives/open-source-ai-agents/",
+      "inLanguage": "en",
+      "datePublished": "2026-10-25T00:00:00Z",
+      "dateModified": "2026-10-25T00:00:00Z",
+      "image": [
+        "https://maskin.io/og-image-open-source-ai-agents.png"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "mainEntityOfPage": "https://maskin.io/alternatives/open-source-ai-agents/",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": {
+        "@type": "Product",
+        "name": "Maskin"
+      },
+      "keywords": "open source AI agents, open source AI agents framework, best open source AI agents, free open source AI agents, open source AI agents list"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Alternatives",
+          "item": "https://maskin.io/alternatives/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Open source AI agents",
+          "item": "https://maskin.io/alternatives/open-source-ai-agents/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are open source AI agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Open source AI agents are agent software with public source code under a license that lets you run it yourself. That covers libraries such as LangChain, ready-made assistants such as OpenClaw and visual builders such as n8n. Licenses differ: n8n and Dify are source-available with commercial limits, while most of the field is plain MIT or Apache 2.0."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the best open source AI agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on the job. For building your own agents, LangChain, CrewAI, the OpenAI Agents SDK and Microsoft Agent Framework are the large Python and .NET options, and Mastra covers TypeScript. For a ready-made assistant, OpenClaw, Hermes Agent and Letta. For visual workflows, n8n and Dify. For coding, see the separate coding-agents page."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are open source AI agents free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The software license is free for MIT and Apache 2.0 projects, but you still pay for hosting and for model calls unless you run a local model. Some projects also sell commercial products around the open code: CrewAI's AMP Suite, and n8n's Enterprise License for its .ee. files. Free to download is not the same as free to run."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you use open source AI agents commercially?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under MIT or Apache 2.0, yes, including inside a product you sell. Under n8n's Sustainable Use License you can use it for your own internal business purposes but not resell or host it for others without an agreement. Dify requires written authorization for multi-tenant use and keeps its logo in the frontend. Check the LICENSE file, not the badge."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you build open source AI agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pick a framework that matches your language: Python (LangChain, CrewAI, OpenAI Agents SDK, Google ADK, smolagents, Pydantic AI), .NET (Microsoft Agent Framework) or TypeScript (Mastra). Define the agent's instructions and tools, add MCP servers for external systems, and decide where its decisions and outputs are stored, because most frameworks leave the record to you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which open source AI agents can run locally?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "OpenClaw's README says its state, memory and credentials live on your hardware, with local models as swappable plugins. Hermes Agent works with any model endpoint you point it at, and the OpenAI Agents SDK is provider-agnostic; check each framework's docs for local endpoints. For self-hosting guides and hosting trade-offs, see self-hosted AI agents."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Alternatives</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-linear-alternative/">Open source Linear alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="" href="/alternatives/open-source-alternative-to-claude-cowork/">Open source alternative to Claude Cowork</a></li><li><a class="" href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane</a></li><li><a class="" href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents</a></li><li><a class="" href="/alternatives/n8n/">n8n alternative</a></li><li><a class="" href="/alternatives/paperclip/">Paperclip alternative</a></li><li><a class="" href="/alternatives/openclaw/">OpenClaw alternative</a></li><li><a class="is-active" href="/alternatives/open-source-ai-agents/" aria-current="page">Open source AI agents</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/">Home</a> / <a href="/alternatives/">Alternatives</a> / Open source AI agents</p>
+    <p class="eyebrow">Comparison</p>
+    <h1>Open source AI agents in 2026: what to run, under which license, and where the work lives</h1>
+    <p class="lead">Open source AI agents are agents whose code you can run, modify and host yourself. In 2026 they fall into four lanes: frameworks you build with (LangChain, CrewAI), assistants you operate (OpenClaw, Hermes Agent, Letta), visual builders (n8n, Dify) and team workspaces (Paperclip, Maskin). Check the license first: n8n and Dify restrict commercial use.</p>
+
+<p>Most roundups on this topic are one flat list that mixes SDKs, chat assistants, workflow canvases and coding tools, then ranks them by stars. That answers &quot;what is popular&quot;, not &quot;what should I run&quot;. This page sorts the field into lanes, checks every license against each project&#39;s own GitHub repository (on 5 October 2026), and flags the projects whose status changed this year. Coding agents have their own page: <a href="/alternatives/open-source-ai-coding-agent/">open source AI coding agents</a>.</p>
+<div class="callout callout--muted">
+    <div class="callout__icon" aria-hidden="true">&#10003;</div>
+    <div class="callout__body"><strong>Key takeaways</strong>
+      <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+<li><strong>Pick the lane before the project.</strong> A framework, an assistant, a visual builder and a team workspace solve different jobs, and the same GitHub topic page lists all four.</li>
+<li><strong>License is the filter most lists skip.</strong> MIT and Apache 2.0 cover most of the field. n8n and Dify add commercial restrictions. Mastra and Flowise keep paid enterprise directories inside an otherwise open repo.</li>
+<li><strong>GitHub&#39;s license badge can mislead.</strong> AutoGen&#39;s repo shows CC-BY-4.0 because that covers its docs; the code is MIT. GitHub detects no standard license for Dify, n8n or Flowise because theirs are custom.</li>
+<li><strong>Check status, not just stars.</strong> AutoGen is in maintenance mode and points new users to Microsoft Agent Framework. Flowise has been archived by its maintainers.</li>
+<li><strong>Maskin is not an agent framework.</strong> It is an Apache 2.0 workspace where agents leave typed, owned records behind. It sits next to the projects below, not against them.</li>
+</ul>
+    </div>
+  </div>
+<h2>The four lanes</h2>
+<p>The four lanes of open source AI agents are:</p>
+<ol>
+<li>Frameworks: libraries you import to build your own agents</li>
+<li>Assistants: finished agents you install and operate</li>
+<li>Visual builders: canvases for wiring agent workflows</li>
+<li>Team workspaces: a shared record for people and agents</li>
+</ol>
+<p>Stars below are GitHub&#39;s count on 5 October 2026. They measure attention, not fit. A 400,000-star assistant and a 14,000-star framework are not competing for the same job.</p>
+<h2>Lane 1: frameworks you build with</h2>
+<p>You write code, the framework supplies the agent loop, tool calling, handoffs and (to varying degrees) memory and tracing.</p>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead>
+<tr>
+<th>Project</th>
+<th>License</th>
+<th>Stars</th>
+<th>What the repo says it is</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://github.com/langchain-ai/langchain" target="_blank" rel="noopener">LangChain</a></td>
+<td>MIT</td>
+<td>147k</td>
+<td>&quot;The agent engineering platform&quot;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener">LangGraph</a></td>
+<td>MIT</td>
+<td>43k</td>
+<td>From the LangChain team: &quot;Build resilient agents&quot;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/crewAIInc/crewAI" target="_blank" rel="noopener">CrewAI</a></td>
+<td>MIT</td>
+<td>59k</td>
+<td>Crews (role-based agents) plus Flows (event-driven control)</td>
+</tr>
+<tr>
+<td><a href="https://github.com/openai/openai-agents-python" target="_blank" rel="noopener">OpenAI Agents SDK</a></td>
+<td>MIT</td>
+<td>30k</td>
+<td>Provider-agnostic; handoffs, guardrails, MCP, human-in-the-loop</td>
+</tr>
+<tr>
+<td><a href="https://github.com/microsoft/agent-framework" target="_blank" rel="noopener">Microsoft Agent Framework</a></td>
+<td>MIT</td>
+<td>14k</td>
+<td>Python and .NET, Go in a separate repo; AutoGen&#39;s successor</td>
+</tr>
+<tr>
+<td><a href="https://github.com/microsoft/autogen" target="_blank" rel="noopener">AutoGen</a></td>
+<td>MIT (code)</td>
+<td>61k</td>
+<td>Maintenance mode; new users are pointed to Agent Framework</td>
+</tr>
+<tr>
+<td><a href="https://github.com/google/adk-python" target="_blank" rel="noopener">Google ADK</a></td>
+<td>Apache 2.0</td>
+<td>22k</td>
+<td>Code-first Python toolkit to build, evaluate and deploy agents</td>
+</tr>
+<tr>
+<td><a href="https://github.com/huggingface/smolagents" target="_blank" rel="noopener">smolagents</a></td>
+<td>Apache 2.0</td>
+<td>30k</td>
+<td>Hugging Face&#39;s &quot;barebones library for agents that think in code&quot;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/agno-agi/agno" target="_blank" rel="noopener">Agno</a></td>
+<td>Apache 2.0</td>
+<td>43k</td>
+<td>&quot;Build, run, and manage agent platforms&quot;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pydantic/pydantic-ai" target="_blank" rel="noopener">Pydantic AI</a></td>
+<td>MIT</td>
+<td>20k</td>
+<td>Python agents &quot;typed end to end&quot;</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mastra-ai/mastra" target="_blank" rel="noopener">Mastra</a></td>
+<td>Apache 2.0, except ee/ directories</td>
+<td>29k</td>
+<td>TypeScript framework for agents and AI apps</td>
+</tr>
+</tbody></table></div>
+<p>Choose by language and runtime before you compare features. Microsoft Agent Framework is the one with first-class .NET. Mastra is the TypeScript-native pick. The OpenAI Agents SDK also has a separate JavaScript and TypeScript repo, per its README. Most of the rest are Python-first.</p>
+<p>Two status notes matter more than any feature table. AutoGen&#39;s own README says it &quot;will not receive new features or enhancements&quot; and tells new users to start with Microsoft Agent Framework, so a tutorial that starts with AutoGen starts from a framework its owner has stopped extending. And CrewAI&#39;s MIT code is free, but the company also sells a commercial control plane (AMP Suite) for managed deployment and governance. That is a separate product, not a license restriction, but it shapes what the open project prioritizes.</p>
+<h2>Lane 2: assistants you install and operate</h2>
+<p>These are products, not libraries. You run them, connect them to your accounts and talk to them.</p>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead>
+<tr>
+<th>Project</th>
+<th>License</th>
+<th>Stars</th>
+<th>What the repo says it is</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener">OpenClaw</a></td>
+<td>MIT</td>
+<td>391k</td>
+<td>An assistant that runs on your own computer and answers in Discord, iMessage, Slack, Teams, Telegram, WhatsApp and 20+ more channels; models and harnesses are swappable plugins</td>
+</tr>
+<tr>
+<td><a href="https://github.com/NousResearch/hermes-agent" target="_blank" rel="noopener">Hermes Agent</a></td>
+<td>MIT</td>
+<td>251k</td>
+<td>Nous Research&#39;s &quot;self-improving&quot; agent: creates skills from experience and improves them in use; works with any model endpoint</td>
+</tr>
+<tr>
+<td><a href="https://github.com/letta-ai/letta" target="_blank" rel="noopener">Letta</a></td>
+<td>Apache 2.0</td>
+<td>25k</td>
+<td>Formerly MemGPT. Stateful agents with memory that persists and improves; current code lives in the letta-code repo</td>
+</tr>
+</tbody></table></div>
+<p>An assistant that lives in your chat apps holds credentials for those apps. Read what it can reach before you install it, the same way you would before handing an intern your logins. If persistent memory is the whole point, Letta is the most purpose-built of the three. If reach (the channels, the devices) is the point, OpenClaw&#39;s repo is organized around exactly that.</p>
+<h2>Lane 3: visual builders</h2>
+<p>A canvas where you wire triggers, model calls and tools. This is the lane where license terms diverge most.</p>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead>
+<tr>
+<th>Project</th>
+<th>License</th>
+<th>Stars</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://github.com/n8n-io/n8n" target="_blank" rel="noopener">n8n</a></td>
+<td>Sustainable Use License (fair-code)</td>
+<td>207k</td>
+<td>Active; .ee. files need a separate Enterprise License</td>
+</tr>
+<tr>
+<td><a href="https://github.com/langgenius/dify" target="_blank" rel="noopener">Dify</a></td>
+<td>Modified Apache 2.0 with extra conditions</td>
+<td>158k</td>
+<td>Active</td>
+</tr>
+<tr>
+<td><a href="https://github.com/FlowiseAI/Flowise" target="_blank" rel="noopener">Flowise</a></td>
+<td>Apache 2.0, except an enterprise directory</td>
+<td>55k</td>
+<td>Archived by maintainers; last push 13 August 2026</td>
+</tr>
+</tbody></table></div>
+<p>If you are leaving n8n over its license, <a href="/alternatives/n8n/">the n8n alternative page</a> covers the replacements by shape. The short version: Flowise&#39;s archive banner means you would inherit the maintenance, and Dify is not a license escape from n8n (next section).</p>
+<h2>Lane 4: team workspaces</h2>
+<p>Frameworks and assistants run agents. A team workspace is where several people and several agents share goals, tasks and outcomes.</p>
+<ul>
+<li><strong><a href="https://github.com/paperclipai/paperclip" target="_blank" rel="noopener">Paperclip</a></strong> (MIT, 97k stars) is a Node.js server and React UI that orchestrates a team of agents. Its model is a company: org charts, budgets, governance and goals. You bring your own agents and choose models per agent.</li>
+<li><strong><a href="https://maskin.io" target="_blank" rel="noopener">Maskin</a></strong> (Apache 2.0) is organized around product work instead: signals become insights, insights become bets with a win condition, bets break into tasks, and every object has an owner. More on it below, including what it is not.</li>
+</ul>
+<h2>The license split that flat lists skip</h2>
+<p>The question &quot;is it open source?&quot; has three answers in this field, and each one bites in a different place.</p>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead>
+<tr>
+<th>Tier</th>
+<th>What you get</th>
+<th>In this field</th>
+<th>Where it bites</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Permissive (MIT, Apache 2.0)</td>
+<td>Use, modify, embed, resell. Apache 2.0 adds an explicit patent grant.</td>
+<td>LangChain, LangGraph, CrewAI, OpenAI Agents SDK, Microsoft Agent Framework, AutoGen code, Google ADK, smolagents, Agno, Pydantic AI, OpenClaw, Hermes Agent, Letta, Paperclip, Maskin</td>
+<td>Almost nowhere. Keep the notice files.</td>
+</tr>
+<tr>
+<td>Open core</td>
+<td>Open license on most of the repo, commercial license on named directories</td>
+<td>Mastra (ee/ directories), Flowise (enterprise directory), n8n (.ee. files)</td>
+<td>Using a feature from a commercial directory without a paid license</td>
+</tr>
+<tr>
+<td>Source-available</td>
+<td>You can read, run and modify it, but not use it for everything</td>
+<td>n8n, Dify</td>
+<td>Embedding it in a product, or running it for other people</td>
+</tr>
+</tbody></table></div>
+<p>The two source-available cases are specific:</p>
+<ul>
+<li><strong>n8n</strong> is under the Sustainable Use License. Its docs say you may use it for your own internal business purposes or non-commercial purposes, and may distribute it only free of charge for non-commercial purposes. Anything else needs a separate agreement. Run it for your own company and it rarely matters. Embed it in a product you sell and it does.</li>
+<li><strong>Dify</strong> is &quot;a modified version of the Apache License 2.0&quot;. Per its license text, you may not use the source to operate a multi-tenant environment without written authorization (one tenant is one workspace), and you may not remove or modify the logo and copyright information in the Dify frontend. Both limits are invisible until you build a service for customers on it.</li>
+</ul>
+<p>Neither is a bad license. Both sit outside what most legal reviewers accept as open source, and n8n&#39;s own docs call the product source-available and explain why it chose not to use an open source license.</p>
+<p>Here is what that means for the four things people actually do with the software:</p>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead>
+<tr>
+<th>You want to...</th>
+<th>MIT or Apache 2.0</th>
+<th>Dify (modified Apache)</th>
+<th>n8n (Sustainable Use)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Run it inside your own company</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes, as &quot;internal business purposes&quot;</td>
+</tr>
+<tr>
+<td>Use it as the backend of a product you sell</td>
+<td>Yes</td>
+<td>Yes, its license allows use as a backend service</td>
+<td>Outside the license grant, ask n8n first</td>
+</tr>
+<tr>
+<td>Serve many customers from one install</td>
+<td>Yes</td>
+<td>Needs written authorization (one tenant is one workspace)</td>
+<td>Outside the license grant, ask n8n first</td>
+</tr>
+<tr>
+<td>Remove vendor branding</td>
+<td>Keep the copyright notice</td>
+<td>Not in the frontend without a commercial license</td>
+<td>Keep licensing notices intact</td>
+</tr>
+</tbody></table></div>
+<p>This is a reading aid, not legal advice. Dify&#39;s license text also reserves the producer&#39;s right to adjust the agreement, so re-read the file when you upgrade. If revenue depends on the answer, ask the vendor in writing.</p>
+<h3>Three checks before you adopt anything</h3>
+<ol>
+<li><strong>Open the LICENSE file, not the badge.</strong> AutoGen shows CC-BY-4.0 on GitHub because that file covers documentation, and its code license is in a separate LICENSE-CODE file (MIT). Dify, n8n and Flowise have custom licenses that GitHub cannot classify. A badge that says &quot;Other&quot;, or nothing, means read the file.</li>
+<li><strong>Search the repo for carve-outs.</strong> Look for ee/ or enterprise directories and for the phrase &quot;portions of this software are licensed as follows&quot; at the top of the license. Mastra, Flowise and n8n all have it.</li>
+<li><strong>Read the README&#39;s first screen and the last push date.</strong> AutoGen&#39;s maintenance-mode warning and Flowise&#39;s archive notice both sit at the very top of the README. A project can have 55,000 stars and no maintainers.</li>
+</ol>
+<h2>How to pick, in three questions</h2>
+<ol>
+<li><strong>Are you building an agent, or do you want one running by tonight?</strong> Building: Lane 1. Running: Lane 2.</li>
+<li><strong>Will you embed it in something you sell, or host it for other people?</strong> If yes, drop the source-available tier or buy the commercial license, and re-read the open-core directories.</li>
+<li><strong>Who owns what the agent produces?</strong> A framework gives you an agent loop and leaves the record to you. An assistant keeps its own memory. If a decision, an owner and an outcome have to outlive any one agent or model, you need a workspace layer on top of whichever agent you pick.</li>
+</ol>
+<h2>Where Maskin fits, honestly</h2>
+<p>Maskin is not an agent framework in the LangChain or CrewAI sense, and it is not a chat assistant. It is an open source workspace (Apache 2.0, checked in the repo) where agents work on typed objects: insights, bets, tasks and the relationships between them. Agents run in ephemeral sandboxed sessions, and the default agent is the Claude Code CLI, with Codex as an alternative. They read and write the workspace through Maskin&#39;s MCP server, the same API the web UI uses.</p>
+<p>What that means for the lanes above:</p>
+<ul>
+<li><strong>It complements frameworks and assistants.</strong> The MCP server has an HTTP variant for agents that run outside Maskin&#39;s own containers, so an MCP-capable agent can in principle read and write the same objects. We have not published a tested recipe for connecting the projects above, so treat that as something to prototype, not a documented integration.</li>
+<li><strong>It is early.</strong> Maskin has single-digit GitHub stars at the time of writing, against tens or hundreds of thousands for most of this page. Evaluate the architecture, not a track record.</li>
+<li><strong>Local models are not a validated path today.</strong> If running a local model is a hard requirement, OpenClaw (local models are plugins) or Hermes Agent (any model endpoint) fit better.</li>
+<li><strong>Self-hosting requires Docker and Docker Compose on the host</strong>, per the repo README.</li>
+</ul>
+<p>Choose Maskin when the pain is not &quot;which agent&quot; but &quot;where does the work live, who owns it, and did it work&quot;. The <a href="/docs/closed-loop-workspace/">closed-loop workspace</a> explains the model, and the <a href="/docs/mcp-tools/">MCP tools reference</a> lists what agents can do inside it. For hosting guides, see <a href="/alternatives/self-hosted-ai-agents/">self-hosted AI agents</a>; for coding-agent control planes, the <a href="/alternatives/self-hosted-ai-agent-control-plane/">self-hosted control plane page</a>.</p>
+<p><strong>Try it:</strong> <a href="/docs/self-hosted-ai-workspace/">self-host Maskin</a> under Apache 2.0, or read the source at <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">github.com/sindre-ai/maskin</a>.</p>
+<h2>FAQ</h2>
+<h3>What are open source AI agents?</h3>
+<p>Open source AI agents are agent software with public source code under a license that lets you run it yourself. That covers libraries such as LangChain, ready-made assistants such as OpenClaw and visual builders such as n8n. Licenses differ: n8n and Dify are source-available with commercial limits, while most of the field is plain MIT or Apache 2.0.</p>
+<h3>What are the best open source AI agents?</h3>
+<p>It depends on the job. For building your own agents, LangChain, CrewAI, the OpenAI Agents SDK and Microsoft Agent Framework are the large Python and .NET options, and Mastra covers TypeScript. For a ready-made assistant, OpenClaw, Hermes Agent and Letta. For visual workflows, n8n and Dify. For coding, see the separate coding-agents page.</p>
+<h3>Are open source AI agents free?</h3>
+<p>The software license is free for MIT and Apache 2.0 projects, but you still pay for hosting and for model calls unless you run a local model. Some projects also sell commercial products around the open code: CrewAI&#39;s AMP Suite, and n8n&#39;s Enterprise License for its .ee. files. Free to download is not the same as free to run.</p>
+<h3>Can you use open source AI agents commercially?</h3>
+<p>Under MIT or Apache 2.0, yes, including inside a product you sell. Under n8n&#39;s Sustainable Use License you can use it for your own internal business purposes but not resell or host it for others without an agreement. Dify requires written authorization for multi-tenant use and keeps its logo in the frontend. Check the LICENSE file, not the badge.</p>
+<h3>How do you build open source AI agents?</h3>
+<p>Pick a framework that matches your language: Python (LangChain, CrewAI, OpenAI Agents SDK, Google ADK, smolagents, Pydantic AI), .NET (Microsoft Agent Framework) or TypeScript (Mastra). Define the agent&#39;s instructions and tools, add MCP servers for external systems, and decide where its decisions and outputs are stored, because most frameworks leave the record to you.</p>
+<h3>Which open source AI agents can run locally?</h3>
+<p>OpenClaw&#39;s README says its state, memory and credentials live on your hardware, with local models as swappable plugins. Hermes Agent works with any model endpoint you point it at, and the OpenAI Agents SDK is provider-agnostic; check each framework&#39;s docs for local endpoints. For self-hosting guides and hosting trade-offs, see <a href="/alternatives/self-hosted-ai-agents/">self-hosted AI agents</a>.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/alternatives/self-hosted-ai-agents/">
+        <div class="doc-card__title">Self-hosted AI agents in 2026</div>
+        <div class="doc-card__desc">Hosting guides and the four self-hosted categories, license-first.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/alternatives/open-source-ai-coding-agent/">
+        <div class="doc-card__title">Open source AI coding agent</div>
+        <div class="doc-card__desc">The coding-agent shortlist, sorted by tier.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/closed-loop-workspace/">
+        <div class="doc-card__title">The closed-loop workspace</div>
+        <div class="doc-card__desc">The model behind Maskin: signals, bets, tasks and outcomes on shared typed objects.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/alternatives/n8n/">
+        <div class="doc-card__title">n8n alternative</div>
+        <div class="doc-card__desc">Replacements for n8n, sorted by what your runs have to leave behind.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Self-host Maskin free</h2>
+      <p>Apache 2.0, Docker Compose on your own hardware. If the pain is where the work lives and who owns it, not which agent to run, Maskin is the workspace layer.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

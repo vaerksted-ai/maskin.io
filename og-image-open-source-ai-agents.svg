@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111110" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#111110" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="120" fill="url(#topFade)"/>
+  <text x="80" y="98" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#5A5751" letter-spacing="4">OPEN SOURCE AI AGENTS</text>
+  <text x="80" y="160" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">Four lanes.</text>
+  <text x="80" y="222" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">Licenses checked.</text>
+  <text x="80" y="266" font-family="Newsreader, Georgia, serif" font-size="24" font-style="italic" fill="#8B8781">What to run, under which license, and where the work lives</text>
+  <g id="lanes">
+    <rect x="75" y="317" width="1050" height="54" rx="14" fill="none" stroke="#2563EB" stroke-width="1" opacity="0.28"/>
+    <rect x="80" y="322" width="1040" height="44" rx="11" fill="#131720" stroke="#2563EB" stroke-width="2"/>
+    <text x="102" y="350" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#FAFAF8">frameworks · LangChain, CrewAI, OpenAI Agents SDK</text>
+    <text x="1100" y="350" text-anchor="end" font-family="JetBrains Mono, ui-monospace, monospace" font-size="11" fill="#7FA6EE">lane 1</text>
+    <rect x="80" y="382" width="1040" height="44" rx="11" fill="#141311" stroke="#3A3835" stroke-width="1.4"/>
+    <text x="102" y="410" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#D6D3CC">assistants · OpenClaw, Hermes Agent, Letta</text>
+    <text x="1100" y="410" text-anchor="end" font-family="JetBrains Mono, ui-monospace, monospace" font-size="11" fill="#8B8781">lane 2</text>
+    <rect x="80" y="442" width="1040" height="44" rx="11" fill="#141311" stroke="#3A3835" stroke-width="1.4"/>
+    <text x="102" y="470" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#D6D3CC">visual builders · n8n, Dify, Flowise</text>
+    <text x="1100" y="470" text-anchor="end" font-family="JetBrains Mono, ui-monospace, monospace" font-size="11" fill="#8B8781">lane 3</text>
+    <rect x="80" y="502" width="1040" height="44" rx="11" fill="#141311" stroke="#3A3835" stroke-width="1.4"/>
+    <text x="102" y="530" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#D6D3CC">team workspaces · Paperclip, Maskin</text>
+    <text x="1100" y="530" text-anchor="end" font-family="JetBrains Mono, ui-monospace, monospace" font-size="11" fill="#8B8781">lane 4</text>
+  </g>
+  <text x="80" y="595" font-family="JetBrains Mono, ui-monospace, monospace" font-size="16" fill="#5A5751">maskin.io/alternatives/open-source-ai-agents</text>
+</svg>

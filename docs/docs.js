@@ -102,7 +102,8 @@
       { label: "Open source AI coding agent", href: "/alternatives/open-source-ai-coding-agent/" },
       { label: "n8n alternative", href: "/alternatives/n8n/" },
       { label: "Paperclip alternative", href: "/alternatives/paperclip/" },
-      { label: "OpenClaw alternative", href: "/alternatives/openclaw/" }
+      { label: "OpenClaw alternative", href: "/alternatives/openclaw/" },
+      { label: "Open source AI agents", href: "/alternatives/open-source-ai-agents/" }
     ]},
     { title: "Dansk", items: [
       { label: "AI-automatisering", href: "/da/ai-automatisering/" }
