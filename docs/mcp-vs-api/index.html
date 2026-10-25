@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP vs API: when a plain API is enough, and when it isn't</title>
+<meta name="description" content="An API is called by code; MCP lets an AI agent discover and call tools at runtime. When a plain API is enough, when MCP pays off, and what teams need.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/mcp-vs-api/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/mcp-vs-api/">
+<meta property="og:title" content="MCP vs API: what an agent needs that a plain API does not give it">
+<meta property="og:description" content="An API is called by code; MCP lets an AI agent discover and call tools at runtime. When a plain API is enough, when MCP pays off, and what teams need.">
+<meta property="og:image" content="https://maskin.io/og-image-mcp-vs-api.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="MCP vs API: what an agent needs that a plain API does not give it">
+<meta name="twitter:description" content="An API is called by code; MCP lets an AI agent discover and call tools at runtime. When a plain API is enough, when MCP pays off, and what teams need.">
+<meta name="twitter:image" content="https://maskin.io/og-image-mcp-vs-api.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/mcp-vs-api/#post",
+      "headline": "MCP vs API: what an agent needs from your team’s record that a plain API does not give it",
+      "description": "An API is called by code; MCP lets an AI agent discover and call tools at runtime. When a plain API is enough, when MCP pays off, and what teams need.",
+      "datePublished": "2026-10-25T00:00:00Z",
+      "dateModified": "2026-10-25T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "image": "https://maskin.io/og-image-mcp-vs-api.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/mcp-vs-api/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Model Context Protocol"
+        },
+        {
+          "@type": "Thing",
+          "name": "MCP"
+        },
+        {
+          "@type": "Thing",
+          "name": "API"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI agents"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "MCP vs API: what an agent needs from your team’s record that a plain API does not give it",
+          "item": "https://maskin.io/docs/mcp-vs-api/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is MCP the same as an API?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. An API is a contract between two pieces of software, called by code a developer wrote. MCP is a protocol for AI applications: it lets a model discover tools at runtime and call them through a standard JSON-RPC format. An MCP server usually wraps one or more APIs, so MCP is a layer on top, not a different kind of plumbing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will MCP replace APIs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. MCP depends on APIs. Most MCP servers translate a tool call into one or more ordinary API requests behind the scenes. What MCP replaces is the custom glue each AI client used to need for each API. Your REST endpoints stay where they are, and code that calls them directly keeps working."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is MCP just an API wrapper?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Partly, and that’s fine. Many MCP servers are wrappers. The good ones add more than translation: fewer, task-shaped tools, descriptions written for a model, runtime discovery and, on the server side, permissions and audit. A wrapper that mirrors every endpoint one to one usually performs worse for an agent than a smaller, task-shaped set of tools."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I use MCP instead of an API?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use MCP when an AI model, not your code, decides what to call, and when more than one agent or AI client needs the same capability. Use the API directly when the sequence is fixed, latency matters, or a single script does all the calling. Many teams use both: the API for their own code, an MCP server for their agents."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "MCP vs API vs CLI: which should an agent use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on where the agent runs. Coding agents in a terminal often do well with a mature CLI and its help text. Agents in chat apps, IDEs or hosted runtimes usually can’t run your CLI, so MCP is the portable choice. A plain API suits code you write yourself. A CLI and an MCP server can both sit on top of the same API."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is MCP faster than an API?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. MCP adds a layer, so a single call is never faster than calling the API directly. Agents also pay a context cost: every tool definition is loaded into the model before it acts. MCP saves developer time and makes one integration work across many AI clients. It doesn’t make individual requests quicker."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I turn an API into an MCP server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pick the handful of tasks an agent actually needs, not every endpoint. Write one tool per task with a clear name, a description that says when to use it, and a typed input schema. Have each tool call your API, return structured errors the model can act on, and mark read-only and destructive tools so clients can treat them differently."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a></li><li><a class="is-nested" href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a></li><li><a class="is-nested" href="/docs/learn/claude-code-agent-teams/">Claude Code agent teams</a></li><li><a class="is-nested" href="/docs/learn/claude-code-team/">Claude Code team</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="is-nested" href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-orchestration/">Agent orchestration</a></li><li><a class="is-nested" href="/docs/learn/ralph-wiggum-loop/">Ralph Wiggum loop</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="is-active is-nested" href="/docs/mcp-tools-vs-resources/" aria-current="page">MCP tools vs resources vs prompts</a></li><li><a class="is-active" href="/docs/mcp-vs-api/" aria-current="page">MCP vs API</a></li></ul></nav></aside>    <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / MCP vs API</p>
+    <p class="eyebrow">Article &middot; Comparison</p>
+    <h1>MCP vs API: what an agent needs from your team&rsquo;s record that a plain API does not give it</h1>
+    <p class="lead"><strong>MCP vs API in one line: an API is a contract your code calls, and MCP is a standard way for an AI agent to discover and call tools on its own while it runs.</strong> Most MCP servers call an ordinary API underneath, so MCP sits on top of APIs rather than replacing them.</p>
+    <p>If your own code decides every call, a plain API is enough. If an agent decides what to call, MCP saves you the glue. And if that agent works inside a team, what matters most is what the server behind MCP gives it: typed objects, permissions, a history of who changed what, and owners. <a href="/docs/mcp-tools/">Connect your agent to Maskin over MCP</a> to see that in a working workspace.</p>
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul>
+          <li><strong>An API is called by code a developer wrote. MCP is called by a model that chose the call at runtime.</strong> That is the whole difference in who decides.</li>
+          <li><strong>MCP does not replace your API.</strong> An MCP server is usually a thin, agent-friendly layer over an existing API.</li>
+          <li><strong>A plain API is enough</strong> when the sequence of calls is known, one script or one integration does the calling, and no model needs to choose between actions.</li>
+          <li><strong>MCP earns its place</strong> when several agents or AI clients need the same tools, and the model has to pick among them mid-task.</li>
+          <li><strong>MCP is only the wire.</strong> The spec itself says it cannot enforce permissions or consent at the protocol level. Those come from the host app and the server you connect to.</li>
+          <li><strong>For an agent in a team, the server matters more than the protocol.</strong> An agent that writes to a shared record needs typed objects it can&rsquo;t corrupt, permissions, an audit trail and an owner on every piece of work.</li>
+        </ul>
+      </div>
+    </div>
+    <h2>MCP vs API at a glance</h2>
+    <table>
+      <thead><tr><th></th><th>Plain API (REST, GraphQL, RPC)</th><th>MCP (Model Context Protocol)</th></tr></thead>
+      <tbody>
+        <tr><td>Who decides the call</td><td>A developer, at build time</td><td>The model, at runtime</td></tr>
+        <tr><td>How capabilities are found</td><td>You read the docs and write the client</td><td>The agent asks the server for its tool list</td></tr>
+        <tr><td>Message format</td><td>Whatever the API defines</td><td>JSON-RPC 2.0 with a shared schema</td></tr>
+        <tr><td>Unit of exchange</td><td>An endpoint and its payload</td><td>A tool (a verb with a typed input schema), plus resources and prompts</td></tr>
+        <tr><td>One integration serves</td><td>The client you wrote</td><td>Any MCP-capable agent client</td></tr>
+        <tr><td>Permissions and audit</td><td>Whatever the API implements</td><td>Whatever the host and server implement; the protocol can&rsquo;t enforce them</td></tr>
+        <tr><td>Cost you pay</td><td>Integration code per client</td><td>Tool definitions loaded into the model&rsquo;s context</td></tr>
+        <tr><td>Best for</td><td>Known, testable sequences</td><td>Agents choosing among actions as a task unfolds</td></tr>
+      </tbody>
+    </table>
+    <h2>What an API is, in agent terms</h2>
+    <p>An API is a fixed contract: send this request to this endpoint, get this response. It assumes a developer has already read the documentation, decided which endpoints matter and in what order, and written code that calls them. The intelligence lives in that code.</p>
+    <p>That is exactly why APIs are reliable. A payment call that runs the same way ten thousand times a day should not be improvised. You want it typed, tested and boring.</p>
+    <p>You can hand an agent an API too. Give the model an OpenAPI spec or a few function definitions and it will call endpoints. Plenty of production agents work that way. The catch shows up as soon as you have more than one agent, or more than one AI client, wanting the same capability: every one of them needs its own wrapper, its own description of each endpoint, its own auth handling.</p>
+    <h2>What MCP is, and what it adds</h2>
+    <p>The Model Context Protocol is an open standard for connecting AI applications to tools and data. The <a href="https://modelcontextprotocol.io/specification/latest" rel="noopener">current specification</a> defines three roles: a <strong>host</strong> (the AI app, such as Claude Code or an IDE), a <strong>client</strong> inside it, and a <strong>server</strong> that offers capabilities. Messages are JSON-RPC 2.0.</p>
+    <p>A server can offer three kinds of things:</p>
+    <ol>
+      <li><strong>Tools:</strong> functions the model can execute, each with a name, a description and a typed input schema.</li>
+      <li><strong>Resources:</strong> context and data the user or model can read.</li>
+      <li><strong>Prompts:</strong> templated messages and workflows for users.</li>
+    </ol>
+    <p>What MCP adds over a raw API comes down to three things:</p>
+    <ul>
+      <li><strong>Discovery at runtime.</strong> The agent asks the server what it can do and gets back a list of tools with descriptions. Nobody has to hard-code endpoints into the agent.</li>
+      <li><strong>One integration, many clients.</strong> Write the server once and every MCP-capable host can use it. That is the same move the Language Server Protocol made for code editors, which the spec cites as its inspiration.</li>
+      <li><strong>Tools shaped for a model, not a developer.</strong> A good MCP server doesn&rsquo;t mirror every endpoint. It exposes fewer, task-shaped tools with descriptions that tell the model when to use each one and what to call first.</li>
+    </ul>
+    <p>What MCP does not add is just as important. The spec says plainly that MCP &ldquo;cannot enforce these security principles at the protocol level&rdquo;. Consent, access control and data protection are the job of whoever builds the host and the server. MCP is the wire. It carries a good call and a bad call equally fast.</p>
+    <h2>When a plain API is enough</h2>
+    <p>Be honest about this part, because a lot of MCP servers get built that didn&rsquo;t need to exist. Stick with a plain API when:</p>
+    <ul>
+      <li><strong>Your code decides the sequence.</strong> A nightly sync, a webhook handler, a checkout flow. There&rsquo;s no choice for a model to make, so there&rsquo;s nothing for MCP to help with.</li>
+      <li><strong>One agent, one integration, and you own both.</strong> A single function definition in your agent framework is less to maintain than a server.</li>
+      <li><strong>You need tight latency or strict determinism.</strong> Every MCP tool call is a round trip the model chose to make. If the path is fixed, call the API directly.</li>
+      <li><strong>The agent already lives on the command line.</strong> Coding agents are very good at running a well-documented CLI. A mature CLI with clear help text is often a fine interface, which is why &ldquo;mcp vs api vs cli&rdquo; is a real question people search.</li>
+      <li><strong>Context is tight.</strong> Tool definitions cost tokens before the agent does anything. On our own server we measured the tool list at roughly 34,000 tokens in October 2026 (65 tools). Our audit recommends grouping rarely used tools into toolsets that load on demand, but that is a recommendation, not scheduled work. A big MCP server can eat a real share of the context window, so loading three of them to make two calls is a bad trade.</li>
+    </ul>
+    <p>If two or more of these are true, write the API call and move on.</p>
+    <h2>When MCP earns its place</h2>
+    <p>MCP pays off when the model, not your code, decides what to do next. The clearest cases:</p>
+    <ul>
+      <li><strong>Several agents or AI clients need the same capability.</strong> Your support agent, your coding agent in Claude Code and a teammate&rsquo;s Cursor setup should all reach the same tools without three hand-written wrappers.</li>
+      <li><strong>The task branches.</strong> An agent triaging a bug report might read the ticket, search related reports, check a recent release and then decide whether to file a task or ask a person. You can&rsquo;t script that in advance.</li>
+      <li><strong>People change tools faster than you can redeploy agents.</strong> With MCP, adding a capability to the server makes it visible to every connected agent the next time it lists tools.</li>
+      <li><strong>You want one place to govern access.</strong> If every agent reaches a system through one server, that server is where you decide what each one may read and write.</li>
+    </ul>
+    <h2>The question the &ldquo;vs&rdquo; hides: what is the agent writing to?</h2>
+    <p>Most MCP vs API guides stop at discovery and standardization. For an agent working alone on a laptop, that&rsquo;s the whole story. For an agent working inside a team, it&rsquo;s the start.</p>
+    <p>The moment an agent writes, not just reads, it is changing a record other people depend on. It files a task, updates a status, posts a finding, closes a piece of work. Four things now matter, and none of them come from the protocol:</p>
+    <ol>
+      <li><strong>Typed objects the agent can&rsquo;t corrupt.</strong> If the agent can set any status string it likes, the record drifts. The server should reject a status or field that doesn&rsquo;t exist for that type, and tell the agent why so it can fix the call.</li>
+      <li><strong>Permissions per agent and per system.</strong> A research agent may need to read your inbox but never send from it. That decision belongs to a person, set once, enforced on every call.</li>
+      <li><strong>An audit trail.</strong> When something changes, you need to see who changed it, when, and from which session, whether that was a person or an agent.</li>
+      <li><strong>An owner on every piece of work.</strong> Agents produce a lot. Without a named owner per object, nobody answers for it and nobody checks it.</li>
+    </ol>
+    <p>A plain API can offer all four, if someone builds them. MCP makes them reachable by any agent client without glue. Neither one gives them to you by default. So the better question than &ldquo;MCP or API?&rdquo; is: <strong>does the system behind the protocol give an agent a record it can safely share with people?</strong></p>
+    <h2>What this looks like in practice</h2>
+    <p>Here is how it works in Maskin, an open-source workspace built so that people and agents work on the same typed objects over MCP. We use it to run our own work, so this is first-hand, not a mock-up.</p>
+    <ul>
+      <li><strong>Objects are typed.</strong> Work is held as insights, bets, tasks, knowledge, content and loops, each with its own statuses and fields. Before writing, an agent can call <code>get_workspace_schema</code> to see the live list.</li>
+      <li><strong>Writes are checked.</strong> <code>create_objects</code> and <code>update_objects</code> validate type, status and metadata against the workspace schema and reject an out-of-range value instead of quietly storing it.</li>
+      <li><strong>Every object has a driver</strong>, the person or agent who owns it, and a comment thread where agents report back and people decide.</li>
+      <li><strong>History is kept.</strong> Lifecycle changes and comments are recorded per object and can be read back with <code>get_events</code>.</li>
+      <li><strong>Relationships are first-class.</strong> An insight informs a bet, a bet breaks into tasks, so an agent picking up a task can walk back to why it exists.</li>
+    </ul>
+    <p>Through the same wire it uses for everything else, the agent reaches a record with rules, owners and history. The full verb list is in the <a href="/docs/mcp-tools/">MCP tools reference</a>.</p>
+    <p>It&rsquo;s also fair to say what isn&rsquo;t finished. Our October 2026 audit of our own MCP server found that none of its 65 tools carry the spec&rsquo;s optional annotations (hints such as read-only or destructive that let a client auto-approve safe reads), and that write tools return a plain error string instead of the structured error that read tools return. The audit recommends fixing both; they are recommendations, not scheduled work. If you evaluate any MCP server, ours included, check for those annotations, for structured errors on writes, and for how heavy the tool list is.</p>
+    <h2>A quick way to decide</h2>
+    <p>Run these four questions in order. Stop at the first clear answer.</p>
+    <ol>
+      <li><strong>Does a model choose the calls?</strong> No: use the API. Yes: keep going.</li>
+      <li><strong>Will more than one agent or AI client need this?</strong> No: a function definition over the API may be enough. Yes: an MCP server pays for itself.</li>
+      <li><strong>Does the agent write to something people rely on?</strong> If yes, look past the protocol at the server: typed objects, permissions, audit trail, owners.</li>
+      <li><strong>Can the context window afford the tool list?</strong> If not, expose fewer, task-shaped tools, or load them on demand.</li>
+    </ol>
+    <h2>FAQ</h2>
+    <h3>Is MCP the same as an API?</h3>
+    <p>No. An API is a contract between two pieces of software, called by code a developer wrote. MCP is a protocol for AI applications: it lets a model discover tools at runtime and call them through a standard JSON-RPC format. An MCP server usually wraps one or more APIs, so MCP is a layer on top, not a different kind of plumbing.</p>
+    <h3>Will MCP replace APIs?</h3>
+    <p>No. MCP depends on APIs. Most MCP servers translate a tool call into one or more ordinary API requests behind the scenes. What MCP replaces is the custom glue each AI client used to need for each API. Your REST endpoints stay where they are, and code that calls them directly keeps working.</p>
+    <h3>Is MCP just an API wrapper?</h3>
+    <p>Partly, and that&rsquo;s fine. Many MCP servers are wrappers. The good ones add more than translation: fewer, task-shaped tools, descriptions written for a model, runtime discovery and, on the server side, permissions and audit. A wrapper that mirrors every endpoint one to one usually performs worse for an agent than a smaller, task-shaped set of tools.</p>
+    <h3>When should I use MCP instead of an API?</h3>
+    <p>Use MCP when an AI model, not your code, decides what to call, and when more than one agent or AI client needs the same capability. Use the API directly when the sequence is fixed, latency matters, or a single script does all the calling. Many teams use both: the API for their own code, an MCP server for their agents.</p>
+    <h3>MCP vs API vs CLI: which should an agent use?</h3>
+    <p>It depends on where the agent runs. Coding agents in a terminal often do well with a mature CLI and its help text. Agents in chat apps, IDEs or hosted runtimes usually can&rsquo;t run your CLI, so MCP is the portable choice. A plain API suits code you write yourself. A CLI and an MCP server can both sit on top of the same API.</p>
+    <h3>Is MCP faster than an API?</h3>
+    <p>No. MCP adds a layer, so a single call is never faster than calling the API directly. Agents also pay a context cost: every tool definition is loaded into the model before it acts. MCP saves developer time and makes one integration work across many AI clients. It doesn&rsquo;t make individual requests quicker.</p>
+    <h3>How do I turn an API into an MCP server?</h3>
+    <p>Pick the handful of tasks an agent actually needs, not every endpoint. Write one tool per task with a clear name, a description that says when to use it, and a typed input schema. Have each tool call your API, return structured errors the model can act on, and mark read-only and destructive tools so clients can treat them differently.</p>
+    <div class="related">
+      <p class="related__title">Where to go next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">
+          <div class="doc-card__title">Agent skills vs MCP vs cursor rules vs workflows</div>
+          <div class="doc-card__desc">where MCP sits among the other layers an agent uses.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/mcp-vs-rag/">
+          <div class="doc-card__title">MCP vs RAG</div>
+          <div class="doc-card__desc">why the wire and the retrieval layer aren&rsquo;t rivals either.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/mcp-tools-vs-resources/">
+          <div class="doc-card__title">MCP tools vs resources vs prompts</div>
+          <div class="doc-card__desc">which primitive to expose once you decide to build a server.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/learn/claude-code-team/">
+          <div class="doc-card__title">Claude Code team</div>
+          <div class="doc-card__desc">how a team shares setup, context and decisions instead of six private setups.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Want to see an agent work on a shared, typed record?</h2>
+      <p>The MCP tools reference lists every tool, the object types they act on, and what to call first.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="/docs/mcp-tools/">Connect your agent to Maskin over MCP</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

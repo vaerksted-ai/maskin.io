@@ -28,7 +28,7 @@ Tools are what a model reaches for on its own. The spec says “the language mod
 Two details from the spec change how you design them:
 - **Errors are part of the contract.** Execution errors go back in the result with the error flag set, so the model can read them and retry. Protocol errors, such as an unknown tool, are the ones a model is unlikely to fix.
 - **A tool can hand back a resource link.** The spec notes that links returned by a tool “are not guaranteed to appear in the results of a `resources/list` request”. So a tool can point at a URI without the server listing it anywhere.
-If the model needs to read something mid-task, make it a tool. A read-only lookup is still a tool when the model is the one asking. That is why reads like “get this object” or “list these events” sit in Maskin’s [tool list](/docs/mcp-tools/) next to the writes.
+If the model needs to read something mid-task, make it a tool. A read-only lookup is still a tool when the model is the one asking. That is why reads like “get this object” or “list these events” sit in Maskin’s [tool list](/docs/mcp-tools/) next to the writes. Whether you need MCP at all, or a plain API call is enough, is a separate question covered in [MCP vs API](/docs/mcp-vs-api/).
 
 ## Resources: context the application or the user picks
 The spec describes resources as designed to be application-driven, “with host applications determining how to incorporate context”. Its examples are a tree or list view for explicit selection, search and filter, and automatic inclusion by heuristic. A server that supports them must declare the resources capability. It can also offer resource templates, which are parameterized URIs (RFC 6570), and subscriptions so the host hears when a watched resource changes.

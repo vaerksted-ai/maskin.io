@@ -49,7 +49,7 @@ Read those together and the conclusion is structural. The retrieval mechanism is
 ## They compose — the three ways they actually stack
 The reason "versus" collapses is that the two are complementary by construction. There are three honest ways to put them together, and the demand data shows people searching for all three.
 **1. RAG behind MCP.** Expose your retrieval pipeline as an MCP server. Now any MCP-native agent can call search as a tool, under the same permissions and audit trail as every other call. This is the shape behind queries like `rag behind mcp` and `rag through mcp` — the retrieval mechanism becomes one tool on the wire.
-**2. MCP on top of RAG.** An agent uses the wire to reach a vector store, a search API, or a database directly, and decides for itself what to pull. Here MCP is the access layer and RAG's role shrinks to "a tool the agent learned to call."
+**2. MCP on top of RAG.** An agent uses the wire to reach a vector store, a search API, or a database directly, and decides for itself what to pull. Here MCP is the access layer and RAG's role shrinks to "a tool the agent learned to call." If your own code decides every call, you may not need the wire at all; see [MCP vs API](/docs/mcp-vs-api/).
 **3. Both under a state layer.** The retrieval mechanism finds things and the wire reaches things, but a shared, typed store holds what was decided. This is the only arrangement of the three where run two knows what run one did — and it is the one the "vs" question almost always hides.
 
 ## How to decide for your team

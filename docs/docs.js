@@ -86,6 +86,7 @@
       { label: "Knowledge wiki vs vector database", href: "/docs/knowledge-wiki-vs-vector-database/" },
       { label: "MCP vs RAG", href: "/docs/mcp-vs-rag/" },
       { label: "MCP tools vs resources vs prompts", href: "/docs/mcp-tools-vs-resources/", nested: true },
+      { label: "MCP vs API", href: "/docs/mcp-vs-api/" },
       { label: "At-risk account alerts", href: "/docs/at-risk-account-alerts/" }
     ]},
     { title: "Alternatives", items: [

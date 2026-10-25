@@ -1,7 +1,7 @@
 > Source: https://maskin.io/docs/api/
 
 # API reference
-Maskin is API-first: the UI and agents share one HTTP surface, built with Hono and documented with OpenAPI. The [MCP tools](/docs/mcp-tools/) are a thin layer over these same endpoints.
+Maskin is API-first: the UI and agents share one HTTP surface, built with Hono and documented with OpenAPI. The [MCP tools](/docs/mcp-tools/) are a thin layer over these same endpoints. Not sure whether your agent should call them directly or go through MCP? [MCP vs API](/docs/mcp-vs-api/) covers when each is enough.
 
 ## Base URL & OpenAPI
 All routes are served under `/api` (e.g. `http://localhost:3000/api` in dev). The full, authoritative spec is generated from the code and served live:
