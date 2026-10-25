@@ -1,10 +1,10 @@
 {
   "languages": {
     "da": { "locale": "da_DK", "hub": "/da/", "enabled": true, "nav": true },
-    "sv": { "locale": "sv_SE", "hub": "/sv/", "enabled": false, "nav": false }
+    "sv": { "locale": "sv_SE", "hub": "/sv/", "enabled": true, "nav": false }
   },
   "groups": {
-    "home": { "en": "/", "da": "/da/" }
+    "home": { "en": "/", "da": "/da/", "sv": "/sv/" }
   },
   "pages": [
     {
@@ -37,6 +37,19 @@
       "lang": "da",
       "kind": "native",
       "keyword": "ai værktøjer"
+    },
+    {
+      "path": "/sv/",
+      "lang": "sv",
+      "kind": "native",
+      "keyword": "maskin på svenska",
+      "lang_group": "home"
+    },
+    {
+      "path": "/sv/ai-agenter/",
+      "lang": "sv",
+      "kind": "native",
+      "keyword": "ai agenter"
     }
   ],
   "switcher_skip": [
@@ -49,7 +62,8 @@
     "deck",
     "docs/open-source-jira-alternative",
     "404.html",
-    "da/404.html"
+    "da/404.html",
+    "sv/404.html"
   ],
   "banned": [
     "Windows",
