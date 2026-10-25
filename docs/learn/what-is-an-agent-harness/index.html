@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is an agent harness? Definition, parts and options | Maskin</title>
+<meta name="description" content="An agent harness is everything in an AI agent except the model: prompts, tools, context, permissions and the loop. What's inside one, the main types, and how to choose.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/learn/what-is-an-agent-harness/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/learn/what-is-an-agent-harness/">
+<meta property="og:title" content="What is an agent harness? A plain definition and the main options">
+<meta property="og:description" content="An agent harness is everything in an AI agent except the model: prompts, tools, context, permissions and the loop. What's inside one, the main types, and how to choose.">
+<meta property="og:image" content="https://maskin.io/og-image-what-is-an-agent-harness.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="What is an agent harness? A plain definition and the main options">
+<meta name="twitter:description" content="An agent harness is everything in an AI agent except the model: prompts, tools, context, permissions and the loop. What's inside one, the main types, and how to choose.">
+<meta name="twitter:image" content="https://maskin.io/og-image-what-is-an-agent-harness.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/learn/what-is-an-agent-harness/#post",
+      "headline": "What is an agent harness? A plain definition, the main options, and where the work lands",
+      "name": "What is an agent harness? A plain definition, the main options, and where the work lands",
+      "description": "An agent harness is everything in an AI agent except the model: prompts, tools, context, permissions and the loop. What's inside one, the main types, and how to choose.",
+      "url": "https://maskin.io/docs/learn/what-is-an-agent-harness/",
+      "inLanguage": "en",
+      "datePublished": "2026-10-25T00:00:00Z",
+      "dateModified": "2026-10-25T00:00:00Z",
+      "image": [
+        "https://maskin.io/og-image-what-is-an-agent-harness.png"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/learn/what-is-an-agent-harness/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Agent harness"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI agents"
+        },
+        {
+          "@type": "Thing",
+          "name": "Harness engineering"
+        },
+        {
+          "@type": "Thing",
+          "name": "Claude Code"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "What is an agent harness?",
+          "item": "https://maskin.io/docs/learn/what-is-an-agent-harness/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an agent harness in simple words?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": ""
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does an agent harness do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": ""
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between an agent and a harness?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": ""
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Claude Code an agent harness?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": ""
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between an agent harness and an agent framework?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": ""
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is harness engineering?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": ""
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is MCP part of an agent harness?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Solutions"><p class="doc-sidebar__title">Solutions</p><ul class="doc-sidebar__list"><li><a class="" href="/solutions/product-teams/">Product teams</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All loops</a></li><li><a class="is-nested" href="/marketplace/seo-publishing/">The SEO publishing loop</a></li><li><a class="is-nested" href="/marketplace/outbound/">The outbound loop</a></li><li><a class="is-nested" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki loop</a></li><li><a class="is-nested" href="/marketplace/linkedin-content/">The LinkedIn content loop</a></li><li><a class="is-nested" href="/marketplace/product-delivery/">The product delivery loop</a></li><li><a class="" href="/loops/ai-customer-feedback-loop/">AI customer feedback loop</a></li><li><a class="" href="/marketplace/competitive-intelligence/">The competitive intelligence loop</a></li><li><a class="is-nested" href="/loops/competitive-intelligence/">Competitive intelligence loop: how it works</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/composable-ai-agents-vs-ai-employees/">Composable AI agents vs AI employees</a></li><li><a class="" href="/docs/learn/human-in-the-loop/">Human in the loop</a></li><li><a class="is-nested" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a></li><li><a class="is-nested" href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="is-nested" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="is-nested" href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-orchestration/">Agent orchestration</a></li><li><a class="is-nested" href="/docs/learn/ralph-wiggum-loop/">Ralph Wiggum loop</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/learn/claude-code-for-product-managers/">Claude Code for product managers</a></li><li><a class="is-nested" href="/docs/learn/claude-code-agent-teams/">Claude Code agent teams</a></li><li><a class="is-nested" href="/docs/learn/claude-code-team/">Claude Code team</a></li><li><a class="is-nested" href="/docs/learn/choose-a-knowledge-layer/">How to choose a knowledge layer</a></li><li><a class="is-active" href="/docs/learn/what-is-an-agent-harness/" aria-current="page">What is an agent harness?</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="" href="/docs/at-risk-account-alerts/">At-risk account alerts</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-linear-alternative/">Open source Linear alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="" href="/alternatives/open-source-alternative-to-claude-cowork/">Open source alternative to Claude Cowork</a></li><li><a class="" href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane</a></li><li><a class="" href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents</a></li><li><a class="" href="/alternatives/open-source-ai-coding-agent/">Open source AI coding agent</a></li><li><a class="" href="/alternatives/n8n/">n8n alternative</a></li><li><a class="" href="/alternatives/paperclip/">Paperclip alternative</a></li><li><a class="" href="/alternatives/openclaw/">OpenClaw alternative</a></li></ul></nav></aside>  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / What is an agent harness?</p>
+    <p class="eyebrow">Article &middot; Guide</p>
+    <h1>What is an agent harness? A plain definition, the main options, and where the work lands</h1>
+<p class="lead"><strong>An agent harness is everything in an AI agent except the model: the code, prompts, tools and loop that turn a model&rsquo;s answers into actions.</strong> The model predicts the next step. The harness gives it instructions, tools, a place to work, and the loop that runs it until the job is done. Claude Code is one.</p>
+<p>The shorthand &ldquo;Agent = Model + Harness&rdquo; comes from LangChain, and Martin Fowler&rsquo;s site quotes it: &ldquo;The term harness has emerged as a shorthand to mean everything in an AI agent except the model itself.&rdquo; The Claude Agent SDK, OpenAI&rsquo;s Codex CLI and LangChain&rsquo;s Deep Agents are harnesses too. What a harness doesn&rsquo;t keep is the team&rsquo;s record of the work: who asked for it, who owns it, and whether it worked.</p>
+<div class="callout callout--muted"><div class="callout__icon" aria-hidden="true">&#10003;</div><div class="callout__body"><strong>Key takeaways</strong><ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+<li><strong>Agent = model + harness.</strong> LangChain&rsquo;s shorthand: if it isn&rsquo;t the model weights, it&rsquo;s harness: prompts, tools, context handling, permissions, the loop.</li>
+<li><strong>The harness decides most of what you experience.</strong> The same model behaves very differently in two harnesses, because the harness controls what it sees and what it can do.</li>
+<li><strong>A harness is more opinionated than a framework.</strong> Frameworks give you building blocks. Runtimes give you durable execution. Harnesses come with defaults already wired in.</li>
+<li><strong>Good harnesses have guides and sensors.</strong> Guides steer the agent before it acts. Sensors such as tests and linters catch mistakes after.</li>
+<li><strong>Harnesses are swappable.</strong> Teams change harnesses as models and tools move. That&rsquo;s a reason to keep the record of the work somewhere that outlasts any one of them.</li>
+</ul></div></div>
+<h2>Where the word &ldquo;harness&rdquo; comes from</h2>
+<p>In agent work the word took hold in 2025 and 2026. A few definitions that have stuck:</p>
+<ul>
+<li><strong>Martin Fowler&rsquo;s site</strong> (Birgitta Böckeler, April 2026), quoting LangChain&rsquo;s &ldquo;Agent = Model + Harness&rdquo;: &ldquo;The term harness has emerged as a shorthand to mean everything in an AI agent except the model itself.&rdquo;</li>
+<li><strong>LangChain</strong> (Harrison Chase, October 2025) places a harness above frameworks and runtimes: it &ldquo;adds in default prompts, opinionated handling for tool calls, tools for planning, has access to a filesystem, and more.&rdquo;</li>
+<li><strong>Anthropic</strong> (November 2025) calls its own Claude Agent SDK &ldquo;a powerful, general-purpose agent harness adept at coding&rdquo; and other tool-using tasks.</li>
+</ul>
+<p>US searches for &ldquo;agent harness&rdquo; went from almost none in August 2025 to a peak of about 6,600 a month in April 2026. The idea caught on because it named something builders already felt: most of the work in making an agent reliable happens outside the model.</p>
+<h2>What&rsquo;s inside an agent harness</h2>
+<p>Strip any harness down and you&rsquo;ll find roughly the same parts. This is a working map, not a standard. A harness has eight parts:</p>
+<ol>
+<li><strong>The loop</strong>: call the model, run its tool, repeat.</li>
+<li><strong>Instructions</strong>: system prompt plus files like CLAUDE.md or AGENTS.md.</li>
+<li><strong>Tools</strong>: file edits, shell, web search, MCP servers.</li>
+<li><strong>Context management</strong>: what fits in the context window each call.</li>
+<li><strong>State and memory</strong>: progress that survives between sessions.</li>
+<li><strong>Permissions and sandboxing</strong>: what the agent may touch, and where it runs.</li>
+<li><strong>Guides and sensors</strong>: rules before it acts, checks after.</li>
+<li><strong>Hooks and extensions</strong>: your own code at set points.</li>
+</ol>
+<p>A few of these need more than a label. The loop is the part every harness has: call the model, run the tool it asked for, feed the result back, repeat until it stops. Instruction files are loaded every session so the agent starts with your project&rsquo;s rules. Context management means summarizing or dropping old material when the window fills up. State can be as plain as a plan file or a progress log on disk.</p>
+<p>Guides and sensors are Böckeler&rsquo;s terms. Guides steer the agent before it acts (rules, examples, specs). Sensors check after it acts (tests, type checks, linters, reviews) so it can correct itself. Hooks are where you can run your own code, for example to block a command or add a check when the agent tries to stop.</p>
+<p>Anthropic&rsquo;s write-up on long-running agents shows how much of this is plain engineering. Their harness has a first session that sets up the environment and a progress file, then asks each later session to work on &ldquo;only one feature at a time.&rdquo; None of that is the model. All of it changes the result.</p>
+<h2>Agent harness vs framework vs runtime</h2>
+<p>These three get mixed up constantly. Harrison Chase&rsquo;s split is the clearest one in use:</p>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead><tr><th></th><th>Agent framework</th><th>Agent runtime</th><th>Agent harness</th></tr></thead>
+<tbody>
+<tr><td>What it gives you</td><td>Building blocks and abstractions</td><td>Infrastructure to run agents reliably in production</td><td>A ready-made agent with defaults wired in</td></tr>
+<tr><td>Typical features</td><td>Model wrappers, tool definitions, chains</td><td>Durable execution, streaming, persistence, human-in-the-loop pauses</td><td>System prompt, planning tools, filesystem, tool-call handling, context management</td></tr>
+<tr><td>How opinionated</td><td>Low</td><td>Low to medium</td><td>High</td></tr>
+<tr><td>You write</td><td>Most of the agent</td><td>The agent logic, not the plumbing</td><td>Your task and your domain tools</td></tr>
+<tr><td>Examples</td><td>LangChain, OpenAI Agents SDK, Google ADK, Vercel AI SDK</td><td>LangGraph, Temporal, Inngest</td><td>Claude Code, Claude Agent SDK, Deep Agents, Codex CLI</td></tr>
+</tbody>
+</table></div>
+<p>The runtime gives you the most control and the least abstraction. The harness gives you the reverse. Many teams use a harness without ever touching the layers below it.</p>
+<h2>Agent harness vs model</h2>
+<p>A question that comes up a lot: if the model is so capable, why does the harness matter? Because the model only sees what the harness shows it and can only do what the harness lets it do. Two practical consequences:</p>
+<ul>
+<li><strong>Benchmarks measure a pair, not a model.</strong> A coding score is really a model-plus-harness score. Change the harness and the number moves.</li>
+<li><strong>You can improve an agent without touching the model.</strong> Better instructions, tighter tools, stricter tests and smarter context handling are all harness work, and they&rsquo;re usually the cheapest gains available.</li>
+</ul>
+<h2>The main types of agent harness</h2>
+<p>A fair way to compare harnesses is by what they&rsquo;re built for, rather than by a feature checklist that changes every month.</p>
+<h3>Coding harnesses you use directly</h3>
+<p>Claude Code, OpenAI&rsquo;s Codex CLI and open-source options such as OpenCode are harnesses you run in a terminal or an editor. They come with file editing, shell access, project instruction files, permissions and a loop tuned for software work. <strong>Pick one of these</strong> if your job is writing and changing code and you want something that works today.</p>
+<h3>General-purpose harnesses you build on</h3>
+<p>The Claude Agent SDK and LangChain&rsquo;s Deep Agents give you a harness as a library. You bring the model and your domain tools, and they supply the loop, planning, filesystem access and context handling. Anthropic positions its SDK for coding and for other tasks that need tools to gather context, plan and act. LangChain describes Deep Agents as a general-purpose equivalent of Claude Code. <strong>Pick one of these</strong> when you&rsquo;re building an agent into your own product or workflow.</p>
+<h3>Your own harness on a framework or runtime</h3>
+<p>Some teams start from a framework and a runtime and assemble their own harness. It&rsquo;s more work, but every default is yours. <strong>Do this</strong> when no off-the-shelf harness fits your constraints, such as strict data handling or an unusual tool set, and you have the engineering time to maintain it.</p>
+<h3>How to choose</h3>
+<p>Ask four questions, in order:</p>
+<ol>
+<li><strong>What&rsquo;s the work?</strong> Code changes point to a coding harness. Anything else points to a general-purpose one.</li>
+<li><strong>Where must it run?</strong> Your laptop, a CI job, a sandbox, your own servers. This rules out options fast.</li>
+<li><strong>What must it never do?</strong> Check how each harness handles permissions, approvals and blocking actions.</li>
+<li><strong>How will you know it worked?</strong> If the harness has no place for tests and checks to feed back, you&rsquo;ll be the sensor.</li>
+</ol>
+<h2>Harness engineering</h2>
+<p>&ldquo;Harness engineering&rdquo; is the practice of improving an agent by changing its harness rather than its model. In practice that means writing clearer instruction files, trimming and describing tools well, adding hooks that block risky actions, and building fast checks the agent can run on its own work.</p>
+<p>Böckeler&rsquo;s framing is a useful checklist. A well-built harness should do two things: raise the odds the agent gets it right the first time, and give it a feedback loop that catches as many problems as possible &ldquo;before they even reach human eyes.&rdquo; Guides handle the first. Sensors handle the second.</p>
+<p>The step after harness engineering is <a href="/docs/what-is-loop-engineering/">loop engineering</a>: designing the system that decides when an agent runs, what it reads and writes, where a person reviews it, and what condition closes the work.</p>
+<h2>What a harness doesn&rsquo;t keep</h2>
+<p>A harness is built to run a session well. When the session ends, most of what made it meaningful to a team isn&rsquo;t held anywhere the team can see:</p>
+<ul>
+<li><strong>Why the work was started.</strong> The request, the customer signal or the bet behind the task.</li>
+<li><strong>Who owns it.</strong> The person or agent who answers for the result after the session closes.</li>
+<li><strong>What was decided along the way.</strong> Including what was tried and rejected.</li>
+<li><strong>Whether it worked.</strong> Not &ldquo;the agent stopped,&rdquo; but whether the change did what it was for.</li>
+</ul>
+<p>Harnesses also change. A team might use Claude Code this quarter, add Codex for some jobs next quarter and build on an SDK the quarter after. Each keeps its own sessions, settings and notes in its own format. If the record of the work lives inside one harness, switching harnesses means losing it.</p>
+<p>That&rsquo;s why it helps to keep the record of the work in a shared place your harnesses write to, rather than inside any single one of them.</p>
+<h2>Where the harness&rsquo;s work lands in Maskin</h2>
+<p>Maskin is an open-source workspace built for this. It&rsquo;s the shared record where the harness&rsquo;s work lands: bets, tasks, owners and outcomes, which last longer than any one harness.</p>
+<p>Work in Maskin is held as typed objects. A signal comes in as an insight, becomes a bet with a stated success condition, and breaks into tasks. Every object has a driver, the person or agent who owns it, and a comment thread where agents report back and people decide. When a bet ends, its outcome is recorded against the condition it started with. Agents reach all of this over MCP, so any MCP-capable harness can read the context before it starts and write back what it did. Maskin&rsquo;s own agent sessions run the Claude Code and Codex command-line tools in isolated microVMs.</p>
+<p>The harness does the work. The record says why it was done, who owns it, and whether it worked. If you swap the harness next quarter, the record stays.</p>
+<h2>FAQ</h2>
+<h3>What is an agent harness in simple words?</h3>
+<p></p>
+<p>An agent harness is the software wrapped around an AI model that lets it act, not just answer. It gives the model instructions, tools, a place to work, a way to track progress and a loop that keeps it going until the task is done. The model is the brain. The harness is everything else that makes it an agent.</p>
+<h3>What does an agent harness do?</h3>
+<p></p>
+<p>It runs the agent loop: sends the model a prompt and context, executes the tools the model asks for, feeds results back, and repeats. Along the way it manages what fits in the context window, enforces permissions, saves progress, and runs checks such as tests so the agent can correct its own mistakes.</p>
+<h3>What is the difference between an agent and a harness?</h3>
+<p></p>
+<p>An agent is the whole system that acts on a task. A harness is the agent minus the model. In the shorthand LangChain uses, Agent = Model + Harness. Swap the model and keep the harness, and you have a different agent with the same tools and rules.</p>
+<h3>Is Claude Code an agent harness?</h3>
+<p></p>
+<p>Yes. Claude Code wraps Claude models with a system prompt, file and shell tools, project instruction files, permissions, hooks and an agent loop tuned for software work. Anthropic also offers the Claude Agent SDK, which it describes as a general-purpose agent harness, for building agents outside a terminal.</p>
+<h3>What is the difference between an agent harness and an agent framework?</h3>
+<p></p>
+<p>A framework gives you building blocks: model wrappers, tool definitions and abstractions you assemble yourself. A harness is higher level and opinionated: it comes with default prompts, planning tools, filesystem access and tool handling already wired in. LangChain is a framework. Deep Agents, built on it, is a harness.</p>
+<h3>What is harness engineering?</h3>
+<p></p>
+<p>Harness engineering is improving an agent by changing everything around the model: instructions, tools, context handling, permissions, hooks and automated checks. The aim is for the agent to get things right more often and to catch its own mistakes before a person has to, without changing the model itself.</p>
+<h3>Is MCP part of an agent harness?</h3>
+<p></p>
+<p>MCP is how a harness connects to outside tools and data. The harness is the MCP host, with a client inside it: it discovers tools on MCP servers and calls them when the model asks. MCP itself is the wire, not the harness, so any MCP-capable harness can use the same servers.</p>
+<h2>Where to go next</h2>
+<ul>
+<li><a href="/docs/what-is-loop-engineering/">What is loop engineering in AI</a>: designing the system around agents, not just the agent.</li>
+<li><a href="/docs/learn/agent-orchestration/">Agent orchestration, agentic loops and control planes</a>: what coordinates several agents, and which a small team needs.</li>
+<li><a href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a>: why the coding agent and the record of the work are different jobs.</li>
+</ul>
+<p><strong>Want your harnesses&rsquo; work to land somewhere the whole team can see?</strong> <a href="/docs/self-hosted-ai-workspace/" id="cta-self-host" data-cta="self-host" data-ph-capture-attribute-cta="self-host" data-ph-capture-attribute-source-page="what-is-an-agent-harness">Self-host Maskin</a> and keep bets, owners and outcomes in one shared record.</p>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

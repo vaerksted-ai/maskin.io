@@ -81,6 +81,7 @@
       { label: "Claude Code agent teams", href: "/docs/learn/claude-code-agent-teams/", nested: true },
       { label: "Claude Code team", href: "/docs/learn/claude-code-team/", nested: true },
       { label: "How to choose a knowledge layer", href: "/docs/learn/choose-a-knowledge-layer/", nested: true },
+      { label: "What is an agent harness?", href: "/docs/learn/what-is-an-agent-harness/" },
       { label: "Agent skills marketplace", href: "/docs/agent-skills-marketplace/" },
       { label: "Knowledge wiki vs vector database", href: "/docs/knowledge-wiki-vs-vector-database/" },
       { label: "MCP vs RAG", href: "/docs/mcp-vs-rag/" },
