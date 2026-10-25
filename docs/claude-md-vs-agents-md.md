@@ -48,7 +48,7 @@ There are four ways to get `AGENTS.md` in front of Claude Code, and each has a f
 - **Symlink `CLAUDE.md` to `AGENTS.md`.** Fine if you need no Claude-specific content. Two catches from Anthropic’s docs: Claude’s Edit and Write tools refuse to write through a symlink and redirect the edit to the target, and on Windows a committed symlink checks out as a one-line text file unless `core.symlinks` is enabled.
 - **Set Project instructions to `claude-md-and-agents-md`.** Loads both files together. It lives in your user or managed settings, so it does not travel with the repo and cannot protect teammates.
 One mistake to avoid: a `CLAUDE.md` that says “read AGENTS.md” in plain words. Claude sees the file only if it decides to open it. Use the import.
-After any change, run `/context` in Claude Code and confirm `CLAUDE.md` appears under Memory files. When the fallback is doing the work, an interactive session prints a line such as “no CLAUDE.md found; AGENTS.md loaded” with the path.
+After any change, run `/context` in Claude Code and confirm `CLAUDE.md` appears under Memory files. When the fallback is doing the work, an interactive session prints a line such as “no CLAUDE.md found; AGENTS.md loaded” with the path. For what else loads at the start of a session, and what stays on one machine, see [Claude Code memory](/docs/learn/claude-code-memory/).
 
 ## What happens when files nest
 Monorepos break the “same behavior everywhere” assumption fastest:
