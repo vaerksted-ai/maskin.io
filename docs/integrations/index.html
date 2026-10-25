@@ -261,7 +261,7 @@
       <li><strong>Auth:</strong> manual.</li>
       <li><strong>MCP:</strong> <strong>no MCP surface.</strong> Skjald does not expose an attachable MCP server. It emits <code>meeting</code> created/updated events onto the graph; agents subscribe to those events like they subscribe to any other object state change.</li>
       <li><strong>What it does:</strong> first-party meeting notetaker. It attaches to meetings and produces transcripts and notes as <code>meeting</code> objects (not files). Registered but not connected in every workspace.</li>
-      <li><strong>Common use:</strong> meeting &rarr; knowledge loops. A meeting object's <code>status &rarr; notes_ready</code> transition triggers a distiller agent that writes a <code>knowledge</code> page from the transcript and validates it under a human gate.</li>
+      <li><strong>Common use:</strong> meeting &rarr; knowledge loops. A meeting object's <code>status &rarr; notes_ready</code> transition triggers a distiller agent that writes a <code>knowledge</code> page from the transcript and validates it under a human gate. The <a href="/marketplace/knowledge-wiki/">LLM wiki loop</a> applies that pattern to closed bets.</li>
     </ul>
     <h2>Auth types at a glance</h2>
     <table>
