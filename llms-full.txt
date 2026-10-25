@@ -4320,7 +4320,7 @@ Be honest about this part, because a lot of MCP servers get built that didn’t 
 - **One agent, one integration, and you own both.** A single function definition in your agent framework is less to maintain than a server.
 - **You need tight latency or strict determinism.** Every MCP tool call is a round trip the model chose to make. If the path is fixed, call the API directly.
 - **The agent already lives on the command line.** Coding agents are very good at running a well-documented CLI. A mature CLI with clear help text is often a fine interface, which is why “mcp vs api vs cli” is a real question people search.
-- **Context is tight.** Tool definitions cost tokens before the agent does anything. On our own server we measured the tool list at roughly 34,000 tokens in October 2026 (65 tools). Our audit recommends grouping rarely used tools into toolsets that load on demand, but that is a recommendation, not scheduled work. A big MCP server can eat a real share of the context window, so loading three of them to make two calls is a bad trade.
+- **Context is tight.** Tool definitions cost tokens before the agent does anything. On our own server the tool list came to roughly 34,000 tokens when we measured in October 2026. Our audit recommends grouping rarely used tools into toolsets that load on demand, but that is a recommendation, not scheduled work. A big MCP server can eat a real share of the context window, so loading three of them to make two calls is a bad trade.
 If two or more of these are true, write the API call and move on.
 
 ## When MCP earns its place
@@ -4347,7 +4347,7 @@ Here is how it works in Maskin, an open-source workspace built so that people an
 - **History is kept.** Lifecycle changes and comments are recorded per object and can be read back with `get_events`.
 - **Relationships are first-class.** An insight informs a bet, a bet breaks into tasks, so an agent picking up a task can walk back to why it exists.
 Through the same wire it uses for everything else, the agent reaches a record with rules, owners and history. The full verb list is in the [MCP tools reference](/docs/mcp-tools/).
-It’s also fair to say what isn’t finished. Our October 2026 audit of our own MCP server found that none of its 65 tools carry the spec’s optional annotations (hints such as read-only or destructive that let a client auto-approve safe reads), and that write tools return a plain error string instead of the structured error that read tools return. The audit recommends fixing both; they are recommendations, not scheduled work. If you evaluate any MCP server, ours included, check for those annotations, for structured errors on writes, and for how heavy the tool list is.
+It’s also fair to say what isn’t finished. Our October 2026 audit of our own MCP server found that none of its tools carry the spec’s optional annotations (hints such as read-only or destructive that let a client auto-approve safe reads), and that write tools return a plain error string instead of the structured error that read tools return. The audit recommends fixing both; they are recommendations, not scheduled work. If you evaluate any MCP server, ours included, check for those annotations, for structured errors on writes, and for how heavy the tool list is.
 
 ## A quick way to decide
 Run these four questions in order. Stop at the first clear answer.
