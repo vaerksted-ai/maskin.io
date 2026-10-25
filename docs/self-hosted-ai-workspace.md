@@ -1,7 +1,7 @@
 > Source: https://maskin.io/docs/self-hosted-ai-workspace/
 
-# Self-hosted AI workspace: bring your own Claude or Codex
-A self-hosted AI workspace runs your product-management loops on your own infrastructure, under a license you can audit, with agents that use your own model access. Maskin is Apache-2.0 and self-hostable at no software cost. Agent sessions run the Claude Code CLI by default, or the Codex CLI, so you bring your own Anthropic or OpenAI access. For teams that can’t send product data to a hosted vendor, that’s the structural answer — the same capability as a hosted agentic workspace, with data custody on your side of the line.
+# Self-hosted AI workspace: run Claude or Codex agents on your own infrastructure
+Self-hosted AI means the AI runs on infrastructure you control, not a vendor’s. A self-hosted AI workspace like Maskin runs your product-management loops on your own infrastructure, under a license you can audit, with agents that use your own model access. Maskin is Apache-2.0 and self-hostable at no software cost. Agent sessions run the Claude Code CLI by default, or the Codex CLI, so you bring your own Anthropic or OpenAI access. For teams that can’t send product data to a hosted vendor, that’s the structural answer — the same capability as a hosted agentic workspace, with data custody on your side of the line.
 > ✓
 > **Key takeaways**
 > Self-hosting answers three buyer needs: data sovereignty, control over your model access, and auditability.
