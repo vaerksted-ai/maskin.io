@@ -5055,7 +5055,7 @@ It is the output side of the [product discovery loop](/marketplace/product-disco
 - **Fails safely:** if a change fails review or the release check, it stops there and goes back to the task. A safety-net sweep also catches any merged pull request whose bet was left open.
 
 ## Pick per bet, not per team
-You don’t have to move everything. Run this loop on the bets that suit it, such as AI-heavy work or small teams with tight engineering time, and keep the rest in Jira or Linear. Both paths read from the same shaped bet and write the result back to the same place. The [product teams guide](/solutions/product-teams/) walks through both paths.
+You don’t have to move everything. Run this loop on the bets that suit it, such as AI-heavy work or small teams with tight engineering time, and keep the rest in Jira or Linear. Both paths read from the same shaped bet and write the result back to the same place. If you are weighing a full move off Jira, the [open source Jira alternative](/alternatives/open-source-jira-alternative/) page compares the open source trackers with this bet-based approach. The [product teams guide](/solutions/product-teams/) walks through both paths.
 
 ## Frequently asked questions
 
