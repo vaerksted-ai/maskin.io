@@ -34,3 +34,7 @@
 /workflows/knowledge-wiki       /marketplace/knowledge-wiki/  301
 /workflows/                     /marketplace/                 301
 /workflows                      /marketplace/                 301
+
+# Sprint offer retired: free 60 minute onboarding now lives at /onboarding/.
+/sprint/                        /onboarding/                  301
+/sprint                         /onboarding/                  301
