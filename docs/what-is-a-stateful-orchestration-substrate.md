@@ -1,7 +1,8 @@
 > Source: https://maskin.io/docs/what-is-a-stateful-orchestration-substrate/
 
 # What is a stateful orchestration substrate? Fixing handoff amnesia in multi-agent pipelines
-**A stateful orchestration substrate is a shared, typed store that carries state *between* stateless agents so a pipeline of agents can produce coherent work across handoffs.** Each agent runs fresh, reads what earlier agents wrote, does its job, and writes the result back. The substrate is where the state lives; the agents are where the reasoning happens. Maskin’s typed-object graph — insights, bets, tasks, comments, and typed relationships with statuses — is one shape of it.
+**A stateful orchestration substrate is a shared, typed store that carries state *between* stateless agents, so a pipeline of agents stays coherent across handoffs.** Each agent starts fresh, reads what earlier agents wrote, does its job, and writes the result back. Red Hat’s phrase for it: *stateless agents, stateful orchestration*.
+The substrate is where the state lives; the agents are where the reasoning happens. Maskin’s typed-object graph — insights, bets, tasks, comments, and typed relationships with statuses — is one shape of it.
 > **Key takeaways**
 > **Handoff amnesia is a named failure mode.** Each subagent runs in its own context window by design, so state that isn’t written down is lost the moment the session ends.
 > **The community named the fix in 72 hours (Aug 25–27, 2026).** Stateless agents, stateful orchestration substrate — RedHat’s phrasing. Five independent sources converged on the same shape in three days. Where the substrate sits next to orchestration frameworks, loops and control planes is mapped in [the coordination-layer comparison](/docs/learn/agent-orchestration/).
@@ -84,6 +85,14 @@ list_relationships({ object_id: "<bet id>" })
 ```
 Agent 3 knows what agent 1 discovered — because agent 1 wrote it to the substrate, and the substrate is typed, queryable, and human-readable.
 The alternative is passing text summaries back through function return values. That is the compression step that loses information; it is the exact anti-pattern Empirical named.
+
+## How it differs from LangGraph-style state graphs
+LangGraph is the comparison most readers reach for first, so it is worth making precisely. LangGraph carries state in a typed schema that the graph’s nodes read and update, checkpointed to a database at every step. It is a runtime: you define the topology, and the state belongs to one execution, keyed by a `thread_id`. Same thread, same state; new thread, fresh state.
+A substrate sits at a different layer. Three differences matter in practice:
+- **Scope.** Graph state lives inside one run of one graph. A substrate outlives runs: the insight an agent wrote on Monday is what a different agent, in a different session, reads on Friday.
+- **Who writes.** [LangChain’s recommended multi-agent default](https://docs.langchain.com/oss/python/langchain/multi-agent) is subagents-as-tools: a parent calls specialists, each starts fresh, and its final output folds back into the parent’s messages. Routing and state both flow through the parent. In a substrate, any agent writes to the shared store directly, and any other agent or human can read it.
+- **Who reads.** A checkpoint exists so the runtime can resume. A substrate object is meant to be read by people too: the typed object a human reviews in the UI is the one the next agent loads over MCP.
+They are not rivals. LangChain’s docs describe subagents as stateless by design, trading “strong context isolation” for repeated model calls. That is the first half of the pattern. The substrate is the second half, and because LangChain treats MCP as a first-class integration, a LangGraph agent can call a substrate like any other tool server.
 
 ## When the substrate shape holds — and when it doesn’t
 The substrate frame is not always the right shape. Honest limits:
