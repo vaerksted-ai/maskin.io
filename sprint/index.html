@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>try{if(localStorage.getItem('maskin-api-key'))window.location.replace('/workspaces')}catch(e){}</script>
-<title>AI-Native Loop Sprint — Maskin</title>
-<meta name="description" content="Set up AI agents in self-learning loops in a day. Your team transitions from prompting to building. Loops graduate to semi- or fully autonomous.">
+<title>Free onboarding, then Managed Service | Maskin</title>
+<meta name="description" content="Book a free 60 minute onboarding. We set up your first self-learning loop with you, then keep building monthly with a Managed Service.">
 
 <link rel="canonical" href="https://maskin.io/sprint/">
 
@@ -18,8 +18,8 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://maskin.io/sprint/">
-<meta property="og:title" content="AI-Native Loop Sprint — built with you">
-<meta property="og:description" content="Your team stops prompting one message at a time. You build loops where agents run, learn, and deliver outcomes — in the same workspace as the humans who guide them.">
+<meta property="og:title" content="Free onboarding, built with you | Maskin">
+<meta property="og:description" content="Your team stops prompting one message at a time. You build loops where agents run, learn, and deliver outcomes, in the same workspace as the humans who guide them.">
 <meta property="og:image" content="https://maskin.io/og-image-sprint.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -28,8 +28,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@maskin_io">
-<meta name="twitter:title" content="AI-Native Loop Sprint — built with you">
-<meta name="twitter:description" content="Set up AI agents in self-learning loops in a day. Loops graduate to semi- or fully autonomous.">
+<meta name="twitter:title" content="Free onboarding, built with you | Maskin">
+<meta name="twitter:description" content="Book a free 60 minute onboarding. We set up your first self-learning loop with you, live.">
 <meta name="twitter:image" content="https://maskin.io/og-image-sprint.png?v=2">
 
 <!-- PostHog analytics. Autocapture (CTA clicks), pageviews, and scroll depth are on by default.
@@ -486,20 +486,42 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       "@type": "WebPage",
       "@id": "https://maskin.io/sprint/#page",
       "url": "https://maskin.io/sprint/",
-      "name": "AI-Native Loop Sprint — Maskin",
-      "description": "Set up AI agents in self-learning loops in a day. Your team transitions from prompting to building. Loops graduate to semi- or fully autonomous.",
+      "name": "Free onboarding, then Managed Service | Maskin",
+      "description": "Book a free 60 minute onboarding. We set up your first self-learning loop with you, then keep building monthly with a Managed Service.",
       "inLanguage": "en",
-      "isPartOf": { "@type": "WebSite", "name": "Maskin", "url": "https://maskin.io/" },
-      "publisher": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" },
-      "breadcrumb": { "@id": "https://maskin.io/sprint/#breadcrumb" },
-      "mainEntity": { "@id": "https://maskin.io/sprint/#faq" }
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "breadcrumb": {
+        "@id": "https://maskin.io/sprint/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://maskin.io/sprint/#faq"
+      }
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://maskin.io/sprint/#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
-        { "@type": "ListItem", "position": 2, "name": "AI-Native Loop Sprint", "item": "https://maskin.io/sprint/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Free onboarding",
+          "item": "https://maskin.io/sprint/"
+        }
       ]
     },
     {
@@ -508,48 +530,83 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "How long is the sprint?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Setup is half a day to a full day. The sprint window runs after that, with Slack access and follow-up sessions until every loop has graduated. We scope the exact length on the intro call." }
+          "name": "Is the onboarding really free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The 60 minute session costs nothing for every new customer. Running Maskin itself is a separate workspace subscription, or self-host it free."
+          }
         },
         {
           "@type": "Question",
-          "name": "What does it cost?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Named on the intro call, tailored to the sprint scope. We don't publish a rate because the scope moves with your ambition." }
+          "name": "What happens after the hour?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You keep a running workspace and your first loop. If you want more, the Managed Service continues the work monthly. If not, nothing else is owed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the Managed Service cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Agreed with you after the onboarding, once we've seen your workflows. We don't publish a rate because the scope moves with your ambition."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can we cancel the Managed Service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, any time. It's monthly, with no lock-in."
+          }
         },
         {
           "@type": "Question",
           "name": "Can we self-host?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Apache 2.0. You run it on your own infrastructure and pay your model provider directly." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Apache 2.0. You run it on your own infrastructure and pay your model provider directly."
+          }
         },
         {
           "@type": "Question",
           "name": "Can we bring our own model?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Model-agnostic. Route each loop to the model that fits." }
-        },
-        {
-          "@type": "Question",
-          "name": "Which loops can we start with?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Any of the seven above, or a shape you bring us. Common starts: Product Discovery to Strategic Bets, one go-to-market loop, and Shared Business Context underneath, all feeding each other." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Model-agnostic. Route each loop to the model that fits."
+          }
         },
         {
           "@type": "Question",
           "name": "What if a loop doesn't hit its close condition?",
-          "acceptedAnswer": { "@type": "Answer", "text": "It stays in dry run and we keep tightening it in follow-up sessions. Loops that never earn their close condition get retired — you keep the substrate and the learnings." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It stays in dry run and gets tightened. Loops that never earn their close condition get retired. You keep the substrate and the learnings."
+          }
         },
         {
           "@type": "Question",
           "name": "Do you replace our tracker?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. Loops can ship inside Maskin with coding agents, or hand off to Linear or Jira. The sale is the layer above your stack, not the tracker." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Loops can ship inside Maskin with coding agents, or hand off to Linear or Jira. The sale is the layer above your stack, not the tracker."
+          }
         },
         {
           "@type": "Question",
           "name": "How is this different from an AI consultant?",
-          "acceptedAnswer": { "@type": "Answer", "text": "A consultant leaves you with a slide deck. We leave you with loops that are still running when we're gone, and a team that can build the next ones on their own." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A consultant leaves you with a slide deck. The Maskin Team leaves you with loops that are still running, and a team that can build the next ones."
+          }
         },
         {
           "@type": "Question",
-          "name": "How many sprints do you take?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Limited slots. Book a meeting or email us to check current availability." }
+          "name": "How many onboardings do you take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Capacity is founder time. We book them as they come and say so honestly when the calendar is full."
+          }
         }
       ]
     }
@@ -602,12 +659,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 <header class="hero">
   <div class="hero__glow" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="hero__eyebrow">AI-Native Loop Sprint</div>
+    <div class="hero__eyebrow">Free onboarding</div>
     <h1 class="hero__title">AI agents running <em>self-learning loops</em>. Outcomes, not prompts.</h1>
-    <p class="hero__sub">Your team stops prompting one message at a time. You build loops where agents run, learn, and deliver outcomes — in the same workspace as the humans who guide them.</p>
-    <p class="hero__body">In the AI-Native Loop Sprint, you set up your first self-learning loops in half a day to a day, then run them alongside our team on Slack for the rest of the sprint. Every loop learns from what it just shipped, so quality climbs while you watch. By the end, your loops have graduated from dry run to either <strong>semi-autonomous</strong> or <strong>fully autonomous</strong> — delivering outcomes on their own, with your team stepping in only for the calls that matter.</p>
+    <p class="hero__sub">Your team stops prompting one message at a time. You build loops where agents run, learn, and deliver outcomes, in the same workspace as the humans who guide them.</p>
+    <p class="hero__body">Start with a free 60 minute onboarding. The Maskin Team sets up your workspace and your first self-learning loop with you, live, on your own stack. If you want us to keep going, a monthly <strong>Managed Service</strong> covers business consulting and the workflow and automation set-up.</p>
     <div class="hero__actions">
-      <a class="btn-primary" href="https://maskin.io/bookseb">Book a meeting</a>
+      <a class="btn-primary" href="https://maskin.io/bookseb">Book your free onboarding</a>
       <!--email_off--><a class="btn-secondary" href="mailto:sebastian@meshfirm.com">Email Sebastian</a><!--/email_off-->
     </div>
 
@@ -635,11 +692,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <div class="gets">
       <div class="get">
         <h3 class="get__title">Stop prompting one message at a time.</h3>
-        <p class="get__body">Your team learns to build loops that keep running — the same way you'd write a playbook, but the agents run it, not a person.</p>
+        <p class="get__body">Your team learns to build loops that keep running, the way you'd write a playbook, except the agents run it.</p>
       </div>
       <div class="get">
         <h3 class="get__title">Work natively with agents in one workspace.</h3>
-        <p class="get__body">Every agent output is context every next agent inherits. No re-briefing, no restarting from zero, no dropped context between roles or hires.</p>
+        <p class="get__body">Every agent output is context every next agent inherits. No re-briefing, no restarting from zero.</p>
       </div>
       <div class="get">
         <h3 class="get__title">Own the substrate.</h3>
@@ -647,19 +704,39 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
       <div class="get">
         <h3 class="get__title">Set the standard once.</h3>
-        <p class="get__body">Humans set the outcome and gate the calls that matter; agents produce against the standard forever.</p>
+        <p class="get__body">Humans set the outcome and gate the calls that matter. Agents produce against the standard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TWO STEPS -->
+<section class="section section--linen" id="two-steps">
+  <div class="wrap">
+    <div class="section__head">
+      <div class="section-tag">Two steps</div>
+      <h2 class="section-title">Start free. Keep going if it works.</h2>
+    </div>
+    <div class="gets">
+      <div class="get">
+        <h3 class="get__title">Step 1. Free 60 minute onboarding.</h3>
+        <p class="get__body">A working session with Sebastian or Magnus. We connect your tools, set up your first loop on a real workflow, and show you how it runs day to day. You leave with something running and a clear view of what else could run. <strong>Free for every new customer.</strong></p>
+      </div>
+      <div class="get">
+        <h3 class="get__title">Step 2. Managed Service, monthly.</h3>
+        <p class="get__body">We run your business workflows with you. <strong>Business consulting:</strong> where the bottlenecks are, which workflows to automate first, what to measure. <strong>Workflow and automation set-up:</strong> we build the loops and automations for your company, on your stack, with your models. <strong>Ongoing tuning:</strong> we review what the loops produced, tighten them, and add the next ones. Plus a shared channel with us, and a team trained to extend the loops themselves. Monthly, cancel any time. Scope and cost are agreed with you after the onboarding, once we've seen your workflows.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- LOOPS -->
-<section class="section section--linen" id="loops">
+<section class="section" id="loops">
   <div class="wrap">
     <div class="section__head">
       <div class="section-tag">What kinds of loops teams run</div>
       <h2 class="section-title">Loops that ship every week.</h2>
-      <p class="section-sub">Seven loop shapes teams start with in a sprint. As the marketplace fills out, each row links to its own listing.</p>
+      <p class="section-sub">Seven loop shapes teams start with. As the marketplace fills out, each row links to its own listing.</p>
     </div>
     <ul class="loop-list">
       <li class="loop-row">
@@ -691,40 +768,40 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <span class="loop-row__desc">marketing pages that end when they rank, not when they publish.</span>
       </li>
     </ul>
-    <p class="loop-note">Bring your own loop shape too — any weekly bottleneck your team keeps hitting is a loop candidate.</p>
+    <p class="loop-note">Bring your own loop shape too. Any weekly bottleneck your team keeps hitting is a loop candidate.</p>
   </div>
 </section>
 
-<!-- HOW THE SPRINT RUNS -->
-<section class="section" id="how-it-runs">
+<!-- HOW IT RUNS -->
+<section class="section section--linen" id="how-it-runs">
   <div class="wrap">
     <div class="section__head">
-      <div class="section-tag">How the sprint runs</div>
-      <h2 class="section-title">Half a day to a day of setup. Then it runs.</h2>
+      <div class="section-tag">How it runs</div>
+      <h2 class="section-title">One hour to something running.</h2>
     </div>
     <ol class="steps">
       <li class="step">
         <div>
-          <h3 class="step__title">Intro call.</h3>
-          <p class="step__body">You name the weekly bottleneck. We agree which loops the sprint will set up.</p>
+          <h3 class="step__title">Book.</h3>
+          <p class="step__body">Pick a time on the calendar. Tell us the weekly bottleneck.</p>
         </div>
       </li>
       <li class="step">
         <div>
-          <h3 class="step__title">Setup session.</h3>
-          <p class="step__body">Half a day to a full day — we set up the loops with your team, on your stack, with your models.</p>
+          <h3 class="step__title">Onboarding, 60 minutes.</h3>
+          <p class="step__body">We set up your workspace and first loop live, on your stack.</p>
         </div>
       </li>
       <li class="step">
         <div>
-          <h3 class="step__title">Sprint window.</h3>
-          <p class="step__body">Your team has direct Slack access to ours while the loops run. We hold follow-up sessions to review outputs, tighten close conditions, and lift the loops out of dry run.</p>
+          <h3 class="step__title">Decide.</h3>
+          <p class="step__body">At the end we say plainly what a Managed Service would cover for you. No pressure, the loop keeps running either way.</p>
         </div>
       </li>
       <li class="step">
         <div>
-          <h3 class="step__title">Close.</h3>
-          <p class="step__body">Every loop has graduated to <strong>semi-autonomous</strong> or <strong>fully autonomous</strong> — based on what it's learned during the sprint — and is delivering outcomes with your team stepping in only for the calls that matter.</p>
+          <h3 class="step__title">Managed Service, if you want it.</h3>
+          <p class="step__body">We keep building and tuning with you each month until your loops have <strong>graduated</strong>.</p>
         </div>
       </li>
     </ol>
@@ -732,14 +809,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 </section>
 
 <!-- GRADUATED -->
-<section class="section section--linen" id="graduated">
+<section class="section" id="graduated">
   <div class="wrap">
     <div class="section__head">
       <div class="section-tag">What &ldquo;graduated&rdquo; means</div>
       <h2 class="section-title">Every loop earns its own trust level.</h2>
     </div>
     <div class="trust">
-      <p class="trust__lead">Every loop starts in <strong>dry run</strong> — producing under supervision, every output critiqued.</p>
+      <p class="trust__lead">Every loop starts in <strong>dry run</strong>: producing under supervision, every output critiqued.</p>
       <p class="trust__label">When the loop's quality holds against its close condition, it graduates to:</p>
       <div class="trust-grid">
         <div class="trust-card">
@@ -751,7 +828,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <p class="trust-card__body">The loop runs on its own end-to-end, with a human sampling outputs and stepping in when the close condition drifts.</p>
         </div>
       </div>
-      <p class="trust__foot">Loops that stop meeting their close condition get demoted back to dry run automatically. Trust is earned per loop, on evidence — not on a calendar, not on a demo.</p>
+      <p class="trust__foot">Loops that stop meeting their close condition get demoted back to dry run automatically. Trust is earned per loop, on evidence, not on a calendar and not on a demo.</p>
     </div>
   </div>
 </section>
@@ -764,10 +841,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <h2 class="section-title">You're the right fit if&hellip;</h2>
     </div>
     <ul class="fit-list">
-      <li><span>You lead a B2B SaaS team (founder, CPO, CTO, head of growth, head of ops).</span></li>
-      <li><span>Your team has bought AI seats; the workflows aren't running on their own yet.</span></li>
-      <li><span>You want your agents coordinating on shared context, not each doing their own thing in isolation.</span></li>
-      <li><span>You want to own the substrate — self-host, bring your own model, no vendor lock-in.</span></li>
+      <li><span>You lead a small team or a B2B SaaS team (founder, CPO, CTO, head of growth, head of ops).</span></li>
+      <li><span>Your team has bought AI seats, but the workflows aren't running on their own yet.</span></li>
+      <li><span>You have no internal time to design workflows and wire up automations.</span></li>
+      <li><span>You want to own the substrate: self-host, bring your own model, no vendor lock-in.</span></li>
     </ul>
     <p class="section-sub">Running a small or growing business rather than a software team? See how you can <a href="/small-business/" style="text-decoration:underline;text-underline-offset:2px">hire AI agents for the quotes, invoices and customer enquiries</a> that eat your week.</p>
   </div>
@@ -782,12 +859,20 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     </div>
     <div class="faq">
       <details class="faq-item">
-        <summary>How long is the sprint?</summary>
-        <p class="faq-item__a">Setup is half a day to a full day. The sprint window runs after that, with Slack access and follow-up sessions until every loop has graduated. We scope the exact length on the intro call.</p>
+        <summary>Is the onboarding really free?</summary>
+        <p class="faq-item__a">Yes. The 60 minute session costs nothing for every new customer. Running Maskin itself is a separate workspace subscription, or self-host it free.</p>
       </details>
       <details class="faq-item">
-        <summary>What does it cost?</summary>
-        <p class="faq-item__a">Named on the intro call, tailored to the sprint scope. We don't publish a rate because the scope moves with your ambition.</p>
+        <summary>What happens after the hour?</summary>
+        <p class="faq-item__a">You keep a running workspace and your first loop. If you want more, the Managed Service continues the work monthly. If not, nothing else is owed.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What does the Managed Service cost?</summary>
+        <p class="faq-item__a">Agreed with you after the onboarding, once we've seen your workflows. We don't publish a rate because the scope moves with your ambition.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can we cancel the Managed Service?</summary>
+        <p class="faq-item__a">Yes, any time. It's monthly, with no lock-in.</p>
       </details>
       <details class="faq-item">
         <summary>Can we self-host?</summary>
@@ -798,12 +883,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <p class="faq-item__a">Yes. Model-agnostic. Route each loop to the model that fits.</p>
       </details>
       <details class="faq-item">
-        <summary>Which loops can we start with?</summary>
-        <p class="faq-item__a">Any of the seven above, or a shape you bring us. Common starts: Product Discovery to Strategic Bets, one go-to-market loop, and Shared Business Context underneath, all feeding each other.</p>
-      </details>
-      <details class="faq-item">
         <summary>What if a loop doesn't hit its close condition?</summary>
-        <p class="faq-item__a">It stays in dry run and we keep tightening it in follow-up sessions. Loops that never earn their close condition get retired — you keep the substrate and the learnings.</p>
+        <p class="faq-item__a">It stays in dry run and gets tightened. Loops that never earn their close condition get retired. You keep the substrate and the learnings.</p>
       </details>
       <details class="faq-item">
         <summary>Do you replace our tracker?</summary>
@@ -811,11 +892,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </details>
       <details class="faq-item">
         <summary>How is this different from an AI consultant?</summary>
-        <p class="faq-item__a">A consultant leaves you with a slide deck. We leave you with loops that are still running when we're gone, and a team that can build the next ones on their own.</p>
+        <p class="faq-item__a">A consultant leaves you with a slide deck. The Maskin Team leaves you with loops that are still running, and a team that can build the next ones.</p>
       </details>
       <details class="faq-item">
-        <summary>How many sprints do you take?</summary>
-        <p class="faq-item__a">Limited slots. Book a meeting or email us to check current availability.</p>
+        <summary>How many onboardings do you take?</summary>
+        <p class="faq-item__a">Capacity is founder time. We book them as they come and say so honestly when the calendar is full.</p>
       </details>
     </div>
   </div>
@@ -827,10 +908,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <div class="related">
       <p class="related__title">Read next</p>
       <ul class="related__list">
-        <li><a href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a> <span class="related__desc">&mdash; the category the sprint is built on: humans and agents working the same typed objects.</span></li>
+        <li><a href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a> <span class="related__desc">&mdash; the category this offer is built on: humans and agents working the same typed objects.</span></li>
         <li><a href="/docs/closed-loop-workspace/">The closed-loop workspace</a> <span class="related__desc">&mdash; what makes a loop close on an outcome instead of an artifact.</span></li>
         <li><a href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI: when it's real, when it's theater</a> <span class="related__desc">&mdash; why the human gate on a graduating loop is the honest version of oversight.</span></li>
-        <li><a href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace: bring your own model</a> <span class="related__desc">&mdash; the substrate you keep after the sprint, Apache 2.0, on your infrastructure.</span></li>
+        <li><a href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace: bring your own model</a> <span class="related__desc">&mdash; the substrate you keep after the onboarding, Apache 2.0, on your infrastructure.</span></li>
       </ul>
     </div>
   </div>
@@ -839,9 +920,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 <!-- REPEAT CTA -->
 <section class="section cta-section" id="book">
   <div class="wrap">
-    <h2 class="section-title">Tell us the bottleneck. We'll set up the loops.</h2>
+    <h2 class="section-title">Tell us the bottleneck. We'll set up the first loop with you.</h2>
     <div class="cta-actions">
-      <a class="btn-primary" href="https://maskin.io/bookseb">Book a meeting</a>
+      <a class="btn-primary" href="https://maskin.io/bookseb">Book your free onboarding</a>
       <!--email_off--><a class="btn-secondary" href="mailto:sebastian@meshfirm.com">Email Sebastian</a><!--/email_off-->
     </div>
   </div>
