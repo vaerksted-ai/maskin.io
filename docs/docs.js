@@ -85,6 +85,7 @@
       { label: "Agent skills marketplace", href: "/docs/agent-skills-marketplace/" },
       { label: "Knowledge wiki vs vector database", href: "/docs/knowledge-wiki-vs-vector-database/" },
       { label: "MCP vs RAG", href: "/docs/mcp-vs-rag/" },
+      { label: "MCP tools vs resources vs prompts", href: "/docs/mcp-tools-vs-resources/", nested: true },
       { label: "At-risk account alerts", href: "/docs/at-risk-account-alerts/" }
     ]},
     { title: "Alternatives", items: [

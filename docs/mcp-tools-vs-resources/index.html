@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP tools vs resources vs prompts: which to expose</title>
+<meta name="description" content="Tools are model-controlled, resources application-driven, prompts user-controlled. A four-question rule for which MCP primitive to expose, with what Maskin's server does.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/mcp-tools-vs-resources/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/mcp-tools-vs-resources/">
+<meta property="og:title" content="MCP tools vs resources vs prompts: which to expose">
+<meta property="og:description" content="Tools are model-controlled, resources application-driven, prompts user-controlled. A four-question rule for which MCP primitive to expose, with what Maskin's server does.">
+<meta property="og:image" content="https://maskin.io/og-image-mcp-tools-vs-resources.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="MCP tools vs resources vs prompts: which to expose">
+<meta name="twitter:description" content="Tools are model-controlled, resources application-driven, prompts user-controlled. A four-question rule for which MCP primitive to expose, with what Maskin's server does.">
+<meta name="twitter:image" content="https://maskin.io/og-image-mcp-tools-vs-resources.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/mcp-tools-vs-resources/#post",
+      "headline": "MCP tools vs resources vs prompts: which primitive to expose, and what Maskin’s server does with each",
+      "description": "Tools are model-controlled, resources application-driven, prompts user-controlled. A four-question rule for which MCP primitive to expose, with what Maskin's server does.",
+      "datePublished": "2026-10-25T00:00:00Z",
+      "dateModified": "2026-10-25T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "image": "https://maskin.io/og-image-mcp-tools-vs-resources.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/mcp-tools-vs-resources/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Model Context Protocol"
+        },
+        {
+          "@type": "Thing",
+          "name": "MCP tools"
+        },
+        {
+          "@type": "Thing",
+          "name": "MCP resources"
+        },
+        {
+          "@type": "Thing",
+          "name": "MCP prompts"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "MCP tools vs resources vs prompts: which primitive to expose, and what Maskin’s server does with each",
+          "item": "https://maskin.io/docs/mcp-tools-vs-resources/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between an MCP tool and an MCP resource?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A tool is a function the model can call, possibly with side effects. A resource is data at a URI that the application or user chooses to attach as context. The spec calls tools model-controlled and resources application-driven. If the model must decide to fetch something with its own arguments, that is a tool."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I use an MCP resource instead of a tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use a resource for stable, addressable content that a person or the host app picks as context, such as a file, a schema or a record. Use a tool for anything the model must request on demand, anything with arguments, and anything that changes state. When in doubt, ship the tool first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do MCP clients support resources and prompts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Many do, with different interfaces. Claude Code exposes resources through @ mentions and prompts as slash commands. VS Code has an Add Context menu for resources and slash commands for prompts. Cursor lists tools, prompts, resources, roots and elicitation as supported. Test in your target client before relying on either."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are MCP prompts the same as system prompts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. An MCP prompt is a named template a server publishes with arguments, and a person picks it, usually from a slash menu. It produces a message. A system prompt is instructions set by the application for the whole session. A server cannot rely on its prompts being used unless the person invokes them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a tool return a resource?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A tool can return a resource link or embed the resource contents in its result. The spec says links returned this way are not guaranteed to appear in the server’s resource list, so they work as pointers, not as a catalogue."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Maskin’s MCP server expose resources and prompts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Resources, yes: three templates for objects, actors and triggers, plus ten interactive app cards. The template listing only appears when the server has a web app address configured, so a self-hosted setup without one lists none. Prompts, no: the server registers none, so the prompts capability is not offered."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a></li><li><a class="is-nested" href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a></li><li><a class="is-nested" href="/docs/learn/claude-code-agent-teams/">Claude Code agent teams</a></li><li><a class="is-nested" href="/docs/learn/claude-code-team/">Claude Code team</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="is-nested" href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-orchestration/">Agent orchestration</a></li><li><a class="is-nested" href="/docs/learn/ralph-wiggum-loop/">Ralph Wiggum loop</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="is-active is-nested" href="/docs/mcp-tools-vs-resources/" aria-current="page">MCP tools vs resources vs prompts</a></li></ul></nav></aside>    <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / MCP tools vs resources vs prompts</p>
+    <p class="eyebrow">Article &middot; Comparison</p>
+    <h1>MCP tools vs resources vs prompts: which primitive to expose, and what Maskin&rsquo;s server does with each</h1>
+    <p class="lead"><strong>Expose a tool when the model should decide to act or fetch. Expose a resource when the application or the person should decide what context to attach. Expose a prompt when a person should launch a repeatable workflow.</strong> The MCP specification (revision 2026-07-28) splits them by who is in control: tools are &ldquo;model-controlled&rdquo;, resources &ldquo;application-driven&rdquo;, prompts &ldquo;user-controlled&rdquo;.</p>
+    <p>Maskin&rsquo;s own MCP server is a worked example. It has dozens of tools, three resource templates used as a picker for deep links, and no prompts at all. The reasons are below, along with a decision rule you can apply to your own server.</p>
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul>
+          <li><strong>The difference is who decides.</strong> Tools: the model. Resources: the application or the user. Prompts: the user. Everything else follows from that.</li>
+          <li><strong>Start with tools.</strong> Most servers need them first. Claude Code, VS Code and Cursor all document support for tools, resources and prompts, but through different interfaces, so resources and prompts only pay off where your target client has a picker or a slash menu.</li>
+          <li><strong>A resource is not a cheaper tool.</strong> It is a URI the host can list, attach and cache. If the model has to be the one to fetch it, write a tool.</li>
+          <li><strong>Resource lists can differ per caller.</strong> The spec lets a server vary the list by authorization, and Maskin&rsquo;s does: what you see depends on workspace and key scope.</li>
+          <li><strong>Maskin runs tools plus a resource picker, zero prompts.</strong> Resources hold a summary and a link, not the body. The full body always comes from a tool.</li>
+        </ul>
+      </div>
+    </div>
+    <p><strong>Want to try this on a server you control?</strong> <a href="/docs/self-hosted-ai-workspace/?utm_source=maskin.io&amp;utm_medium=organic&amp;utm_campaign=mcp-tools-vs-resources&amp;utm_content=early-cta">Self-host Maskin</a> and connect any MCP client to see all three primitives in practice.</p>
+    <h2>The three primitives in one table</h2>
+    <table>
+      <thead><tr><th></th><th>Tool</th><th>Resource</th><th>Prompt</th></tr></thead>
+      <tbody>
+        <tr><td>Who decides to use it</td><td>The model (spec: &ldquo;model-controlled&rdquo;)</td><td>The application or user (spec: &ldquo;application-driven&rdquo;)</td><td>The user (spec: &ldquo;user-controlled&rdquo;)</td></tr>
+        <tr><td>What it is</td><td>A function with an input schema that can have side effects</td><td>Data identified by a URI, read-only context</td><td>A named message template with arguments</td></tr>
+        <tr><td>Typical client surface</td><td>The model calls it mid-task, ideally with a confirmation</td><td>An @ mention, an Add Context menu or a browse panel</td><td>A slash command</td></tr>
+        <tr><td>Discovery calls</td><td><code>tools/list</code>, <code>tools/call</code></td><td><code>resources/list</code>, <code>resources/templates/list</code>, <code>resources/read</code></td><td><code>prompts/list</code>, <code>prompts/get</code></td></tr>
+        <tr><td>Can change the world</td><td>Yes</td><td>No</td><td>No</td></tr>
+        <tr><td>Use it for</td><td>Actions and on-demand lookups</td><td>Context a person picks or an app attaches</td><td>Repeatable workflows a person starts</td></tr>
+      </tbody>
+    </table>
+    <p>The &ldquo;who decides&rdquo; row is the one to memorize. The spec is careful to say this describes who triggers use, not who writes the content: a prompt&rsquo;s text is still defined by the server.</p>
+    <h2>Tools: the default, and the one agents actually use</h2>
+    <p>Tools are what a model reaches for on its own. The spec says &ldquo;the language model can discover and invoke tools automatically&rdquo;, and it adds that there &ldquo;SHOULD always be a human in the loop with the ability to deny tool invocations&rdquo;. Each tool has a name, a description and a JSON Schema for input, and can declare an output schema so results come back as structured content.</p>
+    <p>Two details from the spec change how you design them:</p>
+    <ul>
+      <li><strong>Errors are part of the contract.</strong> Execution errors go back in the result with the error flag set, so the model can read them and retry. Protocol errors, such as an unknown tool, are the ones a model is unlikely to fix.</li>
+      <li><strong>A tool can hand back a resource link.</strong> The spec notes that links returned by a tool &ldquo;are not guaranteed to appear in the results of a <code>resources/list</code> request&rdquo;. So a tool can point at a URI without the server listing it anywhere.</li>
+    </ul>
+    <p>If the model needs to read something mid-task, make it a tool. A read-only lookup is still a tool when the model is the one asking. That is why reads like &ldquo;get this object&rdquo; or &ldquo;list these events&rdquo; sit in Maskin&rsquo;s <a href="/docs/mcp-tools/">tool list</a> next to the writes.</p>
+    <h2>Resources: context the application or the user picks</h2>
+    <p>The spec describes resources as designed to be application-driven, &ldquo;with host applications determining how to incorporate context&rdquo;. Its examples are a tree or list view for explicit selection, search and filter, and automatic inclusion by heuristic. A server that supports them must declare the resources capability. It can also offer resource templates, which are parameterized URIs (RFC 6570), and subscriptions so the host hears when a watched resource changes.</p>
+    <p>What the spec does not promise is a model-facing way to use them. That depends on the client:</p>
+    <ul>
+      <li><strong>Claude Code:</strong> type @ to see resources from connected servers next to files, or write <code>@server:protocol://resource/path</code>. Its docs say it &ldquo;automatically provides tools to list and read MCP resources when servers support them&rdquo;, so the model can reach them too. Entries with a <code>ui://</code> address or the MCP Apps media type are left out of the @ list.</li>
+      <li><strong>VS Code:</strong> attach one from Add Context, then MCP Resources, or run MCP: Browse Resources.</li>
+      <li><strong>Cursor:</strong> its docs list resources among the supported capabilities, alongside tools, prompts, roots and elicitation.</li>
+    </ul>
+    <p>Checked against each client&rsquo;s own documentation on 2026-10-25. Other clients vary, and a client can support a feature in the protocol without giving it a good interface, so test before you build around it.</p>
+    <p>Use a resource when the thing is a stable address a person might want to attach, cite or watch: a file, a schema, a record. Do not use one for anything the model must fetch with arguments it chooses, and do not treat it as a way to avoid writing a tool.</p>
+    <h2>Prompts: workflows a person launches</h2>
+    <p>Prompts are templates the server publishes, with arguments, that the client turns into a message. The spec&rsquo;s own example is a slash command. In Claude Code an MCP prompt shows up as <code>/servername:promptname</code>, and typing <code>/mcp__servername__promptname</code> also runs it. In VS Code you type <code>/server.prompt</code> in chat.</p>
+    <p>Use them when there is a repeatable job, such as &ldquo;review this change&rdquo; or &ldquo;write the weekly summary&rdquo;, and you want a person to start it with the right framing every time. If the job is something an agent should start by itself on a schedule or an event, a prompt is the wrong shape, because nothing in the model&rsquo;s loop picks it.</p>
+    <h2>What Maskin&rsquo;s server exposes, and why</h2>
+    <p>This part is read from the server&rsquo;s source and confirmed by the team that owns it, in October 2026.</p>
+    <ul>
+      <li><strong>Tools:</strong> the main surface. Reading and writing objects, actors, triggers, sessions and files all go through tools. The count changes as the tool set is trimmed, so the <a href="/docs/mcp-tools/">tools page</a> is the place to read the current list.</li>
+      <li><strong>Resources: three templates.</strong> One each for objects, actors and triggers. The addresses are the web app&rsquo;s deep links, for example a workspace id followed by an object id. Listing returns live rows for the connection&rsquo;s default workspace. Reading one returns a short summary: id, type, title, status, a short preview and the deep link. It does not return the full body.</li>
+      <li><strong>App resources: ten <code>ui://</code> cards.</strong> These are interactive views that render inside clients that support MCP Apps, tied to tools. Claude Code, as noted above, leaves them out of the @ list.</li>
+      <li><strong>Prompts: none.</strong> Nothing in the server registers one, so the prompts capability is not offered.</li>
+    </ul>
+    <p>Three choices follow from that, and they generalize:</p>
+    <ol>
+      <li><strong>Resources are a picker, not a data layer.</strong> A summary that leaves out the body cannot replace a tool, and it is not meant to. Its job is to let a person drop a link to a specific object into a conversation.</li>
+      <li><strong>The picker is configuration-dependent.</strong> The three templates only register when the server knows the web app&rsquo;s base URL. A self-hosted setup without that setting lists none. Ship resources only if you can say what turns them on.</li>
+      <li><strong>Prompts matter for manual jobs.</strong> Nothing here is started by a person typing a command: Maskin&rsquo;s loops start from events and schedules, so a prompt would only matter for a manual job. If that changes, prompts become worth adding.</li>
+    </ol>
+    <h2>How to choose: a four-question rule</h2>
+    <p>Ask in this order and stop at the first yes:</p>
+    <ol>
+      <li><strong>Does it change something, or does the model need it on demand with arguments?</strong> Tool.</li>
+      <li><strong>Is it a stable address a person or the app would attach as context?</strong> Resource, and make sure the client you care about has a surface for it.</li>
+      <li><strong>Is it a job a person starts, with a fixed shape?</strong> Prompt.</li>
+      <li><strong>None of these?</strong> Put it in the tool description or your docs and expose nothing.</li>
+    </ol>
+    <p>A fast way to find mistakes: if you built a resource that the model cannot reach in the clients you target, it is dead weight. If you built a tool that never takes an argument and always returns the same document, it may want to be a resource or a prompt.</p>
+    <h2>FAQ</h2>
+    <h3>What is the difference between an MCP tool and an MCP resource?</h3>
+    <p>A tool is a function the model can call, possibly with side effects. A resource is data at a URI that the application or user chooses to attach as context. The spec calls tools model-controlled and resources application-driven. If the model must decide to fetch something with its own arguments, that is a tool.</p>
+    <h3>When should I use an MCP resource instead of a tool?</h3>
+    <p>Use a resource for stable, addressable content that a person or the host app picks as context, such as a file, a schema or a record. Use a tool for anything the model must request on demand, anything with arguments, and anything that changes state. When in doubt, ship the tool first.</p>
+    <h3>Do MCP clients support resources and prompts?</h3>
+    <p>Many do, with different interfaces. Claude Code exposes resources through @ mentions and prompts as slash commands. VS Code has an Add Context menu for resources and slash commands for prompts. Cursor lists tools, prompts, resources, roots and elicitation as supported. Test in your target client before relying on either.</p>
+    <h3>Are MCP prompts the same as system prompts?</h3>
+    <p>No. An MCP prompt is a named template a server publishes with arguments, and a person picks it, usually from a slash menu. It produces a message. A system prompt is instructions set by the application for the whole session. A server cannot rely on its prompts being used unless the person invokes them.</p>
+    <h3>Can a tool return a resource?</h3>
+    <p>Yes. A tool can return a resource link or embed the resource contents in its result. The spec says links returned this way are not guaranteed to appear in the server&rsquo;s resource list, so they work as pointers, not as a catalogue.</p>
+    <h3>Does Maskin&rsquo;s MCP server expose resources and prompts?</h3>
+    <p>Resources, yes: three templates for objects, actors and triggers, plus ten interactive app cards. The template listing only appears when the server has a web app address configured, so a self-hosted setup without one lists none. Prompts, no: the server registers none, so the prompts capability is not offered.</p>
+    <div class="related">
+      <p class="related__title">Where to go next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/mcp-tools/">
+          <div class="doc-card__title">MCP tools in Maskin</div>
+          <div class="doc-card__desc">the verbs and object types the tool surface covers.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-mcp-native/">
+          <div class="doc-card__title">What is MCP-native?</div>
+          <div class="doc-card__desc">why Maskin is built on the Model Context Protocol.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/mcp-vs-rag/">
+          <div class="doc-card__title">MCP vs RAG</div>
+          <div class="doc-card__desc">where retrieval fits when you already have a tool surface.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">
+          <div class="doc-card__title">Agent skills vs MCP vs Cursor rules vs workflows</div>
+          <div class="doc-card__desc">how the primitives sit next to the rest of the agent toolbox.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Want an agent workspace you can connect any MCP client to?</h2>
+      <p>Self-host Maskin and point your harness at it.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="/docs/self-hosted-ai-workspace/?utm_source=maskin.io&amp;utm_medium=organic&amp;utm_campaign=mcp-tools-vs-resources&amp;utm_content=closing-cta">Self-host Maskin</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>

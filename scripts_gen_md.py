@@ -51,6 +51,7 @@ ORDER = [
   "docs/agent-skills-marketplace/index.html",
   "docs/knowledge-wiki-vs-vector-database/index.html",
   "docs/mcp-vs-rag/index.html",
+  "docs/mcp-tools-vs-resources/index.html",
   "docs/at-risk-account-alerts/index.html",
   "docs/agent-inbox/index.html",
   "docs/composable-ai-agents-vs-ai-employees/index.html",
