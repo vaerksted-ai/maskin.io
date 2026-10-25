@@ -50,6 +50,7 @@ Do not add anything if all of these are true:
 - **Nobody will ask "why" in a month.** If the answer is in your head and the head is yours, a folder is a record.
 - **You can check outcomes yourself.** You will look at the metric anyway.
 Two of the guides ranking for this keyword, the free ccforpms.com course and ProductCompass's beginner guide, teach this solo setup well. As far as we could read on 8 October 2026, neither covers sharing with a team, which is the gap this page is about.
+If the engineers you work with run Codex instead, the same test applies: the agent matters less than where the result is kept. [Claude Code vs Codex](/docs/claude-code-vs-codex/) shows how to choose between the two by job.
 
 ## Where it stops: four boundaries for a PM
 None of these are bugs. They are what you meet when the work stops being yours alone.

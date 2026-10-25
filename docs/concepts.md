@@ -32,7 +32,7 @@ When an agent does work, it runs in a **session** — Claude Code executing in a
 When an agent needs a human — approval, a decision, an input — it raises a **notification**. Notifications carry structured UI (actions, options, urgency) and link back to the object or session that produced them, so humans stay in the loop without watching every run.
 
 ## Skills, files, and extensions
-- **Skills** — reusable prompts, snippets, or context files stored in the workspace and attachable to agents.
+- **[Skills](/docs/learn/agent-skills/)** — reusable prompts, snippets, or context files stored in the workspace and attachable to agents.
 - **Files** — markdown, code, PDFs, and images stored in S3-compatible storage and attached to objects or produced by agents.
 - **Extensions / modules** — pluggable add-ons (CRM, knowledge, notetaker, work) that introduce new object types and behaviour.
 

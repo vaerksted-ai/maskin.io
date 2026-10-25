@@ -3,6 +3,7 @@
 # Claude Code vs Cursor: pick by job, then keep one record
 Claude Code is Anthropic’s coding agent, and it starts in the terminal. Cursor is a coding agent built around the editor, with a command line tool and cloud agents added. Pick by where you want to work and which account you already pay for, and test both on your own repo.
 *Read against Anthropic’s [Claude Code docs](https://code.claude.com/docs/en/overview) and Cursor’s [documentation](https://cursor.com/docs) on 2026-10-15. Both products change often, so check the vendor pages before you rely on a detail. This page prints no prices, usage limits or benchmark scores, because neither vendor gives you a number for your code and plans change too fast for a table here.*
+Weighing Anthropic’s terminal agent against OpenAI’s instead? That pairing is covered in [Claude Code vs Codex: pick by job, keep one record](/docs/claude-code-vs-codex/), with the same five checks and a bake-off you can run on your own pull requests.
 > ✓
 > **Key takeaways**
 > **The split is where you work, not what the agent can do.** Claude Code starts in a terminal and also runs in VS Code, JetBrains, a desktop app and the web. Cursor starts in the editor and also has a command line tool and cloud agents.

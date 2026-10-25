@@ -63,7 +63,7 @@ Run these against your actual problem, in the order that changes the answer.
 ## The "vs" questions that stack three things
 The autocomplete cluster around this query is not just two-way. `mcp vs rag vs ai agents`, `mcp vs rag vs skills`, and `mcp vs rag vs fine tuning` are all live. They resolve the same way every time — by layer.
 - **vs AI agents.** The agent is the *actor*. MCP and RAG are things the actor uses. Not a comparison: a hierarchy.
-- **vs skills.** A skill is packaged judgment — *draft a follow-up in our voice*, *summarize a call against our template*. MCP is the wire; skills are what the agent knows how to do once the call connects.
+- **vs skills.** A [skill](/docs/learn/agent-skills/) is packaged judgment — *draft a follow-up in our voice*, *summarize a call against our template*. MCP is the wire; skills are what the agent knows how to do once the call connects.
 - **vs fine tuning.** Fine-tuning bakes knowledge into the model weights — the "internal" tier of memory. MCP and RAG are both external to the weights. They are not rivals to fine-tuning; they are the other two tiers.
 - **vs graph RAG.** Graph RAG builds a graph at retrieval time to improve multi-hop recall. It is still a query-time mechanism — a smarter RAG, not a state layer.
 

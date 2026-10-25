@@ -87,7 +87,7 @@ Maskin's registry holds twelve first-party integrations. Tools for four of them 
 - **Auth:** manual.
 - **MCP:** **no MCP surface.** Skjald does not expose an attachable MCP server. It emits `meeting` created/updated events onto the graph; agents subscribe to those events like they subscribe to any other object state change.
 - **What it does:** first-party meeting notetaker. It attaches to meetings and produces transcripts and notes as `meeting` objects (not files). Registered but not connected in every workspace.
-- **Common use:** meeting → knowledge loops. A meeting object's `status → notes_ready` transition triggers a distiller agent that writes a `knowledge` page from the transcript and validates it under a human gate.
+- **Common use:** meeting → knowledge loops. A meeting object's `status → notes_ready` transition triggers a distiller agent that writes a `knowledge` page from the transcript and validates it under a human gate. The [LLM wiki loop](/marketplace/knowledge-wiki/) applies that pattern to closed bets.
 
 ## Auth types at a glance
 | Auth type | Providers |

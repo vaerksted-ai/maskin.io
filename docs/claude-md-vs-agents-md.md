@@ -53,7 +53,7 @@ After any change, run `/context` in Claude Code and confirm `CLAUDE.md` appears 
 ## What happens when files nest
 Monorepos break the “same behavior everywhere” assumption fastest:
 - **Claude Code concatenates.** It loads `CLAUDE.md` files from the working directory and every directory above it, ordered from the root down so the closest file is read last. Files in subdirectories load on demand, when Claude reads a file there. Nothing overrides anything. Anthropic warns that if two instructions contradict, Claude may pick one arbitrarily.
-- **Codex also merges from the root down,** with at most one file per directory, and files closer to your working directory win by coming later. It stops adding files once the combined size reaches 32 KiB. Because files are added from the root down, a long root file spends the budget first.
+- **Codex also merges from the root down,** with at most one file per directory, and files closer to your working directory win by coming later. It stops adding files once the combined size reaches 32 KiB. Because files are added from the root down, a long root file spends the budget first. The [Claude Code vs Codex comparison](/docs/claude-code-vs-codex/) puts this limit next to the other differences between the two tools.
 - **The `AGENTS.md` spec says the closest file wins,** and an explicit instruction in chat overrides everything. Copilot says the same.
 The practical rule: never rely on a nested file to cancel a root rule. Write each rule in one place, and keep every file short. Anthropic recommends under 200 lines per `CLAUDE.md`, and notes that imports organize a long file but do not reduce what it costs in context.
 
