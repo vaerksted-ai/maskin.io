@@ -51,7 +51,7 @@
       "headline": "AI agent governance for small teams: permissions, attribution, and the audit trail as workspace properties",
       "description": "AI agent governance is the set of practices that make agent actions attributable, permissioned, and auditable. For small teams, it means typed permissions on agent identities, first-class driver attribution on every action, and an audit trail that lives on the same object graph the work does — not e",
       "datePublished": "2026-09-25T00:00:00Z",
-      "dateModified": "2026-09-27T00:00:00Z",
+      "dateModified": "2026-10-25T00:00:00Z",
       "author": {
         "@type": "Organization",
         "name": "Maskin",
@@ -206,7 +206,7 @@
     <h2>Why the enterprise framing is the wrong altitude</h2>
     <p>Open any current governance page on the top-10 SERP for <code>ai agent governance</code> and you'll see: SSO, SCIM, RBAC, SOC 2 / HIPAA, encryption at rest, DLP, procurement checklists. All of that is real. None of it answers the small-team question, which is closer to: an agent just posted something the customer noticed. Can I find out which agent, which prompt, which permission it had, and roll back that permission before the next similar action?</p>
     <p>The enterprise stack answers this eventually, but only after you've spent procurement cycles buying the layers that make it answerable. Small teams get there faster by treating governance as a <em>product</em> concern from day one — permissions, attribution, and audit are properties the workspace has, not features you buy.</p>
-    <p>One empirical anchor is worth naming: per Guardrail Technologies' 2026 audit of all 503 S&amp;P 500 10-K filings (surfaced in Cassie Kozyrkov's <a href="https://decision.substack.com/p/97-of-s-and-p-500-filings-mention">Sep 2026 Decision Intelligence roundup</a>), 97% of filings mention AI, only 16% document an AI-specific cyber-risk process, fewer than 5% describe a governed program with a named policy or committee, and only 21% document governing non-human identities. Enterprise governance itself is undercooked; the small-team gap isn't that small teams are behind, it's that no one has answered this question well at any altitude.</p>
+    <p>One empirical anchor is worth naming: per Guardrail Technologies' 2026 audit of all 503 S&amp;P 500 10-K filings (surfaced in Cassie Kozyrkov's <a href="https://decision.substack.com/p/97-of-s-and-p-500-filings-mention">Sep 2026 Decision Intelligence roundup</a>), 97% of filings mention AI, only 16% document an AI-specific cyber-risk process, fewer than 5% describe a governed program with a named policy or committee, and only 21% document governing non-human identities. Enterprise governance itself is undercooked; the small-team gap isn't that small teams are behind, it's that no one has answered this question well at any altitude. Open-source orchestrators are starting to build it in: Paperclip documents budget hard stops by company, agent and project, plus approval stages and an activity log, and the <a href="/alternatives/paperclip/">Paperclip alternative</a> page sets that against a typed-object workspace and says when to stay on Paperclip.</p>
     <h2>The three primitives in depth</h2>
     <h3>1. Actors, first-class</h3>
     <p>An agent identity is an actor — the same primitive as a human user, with its own id and its own permissions. Not a service account owned by a human; a first-class entry in the actor table. Two consequences:</p>
