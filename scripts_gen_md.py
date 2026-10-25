@@ -46,6 +46,7 @@ ORDER = [
   "docs/learn/claude-code-for-product-managers/index.html",
   "docs/learn/claude-code-agent-teams/index.html",
   "docs/learn/claude-code-team/index.html",
+  "docs/learn/claude-code-memory/index.html",
   "docs/learn/choose-a-knowledge-layer/index.html",
   "docs/learn/what-is-an-agent-harness/index.html",
   "docs/agent-skills-marketplace/index.html",
