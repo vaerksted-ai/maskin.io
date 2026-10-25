@@ -992,7 +992,7 @@ AI changes how much of that loop can run automatically — but only if the loop 
 ## Why task trackers with AI don’t close the loop
 Notion, Asana, Jira, Linear, monday, Coda, and Smartsheet all ship AI-generated summaries and automation. That is real, and it is useful for reading faster. But it does not close the loop, for a structural reason: the object model underneath stays a task tracker. A ticket holds a description and a status; the AI layer writes a summary on top of it. Nothing in that chain turns raw insight into a testable bet, and nothing measures whether a piece of shipped work actually produced the outcome it was meant to produce.
 The result is that “the AI” is a layer on top, while the object of work never changes. This is why the flood of vendor-agnostic education about closed-loop agents and loop engineering — whose guiding thesis is that a prompt is not a job and that work is a loop — has found no single product to settle on: nobody tied it to running real work against a real outcome on a model agents can operate. A summary describes the loop; it is not the loop.
-There is a diagnostic that separates the two: can the system tell you whether the work succeeded? A tracker-with-narrator can tell you a ticket moved to done. A loop can tell you a bet met its win condition or did not — and then act on the difference.
+There is a single diagnostic — the closure diagnostic — that separates the two: can the system tell you whether the work succeeded? A tracker-with-narrator can tell you a ticket moved to done. A loop can tell you a bet met its win condition or did not — and then act on the difference.
 
 ## The bet object: insight, win condition, lineage
 Maskin’s unit of work is the bet. A bet is a testable hypothesis with a clear win condition, shaped from raw insight and owned by a human and agents together. Agents bring the signal and the execution; humans bring taste and the approval. The position of the human is explicit: in a closed loop on outcomes, a small team keeps the judgement while a fleet of agents does the closing — the human stops being the bottleneck on the work and becomes the judge of the outcome.
@@ -1043,6 +1043,9 @@ Yes. Self-hosting is always free, and a hosted trial is available if you do not 
 
 ### What does Maskin’s AI actually do?
 The AI runs the mechanical parts of the loop so humans do not have to. It captures signal from your connected sources via triggers, synthesises raw insight, drafts shaped bets, executes the work with agents, and gathers evidence for validation. Humans keep the taste decisions — which bets deserve the cycle, which outcomes actually matter, which moves get approved. The split is deliberate: agents do the closing, humans keep the judgement.
+## Where to go next
+This piece is the tier-2 leg of the trilogy hub, [The three tiers of AI-native work — the closure diagnostic](/docs/three-tiers-ai-native-work/), which runs the same diagnostic across all three tiers of AI-native work.
+The two sibling spokes run the closure diagnostic against the other tiers. The tier-1 companion, [AI product workspace vs AI coding agent](/docs/ai-product-workspace-vs-coding-agent/), applies it to the coding-agent control planes crowding tier 1. The tier-3 companion, [agentic workspace vs knowledge space](/docs/agentic-workspace-vs-knowledge-space/), applies it to Obsidian, Mem, and Confluence. For the operational expression of the anti-backlog doctrine that makes the bet a first-class object, see [bet-based product planning](/docs/bet-based-product-planning/).
 Read next
 
 ## Getting started is free

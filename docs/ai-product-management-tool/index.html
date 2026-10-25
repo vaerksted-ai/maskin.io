@@ -53,7 +53,7 @@
       "url": "https://maskin.io/docs/ai-product-management-tool/",
       "inLanguage": "en",
       "datePublished": "2026-08-21T00:00:00Z",
-      "dateModified": "2026-09-05T00:00:00Z",
+      "dateModified": "2026-10-25T00:00:00Z",
       "image": ["https://maskin.io/docs/ai-product-management-tool/og-image.png"],
       "author": {
         "@type": "Organization",
@@ -185,7 +185,7 @@
 <h2>Why task trackers with AI don&rsquo;t close the loop</h2>
 <p>Notion, Asana, Jira, Linear, monday, Coda, and Smartsheet all ship AI-generated summaries and automation. That is real, and it is useful for reading faster. But it does not close the loop, for a structural reason: the object model underneath stays a task tracker. A ticket holds a description and a status; the AI layer writes a summary on top of it. Nothing in that chain turns raw insight into a testable bet, and nothing measures whether a piece of shipped work actually produced the outcome it was meant to produce.</p>
 <p>The result is that &ldquo;the AI&rdquo; is a layer on top, while the object of work never changes. This is why the flood of vendor-agnostic education about closed-loop agents and loop engineering &mdash; whose guiding thesis is that a prompt is not a job and that work is a loop &mdash; has found no single product to settle on: nobody tied it to running real work against a real outcome on a model agents can operate. A summary describes the loop; it is not the loop.</p>
-<p>There is a diagnostic that separates the two: can the system tell you whether the work succeeded? A tracker-with-narrator can tell you a ticket moved to done. A loop can tell you a bet met its win condition or did not &mdash; and then act on the difference.</p>
+<p>There is a single diagnostic &mdash; the closure diagnostic &mdash; that separates the two: can the system tell you whether the work succeeded? A tracker-with-narrator can tell you a ticket moved to done. A loop can tell you a bet met its win condition or did not &mdash; and then act on the difference.</p>
 
 <h2>The bet object: insight, win condition, lineage</h2>
 <p>Maskin&rsquo;s unit of work is the bet. A bet is a testable hypothesis with a clear win condition, shaped from raw insight and owned by a human and agents together. Agents bring the signal and the execution; humans bring taste and the approval. The position of the human is explicit: in a closed loop on outcomes, a small team keeps the judgement while a fleet of agents does the closing &mdash; the human stops being the bottleneck on the work and becomes the judge of the outcome.</p>
@@ -240,6 +240,10 @@
 
 <h3>What does Maskin&rsquo;s AI actually do?</h3>
 <p>The AI runs the mechanical parts of the loop so humans do not have to. It captures signal from your connected sources via triggers, synthesises raw insight, drafts shaped bets, executes the work with agents, and gathers evidence for validation. Humans keep the taste decisions &mdash; which bets deserve the cycle, which outcomes actually matter, which moves get approved. The split is deliberate: agents do the closing, humans keep the judgement.</p>
+
+<h2>Where to go next</h2>
+<p>This piece is the tier-2 leg of the trilogy hub, <a href="/docs/three-tiers-ai-native-work/">The three tiers of AI-native work &mdash; the closure diagnostic</a>, which runs the same diagnostic across all three tiers of AI-native work.</p>
+<p>The two sibling spokes run the closure diagnostic against the other tiers. The tier-1 companion, <a href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a>, applies it to the coding-agent control planes crowding tier 1. The tier-3 companion, <a href="/docs/agentic-workspace-vs-knowledge-space/">agentic workspace vs knowledge space</a>, applies it to Obsidian, Mem, and Confluence. For the operational expression of the anti-backlog doctrine that makes the bet a first-class object, see <a href="/docs/bet-based-product-planning/">bet-based product planning</a>.</p>
 
     <div class="related">
       <p class="related__title">Read next</p>
