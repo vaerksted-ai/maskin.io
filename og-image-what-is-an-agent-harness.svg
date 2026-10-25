@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111110" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#111110" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="120" fill="url(#topFade)"/>
+  <text x="80" y="98" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#5A5751" letter-spacing="4">WHAT IS AN AGENT HARNESS</text>
+  <text x="80" y="160" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">Agent = model + harness.</text>
+  <text x="80" y="222" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">The harness does the work.</text>
+  <text x="80" y="266" font-family="Newsreader, Georgia, serif" font-size="24" font-style="italic" fill="#8B8781">Everything except the model. The record of the work needs its own home.</text>
+
+  <g id="diagram">
+    <rect x="80" y="322" width="320" height="180" rx="14" fill="#141311" stroke="#3A3835" stroke-width="1.4"/>
+    <text x="106" y="360" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#8B8781" letter-spacing="2">THE MODEL</text>
+    <text x="106" y="404" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18" fill="#FAFAF8">predicts the</text>
+    <text x="106" y="436" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18" fill="#FAFAF8">next step</text>
+
+    <rect x="440" y="322" width="320" height="180" rx="14" fill="#141311" stroke="#3A3835" stroke-width="1.4"/>
+    <text x="466" y="360" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#8B8781" letter-spacing="2">THE HARNESS</text>
+    <text x="466" y="404" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18" fill="#FAFAF8">loop + instructions</text>
+    <text x="466" y="436" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18" fill="#FAFAF8">tools + context</text>
+    <text x="466" y="468" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18" fill="#FAFAF8">permissions + checks</text>
+
+    <path d="M760 412 C 770 412, 780 412, 794 412" fill="none" stroke="#2563EB" stroke-width="2.4"/>
+    <path d="M782 404 L796 412 L782 420" fill="none" stroke="#2563EB" stroke-width="2.4"/>
+
+    <rect x="800" y="322" width="320" height="180" rx="14" fill="#131720" stroke="#2563EB" stroke-width="2"/>
+    <text x="826" y="360" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#7FA6EE" letter-spacing="2">THE SHARED RECORD</text>
+    <text x="826" y="404" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18" fill="#FAFAF8">bets + tasks</text>
+    <text x="826" y="436" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18" fill="#FAFAF8">owners</text>
+    <text x="826" y="468" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18" fill="#FAFAF8">outcomes</text>
+  </g>
+
+  <g transform="translate(80, 550)">
+    <rect x="0" y="0" width="34" height="34" rx="7" fill="#1C1B18"/>
+    <path d="M7 26 L7 9 L17 19 L27 9 L27 26" stroke="#FAFAF8" stroke-width="3.6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+    <text x="46" y="24" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">Maskin</text>
+    <text x="46" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="#5A5751">maskin.io/docs/learn/what-is-an-agent-harness</text>
+  </g>
+</svg>

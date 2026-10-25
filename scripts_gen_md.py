@@ -47,6 +47,7 @@ ORDER = [
   "docs/learn/claude-code-agent-teams/index.html",
   "docs/learn/claude-code-team/index.html",
   "docs/learn/choose-a-knowledge-layer/index.html",
+  "docs/learn/what-is-an-agent-harness/index.html",
   "docs/agent-skills-marketplace/index.html",
   "docs/knowledge-wiki-vs-vector-database/index.html",
   "docs/mcp-vs-rag/index.html",
