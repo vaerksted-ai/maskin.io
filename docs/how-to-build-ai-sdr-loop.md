@@ -76,7 +76,7 @@ The two failure bands are the ones from [Human in the loop AI](/docs/learn/human
 ## FAQ
 
 ### What is an AI SDR agent?
-An AI SDR (sales development representative) agent is software that does the repeatable parts of the SDR job: it watches for buying signals, researches the prospect, drafts outreach and routes replies. Unlike a fixed sequence that sends message A on day 1 and message B on day 3, an agent reads what has happened to a prospect and decides the next step. The version that holds up in production has a human approve every send: the agent drafts, a person ships.
+An AI SDR (sales development representative) agent is software that does the repeatable parts of the SDR job: it watches for buying signals, researches the prospect, drafts outreach and routes replies. Unlike a fixed sequence (message A on day 1, message B on day 3), an agent reads what has happened to a prospect and decides the next step. The version that holds up in production has a human approve every send: the agent drafts, a person ships.
 
 ### How do you build an AI SDR agent?
 Connect a sender lane and a state store to your agent runtime: Unipile through MCP for LinkedIn (or a warmed email domain), and Maskin’s object graph to hold each prospect’s state. Then build the seven steps on this page: a trigger creates an insight, a research session enriches it, the agent drafts a task in `needs_approval`, a human approves, the agent sends through the MCP, replies come back as events, and a written close condition ends the loop.

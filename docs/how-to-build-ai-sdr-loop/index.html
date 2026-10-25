@@ -154,7 +154,7 @@
           "name": "What is an AI SDR agent?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "An AI SDR (sales development representative) agent is software that does the repeatable parts of the SDR job: it watches for buying signals, researches the prospect, drafts outreach and routes replies. Unlike a fixed sequence that sends message A on day 1 and message B on day 3, an agent reads what has happened to a prospect and decides the next step. The version that holds up in production has a human approve every send: the agent drafts, a person ships."
+            "text": "An AI SDR (sales development representative) agent is software that does the repeatable parts of the SDR job: it watches for buying signals, researches the prospect, drafts outreach and routes replies. Unlike a fixed sequence (message A on day 1, message B on day 3), an agent reads what has happened to a prospect and decides the next step. The version that holds up in production has a human approve every send: the agent drafts, a person ships."
           }
         },
         {
@@ -326,7 +326,7 @@
 
 <h2 id="faq">FAQ</h2>
 <h3>What is an AI SDR agent?</h3>
-<p>An AI SDR (sales development representative) agent is software that does the repeatable parts of the SDR job: it watches for buying signals, researches the prospect, drafts outreach and routes replies. Unlike a fixed sequence that sends message A on day 1 and message B on day 3, an agent reads what has happened to a prospect and decides the next step. The version that holds up in production has a human approve every send: the agent drafts, a person ships.</p>
+<p>An AI SDR (sales development representative) agent is software that does the repeatable parts of the SDR job: it watches for buying signals, researches the prospect, drafts outreach and routes replies. Unlike a fixed sequence (message A on day 1, message B on day 3), an agent reads what has happened to a prospect and decides the next step. The version that holds up in production has a human approve every send: the agent drafts, a person ships.</p>
 <h3>How do you build an AI SDR agent?</h3>
 <p>Connect a sender lane and a state store to your agent runtime: Unipile through MCP for LinkedIn (or a warmed email domain), and Maskin&rsquo;s object graph to hold each prospect&rsquo;s state. Then build the seven steps on this page: a trigger creates an insight, a research session enriches it, the agent drafts a task in <code>needs_approval</code>, a human approves, the agent sends through the MCP, replies come back as events, and a written close condition ends the loop.</p>
 <h3>Is there an open-source AI SDR agent?</h3>
