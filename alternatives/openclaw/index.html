@@ -53,7 +53,7 @@
       "url": "https://maskin.io/alternatives/openclaw/",
       "inLanguage": "en",
       "datePublished": "2026-10-23T00:00:00Z",
-      "dateModified": "2026-10-23T00:00:00Z",
+      "dateModified": "2026-10-26T00:00:00Z",
       "image": [
         "https://maskin.io/og-image-openclaw-alternative.png"
       ],
@@ -116,7 +116,7 @@
           "name": "Is there an OpenClaw alternative with memory?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Hermes Agent is the closest: it describes agent-curated memory, searchable past sessions and a deepening model of the user. It can import your OpenClaw MEMORY.md and USER.md entries. Maskin is not a substitute here, because it does not match either project on cross-conversation memory."
+            "text": "Yes. Hermes Agent is the closest: it describes agent-curated memory, searchable past sessions and a deepening model of the user. It can import your OpenClaw MEMORY.md and USER.md entries with hermes import-agent openclaw. Maskin is not a substitute here, because it does not match either project on cross-conversation memory."
           }
         },
         {
@@ -168,7 +168,7 @@
     <div class="callout__body"><strong>Key takeaways</strong>
 <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
 <li><strong>Most &quot;OpenClaw alternative&quot; lists are lists of other personal agents.</strong> The ones we read mostly rank Hermes, NanoClaw, ZeroClaw and similar runtimes. That is the right answer if the job is &quot;one capable agent for me&quot;.</li>
-<li><strong>Hermes Agent is the honest pick if you want one agent with memory.</strong> It is MIT licensed, had about 251K GitHub stars when we read the repository on 5 October 2026, and ships a command to import OpenClaw memories, skills and settings.</li>
+<li><strong>Hermes Agent is the honest pick if you want one agent with memory.</strong> It is MIT licensed, had about 257K GitHub stars when we checked on 26 October 2026, and ships a command to import OpenClaw memories, skills and settings.</li>
 <li><strong>OpenClaw is not only single-user any more.</strong> Its docs describe a shared team gateway. The catch is stated in its own words: everyone who can message a tool-enabled agent shares that agent&#39;s tool authority.</li>
 <li><strong>Maskin is a different shape.</strong> It is an Apache 2.0, self-hostable workspace where people and agents read and write the same typed records (insights, bets, tasks). It does not match OpenClaw or Hermes on cross-conversation memory, and we say so below.</li>
 <li><strong>Check the repo before you install any &quot;Claw&quot;.</strong> The name family mixes serious projects with look-alikes, including two unrelated repositories both called GoClaw.</li>
@@ -210,7 +210,7 @@
 </tbody></table></div>
 <p>If your row is one of the first three, you probably do not need Maskin, and the sections below tell you where to go.</p>
 <h2>What OpenClaw is today</h2>
-<p>OpenClaw is an open-source assistant that runs on your own machine and talks to you in the chat apps you already use. Its README lists Discord, iMessage, Slack, Teams, Telegram, WhatsApp and 20+ more, plus native apps for macOS, iOS, Android, Windows and Linux. It is MIT licensed and had about 391K GitHub stars on 5 October 2026 (<a href="https://github.com/openclaw/openclaw">OpenClaw repository</a>).</p>
+<p>OpenClaw is an open-source assistant that runs on your own machine and talks to you in the chat apps you already use. Its README lists Discord, iMessage, Slack, Teams, Telegram, WhatsApp and 20+ more, plus native apps for macOS, iOS, Android, Windows and Linux. It is MIT licensed and had about 393K GitHub stars on 26 October 2026 (<a href="https://github.com/openclaw/openclaw">OpenClaw repository</a>).</p>
 <p>Three details from its own README and docs matter for this decision:</p>
 <ul>
 <li><strong>Memory is plain files on your disk.</strong> The docs describe a workspace with USER.md, MEMORY.md and daily notes, loaded at session start, plus a background &quot;dreaming&quot; step that promotes notes into long-term memory (<a href="https://docs.openclaw.ai/concepts/memory">OpenClaw memory docs</a>). &quot;The model only remembers what gets saved to disk; there is no hidden state.&quot;</li>
@@ -231,7 +231,7 @@
 <p>Simon Willison&#39;s year-in-review puts it well: &quot;A Claw is really just a coding agent wearing a less threatening hat&quot; (<a href="https://simonwillison.net/2026/sep/27/2026-in-llms-so-far/">Simon Willison, 27 September 2026</a>). Everything in this section is a variation on that.</p>
 <h3>Hermes Agent: the pick for one agent with memory</h3>
 <p>Hermes Agent, from Nous Research, is the alternative to start with if you want one capable agent that learns you. It is MIT licensed and written in Python (<a href="https://github.com/NousResearch/hermes-agent">Hermes repository</a>). Its README describes a built-in learning loop: skills created from experience, searchable past conversations with summaries, and a model of the user that deepens across sessions. It runs from a terminal, or through Telegram, Discord, Slack, WhatsApp and Signal from one gateway. Execution backends include Docker, SSH, Modal and Daytona, so it does not have to live on your laptop. It also connects to MCP servers and has a built-in scheduler.</p>
-<p>For switchers, the useful line in the README is the migration command. Running hermes claw migrate imports your OpenClaw persona file, memory entries, skills, command allowlist, messaging settings and allowlisted API keys, and --dry-run previews the import first. Try the dry run before you commit to anything.</p>
+<p>For switchers, the useful line in the README is the migration command. Running hermes import-agent openclaw imports your OpenClaw persona file, memory entries, skills, command allowlist and messaging settings, and hermes import-agent openclaw --dry-run previews the import first. Allowlisted API keys come across only if you add --migrate-secrets. Try the dry run before you commit to anything. The older spelling, hermes claw migrate, still works.</p>
 <h3>Lighter and smaller runtimes</h3>
 <p>We read each repository&#39;s metadata on 5 October 2026 and did not run any of them. The descriptions are the projects&#39; own.</p>
 <div class="doc-table-wrap"><table>
@@ -327,7 +327,7 @@
 </tr>
 <tr>
 <td><strong>Maturity</strong></td>
-<td>About 391K stars, repo created November 2025</td>
+<td>About 393K stars (26 October 2026), repo created November 2025</td>
 <td>Early; evaluate the architecture, not a long track record</td>
 </tr>
 </tbody></table></div>
@@ -337,7 +337,7 @@
 <ul>
 <li><strong>You want one assistant in your own chat apps.</strong> That is what they are built for, and Maskin is not.</li>
 <li><strong>Memory across conversations is the point.</strong> See above.</li>
-<li><strong>You want a large community.</strong> Their communities are far larger (about 391K and 251K GitHub stars, against a young Maskin).</li>
+<li><strong>You want a large community.</strong> Their communities are far larger (about 393K and 257K GitHub stars on 26 October 2026, against a young Maskin).</li>
 <li><strong>You want to be running in minutes with one install command.</strong> Both ship one.</li>
 </ul>
 <h3>Where a team workspace fits instead</h3>
@@ -371,7 +371,7 @@
 <h3>Is there a safer OpenClaw alternative?</h3>
 <p>Safer depends on the threat. NanoClaw describes itself as running agents in containers, and Hermes documents command approval, DM pairing and container isolation. OpenClaw also pairs unknown senders by default and tells you to treat inbound messages as untrusted. We have not audited any of them, so read each project&#39;s security docs, not the tagline.</p>
 <h3>Is there an OpenClaw alternative with memory?</h3>
-<p>Yes. Hermes Agent is the closest: it describes agent-curated memory, searchable past sessions and a deepening model of the user. It can import your OpenClaw MEMORY.md and USER.md entries. Maskin is not a substitute here, because it does not match either project on cross-conversation memory.</p>
+<p>Yes. Hermes Agent is the closest: it describes agent-curated memory, searchable past sessions and a deepening model of the user. It can import your OpenClaw MEMORY.md and USER.md entries with hermes import-agent openclaw. Maskin is not a substitute here, because it does not match either project on cross-conversation memory.</p>
 <h3>What is a lightweight OpenClaw alternative?</h3>
 <p>NanoClaw (TypeScript), ZeroClaw (Rust) and PicoClaw (Go) all position themselves as smaller than OpenClaw. We have not benchmarked them, so check each one&#39;s repository, license and recent activity. Be careful with names: more than one unrelated project is called GoClaw.</p>
 <h3>Is there a free, open-source OpenClaw alternative?</h3>
