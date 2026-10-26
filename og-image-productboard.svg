@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="0.4" opacity="0.05"/>
+    </pattern>
+    <linearGradient id="topFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111110" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#111110" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="120" fill="url(#topFade)"/>
+  <text x="80" y="98" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#8B8781" letter-spacing="4">PRODUCTBOARD ALTERNATIVE</text>
+  <text x="80" y="170" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="56" font-weight="700" fill="#FAFAF8">Pick by the job</text>
+  <text x="80" y="236" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="56" font-weight="700" fill="#FAFAF8">you are missing.</text>
+  <text x="80" y="284" font-family="Newsreader, Georgia, serif" font-size="25" font-style="italic" fill="#8B8781">Feedback, roadmap, discovery or delivery. Maskin keeps signal, bet and result in one record.</text>
+  <g>
+    <rect x="80" y="340" width="1040" height="44" rx="11" fill="#141311" stroke="#3A3835" stroke-width="1.4"/>
+    <text x="102" y="368" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#D6D3CC">feedback, roadmap, planning · Productboard, Canny, Aha, ProductPlan</text>
+    <text x="1100" y="368" text-anchor="end" font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" fill="#8B8781">one job each</text>
+    <rect x="75" y="400" width="1050" height="54" rx="14" fill="none" stroke="#2563EB" stroke-width="1" opacity="0.28"/>
+    <rect x="80" y="405" width="1040" height="44" rx="11" fill="#131720" stroke="#2563EB" stroke-width="2"/>
+    <text x="102" y="433" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#FAFAF8">connected record · insight, bet, tasks, written result</text>
+    <text x="1100" y="433" text-anchor="end" font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" fill="#7FA6EE">one record</text>
+  </g>
+  <g transform="translate(80, 550)">
+    <rect x="0" y="0" width="34" height="34" rx="7" fill="#1C1B18"/>
+    <path d="M7 26 L7 9 L17 19 L27 9 L27 26" stroke="#FAFAF8" stroke-width="3.6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+    <text x="46" y="24" font-family="Schibsted Grotesk, Inter, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">Maskin</text>
+    <text x="46" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="#8B8781">maskin.io/alternatives/productboard</text>
+  </g>
+</svg>

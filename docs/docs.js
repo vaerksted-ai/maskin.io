@@ -96,6 +96,7 @@
       { label: "Open source Jira alternative", href: "/alternatives/open-source-jira-alternative/" },
       { label: "Open source Linear alternative", href: "/alternatives/open-source-linear-alternative/" },
       { label: "Open source Notion alternative", href: "/alternatives/open-source-notion-alternative/" },
+      { label: "Productboard alternative", href: "/alternatives/productboard/" },
       { label: "Open source AI SDR", href: "/alternatives/open-source-ai-sdr/" },
       { label: "Open source Codex alternative", href: "/alternatives/open-source-alternative-to-codex/" },
       { label: "Open source alternative to Claude Cowork", href: "/alternatives/open-source-alternative-to-claude-cowork/" },
