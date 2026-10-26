@@ -77,6 +77,7 @@
       { label: "Agentic workflow vs the closed loop", href: "/docs/learn/agentic-workflow-vs-closed-loop/" },
       { label: "AI agent governance", href: "/docs/learn/ai-agent-governance/" },
       { label: "Agent orchestration", href: "/docs/learn/agent-orchestration/" },
+      { label: "Agentic SDLC", href: "/docs/learn/agentic-sdlc/", nested: true },
       { label: "Ralph Wiggum loop", href: "/docs/learn/ralph-wiggum-loop/", nested: true },
       { label: "Agent memory across sessions", href: "/docs/learn/agent-memory-across-sessions/" },
       { label: "Claude Code for product managers", href: "/docs/learn/claude-code-for-product-managers/" },
