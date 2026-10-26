@@ -26,6 +26,7 @@ ORDER = [
   "docs/ai-product-workspace-vs-coding-agent/index.html",
   "docs/claude-code-vs-codex/index.html",
   "docs/claude-code-vs-cursor/index.html",
+  "docs/claude-code-vs-github-copilot/index.html",
   "docs/claude-cowork-vs-claude-code/index.html",
   "docs/agentic-workspace-vs-knowledge-space/index.html",
   "docs/closed-loop-workspace/index.html",

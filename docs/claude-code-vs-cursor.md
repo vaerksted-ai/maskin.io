@@ -49,7 +49,7 @@ Either way, a team hits the same frictions:
 Only the first has a fix inside the tools. The others need something above them. Claude Code’s own experimental [agent teams](/docs/learn/claude-code-agent-teams/) hit the same limit inside one session: the task list sits in local files, scoped to that session. Where shared instructions sit among the other layers is covered in [agent skills vs MCP vs Cursor rules vs workflows](/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/).
 
 ## And Codex?
-Codex is OpenAI’s coding agent, and it sits closest to Claude Code: terminal first, AGENTS.md for instructions, MCP, skills and subagents. Against Cursor, the same five checks apply, with the account and model checks doing most of the work. For the full Claude Code and Codex comparison, read [Claude Code vs Codex](/docs/claude-code-vs-codex/).
+Codex is OpenAI’s coding agent, and it sits closest to Claude Code: terminal first, AGENTS.md for instructions, MCP, skills and subagents. Against Cursor, the same five checks apply, with the account and model checks doing most of the work. For the full Claude Code and Codex comparison, read [Claude Code vs Codex](/docs/claude-code-vs-codex/). If GitHub’s Copilot is the other tool on your list, [Claude Code vs GitHub Copilot](/docs/claude-code-vs-github-copilot/) covers the editor-and-GitHub side.
 
 ## Where the record lives
 You do not need a product for this. You need four things written down in a place that outlives any one session and that both tools, and the people using them, can reach:

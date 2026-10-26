@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code vs GitHub Copilot: pick by job, keep one record | Maskin</title>
+<meta name="description" content="Claude Code vs GitHub Copilot compared from each vendor's own docs: how to choose by job, what breaks when a team uses both, and where the shared record lives.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/docs/claude-code-vs-github-copilot/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/docs/claude-code-vs-github-copilot/">
+<meta property="og:title" content="Claude Code vs GitHub Copilot: pick by job, then keep one record">
+<meta property="og:description" content="Claude Code starts in the terminal and Copilot starts in your editor and on GitHub. Choose by job, test both on your own repo, and keep one record when a team uses both.">
+<meta property="og:image" content="https://maskin.io/og-image-claude-code-vs-github-copilot.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="Claude Code vs GitHub Copilot: pick by job, then keep one record">
+<meta name="twitter:description" content="Claude Code starts in the terminal and Copilot starts in your editor and on GitHub. Choose by job, test both on your own repo, and keep one record when a team uses both.">
+<meta name="twitter:image" content="https://maskin.io/og-image-claude-code-vs-github-copilot.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/claude-code-vs-github-copilot/#post",
+      "headline": "Claude Code vs GitHub Copilot: pick by job, then keep one record",
+      "name": "Claude Code vs GitHub Copilot: pick by job, then keep one record",
+      "description": "Claude Code vs GitHub Copilot compared from each vendor's own docs: how to choose by job, what breaks when a team uses both, and where the shared record lives.",
+      "url": "https://maskin.io/docs/claude-code-vs-github-copilot/",
+      "inLanguage": "en",
+      "datePublished": "2026-10-26T00:00:00Z",
+      "dateModified": "2026-10-26T00:00:00Z",
+      "image": [
+        "https://maskin.io/og-image-claude-code-vs-github-copilot.png"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/claude-code-vs-github-copilot/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Claude Code"
+        },
+        {
+          "@type": "Thing",
+          "name": "GitHub Copilot"
+        },
+        {
+          "@type": "Thing",
+          "name": "AGENTS.md"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Claude Code vs GitHub Copilot",
+          "item": "https://maskin.io/docs/claude-code-vs-github-copilot/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which is better, Claude Code or GitHub Copilot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Neither wins on every job, and no vendor documentation gives you a score for your code. Claude Code is one agent that starts in the terminal. Copilot is a family that starts in your editor and on GitHub. Decide on where the work starts, the account you already pay for, the editors your team uses, and a three-task test on your own merged pull requests."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Claude Code better than GitHub Copilot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We cannot say, and this page prints no benchmark because the result depends on your code, your prompts and the model versions on the day. Both read project instructions, connect to tools over MCP and run unattended. If you prefer a terminal or an editor, that is a better reason than a leaderboard."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you use Claude Code and GitHub Copilot together?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Teams run both side by side, and GitHub’s third-party agents page lists Anthropic’s Claude agent as one you can run on a paid Copilot subscription. The practical problems are two sets of instructions, two sets of guardrails and two histories. Share one AGENTS.md and keep decisions in a record outside both."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do Claude Code and Copilot read the same instructions file?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not by default. Copilot reads .github/copilot-instructions.md, path-specific instruction files, AGENTS.md, and CLAUDE.md or GEMINI.md in the repository root. Claude Code reads CLAUDE.md, and reads AGENTS.md only when no CLAUDE.md exists. To share one file, write an AGENTS.md and have your CLAUDE.md import it, then test it in the Copilot feature you use."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Claude Code vs Copilot CLI: what is the difference?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both run in a terminal, take a prompt with -p and connect to MCP servers. Claude Code is Anthropic’s agent and runs Claude models. GitHub’s page says Copilot CLI can switch models with /model, fetch pull requests, create issues and manage workflows from the terminal, and accepts custom providers including Anthropic. GitHub says all Copilot plans include the CLI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which is cheaper, Claude Code or GitHub Copilot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on your plan and how much you use it, and both vendors change plans, models and usage pools often. Claude Code needs a Claude subscription, an Anthropic Console account or a supported cloud provider. Copilot comes in several plans, including Free, Pro, Pro+, Business and Enterprise, and GitHub says its agents consume GitHub Actions minutes and AI credits. Compare the current pricing pages against your own usage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do Claude Code and Copilot have usage limits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both are gated by the plan or account you sign in with. We print no usage numbers because limits change often and the pages we read do not give one figure that holds for everyone. GitHub does document session limits for the Copilot cloud agent: 59 minutes per session, one pull request per task and a single repository. If a limit blocks a long job, that is one reason teams end up on both, and a reason to record which job ran on which account."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Maskin run GitHub Copilot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Maskin runs its agent sessions on the Claude Code CLI or the Codex CLI. This page compares Copilot because many teams use it next to Claude Code, and the record argument applies whichever agent does the work. Book a meeting to talk through how your team could keep one record across coding agents."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Docs</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">← Maskin home</a> · <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Getting started"><p class="doc-sidebar__title">Getting started</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/get-started/">Get started</a></li><li><a class="is-nested" href="/docs/get-started/self-hosted/">Self-hosted setup</a></li><li><a class="" href="/docs/quickstart/">Quickstart tutorial</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Solutions"><p class="doc-sidebar__title">Solutions</p><ul class="doc-sidebar__list"><li><a class="" href="/solutions/product-teams/">Product teams</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All loops</a></li><li><a class="is-nested" href="/marketplace/seo-publishing/">The SEO publishing loop</a></li><li><a class="is-nested" href="/marketplace/outbound/">The outbound loop</a></li><li><a class="" href="/marketplace/lead-qualification/">The lead qualification loop</a></li><li><a class="is-nested" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki loop</a></li><li><a class="is-nested" href="/marketplace/linkedin-content/">The LinkedIn content loop</a></li><li><a class="is-nested" href="/marketplace/product-delivery/">The product delivery loop</a></li><li><a class="" href="/loops/ai-customer-feedback-loop/">AI customer feedback loop</a></li><li><a class="" href="/marketplace/competitive-intelligence/">The competitive intelligence loop</a></li><li><a class="is-nested" href="/loops/competitive-intelligence/">Competitive intelligence loop: how it works</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Concepts"><p class="doc-sidebar__title">Concepts</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/concepts/">Core concepts</a></li><li><a class="" href="/docs/agents/">Agents &amp; sessions</a></li><li><a class="" href="/docs/architecture/">Architecture</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Reference"><p class="doc-sidebar__title">Reference</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/mcp-tools/">MCP tools</a></li><li><a class="" href="/docs/api/">API reference</a></li><li><a class="" href="/docs/configuration/">Configuration</a></li><li><a class="" href="/docs/integrations/">Integrations</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Self-hosting"><p class="doc-sidebar__title">Self-hosting</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/llm/">LLM &amp; models</a></li><li><a class="" href="/docs/deployment/">Production deployment</a></li><li><a class="" href="/docs/security/">Security</a></li><li><a class="" href="/docs/troubleshooting/">Troubleshooting</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Articles"><p class="doc-sidebar__title">Articles</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/what-is-mcp-native/">What is MCP-native?</a></li><li><a class="is-nested" href="/docs/mcp-native-workspace/">MCP-native workspace</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">What is a stateful orchestration substrate?</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="is-nested" href="/docs/agent-inbox/">Agent Inbox</a></li><li><a class="" href="/docs/composable-ai-agents-vs-ai-employees/">Composable AI agents vs AI employees</a></li><li><a class="" href="/docs/learn/human-in-the-loop/">Human in the loop</a></li><li><a class="is-nested" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/three-tiers-ai-native-work/">Three tiers of AI-native work</a></li><li><a class="is-nested" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="is-nested" href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a></li><li><a class="is-nested" href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a></li><li><a class="is-nested" href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a></li><li><a class="is-nested is-active" href="/docs/claude-code-vs-github-copilot/" aria-current="page">Claude Code vs GitHub Copilot</a></li><li><a class="is-nested" href="/docs/claude-cowork-vs-claude-code/">Claude Cowork vs Claude Code</a></li><li><a class="is-nested" href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a></li><li><a class="is-nested" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="is-nested" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li><li><a class="" href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs cursor rules vs workflows</a></li><li><a class="is-nested" href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a></li><li><a class="" href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="is-nested" href="/docs/how-to-run-bet-based-planning/">How to run bet-based planning</a></li><li><a class="is-nested" href="/docs/bet-vs-backlog/">Bet vs backlog</a></li><li><a class="" href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a></li><li><a class="" href="/docs/how-to-build-ai-sdr-loop/">How to build an AI SDR loop</a></li><li><a class="" href="/docs/learn/agentic-workflow-vs-closed-loop/">Agentic workflow vs the closed loop</a></li><li><a class="" href="/docs/learn/ai-agent-governance/">AI agent governance</a></li><li><a class="" href="/docs/learn/agent-orchestration/">Agent orchestration</a></li><li><a class="is-nested" href="/docs/learn/ralph-wiggum-loop/">Ralph Wiggum loop</a></li><li><a class="" href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a></li><li><a class="" href="/docs/learn/claude-code-for-product-managers/">Claude Code for product managers</a></li><li><a class="is-nested" href="/docs/learn/claude-code-agent-teams/">Claude Code agent teams</a></li><li><a class="is-nested" href="/docs/learn/claude-code-team/">Claude Code team</a></li><li><a class="is-nested" href="/docs/learn/claude-code-memory/">Claude Code memory</a></li><li><a class="is-nested" href="/docs/learn/choose-a-knowledge-layer/">How to choose a knowledge layer</a></li><li><a class="" href="/docs/learn/what-is-an-agent-harness/">What is an agent harness?</a></li><li><a class="" href="/docs/agent-skills-marketplace/">Agent skills marketplace</a></li><li><a class="" href="/docs/knowledge-wiki-vs-vector-database/">Knowledge wiki vs vector database</a></li><li><a class="" href="/docs/mcp-vs-rag/">MCP vs RAG</a></li><li><a class="is-nested" href="/docs/mcp-tools-vs-resources/">MCP tools vs resources vs prompts</a></li><li><a class="" href="/docs/mcp-vs-api/">MCP vs API</a></li><li><a class="" href="/docs/at-risk-account-alerts/">At-risk account alerts</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Alternatives"><p class="doc-sidebar__title">Alternatives</p><ul class="doc-sidebar__list"><li><a class="" href="/alternatives/open-source-jira-alternative/">Open source Jira alternative</a></li><li><a class="" href="/alternatives/open-source-linear-alternative/">Open source Linear alternative</a></li><li><a class="" href="/alternatives/open-source-notion-alternative/">Open source Notion alternative</a></li><li><a class="" href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a></li><li><a class="" href="/alternatives/open-source-alternative-to-codex/">Open source Codex alternative</a></li><li><a class="" href="/alternatives/open-source-alternative-to-claude-cowork/">Open source alternative to Claude Cowork</a></li><li><a class="" href="/alternatives/self-hosted-ai-agent-control-plane/">Self-hosted AI agent control plane</a></li><li><a class="" href="/alternatives/self-hosted-ai-agents/">Self-hosted AI agents</a></li><li><a class="" href="/alternatives/open-source-ai-coding-agent/">Open source AI coding agent</a></li><li><a class="" href="/alternatives/n8n/">n8n alternative</a></li><li><a class="" href="/alternatives/paperclip/">Paperclip alternative</a></li><li><a class="" href="/alternatives/openclaw/">OpenClaw alternative</a></li><li><a class="" href="/alternatives/productboard/">Productboard alternative</a></li><li><a class="" href="/alternatives/open-source-ai-agents/">Open source AI agents</a></li></ul></nav></aside>  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Claude Code vs GitHub Copilot</p>
+    <p class="eyebrow">Article &middot; Comparison</p>
+    <h1>Claude Code vs GitHub Copilot: pick by job, then keep one record</h1>
+<p class="lead">Claude Code vs GitHub Copilot comes down to where you start: Claude Code is Anthropic&rsquo;s coding agent and starts in the terminal, while Copilot is GitHub&rsquo;s suite of editor suggestions, chat, agent mode, a cloud agent that opens pull requests, and a CLI. Choose by the account you already pay for, then test both on your own repo.</p>
+<p><a href="https://maskin.io/bookseb?utm_source=maskin&amp;utm_medium=docs&amp;utm_campaign=claude-code-vs-github-copilot&amp;utm_content=top">Book a meeting</a> if your team is already running coding agents and you want one place to keep decisions, owners and outcomes. Details are on the <a href="/solutions/product-teams/">product teams page</a>.</p>
+<p><em>Read against Anthropic&rsquo;s <a href="https://code.claude.com/docs/en/overview" rel="noopener">Claude Code docs</a> and GitHub&rsquo;s Copilot documentation on 2026-10-26. Both products change often, so check the vendor pages before you rely on a detail. This page prints no prices, usage limits or benchmark scores. Neither vendor gives you a number for your code, and plans change too fast for a table here.</em></p>
+<div class="callout callout--muted"><div class="callout__icon" aria-hidden="true">&#10003;</div><div class="callout__body"><strong>Key takeaways</strong><ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+<li><strong>They are not the same kind of product.</strong> Claude Code is one agent that runs on several surfaces. Copilot is a family: editor suggestions, chat, agent mode in the IDE, a cloud agent on GitHub, a CLI and code review. Most &ldquo;which is better&rdquo; answers compare one Copilot piece with Claude Code and miss the rest.</li>
+<li><strong>Where the work starts differs.</strong> Claude Code starts in a terminal and also runs in VS Code, JetBrains, a desktop app and the web. Copilot starts in your editor and on GitHub, where you can assign work from an issue or a pull request.</li>
+<li><strong>The overlap is large.</strong> Both read project instructions, connect to tools over MCP, support skills and hooks, and run non-interactively from a command line.</li>
+<li><strong>You do not have to choose one.</strong> GitHub documents Claude as a third-party agent that runs on a paid Copilot subscription, in public preview on the plans page.</li>
+<li><strong>Neither is your team&rsquo;s record.</strong> What was decided, who owned it and whether it worked has to live outside both.</li>
+</ul></div></div>
+<figure style="margin:1.5rem 0">
+  <img src="/og-image-claude-code-vs-github-copilot.png" width="1200" height="630" alt="Two boxes, Claude Code (terminal first, CLAUDE.md) and GitHub Copilot (editor and GitHub first, AGENTS.md), both feeding one shared record that holds an owner, a decision with its reason, and an outcome condition." style="width:100%;height:auto;border-radius:10px;border:1px solid var(--rule)" loading="lazy">
+  <figcaption style="font-size:.85rem;color:var(--ink-3);margin-top:.5rem">A terminal agent and an editor agent can still write to one record.</figcaption>
+</figure>
+<h2>Claude Code vs GitHub Copilot at a glance</h2>
+<p>This table sticks to what each vendor&rsquo;s own pages state. &ldquo;Not stated&rdquo; means the page we read does not say, not that the feature is absent.</p>
+<div class="doc-table-wrap"><table class="doc-table">
+<thead><tr><th></th><th>Claude Code</th><th>GitHub Copilot</th></tr></thead>
+<tbody>
+<tr><td>Maker</td><td>Anthropic</td><td>GitHub</td></tr>
+<tr><td>Starting point</td><td>Terminal</td><td>Your editor, and GitHub itself</td></tr>
+<tr><td>Other places it runs</td><td>VS Code, JetBrains, desktop app, web and mobile</td><td>Visual Studio Code, Visual Studio, JetBrains IDEs, Xcode, Eclipse, Vim and Neovim, Azure Data Studio, plus a CLI and GitHub.com</td></tr>
+<tr><td>Sign in</td><td>Claude subscription or Anthropic Console account; the terminal CLI, VS Code and JetBrains also support third-party providers</td><td>GitHub account on a Copilot plan; GitHub&rsquo;s plans page lists seven, including Free, Pro, Pro+, Business and Enterprise</td></tr>
+<tr><td>Models</td><td>Claude models, from Anthropic or a supported cloud provider</td><td>Copilot CLI switches models with <code>/model</code> and accepts custom providers, including OpenAI-compatible, Azure OpenAI and Anthropic endpoints</td></tr>
+<tr><td>Project instructions</td><td>CLAUDE.md; reads AGENTS.md when no CLAUDE.md is present</td><td><code>.github/copilot-instructions.md</code>, path-specific <code>.instructions.md</code> files, AGENTS.md, and CLAUDE.md or GEMINI.md in the repository root</td></tr>
+<tr><td>Non-interactive mode</td><td><code>claude -p</code></td><td><code>copilot -p</code></td></tr>
+<tr><td>Cloud and unattended runs</td><td>Claude Code on the web; cloud scheduled tasks; GitHub Actions</td><td>Copilot cloud agent in an ephemeral environment, started from the agents panel, chat, issues or pull requests</td></tr>
+<tr><td>Extending it</td><td>Skills, hooks, MCP, subagents, Agent SDK</td><td>MCP, custom instructions, custom agents, skills and hooks</td></tr>
+<tr><td>Code review</td><td>GitHub Code Review for pull requests</td><td>Copilot code review</td></tr>
+</tbody>
+</table></div>
+<p>The Claude Code column comes from Anthropic&rsquo;s <a href="https://code.claude.com/docs/en/overview" rel="noopener">overview</a> and <a href="https://code.claude.com/docs/en/memory" rel="noopener">memory</a> pages. The Copilot column comes from GitHub&rsquo;s pages on <a href="https://docs.github.com/en/copilot/get-started/what-is-github-copilot" rel="noopener">Copilot</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli" rel="noopener">the CLI</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent" rel="noopener">the cloud agent</a>, <a href="https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions" rel="noopener">repository instructions</a> and <a href="https://docs.github.com/en/copilot/get-started/plans" rel="noopener">plans</a>. &ldquo;Copilot&rdquo; here means the whole family. Which instruction file each Copilot feature reads is on GitHub&rsquo;s own matrix, and we did not confirm every combination.</p>
+<h2>How to choose between Claude Code and Copilot by job</h2>
+<p>Most pages answer &ldquo;which is better&rdquo; with a score. The question that decides your week is narrower: which one fits the job in front of you, given what you already have. Run these five checks in order and stop at the first one that settles it.</p>
+<ol>
+<li><strong>Where does the work start?</strong> If it starts as a GitHub issue and should come back as a pull request, Copilot&rsquo;s cloud agent is built for that: you can assign it from an issue, a pull request, the agents panel or chat, and it works in an ephemeral environment. If it starts in your terminal, or you want to move a session between terminal, desktop and phone, Claude Code is built for that. Both can go the other way, so this is a default, not a wall.</li>
+<li><strong>Which account do you already pay for?</strong> A team on Copilot Business or Enterprise already has Copilot. A team on a Claude plan already has Claude Code. GitHub&rsquo;s plans page says all Copilot plans include Copilot CLI, so adding Copilot to a Claude team costs you an account, not a procurement cycle. Run the second tool for one month, not one year.</li>
+<li><strong>Which editor do your people use?</strong> Copilot lists Visual Studio, JetBrains IDEs, Xcode, Eclipse and Vim or Neovim on its supported list, as well as VS Code. Claude Code lists VS Code, JetBrains and its own desktop app. If a large part of your team is in Xcode or Visual Studio, check the Claude Code side before you commit.</li>
+<li><strong>Which models and providers must you use?</strong> Claude Code runs Claude models. Copilot CLI lets you switch models and connect other providers, and GitHub&rsquo;s third-party agents page says Claude and Codex agents can run on a paid Copilot subscription. If your security team approved one provider, that check may settle it alone.</li>
+<li><strong>Does the work run while nobody is watching?</strong> Both have a non-interactive mode for scripts and CI (<code>claude -p</code> and <code>copilot -p</code>) and a cloud option. GitHub documents limits on the cloud agent: a maximum execution time of 59 minutes per session, one branch at a time, one pull request per task, and a single repository. Read the equivalent limits for the way you would run Claude Code in the cloud before you compare.</li>
+</ol>
+<p>If none of the five settles it, you are choosing on output quality, and the only evidence that counts is your own.</p>
+<h3>A bake-off on your own repo</h3>
+<p>Head-to-head tests on the results page are run on someone else&rsquo;s code, with model versions that have since changed. You can get a more useful answer in an afternoon.</p>
+<ol>
+<li><strong>Pick three merged pull requests.</strong> One small bug fix, one feature that touched several files, one refactor. You already have the reviewed, accepted diff for each.</li>
+<li><strong>Start each tool from the commit before the merge.</strong> Give both the same ticket text and the same instructions file, so the only variable is the agent. Note which model each run used, because Copilot lets you change it.</li>
+<li><strong>Score the same five things for each run:</strong> do the tests pass, how big is the diff compared with the merged one, what would a reviewer flag, how long did you wait, and how many times did you have to step in.</li>
+<li><strong>Record the result as a decision.</strong> Write down which tool you chose for which kind of job and why. In three months, that sentence is what your team will want.</li>
+</ol>
+<p>This is our method, not a measurement. Maskin has not benchmarked the two tools against each other and makes no claim about which writes better code.</p>
+<h2>Can you use Claude Code and Copilot together?</h2>
+<p>Yes, in two ways. Side by side, some people use Copilot in their editor while others run Claude Code, and an automated job runs on whichever account has headroom. Nested, GitHub&rsquo;s third-party agents page says Anthropic&rsquo;s Claude agent, powered by the Claude Agent SDK, can run on an existing paid Copilot subscription and be started from the agents tab, an issue or a pull request comment. That page says the agents consume GitHub Actions minutes and AI credits. The plans page marks third-party agents as public preview and not available on the Free or Student plans, so confirm the current status before you build on it.</p>
+<p>Either way, a team hits the same frictions:</p>
+<p><strong>1. Instructions drift apart.</strong> Copilot reads <code>.github/copilot-instructions.md</code>, path-specific instruction files, AGENTS.md, and CLAUDE.md or GEMINI.md in the repository root. Claude Code reads CLAUDE.md, and per Anthropic&rsquo;s memory page reads AGENTS.md only when there is no CLAUDE.md. A repository with a Copilot instructions file and a CLAUDE.md gives each tool different guidance. The simplest fix is one AGENTS.md that your CLAUDE.md imports. Our <a href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a> page covers the trade-offs. We could not confirm which Copilot features honor each file, so test the one you use.</p>
+<p><strong>2. Guardrails live in two places.</strong> Anthropic&rsquo;s memory page says Claude Code treats CLAUDE.md as context, not enforced configuration, and points to a PreToolUse hook to block an action outright. Copilot has its own organization policies, and administrators can disable the cloud agent for particular repositories. If you want the same limits on both, you set and review them twice.</p>
+<p><strong>3. Session history is per product.</strong> Each Claude Code session starts with a fresh context window. Copilot sessions sit in GitHub and your editor. We found no documented way to carry one tool&rsquo;s history into the other, and neither is a timeline a colleague can open.</p>
+<p><strong>4. Decisions disappear into whichever tool made them.</strong> &ldquo;Why did we change the retry logic this way&rdquo; is answered in a chat on one laptop. A session is not a place to keep a decision.</p>
+<p><strong>5. Usage splits across two accounts.</strong> You cannot answer &ldquo;what did this feature cost in agent time&rdquo; from one place. Read the vendors&rsquo; current pricing pages for your plan rather than a table that would be stale by the time you read it here.</p>
+<p>Only the first has a fix inside the tools. The others need something above them.</p>
+<h2>Where the record lives</h2>
+<p>You do not need a product for this. You need four things written down in a place that outlives any one session and that both tools, and the people using them, can reach:</p>
+<ol>
+<li><strong>An owner per piece of work.</strong> One name, a person or an agent, on each item.</li>
+<li><strong>A decision with its reason.</strong> What you chose, what you rejected, who approved it. The result of your three-PR test is a decision.</li>
+<li><strong>A stated outcome condition.</strong> What &ldquo;done&rdquo; means in terms you can check later, not &ldquo;the agent said it finished&rdquo;.</li>
+<li><strong>Links between them.</strong> The request that started the work, the decision it led to, the changes that carried it out.</li>
+</ol>
+<p>If your whole workflow already runs through GitHub issues and pull requests, those are a real record of what changed and who reviewed it, and you may not need more. The gap shows up when work spans tools or when the reason for a choice matters more than the diff. Most trackers have no slot for a decision&rsquo;s reason or an outcome condition, so they end up in comments where nobody can query them. Whichever tool you use, keep the record independent of the agent. The agent that ran the work should be one field on the item, not the item itself. Then switching from Copilot to Claude Code, or running both, changes one field.</p>
+<h3>An illustrative scenario</h3>
+<p>Take a team of four. Two developers use Copilot in their editors and two use Claude Code in the terminal. In March one of them decides to pin a major version of a library because the upgrade breaks a plugin. The reasoning sits in one editor chat. In May a recurring dependency job, running on Claude Code, proposes the upgrade again. Nobody can say why it was pinned, so someone repeats the investigation.</p>
+<p>With a record that holds the pin as a decision with a reason and an outcome condition (&ldquo;revisit when the plugin supports the new major&rdquo;), whichever tool runs the job reads the same entry and skips the upgrade. This scenario is made up to show the gap. It is not a Maskin customer story.</p>
+<h2>How Maskin keeps the record</h2>
+<p>Maskin is an open-source (Apache 2.0), MCP-native, self-hostable workspace where people and agents work on shared typed objects. A signal enters as an insight, gets shaped into a bet with a win condition, and breaks into tasks. Each object has a driver (an owner, person or agent) and a comment thread, and a bet closes against its stated condition. The objects are the work, not a log of it.</p>
+<p>Maskin runs its agent sessions on the Claude Code CLI by default, or on the Codex CLI, each inside an isolated microVM. Maskin does not run GitHub Copilot. GitHub&rsquo;s documentation says the Copilot cloud agent supports MCP servers, so it can in principle connect to any MCP server, but we have not tested Copilot against Maskin and do not make that claim for you. Some honest limits: you bring your own Anthropic or OpenAI access, local models are not a path we have validated, and Maskin is early, so evaluate the architecture rather than a long track record.</p>
+<p>If you run a product team on coding agents and want to see the record in practice, <a href="https://maskin.io/bookseb?utm_source=maskin&amp;utm_medium=docs&amp;utm_campaign=claude-code-vs-github-copilot&amp;utm_content=mid">book a meeting</a> or read how Maskin works for <a href="/solutions/product-teams/">product teams</a>. To try it yourself, you can <a href="/docs/self-hosted-ai-workspace/">self-host it</a>. For the longer argument, read <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a>.</p>
+<p>Related comparisons: <a href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a> covers the editor-first alternative, and <a href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a> covers the closest terminal agent. <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs Cursor rules vs workflows</a> covers where shared instructions live, <a href="/docs/learn/agent-memory-across-sessions/">agent memory across sessions</a> covers what survives between runs, and <a href="/docs/learn/claude-code-for-product-managers/">Claude Code for product managers</a> is the start for a PM deciding how much of this to learn. For a wider look at open-source coding agents, see the <a href="/alternatives/open-source-ai-coding-agent/">open source AI coding agent alternatives</a>.</p>
+<h2>A quick decision rule</h2>
+<ul>
+<li><strong>Solo, one account, one repo:</strong> use the tool your account already includes. Run the three-PR test before you add a second subscription.</li>
+<li><strong>Your work starts as GitHub issues and ends as pull requests:</strong> start with Copilot&rsquo;s cloud agent and its code review. Add Claude Code for long jobs you drive from a terminal.</li>
+<li><strong>You live in the terminal, or run jobs from scripts and CI:</strong> start with Claude Code. Add Copilot if teammates prefer their editor or work in Xcode or Visual Studio.</li>
+<li><strong>A team split across both:</strong> make one AGENTS.md before you do anything else.</li>
+<li><strong>Two or more people, or you will need to explain a choice next quarter:</strong> add the four-field record. It works with either tool and it is the part that lasts. <a href="https://maskin.io/bookseb?utm_source=maskin&amp;utm_medium=docs&amp;utm_campaign=claude-code-vs-github-copilot&amp;utm_content=decision-rule">Book a meeting</a> if you want to see how Maskin does it.</li>
+</ul>
+<h2>FAQ</h2>
+<h3>Which is better, Claude Code or GitHub Copilot?</h3>
+<p>Neither wins on every job, and no vendor documentation gives you a score for your code. Claude Code is one agent that starts in the terminal. Copilot is a family that starts in your editor and on GitHub. Decide on where the work starts, the account you already pay for, the editors your team uses, and a three-task test on your own merged pull requests.</p>
+<h3>Is Claude Code better than GitHub Copilot?</h3>
+<p>We cannot say, and this page prints no benchmark because the result depends on your code, your prompts and the model versions on the day. Both read project instructions, connect to tools over MCP and run unattended. If you prefer a terminal or an editor, that is a better reason than a leaderboard.</p>
+<h3>Can you use Claude Code and GitHub Copilot together?</h3>
+<p>Yes. Teams run both side by side, and GitHub&rsquo;s third-party agents page lists Anthropic&rsquo;s Claude agent as one you can run on a paid Copilot subscription. The practical problems are two sets of instructions, two sets of guardrails and two histories. Share one AGENTS.md and keep decisions in a record outside both.</p>
+<h3>Do Claude Code and Copilot read the same instructions file?</h3>
+<p>Not by default. Copilot reads <code>.github/copilot-instructions.md</code>, path-specific instruction files, AGENTS.md, and CLAUDE.md or GEMINI.md in the repository root. Claude Code reads CLAUDE.md, and reads AGENTS.md only when no CLAUDE.md exists. To share one file, write an AGENTS.md and have your CLAUDE.md import it, then test it in the Copilot feature you use.</p>
+<h3>Claude Code vs Copilot CLI: what is the difference?</h3>
+<p>Both run in a terminal, take a prompt with -p and connect to MCP servers. Claude Code is Anthropic&rsquo;s agent and runs Claude models. GitHub&rsquo;s page says Copilot CLI can switch models with <code>/model</code>, fetch pull requests, create issues and manage workflows from the terminal, and accepts custom providers including Anthropic. GitHub says all Copilot plans include the CLI.</p>
+<h3>Which is cheaper, Claude Code or GitHub Copilot?</h3>
+<p>It depends on your plan and how much you use it, and both vendors change plans, models and usage pools often. Claude Code needs a Claude subscription, an Anthropic Console account or a supported cloud provider. Copilot comes in several plans, including Free, Pro, Pro+, Business and Enterprise, and GitHub says its agents consume GitHub Actions minutes and AI credits. Compare the current pricing pages against your own usage.</p>
+<h3>Do Claude Code and Copilot have usage limits?</h3>
+<p>Both are gated by the plan or account you sign in with. We print no usage numbers because limits change often and the pages we read do not give one figure that holds for everyone. GitHub does document session limits for the Copilot cloud agent: 59 minutes per session, one pull request per task and a single repository. If a limit blocks a long job, that is one reason teams end up on both, and a reason to record which job ran on which account.</p>
+<h3>Does Maskin run GitHub Copilot?</h3>
+<p>No. Maskin runs its agent sessions on the Claude Code CLI or the Codex CLI. This page compares Copilot because many teams use it next to Claude Code, and the record argument applies whichever agent does the work.</p>
+<p><a href="https://maskin.io/bookseb?utm_source=maskin&amp;utm_medium=docs&amp;utm_campaign=claude-code-vs-github-copilot&amp;utm_content=bottom">Book a meeting</a> to talk through how your team could keep one record across coding agents.</p>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/docs/claude-code-vs-cursor/">
+        <div class="doc-card__title">Claude Code vs Cursor</div>
+        <div class="doc-card__desc">The same choose-by-job checks for a terminal agent and an editor agent.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/claude-code-vs-codex/">
+        <div class="doc-card__title">Claude Code vs Codex</div>
+        <div class="doc-card__desc">The two terminal-first agents, and why a team ends up on both.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+        <div class="doc-card__title">What is an agentic workspace?</div>
+        <div class="doc-card__desc">The cornerstone: the closed loop on shared typed objects.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Getting started is free</h2>
+      <p>Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of what was decided. The <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace cornerstone</a> and the <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a> guide are the two best next reads.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+</body>
+</html>
