@@ -105,6 +105,7 @@
       { label: "n8n alternative", href: "/alternatives/n8n/" },
       { label: "Paperclip alternative", href: "/alternatives/paperclip/" },
       { label: "OpenClaw alternative", href: "/alternatives/openclaw/" },
+      { label: "Productboard alternative", href: "/alternatives/productboard/" },
       { label: "Open source AI agents", href: "/alternatives/open-source-ai-agents/" }
     ]},
     { title: "Dansk", items: [
