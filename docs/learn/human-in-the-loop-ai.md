@@ -53,7 +53,7 @@ The compliance implication is uncomfortable for vendors selling “HITL for AI A
 
 ## When to use human on the loop, human in the loop, or a tiered policy
 Deciding between HITL and HOTL is not a system-wide choice. It is a per-action-class choice, and the right architecture for most production systems is a **tiered approval policy**: HOTL as the default for bulk reversible actions, HITL routed only to irreversible or high-blast-radius actions, and full autonomy where being wrong costs next to nothing.
-One agent usually spans several classes. A support agent might tag and route incoming tickets on its own, have a person sample-audit its draft replies, and require explicit approval before issuing a refund. The autonomy dial differs by class, and that is the point.
+One agent usually spans several classes. A support agent might tag and route incoming tickets on its own, have a person sample-audit its draft replies, and require explicit approval before issuing a refund. The autonomy dial differs by class, and that is the point. A delivery lifecycle is the same pattern at team scale: in the [agentic SDLC](/docs/learn/agentic-sdlc/) a person approves three decisions, and nobody approves build, review or verify.
 Three questions set the dial for a given action class:
 - **Reversibility.** Reversible at negligible cost (a draft the user will edit, a tag on an internal note): autonomy or sample-audit HOTL. Irreversible (email sent, payment moved, record deleted): HITL or a hard confirmation gate.
 - **Blast radius.** How many downstream systems, customers, or dollars does the wrong action touch? A wrong tag on one internal document is small. A wrong bulk email to a customer segment is large.
