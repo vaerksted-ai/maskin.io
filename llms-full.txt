@@ -5196,6 +5196,11 @@ In marketing, lead qualification is the MQL-to-SQL handoff — but reframed as a
 ### What is the BANT lead qualification framework?
 BANT — Budget, Authority, Need, Timeline — is a four-axis rubric for qualifying a lead. It’s still the dominant practitioner vocabulary in sales. In the loop framing, BANT (or MEDDIC, CHAMP, or a custom rubric) isn’t the constraint. It fits inside the loop as typed fields on the contact object — the loop, not the checklist, is what does the work.
 
+## AI lead follow up for small business
+A new enquiry comes in through a form or an email, and the reply arrives hours later, or never. For a small business, that gap is where the sale goes. In this loop Maskin reads each new enquiry the moment it lands, looks the lead up in your CRM or inbox history, drafts a reply that answers what they asked, and proposes the next step, such as a time to talk. A person approves every reply before it is sent.
+This is for people who came to you. Reaching out to people who have not is the [outbound loop](/marketplace/outbound/).
+It works with the CRM or inbox you already use, so nobody switches systems.
+
 ## What this loop is built with
 Loop
 A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.
