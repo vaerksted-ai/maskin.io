@@ -38,6 +38,10 @@ Skill
 A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
 Full concept map: [Agent skills vs MCP vs cursor rules vs workflows](/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/) explains where each layer belongs.
 
+## Why being the cited source now matters as much as ranking
+HubSpot, the company that wrote much of the inbound playbook, put numbers on the shift in a Fortune essay on 22 September 2026: its blog lost 5 million visits in a thirty-day period, while AI search usage climbed 37% and traditional search declined 11% ([Bodnar and Flanagan, Fortune](https://fortune.com/2026/09/22/hubspot-ai-impact-marketing-blog-posts-traffic/)). Our reading is that a page which ranks but is never quoted by an answer engine is losing ground, so this loop ships pages built to be cited: a direct answer up top, citeable headings, JSON-LD, and an llms.txt entry in the same commit.
+One naming note: HubSpot's *Loop Marketing* is a framework for marketing teams. The loop here is the general kind, a workspace object with a trigger, steps, a close condition and human gates. [Loop engineering vs Loop Marketing](/docs/what-is-loop-engineering/#loop-engineering-vs-loop-marketing) spells out the difference.
+
 ## Programmatic SEO and content operations: why publish this way instead of prompting ChatGPT
 Prompting a chat model for a blog post gets you a page. Running the loop gets you a page that’s indexed, snippet-eligible, tracked, and re-audited weekly by an agent that already knows the site’s conventions. The gap between the two shows up around week six, when the chat-model pages are quietly de-indexed for thin content and the loop-shaped pages are pulling traffic that compounds. The [override rate](/docs/learn/human-in-the-loop-ai/) at the approval gate is the only honest signal that the loop is real and not theatre.
 Read next
