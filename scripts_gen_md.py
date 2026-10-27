@@ -44,6 +44,7 @@ ORDER = [
   "docs/learn/ai-agent-governance/index.html",
   "docs/learn/agent-orchestration/index.html",
   "docs/learn/ralph-wiggum-loop/index.html",
+  "docs/what-is-loop-engineering/index.html",
   "docs/learn/agent-memory-across-sessions/index.html",
   "docs/learn/claude-code-for-product-managers/index.html",
   "docs/learn/claude-code-agent-teams/index.html",
