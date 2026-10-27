@@ -99,14 +99,15 @@
     </ul>
 
     <h2>Run your Maskin server</h2>
-    <p>Run your own Maskin instance from the open-source repo. Clone it and start the stack:</p>
+    <p>Clone the open-source repo, install with pnpm, run pnpm dev. Needs Node 20+, pnpm and Docker.</p>
     <pre><code>git clone https://github.com/sindre-ai/maskin.git &amp;&amp; cd maskin
-docker-compose up</code></pre>
-    <p>This brings up the full stack — PostgreSQL, SeaweedFS, and the Maskin server — serving at <code>http://localhost:3000</code>. On first run it bootstraps a dev actor, a workspace, and an API key (printed in the startup banner). For a real deployment, put it behind your own domain (referred to below as <code>https://&lt;your-maskin-host&gt;</code>) and review the <a href="/docs/configuration/">configuration reference</a>.</p>
+pnpm install
+pnpm dev</code></pre>
+    <p>The app opens on port 5173 (<code>http://localhost:5173</code>) and the API runs on port 3000. On first run it bootstraps a dev actor, a workspace, and an API key (printed in the startup banner). For a real deployment, put it behind your own domain (referred to below as <code>https://&lt;your-maskin-host&gt;</code>) and review the <a href="/docs/configuration/">configuration reference</a>.</p>
 
     <h2>Step 1 — Sign in and create a workspace</h2>
     <ol>
-      <li>Open your instance at <code>http://localhost:3000</code> (or <code>https://&lt;your-maskin-host&gt;</code>) and sign in.</li>
+      <li>Open your instance at <code>http://localhost:5173</code> (or <code>https://&lt;your-maskin-host&gt;</code>) and sign in.</li>
       <li>Create your first workspace when prompted.</li>
     </ol>
     <p>Once you're in, you'll see the unified pipeline view: <strong>Insights → Bets → Tasks</strong>.</p>

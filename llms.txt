@@ -4,7 +4,7 @@
 
 Maskin gives humans and AI agents one shared place to work. Everything flows through a single pipeline — **Insights → Bets → Tasks** — that people and agents read and write together, so context compounds instead of getting lost in scattered chat histories. Maskin is MCP-native and API-first: the UI, agents, and your Claude client all drive the same HTTP surface, and the MCP tools are a thin layer over it.
 
-Run it two ways: **self-hosted** (one `docker-compose` file, free under Apache 2.0) or **managed**. Agent sessions run Claude Code or Codex: self-hosted and Enterprise workspaces use your own Anthropic or OpenAI access, while trial, Pro and Team use a Maskin-funded route.
+Run it two ways: **self-hosted** (clone the open-source repo, install with pnpm, run pnpm dev; free under Apache 2.0) or **managed**. Agent sessions run Claude Code or Codex: self-hosted and Enterprise workspaces use your own Anthropic or OpenAI access, while trial, Pro and Team use a Maskin-funded route.
 
 Setup in one line — connect Claude to a Maskin instance over MCP, then ask Claude to call `get_started`:
 `claude mcp add --transport http maskin https://<your-maskin-host>/mcp --header "Authorization: Bearer <MASKIN_API_KEY>" --header "X-Workspace-Id: <WORKSPACE_ID>"`
@@ -119,7 +119,7 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 - [Documentation home](https://maskin.io/docs/): Entry point to all Maskin docs.
 - [Get started](https://maskin.io/docs/get-started/): What Maskin is, the unified pipeline, and the two ways to run it.
 - [Quickstart tutorial](https://maskin.io/docs/quickstart/): Empty instance to an agent doing real work in ~10 minutes, driven from Claude.
-- [Self-hosted setup](https://maskin.io/docs/get-started/self-hosted/): Run your own instance with docker-compose and connect Claude over MCP.
+- [Self-hosted setup](https://maskin.io/docs/get-started/self-hosted/): Clone the open-source repo, install with pnpm, run pnpm dev, and connect Claude over MCP.
 
 ## Concepts
 
