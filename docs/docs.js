@@ -75,6 +75,7 @@
       { label: "Bet vs backlog", href: "/docs/bet-vs-backlog/", nested: true },
       { label: "Self-hosted AI workspace", href: "/docs/self-hosted-ai-workspace/" },
       { label: "How to build an AI SDR loop", href: "/docs/how-to-build-ai-sdr-loop/" },
+      { label: "207 rejected prospects, by reason", href: "/docs/lead-qualification-reject-reasons/", nested: true },
       { label: "Agentic workflow vs the closed loop", href: "/docs/learn/agentic-workflow-vs-closed-loop/" },
       { label: "AI agent governance", href: "/docs/learn/ai-agent-governance/" },
       { label: "Agent orchestration", href: "/docs/learn/agent-orchestration/" },
