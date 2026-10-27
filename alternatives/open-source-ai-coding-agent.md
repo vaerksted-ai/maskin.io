@@ -47,7 +47,7 @@ This is where **[Maskin](https://maskin.io)** sits, and it is a genuinely differ
 
 The shape of the question this tier answers: "how do the non-engineering agents on my team hand work to — and read work from — the coding agents?" A runtime doesn't answer this. A control plane doesn't either. A product workspace does, and Maskin is the only OSS one this section knows about; if you know another, the PR button on the repo is open.
 
-**Try Maskin →** Self-host from GitHub ([`sindre-ai/maskin`](https://github.com/sindre-ai/maskin)) — Apache-2.0, MCP-native, one Docker Compose away. Or read the tier boundary in the [workspace-vs-coding-agent doc](https://maskin.io/docs/ai-product-workspace-vs-coding-agent/) before you install.
+**Try Maskin →** Self-host from GitHub ([`sindre-ai/maskin`](https://github.com/sindre-ai/maskin)) — Apache-2.0, MCP-native, run from the open-source repo. Or read the tier boundary in the [workspace-vs-coding-agent doc](https://maskin.io/docs/ai-product-workspace-vs-coding-agent/) before you install.
 
 ## How to pick — three questions
 
