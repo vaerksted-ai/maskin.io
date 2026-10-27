@@ -10,7 +10,7 @@ Run your own Maskin instance and connect Claude — Code or Desktop — to it ov
 - A **running Maskin instance** (set one up below).
 
 ## Run your Maskin server
-Maskin self-hosts from a single docker-compose file. Clone the repo and start the stack:
+Run your own Maskin instance from the open-source repo. Clone it and start the stack:
 ```
 git clone https://github.com/sindre-ai/maskin.git && cd maskin
 docker-compose up

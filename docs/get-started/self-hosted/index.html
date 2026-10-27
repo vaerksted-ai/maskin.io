@@ -99,7 +99,7 @@
     </ul>
 
     <h2>Run your Maskin server</h2>
-    <p>Maskin self-hosts from a single docker-compose file. Clone the repo and start the stack:</p>
+    <p>Run your own Maskin instance from the open-source repo. Clone it and start the stack:</p>
     <pre><code>git clone https://github.com/sindre-ai/maskin.git &amp;&amp; cd maskin
 docker-compose up</code></pre>
     <p>This brings up the full stack — PostgreSQL, SeaweedFS, and the Maskin server — serving at <code>http://localhost:3000</code>. On first run it bootstraps a dev actor, a workspace, and an API key (printed in the startup banner). For a real deployment, put it behind your own domain (referred to below as <code>https://&lt;your-maskin-host&gt;</code>) and review the <a href="/docs/configuration/">configuration reference</a>.</p>
