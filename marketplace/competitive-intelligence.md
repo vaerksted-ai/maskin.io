@@ -34,6 +34,41 @@ Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20Competitive%20in
 6. The battlecard ships to the sales channel the field reads; the bet moves into the roadmap.
 7. After ship, the loop checks whether close-rate against the competitor actually moved on the affected segment. The outcome, not the dashboard, closes the work.
 
+## Competitor monitoring in practice: one real week of output
+Buyers ask what a competitor monitoring agent would actually hand them. This is the answer from Maskin’s own run of this loop, for the week ending 25 October 2026. It is real output, not a mock-up. Every Sunday at 07:00 UTC an agent scans a named list of competitors for the past seven days, files each move as a signal, and rewrites one briefing page. A person reads it and decides what becomes work.
+
+### What landed in the briefing
+| Date | Competitor | What changed | The agent’s read |
+| --- | --- | --- | --- |
+| 19 Oct | Notion | Agents can work up to 24 hours, with a review mode where a person approves proposed changes before they apply. One credit system covers all AI use, and a spending console was announced as coming soon. | Approve-before-apply and a cost view are now standard in the suites. |
+| 22 Oct | Linear | Loops can start from Slack and GitHub and be saved as templates for the whole workspace. | Linear has used the word Loop since July. The agent did not find an owner or close condition there, and marked that as unconfirmed because it did not check inside the product. |
+| 23 Oct | Paperclip (open source) | Private tasks and projects readable only by named people, an audited admin override, and an exact cost ledger. | The closest self-hosted rival now has item-level privacy. |
+| 21 Oct | Microsoft | A customer-conversation harness for Copilot Studio. | Outside our slot. Logged so nobody checks it twice. |
+Source: the Market Category and Competitor watch loop, which Maskin runs on its own competitor set. The agent’s confidence for the week was high on the facts and medium on the readings.
+
+### What the agent handed over
+1. **A signal for each move,** tagged with the company name. That week had 5 new signals across all lanes, against 14 the week before.
+2. **One briefing page, rewritten in full.** A quick read of at most eight lines, then what needs a reaction this week, the storylines of the last 30 days, this week’s moves, what was passed to the product-strategy agent, and what to check next.
+3. **A threat level with the date it last changed.** The agent labeled its own pick as a judgment, because the team has not yet written down what Low, Medium and High mean.
+4. **A Monday deck for the founder,** built from the briefing. In the four weeks to 19 October it arrived on three Mondays, and a check at 08:00 UTC catches a miss.
+
+### Who approves what
+- **Nobody approves a signal.** The agent files it, and a second agent clusters it with related signals.
+- **A person approves anything that becomes work.** That week one item was marked for action: a product bet waiting to be switched to active. Switching a bet to active is a status change only a person can make, so the agent named the owner, the deadline and its recommendation, then stopped.
+- **A person approves the competitor list.** The agent proposes additions and removals once a month, on the 20th, and does not edit the list itself.
+- **Long-term positioning has its own owner.** Findings that confirm or challenge the long view go to a separate agent that refreshes the outlook page monthly. Pivot calls stay with a person.
+
+### What this run did not do
+Two limits, both stated on the briefing page itself. OpenAI’s and xAI’s pages returned access errors that week, so nothing from them after 19 October is verified. And our own run is the research half of this loop: it ends in a briefing and a decision for a person. The battlecard draft and the close-rate check described on this page are not part of it.
+
+### How hard is it to build?
+Our run is made of a few plain parts:
+- A competitor list, with each company tagged with how often it is checked: a full weekly scan, one line a week, monthly, or quarterly.
+- Five schedules: the weekly scan, a monthly check of the competitor list, a monthly outlook refresh, the Monday deck, and the Monday check that the deck landed.
+- Four agents: a researcher, a product-marketing owner, a product-strategy agent and a design agent for the deck. A weekly scan is expected to take about 15 minutes.
+- Written instructions: the tag format for each signal, which list a finding goes in, and the fixed order of the briefing page.
+For your team the pieces are the same: a competitor list, one weekly schedule, one page to rewrite and a named person for each decision. We have not timed a setup for another team, so we do not quote hours.
+
 ## Trust surface
 - **Human gates:** sales enablement approves the battlecard; a PM approves the bet; no positioning claim goes out without your sign-off.
 - **Your data stays yours:** Maskin watches public sources on your list; it writes back into your battlecard tool, your roadmap, and your CRM. No external dashboard to check.
@@ -67,6 +102,15 @@ Competitive intelligence tools help teams capture competitor signals and turn th
 
 ### What’s the difference between competitor intelligence and competitive intelligence?
 In common use, the two terms are near-synonyms and get interchanged freely. Where they diverge: competitive intelligence usually spans the whole market (trends, adjacent categories, macro shifts). Competitor intelligence is narrower, focused on specific rival companies you track by name. This loop is competitor intelligence. It watches a defined list of competitors and routes their signals into two lanes with human gates on each.
+
+### What does a competitor monitoring agent produce each week?
+In Maskin’s own run it produces three things: a signal for each competitor move, tagged with the company name; one briefing page, rewritten every week, with a quick read, what needs a person this week and a read on each move; and a Monday deck for the founder. A person decides anything that becomes work, and the competitor list only changes when a person approves a proposal.
+
+### How hard is it to build a competitor monitoring agent?
+The parts are a competitor list, one weekly schedule, one page that gets rewritten and a named person for each decision. Our own run uses five schedules and four agents, and a weekly scan is expected to take about 15 minutes. We have not timed a setup for another team, so we do not quote hours. What you actually write is the instructions: signal tags, which list a finding goes in, and the order of the briefing page.
+
+### Are there competitor monitoring tools that do this?
+Yes, for the sales lane. Klue and Crayon lead the sales-enablement side, strong at battlecards, and Contify covers market monitoring. What most competitor monitoring tools share is a dashboard as the endpoint: signals get captured and displayed, but often don’t cross into product decisions. This loop routes the same signal to product as a shaped bet with a human gate on it.
 
 ## Built with
 - **Signal sources:** competitor changelogs, pricing pages, GitHub release notes, Product Hunt launches.
