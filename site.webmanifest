@@ -3,7 +3,7 @@
   "short_name": "Maskin",
   "description": "Build the loops that make your company AI-native. From customer signal to shipped bet to measured outcome — automatically. Open source.",
   "start_url": "/",
-  "display": "browser",
+  "display": "standalone",
   "background_color": "#111110",
   "theme_color": "#111110",
   "icons": [
