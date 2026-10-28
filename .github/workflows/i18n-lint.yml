@@ -48,7 +48,7 @@ jobs:
         with:
           node-version: "20"
       - name: Lint and injector unit tests
-        run: node --test scripts_lint_i18n.test.mjs scripts_lint_i18n_dist.test.mjs scripts_inject_switcher.test.mjs
+        run: node --test scripts_lint_i18n.test.mjs scripts_lint_i18n_dist.test.mjs scripts_inject_switcher.test.mjs scripts_public_pages.test.mjs
       - name: Source lint
         run: node scripts_lint_i18n.mjs
       - name: Build
