@@ -381,6 +381,15 @@ a:hover{text-decoration:underline}
 @media (max-width:420px){
   .docnav__tag{display:none}
 }
+/* Danish and Swedish pages: "Opret konto" and "Skapa konto" are longer than "Sign up", so keep the button on one line and tighten the bar at phone widths. On Swedish pages the switcher shows three languages, so the English-only Docs link goes too (it stays on wider screens). */
+html[lang="da"] .docnav__cta,html[lang="sv"] .docnav__cta{white-space:nowrap}
+@media (max-width:420px){
+  html[lang="da"] .docnav__inner,html[lang="sv"] .docnav__inner{gap:.4rem}
+  html[lang="da"] .docnav__links,html[lang="sv"] .docnav__links{gap:.4rem}
+  html[lang="da"] .docnav__cta,html[lang="sv"] .docnav__cta{padding:.35rem .5rem;font-size:.8rem}
+  html[lang="da"] .lang__item,html[lang="sv"] .lang__item{padding:.2rem .3rem}
+  html[lang="sv"] .docnav__links li:has(> a[href="/docs/"]){display:none}
+}
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;scroll-behavior:auto!important}
 }
