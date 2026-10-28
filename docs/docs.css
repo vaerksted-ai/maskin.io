@@ -350,9 +350,12 @@ a:hover{text-decoration:underline}
   }
   .doc-sidebar__group{margin-bottom:1rem}
 }
-/* Switcher pages only (.docnav__links--lang): the bar needs about 705px with every link, so the secondary links go at 767px and below, not 560. */
-@media (max-width:767px){
+/* Switcher pages only (.docnav__links--lang): with every link, the switcher and the theme toggle the bar needs about 930px (Book a meeting and Sign up wrap below that), so the secondary links go at 959px and below, not 560. */
+@media (max-width:959px){
   .docnav__links--lang .docnav__hide-sm{display:none}
+  .docnav__inner:has(.docnav__links--lang) .docnav__tag.docnav__hide-sm{display:none}
+}
+@media (max-width:767px){
   .docnav__tag.docnav__hide-sm{display:none}
 }
 @media (max-width:560px){
