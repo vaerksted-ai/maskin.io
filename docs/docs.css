@@ -40,6 +40,7 @@
     --accent:     #3B74F2;
     --accent-dim: rgba(59,116,242,0.15);
   }
+  :root:not([data-theme="light"]) .docnav,
   :root:not([data-theme="light"]) .docnav.scrolled { background: rgba(20,20,18,.88); }
 }
 
@@ -54,6 +55,7 @@
   --accent:     #3B74F2;
   --accent-dim: rgba(59,116,242,0.15);
 }
+[data-theme="dark"] .docnav,
 [data-theme="dark"] .docnav.scrolled { background: rgba(20,20,18,.88); }
 
 /* Force light via toggle */
