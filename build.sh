@@ -105,6 +105,17 @@ find dist -type f -name '*.html' -print0 | xargs -0 sed -i "s/POSTHOG_PROJECT_KE
 # Substitute the Turnstile sitekey placeholder on every page that references it.
 find dist -type f -name '*.html' -print0 | xargs -0 sed -i "s/TURNSTILE_SITEKEY_PLACEHOLDER/$TURNSTILE_SITEKEY_VALUE/g"
 
+# Point each /marketplace/<slug>/ loop page at its markdown twin so agents that fetch
+# the HTML can find /marketplace/<slug>.md without guessing. Runs for every page that
+# has a twin, so a new loop page gets the tag for free. Idempotent: pages that already
+# carry a text/markdown alternate link are skipped.
+for page in dist/marketplace/*/index.html; do
+  slug=$(basename "$(dirname "$page")")
+  if [ -f "dist/marketplace/$slug.md" ] && ! grep -q 'type="text/markdown"' "$page"; then
+    sed -i "s|</head>|<link rel=\"alternate\" type=\"text/markdown\" href=\"/marketplace/$slug.md\">\n</head>|" "$page"
+  fi
+done
+
 # Auto-inject docs-shell signup CTAs into every HTML under dist/docs/ that
 # doesn't already ship them. Three insertions per page: a "Sign up" <li> in the
 # top nav (right before the theme toggle), and an end-of-article "Try Maskin"
