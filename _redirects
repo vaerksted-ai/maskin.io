@@ -38,3 +38,7 @@
 # Sprint offer retired: free 60 minute onboarding now lives at /onboarding/.
 /sprint/                        /onboarding/                  301
 /sprint                         /onboarding/                  301
+
+# Unpublished 2026-10-29: internal data write-up, no outside use. Send visitors to the loop page.
+/docs/lead-qualification-reject-reasons/  /marketplace/lead-qualification/  301
+/docs/lead-qualification-reject-reasons   /marketplace/lead-qualification/  301
