@@ -81,6 +81,7 @@
       { label: "Agent orchestration", href: "/docs/learn/agent-orchestration/" },
       { label: "Agentic SDLC", href: "/docs/learn/agentic-sdlc/", nested: true },
       { label: "Ralph Wiggum loop", href: "/docs/learn/ralph-wiggum-loop/", nested: true },
+      { label: "Agentic loops for knowledge workers", href: "/docs/learn/agentic-loops-for-knowledge-workers/", nested: true },
       { label: "Agent memory across sessions", href: "/docs/learn/agent-memory-across-sessions/" },
       { label: "Claude Code for product managers", href: "/docs/learn/claude-code-for-product-managers/" },
       { label: "Claude Code agent teams", href: "/docs/learn/claude-code-agent-teams/", nested: true },
