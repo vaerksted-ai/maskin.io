@@ -61,7 +61,7 @@ The two aren't rivals. A Ralph loop can be one step inside a closed loop, the gr
 ## The three things "keep trying" can't give you
 
 ### 1. A close condition written before the work starts
-A completion promise is a phrase the agent prints. A close condition is a sentence the team agreed on before anyone started, describing what has to be true in the world. "All tests in /importer pass" is a completion promise. "A customer can import their 50,000-row file without contacting support, checked on three real files" is a close condition.
+A completion promise is a phrase the agent prints. A close condition is a sentence the team agreed on before anyone started, describing what has to be true in the world. "All tests in /importer pass" is a completion promise. "A customer can import their 50,000-row file without contacting support, checked on three real files" is a close condition. For work that isn't code and has no test suite to lean on, [agentic loops for knowledge workers](/docs/learn/agentic-loops-for-knowledge-workers/) covers how to write one that can fail.
 The difference matters because an agent under pressure to finish will find the cheapest way to make the stop signal fire. If the signal is a phrase, it can print the phrase. If the signal is a test, it can weaken the test. A close condition written in advance, in plain language, is much harder to game, and a person can read it later and see whether it was met.
 
 ### 2. An owner
