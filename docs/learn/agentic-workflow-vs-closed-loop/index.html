@@ -6,8 +6,6 @@
 <title>Agentic workflow vs closed loop: the third pattern — Maskin</title>
 <meta name="description" content="Every 2026 vendor page frames the debate as workflow vs agent. There is a third pattern — the closed loop — with an entry condition, typed objects, human-taste gates, and a close condition. Here is when each one fits.">
 
-<meta name="robots" content="noindex, follow">
-
 <!-- Canonical -->
 <link rel="canonical" href="https://maskin.io/docs/learn/agentic-workflow-vs-closed-loop/">
 
@@ -252,15 +250,15 @@
     </table>
     <p>The difference between a workflow and a loop is not "a workflow with an LLM step in it". A workflow with an LLM step is still a workflow: the LLM fills a blank in a chain someone else designed. A loop lets the agent decide <em>how</em> to close the condition, and lets a human review the closing, but constrains <em>what</em> the loop is allowed to touch. The same split shows up one level up, in the market itself: <a href="/docs/composable-ai-agents-vs-ai-employees/">two camps of the agent workspace market</a> make either a persona or a typed object the unit of work.</p>
     <h2>What a loop looks like in production</h2>
-    <p>A concrete example from Maskin's own dogfooding — the SEO content loop that produced this article.</p>
+    <p>An illustrative example: a support team's refund-review loop. The same five parts apply to any loop.</p>
     <ul>
-      <li><strong>Entry condition:</strong> a triage agent creates a <code>content</code> object at status <code>proposed</code> and moves it to <code>in_progress</code> after human approval.</li>
-      <li><strong>Typed objects:</strong> the loop reads a knowledge brief (typed <code>insight</code>), writes a <code>content</code> object (with <code>primary_keyword</code>, <code>content_type</code>, and body fields), and links both into the loop via <code>in_loop</code> edges.</li>
-      <li><strong>Agent-execution slot:</strong> the SEO Writer agent picks the structure, runs SERP analysis via an Ubersuggest MCP, drafts the piece against the quality bar, and links citations. The agent chooses the shape; the agent does not choose the topic.</li>
-      <li><strong>Human-taste gate:</strong> the SEO Editor agent reviews the draft. If it clears, the Editor moves the object to <code>published</code>; if it doesn't, it returns with numbered fixes. A human owns the final promotion; the Editor gate is the enforced checkpoint.</li>
-      <li><strong>Close condition:</strong> the piece reaches <code>published</code> status with the primary keyword, title, and metadata locked. Not "the writer said it was done." A promoted <code>content</code> object with a specific measurable state.</li>
+      <li><strong>Entry condition:</strong> a refund request above a set amount arrives as a <code>refund_request</code> object. The trigger is that typed event, not a schedule and not someone remembering to ask.</li>
+      <li><strong>Typed objects:</strong> the loop reads the order and the refund policy, and writes a decision record (approve, decline or partial, with a reason) linked back to the request.</li>
+      <li><strong>Agent-execution slot:</strong> an agent pulls the order history, checks the request against the policy and drafts the decision and the customer reply. It chooses which records to check and in what order. It does not choose which requests enter the loop.</li>
+      <li><strong>Human-taste gate:</strong> a team lead approves every decision above a set amount, and any decision the agent marks as a policy exception. The gate is enforced: nothing is sent to the customer until it clears. If the lead rejects the draft, it goes back with the reason.</li>
+      <li><strong>Close condition:</strong> the refund is issued or declined, the reason is recorded on the decision record, and the customer reply is sent. Not "the agent said it was handled." A request in a final state that anyone can inspect later.</li>
     </ul>
-    <p>Run that loop against a different trigger and the same shape produces a discovery loop, a <a href="/marketplace/competitive-intelligence/">competitor-intel loop</a>, a signal-triage loop, a churn-recovery loop (<a href="/docs/at-risk-account-alerts/">at-risk account alerts</a>). The primitives don't change; the trigger and typed objects do. That is what "<a href="https://addyosmani.com/blog/loop-engineering/">loop engineering</a>" (Addy Osmani, Jun 2026) points at when it says the job shifted from <em>prompting the agent</em> to <em>designing the system that prompts the agent</em> — but productized as first-class objects a team configures, not code a developer writes.</p>
+    <p>Run that shape against a different trigger and it produces a discovery loop, a <a href="/marketplace/competitive-intelligence/">competitor-intel loop</a>, a signal-triage loop, a churn-recovery loop (<a href="/docs/at-risk-account-alerts/">at-risk account alerts</a>). The primitives don't change; the trigger and typed objects do. That is what "<a href="https://addyosmani.com/blog/loop-engineering/">loop engineering</a>" (Addy Osmani, Jun 2026) points at when it says the job shifted from <em>prompting the agent</em> to <em>designing the system that prompts the agent</em> — but productized as first-class objects a team configures, not code a developer writes.</p>
     <blockquote><p><strong>Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.</strong></p></blockquote>
     <p>The important word is <em>across</em>. A workflow inside a ticket tracker terminates when a ticket closes. A loop terminates when the typed outcome it exists to produce — the shipped bet, the approved content, the qualified pipeline — reaches a state a human can inspect, regardless of which tool the underlying work happened in. Software delivery as a closed loop is a concrete case: the <a href="/marketplace/product-delivery/">product delivery loop</a> has named human gates (the merge to main and the final call on the bet) and closes on a verdict against the success criteria written first.</p>
     <h2>When workflow is fine, when agent is fine, when a loop is the answer</h2>
