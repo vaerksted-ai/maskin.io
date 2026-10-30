@@ -5865,19 +5865,6 @@ Buyers ask what a competitor monitoring agent would actually hand them. This is 
 | 22 Oct | Linear | Loops can start from Slack and GitHub and be saved as templates for the whole workspace. | Linear has used the word Loop since July. The agent did not find an owner or close condition there, and marked that as unconfirmed because it did not check inside the product. |
 | 23 Oct | Paperclip (open source) | Private tasks and projects readable only by named people, an audited admin override, and an exact cost ledger. | The closest self-hosted rival now has item-level privacy. |
 | 21 Oct | Microsoft | A customer-conversation harness for Copilot Studio. | Outside our slot. Logged so nobody checks it twice. |
-Source: the Market Category and Competitor watch loop, which Maskin runs on its own competitor set. The agent’s confidence for the week was high on the facts and medium on the readings.
-
-### What the agent handed over
-1. **A signal for each move,** tagged with the company name. That week had 5 new signals across all lanes, against 14 the week before.
-2. **One briefing page, rewritten in full.** A quick read of at most eight lines, then what needs a reaction this week, the storylines of the last 30 days, this week’s moves, what was passed to the product-strategy agent, and what to check next.
-3. **A threat level with the date it last changed.** The agent labeled its own pick as a judgment, because the team has not yet written down what Low, Medium and High mean.
-4. **A Monday deck for the founder,** built from the briefing. In the four weeks to 19 October it arrived on three Mondays, and a check at 08:00 UTC catches a miss.
-
-### Who approves what
-- **Nobody approves a signal.** The agent files it, and a second agent clusters it with related signals.
-- **A person approves anything that becomes work.** That week one item was marked for action: a product bet waiting to be switched to active. Switching a bet to active is a status change only a person can make, so the agent named the owner, the deadline and its recommendation, then stopped.
-- **A person approves the competitor list.** The agent proposes additions and removals once a month, on the 20th, and does not edit the list itself.
-- **Long-term positioning has its own owner.** Findings that confirm or challenge the long view go to a separate agent that refreshes the outlook page monthly. Pivot calls stay with a person.
 
 ### What this run did not do
 Two limits, both stated on the briefing page itself. OpenAI’s and xAI’s pages returned access errors that week, so nothing from them after 19 October is verified. And our own run is the research half of this loop: it ends in a briefing and a decision for a person. The battlecard draft and the close-rate check described on this page are not part of it.
