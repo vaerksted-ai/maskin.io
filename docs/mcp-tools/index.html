@@ -308,18 +308,16 @@
       <li><code>closed_statuses</code> — the real done-marker: which statuses count as "done," per object type, used by the read path to derive <code>closedCount</code>. Set with <code>create_loop</code> and edited via <code>update_loop</code>.</li>
       <li><code>installed_from_marketplace_loop_id</code> — set when the loop was installed from a marketplace template.</li>
     </ul>
-    <p><strong>Status lifecycle — workspace-configurable graduated-trust ladder.</strong> A loop moves up a ladder as it earns trust, and can be paused from any rung. The valid set is workspace-configured (<code>settings.statuses.loop</code>) and enforced by the server on every write. The ladder <code>create_loop</code> documents is:</p>
-    <pre><code>draft  →  pilot  →  supervised  →  live
-          (paused reachable from any rung; archived retires the loop)</code></pre>
+    <p><strong>Status lifecycle — workspace-configurable graduated-trust ladder.</strong> A loop moves along a spectrum as it earns trust, and can be paused from any rung. The valid set is workspace-configured (<code>settings.statuses.loop</code>) and enforced by the server on every write. The spectrum runs:</p>
+    <pre><code>draft  →  supervised  →  autonomous
+          (paused reachable from any rung)</code></pre>
     <ul>
       <li><code>draft</code> — set up, not live; nothing fires for real.</li>
-      <li><code>pilot</code> — the first rung of trust above draft.</li>
       <li><code>supervised</code> — the loop runs on its own, but material calls pass a human gate.</li>
-      <li><code>live</code> — runs end-to-end; a human samples outputs and steps in when members stall or go off-track.</li>
+      <li><code>autonomous</code> — runs end-to-end; a human samples outputs and steps in when members stall or go off-track.</li>
       <li><code>paused</code> — reachable from <strong>any</strong> rung; disables every trigger the loop references until resumed.</li>
-      <li><code>archived</code> — terminal retirement for a loop no longer in service.</li>
     </ul>
-    <p>Workspaces may configure additional rungs and terminal states. <strong>Read the actual set for your workspace at runtime with <code>get_workspace_schema</code></strong> — do not assume a concrete ladder from this reference.</p>
+    <p>The set is workspace-configurable, and workspaces may configure additional rungs and terminal states. <strong>Read the actual set for your workspace at runtime with <code>get_workspace_schema</code></strong> — do not assume a concrete ladder from this reference.</p>
     <p>Two mechanics worth knowing:</p>
     <ol>
       <li><strong>Validity is enforced per workspace on the write path.</strong> <code>create_loop</code>, <code>update_loop</code>, <code>create_objects</code>, <code>update_objects</code>, and the bulk-update path each validate an incoming <code>status</code> against <code>settings.statuses.&lt;type&gt;</code>, so a workspace on a different ladder simply enforces that ladder.</li>

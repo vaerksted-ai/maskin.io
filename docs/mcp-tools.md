@@ -132,18 +132,16 @@ The server validates `status` against `settings.statuses.knowledge`, `doc_type` 
 - `close_condition` — plain-language prose describing when a member is done; descriptive only, never runtime-evaluated. The prose closes nothing — a member closes when its own status reaches a terminal status for its type.
 - `closed_statuses` — the real done-marker: which statuses count as "done," per object type, used by the read path to derive `closedCount`. Set with `create_loop` and edited via `update_loop`.
 - `installed_from_marketplace_loop_id` — set when the loop was installed from a marketplace template.
-**Status lifecycle — workspace-configurable graduated-trust ladder.** A loop moves up a ladder as it earns trust, and can be paused from any rung. The valid set is workspace-configured (`settings.statuses.loop`) and enforced by the server on every write. The ladder `create_loop` documents is:
+**Status lifecycle — workspace-configurable graduated-trust ladder.** A loop moves along a spectrum as it earns trust, and can be paused from any rung. The valid set is workspace-configured (`settings.statuses.loop`) and enforced by the server on every write. The spectrum runs:
 ```
-draft  →  pilot  →  supervised  →  live
-          (paused reachable from any rung; archived retires the loop)
+draft  →  supervised  →  autonomous
+          (paused reachable from any rung)
 ```
 - `draft` — set up, not live; nothing fires for real.
-- `pilot` — the first rung of trust above draft.
 - `supervised` — the loop runs on its own, but material calls pass a human gate.
-- `live` — runs end-to-end; a human samples outputs and steps in when members stall or go off-track.
+- `autonomous` — runs end-to-end; a human samples outputs and steps in when members stall or go off-track.
 - `paused` — reachable from **any** rung; disables every trigger the loop references until resumed.
-- `archived` — terminal retirement for a loop no longer in service.
-Workspaces may configure additional rungs and terminal states. **Read the actual set for your workspace at runtime with `get_workspace_schema`** — do not assume a concrete ladder from this reference.
+The set is workspace-configurable, and workspaces may configure additional rungs and terminal states. **Read the actual set for your workspace at runtime with `get_workspace_schema`** — do not assume a concrete ladder from this reference.
 Two mechanics worth knowing:
 1. **Validity is enforced per workspace on the write path.** `create_loop`, `update_loop`, `create_objects`, `update_objects`, and the bulk-update path each validate an incoming `status` against `settings.statuses.<type>`, so a workspace on a different ladder simply enforces that ladder.
 2. **Reading the ladder.** Call `get_workspace_schema` and inspect `settings.statuses.loop`. Do not hardcode a status list against the product default.

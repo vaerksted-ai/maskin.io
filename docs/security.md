@@ -8,6 +8,7 @@ Every request authenticates with a bearer API key (prefixed `ank_`). Keys are **
 
 ## Authorization & tenant isolation
 Workspace-scoped requests carry an `X-Workspace-Id` header. Workspace isolation is enforced in the API, route by route, not by database-level row security, so it depends on each route checking the workspace. Memberships carry a role (`owner`, `admin`, `member`, `viewer`). Owner and admin roles gate member management, invites, billing and workspace settings. Viewers can read a workspace. Changing objects, files, comments and workspace settings is blocked for the viewer role.
+Agents cannot send LinkedIn messages, invitations, posts, comments or edits, or post to Slack, until a person approves the exact text. Editing the text withdraws the approval.
 
 ## Credential encryption at rest
 Integration credentials, including OAuth tokens, are encrypted with **AES-256-GCM** using `INTEGRATION_ENCRYPTION_KEY` (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as `iv:authTag:ciphertext`.
