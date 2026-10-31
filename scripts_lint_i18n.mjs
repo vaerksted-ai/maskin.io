@@ -2,6 +2,9 @@
 // i18n lint for the Danish and Swedish pages. Node 18 or later, zero dependencies.
 // Exit 1 on any error, 0 otherwise.
 //
+// A manifest page may carry "hidden": true (kept serving, hidden from search): L7 then needs it absent
+// from the sitemap, L13 needs a noindex robots meta, and L11 does not ask for an llms.txt line.
+//
 // Source mode (default): checks L1 to L18 (L14 retired), warnings W1 and W2. Reads i18n.json, da/**, sv/**,
 // root index.html, sitemap.xml, llms.txt, build.sh and _redirects.
 //
@@ -175,6 +178,7 @@ export function lint(opts = {}) {
     if (!languages[p.lang]) err('L1', p.path, `page lang "${p.lang}" is not a declared language`);
     else if (!p.path.startsWith(`/${p.lang}/`)) err('L1', p.path, `page lang "${p.lang}" does not match its folder`);
     if (!['native', 'twin'].includes(p.kind)) err('L1', p.path, 'kind must be native or twin');
+    if (p.hidden !== undefined && typeof p.hidden !== 'boolean') err('L1', p.path, 'hidden must be a boolean');
     if (!isFile(pageFile(p.path))) err('L1', p.path, `${path.posix.join(p.path, 'index.html')} does not exist`);
   }
   const live = pages.filter((p) => typeof p.path === 'string' && isFile(pageFile(p.path)));
@@ -346,7 +350,9 @@ export function lint(opts = {}) {
     for (const p of pages) {
       if (typeof p.path !== 'string') continue;
       const n = smLocs.filter((l) => l === canonicalOf(p.path)).length;
-      if (n !== 1) err('L7', p.path, `manifest page appears ${n} times in the sitemap, needs exactly once`);
+      // A hidden page keeps serving but is out of the sitemap on purpose (see L13).
+      const want = p.hidden === true ? 0 : 1;
+      if (n !== want) err('L7', p.path, `manifest page appears ${n} times in the sitemap, needs exactly ${want === 0 ? 'zero (hidden)' : 'once'}`);
     }
     for (const loc of smLocs) {
       const m = loc.match(/^https:\/\/maskin\.io(\/(?:da|sv)\/.*)$/);
@@ -423,7 +429,7 @@ export function lint(opts = {}) {
   // ---- L11 llms.txt
   const llms = read(abs('llms.txt'));
   for (const lang of Object.keys(languages)) {
-    const lp = live.filter((p) => p.lang === lang);
+    const lp = live.filter((p) => p.lang === lang && p.hidden !== true);
     if (lp.length < 3) continue;
     if (llms === null) { err('L11', 'llms.txt', 'llms.txt is missing'); continue; }
     const section = llmsSection(llms, LLMS_HEADING[lang]);
@@ -455,7 +461,10 @@ export function lint(opts = {}) {
     if (/\blorem\b/i.test(h)) err('L13', p.path, 'contains lorem ipsum');
     if (/href\s*=\s*["']#["']/i.test(clean(h))) err('L13', p.path, 'contains href="#"');
     const robots = tags(clean(h), 'meta').filter((a) => ['robots', 'googlebot'].includes((a.name || '').toLowerCase()));
-    if (robots.some((a) => /noindex/i.test(a.content || ''))) err('L13', p.path, 'has a noindex robots meta');
+    const noindexed = robots.some((a) => /noindex/i.test(a.content || ''));
+    if (p.hidden === true) {
+      if (!noindexed) err('L13', p.path, 'is hidden in the manifest but has no noindex robots meta');
+    } else if (noindexed) err('L13', p.path, 'has a noindex robots meta');
   }
 
   // ---- L15 keywords

@@ -24,7 +24,9 @@
       "path": "/da/hvad-er-en-ai-agent/",
       "lang": "da",
       "kind": "native",
-      "keyword": "hvad er en ai agent"
+      "keyword": "hvad er en ai agent",
+      "hidden": true,
+      "hidden_note": "Hidden from search 30 Oct 2026 (take-down list). Redirect decision on 29 Nov 2026; remove hidden and restore the sitemap line to undo."
     },
     {
       "path": "/da/ai-agenter/",
@@ -36,7 +38,9 @@
       "path": "/da/ai-vaerktoejer/",
       "lang": "da",
       "kind": "native",
-      "keyword": "ai værktøjer"
+      "keyword": "ai værktøjer",
+      "hidden": true,
+      "hidden_note": "Hidden from search 30 Oct 2026 (take-down list). Redirect decision on 29 Nov 2026; remove hidden and restore the sitemap line to undo."
     },
     {
       "path": "/sv/",
