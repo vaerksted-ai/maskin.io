@@ -112,7 +112,6 @@ Treating agents and other automated actors as first-class identities with their 
 
 ### What is a good AI agent audit trail?
 Every action has an actor id (not 'the system'), every state change is an event (not a log line), events live on the object they changed, and permission changes are events too. If any of those is missing, you will hit the wall when someone asks who did that.
-Read next
 
 ## See it on your own agents
 Book a meeting and bring one agent you run today. We will walk through who it acts as, what it may do, and how you would trace and revoke one of its actions in Maskin.
