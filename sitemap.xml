@@ -391,19 +391,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://maskin.io/da/hvad-er-en-ai-agent/</loc>
-    <lastmod>2026-10-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://maskin.io/da/ai-agenter/</loc>
-    <lastmod>2026-10-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://maskin.io/da/ai-vaerktoejer/</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
