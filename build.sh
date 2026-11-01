@@ -55,6 +55,10 @@ if [ -f partials/marketplace-events.js ]; then
   cp partials/marketplace-events.js dist/marketplace-events.js
 fi
 
+# seo_cta_clicked: one delegated click listener for calls to action, loaded on every page.
+# Source of truth for the event name and properties; the script tag is injected below.
+cp partials/seo-cta.js dist/seo-cta.js
+
 # Top-level content subtrees. Add a new SEO cluster hub here (one line) and every
 # page under it ships automatically — no other build.sh edits required.
 CONTENT_DIRS=(docs changelog privacy terms support alternatives marketplace loops onboarding small-business deck solutions da sv)
@@ -95,6 +99,14 @@ find dist -type f -name '*.html' | while IFS= read -r html; do
     }
     { print }
   ' "$html" > "$html.tmp" && mv "$html.tmp" "$html"
+done
+
+# Load seo-cta.js (seo_cta_clicked) on every page, after the PostHog snippet. Idempotent.
+find dist -type f -name '*.html' | while IFS= read -r html; do
+  if grep -q 'seo-cta.js' "$html" || ! grep -q "</head>" "$html"; then
+    continue
+  fi
+  sed -i 's|</head>|<script src="/seo-cta.js" defer></script>\n</head>|' "$html"
 done
 
 # Inject PostHog key into every HTML in dist/. Any page that carries the
