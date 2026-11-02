@@ -63,7 +63,7 @@
       "mainEntityOfPage": "https://maskin.io/docs/self-hosted-ai-workspace/",
       "image": "https://maskin.io/og-image.png",
       "datePublished": "2026-08-21T00:00:00Z",
-      "dateModified": "2026-10-25T00:00:00Z",
+      "dateModified": "2026-11-02T00:00:00Z",
       "author": {
         "@type": "Organization",
         "name": "Maskin",
@@ -104,6 +104,14 @@
     {
       "@type": "FAQPage",
       "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can it run inside our closed network?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, with one outbound connection. The workspace and its data run on your own servers, and agents run in sandboxed sessions on an agent host you control. Agent sessions use your own Anthropic or OpenAI access, so that host needs outbound access to the provider you pick. Local models are not validated, so a fully air-gapped setup is not claimed."
+          }
+        },
         {
           "@type": "Question",
           "name": "How hard is self-hosting?",
@@ -163,6 +171,13 @@
     <p class="eyebrow">Article · Self-hosting &amp; models</p>
     <h1>Self-hosted AI workspace: run Claude or Codex agents on your own infrastructure</h1>
     <p class="lead">Self-hosted AI means the AI runs on infrastructure you control, not a vendor&rsquo;s. A self-hosted AI workspace like Maskin runs your product-management loops on your own infrastructure, under a license you can audit, with agents that use your own model access. Maskin is Apache-2.0 and self-hostable at no software cost. Agent sessions run the Claude Code CLI by default, or the Codex CLI, so you bring your own Anthropic or OpenAI access. For teams that can&rsquo;t send product data to a hosted vendor, that&rsquo;s the structural answer &mdash; the same capability as a hosted agentic workspace, with data custody on your side of the line.</p>
+
+  <div class="callout callout--muted">
+    <div class="callout__icon" aria-hidden="true">?</div>
+    <div class="callout__body"><strong>Can it run inside our closed network?</strong>
+      <p style="margin:.5rem 0 0">Yes, with one outbound connection. The workspace and its data run on your own servers, and agents run in sandboxed sessions on an agent host you control. Agent sessions use your own Anthropic or OpenAI access, so that host needs outbound access to the provider you pick. Local models are not validated, so we do not claim a fully air-gapped setup. <a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener" data-cta="closed-network-book-call">Book a call</a> and we will walk through your network.</p>
+    </div>
+  </div>
 
   <div class="callout callout--muted">
     <div class="callout__icon" aria-hidden="true">✓</div>
