@@ -61,7 +61,7 @@
       "mainEntityOfPage": "https://maskin.io/docs/what-is-mcp-native/",
       "image": "https://maskin.io/og-image.png",
       "datePublished": "2026-08-21T00:00:00Z",
-      "dateModified": "2026-10-07T00:00:00Z",
+      "dateModified": "2026-11-02T00:00:00Z",
       "author": {
         "@type": "Organization",
         "name": "Maskin",
@@ -143,7 +143,7 @@
           "name": "What is the difference between MCP-native and just using MCP?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A product can use MCP and still treat it as a bolt-on — one integration among several, with the core built on proprietary plumbing. An MCP-native product is constructed around the protocol from the start: agents, tools, triggers, and the typed object backend all assume MCP as the integration surface. For Maskin that is a load-bearing architectural decision, not a feature flag, and it is what keeps self-hosting, model choice, and tool portability coherent in one system."
+            "text": "MCP-native means the product is built around the protocol from the start, while a product that merely uses MCP adds it afterwards. A product can use MCP and still treat it as a bolt-on — one integration among several, with the core built on proprietary plumbing. An MCP-native product is constructed around the protocol from the start: agents, tools, triggers, and the typed object backend all assume MCP as the integration surface. For Maskin that is a load-bearing architectural decision, not a feature flag, and it is what keeps self-hosting, model choice, and tool portability coherent in one system."
           }
         },
         {
@@ -171,8 +171,10 @@
     <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / What is MCP-native?</p>
     <p class="eyebrow">Article</p>
     <h1>What is MCP-native? Why Maskin is built on the Model Context Protocol</h1>
+    <h2>What is MCP-native?</h2>
+    <p>MCP-native means a product is built around the Model Context Protocol from the start, so agents reach its tools, data and actions through that one open protocol instead of a separate integration added later. In Maskin, the MCP server is how agents connect to the tools your team already uses and to the typed objects in the workspace. A product that only adds an MCP connector afterwards uses MCP, but is not MCP-native.</p>
     <p class="lead"><strong>An MCP-native workspace is one built around the Model Context Protocol (MCP) from the first line of code</strong> &mdash; the protocol is the substrate on which agents connect to models, tools, and memory, not an integration bolted on afterward.</p>
-    <p>For Maskin, that means the MCP server (<code>packages/mcp</code>, speaking stdio and HTTP over the <code>@modelcontextprotocol/sdk</code>) is the connective tissue of the whole product: it is how agents reach the tools your team already uses, how the workspace stays model-agnostic, and how bring-your-own-model becomes a real feature instead of a marketing line. This page explains what MCP is, what &ldquo;MCP-native&rdquo; means architecturally for Maskin, and why that design matters for determinism, safety, and scale.</p>
+    <p>For Maskin, that means the MCP server is the connective tissue of the whole product: it is how agents reach the tools your team already uses, how the workspace stays model-agnostic, and how bring-your-own-model becomes a real feature instead of a marketing line. This page explains what MCP is, what &ldquo;MCP-native&rdquo; means architecturally for Maskin, and why that design matters for determinism, safety, and scale.</p>
 
     <div class="callout callout--muted">
       <div class="callout__icon" aria-hidden="true"></div>
@@ -195,7 +197,7 @@
     <h2>What does &ldquo;MCP-native&rdquo; mean architecturally for Maskin?</h2>
     <p>For an agent workspace, MCP-native is a property of the whole stack, not a single module. In Maskin&rsquo;s case the architecture (verified against the <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener"><code>github.com/sindre-ai/maskin</code></a> repo, last true 2026-08-21) is built around it in four concrete ways:</p>
     <ul>
-      <li><strong>Agents connect to tools over MCP.</strong> The MCP server (<code>packages/mcp</code>) speaks stdio and HTTP, and it is how agents reach the tools a product team already has in play &mdash; Slack, Linear, GitHub, Intercom, PostHog, HubSpot, Gmail, and Google Calendar among the connected actors and events. Your stack stays wired in; Maskin doesn&rsquo;t ask you to move your work into a silo for the agents to see it.</li>
+      <li><strong>Agents connect to tools over MCP.</strong> The MCP server (<code>packages/mcp</code>, built on the <code>@modelcontextprotocol/sdk</code>) speaks stdio and HTTP, and it is how agents reach the tools a product team already has in play &mdash; Slack, Linear, GitHub, Intercom, PostHog, HubSpot, Gmail, and Google Calendar among the connected actors and events. Your stack stays wired in; Maskin doesn&rsquo;t ask you to move your work into a silo for the agents to see it.</li>
       <li><strong>The object model is typed and machine-readable.</strong> Insights, bets, and tasks are all <code>objects</code> in one schema, connected by typed relationships and served to the UI and to agents through the same API &mdash; &ldquo;everything is an API.&rdquo; Agents don&rsquo;t parse free-form notes; they read, create, and transition first-class typed objects. See <a href="/docs/concepts/">core concepts</a> for the object model.</li>
       <li><strong>Triggers are event-driven.</strong> A <code>trigger-runner</code> fires agents on cron schedules or on data changes. Work enters when a signal changes, not only when a human happens to ask.</li>
       <li><strong>Agents run in sandboxed sessions.</strong> The runtime spawns ephemeral microVMs (microsandbox and libkrun) running the Claude Code CLI (the default) or the Codex CLI, plus a browser-sidecar image for web tasks. Isolation is a design decision, not a hardening afterthought &mdash; see <a href="/docs/agents/">agents &amp; sessions</a>.</li>
@@ -243,7 +245,7 @@
     <h3>Is MCP tied to one vendor?</h3>
     <p>No. MCP is an open protocol, not a proprietary API. That independence is precisely what makes bring-your-own-model possible &mdash; if the protocol were owned by a vendor, model choice would collapse into that vendor&rsquo;s terms. Building the workspace around an open, portable contract is the difference between a product that offers model choice as a convenience and one that structurally depends on it.</p>
     <h3>What is the difference between MCP-native and just using MCP?</h3>
-    <p>A product can use MCP and still treat it as a bolt-on &mdash; one integration among several, with the core built on proprietary plumbing. An MCP-native product is constructed around the protocol from the start: agents, tools, triggers, and the typed object backend all assume MCP as the integration surface. For Maskin that is a load-bearing architectural decision, not a feature flag, and it is what keeps self-hosting, model choice, and tool portability coherent in one system.</p>
+    <p>MCP-native means the product is built around the protocol from the start, while a product that merely uses MCP adds it afterwards. A product can use MCP and still treat it as a bolt-on &mdash; one integration among several, with the core built on proprietary plumbing. An MCP-native product is constructed around the protocol from the start: agents, tools, triggers, and the typed object backend all assume MCP as the integration surface. For Maskin that is a load-bearing architectural decision, not a feature flag, and it is what keeps self-hosting, model choice, and tool portability coherent in one system.</p>
     <h3>Is the composable-infrastructure approach safe to run in production?</h3>
     <p>More so, by design, than a full-company simulation. Composability maps directly to inspectability: every action is a typed object transition in an event-sourced audit trail, agents run in isolated microVM sessions, and human promote gates bound the loop. That does not mean there is no risk &mdash; LLM cost and latency at volume, and the operational complexity of microVM session orchestration, are real open concerns named in the architecture notes. But the failure surface is small, narrow, and auditable, which is the property teams need before putting agents on real work.</p>
 
