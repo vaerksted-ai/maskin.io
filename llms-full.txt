@@ -2659,25 +2659,26 @@ Own the object graph, own the model, own the loop. Apache 2.0, MCP-native, EU/US
 
 > Source: https://maskin.io/docs/learn/human-in-the-loop/
 
-# Human in the loop: the approval gate before side-effecting tool calls
-**Human in the loop, in 2026, means an approval gate before an AI agent’s side-effecting tool call.** The agent pauses, a person approves or rejects, and only then does the tool fire. Four vendors — OpenAI, Cloudflare, Microsoft, Temporal — shipped the primitive under nearly identical names in the last twelve months.
-If you build agents that touch the outside world, this is the contract your users will expect. “Human in the loop” used to describe a person labeling training data; it now describes a runtime gate inside your agent code. This piece walks the four vendor primitives, what the shared contract is, and what a workspace-shaped version of the same gate adds on top — the part where the approval is recorded next to the work it approves, not just resolved in memory.
+# Human in the loop for CTOs: the approval gate before side-effecting tool calls
+**Human in the loop, in 2026, means an approval gate before an AI agent’s side-effecting tool call.** The agent pauses, a person approves or rejects, and only then does the tool fire. Four vendors — OpenAI, Cloudflare, Microsoft, Temporal — shipped the primitive under nearly identical names.
+[Book a meeting](https://calendar.app.google/r4v9xQp9S2p3TVFq5) Bring one agent that can send, spend or delete and we will show where its approval gate and record sit in Maskin.
+You are the person who answers when an agent emails the wrong customer, refunds the wrong order or deletes the wrong record. The question that follows is always the same: why did nobody stop it, and who was supposed to? Most pages on this phrase explain it to a learner. This one is for the engineering leader deciding which of your agents’ actions need a person in front of them, who that person is, and how you prove afterwards that the check happened. It covers the four vendor primitives, the contract they share, a worked example of sorting actions into tiers, and a six-question check to run before any agent gets permission to send, spend or delete.
 > ✓
 > **Key takeaways**
 > **The phrase means something new.** In 2026, “human in the loop” means an approval step before a side-effecting tool call, not a person labeling training data. The vocabulary shifted with the agent stack.
-> **Four major vendors converged on the same primitive in twelve months.** OpenAI’s `needs_approval`, Cloudflare’s `waitForApproval()`, Microsoft’s `RequestPort`, Temporal’s signal-based approval — four SDKs, one contract: pause the agent, surface the pending action, wait for a person, then resume or cancel.
+> **Four major vendors converged on the same primitive.** OpenAI’s `needs_approval`, Cloudflare’s `waitForApproval()`, Microsoft’s `RequestPort`, Temporal’s signal-based approval — four SDKs, one contract: pause the agent, surface the pending action, wait for a person, then resume or cancel.
 > **The contract is: stop, surface, wait, resume.** Every agent framework that ships approvals ships some version of these four moves. If yours doesn’t, buyers who have used any of the four will notice.
 > **Approval is not the same as record.** An SDK gate resolves an approval; a workspace-shaped gate records it. The decision, the reason, and the person who made it survive the session that produced them — because the next auditor, the next agent, or the next you will need to reconstruct why.
 > **Design per action class, not per system.** Read a doc, no gate. Send an email, gate. Move money, gate with a second reviewer. Uniform gates on everything collapse into rubber-stamping; ungated on everything shifts risk into your users’ inboxes.
 
 ## What “human in the loop” means in 2026
-Open the docs for any major agent framework shipped in the last twelve months and search for “human in the loop.” You will find the same story told four different ways: the agent proposes a tool call that would do something in the real world — send an email, run a shell command, transfer money — and the SDK pauses the run, hands the pending call up to the calling application, and waits for a person to approve or reject before the tool actually fires. The phrase used to point at data labeling. It now points at approval gates.
+Open the docs for any major agent framework and search for “human in the loop.” You will find the same story told four different ways: the agent proposes a tool call that would do something in the real world — send an email, run a shell command, transfer money — and the SDK pauses the run, hands the pending call up to the calling application, and waits for a person to approve or reject before the tool actually fires. The phrase used to point at data labeling. It now points at approval gates.
 The reason the meaning moved is that the underlying job moved. Until about 2024, “human in the loop” was a machine-learning phrase — the human in the loop was a labeler correcting model outputs so the next training run would be a little less wrong. It was slow, offline, and shaped by the training cycle. What builders need in 2026 is different. Agents now take actions in production, live, on user data. The gap between the model’s decision and the world’s state is a tool call, and that tool call needs a stop-and-check before it commits when the blast radius is bigger than a bad guess.
 So the SDKs added the stop-and-check. That’s what “human in the loop” now describes for anyone building on the current agent stack: not offline labeling of training data but an inline pause in front of side-effecting tool calls at runtime. Both meanings exist in the wild; the current SDK-shaped meaning is the one that shows up in your codebase and in your buyer’s expectations.
 A more careful read of when the gate belongs there and where the related “human on the loop” pattern picks up sits in the [human in the loop vs human on the loop](/docs/learn/human-in-the-loop-ai/) piece — that page carries the HOTL/HITL vocabulary cut and the EU AI Act Article 14 read. The rest of this page stays on the SDK-primitive contract and what a workspace-shaped version of the gate adds on top.
 
 ## Four vendors, four APIs, one primitive
-Here is the SDK vocabulary the four major agent frameworks have converged on, all inside the last twelve months.
+Here is the SDK vocabulary the four major agent frameworks have converged on.
 
 ### OpenAI Agents SDK — `needs_approval`
 OpenAI’s Agents SDK ships a `needs_approval` flag you attach to a tool (or a function that returns one at runtime). When the agent tries to call the tool, the run halts, the current `RunState` is serialized so the run can be resumed later, and the caller receives a list of tool-approval items. The application decides whether to approve or reject each one, then resumes the run with the decisions attached. Approvals are first-class run interruptions, not middleware.
@@ -2690,7 +2691,7 @@ Microsoft’s Agent Framework models the gate as a `RequestPort`: a typed input 
 
 ### Temporal — signal-based approval
 Temporal doesn’t ship an “approval” primitive so much as it re-uses its existing one: a signal. An approval-gated workflow enters a wait state, a signal handler receives the human’s decision, and the workflow resumes. Because Temporal workflows are durable by construction, the wait can last minutes or weeks with the same code — the state survives process restarts, deploys, and machine failures.
-Four SDKs, four names, the same primitive underneath: **stop the agent, surface the pending action to a caller, wait for a decision, then resume or cancel.** The differences are ergonomic — flag vs function vs typed port vs signal — not architectural. The convergence is the interesting part: two years ago none of these existed by name; twelve months ago maybe one did; today all four do, and their docs describe them in almost interchangeable language.
+Four SDKs, four names, the same primitive underneath: **stop the agent, surface the pending action to a caller, wait for a decision, then resume or cancel.** The differences are ergonomic — flag vs function vs typed port vs signal — not architectural. The convergence is the interesting part: all four docs describe the primitive in almost interchangeable language.
 
 ## The approval-gate contract buyers now expect
 Because the primitive has converged, so has the buyer expectation. A team evaluating your agent product in late 2026 has probably prototyped against at least one of the four SDKs above. When they look at how your product handles a risky action, they’re testing whether it does the four moves the SDKs already ship:
@@ -2704,14 +2705,36 @@ The reason to name the vendor primitives explicitly is that this is now the mark
 ## What a workspace-shaped gate adds
 The SDK primitives all resolve an approval — they pause, they hand off, they resume. They do not, on their own, record the decision anywhere the next auditor, the next agent, or the next you can find it a week later. That gap is where a workspace-shaped gate does its work.
 **Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.**
-That sentence is the whole difference in one line. The SDK gate lives inside one agent’s runtime; the workspace-shaped gate lives on a shared object that survives the runtime. When Maskin’s `needs_input` notification pauses a loop for an approval, the pending decision is a comment on the object the loop is acting on — the bet, the content piece, the outbound message. The person who approves it does so against that object; the approval, the reason, and the person land as an event on the same object. Six months later, someone reading that object sees not just what shipped but who said yes, when, and why.
+That sentence is the whole difference in one line. The SDK gate lives inside one agent’s runtime; the workspace-shaped gate lives on a shared object that survives the runtime. In Maskin, a pending approval is a comment on the object the agent is acting on, such as the outbound message or the content piece. The person who approves does so against that object, and the approval, the reason and the approver land as an event on the same object. Six months later, someone reading that object sees not just what shipped but who said yes, when and why.
 That’s a shift from **transient approval** to **persistent verdict**. Concretely, four things change:
 - **The decision is recorded next to the work it approves.** Not in a log the reviewer will never open. On the object itself, in the same feed as the transitions the approval unblocked.
 - **The reason survives the session.** Because the approval carries structured metadata — attention, decision options, who was mentioned — the *why* is legible after the person who wrote it has moved on.
 - **The next agent can read the verdict.** A downstream agent that acts on the approved object can query the approval event the same way it queries any other state. The approval is not model-visible only at the moment of the pause; it is graph-visible forever.
 - **The audit is a query, not a rebuild.** “Show me every send-message that a human approved in the last month, and who approved it” is one filter on the events table, not a log-scraping project.
 On a single-vendor SDK the same information exists but scattered — some in the run trace, some in the callback that resolved the approval, some in whatever the caller chose to persist. A workspace shape doesn’t replace the SDK primitive; it gives the approval a place to live once the run is over. The typed object graph, in this cut, is the store the approval is written to; the SDK is the runtime that surfaces it.
-The deeper architecture write-up sits in the [ambient agent workspace](/docs/ambient-agent-workspace/) piece, which walks the graph-shaped alternative to the chat-shaped agent inbox. The governance side — how approvals compose with typed permissions and the audit trail — is in [AI agent governance for small teams](/docs/learn/ai-agent-governance/). The developer-register substrate reference is [the stateful orchestration substrate](/docs/what-is-a-stateful-orchestration-substrate/).
+The governance side, how approvals compose with typed permissions and the audit trail, is in [AI agent governance for CTOs](/docs/learn/ai-agent-governance/).
+
+## A worked example: sorting one support agent’s actions into tiers
+Take an illustrative support agent that reads tickets, drafts replies, issues refunds and updates the customer record. Four actions, three different answers. The tiers below follow one rule: the more reversible and the smaller the blast radius, the lighter the gate.
+| Action | Reversible? | Gate | Who reviews |
+| --- | --- | --- | --- |
+| Read a ticket, search the help centre | Yes, no side effect | None | Nobody. Logged only. |
+| Update an internal note on the customer record | Yes, edit history | Sampled review | Support lead, a weekly sample |
+| Send a reply to a customer | No, it is already in their inbox | Approve each one at first, then by class once the override rate is low | Support lead |
+| Issue a refund above a set amount | Partly, through a chargeback | Approve each one, second reviewer above the limit | Support lead, then finance |
+Three things to take from it. First, the gate sits on the tool call, never on the model’s thinking. Second, the tier is a setting you change as evidence comes in: start the reply tier at per-call approval, and relax it for a class of replies only after the reviewers have approved nearly all of them unchanged. Third, the second reviewer on refunds is a property of the action, not of the agent, so a different agent doing the same refund hits the same gate.
+
+## Measure whether the gate is real: the override rate
+A gate that approves everything is decoration. Track the share of approval requests where the reviewer changed or rejected the action. If it stays near zero across hundreds of requests, either the action is safe enough to drop to a lighter tier, or reviewers are clicking through without reading. If it is high, the agent needs better instructions before it gets more autonomy. Either way the number tells you which tier to move the action to, and it is only available if every approval is recorded with the reviewer and the outcome. We do not quote an industry benchmark here because we have not found a source we trust; set your own threshold from your first month of data.
+
+## A six-question check before an agent can send, spend or delete
+Run these against any agent platform, ours included, before you grant a write permission.
+1. **Does the run stop before the side effect?** Auditing afterwards is a different feature.
+2. **Can the reviewer see the intent, the exact payload and the object it touches?** A yes or no button on an opaque payload does not count.
+3. **Does the pause survive a closed browser tab, a deploy and a weekend?** Approvals that expire silently are worse than none.
+4. **Is the tier set by the platform, not by the agent?** An agent that sets its own approval tier signs its own permission slip.
+5. **Is every decision stored with approver, time and reason?** You should be able to answer “who approved that send” a year later without reading logs.
+6. **Can another agent or a person query the decision?** If the verdict only exists in the run that produced it, nobody downstream can rely on it.
 
 ## How to design an approval gate that’s actually useful
 Having the primitive isn’t enough. The gate has to be applied to the right actions, in the right shape, or it becomes decoration. Four design moves that separate a real approval gate from a compliance sticker.
@@ -2731,11 +2754,11 @@ Approvals routed through modals in a browser tab die when the tab closes. Approv
 ## When the SDK-primitive is enough — and when it isn’t
 The honest scope of the SDK-primitive gate is single-vendor, single-run, in-session. That’s plenty for a lot of jobs — a prototype agent, a single-purpose tool with a small user base, a script an engineer runs and watches. If you don’t need to audit the approval later, don’t need to compose it with other approvals, and don’t need it to survive a session restart, the SDK primitive is the whole answer.
 The places it stops being enough are the places the workspace shape matters:
-- **Long-lived work.** An approval that needs to wait a week for the right person survives the process; the SDK’s in-memory pause usually does not (Temporal is the exception — signals are durable by construction).
+- **Long-lived work.** An approval that waits a week for the right person has to outlive the process. OpenAI serializes the run state so a run can resume later, and Temporal signals are durable by construction; a pause held only in memory is not. Even with durable state, someone still has to own the pending decision and the record of it.
 - **Cross-agent work.** A downstream agent that needs to know the approval happened has no path to the SDK’s callback. It needs the approval as a fact on a shared object.
 - **Multi-tool work.** The team’s Ops agent runs on Temporal, the Sales agent on OpenAI’s SDK, the internal tool on Cloudflare Agents. The approvals from each shouldn’t live in three incompatible run traces if the underlying business is one thing.
 - **Audit and compliance work.** “Who approved that send, and when?” is a legitimate question a year later. The SDK’s per-run callback is not built for that horizon.
-A useful mental model: SDK primitives are the runtime; a workspace-shaped store is the record layer. Both exist together in a production system. You don’t rip out `needs_approval` to use Maskin; you keep it, and you write its resolutions to the typed object the loop is acting on, so the run and the record aren’t the same thing. How persona-level autonomy dials compare with [per-action gates](/docs/composable-ai-agents-vs-ai-employees/) is the adjacent question.
+A useful mental model: SDK primitives are the runtime; a workspace-shaped store is the record layer. Both exist together in a production system. You don’t rip out `needs_approval` to use Maskin; you keep it, and you write its resolutions to the typed object the loop is acting on, so the run and the record aren’t the same thing.
 
 ## FAQ
 
@@ -2757,16 +2780,15 @@ A tool call that changes state outside the agent — sends an email, hits an ext
 ### Where does a workspace-shaped gate fit alongside the SDK primitive?
 It sits above it. The SDK handles the runtime pause; the workspace records the decision as a durable fact on the object the action was about — who approved, when, why, in the same feed as the transitions the approval unblocked. That verdict then travels with the work: the next agent, the next auditor, and the next you can all read it a week or a year later, without asking the run trace it came from.
 
-## Sources
-**External (vendor documentation, primary sources, 2026-09-25):**
+## Vendor documentation
 1. **OpenAI Agents SDK, human-in-the-loop guide** — `needs_approval`, `RunState`, resumable interruptions. [openai.github.io/openai-agents-python/agents/#human-in-the-loop](https://openai.github.io/openai-agents-python/agents/#human-in-the-loop).
 2. **Cloudflare Agents, human-in-the-loop** — `waitForApproval()`, durable-object suspension, MCP elicitation. [developers.cloudflare.com/agents/api-reference/human-in-the-loop](https://developers.cloudflare.com/agents/api-reference/human-in-the-loop/).
 3. **Microsoft Agent Framework, request-response workflows** — `RequestPort`, `RequestInfoEvent`. [learn.microsoft.com/en-us/agent-framework/tutorials/workflows/human-in-the-loop](https://learn.microsoft.com/en-us/agent-framework/tutorials/workflows/human-in-the-loop).
 4. **Temporal, signal-based human approval** — durable workflow signals. [temporal.io/blog/human-in-the-loop-with-temporal](https://temporal.io/blog/human-in-the-loop-with-temporal).
 Read next
 
-## Give the approval a place to live
-Maskin is the open-source, MCP-native workspace where the approval gate is a first-class transition on a typed object — the decision recorded next to the work it approves. Apache 2.0, self-hostable, EU/US data residency.
+## See the gate on your own agents
+Book a meeting and bring one agent that can send, spend or delete. We will walk through where you would put the approval gate, who reviews it, and how you would find the decision a month later in Maskin.
 
 
 ---
