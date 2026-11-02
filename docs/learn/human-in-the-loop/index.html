@@ -213,7 +213,7 @@
       <li><strong>The audit is a query, not a rebuild.</strong> &ldquo;Show me every send-message that a human approved in the last month, and who approved it&rdquo; is one filter on the events table, not a log-scraping project.</li>
     </ul>
     <p>On a single-vendor SDK the same information exists but scattered &mdash; some in the run trace, some in the callback that resolved the approval, some in whatever the caller chose to persist. A workspace shape doesn&rsquo;t replace the SDK primitive; it gives the approval a place to live once the run is over. The typed object graph, in this cut, is the store the approval is written to; the SDK is the runtime that surfaces it.</p>
-    <p>The deeper architecture write-up sits in the <a href="/docs/ambient-agent-workspace/">ambient agent workspace</a> piece, which walks the graph-shaped alternative to the chat-shaped agent inbox. The governance side &mdash; how approvals compose with typed permissions and the audit trail &mdash; is in <a href="/docs/learn/ai-agent-governance/">AI agent governance for small teams</a>. The developer-register substrate reference is <a href="/docs/what-is-a-stateful-orchestration-substrate/">the stateful orchestration substrate</a>.</p>
+    <p>The governance side, how approvals compose with typed permissions and the audit trail, is in <a href="/docs/learn/ai-agent-governance/">AI agent governance for CTOs</a>.</p>
 
     <h2>A worked example: sorting one support agent&rsquo;s actions into tiers</h2>
     <p>Take an illustrative support agent that reads tickets, drafts replies, issues refunds and updates the customer record. Four actions, three different answers. The tiers below follow one rule: the more reversible and the smaller the blast radius, the lighter the gate.</p>
@@ -268,7 +268,7 @@
       <li><strong>Multi-tool work.</strong> The team&rsquo;s Ops agent runs on Temporal, the Sales agent on OpenAI&rsquo;s SDK, the internal tool on Cloudflare Agents. The approvals from each shouldn&rsquo;t live in three incompatible run traces if the underlying business is one thing.</li>
       <li><strong>Audit and compliance work.</strong> &ldquo;Who approved that send, and when?&rdquo; is a legitimate question a year later. The SDK&rsquo;s per-run callback is not built for that horizon.</li>
     </ul>
-    <p>A useful mental model: SDK primitives are the runtime; a workspace-shaped store is the record layer. Both exist together in a production system. You don&rsquo;t rip out <code>needs_approval</code> to use Maskin; you keep it, and you write its resolutions to the typed object the loop is acting on, so the run and the record aren&rsquo;t the same thing. How persona-level autonomy dials compare with <a href="/docs/composable-ai-agents-vs-ai-employees/">per-action gates</a> is the adjacent question.</p>
+    <p>A useful mental model: SDK primitives are the runtime; a workspace-shaped store is the record layer. Both exist together in a production system. You don&rsquo;t rip out <code>needs_approval</code> to use Maskin; you keep it, and you write its resolutions to the typed object the loop is acting on, so the run and the record aren&rsquo;t the same thing.</p>
 
     <h2>FAQ</h2>
     <h3>What does &ldquo;human in the loop&rdquo; mean in 2026?</h3>
@@ -309,16 +309,6 @@
         <a class="doc-card" href="/docs/learn/ai-agent-governance/">
           <div class="doc-card__title">AI agent governance for CTOs</div>
           <div class="doc-card__desc">How approvals compose with typed permissions and the audit trail as workspace properties.</div>
-          <div class="doc-card__arrow">Read &rarr;</div>
-        </a>
-        <a class="doc-card" href="/docs/ambient-agent-workspace/">
-          <div class="doc-card__title">Ambient agent workspace</div>
-          <div class="doc-card__desc">The graph-shaped alternative to the chat-shaped agent inbox &mdash; where the approval surface stops being a flat queue.</div>
-          <div class="doc-card__arrow">Read &rarr;</div>
-        </a>
-        <a class="doc-card" href="/docs/what-is-a-stateful-orchestration-substrate/">
-          <div class="doc-card__title">Stateful orchestration substrate</div>
-          <div class="doc-card__desc">The shared typed store that carries decisions between stateless agents so a pipeline produces coherent work.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
       </div>

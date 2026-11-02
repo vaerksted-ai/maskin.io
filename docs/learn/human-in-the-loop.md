@@ -53,7 +53,7 @@ That’s a shift from **transient approval** to **persistent verdict**. Concrete
 - **The next agent can read the verdict.** A downstream agent that acts on the approved object can query the approval event the same way it queries any other state. The approval is not model-visible only at the moment of the pause; it is graph-visible forever.
 - **The audit is a query, not a rebuild.** “Show me every send-message that a human approved in the last month, and who approved it” is one filter on the events table, not a log-scraping project.
 On a single-vendor SDK the same information exists but scattered — some in the run trace, some in the callback that resolved the approval, some in whatever the caller chose to persist. A workspace shape doesn’t replace the SDK primitive; it gives the approval a place to live once the run is over. The typed object graph, in this cut, is the store the approval is written to; the SDK is the runtime that surfaces it.
-The deeper architecture write-up sits in the [ambient agent workspace](/docs/ambient-agent-workspace/) piece, which walks the graph-shaped alternative to the chat-shaped agent inbox. The governance side — how approvals compose with typed permissions and the audit trail — is in [AI agent governance for small teams](/docs/learn/ai-agent-governance/). The developer-register substrate reference is [the stateful orchestration substrate](/docs/what-is-a-stateful-orchestration-substrate/).
+The governance side, how approvals compose with typed permissions and the audit trail, is in [AI agent governance for CTOs](/docs/learn/ai-agent-governance/).
 
 ## A worked example: sorting one support agent’s actions into tiers
 Take an illustrative support agent that reads tickets, drafts replies, issues refunds and updates the customer record. Four actions, three different answers. The tiers below follow one rule: the more reversible and the smaller the blast radius, the lighter the gate.
@@ -99,7 +99,7 @@ The places it stops being enough are the places the workspace shape matters:
 - **Cross-agent work.** A downstream agent that needs to know the approval happened has no path to the SDK’s callback. It needs the approval as a fact on a shared object.
 - **Multi-tool work.** The team’s Ops agent runs on Temporal, the Sales agent on OpenAI’s SDK, the internal tool on Cloudflare Agents. The approvals from each shouldn’t live in three incompatible run traces if the underlying business is one thing.
 - **Audit and compliance work.** “Who approved that send, and when?” is a legitimate question a year later. The SDK’s per-run callback is not built for that horizon.
-A useful mental model: SDK primitives are the runtime; a workspace-shaped store is the record layer. Both exist together in a production system. You don’t rip out `needs_approval` to use Maskin; you keep it, and you write its resolutions to the typed object the loop is acting on, so the run and the record aren’t the same thing. How persona-level autonomy dials compare with [per-action gates](/docs/composable-ai-agents-vs-ai-employees/) is the adjacent question.
+A useful mental model: SDK primitives are the runtime; a workspace-shaped store is the record layer. Both exist together in a production system. You don’t rip out `needs_approval` to use Maskin; you keep it, and you write its resolutions to the typed object the loop is acting on, so the run and the record aren’t the same thing.
 
 ## FAQ
 
