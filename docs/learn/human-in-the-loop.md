@@ -122,7 +122,6 @@ A tool call that changes state outside the agent — sends an email, hits an ext
 It sits above it. The SDK handles the runtime pause; the workspace records the decision as a durable fact on the object the action was about — who approved, when, why, in the same feed as the transitions the approval unblocked. That verdict then travels with the work: the next agent, the next auditor, and the next you can all read it a week or a year later, without asking the run trace it came from.
 
 ## Vendor documentation
-**External (vendor documentation, primary sources, 2026-09-25):**
 1. **OpenAI Agents SDK, human-in-the-loop guide** — `needs_approval`, `RunState`, resumable interruptions. [openai.github.io/openai-agents-python/agents/#human-in-the-loop](https://openai.github.io/openai-agents-python/agents/#human-in-the-loop).
 2. **Cloudflare Agents, human-in-the-loop** — `waitForApproval()`, durable-object suspension, MCP elicitation. [developers.cloudflare.com/agents/api-reference/human-in-the-loop](https://developers.cloudflare.com/agents/api-reference/human-in-the-loop/).
 3. **Microsoft Agent Framework, request-response workflows** — `RequestPort`, `RequestInfoEvent`. [learn.microsoft.com/en-us/agent-framework/tutorials/workflows/human-in-the-loop](https://learn.microsoft.com/en-us/agent-framework/tutorials/workflows/human-in-the-loop).
