@@ -16,7 +16,7 @@ You are the person who answers when an agent emails the wrong customer, refunds 
 Open the docs for any major agent framework and search for “human in the loop.” You will find the same story told four different ways: the agent proposes a tool call that would do something in the real world — send an email, run a shell command, transfer money — and the SDK pauses the run, hands the pending call up to the calling application, and waits for a person to approve or reject before the tool actually fires. The phrase used to point at data labeling. It now points at approval gates.
 The reason the meaning moved is that the underlying job moved. Until about 2024, “human in the loop” was a machine-learning phrase — the human in the loop was a labeler correcting model outputs so the next training run would be a little less wrong. It was slow, offline, and shaped by the training cycle. What builders need in 2026 is different. Agents now take actions in production, live, on user data. The gap between the model’s decision and the world’s state is a tool call, and that tool call needs a stop-and-check before it commits when the blast radius is bigger than a bad guess.
 So the SDKs added the stop-and-check. That’s what “human in the loop” now describes for anyone building on the current agent stack: not offline labeling of training data but an inline pause in front of side-effecting tool calls at runtime. Both meanings exist in the wild; the current SDK-shaped meaning is the one that shows up in your codebase and in your buyer’s expectations.
-A more careful read of when the gate belongs there and where the related “human on the loop” pattern picks up sits in the [human in the loop vs human on the loop](/docs/learn/human-in-the-loop-ai/) piece — that page carries the HOTL/HITL vocabulary cut and the EU AI Act Article 14 read. The rest of this page stays on the SDK-primitive contract and what a workspace-shaped version of the gate adds on top.
+The rest of this page stays on the SDK-primitive contract and what a workspace-shaped version of the gate adds on top.
 
 ## Four vendors, four APIs, one primitive
 Here is the SDK vocabulary the four major agent frameworks have converged on.
@@ -107,7 +107,7 @@ A useful mental model: SDK primitives are the runtime; a workspace-shaped store 
 In 2026, human in the loop means an approval step in front of an agent’s side-effecting tool call. The agent proposes an action, the SDK pauses the run, a person approves or rejects, and the run resumes or cancels. The older meaning — a person labeling training data — still exists but is not what agent-framework docs describe when they use the phrase now.
 
 ### What’s the difference between “human in the loop” and “human on the loop”?
-Human in the loop puts the person inside the transaction: nothing ships until they approve. Human on the loop puts the person above it: the agent runs, and the human supervises through review surfaces and escalation gates rather than per-action approval. The two fail differently, and most production systems use both — HOTL for bulk reversible work, HITL for irreversible or high-blast-radius actions. The vocabulary and the failure-mode differences are covered in detail in the [human in the loop vs human on the loop](/docs/learn/human-in-the-loop-ai/) piece; this page stays on the SDK-primitive contract.
+Human in the loop puts the person inside the transaction: nothing ships until they approve. Human on the loop puts the person above it: the agent runs, and the human supervises through review surfaces and escalation gates rather than per-action approval. The two fail differently, and most production systems use both — HOTL for bulk reversible work, HITL for irreversible or high-blast-radius actions.
 
 ### Which agent frameworks ship an approval primitive?
 As of late 2026: OpenAI Agents SDK (`needs_approval` with resumable `RunState`), Cloudflare Agents (`waitForApproval()`, plus MCP elicitation and Code Mode approvals), Microsoft Agent Framework (`RequestPort` / `RequestInfoEvent`), and Temporal (signal-based approval on durable workflows). Four vendors, four API shapes, one underlying contract. Workflow engines ship the same idea: [n8n’s human-in-the-loop for tools](/alternatives/n8n/) pauses a tool call inside a workflow, which the n8n comparison sets against a gate attached to the object.
@@ -123,9 +123,9 @@ It sits above it. The SDK handles the runtime pause; the workspace records the d
 
 ## Vendor documentation
 1. **OpenAI Agents SDK, human-in-the-loop guide** — `needs_approval`, `RunState`, resumable interruptions. [openai.github.io/openai-agents-python/agents/#human-in-the-loop](https://openai.github.io/openai-agents-python/agents/#human-in-the-loop).
-2. **Cloudflare Agents, human-in-the-loop** — `waitForApproval()`, durable-object suspension, MCP elicitation. [developers.cloudflare.com/agents/api-reference/human-in-the-loop](https://developers.cloudflare.com/agents/api-reference/human-in-the-loop/).
-3. **Microsoft Agent Framework, request-response workflows** — `RequestPort`, `RequestInfoEvent`. [learn.microsoft.com/en-us/agent-framework/tutorials/workflows/human-in-the-loop](https://learn.microsoft.com/en-us/agent-framework/tutorials/workflows/human-in-the-loop).
-4. **Temporal, signal-based human approval** — durable workflow signals. [temporal.io/blog/human-in-the-loop-with-temporal](https://temporal.io/blog/human-in-the-loop-with-temporal).
+2. **Cloudflare Agents, human-in-the-loop** — `waitForApproval()`, durable-object suspension, MCP elicitation. [developers.cloudflare.com/agents/guides/human-in-the-loop](https://developers.cloudflare.com/agents/guides/human-in-the-loop/).
+3. **Microsoft Agent Framework, request-response workflows** — `RequestPort`, `RequestInfoEvent`. [learn.microsoft.com/en-us/agent-framework/workflows/human-in-the-loop](https://learn.microsoft.com/en-us/agent-framework/workflows/human-in-the-loop).
+4. **Temporal, message passing (Signals)** — durable workflow signals. [docs.temporal.io/develop/python/message-passing](https://docs.temporal.io/develop/python/message-passing).
 Read next
 
 ## See the gate on your own agents

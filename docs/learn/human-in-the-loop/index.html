@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Human in the loop for CTOs: the approval gate for agent tool calls | Maskin</title>
+<title>Human in the loop for CTOs: the approval gate | Maskin</title>
 <meta name="description" content="Human in the loop means an approval gate before an agent's side-effecting tool call. How a CTO decides which actions to gate and proves it later.">
 
 <link rel="canonical" href="https://maskin.io/docs/learn/human-in-the-loop/">
@@ -17,7 +17,7 @@
 
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/docs/learn/human-in-the-loop/">
-<meta property="og:title" content="Human in the loop for CTOs: the approval gate for agent tool calls">
+<meta property="og:title" content="Human in the loop for CTOs: the approval gate">
 <meta property="og:description" content="Human in the loop means an approval gate before an agent's side-effecting tool call. How a CTO decides which actions to gate and proves it later.">
 <meta property="og:image" content="https://maskin.io/docs/learn/human-in-the-loop/og.png">
 <meta property="og:image:width" content="1200">
@@ -29,7 +29,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@maskin_io">
-<meta name="twitter:title" content="Human in the loop for CTOs: the approval gate for agent tool calls">
+<meta name="twitter:title" content="Human in the loop for CTOs: the approval gate">
 <meta name="twitter:description" content="Human in the loop means an approval gate before an agent's side-effecting tool call. How a CTO decides which actions to gate and proves it later.">
 <meta name="twitter:image" content="https://maskin.io/docs/learn/human-in-the-loop/og.png">
 
@@ -47,7 +47,7 @@
       "@type": "BlogPosting",
       "@id": "https://maskin.io/docs/learn/human-in-the-loop/#post",
       "headline": "Human in the loop for CTOs: the approval gate before side-effecting tool calls",
-      "name": "Human in the loop for CTOs: the approval gate for agent tool calls",
+      "name": "Human in the loop for CTOs: the approval gate",
       "description": "Human in the loop means an approval gate before an agent's side-effecting tool call. How a CTO decides which actions to gate and proves it later.",
       "inLanguage": "en",
       "url": "https://maskin.io/docs/learn/human-in-the-loop/",
@@ -171,7 +171,7 @@
     <p>Open the docs for any major agent framework and search for &ldquo;human in the loop.&rdquo; You will find the same story told four different ways: the agent proposes a tool call that would do something in the real world &mdash; send an email, run a shell command, transfer money &mdash; and the SDK pauses the run, hands the pending call up to the calling application, and waits for a person to approve or reject before the tool actually fires. The phrase used to point at data labeling. It now points at approval gates.</p>
     <p>The reason the meaning moved is that the underlying job moved. Until about 2024, &ldquo;human in the loop&rdquo; was a machine-learning phrase &mdash; the human in the loop was a labeler correcting model outputs so the next training run would be a little less wrong. It was slow, offline, and shaped by the training cycle. What builders need in 2026 is different. Agents now take actions in production, live, on user data. The gap between the model&rsquo;s decision and the world&rsquo;s state is a tool call, and that tool call needs a stop-and-check before it commits when the blast radius is bigger than a bad guess.</p>
     <p>So the SDKs added the stop-and-check. That&rsquo;s what &ldquo;human in the loop&rdquo; now describes for anyone building on the current agent stack: not offline labeling of training data but an inline pause in front of side-effecting tool calls at runtime. Both meanings exist in the wild; the current SDK-shaped meaning is the one that shows up in your codebase and in your buyer&rsquo;s expectations.</p>
-    <p>A more careful read of when the gate belongs there and where the related &ldquo;human on the loop&rdquo; pattern picks up sits in the <a href="/docs/learn/human-in-the-loop-ai/">human in the loop vs human on the loop</a> piece &mdash; that page carries the HOTL/HITL vocabulary cut and the EU AI Act Article 14 read. The rest of this page stays on the SDK-primitive contract and what a workspace-shaped version of the gate adds on top.</p>
+    <p>The rest of this page stays on the SDK-primitive contract and what a workspace-shaped version of the gate adds on top.</p>
 
     <h2>Four vendors, four APIs, one primitive</h2>
     <p>Here is the SDK vocabulary the four major agent frameworks have converged on.</p>
@@ -275,7 +275,7 @@
     <p>In 2026, human in the loop means an approval step in front of an agent&rsquo;s side-effecting tool call. The agent proposes an action, the SDK pauses the run, a person approves or rejects, and the run resumes or cancels. The older meaning &mdash; a person labeling training data &mdash; still exists but is not what agent-framework docs describe when they use the phrase now.</p>
 
     <h3>What&rsquo;s the difference between &ldquo;human in the loop&rdquo; and &ldquo;human on the loop&rdquo;?</h3>
-    <p>Human in the loop puts the person inside the transaction: nothing ships until they approve. Human on the loop puts the person above it: the agent runs, and the human supervises through review surfaces and escalation gates rather than per-action approval. The two fail differently, and most production systems use both &mdash; HOTL for bulk reversible work, HITL for irreversible or high-blast-radius actions. The vocabulary and the failure-mode differences are covered in detail in the <a href="/docs/learn/human-in-the-loop-ai/">human in the loop vs human on the loop</a> piece; this page stays on the SDK-primitive contract.</p>
+    <p>Human in the loop puts the person inside the transaction: nothing ships until they approve. Human on the loop puts the person above it: the agent runs, and the human supervises through review surfaces and escalation gates rather than per-action approval. The two fail differently, and most production systems use both &mdash; HOTL for bulk reversible work, HITL for irreversible or high-blast-radius actions.</p>
 
     <h3>Which agent frameworks ship an approval primitive?</h3>
     <p>As of late 2026: OpenAI Agents SDK (<code>needs_approval</code> with resumable <code>RunState</code>), Cloudflare Agents (<code>waitForApproval()</code>, plus MCP elicitation and Code Mode approvals), Microsoft Agent Framework (<code>RequestPort</code> / <code>RequestInfoEvent</code>), and Temporal (signal-based approval on durable workflows). Four vendors, four API shapes, one underlying contract. Workflow engines ship the same idea: <a href="/alternatives/n8n/">n8n&rsquo;s human-in-the-loop for tools</a> pauses a tool call inside a workflow, which the n8n comparison sets against a gate attached to the object.</p>
@@ -292,19 +292,14 @@
     <h2 id="sources">Vendor documentation</h2>
     <ol class="sources">
       <li id="fn1"><strong>OpenAI Agents SDK, human-in-the-loop guide</strong> &mdash; <code>needs_approval</code>, <code>RunState</code>, resumable interruptions. <a href="https://openai.github.io/openai-agents-python/agents/#human-in-the-loop" target="_blank" rel="noopener nofollow">openai.github.io/openai-agents-python/agents/#human-in-the-loop</a>.</li>
-      <li id="fn2"><strong>Cloudflare Agents, human-in-the-loop</strong> &mdash; <code>waitForApproval()</code>, durable-object suspension, MCP elicitation. <a href="https://developers.cloudflare.com/agents/api-reference/human-in-the-loop/" target="_blank" rel="noopener nofollow">developers.cloudflare.com/agents/api-reference/human-in-the-loop</a>.</li>
-      <li id="fn3"><strong>Microsoft Agent Framework, request-response workflows</strong> &mdash; <code>RequestPort</code>, <code>RequestInfoEvent</code>. <a href="https://learn.microsoft.com/en-us/agent-framework/tutorials/workflows/human-in-the-loop" target="_blank" rel="noopener nofollow">learn.microsoft.com/en-us/agent-framework/tutorials/workflows/human-in-the-loop</a>.</li>
-      <li id="fn4"><strong>Temporal, signal-based human approval</strong> &mdash; durable workflow signals. <a href="https://temporal.io/blog/human-in-the-loop-with-temporal" target="_blank" rel="noopener nofollow">temporal.io/blog/human-in-the-loop-with-temporal</a>.</li>
+      <li id="fn2"><strong>Cloudflare Agents, human-in-the-loop</strong> &mdash; <code>waitForApproval()</code>, durable-object suspension, MCP elicitation. <a href="https://developers.cloudflare.com/agents/guides/human-in-the-loop/" target="_blank" rel="noopener nofollow">developers.cloudflare.com/agents/guides/human-in-the-loop</a>.</li>
+      <li id="fn3"><strong>Microsoft Agent Framework, request-response workflows</strong> &mdash; <code>RequestPort</code>, <code>RequestInfoEvent</code>. <a href="https://learn.microsoft.com/en-us/agent-framework/workflows/human-in-the-loop" target="_blank" rel="noopener nofollow">learn.microsoft.com/en-us/agent-framework/workflows/human-in-the-loop</a>.</li>
+      <li id="fn4"><strong>Temporal, message passing (Signals)</strong> &mdash; durable workflow signals. <a href="https://docs.temporal.io/develop/python/message-passing" target="_blank" rel="noopener nofollow">docs.temporal.io/develop/python/message-passing</a>.</li>
     </ol>
 
     <div class="related">
       <p class="related__title">Read next</p>
       <div class="doc-cards">
-        <a class="doc-card" href="/docs/learn/human-in-the-loop-ai/">
-          <div class="doc-card__title">Human in the loop AI: when it&rsquo;s real, when it&rsquo;s theater</div>
-          <div class="doc-card__desc">The vocabulary sibling &mdash; HITL vs HOTL, override rate as the honest metric, what EU AI Act Article 14 actually requires.</div>
-          <div class="doc-card__arrow">Read &rarr;</div>
-        </a>
         <a class="doc-card" href="/docs/learn/ai-agent-governance/">
           <div class="doc-card__title">AI agent governance for CTOs</div>
           <div class="doc-card__desc">How approvals compose with typed permissions and the audit trail as workspace properties.</div>
