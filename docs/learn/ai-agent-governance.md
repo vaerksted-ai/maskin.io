@@ -74,7 +74,7 @@ None of those steps needs a separate log system or an export. That is the test t
 Open the object it acted on. The event feed shows the transition with the actor and trigger id. Click the actor to see its permission list. Click the trigger to see what fired it and with what config. If the answer is "the permission was wrong", revoke it. If the trigger's config drifted, edit the trigger. If the model reasoned poorly, the drift is in the prompt or the model, not the governance layer, which is itself a useful finding.
 
 ### "How do I stop everything, right now, if a customer is affected?"
-Loop-level `paused`. Every loop has a status; setting it to `paused` disables every trigger that references it. On the trust ladder this is a rung reachable from any other rung. One step, cascading effect, reversible.
+Loop-level `paused`. Every loop has a status; setting it to `paused` disables every trigger that references it. On the [trust ladder](/loops/loops-that-graduate/) this is a rung reachable from any other rung. One step, cascading effect, reversible.
 
 ### "How do I graduate an agent's trust?"
 Override rate. Compare the transitions the agent proposed with the ones a human accepted, edited or rejected. When the ratio crosses a threshold you set, the loop's trust rung can move: fewer transitions gated, same audit trail. The number is a query over events, not a separate dashboard.
