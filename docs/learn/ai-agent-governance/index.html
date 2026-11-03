@@ -268,7 +268,7 @@
     <h3>"An agent did something I didn't expect. Where do I look?"</h3>
     <p>Open the object it acted on. The event feed shows the transition with the actor and trigger id. Click the actor to see its permission list. Click the trigger to see what fired it and with what config. If the answer is "the permission was wrong", revoke it. If the trigger's config drifted, edit the trigger. If the model reasoned poorly, the drift is in the prompt or the model, not the governance layer, which is itself a useful finding.</p>
     <h3>"How do I stop everything, right now, if a customer is affected?"</h3>
-    <p>Loop-level <code>paused</code>. Every loop has a status; setting it to <code>paused</code> disables every trigger that references it. On the trust ladder this is a rung reachable from any other rung. One step, cascading effect, reversible.</p>
+    <p>Loop-level <code>paused</code>. Every loop has a status; setting it to <code>paused</code> disables every trigger that references it. On the <a href="/loops/loops-that-graduate/">trust ladder</a> this is a rung reachable from any other rung. One step, cascading effect, reversible.</p>
     <h3>"How do I graduate an agent's trust?"</h3>
     <p>Override rate. Compare the transitions the agent proposed with the ones a human accepted, edited or rejected. When the ratio crosses a threshold you set, the loop's trust rung can move: fewer transitions gated, same audit trail. The number is a query over events, not a separate dashboard.</p>
     <h3>"What about the enterprise checklist: SSO, SCIM, SOC 2?"</h3>

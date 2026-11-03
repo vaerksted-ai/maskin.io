@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loops that graduate: the agentic loop trust ladder | Maskin</title>
+<meta name="description" content="An agentic loop earns autonomy at a gate and can be demoted. The trust ladder from supervised to autonomous, for CTOs deciding when an agent may run unattended.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://maskin.io/loops/loops-that-graduate/">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maskin.io/loops/loops-that-graduate/">
+<meta property="og:title" content="The agentic loop trust ladder: when an agent can stop being checked">
+<meta property="og:description" content="An agentic loop earns autonomy at a gate and can be demoted. The trust ladder from supervised to autonomous, for CTOs deciding when an agent may run unattended.">
+<meta property="og:image" content="https://maskin.io/og-image-loops-that-graduate.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Diagram: a loop climbs from draft to supervised to autonomous through gates, and is demoted back down when quality drops.">
+<meta property="og:site_name" content="Maskin">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-03T00:00:00Z">
+<meta property="article:modified_time" content="2026-11-03T00:00:00Z">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maskin_io">
+<meta name="twitter:title" content="The agentic loop trust ladder: when an agent can stop being checked">
+<meta name="twitter:description" content="An agentic loop earns autonomy at a gate and can be demoted. The trust ladder from supervised to autonomous, for CTOs deciding when an agent may run unattended.">
+<meta name="twitter:image" content="https://maskin.io/og-image-loops-that-graduate.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/docs/docs.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "The agentic loop trust ladder: when an agent can stop being checked",
+      "name": "The agentic loop trust ladder: when an agent can stop being checked",
+      "description": "An agentic loop earns autonomy at a gate and can be demoted. The trust ladder from supervised to autonomous, for CTOs deciding when an agent may run unattended.",
+      "url": "https://maskin.io/loops/loops-that-graduate/",
+      "inLanguage": "en",
+      "datePublished": "2026-11-03T00:00:00Z",
+      "dateModified": "2026-11-03T00:00:00Z",
+      "image": [
+        "https://maskin.io/og-image-loops-that-graduate.png"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "mainEntityOfPage": "https://maskin.io/loops/loops-that-graduate/",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": {
+        "@type": "Product",
+        "name": "Maskin"
+      },
+      "keywords": "agentic loop, agent loop, autonomous agents trust, agent autonomy levels"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Marketplace",
+          "item": "https://maskin.io/marketplace/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Loops that graduate",
+          "item": "https://maskin.io/loops/loops-that-graduate/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is an agentic loop?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "An agentic loop is a recurring workflow in which an agent produces an output, that output is checked against defined criteria, and the result is recorded before the next run. The useful unit to govern is the whole workflow, including its inputs, checks, reviewer, and stop conditions, rather than one impressive response."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does an agentic loop work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A loop starts from a defined request or event, gathers the needed records, produces work, runs quality gates, and closes with a recorded outcome. The team can inspect those records to see where an output failed and whether the gate caught it. For example, deterministic checks can verify required fields while a reviewer judges tone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you make an agent autonomous safely?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Set the acceptance rule before testing, then run the loop on real work under review. Promote it only after a specified volume and duration meet the fault limit, required checks pass, and a named owner signs off. In the support example, that meant 300 replies over at least 3 weeks, with faults at or below 2%, plus a defined route back to supervision."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are agent autonomy levels?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A practical ladder is draft, supervised, and autonomous, with paused available from any rung. Draft produces work for review; supervised requires review before each output goes out; autonomous removes that per-output review while ongoing checks remain. The set of rungs can be configured per workspace. A level describes how much a loop and its record permit without a check, not a property of the model."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When should a loop be demoted?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Demote a loop when it crosses a pre-agreed fault threshold, breaks policy, or loses a control needed for its current rung. Set the trigger and destination before unattended operation begins, so the response is not improvised during an incident. In the worked example, more than 4% faults in a rolling 100 replies or one sent policy-breaking promise returns the loop to supervised."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does a human stay in the loop once it is autonomous?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, but not necessarily as a reviewer of every output. The human owns the quality bar, authorizes promotion, samples outputs, and can demote or pause the workflow. Checks should continue on every output, and the owner should review whether those controls are still adequate when policy, source material, or the work itself changes."
+            }
+          }
+        ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Marketplace</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
+
+<noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
+<div class="wrap doc-layout">
+<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All loops</a></li><li><a class="" href="/marketplace/seo-publishing/">The SEO publishing loop</a></li><li><a class="" href="/marketplace/outbound/">The outbound loop</a></li><li><a class="" href="/marketplace/lead-qualification/">The lead qualification loop</a></li><li><a class="" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki loop</a></li><li><a class="" href="/marketplace/linkedin-content/">The LinkedIn content loop</a></li><li><a class="" href="/marketplace/product-delivery/">The product delivery loop</a></li><li><a class="" href="/loops/ai-customer-feedback-loop/">AI customer feedback loop</a></li><li><a class="" href="/marketplace/competitive-intelligence/">The competitive intelligence loop</a></li><li><a class="is-nested" href="/loops/competitive-intelligence/">Competitive intelligence loop: how it works</a></li><li><a class="is-nested is-active" href="/loops/loops-that-graduate/" aria-current="page">Loops that graduate: the trust ladder</a></li><!-- TEMP-SWAP (task 9bf88671): revert to href="/marketplace/product-discovery/" + "The product discovery loop" when the loop flips live. Mirrors commits 512b1f1 / 2a327bd. --><li><a class="" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="" href="/docs/at-risk-account-alerts/">At-risk account alerts</a></li><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/learn/human-in-the-loop/">Human in the loop</a></li><li><a class="" href="/docs/closed-loop-workspace/">The closed-loop workspace</a></li></ul></nav></aside>
+  <main class="doc-content">
+    <p class="doc-breadcrumb"><a href="/">Home</a> / <a href="/marketplace/">Marketplace</a> / Loops that graduate</p>
+    <p class="eyebrow">Loop</p>
+    <h1>The agentic loop trust ladder: when an agent can stop being checked</h1>
+    <p class="lead">An agent can stop being checked on every output only after it clears a written quality bar across a long enough run of real work, a named human signs off, and you can return it to supervision. Keep checks and a demotion path active once the agentic loop runs unattended.</p>
+
+<p><a class="btn-primary" href="https://calendar.app.google/r4v9xQp9S2p3TVFq5" data-track="docs_book_meeting_click" data-position="top">Book a meeting</a> <span style="color:var(--ink-3);margin-left:.5rem">Bring one agent you run today and we will map the gates it would need to earn autonomy.</span></p>
+<div class="callout callout--muted"><div class="callout__icon" aria-hidden="true">&#10003;</div><div class="callout__body"><strong>Key takeaways</strong><ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)"><li>Write the quality bar and acceptance criterion for each output before the first run.</li><li>Dry-run against past real cases before allowing the loop to handle live work.</li><li>Require review of every output while the loop is supervised.</li><li>Before removing per-output review, set a minimum run, a fault threshold, and a named sign-off owner.</li><li>Keep checks active on every output and define the trigger and route back to supervision.</li></ul></div></div>
+
+<h2>What an agentic loop is</h2>
+<p>An agentic loop is a repeatable process with an entry, typed records, quality gates, and a close that produces work again and again. Because the process keeps producing outputs, its quality check has to keep running too.</p>
+
+<h2>The trust ladder</h2>
+<p>Think of agent autonomy levels as rungs on a spectrum, not as a switch. A loop starts under supervision. It can earn the ability to move work forward without a check, and it can be pulled back when its results no longer meet the bar. Paused is reachable from any rung. The exact set of states is configurable per workspace, so use names and transitions that make sense for your process.</p>
+<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Rung</th><th>What the loop may do</th><th>Gate to get here</th><th>What demotes it</th></tr></thead><tbody><tr><td>draft</td><td>Prepare outputs for review, but send none to their intended recipient.</td><td>Write down the quality bar, an acceptance criterion for each output, the reviewer, and the ratifying human. Dry-run on past real cases.</td><td>A failed dry-run case keeps it at draft until the output or gate is corrected.</td></tr><tr><td>supervised</td><td>Run on real work; a reviewer checks every output before it goes out.</td><td>The written draft gate is met, and the named human ratifies the move to real work.</td><td>A reviewer can stop the run or return it to draft when an output fails the quality bar.</td></tr><tr><td>autonomous</td><td>Send outputs without a per-output check. Deterministic checks and the reviewing agent still run on every output; a human spot-checks a sample.</td><td>Meet the written quality bar over a long enough run of real outputs, then get sign-off from the named human.</td><td>A breached quality threshold or policy-breaking output returns it to supervision; the owner can pause it.</td></tr><tr><td>paused</td><td>Run nothing. Paused is reachable from any rung; the set of rungs is configurable per workspace.</td><td>The owner ratifies a restart, which returns the loop to supervised.</td><td>Not applicable while paused; restart requires owner ratification and begins at supervised.</td></tr></tbody></table></div>
+<p>The names matter less than the rules. Supervision does not mean &ldquo;almost ready&rdquo;: it means no output is trusted to move work forward unchecked. The record of every critique and sign-off is what lets you see, later, why the loop reached its rung.</p>
+
+<h2>How a loop earns a rung</h2>
+<p>Start by defining what good means for this loop. Set a quality signal that is more than a feeling, an acceptance criterion for one output, and a bar for a run of outputs. The worked example below puts numbers on this. The point is to choose criteria before reviewing results, rather than adjust the bar to make a struggling loop look healthy.</p>
+<p>Then close every run with a critique. A reviewing agent should have a typed role tied to the class of output it checks. It compares the output with the loop&rsquo;s rubric and the acceptance criteria declared by the decision that started the work. It cites the check in the loop&rsquo;s history. That critique is evidence you can examine, not a reassuring status light.</p>
+<p>Do not ask a model a question a schema can answer. If the check is whether a reply cites an article that exists, whether a required field is filled, or whether a number stays under its cap, run a deterministic check. Use those checks wherever the question can be reduced to a schema check. They do not drift, tire, or argue their way to a pass. Use a reviewing agent where a deterministic check cannot settle the question, and escalate to a human when neither can make the call cleanly.</p>
+<p>Keep the reviewer accountable too. Track whether its flags hold up for this class of output. If its critiques stop landing, the reviewer itself needs to be demoted. A reviewer without a track record is not a reliable gate just because it has the title of reviewer.</p>
+<p>Before you let a loop run unattended:</p>
+<ul>
+<li>Choose a quality signal that is more than a feeling.</li>
+<li>Assign a reviewer for each class of output.</li>
+<li>Use deterministic checks first where a schema can decide.</li>
+<li>Name the human who ratifies graduation.</li>
+<li>Define how to move the loop back down.</li>
+<li>Write the outputs and decision to a record.</li>
+</ul>
+<p>This is a practical extension of <a href="/docs/learn/ai-agent-governance/">AI agent governance</a>: authority should follow evidence, and there should be a person accountable for granting it. For more on where review belongs in a process, see <a href="/docs/learn/human-in-the-loop/">human in the loop for CTOs</a>.</p>
+
+<h2>A worked example: a support reply loop</h2>
+<p>This is an illustrative example with made-up numbers, not a customer result and not a benchmark.</p><p>The loop drafts replies to tier-1 support tickets at a SaaS company: password resets, billing dates, and how-do-I questions. Before its first run, the head of support writes the quality bar: a reply is faulty if a reviewer would have to rewrite it, it cites no existing help article, or it promises anything outside written policy, including refunds, dates, or credits. The head of support is the named human who ratifies changes in rung.</p><p>Before a reply can leave the loop, deterministic checks that use no model verify that it cites a real help-article ID, contains no refund or credit amount, and stays under the length cap. A reviewing agent critiques tone and accuracy on every reply. These checks do not replace the written quality bar; they cover specific failure modes, while review catches problems the checks cannot establish.</p><p>The team uses this step-up gate to move from supervised to autonomous:</p><ul><li>At least 300 replies over at least 3 weeks.</li><li>A fault rate at or below 2%, which means at most 6 faulty replies.</li><li>Zero policy-breaking promises and 100% pass on deterministic checks.</li><li>Before signing, the head of support reads the 5 worst critiques.</li></ul><p>Once autonomous, tier-1 replies go out without per-reply review. The deterministic checks and reviewing agent still run on every reply, and the head of support spot-checks 20 replies a week. The team demotes the loop if the fault rate goes above 4% on any rolling 100 replies, or if it sends any single policy-breaking promise. Either trigger returns it to supervised the same day. Returning to autonomous requires a fresh run of 150 replies at 2% or lower.</p><p>In week 5, the refund policy changes and the help article is rewritten, but the loop keeps citing the old article. On day 4, 7 faulty replies in a rolling 100 trip the 4% trigger. The loop drops to supervised, and the head of support signs the demotion. The article mapping is fixed; after 150 clean replies, the loop is promoted again.</p><p>Replace the thresholds, sample size, review cadence, and sign-off owner with the values your team can defend.</p>
+
+<h2>Who decides: humans set the bar, agents watch</h2>
+<p>Humans define the quality bar when the loop is created: what it should produce, what a good output looks like, and what must hold across a run of outputs. A machine should not choose a threshold that decides whether its own process is safe to trust. A human also ratifies graduation and demotion. Promoting a loop is a governance decision, and the person who signs off should be the person accountable if the call was premature.</p>
+<p>Agents do the watching that a human cannot sustain across many outputs. They can look for drift, compare a fault pattern with loops previously pulled back, and challenge a human who wants to raise the bar simply to make weak results appear acceptable. This is the division of work: humans direct, agents detect. An <a href="/docs/what-is-an-agentic-workspace/">agentic workspace</a> can make the process easier to reason about, but the decision about the bar still belongs to people.</p>
+
+<h2>Why demotion is the safety mechanism</h2>
+<p>Graduation without a way back down turns autonomy into a one-way bet. A loop can meet its bar and later stop meeting it. Quality can fall, or the reviewer&rsquo;s fault rate can climb above the threshold. In either case, demote the loop to supervision, where it keeps running under review until it earns its way back or the team retires it.</p>
+<p>That is why the gate must keep running after graduation. Quarterly or sprint retrospectives alone leave long stretches in which poor outputs can go unnoticed. Execution volume is not health, and a green dashboard is not a quality signal. Define who owns a demotion decision and record it: pulling a running process back can have downstream effects, so someone must own that call.</p>
+
+<h2>The trap: a reviewer that can be argued down</h2>
+<p>If the reviewer is a language model and the person running the loop knows it can be argued down, graduation can become a negotiation. The reviewer flags a fault, the user pushes back, the reviewer softens, and the loop gets promoted. The bar did not move; the reviewer did. This is most dangerous at the point where someone has the strongest incentive to argue for autonomy.</p>
+<p>Use three counter-moves. First, use deterministic checks wherever the fault reduces to a schema check. A number is a number. Second, where determinism runs out, require human ratification and show the human the strongest opposing critique, not a tidied summary. The person signing off should read the hardest version of &ldquo;no&rdquo; before saying yes. Third, use typed-role reviewers with track records. Keep their history of held-up and argued-down critiques, and demote reviewers when their flags stop landing.</p>
+<p>These safeguards make it harder for throughput to become the reviewer&rsquo;s hidden incentive. They also give you something concrete to inspect when deciding whether a loop should remain supervised, graduate, or be pulled back.</p>
+
+<h2>Loop autonomy vs agent autonomy</h2>
+<p>An agent can be capable while the loop that uses it is still not trustworthy enough to run unattended. Trust attaches to a repeatable process measured over many outputs, not to a model in isolation. A strong output does not show that the next output will meet the bar, or that the review process will catch a fault. For autonomous agents, trust is therefore about the loop&rsquo;s record and gates, not a general claim about a model&rsquo;s ability.</p>
+<p>This distinction helps you decide what to authorize. You are not declaring that an agent is safe for every task. You are deciding that this loop, with its defined entry, records, quality checks, and close, has earned a particular rung. Keep the scope tied to that process.</p>
+
+<h2>What Maskin gives you today</h2>
+<p>Maskin loops already move through a ladder of statuses: draft, supervised, autonomous, and paused from any rung. The concrete set of statuses is configurable per workspace. The harness mechanism that proposes graduation and demotion is internal today. A visible badge and quality curve on every loop card are on the roadmap, not shipped. For a suggested next read, explore <a href="/marketplace/">the loops marketplace</a>.</p>
+
+
+<h2>FAQ</h2>
+<h3>What is an agentic loop?</h3>
+<p>An agentic loop is a recurring workflow in which an agent produces an output, that output is checked against defined criteria, and the result is recorded before the next run. The useful unit to govern is the whole workflow, including its inputs, checks, reviewer, and stop conditions, rather than one impressive response.</p>
+<h3>How does an agentic loop work?</h3>
+<p>A loop starts from a defined request or event, gathers the needed records, produces work, runs quality gates, and closes with a recorded outcome. The team can inspect those records to see where an output failed and whether the gate caught it. For example, deterministic checks can verify required fields while a reviewer judges tone.</p>
+<h3>How do you make an agent autonomous safely?</h3>
+<p>Set the acceptance rule before testing, then run the loop on real work under review. Promote it only after a specified volume and duration meet the fault limit, required checks pass, and a named owner signs off. In the support example, that meant 300 replies over at least 3 weeks, with faults at or below 2%, plus a defined route back to supervision.</p>
+<h3>What are agent autonomy levels?</h3>
+<p>A practical ladder is draft, supervised, and autonomous, with paused available from any rung. Draft produces work for review; supervised requires review before each output goes out; autonomous removes that per-output review while ongoing checks remain. The set of rungs can be configured per workspace. A level describes how much a loop and its record permit without a check, not a property of the model.</p>
+<h3>When should a loop be demoted?</h3>
+<p>Demote a loop when it crosses a pre-agreed fault threshold, breaks policy, or loses a control needed for its current rung. Set the trigger and destination before unattended operation begins, so the response is not improvised during an incident. In the worked example, more than 4% faults in a rolling 100 replies or one sent policy-breaking promise returns the loop to supervised.</p>
+<h3>Does a human stay in the loop once it is autonomous?</h3>
+<p>Yes, but not necessarily as a reviewer of every output. The human owns the quality bar, authorizes promotion, samples outputs, and can demote or pause the workflow. Checks should continue on every output, and the owner should review whether those controls are still adequate when policy, source material, or the work itself changes.</p>
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/docs/learn/human-in-the-loop/">
+        <div class="doc-card__title">Human in the loop for CTOs</div>
+        <div class="doc-card__desc">Where an approval gate belongs before an agent takes a side-effecting action.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/learn/ai-agent-governance/">
+        <div class="doc-card__title">AI agent governance</div>
+        <div class="doc-card__desc">Permissions, attribution and an audit trail for the agents your team runs.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/marketplace/">
+        <div class="doc-card__title">The loops marketplace</div>
+        <div class="doc-card__desc">Ready-made loops you can run, each with its gates written down.</div>
+        <div class="doc-card__arrow">Browse &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Map the gates one of your agents would need</h2>
+      <p>Book a meeting and bring one agent you run today. We will map the gates it would need to earn autonomy, who ratifies each step, and how it gets demoted, and tell you plainly if it is not ready.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://calendar.app.google/r4v9xQp9S2p3TVFq5" data-track="docs_book_meeting_click" data-position="bottom">Book a meeting</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/docs/docs.js"></script>
+<script>
+(function () {
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[data-track='docs_book_meeting_click']");
+    if (!a || !window.posthog || !window.posthog.capture) return;
+    window.posthog.capture("docs_book_meeting_click", { page_slug: "loops-that-graduate", page_type: "article", language: "en", position: a.getAttribute("data-position"), page_path: location.pathname });
+  });
+})();
+</script>
+</body>
+</html>

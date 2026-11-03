@@ -307,6 +307,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://maskin.io/loops/loops-that-graduate/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://maskin.io/deck/</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
