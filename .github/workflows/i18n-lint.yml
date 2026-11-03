@@ -17,6 +17,7 @@ on:
       - "scripts_*/**"
       - "docs.css"
       - "docs/docs.css"
+      - "home.css"
       - ".github/workflows/i18n-lint.yml"
   push:
     branches: [main]
@@ -32,6 +33,7 @@ on:
       - "scripts_*/**"
       - "docs.css"
       - "docs/docs.css"
+      - "home.css"
       - ".github/workflows/i18n-lint.yml"
 
 permissions:
