@@ -74,7 +74,7 @@ None of those steps needs a separate log system or an export. That is the test t
 Open the object it acted on. The event feed shows the transition with the actor and trigger id. Click the actor to see its permission list. Click the trigger to see what fired it and with what config. If the answer is "the permission was wrong", revoke it. If the trigger's config drifted, edit the trigger. If the model reasoned poorly, the drift is in the prompt or the model, not the governance layer, which is itself a useful finding.
 
 ### "How do I stop everything, right now, if a customer is affected?"
-Loop-level `paused`. Every loop has a status; setting it to `paused` disables every trigger that references it. On the trust ladder this is a rung reachable from any other rung. One step, cascading effect, reversible.
+Loop-level `paused`. Every loop has a status; setting it to `paused` disables every trigger that references it. On the [trust ladder](/loops/loops-that-graduate/) this is a rung reachable from any other rung. One step, cascading effect, reversible.
 
 ### "How do I graduate an agent's trust?"
 Override rate. Compare the transitions the agent proposed with the ones a human accepted, edited or rejected. When the ratio crosses a threshold you set, the loop's trust rung can move: fewer transitions gated, same audit trail. The number is a query over events, not a separate dashboard.
@@ -112,6 +112,7 @@ Treating agents and other automated actors as first-class identities with their 
 
 ### What is a good AI agent audit trail?
 Every action has an actor id (not 'the system'), every state change is an event (not a log line), events live on the object they changed, and permission changes are events too. If any of those is missing, you will hit the wall when someone asks who did that.
+Read next
 
 ## See it on your own agents
 Book a meeting and bring one agent you run today. We will walk through who it acts as, what it may do, and how you would trace and revoke one of its actions in Maskin.

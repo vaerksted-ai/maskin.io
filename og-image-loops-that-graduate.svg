@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#111110"/>
+  <text x="80" y="98" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#5A5751" letter-spacing="4">AGENTIC LOOP</text>
+  <text x="80" y="160" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">Loops that graduate:</text>
+  <text x="80" y="222" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#FAFAF8">the trust ladder.</text>
+  <text x="80" y="266" font-family="Newsreader, Georgia, serif" font-size="24" font-style="italic" fill="#8B8781">Autonomy is earned at a gate, and it can be taken back</text>
+  <g font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="26" fill="#FAFAF8">
+    <rect x="80" y="400" width="300" height="90" rx="14" fill="none" stroke="#2563EB" stroke-width="2" opacity="0.5"/>
+    <text x="230" y="455" text-anchor="middle">draft</text>
+    <rect x="450" y="340" width="300" height="150" rx="14" fill="none" stroke="#2563EB" stroke-width="2" opacity="0.7"/>
+    <text x="600" y="425" text-anchor="middle">supervised</text>
+    <rect x="820" y="280" width="300" height="210" rx="14" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <text x="970" y="395" text-anchor="middle">autonomous</text>
+    <text x="410" y="372" text-anchor="middle" fill="#8B8781" font-size="22">gate &#8594;</text>
+    <text x="785" y="312" text-anchor="middle" fill="#8B8781" font-size="22">gate &#8594;</text>
+    <text x="785" y="520" text-anchor="middle" fill="#8B8781" font-size="22">&#8592; demote</text>
+  </g>
+  <text x="80" y="590" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#8B8781">maskin.io</text>
+</svg>
