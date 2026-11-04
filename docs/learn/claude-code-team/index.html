@@ -54,7 +54,7 @@
       "url": "https://maskin.io/docs/learn/claude-code-team/",
       "inLanguage": "en",
       "datePublished": "2026-10-15T00:00:00Z",
-      "dateModified": "2026-10-15T00:00:00Z",
+      "dateModified": "2026-11-04T00:00:00Z",
       "image": [
         "https://maskin.io/og-image-claude-code-team.png"
       ],
@@ -191,6 +191,8 @@
     <p class="eyebrow">Article &middot; Guide</p>
     <h1>Claude Code team: how to share context and decisions, not six private setups</h1>
 <p class="lead"><strong>How do you use Claude Code as a team, and not as six people with six private setups?</strong> Move three things out of private laptops: the setup (settings, skills, hooks), the context (what Claude should know about the project) and the record (who owns what, what was decided and why). The first two travel in your repository. The third needs a home you pick on purpose.</p>
+<p>This guide is for the CTO or head of engineering whose developers each run Claude Code with a private setup, and who needs shared context, owners, and decisions. It includes a one-week checklist and a decision record you can copy. Maskin appears as one option for where that record lives.</p>
+<p><a class="btn-primary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener" data-track="docs_book_meeting_click" data-position="top">Book a meeting</a> <span style="color:var(--ink-3);margin-left:.5rem">Bring your current Claude Code setup and a recent decision your team lost, and we will show where the record should live.</span></p>
 <p>This guide covers how people and Claude Code work together. It does not cover plans, seats or prices. For those, start with Anthropic&rsquo;s own page, <a href="https://support.claude.com/en/articles/11845131-use-claude-code-with-your-team-or-enterprise-plan" rel="noopener">Use Claude Code with your Team or Enterprise plan</a>.</p>
 <p><em>Read against <a href="https://code.claude.com/docs/en/settings" rel="noopener">Anthropic&rsquo;s Claude Code docs</a> on 2026-10-15. The product changes often, so check the docs for the version you run before relying on any detail below.</em></p>
 <div class="callout callout--muted"><div class="callout__icon" aria-hidden="true">&#10003;</div><div class="callout__body"><strong>Key takeaways</strong><ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
@@ -260,7 +262,7 @@
 <ul>
 <li><strong>A decisions folder in the repo.</strong> Good for code-shaped calls. Reviewable, versioned, next to the code. Weak for people who do not live in git.</li>
 <li><strong>The tracker you already use.</strong> Works if you add fields or a template for the reason and the check date. Without them, an issue says what was done but not why.</li>
-<li><strong>A workspace built for it.</strong> Maskin is one option. It is an open-source, MCP-native workspace where people and agents work on typed objects: a signal comes in as an insight, becomes a bet with a stated win condition, and runs as tasks. Each object has a driver (the owner) and a comment thread, and the bet closes with an outcome measured against its condition. Its agent sessions run the Claude Code and Codex command-line tools in isolated microVMs, so it sits beside the tools your developers already use. It is early, so judge the design, not a long track record. The longer argument is in <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a>, and you can <a href="/docs/self-hosted-ai-workspace/">self-host it</a>.</li>
+<li><strong>A workspace built for it.</strong> Maskin is one option. It is an open-source, MCP-native workspace where people and agents work on typed objects. A signal comes in as an insight, becomes a bet with a stated win condition, and runs as tasks. Each object has a driver, the owner, and a comment thread. A bet closes with an outcome measured against its condition. Read <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a> for the longer argument, or <a href="/docs/self-hosted-ai-workspace/">self-host it</a>. It is early, so judge the design, not a long track record.</li>
 </ul>
 <p>The choice matters less than having one and saying where it is.</p>
 <h3>An illustrative week</h3>
@@ -318,16 +320,24 @@
       </div>
     </div>
     <div class="post-cta">
-      <h2>Getting started is free</h2>
-      <p>Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of who owns what and what was decided. The <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace cornerstone</a> and the <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a> guide are the two best next reads.</p>
+      <h2>Put the decision somewhere shared</h2>
+      <p>CTOs and heads of engineering: book a meeting and bring your current Claude Code setup and one recent decision that got lost. See where an owner, a reason, and a check date would live. Nothing needs installing for the meeting.</p>
       <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
-        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+        <a class="btn-primary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener" data-track="docs_book_meeting_click" data-position="bottom">Book a meeting</a>
       </div>
     </div>
   </main>
 </div>
 
 <script src="/docs/docs.js"></script>
+<script>
+(function () {
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[data-track='docs_book_meeting_click']");
+    if (!a || !window.posthog || !window.posthog.capture) return;
+    window.posthog.capture("docs_book_meeting_click", { page_slug: "claude-code-team", page_type: "guide", language: "en", position: a.getAttribute("data-position"), page_path: location.pathname });
+  });
+})();
+</script>
 </body>
 </html>
