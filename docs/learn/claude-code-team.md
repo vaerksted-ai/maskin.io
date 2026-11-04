@@ -2,6 +2,8 @@
 
 # Claude Code team: how to share context and decisions, not six private setups
 **How do you use Claude Code as a team, and not as six people with six private setups?** Move three things out of private laptops: the setup (settings, skills, hooks), the context (what Claude should know about the project) and the record (who owns what, what was decided and why). The first two travel in your repository. The third needs a home you pick on purpose.
+This guide is for the CTO or head of engineering whose developers each run Claude Code with a private setup, and who needs shared context, owners, and decisions. It includes a one-week checklist and a decision record you can copy. Maskin appears as one option for where that record lives.
+[Book a meeting](https://meshfirm.com/bookmagnus) Bring your current Claude Code setup and a recent decision your team lost, and we will show where the record should live.
 This guide covers how people and Claude Code work together. It does not cover plans, seats or prices. For those, start with Anthropic’s own page, [Use Claude Code with your Team or Enterprise plan](https://support.claude.com/en/articles/11845131-use-claude-code-with-your-team-or-enterprise-plan).
 *Read against [Anthropic’s Claude Code docs](https://code.claude.com/docs/en/settings) on 2026-10-15. The product changes often, so check the docs for the version you run before relying on any detail below.*
 > ✓
@@ -62,7 +64,7 @@ A record this small is enough to start:
 Where it lives is a real choice, and none of these is wrong:
 - **A decisions folder in the repo.** Good for code-shaped calls. Reviewable, versioned, next to the code. Weak for people who do not live in git.
 - **The tracker you already use.** Works if you add fields or a template for the reason and the check date. Without them, an issue says what was done but not why.
-- **A workspace built for it.** Maskin is one option. It is an open-source, MCP-native workspace where people and agents work on typed objects: a signal comes in as an insight, becomes a bet with a stated win condition, and runs as tasks. Each object has a driver (the owner) and a comment thread, and the bet closes with an outcome measured against its condition. Its agent sessions run the Claude Code and Codex command-line tools in isolated microVMs, so it sits beside the tools your developers already use. It is early, so judge the design, not a long track record. The longer argument is in [the closed-loop workspace](/docs/closed-loop-workspace/), and you can [self-host it](/docs/self-hosted-ai-workspace/).
+- **A workspace built for it.** Maskin is one option. It is an open-source, MCP-native workspace where people and agents work on typed objects. A signal comes in as an insight, becomes a bet with a stated win condition, and runs as tasks. Each object has a driver, the owner, and a comment thread. A bet closes with an outcome measured against its condition. Read [the closed-loop workspace](/docs/closed-loop-workspace/) for the longer argument, or [self-host it](/docs/self-hosted-ai-workspace/). It is early, so judge the design, not a long track record.
 The choice matters less than having one and saying where it is.
 
 ### An illustrative week
@@ -107,5 +109,5 @@ Not with a rule file alone. Anthropic's docs say Claude treats CLAUDE.md as cont
 Agent teams put several Claude sessions to work on one task, coordinated by a lead. This page is about several people and their agents sharing context and decisions over weeks. They solve different problems. The agent teams feature is covered in [Claude Code agent teams](/docs/learn/claude-code-agent-teams/).
 Read next
 
-## Getting started is free
-Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of who owns what and what was decided. The [agentic-workspace cornerstone](/docs/what-is-an-agentic-workspace/) and the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) guide are the two best next reads.
+## Put the decision somewhere shared
+CTOs and heads of engineering: book a meeting and bring your current Claude Code setup and one recent decision that got lost. See where an owner, a reason, and a check date would live. Nothing needs installing for the meeting.
