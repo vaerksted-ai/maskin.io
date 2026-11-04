@@ -149,13 +149,14 @@ html.js .slide.title .head{margin-bottom:0}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
-/* ---- print / PDF: light, one portrait page (720x1280) per slide ---- */
+/* ---- print / PDF: DARK theme, one portrait page (720x1280) per slide ---- */
 @page{size:720px 1280px;margin:0}
 @media print{
- :root{--bg:#FAFAF8;--surface:#F0EDE7;--ink:#111110;--muted:#5A5751;--rule:#E2DDD7;--accent:#2563EB;--accent-text:#2563EB;--thread:#8F8982;--on-accent:#FAFAF8;--on-accent-btn:#FFFFFF}
- html,body,html.js,html.js body{height:auto;overflow:visible}
+ :root{color-scheme:dark;--bg:#141412;--surface:#1C1B18;--ink:#ECEAE4;--muted:#A09A93;--rule:#2A2925;--accent:#3B74F2;--accent-text:#7AA2F7;--thread:#6B6560;--on-accent:#141412;--on-accent-btn:#0B1020}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ html,body,html.js,html.js body{height:auto;overflow:visible;background:var(--bg)}
  html.js .stage{position:static;transform:none!important;width:720px!important;height:auto!important}
- html.js .slide{display:grid!important;position:relative;inset:auto;width:720px;height:1280px;animation:none;break-after:page;overflow:hidden;
+ html.js .slide,html.js .slide.active{display:grid!important;opacity:1!important;transform:none!important;position:relative;inset:auto;width:720px;height:1280px;animation:none!important;break-after:page;overflow:hidden;background:var(--bg);
   padding:72px 48px 168px;grid-template-columns:1fr;grid-template-areas:"head" "art" "body";row-gap:0;align-content:center}
  html.js .art{height:360px;margin:0 0 32px}html.js .art:has(.num){height:300px}
  html.js h1{font-size:64px}html.js h2{font-size:56px}html.js .lede{font-size:36px;margin-top:24px}
@@ -197,7 +198,7 @@ html.js .slide.title .head{margin-bottom:0}
 <section class="slide" id="s5" aria-label="Slide 5 af 6">
   <div class="head"><h2>Sikkerhed er en del af vores kerneydelse</h2></div>
   <div class="art"><svg viewBox="0 0 600 600" role="img" aria-label="To ting vi kan vise"><line x1="120" y1="220" x2="560" y2="220" class="track"/><circle cx="120" cy="220" r="34" class="dot"/><line x1="120" y1="380" x2="560" y2="380" class="track"/><circle cx="120" cy="380" r="34" class="dot"/></svg></div>
-  <div class="body"><ul><li>Al data opbevares i EU.</li><li>Login er krypteret, og du godkender før kritiske handlinger.</li></ul></div>
+  <div class="body"><ul><li>Database og app hostes i EU (Tyskland og Irland).</li><li>Du godkender, før kritiske handlinger udføres.</li></ul></div>
   <footer class="sf"><svg class="logo" viewBox="0 0 80 80" aria-hidden="true"><rect width="80" height="80" rx="14" class="logo-bg"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" class="logo-m"/></svg><span class="wm">Maskin</span><span class="ct">5 / 6</span></footer>
 </section>
 <section class="slide" id="s6" aria-label="Slide 6 af 6">
