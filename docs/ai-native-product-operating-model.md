@@ -13,7 +13,7 @@ An AI-native product operating model is a way to organize product work so empowe
 > Change team shape around the problem, not around a universal AI team template.
 
 ## The Cagan model in one paragraph
-Marty Cagan’s product operating model is a useful starting point, not a template to discard. In [SVPG's introduction](https://www.svpg.com/the-product-operating-model-an-introduction/), empowered cross-functional teams, usually a product manager, designer and tech lead, are given problems to solve instead of features to build and are held to outcomes. AI does not make those responsibilities disappear. It changes the flow of information and work around them. McKinsey has published a financial case for the move to a product operating model.
+Marty Cagan’s product operating model is a useful starting point, not a template to discard. In [SVPG's introduction](https://www.svpg.com/the-product-operating-model-an-introduction/), empowered cross-functional teams, usually a product manager, designer and tech lead, are given problems to solve instead of features to build and are held to outcomes. AI does not make those responsibilities disappear. It changes the flow of information and work around them.
 
 ## Three gaps the AI-native product operating model closes
 In his June 2026 essay, [Ravi Mehta frames the PM job as shifting from prioritization to curation](https://blog.ravi-mehta.com/p/prioritization-vs-curation): making sure the best available context reaches the people and systems shaping the work. Every team walks into three gaps. AI can help work move across them, but it cannot decide what matters or supply missing context by itself. Mehta’s point is that models are becoming a commodity; the differentiator is shared team-level context.
@@ -29,6 +29,8 @@ A shiny new idea can arrive with a persuasive demo or senior sponsor, while exis
 ### The CONTINUITY gap: the why disappears at handoffs
 Discovery may establish a customer problem, but the reason for a bet can get reduced to a ticket, then detached from the delivery work and the outcome review. In a larger organization, product, design, engineering and other specialists may each inherit a different slice of the context. The team can complete the requested work without being able to explain which customer evidence prompted it.
 **Test it this week:** Pick the last feature you shipped and try to trace it back to customer evidence in under fifteen minutes. Count how many handoffs lost the reason, or made you rely on somebody’s memory rather than a record.
+![AI-native product operating model diagram: three boxes in a row for the signal, evidence and continuity gaps. Signal asks whether customer reality reaches the decision. Evidence asks whether a new idea can be compared with a roadmap bet. Continuity asks whether the reason survives each handoff. Each box carries a test to run this week.](/og-image-ai-native-product-operating-model-signal-evidence-continuity.svg)
+The three gaps and the test for each.
 These are not three separate tooling problems. They are tests of whether the team can gather relevant signals, compare options and retain intent as work changes hands. AI can summarize or move information, but the team still has to curate what is relevant and make the decision explicit.
 > ✓
 > **Run the three tests on one of your own bets**
@@ -37,7 +39,7 @@ These are not three separate tooling problems. They are tests of whether the tea
 
 ## What changes in practice
 **Teams:** The product manager, designer and tech lead remain the default stable core, not the only possible shape. That core owns a problem space and pulls in specialists such as data, security, legal, domain or ML experts when the problem needs their expertise. Almosafer’s LLM search bet brought in ML and domain experts; Kaiser Permanente’s Get Care Now brought in legal and clinical operations. The point is to add the right expertise to the problem, not to make every specialist a permanent member of every team.
-For work that cuts across product boundaries, a mission team can bring together 5 to 10 people for 8 to 12 weeks around a problem such as churn, activation, cost of serve or a cross-product AI capability. Then it can dissolve, morph or be promoted. Amazon’s Prime and Trainline’s Super Seven are cited examples: one became durable and one dissolved. Use the smallest viable group. Three is right when three can do the work; ten is right only when ten are required.
+For work that cuts across product boundaries, a mission team can bring together 5 to 10 people for 8 to 12 weeks around a problem such as churn, activation, cost of serve or a cross-product AI capability. Then it can dissolve, morph or be promoted. Use the smallest viable group. Three is right when three can do the work; ten is right only when ten are required.
 **Decisions:** Flexibility turns into committee drift unless decision ownership is agreed once per class of decision. The allocations below are a starting point, not a universal org chart. Exact allocations vary; what matters is that people know who decides before the decision comes up.
 | Decision | Primary owner | Contributors |
 | --- | --- | --- |
@@ -48,12 +50,12 @@ For work that cuts across product boundaries, a mission team can bring together 
 | Regulatory interpretation | Legal and Compliance | Product, Engineering |
 | Commercial model | Product and Business | Finance, Sales, Marketing |
 **Discovery:** Curation means selecting and connecting evidence that can inform a decision, rather than treating every signal as equally useful or every new idea as a priority. Teams still need to test whether a problem is worth solving and whether an option addresses it. The three gap tests make that work inspectable: check the signals, compare the evidence and trace the reason into delivery.
-**Cadence:** A recurring agent loop is work that repeats, not an open-ended license to act. Nika’s Loop Engineering rule from July 2026 is that an agent loop needs a stopping condition before it runs. See [how a loop earns autonomy](/loops/loops-that-graduate/) and [permissions and audit trail](/docs/learn/ai-agent-governance/). The operating model should make the boundary of recurring work clear before the loop begins.
+**Cadence:** A recurring agent loop is work that repeats, not an open-ended license to act. [Marily Nika’s loop engineering rule](https://marily.substack.com/p/loop-engineering-is-your-new-job) from July 2026 is that an agent loop needs a stopping condition before it runs. See [how a loop earns autonomy](/loops/loops-that-graduate/) and [permissions and audit trail](/docs/learn/ai-agent-governance/). The operating model should make the boundary of recurring work clear before the loop begins.
 
 ## Where AI makes the old model worse
 The honest counter-view is that adopting the visible signals of a mature product model does not create the conditions that make it work. [John Cutler’s critique](https://cutlefish.substack.com/p/ai-wont-save-the-kingdoms-we-built) is that roles, rituals and artifacts are not the same as empowered teams; the companies held up as examples went through several waves of reworking. A new team diagram or a set of AI rituals can reproduce the old constraints under new names.
 AI can reduce information friction, but it cannot resolve contested ownership or misaligned incentives. A new failure mode is coordination theater: agents talking to agents while the humans avoid the decision that matters. Faster summaries and more activity do not settle who owns the outcome or who has authority to change the plan.
-Cris Idiodi’s July 2026 point is equally direct: put AI on top of the old project model and the same problems happen faster. If teams move faster and business results do not change, the issue is the operating model, not AI adoption. For a product leader, that means do not buy tooling to fix an ownership problem. Clarify who decides and what outcome the team owns first.
+[Christian Idiodi’s July 2026 post on the AI Productivity Paradox](https://www.linkedin.com/posts/cidiodi_the-ai-productivity-paradox-silicon-valley-activity-7486429440051281920-qQxG) is equally direct: put AI on top of the old project model and the same problems happen faster. If teams move faster and business results do not change, the issue is the operating model, not AI adoption. For a product leader, that means do not buy tooling to fix an ownership problem. Clarify who decides and what outcome the team owns first.
 
 ## Five questions to test whether your teams really work this way
 1. **Who owns the outcome?** Name the person or team accountable for the result, not just the delivery date.
@@ -90,7 +92,6 @@ The AI-native product operating model extends Marty Cagan’s model rather than 
 
 ### Product operating model vs agile: what is the difference?
 Agile, including Scrum and similar approaches, is a way to run delivery work in short cycles. A product operating model is broader: it defines who owns outcomes, how teams choose problems, how discovery connects to delivery, and how leaders fund and steer teams. Teams can use agile ways of working within a product operating model. Agile alone does not determine who decides what to build.
-Read next
 
 ## Trace one of your bets end to end
 Book a meeting and bring one product bet you are running now. We will follow it from the customer evidence to the decision to the outcome, and tell you plainly where the reason gets lost.
