@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="t d">
+<title id="t">The three gaps in an AI-native product operating model: signal, evidence, continuity</title>
+<desc id="d">Three boxes in a row. Signal: does customer reality reach the decision. Evidence: can a new idea be compared with a roadmap bet. Continuity: does the reason for a bet survive every handoff. Each box carries a test to run this week.</desc>
+<rect width="1200" height="630" fill="#111110"/>
+<text x="60" y="78" font-family="JetBrains Mono, DejaVu Sans Mono, ui-monospace, monospace" font-size="20" fill="#E8A835" letter-spacing="4">MASKIN</text>
+<text x="60" y="140" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="40" font-weight="700" fill="#FAFAF8">Three gaps in the AI-native</text>
+<text x="60" y="188" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="40" font-weight="700" fill="#FAFAF8">product operating model</text>
+<rect x="60" y="250" width="340" height="300" rx="14" fill="#141311" stroke="#E8A835" stroke-width="2"/>
+<text x="86" y="296" font-family="JetBrains Mono, DejaVu Sans Mono, ui-monospace, monospace" font-size="24" font-weight="700" fill="#E8A835" letter-spacing="3">1  SIGNAL</text>
+<text x="86" y="346" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">Does customer reality</text>
+<text x="86" y="376" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">reach the decision?</text>
+<line x1="86" y1="412" x2="374" y2="412" stroke="#3A3835" stroke-width="1.4"/>
+<text x="86" y="446" font-family="JetBrains Mono, DejaVu Sans Mono, ui-monospace, monospace" font-size="14" fill="#8B8781" letter-spacing="2">TEST THIS WEEK</text>
+<text x="86" y="482" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="18" fill="#C9C5BD">Point to the customer signals</text>
+<text x="86" y="508" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="18" fill="#C9C5BD">behind one current bet.</text>
+<path d="M 404 400 L 426 400 M 418 392 L 426 400 L 418 408" fill="none" stroke="#E8A835" stroke-width="2"/>
+<rect x="430" y="250" width="340" height="300" rx="14" fill="#141311" stroke="#E8A835" stroke-width="2"/>
+<text x="456" y="296" font-family="JetBrains Mono, DejaVu Sans Mono, ui-monospace, monospace" font-size="24" font-weight="700" fill="#E8A835" letter-spacing="3">2  EVIDENCE</text>
+<text x="456" y="346" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">Can a new idea be compared</text>
+<text x="456" y="376" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">with a roadmap bet?</text>
+<line x1="456" y1="412" x2="744" y2="412" stroke="#3A3835" stroke-width="1.4"/>
+<text x="456" y="446" font-family="JetBrains Mono, DejaVu Sans Mono, ui-monospace, monospace" font-size="14" fill="#8B8781" letter-spacing="2">TEST THIS WEEK</text>
+<text x="456" y="482" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="18" fill="#C9C5BD">Put both side by side: problem,</text>
+<text x="456" y="508" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="18" fill="#C9C5BD">evidence, expected outcome.</text>
+<path d="M 774 400 L 796 400 M 788 392 L 796 400 L 788 408" fill="none" stroke="#E8A835" stroke-width="2"/>
+<rect x="800" y="250" width="340" height="300" rx="14" fill="#141311" stroke="#E8A835" stroke-width="2"/>
+<text x="826" y="296" font-family="JetBrains Mono, DejaVu Sans Mono, ui-monospace, monospace" font-size="24" font-weight="700" fill="#E8A835" letter-spacing="3">3  CONTINUITY</text>
+<text x="826" y="346" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">Does the reason for a bet</text>
+<text x="826" y="376" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">survive every handoff?</text>
+<line x1="826" y1="412" x2="1114" y2="412" stroke="#3A3835" stroke-width="1.4"/>
+<text x="826" y="446" font-family="JetBrains Mono, DejaVu Sans Mono, ui-monospace, monospace" font-size="14" fill="#8B8781" letter-spacing="2">TEST THIS WEEK</text>
+<text x="826" y="482" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="18" fill="#C9C5BD">Trace your last shipped feature</text>
+<text x="826" y="508" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="18" fill="#C9C5BD">to customer evidence in 15 min.</text>
+<text x="60" y="596" font-family="Schibsted Grotesk, Inter, DejaVu Sans, system-ui, sans-serif" font-size="16" fill="#8B8781">Framework: Ravi Mehta, June 2026. maskin.io/docs/ai-native-product-operating-model/</text>
+</svg>
