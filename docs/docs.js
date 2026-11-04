@@ -74,6 +74,7 @@
       { label: "Bet-based product planning", href: "/docs/bet-based-product-planning/" },
       { label: "How to run bet-based planning", href: "/docs/how-to-run-bet-based-planning/", nested: true },
       { label: "Bet vs backlog", href: "/docs/bet-vs-backlog/", nested: true },
+      { label: "The AI-native product operating model", href: "/docs/ai-native-product-operating-model/", nested: true },
       { label: "Self-hosted AI workspace", href: "/docs/self-hosted-ai-workspace/" },
       { label: "How to build an AI SDR loop", href: "/docs/how-to-build-ai-sdr-loop/" },
       { label: "Agentic workflow vs the closed loop", href: "/docs/learn/agentic-workflow-vs-closed-loop/" },

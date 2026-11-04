@@ -34,6 +34,7 @@ ORDER = [
   "docs/claude-md-vs-agents-md/index.html",
   "docs/llm-wiki-vs-rag/index.html",
   "docs/mcp-native-workspace/index.html",
+  "docs/ai-native-product-operating-model/index.html",
   "docs/what-is-a-stateful-orchestration-substrate/index.html",
   "docs/agent-observability/index.html",
   "docs/ambient-agent-workspace/index.html",
