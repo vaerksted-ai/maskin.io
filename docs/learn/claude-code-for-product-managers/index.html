@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claude Code for product managers: what it covers — Maskin</title>
+<title>Claude Code for product managers: what it covers and where a team record takes over | Maskin</title>
 <meta name="description" content="Claude Code for product managers, checked against Anthropic's docs: PM jobs it covers, setup, what it remembers, and where a team record takes over.">
 
+<!-- Sitewide signup CTAs off for this page (build.sh opt-out marker: docnav__cta). Single CTA is Book a meeting. -->
 <!-- Canonical -->
 <link rel="canonical" href="https://maskin.io/docs/learn/claude-code-for-product-managers/">
 
@@ -20,7 +21,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/docs/learn/claude-code-for-product-managers/">
-<meta property="og:title" content="Claude Code for product managers: what it covers — Maskin">
+<meta property="og:title" content="Claude Code for product managers: what it covers and where a team record takes over | Maskin">
 <meta property="og:description" content="Claude Code for product managers, checked against Anthropic's docs: PM jobs it covers, setup, what it remembers, and where a team record takes over.">
 <meta property="og:image" content="https://maskin.io/og-image-claude-code-for-product-managers.png">
 <meta property="og:image:width" content="1200">
@@ -31,7 +32,7 @@
 <!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@maskin_io">
-<meta name="twitter:title" content="Claude Code for product managers: what it covers — Maskin">
+<meta name="twitter:title" content="Claude Code for product managers: what it covers and where a team record takes over | Maskin">
 <meta name="twitter:description" content="Claude Code for product managers, checked against Anthropic's docs: PM jobs it covers, setup, what it remembers, and where a team record takes over.">
 <meta name="twitter:image" content="https://maskin.io/og-image-claude-code-for-product-managers.png">
 
@@ -51,7 +52,7 @@
       "headline": "Claude Code for product managers: what it covers, and where a team record takes over",
       "description": "Claude Code for product managers, checked against Anthropic's docs: PM jobs it covers, setup, what it remembers, and where a team record takes over.",
       "datePublished": "2026-10-08T00:00:00Z",
-      "dateModified": "2026-10-08T00:00:00Z",
+      "dateModified": "2026-11-05T00:00:00Z",
       "author": {
         "@type": "Organization",
         "name": "Maskin",
@@ -189,6 +190,8 @@
     <p class="eyebrow">Guide</p>
     <h1>Claude Code for product managers: what it covers, and where a team record takes over</h1>
     <p class="lead">Claude Code works for product managers as a file-based assistant. It reads your notes, interview transcripts and specs from a folder, drafts PRDs, research syntheses and stakeholder updates, and reaches Slack or Linear over MCP. It covers solo work well. It stops where a second person needs your decisions, their reasons, and a later check on whether they worked.</p>
+    <p>This guide is for heads of product whose PMs each use Claude Code on their own laptop. It covers what Claude Code can do for PM work, where it stops, and a record checklist your team can copy, with Maskin as one option for where that record lives.</p>
+    <p><a class="btn-primary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener" data-track="docs_book_meeting_click" data-position="top">Book a meeting</a> <span style="color:var(--ink-3);margin-left:.5rem">Bring one product decision a PM made with Claude Code whose reason is now lost, and see where its owner, reason and outcome check would live.</span></p>
     <p><em>Read against <a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Anthropic's Claude Code docs</a>, the <a href="https://github.com/anthropics/knowledge-work-plugins/blob/main/product-management/README.md" target="_blank" rel="noopener">product-management plugin README</a> and Anthropic's post on <a href="https://claude.com/blog/how-anthropic-teams-use-claude-code" target="_blank" rel="noopener">how its own teams use Claude Code</a> on 8 October 2026. Anthropic ships changes weekly, so check the docs for the version you run.</em></p>
     <div class="callout callout--muted">
       <div class="callout__icon" aria-hidden="true">&#10003;</div>
@@ -272,19 +275,19 @@
     <p>A tracker you already use can hold this if you add fields by convention. Linear, Notion and GitHub Issues all work. The weak point is the convention: nobody enforces it, so the reason and the outcome condition are the first fields to go blank. If you want the build and the verdict attached to the same bet, the <a href="/marketplace/product-delivery/">product delivery loop</a> lets a team run the build and the verdict as one loop.</p>
 
     <h2>How Maskin keeps that record</h2>
-    <p>Maskin is an open-source (Apache 2.0), MCP-native, self-hostable workspace. We build it, so weigh this section accordingly. Work moves as typed objects. A signal enters as an <strong>insight</strong>, from sources such as Slack, Intercom, PostHog or a scheduled scan. It is shaped into a <strong>bet</strong>, a testable hypothesis with a win condition (<a href="/docs/bet-based-product-planning/">bet-based product planning</a> explains the method). The bet breaks into <strong>tasks</strong> that people and agents share, each with a driver (an owner, person or agent) and a comment thread. When the work ships, the outcome is checked against the win condition.</p>
-    <p>For a PM already using Claude Code, two things matter. First, Maskin exposes its objects over MCP, and Claude Code connects to MCP servers, so you can point a session at the shared record instead of a private folder. The command, with your own host, key and workspace ID:</p>
+    <p>Maskin is an open-source, Apache 2.0, MCP-native workspace that you can self-host or use as a hosted service. We build Maskin, and it's early, so judge the design rather than a long track record. A signal is recorded as an <strong>insight</strong>; a PM shapes it into a <strong>bet</strong>, a testable hypothesis with a win condition, then breaks the bet into <strong>tasks</strong>. Each object has a driver, who may be a person or an agent, and a comment thread; when work ships, its outcome is checked against the win condition. See <a href="/docs/bet-based-product-planning/">bet-based product planning</a> for the method.</p>
+    <p>For a PM already using Claude Code, the route is MCP. Maskin exposes its objects over MCP, and Claude Code connects to MCP servers, so you can point a session at the shared record instead of a private folder. The command, with your own host, key and workspace ID:</p>
     <pre><code>claude mcp add --transport http maskin \
   https://&lt;your-maskin-host&gt;/mcp \
   --header "Authorization: Bearer &lt;MASKIN_API_KEY&gt;" \
   --header "X-Workspace-Id: &lt;WORKSPACE_ID&gt;"</code></pre>
-    <p>Create the API key (the <code>ank_</code> value) under Settings, API keys, and copy the workspace ID from the Workspace settings page. Run <code>/reload-plugins</code>, then ask Claude to call <code>get_started</code>. This is checked against Anthropic's MCP docs and Maskin's server code, not a connect from a fresh Claude Code install. The <a href="/docs/get-started/self-hosted/">self-hosted setup guide</a> has the full steps, and the <a href="/docs/mcp-tools/">MCP tools reference</a> lists what is exposed.</p>
-    <p>Second, Maskin runs agent sessions on the Claude Code and Codex command-line tools, each in an isolated microVM, so the agents are the ones you already use. If your engineers run both, <a href="/docs/claude-code-vs-codex/">what changes when your team runs both Claude Code and Codex</a> covers keeping one record across them, and <a href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a> does the same if some of them work in Cursor, as does <a href="/docs/claude-code-vs-github-copilot/">Claude Code vs GitHub Copilot</a> for teams on Copilot. What changes is where the result is kept.</p>
-    <p>The <a href="/marketplace/product-discovery/">product discovery loop</a> is the closest match to the PM job described above. Interviews, tickets and reviews arrive as typed insights, agents cluster themes and draft candidate bets, and a person reviews and shapes each bet before it is approved. After it ships, the loop re-checks the signal to see whether the bet retired the pain. The human gate is the point: the agent gathers evidence and you own the call. See <a href="/docs/what-is-an-agentic-workspace/">what an agentic workspace is</a> for the full lifecycle and <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a> for the longer argument.</p>
+    <p>Create the API key (the <code>ank_</code> value) under Settings, API keys, and copy the workspace ID from the Workspace settings page. Run <code>/reload-plugins</code>, then ask Claude to call <code>get_started</code>. This is checked against Anthropic's MCP docs and Maskin's server code, not a connect from a fresh Claude Code install. The <a href="/docs/get-started/self-hosted/">self-hosted setup guide</a> has the full steps, and the <a href="/docs/mcp-tools/">MCP tools reference</a> lists what is exposed. Once connected, Claude Code can read and write the same bets and decisions the rest of your team sees, rather than keeping them in a private folder.</p>
+    <p>As head of product, you can keep one team record even when your engineers use other tools. The tool each person runs stays their choice; what changes is where the result is kept. The comparisons: <a href="/docs/claude-code-vs-codex/">what changes when your team runs both Claude Code and Codex</a>, <a href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a> and <a href="/docs/claude-code-vs-github-copilot/">Claude Code vs GitHub Copilot</a>.</p>
+    <p>The <a href="/marketplace/product-discovery/">product discovery loop</a> page walks through the PM job described above: interviews, tickets and reviews are recorded as insights, a person reviews and shapes each bet before it is approved, and after it ships the outcome is checked against the signal that started it. See <a href="/docs/what-is-an-agentic-workspace/">what an agentic workspace is</a> for the full lifecycle and <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a> for the longer argument.</p>
     <p>Where Maskin is the wrong pick:</p>
     <ul>
       <li><strong>You work alone.</strong> A folder and a good CLAUDE.md are lighter and cost nothing.</li>
-      <li><strong>You need a model other than Claude or Codex.</strong> Sessions run those two command-line tools, and local models are not a path we have validated.</li>
+      <li><strong>You need a model other than Claude or Codex.</strong> Maskin works with Claude Code and Codex today, and we have not validated local models.</li>
       <li><strong>You need memory across conversations to be solved today.</strong> It is a known gap. Read <a href="/docs/learn/agent-memory-across-sessions/">Agent memory across sessions</a> for what survives between scheduled runs.</li>
       <li><strong>You do not want to run infrastructure.</strong> Self-hosting has a hard requirement on the agent-server host. The <a href="/docs/self-hosted-ai-workspace/">self-hosted workspace guide</a> lists it, and there is a hosted option.</li>
       <li><strong>It is early.</strong> Judge the architecture, not a long track record. <a href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a> covers where it sits next to the tool you already run.</li>
@@ -316,16 +319,24 @@
     <p>Anthropic says most surfaces require a Claude subscription or an Anthropic Console account, and the pricing changes often, so this page carries no prices. Check Anthropic's pricing page for your plan.</p>
 
     <div class="post-cta">
-      <h2>Keep the record where the whole team can read it</h2>
-      <p>Maskin keeps owners, decisions and outcome checks on typed objects that people and agents share, exposed over MCP. Open source under Apache 2.0. Self-host free.</p>
+      <h2>Heads of product, keep decisions in view</h2>
+      <p>Book a meeting and bring one decision your PMs lost. We'll show where its owner, reason and outcome check would live; nothing needs installing for the meeting.</p>
       <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
-        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+        <a class="btn-primary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener" data-track="docs_book_meeting_click" data-position="bottom">Book a meeting</a>
       </div>
     </div>
   </main>
 </div>
 
 <script src="/docs/docs.js"></script>
+<script>
+(function () {
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[data-track='docs_book_meeting_click']");
+    if (!a || !window.posthog || !window.posthog.capture) return;
+    window.posthog.capture("docs_book_meeting_click", { page_slug: "claude-code-for-product-managers", page_type: "guide", language: "en", position: a.getAttribute("data-position"), page_path: location.pathname });
+  });
+})();
+</script>
 </body>
 </html>
