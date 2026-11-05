@@ -94,7 +94,7 @@
     <h2>Prerequisites</h2>
     <ul>
       <li><strong>Claude Code</strong> or <strong>Claude Desktop</strong> installed.</li>
-      <li>An <strong>Anthropic API key</strong> — Maskin runs Claude Code in sandboxes and uses this key.</li>
+      <li>An <strong>Anthropic API key</strong> — Maskin runs Claude Code in sandboxes and uses this key. A fresh instance only accepts it after you set one environment variable (Step 2).</li>
       <li>A <strong>running Maskin instance</strong> (set one up below).</li>
     </ul>
 
@@ -112,11 +112,19 @@ pnpm dev</code></pre>
     </ol>
     <p>Once you're in, you'll see the unified pipeline view: <strong>Insights → Bets → Tasks</strong>.</p>
 
-    <h2>Step 2 — Paste your Anthropic API key</h2>
+    <h2>Step 2 — Add your Anthropic API key</h2>
+    <p>A fresh instance runs agents on a Maskin-funded model and refuses your own key: saving one returns <em>"This workspace is on the Maskin-provided LLM plan and cannot add BYO LLM credentials"</em>, and <strong>Settings → LLM keys</strong> shows no key fields. To bring your own key, list your user id in <code>MASKIN_ENTERPRISE_ACTOR_IDS</code> first.</p>
     <ol>
-      <li>Open <strong>Settings → Integrations</strong> (or <strong>Settings → LLM keys</strong>).</li>
-      <li>Paste your Anthropic API key and <strong>Save</strong>.</li>
+      <li>Create an API key as in Step 3, then find your user id (the entry with <code>"type": "human"</code>):
+        <pre><code>curl -s http://localhost:3000/api/actors \
+  -H "Authorization: Bearer &lt;YOUR_MASKIN_API_KEY&gt;"</code></pre>
+      </li>
+      <li>Add it to the <code>.env</code> file in the repo root (several ids can be comma-separated), then restart the server:
+        <pre><code>MASKIN_ENTERPRISE_ACTOR_IDS=&lt;your-user-id&gt;</code></pre>
+      </li>
+      <li>Open <strong>Settings → LLM keys</strong>, paste your Anthropic API key and <strong>Save</strong>.</li>
     </ol>
+    <p>Without this setting, agent sessions need <code>MASKIN_FALLBACK_OPENROUTER_KEY</code> instead and run on the default Maskin-funded model.</p>
 
     <h2>Step 3 — Get your Maskin API key and workspace ID</h2>
     <ol>
