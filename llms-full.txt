@@ -40,7 +40,7 @@ Run your own Maskin instance and connect Claude — Code or Desktop — to it ov
 
 ## Prerequisites
 - **Claude Code** or **Claude Desktop** installed.
-- An **Anthropic API key** — Maskin runs Claude Code in sandboxes and uses this key.
+- An **Anthropic API key** — Maskin runs Claude Code in sandboxes and uses this key. A fresh instance only accepts it after you set one environment variable (Step 2).
 - A **running Maskin instance** (set one up below).
 
 ## Run your Maskin server
@@ -57,9 +57,19 @@ The app opens on port 5173 (`http://localhost:5173`) and the API runs on port 30
 2. Create your first workspace when prompted.
 Once you're in, you'll see the unified pipeline view: **Insights → Bets → Tasks**.
 
-## Step 2 — Paste your Anthropic API key
-1. Open **Settings → Integrations** (or **Settings → LLM keys**).
-2. Paste your Anthropic API key and **Save**.
+## Step 2 — Add your Anthropic API key
+A fresh instance runs agents on a Maskin-funded model and refuses your own key: saving one returns *"This workspace is on the Maskin-provided LLM plan and cannot add BYO LLM credentials"*, and **Settings → LLM keys** shows no key fields. To bring your own key, list your user id in `MASKIN_ENTERPRISE_ACTOR_IDS` first.
+1. Create an API key as in Step 3, then find your user id (the entry with `"type": "human"`):
+```
+curl -s http://localhost:3000/api/actors \
+  -H "Authorization: Bearer <YOUR_MASKIN_API_KEY>"
+```
+2. Add it to the `.env` file in the repo root (several ids can be comma-separated), then restart the server:
+```
+MASKIN_ENTERPRISE_ACTOR_IDS=<your-user-id>
+```
+3. Open **Settings → LLM keys**, paste your Anthropic API key and **Save**.
+Without this setting, agent sessions need `MASKIN_FALLBACK_OPENROUTER_KEY` instead and run on the default Maskin-funded model.
 
 ## Step 3 — Get your Maskin API key and workspace ID
 1. Open **Settings → API keys**, click **Create key**, and copy the `ank_…` value.
