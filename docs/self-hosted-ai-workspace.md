@@ -11,7 +11,7 @@ Self-hosted AI means the AI runs on infrastructure you control, not a vendor’s
 > Maskin is licensed Apache 2.0 — inspect every line, fork it, run it commercially.
 > Bring your own Anthropic or OpenAI access: agents run the Claude Code CLI by default, or the Codex CLI. The MCP protocol layer is model-agnostic; the agent runtime is not.
 > Agents run in sandboxed sessions, each in an ephemeral microVM (microsandbox and libkrun).
-> Self-host is always free; managed plans offer EU and US data residency.
+> Self-host is always free. Moving data between self-hosted and managed is a manual copy that has not been tested.
 
 ## Why self-host an AI workspace at all
 Three buyers reach for self-hosting, and they want different things:
@@ -43,12 +43,12 @@ The engineering is the same either way — the same unified object model, the sa
 |  | Self-hosted | Managed (hosted) |
 | --- | --- | --- |
 | License | Apache 2.0 (yours) | Apache 2.0 + hosted service |
-| Data residency | Your infrastructure | EU & US |
+| Where data lives | Your infrastructure | Our hosting |
 | Model | Claude Code CLI by default, or Codex CLI; your own Anthropic or OpenAI access | Claude Code CLI by default, or Codex CLI; your own Anthropic or OpenAI access |
 | Agents | Sandboxed microVM sessions on your agent-server host | Sandboxed microVM sessions, operated for you |
 | Infrastructure | You run it | We run it |
 | Cost | Always free (you pay infra + model usage) | From $20/seat/month (agent credits included) |
-Self-host keeps everything inside your walls and costs nothing for software; managed gets you running without provisioning agent-server hosts, with EU or US residency. Because the product is identical, moving between the two later is a deployment decision, not a migration. If you want the same loops without running infrastructure, [book a hosted trial](https://meshfirm.com/bookmagnus).
+Self-host keeps everything inside your walls and costs nothing for software; managed gets you running without provisioning agent-server hosts. Moving data between the two is a manual copy that has not been tested, so decide where the workspace should live before you fill it. If you want the same loops without running infrastructure, [book a hosted trial](https://meshfirm.com/bookmagnus).
 
 ## Pricing
 - **Self-host** — always free. You pay only for your own infrastructure and model usage.
@@ -73,7 +73,7 @@ Start at **[github.com/sindre-ai/maskin](https://github.com/sindre-ai/maskin)** 
 Clone the repository and follow the onboarding guide, then connect your Anthropic or OpenAI access; agents run in sandboxed microVM sessions. The one dependency to plan for is the agent-server host: it has to run the microsandbox and libkrun runtime, and agents won’t start without it. Docker is for local development only.
 
 ### Can I switch between managed and self-hosted later?
-Yes. The license and the object model are yours, and hosted and self-hosted are the same product — the same loops, objects, and agent sessions. The choice at any point is where data lives and who runs infrastructure, and that’s a decision you can revisit rather than a migration you’ll dread.
+You can run your own instance from the open-source repo at any time. Moving data between managed and self-hosted is a manual copy that has not been tested, and there is no workspace export in the API or tools today. Decide where the workspace should live before you fill it.
 
 ### Can I bring my own model?
 Within what Maskin runs today. Agent sessions use the Claude Code CLI by default, with the Codex CLI as an alternative, so you bring your own Anthropic or OpenAI access rather than an arbitrary model. The MCP protocol layer is model-agnostic; the agent runtime is not. Local models and fine-tunes are not a path we have validated.
