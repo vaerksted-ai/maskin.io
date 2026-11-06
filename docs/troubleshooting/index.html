@@ -117,6 +117,7 @@
 
     <h2>Agents error with "no model configured"</h2>
     <p>A workspace needs a model. Add an Anthropic key or Claude subscription, or a custom LLM — Maskin resolves the model through a fixed priority order. See <a href="/docs/llm/">LLM &amp; models</a>.</p>
+    <p>On a self-hosted instance, saving your own Anthropic key fails with <em>"This workspace is on the Maskin-provided LLM plan and cannot add BYO LLM credentials"</em>, and <strong>Settings → LLM keys</strong> shows no key fields, until your user id is listed in <code>MASKIN_ENTERPRISE_ACTOR_IDS</code> in <code>.env</code> and the server is restarted. Find the id as the <code>"type": "human"</code> entry from <code>GET /api/actors</code> (steps in <a href="/docs/get-started/self-hosted/">Step 2 of the self-hosted guide</a>). Without the setting, set <code>MASKIN_FALLBACK_OPENROUTER_KEY</code> instead and sessions run on the default Maskin-funded model.</p>
 
     <h2>FAQ</h2>
     <p><strong>Is Maskin open source?</strong> Yes — Apache 2.0, on <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a>.</p>

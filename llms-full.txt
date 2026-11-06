@@ -134,7 +134,7 @@ The hands-on Maskin quickstart: go from an empty instance to an agent doing real
 ## Before you begin
 You need a running Maskin instance with Claude connected to it over MCP. Which setup applies depends on how you run Maskin:
 - **Managed hosting:** the Maskin Team runs the instance for you, so there is no server setup. Ask them for your MCP connection details, make sure Claude is connected, then start at Step 1.
-- **Self-hosted:** run your own instance with your Anthropic key saved and Claude connected. Both are covered in [Self-hosted setup](/docs/get-started/self-hosted/). Finish that first, then come back here.
+- **Self-hosted:** run your own instance with your Anthropic key saved and Claude connected. A fresh instance only accepts your own key once your user id is listed in `MASKIN_ENTERPRISE_ACTOR_IDS`; without it, set `MASKIN_FALLBACK_OPENROUTER_KEY` instead. Both are covered in [Self-hosted setup](/docs/get-started/self-hosted/) (see Step 2). Finish that first, then come back here.
 Quick check: ask Claude *"List the maskin MCP tools"* and confirm you get a list back.
 
 ## Step 1 — Seed your workspace
@@ -621,7 +621,8 @@ Maskin is configured through environment variables. Only `DATABASE_URL` is stric
 Full per-provider setup is on the [Integrations setup](/docs/integrations/) page.
 
 ## LLM
-The Anthropic API key and any workspace custom-LLM endpoint are configured **in the app** (Settings → Integrations / LLM keys), per workspace — not via environment. The environment only configures the optional *system fallback* used when a workspace has no model configured:
+The Anthropic API key and any workspace custom-LLM endpoint are configured **in the app** (Settings → Integrations / LLM keys), per workspace — not via environment. On a self-hosted instance the app only accepts your own key once your user id is listed in `MASKIN_ENTERPRISE_ACTOR_IDS` in the `.env` file at the repo root (comma-separate several ids, then restart the server). Find your user id as the `"type": "human"` entry returned by `GET /api/actors`; the steps are in [Step 2 of the self-hosted guide](/docs/get-started/self-hosted/). Without that setting, saving a key is refused and **Settings → LLM keys** shows no key fields.
+The environment otherwise only configures the optional *system fallback* used when a workspace has no model configured. If you don't want to use the enterprise setting, the fallback is the alternative: set `MASKIN_FALLBACK_OPENROUTER_KEY` and agent sessions run on the default Maskin-funded model.
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | MASKIN_FALLBACK_OPENROUTER_KEY | — | Enables the OpenRouter-based fallback model. |
@@ -807,7 +808,7 @@ When a session starts, Maskin picks the first option that's configured, in this 
 
 ## Using Claude (the default)
 Two ways to give a workspace Claude access, both set **in the app** (Settings → Integrations / LLM keys):
-- **Anthropic API key** — paste your key; usage is billed to your Anthropic account.
+- **Anthropic API key** — paste your key; usage is billed to your Anthropic account. On a self-hosted instance the app refuses your own key until your user id is listed in `MASKIN_ENTERPRISE_ACTOR_IDS` (see [Step 2 of the self-hosted guide](/docs/get-started/self-hosted/) for how to find the id and where to set it). Without it, set `MASKIN_FALLBACK_OPENROUTER_KEY` instead and sessions run on the default Maskin-funded model.
 - **Claude subscription** — import a Pro/Max/Teams subscription via the `import_claude_subscription` tool / Claude OAuth flow, then check it with `get_claude_subscription_status`. The subscription tokens are stored encrypted.
 The default model is `claude-sonnet-4-6`, with a separate small/fast model for lightweight steps.
 
@@ -967,6 +968,7 @@ Set `CORS_ORIGIN` to your frontend origin(s), comma-separated. The dev default i
 
 ## Agents error with "no model configured"
 A workspace needs a model. Add an Anthropic key or Claude subscription, or a custom LLM — Maskin resolves the model through a fixed priority order. See [LLM & models](/docs/llm/).
+On a self-hosted instance, saving your own Anthropic key fails with *"This workspace is on the Maskin-provided LLM plan and cannot add BYO LLM credentials"*, and **Settings → LLM keys** shows no key fields, until your user id is listed in `MASKIN_ENTERPRISE_ACTOR_IDS` in `.env` and the server is restarted. Find the id as the `"type": "human"` entry from `GET /api/actors` (steps in [Step 2 of the self-hosted guide](/docs/get-started/self-hosted/)). Without the setting, set `MASKIN_FALLBACK_OPENROUTER_KEY` instead and sessions run on the default Maskin-funded model.
 
 ## FAQ
 **Is Maskin open source?** Yes — Apache 2.0, on [GitHub](https://github.com/sindre-ai/maskin).

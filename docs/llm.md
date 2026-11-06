@@ -13,7 +13,7 @@ When a session starts, Maskin picks the first option that's configured, in this 
 
 ## Using Claude (the default)
 Two ways to give a workspace Claude access, both set **in the app** (Settings → Integrations / LLM keys):
-- **Anthropic API key** — paste your key; usage is billed to your Anthropic account.
+- **Anthropic API key** — paste your key; usage is billed to your Anthropic account. On a self-hosted instance the app refuses your own key until your user id is listed in `MASKIN_ENTERPRISE_ACTOR_IDS` (see [Step 2 of the self-hosted guide](/docs/get-started/self-hosted/) for how to find the id and where to set it). Without it, set `MASKIN_FALLBACK_OPENROUTER_KEY` instead and sessions run on the default Maskin-funded model.
 - **Claude subscription** — import a Pro/Max/Teams subscription via the `import_claude_subscription` tool / Claude OAuth flow, then check it with `get_claude_subscription_status`. The subscription tokens are stored encrypted.
 The default model is `claude-sonnet-4-6`, with a separate small/fast model for lightweight steps.
 
