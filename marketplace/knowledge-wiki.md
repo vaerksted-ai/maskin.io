@@ -6,8 +6,7 @@ Team memory that new hires and new agents bootstrap from — indexed, typed, MCP
 The knowledge wiki loop keeps a living, agent-readable record of every decision your team ships. A closed bet (one that has run through the [product delivery loop](/marketplace/product-delivery/), for instance) fires the loop; agents write the verdict, index the artifacts, and link them to the object they came from; a human gates the taste-sensitive summaries. Every future agent your team spawns reads from the same graph before it answers — so the wiki isn’t a Notion side-project that rots the moment its author changes roles, it’s the same substrate the rest of your team already operates on.
 For product teams tired of re-answering the same question because the last answer lived in someone’s DMs.
 There is no walkthrough video for this loop yet.
-This loop isn't available to install yet. Leave your email and we'll notify you when it is.
-Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20LLM%20knowledge%20wiki%20loop) with subject “Waitlist: LLM knowledge wiki loop” and we’ll write back when this loop can be installed.
+This loop can't be installed yet. In the meantime, [try Maskin](/signup).
 
 ## Key takeaways
 - An LLM wiki is a knowledge base an LLM compiles from your own sources into interlinked pages that agents read before they answer. Andrej Karpathy named the pattern in April 2026 as the alternative to per-agent memory files and query-time RAG.

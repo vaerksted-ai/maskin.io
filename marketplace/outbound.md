@@ -5,8 +5,7 @@ Prospect research, personalized draft, reply-handling as one loop — humans gat
 The outbound loop closes on the outcome (call booked, or a clean disqualify), not the activity (emails queued). A signal fires it — an in-ICP hire, a funding round, a jobs post. Agents research the account, draft the sequence, wait for a human send-gate, track replies, and either book or archive. Every touchpoint stays typed against the same account object, so nothing is retyped between the enrichment tool, the sender, and the CRM.
 For product-led teams whose first sales motion is founder-run or PM-run and can’t afford a rep-shaped stack yet.
 There is no walkthrough video for this loop yet.
-This loop isn't available to install yet. Leave your email and we'll notify you when it is.
-Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20Outbound%20loop) with subject “Waitlist: Outbound loop” and we’ll write back when this loop can be installed.
+This loop can't be installed yet. In the meantime, [try Maskin](/signup).
 
 ## What a cold email loop gets you
 The outbound loop closes the gap between “this account matched our ICP” and “a warm reply is in the account owner’s inbox.” It runs continuously against a signal feed, drafts personalised messages, sends only what a human has approved, and routes replies back to the humans who can close them. The wedge over closed AI SDR SaaS isn’t the model — it’s the loop shape and the audit trail. The same workspace also runs the [LinkedIn content loop](/marketplace/linkedin-content/), which keeps a founder-voice LinkedIn presence going alongside outreach.

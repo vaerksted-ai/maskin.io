@@ -193,10 +193,6 @@
     <!-- HERO: H1 + subhead + hero visual -->
     <h1>A wiki your agents read before they answer.</h1>
     <p class="lead">Team memory that new hires and new agents bootstrap from &mdash; indexed, typed, MCP-native.</p>
-<style id="loop-install-css">
-.loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 .6rem; }
-.loop-video-note { font-size: .9rem; color: var(--ink-3); margin: 1.5rem 0; }
-</style>
     <img class="hero-visual" src="/og-image-knowledge-wiki.png" alt="The LLM knowledge wiki loop &mdash; a closed bet becomes a typed, interlinked wiki page that agents read before they answer." width="1200" height="630">
 
     <!-- HERO BODY (verbatim from the approved content object) -->
@@ -206,19 +202,11 @@
 
     <p class="loop-video-note">There is no walkthrough video for this loop yet.</p>
 
-    <p class="loop-install-lead" data-capture-lead>This loop isn't available to install yet. Leave your email and we'll notify you when it is.</p>
-    <form class="waitlist" data-loop-slug="knowledge-wiki" novalidate>
-      <label class="visually-hidden" for="wl-email-knowledge-wiki">Your work email</label>
-      <input class="waitlist__input" id="wl-email-knowledge-wiki" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
-      <button class="waitlist__submit" type="submit">Get the loop when it ships</button>
-      <div class="waitlist__challenge cf-turnstile" data-sitekey="TURNSTILE_SITEKEY_PLACEHOLDER" data-theme="auto" data-appearance="always"></div>
-      <label class="waitlist__consent">
-        <input type="checkbox" name="consent" required>
-        <span>I agree to receive the LLM knowledge wiki guide and occasional Maskin updates. Unsubscribe any time.</span>
-      </label>
-      <p class="waitlist__status" role="status" aria-live="polite"></p>
-    </form>
-    <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20LLM%20knowledge%20wiki%20loop">ai@maskin.io</a><!--/email_off--> with subject &ldquo;Waitlist: LLM knowledge wiki loop&rdquo; and we&rsquo;ll write back when this loop can be installed.</p>
+    <style id="loop-install-css">
+    .loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 1.5rem; }
+    .loop-install-lead a { color: inherit; text-decoration: underline; }
+    </style>
+    <p class="loop-install-lead">This loop can't be installed yet. In the meantime, <a href="/signup">try Maskin</a>.</p>
 
     <h2>Key takeaways</h2>
     <ul>
@@ -330,7 +318,6 @@
 </div>
 
 <script src="/docs/docs.js"></script>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="/marketplace-events.js" defer></script>
 </body>
 </html>

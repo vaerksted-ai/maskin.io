@@ -97,10 +97,6 @@
     <p class="eyebrow">Loop &middot; Sales</p>
     <h1>Run outbound that closes on a booked call, not a queue drained.</h1>
     <p class="lead">Prospect research, personalized draft, reply-handling as one loop &mdash; humans gate the send, agents wire the rest.</p>
-<style id="loop-install-css">
-.loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 .6rem; }
-.loop-video-note { font-size: .9rem; color: var(--ink-3); margin: 1.5rem 0; }
-</style>
 
     <p>The outbound loop closes on the outcome (call booked, or a clean disqualify), not the activity (emails queued). A signal fires it &mdash; an in-ICP hire, a funding round, a jobs post. Agents research the account, draft the sequence, wait for a human send-gate, track replies, and either book or archive. Every touchpoint stays typed against the same account object, so nothing is retyped between the enrichment tool, the sender, and the CRM.</p>
 
@@ -130,19 +126,11 @@
 
     <p class="loop-video-note">There is no walkthrough video for this loop yet.</p>
 
-    <p class="loop-install-lead" data-capture-lead>This loop isn't available to install yet. Leave your email and we'll notify you when it is.</p>
-    <form class="waitlist" data-loop-slug="outbound" novalidate>
-      <label class="visually-hidden" for="wl-email-outbound">Your work email</label>
-      <input class="waitlist__input" id="wl-email-outbound" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
-      <button class="waitlist__submit" type="submit">Get the loop when it ships</button>
-      <div class="waitlist__challenge cf-turnstile" data-sitekey="TURNSTILE_SITEKEY_PLACEHOLDER" data-theme="auto" data-appearance="always"></div>
-      <label class="waitlist__consent">
-        <input type="checkbox" name="consent" required>
-        <span>I agree to receive the outbound guide and occasional Maskin updates. Unsubscribe any time.</span>
-      </label>
-      <p class="waitlist__status" role="status" aria-live="polite"></p>
-    </form>
-    <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20Outbound%20loop">ai@maskin.io</a><!--/email_off--> with subject &ldquo;Waitlist: Outbound loop&rdquo; and we&rsquo;ll write back when this loop can be installed.</p>
+    <style id="loop-install-css">
+    .loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 1.5rem; }
+    .loop-install-lead a { color: inherit; text-decoration: underline; }
+    </style>
+    <p class="loop-install-lead">This loop can't be installed yet. In the meantime, <a href="/signup">try Maskin</a>.</p>
 
     <h2>What a cold email loop gets you</h2>
     <p>The outbound loop closes the gap between &ldquo;this account matched our ICP&rdquo; and &ldquo;a warm reply is in the account owner&rsquo;s inbox.&rdquo; It runs continuously against a signal feed, drafts personalised messages, sends only what a human has approved, and routes replies back to the humans who can close them. The wedge over closed AI SDR SaaS isn&rsquo;t the model &mdash; it&rsquo;s the loop shape and the audit trail. The same workspace also runs the <a href="/marketplace/linkedin-content/">LinkedIn content loop</a>, which keeps a founder-voice LinkedIn presence going alongside outreach.</p>
@@ -213,7 +201,6 @@
 </div>
 
 <script src="/docs/docs.js"></script>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="/marketplace-events.js" defer></script>
 </body>
 </html>

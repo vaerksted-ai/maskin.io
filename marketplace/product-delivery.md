@@ -4,8 +4,7 @@
 Run agentic software development in Maskin so your team owns the bet and the final call, while Maskin plans the work, builds it, reviews every change, and checks the result against the success criteria you wrote first.
 ![The product delivery loop — bets in, verified code out.](/og-image-product-delivery.png)
 A shaped bet goes in, code checked against the bet’s own success criteria comes out, and a human approves the one step that deploys.
-This loop isn't available to install yet. Leave your email and we'll notify you when it is.
-Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20Product%20delivery%20loop) with subject “Waitlist: Product delivery loop” and we’ll write back when this loop can be installed.
+This loop can't be installed yet. In the meantime, [try Maskin](/signup).
 
 ## The job
 A bet is only done when the change is live and the numbers say it worked. Most teams lose that second half. The ticket closes when the code merges, nobody goes back to check the result, and the next planning meeting starts from memory.

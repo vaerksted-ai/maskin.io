@@ -168,19 +168,16 @@
     <p class="eyebrow">Loop &middot; Product</p>
     <h1>Run competitor intelligence as one loop, not five dashboards.</h1>
     <p class="lead">Maskin watches every competitor move, drafts the battlecard for sales, and shapes the product-gap bet for the roadmap. Your team owns the strategic read.</p>
-<style id="loop-install-css">
-.loop-install { margin: 1rem 0 1.75rem; }
-.loop-install__note { font-size: .9rem; color: var(--ink-2); margin: .6rem 0 0; }
-.loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 .6rem; }
-</style>
-    <!-- INSTALL SLOT (bet 3ecb3ce0): inert template, nothing renders and the plain-text twin skips it. The Developer's Install task clones it in above the email box for loops that can be installed and hides the email box for those. Loops that cannot be installed keep the email box and never clone it. -->
-    <template data-loop-install-template="competitive-intelligence">
-      <div class="loop-install" data-loop-install="competitive-intelligence">
-        <a class="btn-primary" data-install-link data-install-slug="competitive-intelligence">Install this loop</a>
-        <p class="loop-install__note">Sign in or sign up, confirm the loop in the Maskin app, then choose agents and approvals.</p>
-        <p class="loop-install__note" data-install-signed-out>Sign in or sign up first, then you'll come back to this loop.</p>
-      </div>
-    </template>
+    <style id="loop-install-css">
+    .loop-install { margin: 1rem 0 1.75rem; }
+    .loop-install__note { font-size: .9rem; color: var(--ink-2); margin: .6rem 0 0; }
+    .loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 1.5rem; }
+    .loop-install-lead a { color: inherit; text-decoration: underline; }
+    </style>
+    <div class="loop-install" data-loop-install="competitive-intelligence" data-install-position="top">
+      <a class="btn-primary" href="/install/market-competitor-watch-loop" data-install-link data-install-slug="competitive-intelligence">Install this loop</a>
+      <p class="loop-install__note">Sign in or sign up, then confirm the loop in the Maskin app.</p>
+    </div>
 
     <p>Turn every competitor move into two shipped outcomes at once: a battlecard your sales team actually uses, and a shaped bet for product where the signal reveals a real gap. The work is done when the battlecard is live in the channel the field reads and the product bet has an outcome measured against competitor close-rate on the affected segment, not when a dashboard is updated.</p>
 
@@ -233,19 +230,6 @@
       <figcaption>One signal, two lanes, one graph: both lanes close.</figcaption>
     </figure>
 
-    <p class="loop-install-lead" data-capture-lead>This loop isn't available to install yet. Leave your email and we'll notify you when it is.</p>
-    <form class="waitlist" data-loop-slug="competitive-intelligence" novalidate>
-      <label class="visually-hidden" for="wl-email-competitive-intelligence">Your work email</label>
-      <input class="waitlist__input" id="wl-email-competitive-intelligence" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
-      <button class="waitlist__submit" type="submit">Get the loop when it ships</button>
-      <div class="waitlist__challenge cf-turnstile" data-sitekey="TURNSTILE_SITEKEY_PLACEHOLDER" data-theme="auto" data-appearance="always"></div>
-      <label class="waitlist__consent">
-        <input type="checkbox" name="consent" required>
-        <span>I agree to receive the competitor intelligence loop guide and occasional Maskin updates. Unsubscribe any time.</span>
-      </label>
-      <p class="waitlist__status" role="status" aria-live="polite"></p>
-    </form>
-    <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20Competitive%20intelligence%20loop">ai@maskin.io</a><!--/email_off--> with subject &ldquo;Waitlist: Competitive intelligence loop&rdquo; and we&rsquo;ll write back when this loop can be installed.</p>
 
     <h2>What your team keeps, what Maskin runs</h2>
     <table>
@@ -329,11 +313,14 @@
       <li><a href="/marketplace/outbound/">Outbound loop</a>: prospect research, personalized draft, and reply-handling as one loop, with humans gating the send.</li>
       <li><a href="/docs/what-is-an-agentic-workspace/">What is an AI-native agentic workspace?</a>: the cornerstone read on the workspace these loops run in.</li>
     </ul>
+    <div class="loop-install" data-loop-install="competitive-intelligence" data-install-position="bottom">
+      <a class="btn-primary" href="/install/market-competitor-watch-loop" data-install-link data-install-slug="competitive-intelligence">Install this loop</a>
+      <p class="loop-install__note">Sign in or sign up, then confirm the loop in the Maskin app.</p>
+    </div>
   </main>
 </div>
 
 <script src="/docs/docs.js"></script>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="/marketplace-events.js" defer></script>
 </body>
 </html>

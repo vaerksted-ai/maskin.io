@@ -133,36 +133,11 @@
     <h1>Run LinkedIn content in Maskin so your team keeps its voice and the final say while Maskin reads what happened this week, plans the calendar, drafts every post, and keeps a steady posting rhythm going.</h1>
     <img class="hero-visual" src="/og-image-linkedin-content.png" alt="The LinkedIn content loop: a seven-step cycle from interview to approved post to retro." width="1200" height="630">
 
-    <style id="loop-waitlist-css">
-      .waitlist { display: flex; gap: .6rem; flex-wrap: wrap; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin: 0 0 .5rem; }
-      .waitlist__input { flex: 1 1 240px; padding: .7rem .9rem; border: 1px solid var(--rule); border-radius: 8px; font: inherit; background: var(--linen); color: var(--ink); }
-      .waitlist__input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
-      .waitlist__submit { padding: .7rem 1.1rem; border-radius: 8px; border: 0; background: var(--ink); color: var(--linen); font-family: var(--ff-display); font-weight: 600; cursor: pointer; }
-      .waitlist__submit:hover { background: var(--ink-2); }
-      .waitlist__status { flex: 1 1 100%; margin: .5rem 0 0; font-family: var(--ff-mono); font-size: .82rem; color: var(--ink-3); min-height: 1.2em; }
-      .waitlist__fallback { font-size: .85rem; color: var(--ink-3); margin: 0 0 2rem; }
-      .waitlist__challenge { flex: 1 1 100%; margin: .25rem 0 0; min-height: 65px; }
-      .waitlist__consent { flex: 1 1 100%; display: flex; gap: .55rem; align-items: flex-start; font-size: .88rem; color: var(--ink-2); margin: .25rem 0 0; line-height: 1.4; }
-      .waitlist__consent input[type=checkbox] { margin-top: .25rem; accent-color: var(--accent); flex: 0 0 auto; }
-      .waitlist__consent a { color: inherit; text-decoration: underline; }
-      .waitlist__status[data-tone=error] { color: var(--accent, #b04747); }
-      .waitlist__status[data-tone=success] { color: var(--ink); }
-.loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 .6rem; }
-.visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
-</style>
-    <p class="loop-install-lead" data-capture-lead>This loop isn't available to install yet. Leave your email and we'll notify you when it is.</p>
-    <form class="waitlist" data-loop-slug="linkedin-content" novalidate>
-      <label class="visually-hidden" for="wl-email-linkedin-content">Your work email</label>
-      <input class="waitlist__input" id="wl-email-linkedin-content" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
-      <button class="waitlist__submit" type="submit">Get the loop when it ships</button>
-      <div class="waitlist__challenge cf-turnstile" data-sitekey="TURNSTILE_SITEKEY_PLACEHOLDER" data-theme="auto" data-appearance="always"></div>
-      <label class="waitlist__consent">
-        <input type="checkbox" name="consent" required>
-        <span>I agree to receive the LinkedIn content guide and occasional Maskin updates. Unsubscribe any time.</span>
-      </label>
-      <p class="waitlist__status" role="status" aria-live="polite"></p>
-    </form>
-    <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20LinkedIn%20content%20loop">ai@maskin.io</a><!--/email_off--> with subject &ldquo;Waitlist: LinkedIn content loop&rdquo; and we&rsquo;ll write back when this loop can be installed.</p>
+    <style id="loop-install-css">
+    .loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 1.5rem; }
+    .loop-install-lead a { color: inherit; text-decoration: underline; }
+    </style>
+    <p class="loop-install-lead">This loop can't be installed yet. In the meantime, <a href="/signup">try Maskin</a>.</p>
 
     <h2>The job</h2>
     <p>Keep a founder-voice LinkedIn presence going from the moments already happening inside your business: a shipped feature, a customer win, a competitor move, a hard lesson. The result is a steady posting rhythm, planned two weeks at a time, and founder time back for the work only founders can do, instead of writing posts cold at 11pm on Sunday. The work is done when the post is live on LinkedIn and the next retro has read how it did, not when a draft is generated.</p>
@@ -264,7 +239,6 @@
 </div>
 
 <script src="/docs/docs.js"></script>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="/marketplace-events.js" defer></script>
 </body>
 </html>
