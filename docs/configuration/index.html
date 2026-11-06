@@ -123,7 +123,8 @@
     <p>Full per-provider setup is on the <a href="/docs/integrations/">Integrations setup</a> page.</p>
 
     <h2>LLM</h2>
-    <p>The Anthropic API key and any workspace custom-LLM endpoint are configured <strong>in the app</strong> (Settings → Integrations / LLM keys), per workspace — not via environment. The environment only configures the optional <em>system fallback</em> used when a workspace has no model configured:</p>
+    <p>The Anthropic API key and any workspace custom-LLM endpoint are configured <strong>in the app</strong> (Settings → Integrations / LLM keys), per workspace — not via environment. On a self-hosted instance the app only accepts your own key once your user id is listed in <code>MASKIN_ENTERPRISE_ACTOR_IDS</code> in the <code>.env</code> file at the repo root (comma-separate several ids, then restart the server). Find your user id as the <code>"type": "human"</code> entry returned by <code>GET /api/actors</code>; the steps are in <a href="/docs/get-started/self-hosted/">Step 2 of the self-hosted guide</a>. Without that setting, saving a key is refused and <strong>Settings → LLM keys</strong> shows no key fields.</p>
+    <p>The environment otherwise only configures the optional <em>system fallback</em> used when a workspace has no model configured. If you don't want to use the enterprise setting, the fallback is the alternative: set <code>MASKIN_FALLBACK_OPENROUTER_KEY</code> and agent sessions run on the default Maskin-funded model.</p>
     <div class="doc-table-wrap"><table class="doc-table">
       <thead><tr><th>Variable</th><th>Default</th><th>Purpose</th></tr></thead>
       <tbody>
