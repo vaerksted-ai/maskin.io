@@ -169,6 +169,18 @@
     <p class="eyebrow">Loop &middot; Sales</p>
     <h1>Lead qualification on a loop, not a spreadsheet</h1>
     <p class="lead">Run lead qualification in Maskin so your team owns your ICP and the rep conversations &mdash; while Maskin reads every inbound lead, gates the noise, and hands only the ones worth working to your team.</p>
+<style id="loop-install-css">
+.loop-install { margin: 1rem 0 1.75rem; }
+.loop-install__note { font-size: .9rem; color: var(--ink-2); margin: .6rem 0 0; }
+</style>
+    <!-- INSTALL SLOT (bet 3ecb3ce0): inert template, nothing renders and the plain-text twin skips it. The Developer's Install task clones it in above the email box for loops that can be installed and hides the email box for those. Loops that cannot be installed keep the email box and never clone it. -->
+    <template data-loop-install-template="lead-qualification">
+      <div class="loop-install" data-loop-install="lead-qualification">
+        <a class="btn-primary" data-install-link data-install-slug="lead-qualification">Install this loop</a>
+        <p class="loop-install__note">Sign in or sign up, confirm the loop in the Maskin app, then choose agents and approvals.</p>
+        <p class="loop-install__note" data-install-signed-out>Sign in or sign up first, then you'll come back to this loop.</p>
+      </div>
+    </template>
 
     <style>
       .loop-meta { margin: 1.5rem 0 2rem; display: grid; gap: .6rem; }

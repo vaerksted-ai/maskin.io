@@ -157,10 +157,6 @@
 <style>
   /* LLM knowledge wiki loop page: hero visual, non-clickable video placeholder, plain waitlist shell (matches shell used on seo-publishing / outbound / product-discovery), primitives grid, positioning line. */
   .hero-visual { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--rule); margin: 1.5rem 0 2rem; }
-  .video-embed { position: relative; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: var(--linen); border: 1px solid var(--rule); margin: 1.5rem 0 2rem; display: flex; align-items: center; justify-content: center; text-align: center; }
-  .video-embed__placeholder { padding: 2rem; color: var(--ink-2); font-family: var(--ff-serif); font-style: italic; }
-  .video-embed__badge { display: inline-block; font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); padding: .3rem .55rem; border: 1px solid var(--accent); border-radius: 6px; margin-bottom: .8rem; }
-  .video-embed__label { font-size: 1.05rem; }
   .waitlist { display: flex; gap: .6rem; flex-wrap: wrap; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin: 0 0 .5rem; }
   .waitlist__input { flex: 1 1 240px; padding: .7rem .9rem; border: 1px solid var(--rule); border-radius: 8px; font: inherit; background: var(--linen); color: var(--ink); }
   .waitlist__input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
@@ -197,6 +193,20 @@
     <!-- HERO: H1 + subhead + hero visual -->
     <h1>A wiki your agents read before they answer.</h1>
     <p class="lead">Team memory that new hires and new agents bootstrap from &mdash; indexed, typed, MCP-native.</p>
+<style id="loop-install-css">
+.loop-install { margin: 1rem 0 1.75rem; }
+.loop-install__note { font-size: .9rem; color: var(--ink-2); margin: .6rem 0 0; }
+.loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 .6rem; }
+.loop-video-note { font-size: .9rem; color: var(--ink-3); margin: 1.5rem 0; }
+</style>
+    <!-- INSTALL SLOT (bet 3ecb3ce0): inert template, nothing renders and the plain-text twin skips it. The Developer's Install task clones it in above the email box for loops that can be installed and hides the email box for those. Loops that cannot be installed keep the email box and never clone it. -->
+    <template data-loop-install-template="knowledge-wiki">
+      <div class="loop-install" data-loop-install="knowledge-wiki">
+        <a class="btn-primary" data-install-link data-install-slug="knowledge-wiki">Install this loop</a>
+        <p class="loop-install__note">Sign in or sign up, confirm the loop in the Maskin app, then choose agents and approvals.</p>
+        <p class="loop-install__note" data-install-signed-out>Sign in or sign up first, then you'll come back to this loop.</p>
+      </div>
+    </template>
     <img class="hero-visual" src="/og-image-knowledge-wiki.png" alt="The LLM knowledge wiki loop &mdash; a closed bet becomes a typed, interlinked wiki page that agents read before they answer." width="1200" height="630">
 
     <!-- HERO BODY (verbatim from the approved content object) -->
@@ -204,15 +214,9 @@
 
     <p class="positioning-line">For product teams tired of re-answering the same question because the last answer lived in someone&rsquo;s DMs.</p>
 
-    <!-- VIDEO SLOT (non-clickable placeholder; no walkthrough video exists yet) -->
-    <div class="video-embed" role="figure" aria-label="LLM knowledge wiki loop video, dropping this week">
-      <div class="video-embed__placeholder">
-        <div class="video-embed__badge">Video drops this week</div>
-        <p class="video-embed__label">A full walkthrough of the LLM knowledge wiki loop &mdash; how a closed bet becomes a citable page your agents read before they answer.<br>Sign up below to get it in your inbox the moment it&rsquo;s live.</p>
-      </div>
-    </div>
+    <p class="loop-video-note">There is no walkthrough video for this loop yet.</p>
 
-    <!-- WAITLIST FORM (plain shell, matches shell used on seo-publishing / outbound / product-discovery) -->
+    <p class="loop-install-lead" data-capture-lead>This loop isn't available to install yet. Leave your email and we'll notify you when it is.</p>
     <form class="waitlist" data-loop-slug="knowledge-wiki" novalidate>
       <label class="visually-hidden" for="wl-email-knowledge-wiki">Your work email</label>
       <input class="waitlist__input" id="wl-email-knowledge-wiki" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
@@ -224,7 +228,7 @@
       </label>
       <p class="waitlist__status" role="status" aria-live="polite"></p>
     </form>
-    <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20LLM%20knowledge%20wiki%20loop">ai@maskin.io</a><!--/email_off--> with subject &ldquo;Waitlist: LLM knowledge wiki loop&rdquo; and we&rsquo;ll send it the moment it drops.</p>
+    <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20LLM%20knowledge%20wiki%20loop">ai@maskin.io</a><!--/email_off--> with subject &ldquo;Waitlist: LLM knowledge wiki loop&rdquo; and we&rsquo;ll write back when this loop can be installed.</p>
 
     <h2>Key takeaways</h2>
     <ul>

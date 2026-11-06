@@ -5,7 +5,8 @@ One loop from keyword bracket to indexed rank — human gates the intent read an
 ![A SERP for ‘seo publishing loop’: two generic AI-content results bracket a featured Maskin result whose voice is recognisably the team’s — not a generic paste. Editorial hero: ‘Rank on your voice, not a generic paste.’](/hero-seo-publishing.png)
 The SEO publishing loop closes on the outcome (a page in the target rank range), not the activity (a Notion doc marked done). Research fires the loop against a query bracket; agents draft to the winning intent; a human gates the intent read and the publish; agents track index and rank until the close condition is met. Every artifact — the query bracket, the draft, the published URL, the rank checks — lives on the same typed graph, so the next page inherits everything the last one learned.
 For product teams who own their own growth pages and are done losing weeks to *draft in Notion, publish somewhere else, forget who owns rank checks*.
-Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20SEO%20publishing%20loop) with subject “Waitlist: SEO publishing loop” and we’ll send it the moment it drops.
+This loop isn't available to install yet. Leave your email and we'll notify you when it is.
+Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20SEO%20publishing%20loop) with subject “Waitlist: SEO publishing loop” and we’ll write back when this loop can be installed.
 
 ## What an SEO content loop gets you
 The SEO publishing loop closes the gap between “we should write about X” and “X is a live, indexed, snippet-eligible page on our site.” It runs continuously, so weekly audit findings, keyword whitespace, and shipped-in-public changelog entries all end up as real pages without a human touching HTML.
