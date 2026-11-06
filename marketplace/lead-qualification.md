@@ -5,6 +5,8 @@ Run lead qualification in Maskin so your team owns your ICP and the rep conversa
 Stop burning SDR hours on inbound leads that never convert. Every form-fill, demo request, and pricing-page bounce is read the moment it lands and cleared against what your team has learned from every deal that closed and every one that didn’t — so your reps only ever work leads a human has confirmed. Every rejection stamps a reason on the record, and next week’s leads are read against a sharper definition than last week’s.
 **Replaces:** third-party lead-scoring SaaS · manual SDR triage on inbound queues · custom CRM scoring that rots between quarters · agency-run BDR retainers
 **Stays human:** what your ICP actually is · which leads are worth a rep’s time · the read on why a lead was wrong · the change to how future leads are read
+This loop isn't available to install yet. Leave your email and we'll notify you when it is.
+Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20Lead%20qualification%20loop) with subject “Waitlist: Lead qualification loop” and we’ll write back when this loop can be installed.
 
 ## What your team keeps, what Maskin runs
 | Your team keeps | Maskin runs |
@@ -92,7 +94,7 @@ It works with the CRM or inbox you already use, so nobody switches systems.
 
 ## What this loop is built with
 Loop
-A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.
 Agent
 A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP

@@ -97,16 +97,16 @@
     <p class="eyebrow">Loop &middot; Sales</p>
     <h1>Run outbound that closes on a booked call, not a queue drained.</h1>
     <p class="lead">Prospect research, personalized draft, reply-handling as one loop &mdash; humans gate the send, agents wire the rest.</p>
+<style id="loop-install-css">
+.loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 .6rem; }
+.loop-video-note { font-size: .9rem; color: var(--ink-3); margin: 1.5rem 0; }
+</style>
 
     <p>The outbound loop closes on the outcome (call booked, or a clean disqualify), not the activity (emails queued). A signal fires it &mdash; an in-ICP hire, a funding round, a jobs post. Agents research the account, draft the sequence, wait for a human send-gate, track replies, and either book or archive. Every touchpoint stays typed against the same account object, so nothing is retyped between the enrichment tool, the sender, and the CRM.</p>
 
     <p class="positioning-line">For product-led teams whose first sales motion is founder-run or PM-run and can&rsquo;t afford a rep-shaped stack yet.</p>
 
     <style>
-      .video-embed { position: relative; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: var(--linen); border: 1px solid var(--rule); margin: 1.5rem 0 2rem; display: flex; align-items: center; justify-content: center; text-align: center; }
-      .video-embed__placeholder { padding: 2rem; color: var(--ink-2); font-family: var(--ff-serif); font-style: italic; }
-      .video-embed__badge { display: inline-block; font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); padding: .3rem .55rem; border: 1px solid var(--accent); border-radius: 6px; margin-bottom: .8rem; }
-      .video-embed__label { font-size: 1.05rem; }
       .waitlist { display: flex; gap: .6rem; flex-wrap: wrap; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin: 0 0 .5rem; }
       .waitlist__input { flex: 1 1 240px; padding: .7rem .9rem; border: 1px solid var(--rule); border-radius: 8px; font: inherit; background: var(--linen); color: var(--ink); }
       .waitlist__input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
@@ -128,13 +128,9 @@
       .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
     </style>
 
-    <div class="video-embed" role="figure" aria-label="Outbound loop video, dropping this week">
-      <div class="video-embed__placeholder">
-        <div class="video-embed__badge">Video drops this week</div>
-        <p class="video-embed__label">Full walkthrough of the outbound loop &mdash; signal to booked call on your own stack.<br>Sign up below to get it in your inbox the moment it&rsquo;s live.</p>
-      </div>
-    </div>
+    <p class="loop-video-note">There is no walkthrough video for this loop yet.</p>
 
+    <p class="loop-install-lead" data-capture-lead>This loop isn't available to install yet. Leave your email and we'll notify you when it is.</p>
     <form class="waitlist" data-loop-slug="outbound" novalidate>
       <label class="visually-hidden" for="wl-email-outbound">Your work email</label>
       <input class="waitlist__input" id="wl-email-outbound" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
@@ -146,7 +142,7 @@
       </label>
       <p class="waitlist__status" role="status" aria-live="polite"></p>
     </form>
-    <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20Outbound%20loop">ai@maskin.io</a><!--/email_off--> with subject &ldquo;Waitlist: Outbound loop&rdquo; and we&rsquo;ll send it the moment it drops.</p>
+    <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20Outbound%20loop">ai@maskin.io</a><!--/email_off--> with subject &ldquo;Waitlist: Outbound loop&rdquo; and we&rsquo;ll write back when this loop can be installed.</p>
 
     <h2>What a cold email loop gets you</h2>
     <p>The outbound loop closes the gap between &ldquo;this account matched our ICP&rdquo; and &ldquo;a warm reply is in the account owner&rsquo;s inbox.&rdquo; It runs continuously against a signal feed, drafts personalised messages, sends only what a human has approved, and routes replies back to the humans who can close them. The wedge over closed AI SDR SaaS isn&rsquo;t the model &mdash; it&rsquo;s the loop shape and the audit trail. The same workspace also runs the <a href="/marketplace/linkedin-content/">LinkedIn content loop</a>, which keeps a founder-voice LinkedIn presence going alongside outreach.</p>
@@ -157,7 +153,7 @@
       <li><strong>The sender lane is your own.</strong> LinkedIn via Unipile&rsquo;s MCP, or a warmed email domain via Postmark or Resend &mdash; not a shared pool that gets your primary domain blacklisted when one prompt regression fires.</li>
     </ul>
 
-    <h2>The seven-step cold email loop the video walks through</h2>
+    <h2>The seven-step cold email loop</h2>
     <ol>
       <li><strong>Signal.</strong> A prospect matches the ICP or a triggered event fires &mdash; a job change, a funding round, a competitor&rsquo;s customer showing account activity.</li>
       <li><strong>Research.</strong> An agent enriches the account and contact, pulls the last 90 days of public signal, drafts a hypothesis on why now.</li>
@@ -173,7 +169,7 @@
     <div class="primitives">
       <div class="primitive">
         <p class="primitive__name">Loop</p>
-        <p class="primitive__def">A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome &mdash; not on <em>done for now</em>. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.</p>
+        <p class="primitive__def">A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome &mdash; not on <em>done for now</em>. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.</p>
       </div>
       <div class="primitive">
         <p class="primitive__name">Agent</p>

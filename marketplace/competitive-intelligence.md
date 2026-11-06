@@ -14,7 +14,8 @@ Turn every competitor move into two shipped outcomes at once: a battlecard your 
 - Wedge vs. Klue, Crayon, and Contify: both lanes close, instead of the product-facing signal dying in a dashboard.
 ![Diagram: one competitor signal enters a classifier, splits into a battlecard lane for sales and a bet lane for product, each with a human gate, and both converge into one typed graph.](/og-image-competitive-intelligence.jpg)
 One signal, two lanes, one graph: both lanes close.
-Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20Competitive%20intelligence%20loop) with subject “Waitlist: Competitive intelligence loop” and we’ll send it the moment it drops.
+This loop isn't available to install yet. Leave your email and we'll notify you when it is.
+Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20Competitive%20intelligence%20loop) with subject “Waitlist: Competitive intelligence loop” and we’ll write back when this loop can be installed.
 
 ## What your team keeps, what Maskin runs
 | Your team keeps | Maskin runs |

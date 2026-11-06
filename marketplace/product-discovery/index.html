@@ -138,6 +138,19 @@
     <!-- HERO: H1 + subhead + hero visual -->
     <h1>Close the loop from customer signal to shipped bet.</h1>
     <p class="lead">Maskin reads customer calls, requests and market news against your strategy, so you know what to build next, with evidence behind every opportunity.</p>
+<style id="loop-install-css">
+.loop-install { margin: 1rem 0 1.75rem; }
+.loop-install__note { font-size: .9rem; color: var(--ink-2); margin: .6rem 0 0; }
+.loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 .6rem; }
+</style>
+    <!-- INSTALL SLOT (bet 3ecb3ce0): inert template, nothing renders and the plain-text twin skips it. The Developer's Install task clones it in above the email box for loops that can be installed and hides the email box for those. Loops that cannot be installed keep the email box and never clone it. -->
+    <template data-loop-install-template="product-discovery">
+      <div class="loop-install" data-loop-install="product-discovery">
+        <a class="btn-primary" data-install-link data-install-slug="product-discovery">Install this loop</a>
+        <p class="loop-install__note">Sign in or sign up, confirm the loop in the Maskin app, then choose agents and approvals.</p>
+        <p class="loop-install__note" data-install-signed-out>Sign in or sign up first, then you'll come back to this loop.</p>
+      </div>
+    </template>
     <!-- STORY STRIP (4 Nov 2026, PMM positioning draft 087902d6): only shipped behaviour is written as done; step 4 is the team's own step -->
     <div class="primitives">
       <div class="primitive">
@@ -172,7 +185,7 @@
       <lite-youtube videoid="FBs2yA1IdtM" playlabel="Play: Product discovery as a loop"></lite-youtube>
     </div>
 
-    <!-- WAITLIST FORM (plain shell, matches shell used on seo-publishing / outbound / knowledge-wiki) -->
+    <p class="loop-install-lead" data-capture-lead>This loop isn't available to install yet. Leave your email and we'll notify you when it is.</p>
     <form class="waitlist" data-loop-slug="product-discovery" novalidate>
       <label class="visually-hidden" for="wl-email-product-discovery">Your work email</label>
       <input class="waitlist__input" id="wl-email-product-discovery" type="email" name="email" required autocomplete="email" placeholder="you@work.com">
@@ -184,7 +197,7 @@
       </label>
       <p class="waitlist__status" role="status" aria-live="polite"></p>
     </form>
-    <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20product%20discovery%20loop">ai@maskin.io</a><!--/email_off--> with subject &ldquo;Waitlist: product discovery loop&rdquo; and we&rsquo;ll send it the moment it drops.</p>
+    <p class="waitlist__fallback">Or email <!--email_off--><a href="mailto:ai@maskin.io?subject=Waitlist:%20product%20discovery%20loop">ai@maskin.io</a><!--/email_off--> with subject &ldquo;Waitlist: product discovery loop&rdquo; and we&rsquo;ll write back when this loop can be installed.</p>
 
     <!-- PRIMITIVES BELOW THE FOLD: identical on every loop page (from PMM copy deck section 6) -->
     <h2>What this loop is built with</h2>
@@ -192,7 +205,7 @@
     <div class="primitives">
       <div class="primitive">
         <p class="primitive__name">Loop</p>
-        <p class="primitive__def">A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome &mdash; not on <em>done for now</em>. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.</p>
+        <p class="primitive__def">A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome &mdash; not on <em>done for now</em>. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.</p>
       </div>
       <div class="primitive">
         <p class="primitive__name">Agent</p>

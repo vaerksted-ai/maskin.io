@@ -2,6 +2,8 @@
 
 # Run LinkedIn content in Maskin so your team keeps its voice and the final say while Maskin reads what happened this week, plans the calendar, drafts every post, and keeps a steady posting rhythm going.
 ![The LinkedIn content loop: a seven-step cycle from interview to approved post to retro.](/og-image-linkedin-content.png)
+This loop isn't available to install yet. Leave your email and we'll notify you when it is.
+Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20LinkedIn%20content%20loop) with subject “Waitlist: LinkedIn content loop” and we’ll write back when this loop can be installed.
 
 ## The job
 Keep a founder-voice LinkedIn presence going from the moments already happening inside your business: a shipped feature, a customer win, a competitor move, a hard lesson. The result is a steady posting rhythm, planned two weeks at a time, and founder time back for the work only founders can do, instead of writing posts cold at 11pm on Sunday. The work is done when the post is live on LinkedIn and the next retro has read how it did, not when a draft is generated.
@@ -37,7 +39,7 @@ Keep a founder-voice LinkedIn presence going from the moments already happening 
 ## What’s inside the loop
 Loop
 A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome, not on *done for now*. Every listing on the Marketplace is a loop.
-**Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.**
+**Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
 Agent
 A named role a model performs: an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP

@@ -5,7 +5,8 @@ One loop from keyword bracket to indexed rank — human gates the intent read an
 ![A SERP for ‘seo publishing loop’: two generic AI-content results bracket a featured Maskin result whose voice is recognisably the team’s — not a generic paste. Editorial hero: ‘Rank on your voice, not a generic paste.’](/hero-seo-publishing.png)
 The SEO publishing loop closes on the outcome (a page in the target rank range), not the activity (a Notion doc marked done). Research fires the loop against a query bracket; agents draft to the winning intent; a human gates the intent read and the publish; agents track index and rank until the close condition is met. Every artifact — the query bracket, the draft, the published URL, the rank checks — lives on the same typed graph, so the next page inherits everything the last one learned.
 For product teams who own their own growth pages and are done losing weeks to *draft in Notion, publish somewhere else, forget who owns rank checks*.
-Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20SEO%20publishing%20loop) with subject “Waitlist: SEO publishing loop” and we’ll send it the moment it drops.
+This loop isn't available to install yet. Leave your email and we'll notify you when it is.
+Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20SEO%20publishing%20loop) with subject “Waitlist: SEO publishing loop” and we’ll write back when this loop can be installed.
 
 ## What an SEO content loop gets you
 The SEO publishing loop closes the gap between “we should write about X” and “X is a live, indexed, snippet-eligible page on our site.” It runs continuously, so weekly audit findings, keyword whitespace, and shipped-in-public changelog entries all end up as real pages without a human touching HTML.
@@ -29,7 +30,7 @@ The loop — not a pipeline that ends at publish.
 ## What this loop is built with
 Named the same on every loop page so the shape is portable. Below the fold on purpose — the loop is what closes; the primitives are just the parts. Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
 Loop
-A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.
 Agent
 A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP
