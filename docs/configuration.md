@@ -33,7 +33,8 @@ Maskin is configured through environment variables. Only `DATABASE_URL` is stric
 Full per-provider setup is on the [Integrations setup](/docs/integrations/) page.
 
 ## LLM
-The Anthropic API key and any workspace custom-LLM endpoint are configured **in the app** (Settings → Integrations / LLM keys), per workspace — not via environment. The environment only configures the optional *system fallback* used when a workspace has no model configured:
+The Anthropic API key and any workspace custom-LLM endpoint are configured **in the app** (Settings → Integrations / LLM keys), per workspace — not via environment. On a self-hosted instance the app only accepts your own key once your user id is listed in `MASKIN_ENTERPRISE_ACTOR_IDS` in the `.env` file at the repo root (comma-separate several ids, then restart the server). Find your user id as the `"type": "human"` entry returned by `GET /api/actors`; the steps are in [Step 2 of the self-hosted guide](/docs/get-started/self-hosted/). Without that setting, saving a key is refused and **Settings → LLM keys** shows no key fields.
+The environment otherwise only configures the optional *system fallback* used when a workspace has no model configured. If you don't want to use the enterprise setting, the fallback is the alternative: set `MASKIN_FALLBACK_OPENROUTER_KEY` and agent sessions run on the default Maskin-funded model.
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | MASKIN_FALLBACK_OPENROUTER_KEY | — | Enables the OpenRouter-based fallback model. |

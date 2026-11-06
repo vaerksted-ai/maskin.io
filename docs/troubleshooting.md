@@ -34,6 +34,7 @@ Set `CORS_ORIGIN` to your frontend origin(s), comma-separated. The dev default i
 
 ## Agents error with "no model configured"
 A workspace needs a model. Add an Anthropic key or Claude subscription, or a custom LLM — Maskin resolves the model through a fixed priority order. See [LLM & models](/docs/llm/).
+On a self-hosted instance, saving your own Anthropic key fails with *"This workspace is on the Maskin-provided LLM plan and cannot add BYO LLM credentials"*, and **Settings → LLM keys** shows no key fields, until your user id is listed in `MASKIN_ENTERPRISE_ACTOR_IDS` in `.env` and the server is restarted. Find the id as the `"type": "human"` entry from `GET /api/actors` (steps in [Step 2 of the self-hosted guide](/docs/get-started/self-hosted/)). Without the setting, set `MASKIN_FALLBACK_OPENROUTER_KEY` instead and sessions run on the default Maskin-funded model.
 
 ## FAQ
 **Is Maskin open source?** Yes — Apache 2.0, on [GitHub](https://github.com/sindre-ai/maskin).
