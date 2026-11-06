@@ -98,7 +98,7 @@ class MD(HTMLParser):
         self.cur=None
     def handle_starttag(self,tag,attrs):
         a=dict(attrs); cls=a.get("class","")
-        if tag in ("script","style","svg","nav"): self.skip+=1; return
+        if tag in ("script","style","svg","nav","template"): self.skip+=1; return
         if self.skip: return
         if tag in ("h1","h2","h3"): self._flush(); self.cur=tag
         elif tag=="p":
@@ -129,7 +129,7 @@ class MD(HTMLParser):
         elif tag in ("th","td"): self.cell=[]
         elif tag=="div" and "callout" in cls: self._flush(); self.blockquote=True
     def handle_endtag(self,tag):
-        if tag in ("script","style","svg","nav") and self.skip: self.skip-=1; return
+        if tag in ("script","style","svg","nav","template") and self.skip: self.skip-=1; return
         if tag in ("p","span") and getattr(self,"_brk",False): self.skip-=1; self._brk=False; return
         if self.skip: return
         if tag in ("h1","h2","h3","p"): self._flush()

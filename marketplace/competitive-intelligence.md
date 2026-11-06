@@ -2,6 +2,7 @@
 
 # Run competitor intelligence as one loop, not five dashboards.
 Maskin watches every competitor move, drafts the battlecard for sales, and shapes the product-gap bet for the roadmap. Your team owns the strategic read.
+Sign in or sign up, then confirm the loop in the Maskin app.
 Turn every competitor move into two shipped outcomes at once: a battlecard your sales team actually uses, and a shaped bet for product where the signal reveals a real gap. The work is done when the battlecard is live in the channel the field reads and the product bet has an outcome measured against competitor close-rate on the affected segment, not when a dashboard is updated.
 **Replaces:** CI point-SaaS whose signal only reaches sales · analyst hours on manual competitor tracking · product-gap signals lost between sales and roadmap · dashboards nobody reads twice
 **Stays human:** which competitors matter and why · the sales-narrative read on any battlecard change · the “is this a real product gap?” call · the roadmap decision
@@ -14,7 +15,6 @@ Turn every competitor move into two shipped outcomes at once: a battlecard your 
 - Wedge vs. Klue, Crayon, and Contify: both lanes close, instead of the product-facing signal dying in a dashboard.
 ![Diagram: one competitor signal enters a classifier, splits into a battlecard lane for sales and a bet lane for product, each with a human gate, and both converge into one typed graph.](/og-image-competitive-intelligence.jpg)
 One signal, two lanes, one graph: both lanes close.
-Or email [ai@maskin.io](mailto:ai@maskin.io?subject=Waitlist:%20Competitive%20intelligence%20loop) with subject “Waitlist: Competitive intelligence loop” and we’ll send it the moment it drops.
 
 ## What your team keeps, what Maskin runs
 | Your team keeps | Maskin runs |
@@ -85,3 +85,4 @@ Every listing on the Marketplace is a loop: something fires it, agents do the wo
 - [SEO publishing loop](/marketplace/seo-publishing/): one loop from keyword bracket to indexed rank, with humans gating the intent read and the send-to-publish.
 - [Outbound loop](/marketplace/outbound/): prospect research, personalized draft, and reply-handling as one loop, with humans gating the send.
 - [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): the cornerstone read on the workspace these loops run in.
+Sign in or sign up, then confirm the loop in the Maskin app.
