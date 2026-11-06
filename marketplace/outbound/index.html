@@ -98,19 +98,9 @@
     <h1>Run outbound that closes on a booked call, not a queue drained.</h1>
     <p class="lead">Prospect research, personalized draft, reply-handling as one loop &mdash; humans gate the send, agents wire the rest.</p>
 <style id="loop-install-css">
-.loop-install { margin: 1rem 0 1.75rem; }
-.loop-install__note { font-size: .9rem; color: var(--ink-2); margin: .6rem 0 0; }
 .loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 .6rem; }
 .loop-video-note { font-size: .9rem; color: var(--ink-3); margin: 1.5rem 0; }
 </style>
-    <!-- INSTALL SLOT (bet 3ecb3ce0): inert template, nothing renders and the plain-text twin skips it. The Developer's Install task clones it in above the email box for loops that can be installed and hides the email box for those. Loops that cannot be installed keep the email box and never clone it. -->
-    <template data-loop-install-template="outbound">
-      <div class="loop-install" data-loop-install="outbound">
-        <a class="btn-primary" data-install-link data-install-slug="outbound">Install this loop</a>
-        <p class="loop-install__note">Sign in or sign up, confirm the loop in the Maskin app, then choose agents and approvals.</p>
-        <p class="loop-install__note" data-install-signed-out>Sign in or sign up first, then you'll come back to this loop.</p>
-      </div>
-    </template>
 
     <p>The outbound loop closes on the outcome (call booked, or a clean disqualify), not the activity (emails queued). A signal fires it &mdash; an in-ICP hire, a funding round, a jobs post. Agents research the account, draft the sequence, wait for a human send-gate, track replies, and either book or archive. Every touchpoint stays typed against the same account object, so nothing is retyped between the enrichment tool, the sender, and the CRM.</p>
 
@@ -179,7 +169,7 @@
     <div class="primitives">
       <div class="primitive">
         <p class="primitive__name">Loop</p>
-        <p class="primitive__def">A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome &mdash; not on <em>done for now</em>. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.</p>
+        <p class="primitive__def">A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome &mdash; not on <em>done for now</em>. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.</p>
       </div>
       <div class="primitive">
         <p class="primitive__name">Agent</p>

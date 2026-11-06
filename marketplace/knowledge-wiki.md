@@ -44,7 +44,7 @@ The typed graph is what makes that possible. A page is not a floating document; 
 ## What’s inside the loop
 Loop
 A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop.
-**Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.**
+**Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
 Agent
 A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP
