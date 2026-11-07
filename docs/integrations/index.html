@@ -133,7 +133,7 @@
           "name": "Can agents read Google Search Console data through Maskin?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Reads your Search Console data, with sitemap changes only if you grant write. Google Search Console is added per agent, and the agent must load its MCP server. It has four read tools: inspect_url, which returns Google's URL Inspection result for a page, list_sites, which lists the properties the connected account can see, list_sitemaps and get_sitemap. Two sitemap tools, submit_sitemap and delete_sitemap, are refused unless a person grants write. Search performance also syncs once a day."
+            "text": "Yes. Reads your Search Console data, with sitemap changes only if you grant write. Google Search Console is added per agent, and the agent must load its MCP server."
           }
         },
         {
@@ -252,7 +252,7 @@
     <ul>
       <li><strong>Auth:</strong> <code>oauth2</code> (Google sign-in), read-only Search Console scope.</li>
       <li><strong>MCP:</strong> added per agent. Load the Google Search Console MCP server in the agent's tool config.</li>
-      <li><strong>What agents can do:</strong> Reads your Search Console data, with sitemap changes only if you grant write. Four read tools: <code>inspect_url</code> returns Google's URL Inspection result for a page, <code>list_sites</code> lists the properties the connected account can see, <code>list_sitemaps</code> lists a property's sitemaps and <code>get_sitemap</code> reads one. Two sitemap tools, <code>submit_sitemap</code> and <code>delete_sitemap</code>, are refused unless a person grants write. Search performance also syncs once a day.</li>
+      <li><strong>What agents can do:</strong> Reads your Search Console data, with sitemap changes only if you grant write.</li>
       <li><strong>Common use:</strong> SEO loops that check whether a live page is indexed next to its search demand.</li>
     </ul>
     <h2>Provider-only (no MCP surface)</h2>
@@ -295,7 +295,7 @@
     <h3>How does Skjald differ from Maskin's other integrations?</h3>
     <p>Skjald is Maskin's own first-party meeting notetaker, not a third-party service. Instead of exposing an MCP server for agents to call, it produces <code>meeting</code> objects (transcripts, notes) on the graph and emits status events (<code>created</code>, <code>updated</code>, <code>notes_ready</code>) that agents can subscribe to. Agents work with Skjald output the same way they work with any other object state change: by reading the object and reacting to its status transitions.</p>
     <h3>Can agents read Google Search Console data through Maskin?</h3>
-    <p>Yes. Reads your Search Console data, with sitemap changes only if you grant write. Google Search Console is added per agent, and the agent must load its MCP server. It has four read tools: <code>inspect_url</code>, which returns Google's URL Inspection result for a page, <code>list_sites</code>, which lists the properties the connected account can see, <code>list_sitemaps</code> and <code>get_sitemap</code>. Two sitemap tools, <code>submit_sitemap</code> and <code>delete_sitemap</code>, are refused unless a person grants write. Search performance also syncs once a day.</p>
+    <p>Yes. Reads your Search Console data, with sitemap changes only if you grant write. Google Search Console is added per agent, and the agent must load its MCP server.</p>
     <h3>How does Resend work in Maskin?</h3>
     <p>You bring your own Resend account and API key. Tools for Resend are available to every agent once Resend is connected, and when an email arrives, Maskin emits an email-received event that can trigger an automation.</p>
     <div class="post-cta">
