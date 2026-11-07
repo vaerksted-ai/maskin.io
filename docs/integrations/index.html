@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maskin integrations: the full provider registry — Maskin Docs</title>
-<meta name="description" content="Maskin has twelve first-party integrations: tools for GitHub, Slack, PostHog and Resend are available to every agent once connected, seven more are added per agent (including Google Search Console, read-only), plus Skjald.">
+<meta name="description" content="Maskin has twelve first-party integrations: tools for GitHub, Slack, PostHog and Resend are available to every agent once connected, seven more are added per agent (including Google Search Console), plus Skjald.">
 
 <link rel="canonical" href="https://maskin.io/docs/integrations/">
 
@@ -18,7 +18,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/docs/integrations/">
 <meta property="og:title" content="Maskin integrations: the full provider registry — Maskin Docs">
-<meta property="og:description" content="Maskin has twelve first-party integrations: tools for GitHub, Slack, PostHog and Resend are available to every agent once connected, seven more are added per agent (including Google Search Console, read-only), plus Skjald.">
+<meta property="og:description" content="Maskin has twelve first-party integrations: tools for GitHub, Slack, PostHog and Resend are available to every agent once connected, seven more are added per agent (including Google Search Console), plus Skjald.">
 <meta property="og:image" content="https://maskin.io/og-image-integrations.png">
 <meta property="og:site_name" content="Maskin">
 
@@ -35,7 +35,7 @@
       "@type": "TechArticle",
       "@id": "https://maskin.io/docs/integrations/#article",
       "headline": "Maskin integrations: the full provider registry",
-      "description": "Maskin has twelve first-party integrations: tools for GitHub, Slack, PostHog and Resend are available to every agent once connected, seven more are added per agent (including Google Search Console, read-only), plus Skjald.",
+      "description": "Maskin has twelve first-party integrations: tools for GitHub, Slack, PostHog and Resend are available to every agent once connected, seven more are added per agent (including Google Search Console), plus Skjald.",
       "datePublished": "2026-09-25T00:00:00Z",
       "dateModified": "2026-10-25T00:00:00Z",
       "author": {
@@ -133,7 +133,7 @@
           "name": "Can agents read Google Search Console data through Maskin?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, read-only. Google Search Console is added per agent, and the agent must load its MCP server. It has two tools: inspect_url, which returns Google's URL Inspection result for a page, and list_sites, which lists the properties the connected account can see. There are no write tools."
+            "text": "Yes. Reads your Search Console data, with sitemap changes only if you grant write. Google Search Console is added per agent, and the agent must load its MCP server. It has four read tools: inspect_url, which returns Google's URL Inspection result for a page, list_sites, which lists the properties the connected account can see, list_sitemaps and get_sitemap. Two sitemap tools, submit_sitemap and delete_sitemap, are refused unless a person grants write. Search performance also syncs once a day."
           }
         },
         {
@@ -161,7 +161,7 @@
     <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Integrations</p>
     <p class="eyebrow">Reference</p>
     <h1>Maskin integrations: the full provider registry</h1>
-    <p class="lead">Maskin's registry holds twelve first-party integrations. Tools for four of them (GitHub, Slack, PostHog and Resend) are available to every agent once the integration is connected. Seven more are added per agent, including Google Search Console, which gives agents two read-only tools. One, Skjald, is provider-only with no agent tools. This page documents the <strong>product registry</strong>: what Maskin supports out of the box, so it stays accurate whether or not a given workspace has each provider connected.</p>
+    <p class="lead">Maskin's registry holds twelve first-party integrations. Tools for four of them (GitHub, Slack, PostHog and Resend) are available to every agent once the integration is connected. Seven more are added per agent, including Google Search Console, which reads your Search Console data, with sitemap changes only if you grant write. One, Skjald, is provider-only with no agent tools. This page documents the <strong>product registry</strong>: what Maskin supports out of the box, so it stays accurate whether or not a given workspace has each provider connected.</p>
     <div class="callout callout--muted">
       <div class="callout__icon" aria-hidden="true">&#10003;</div>
       <div class="callout__body">
@@ -252,7 +252,7 @@
     <ul>
       <li><strong>Auth:</strong> <code>oauth2</code> (Google sign-in), read-only Search Console scope.</li>
       <li><strong>MCP:</strong> added per agent. Load the Google Search Console MCP server in the agent's tool config.</li>
-      <li><strong>What agents can do:</strong> two read-only tools. <code>inspect_url</code> returns Google's URL Inspection result for a page. <code>list_sites</code> lists the properties the connected account can see. No write tools.</li>
+      <li><strong>What agents can do:</strong> Reads your Search Console data, with sitemap changes only if you grant write. Four read tools: <code>inspect_url</code> returns Google's URL Inspection result for a page, <code>list_sites</code> lists the properties the connected account can see, <code>list_sitemaps</code> lists a property's sitemaps and <code>get_sitemap</code> reads one. Two sitemap tools, <code>submit_sitemap</code> and <code>delete_sitemap</code>, are refused unless a person grants write. Search performance also syncs once a day.</li>
       <li><strong>Common use:</strong> SEO loops that check whether a live page is indexed next to its search demand.</li>
     </ul>
     <h2>Provider-only (no MCP surface)</h2>
@@ -295,7 +295,7 @@
     <h3>How does Skjald differ from Maskin's other integrations?</h3>
     <p>Skjald is Maskin's own first-party meeting notetaker, not a third-party service. Instead of exposing an MCP server for agents to call, it produces <code>meeting</code> objects (transcripts, notes) on the graph and emits status events (<code>created</code>, <code>updated</code>, <code>notes_ready</code>) that agents can subscribe to. Agents work with Skjald output the same way they work with any other object state change: by reading the object and reacting to its status transitions.</p>
     <h3>Can agents read Google Search Console data through Maskin?</h3>
-    <p>Yes, read-only. Google Search Console is added per agent, and the agent must load its MCP server. It has two tools: <code>inspect_url</code>, which returns Google's URL Inspection result for a page, and <code>list_sites</code>, which lists the properties the connected account can see. There are no write tools.</p>
+    <p>Yes. Reads your Search Console data, with sitemap changes only if you grant write. Google Search Console is added per agent, and the agent must load its MCP server. It has four read tools: <code>inspect_url</code>, which returns Google's URL Inspection result for a page, <code>list_sites</code>, which lists the properties the connected account can see, <code>list_sitemaps</code> and <code>get_sitemap</code>. Two sitemap tools, <code>submit_sitemap</code> and <code>delete_sitemap</code>, are refused unless a person grants write. Search performance also syncs once a day.</p>
     <h3>How does Resend work in Maskin?</h3>
     <p>You bring your own Resend account and API key. Tools for Resend are available to every agent once Resend is connected, and when an email arrives, Maskin emits an email-received event that can trigger an automation.</p>
     <div class="post-cta">

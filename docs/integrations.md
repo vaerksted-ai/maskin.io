@@ -1,7 +1,7 @@
 > Source: https://maskin.io/docs/integrations/
 
 # Maskin integrations: the full provider registry
-Maskin's registry holds twelve first-party integrations. Tools for four of them (GitHub, Slack, PostHog and Resend) are available to every agent once the integration is connected. Seven more are added per agent, including Google Search Console, which gives agents two read-only tools. One, Skjald, is provider-only with no agent tools. This page documents the **product registry**: what Maskin supports out of the box, so it stays accurate whether or not a given workspace has each provider connected.
+Maskin's registry holds twelve first-party integrations. Tools for four of them (GitHub, Slack, PostHog and Resend) are available to every agent once the integration is connected. Seven more are added per agent, including Google Search Console, which reads your Search Console data, with sitemap changes only if you grant write. One, Skjald, is provider-only with no agent tools. This page documents the **product registry**: what Maskin supports out of the box, so it stays accurate whether or not a given workspace has each provider connected.
 > ✓
 > **Key takeaways**
 > **12 first-party integrations, split by how agents get them:** 4 available to every agent once connected, 7 added per agent, 1 provider-only.
@@ -78,7 +78,7 @@ Maskin's registry holds twelve first-party integrations. Tools for four of them 
 ### Google Search Console
 - **Auth:** `oauth2` (Google sign-in), read-only Search Console scope.
 - **MCP:** added per agent. Load the Google Search Console MCP server in the agent's tool config.
-- **What agents can do:** two read-only tools. `inspect_url` returns Google's URL Inspection result for a page. `list_sites` lists the properties the connected account can see. No write tools.
+- **What agents can do:** Reads your Search Console data, with sitemap changes only if you grant write. Four read tools: `inspect_url` returns Google's URL Inspection result for a page, `list_sites` lists the properties the connected account can see, `list_sitemaps` lists a property's sitemaps and `get_sitemap` reads one. Two sitemap tools, `submit_sitemap` and `delete_sitemap`, are refused unless a person grants write. Search performance also syncs once a day.
 - **Common use:** SEO loops that check whether a live page is indexed next to its search demand.
 
 ## Provider-only (no MCP surface)
@@ -123,7 +123,7 @@ No. Every integration on this page is a first-party Maskin provider. The auth, t
 Skjald is Maskin's own first-party meeting notetaker, not a third-party service. Instead of exposing an MCP server for agents to call, it produces `meeting` objects (transcripts, notes) on the graph and emits status events (`created`, `updated`, `notes_ready`) that agents can subscribe to. Agents work with Skjald output the same way they work with any other object state change: by reading the object and reacting to its status transitions.
 
 ### Can agents read Google Search Console data through Maskin?
-Yes, read-only. Google Search Console is added per agent, and the agent must load its MCP server. It has two tools: `inspect_url`, which returns Google's URL Inspection result for a page, and `list_sites`, which lists the properties the connected account can see. There are no write tools.
+Yes. Reads your Search Console data, with sitemap changes only if you grant write. Google Search Console is added per agent, and the agent must load its MCP server. It has four read tools: `inspect_url`, which returns Google's URL Inspection result for a page, `list_sites`, which lists the properties the connected account can see, `list_sitemaps` and `get_sitemap`. Two sitemap tools, `submit_sitemap` and `delete_sitemap`, are refused unless a person grants write. Search performance also syncs once a day.
 
 ### How does Resend work in Maskin?
 You bring your own Resend account and API key. Tools for Resend are available to every agent once Resend is connected, and when an email arrives, Maskin emits an email-received event that can trigger an automation.
