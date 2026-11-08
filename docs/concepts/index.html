@@ -105,7 +105,7 @@
     <p><strong>Triggers</strong> automate agent work. A trigger is either <strong>cron</strong>-based (run on a schedule) or <strong>event</strong>-based (fire when something happens in the workspace, e.g. a task enters a status), and it spawns a session for a target agent with an action prompt.</p>
 
     <h2>Sessions</h2>
-    <p>When an agent does work, it runs in a <strong>session</strong> — Claude Code executing in an ephemeral sandbox. Sessions have a lifecycle, stream logs, and track token usage and cost. They're covered in depth in <a href="/docs/agents/">Agents &amp; sessions</a>.</p>
+    <p>When an agent does work, it runs in a <strong>session</strong> — Claude Code executing in an ephemeral sandbox. Sessions have a lifecycle, stream logs, and track token usage and cost. They're covered in depth in <a href="/docs/agents/">Agents &amp; sessions</a>. Inside a session, agents read and write objects through the <a href="/docs/mcp-tools/">MCP tools</a>.</p>
 
     <h2>Notifications</h2>
     <p>When an agent needs a human — approval, a decision, an input — it raises a <strong>notification</strong>. Notifications carry structured UI (actions, options, urgency) and link back to the object or session that produced them, so humans stay in the loop without watching every run.</p>
@@ -114,7 +114,7 @@
     <ul>
       <li><strong><a href="/docs/learn/agent-skills/">Skills</a></strong> — reusable prompts, snippets, or context files stored in the workspace and attachable to agents.</li>
       <li><strong>Files</strong> — markdown, code, PDFs, and images stored in S3-compatible storage and attached to objects or produced by agents.</li>
-      <li><strong>Extensions / modules</strong> — pluggable add-ons (CRM, knowledge, notetaker, work) that introduce new object types and behaviour.</li>
+      <li><strong>Extensions / modules</strong> — pluggable add-ons (CRM, knowledge, notetaker, work) that introduce new object types and behaviour. The <a href="/marketplace/knowledge-wiki/">LLM wiki loop</a> shows the knowledge side in practice.</li>
     </ul>
 
     <h2>Activity and real-time</h2>
