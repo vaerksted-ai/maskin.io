@@ -26,7 +26,7 @@ Comments are the primary collaboration surface on every object — status update
 **Triggers** automate agent work. A trigger is either **cron**-based (run on a schedule) or **event**-based (fire when something happens in the workspace, e.g. a task enters a status), and it spawns a session for a target agent with an action prompt.
 
 ## Sessions
-When an agent does work, it runs in a **session** — Claude Code executing in an ephemeral sandbox. Sessions have a lifecycle, stream logs, and track token usage and cost. They're covered in depth in [Agents & sessions](/docs/agents/).
+When an agent does work, it runs in a **session** — Claude Code executing in an ephemeral sandbox. Sessions have a lifecycle, stream logs, and track token usage and cost. They're covered in depth in [Agents & sessions](/docs/agents/). Inside a session, agents read and write objects through the [MCP tools](/docs/mcp-tools/).
 
 ## Notifications
 When an agent needs a human — approval, a decision, an input — it raises a **notification**. Notifications carry structured UI (actions, options, urgency) and link back to the object or session that produced them, so humans stay in the loop without watching every run.
@@ -34,7 +34,7 @@ When an agent needs a human — approval, a decision, an input — it raises a *
 ## Skills, files, and extensions
 - **[Skills](/docs/learn/agent-skills/)** — reusable prompts, snippets, or context files stored in the workspace and attachable to agents.
 - **Files** — markdown, code, PDFs, and images stored in S3-compatible storage and attached to objects or produced by agents.
-- **Extensions / modules** — pluggable add-ons (CRM, knowledge, notetaker, work) that introduce new object types and behaviour.
+- **Extensions / modules** — pluggable add-ons (CRM, knowledge, notetaker, work) that introduce new object types and behaviour. The [LLM wiki loop](/marketplace/knowledge-wiki/) shows the knowledge side in practice.
 
 ## Activity and real-time
 Every change is recorded in an insert-only (by convention) **event log**, which doubles as the audit trail and the source for unread tracking. The UI and agents stay live through a Postgres NOTIFY → Server-Sent-Events stream — no extra message broker required.

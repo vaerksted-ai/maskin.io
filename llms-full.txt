@@ -209,7 +209,7 @@ Comments are the primary collaboration surface on every object — status update
 **Triggers** automate agent work. A trigger is either **cron**-based (run on a schedule) or **event**-based (fire when something happens in the workspace, e.g. a task enters a status), and it spawns a session for a target agent with an action prompt.
 
 ## Sessions
-When an agent does work, it runs in a **session** — Claude Code executing in an ephemeral sandbox. Sessions have a lifecycle, stream logs, and track token usage and cost. They're covered in depth in [Agents & sessions](/docs/agents/).
+When an agent does work, it runs in a **session** — Claude Code executing in an ephemeral sandbox. Sessions have a lifecycle, stream logs, and track token usage and cost. They're covered in depth in [Agents & sessions](/docs/agents/). Inside a session, agents read and write objects through the [MCP tools](/docs/mcp-tools/).
 
 ## Notifications
 When an agent needs a human — approval, a decision, an input — it raises a **notification**. Notifications carry structured UI (actions, options, urgency) and link back to the object or session that produced them, so humans stay in the loop without watching every run.
@@ -217,7 +217,7 @@ When an agent needs a human — approval, a decision, an input — it raises a *
 ## Skills, files, and extensions
 - **[Skills](/docs/learn/agent-skills/)** — reusable prompts, snippets, or context files stored in the workspace and attachable to agents.
 - **Files** — markdown, code, PDFs, and images stored in S3-compatible storage and attached to objects or produced by agents.
-- **Extensions / modules** — pluggable add-ons (CRM, knowledge, notetaker, work) that introduce new object types and behaviour.
+- **Extensions / modules** — pluggable add-ons (CRM, knowledge, notetaker, work) that introduce new object types and behaviour. The [LLM wiki loop](/marketplace/knowledge-wiki/) shows the knowledge side in practice.
 
 ## Activity and real-time
 Every change is recorded in an insert-only (by convention) **event log**, which doubles as the audit trail and the source for unread tracking. The UI and agents stay live through a Postgres NOTIFY → Server-Sent-Events stream — no extra message broker required.
@@ -3186,7 +3186,7 @@ An illustrative example: a support team's refund-review loop. The same five part
 - **Close condition:** the refund is issued or declined, the reason is recorded on the decision record, and the customer reply is sent. Not "the agent said it was handled." A request in a final state that anyone can inspect later.
 Run that shape against a different trigger and it produces a discovery loop, a [competitor-intel loop](/marketplace/competitive-intelligence/), a signal-triage loop, a churn-recovery loop ([at-risk account alerts](/docs/at-risk-account-alerts/)). The primitives don't change; the trigger and typed objects do. That is what "[loop engineering](https://addyosmani.com/blog/loop-engineering/)" (Addy Osmani, Jun 2026) points at when it says the job shifted from *prompting the agent* to *designing the system that prompts the agent* — but productized as first-class objects a team configures, not code a developer writes.
 **Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.**
-The important word is *across*. A workflow inside a ticket tracker terminates when a ticket closes. A loop terminates when the typed outcome it exists to produce — the shipped bet, the approved content, the qualified pipeline — reaches a state a human can inspect, regardless of which tool the underlying work happened in. Software delivery as a closed loop is a concrete case: the [product delivery loop](/marketplace/product-delivery/) has named human gates (the merge to main and the final call on the bet) and closes on a verdict against the success criteria written first.
+The important word is *across*. A workflow inside a ticket tracker terminates when a ticket closes. A loop terminates when the typed outcome it exists to produce — the shipped bet, the approved content, the qualified pipeline — reaches a state a human can inspect, regardless of which tool the underlying work happened in. Software delivery as a closed loop is a concrete case: the [product delivery loop](/marketplace/product-delivery/) has named human gates (the merge to main and the final call on the bet) and closes on a verdict against the success criteria written first. The [product discovery loop](/marketplace/product-discovery/) follows the same shape, and the outbound version is mapped in [open source AI SDR: the six real repos and the loop shape that works](/alternatives/open-source-ai-sdr/).
 
 ## When workflow is fine, when agent is fine, when a loop is the answer
 The honest cases for each — not a strawman.
