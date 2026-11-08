@@ -83,4 +83,4 @@ An MCP client (Claude Desktop, Cursor, Windsurf) *consumes* MCP — it connects 
 Read next
 
 ## Self-host the MCP-native workspace
-The full object graph, the whole MCP surface, in your own boundary. Apache 2.0, MCP-native, EU/US data residency.
+The full object graph, the whole MCP surface, in your own boundary. Apache 2.0, MCP-native.

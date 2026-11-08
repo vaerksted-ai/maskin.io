@@ -113,7 +113,7 @@ No. Loop Marketing is a go-to-market framework HubSpot introduced in September 2
 The phrase surfaced in independent places within weeks of each other in mid-2026. Marily Nika's June–July 2026 posts ("Prompt Engineering Is Dead" → "Loop engineering is your new job") named the shift from the PM side.[1](#fn1) Addy Osmani's ["Loop Engineering"](https://addyosmani.com/blog/loop-engineering/) essay named it from the coding-agent side, with quotes from Peter Steinberger and Boris Cherny that carried it into practitioner discourse.[2](#fn2) LangChain and Prefect then wired it into the graph-engineering literature.[4](#fn4)[5](#fn5)
 
 ## Own the loop, not the prompt
-If the frame lands — the human's job is the system that prompts the agent, not the prompt itself — the shape of the tool you want is a workspace where the loop, the tools, the memory, the stopping condition, and the human gate all live as typed objects you can inspect, swap, and hand off. That is what Maskin is: an open-source, MCP-native, self-hostable workspace where loops are first-class objects a team configures rather than code an engineer writes. Self-host free forever under Apache 2.0, or start a hosted trial with EU/US data residency.
+If the frame lands — the human's job is the system that prompts the agent, not the prompt itself — the shape of the tool you want is a workspace where the loop, the tools, the memory, the stopping condition, and the human gate all live as typed objects you can inspect, swap, and hand off. That is what Maskin is: an open-source, MCP-native, self-hostable workspace where loops are first-class objects a team configures rather than code an engineer writes. Self-host free forever under Apache 2.0, or start a hosted trial.
 
 ## Sources
 1. Marily Nika, *[Prompt Engineering Is Dead](https://marily.substack.com/p/prompt-engineering-is-dead-good)* (2026-06-22) and *[Loop engineering is your new job: how to design for silence](https://marily.substack.com/p/loop-engineering-is-your-new-job)* (2026-07-01), AI Product Academy on Substack. The PM-side framing of the shift from prompt to loop and the "design for silence" thesis on stopping conditions.
@@ -130,4 +130,4 @@ If the frame lands — the human's job is the system that prompts the agent, not
 Read next
 
 ## Self-host the loop
-Loops, tools, memory and human gates as typed objects you can inspect and swap. Apache 2.0, MCP-native, EU/US data residency.
+Loops, tools, memory and human gates as typed objects you can inspect and swap. Apache 2.0, MCP-native.

@@ -91,7 +91,7 @@ They are sibling arguments. The [ambient agent workspace](/docs/ambient-agent-wo
 Composable, and the reason is the audit obligation. Maskin is built for teams putting agents on real product work — insights, bets, tasks, validated outcomes on a shared typed backend — where “what did the agent do, on what trigger, at what state?” is a question you have to be able to answer without reconstructing a chat log. The [cornerstone](/docs/what-is-an-agentic-workspace/) covers the full object model; the [MCP-native](/docs/what-is-mcp-native/) piece covers why the protocol layer matters; the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) piece covers the deployment side. Composable is the substrate all three of those rest on.
 
 ## Own the substrate, not the org chart
-If the audit obligation, the multi-team coordination, and the multi-hour loop are all real for your team, the shape of the workspace is composable — typed objects under the personas, event triggers under the meetings, per-action gates under the persona-level trust. Maskin is the open-source, MCP-native, self-hostable version of that shape. Self-host free forever under Apache 2.0, or start a hosted trial with EU/US data residency.
+If the audit obligation, the multi-team coordination, and the multi-hour loop are all real for your team, the shape of the workspace is composable — typed objects under the personas, event triggers under the meetings, per-action gates under the persona-level trust. Maskin is the open-source, MCP-native, self-hostable version of that shape. Self-host free forever under Apache 2.0, or start a hosted trial.
 
 ## Sources
 1. Sebastian Krumhausen, “The AI agent workspace market is splitting” — LinkedIn post, 10 April 2026. [linkedin.com/posts/krumhausen — market-camps post](https://www.linkedin.com/posts/krumhausen_the-ai-agent-workspace-market-is-splitting-activity-7448474897564975104-O7Nq). [↩](#fnref1)
@@ -102,4 +102,4 @@ If the audit obligation, the multi-team coordination, and the multi-hour loop ar
 Read next
 
 ## Self-host the composable loop
-Typed objects under the personas, event triggers under the meetings. Apache 2.0, MCP-native, EU/US data residency.
+Typed objects under the personas, event triggers under the meetings. Apache 2.0, MCP-native.

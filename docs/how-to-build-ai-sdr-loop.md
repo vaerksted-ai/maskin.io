@@ -104,4 +104,4 @@ The companion page, [Open source AI SDR: the honest map](/alternatives/open-sour
 Read next
 
 ## Run the loop on your own object graph
-An AI SDR is a loop, not a product. If you want the loop — signal, research, draft, human approval, send, reply, close — on typed objects you can audit end-to-end, running on your own model keys and your own sender lane, that’s what Maskin is aimed at. Self-host free forever under Apache 2.0, or start a hosted trial with EU/US data residency.
+An AI SDR is a loop, not a product. If you want the loop — signal, research, draft, human approval, send, reply, close — on typed objects you can audit end-to-end, running on your own model keys and your own sender lane, that’s what Maskin is aimed at. Self-host free forever under Apache 2.0, or start a hosted trial.
