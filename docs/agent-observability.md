@@ -89,8 +89,8 @@ The cornerstone [What is an agentic workspace](/docs/what-is-an-agentic-workspac
 
 ## Own the substrate, not the telemetry
 Agent observability is not going to resolve into one vendor over the next cycle. The purpose-built platforms will keep sharpening their traces and evals; the APM incumbents will keep extending their agent-span coverage; OpenTelemetry conventions will keep hardening. Any of those choices is compatible with a workspace-graph substrate. What the substrate gives you is the one thing none of the vendor tiers can: an audit trail that is not a separate system to keep in sync with the work, because it *is* the work. That audit-trail-as-substrate property is also what the [governance framework for AI agents](/docs/learn/ai-agent-governance/) hinges on — approvals live on the same graph the work runs on.
-Maskin is the open-source, MCP-native, Apache-2.0 version of that substrate. Self-host free forever, or start a hosted trial with EU/US data residency. The workspace is the trace layer.
+Maskin is the open-source, MCP-native, Apache-2.0 version of that substrate. Self-host free forever, or start a hosted trial. The workspace is the trace layer.
 Read next
 
 ## Own the substrate, not the telemetry
-Maskin is the open-source, MCP-native, Apache-2.0 version of the workspace-graph substrate. Self-host free forever, or take a hosted trial with EU/US data residency.
+Maskin is the open-source, MCP-native, Apache-2.0 version of the workspace-graph substrate. Self-host free forever, or take a hosted trial.

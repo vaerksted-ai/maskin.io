@@ -84,7 +84,7 @@ It can be safer than human-*in*-the-loop for background work, because the altern
 Three signals: your AI feature takes longer than the user will politely wait for; the trigger for the feature is an event (a message, a metric, a schedule) rather than a keystroke; the outcome needs a human’s taste before it ships. If two of those three are true, the shape of the UX is ambient, not chat — and the specific question then is which of the five patterns fits the object of work. If the work is one artefact per invocation, delegated-agent is likely right; if the work spans multiple hand-offs and needs to carry state, workspace-graph is probably the shape.
 
 ## Own the loop, not the chat
-If chat is the wrong default and your team’s work spans more than one hand-off, the shape of the UX is a workspace graph — a typed object model humans and agents share, with ambient agents running on triggers and the human on-the-loop. Maskin is the open-source, MCP-native, self-hostable version of that shape. Self-host free forever under Apache 2.0, or start a hosted trial with EU/US data residency.
+If chat is the wrong default and your team’s work spans more than one hand-off, the shape of the UX is a workspace graph — a typed object model humans and agents share, with ambient agents running on triggers and the human on-the-loop. Maskin is the open-source, MCP-native, self-hostable version of that shape. Self-host free forever under Apache 2.0, or start a hosted trial.
 
 ## Sources
 1. **Tianpan**, *Async Agents Need an Inbox, Not a Chat* (2026-04-23) and *Ambient AI Design: When the Chat Interface Is the Wrong Abstraction* (2026-04-15). [tianpan.co/blog/2026-04-23-async-agents-inbox-not-chat](https://tianpan.co/blog/2026-04-23-async-agents-inbox-not-chat) and [tianpan.co/blog/2026-04-15-ambient-ai-design-chat-interface](https://tianpan.co/blog/2026-04-15-ambient-ai-design-chat-interface). Named the ~30s / ~2min UX-inversion numbers and the four failure modes of ambient agents. [↩](#fnref1)
@@ -94,4 +94,4 @@ If chat is the wrong default and your team’s work spans more than one hand-off
 Read next
 
 ## Self-host the ambient loop
-Own the object graph, own the model, own the loop. Apache 2.0, MCP-native, EU/US data residency.
+Own the object graph, own the model, own the loop. Apache 2.0, MCP-native.

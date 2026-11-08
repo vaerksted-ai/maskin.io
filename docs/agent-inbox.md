@@ -76,7 +76,7 @@ Often yes — for quick synchronous questions, verb-surface commands, and solo-o
 Stable enough that renaming is a mistake. Every 2026 piece on ambient-agent UX cites Chase’s LangChain post as the definitional source, and downstream implementations — including Superhuman’s shipped features[2](#fn2) and the reference UI on GitHub — use the same three names.
 
 ## Own the interrupts, not the chat
-If your agents run on events and your team supervises more than one loop at a time, the shape of the UX is an inbox, a workspace-graph, or both — not a chat window. [Maskin](/) is the open-source, [MCP-native](/docs/mcp-native-workspace/), self-hostable workspace-graph. If Claude Cowork is the vendor-hosted answer, Maskin is the open-source alternative where the object model, the model, and the loop all live inside your own boundary. Self-host free forever under Apache 2.0, or start a hosted trial with EU/US data residency.
+If your agents run on events and your team supervises more than one loop at a time, the shape of the UX is an inbox, a workspace-graph, or both — not a chat window. [Maskin](/) is the open-source, [MCP-native](/docs/mcp-native-workspace/), self-hostable workspace-graph. If Claude Cowork is the vendor-hosted answer, Maskin is the open-source alternative where the object model, the model, and the loop all live inside your own boundary. Self-host free forever under Apache 2.0, or start a hosted trial.
 
 ## Sources
 1. **Harrison Chase / LangChain**, *Introducing Ambient Agents* (Jan 2025). [langchain.com/blog/introducing-ambient-agents](https://www.langchain.com/blog/introducing-ambient-agents). Plus the Sequoia *Training Data* podcast appearance on *Ambient Agents and the Agent Inbox*, [sequoiacap.com/podcast/training-data-harrison-chase-2](https://sequoiacap.com/podcast/training-data-harrison-chase-2). Definitional citations for the Agent Inbox, the three interrupt types (`notify`, `question`, `review`), and the human-on-the-loop vs human-in-the-loop shift. [↩](#fnref1)
@@ -85,4 +85,4 @@ If your agents run on events and your team supervises more than one loop at a ti
 Read next
 
 ## Self-host the ambient loop
-Own the object graph, own the model, own the loop. Apache 2.0, MCP-native, EU/US data residency.
+Own the object graph, own the model, own the loop. Apache 2.0, MCP-native.

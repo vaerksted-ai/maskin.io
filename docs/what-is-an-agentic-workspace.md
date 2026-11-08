@@ -7,7 +7,7 @@ An **agentic workspace** is a shared, persistent environment where humans and AI
 > An agentic workspace is a shared surface where people and agents co-operate on persistent, typed objects — not chatbots bolted onto a document.
 > Maskin runs a closed loop — insight → bet → task → shipped → repeat — on one shared object model.
 > Agents act autonomously and are pulled in only when a decision needs human taste.
-> Open source (Apache 2.0), MCP-native, self-host or managed, EU & US data residency.
+> Open source (Apache 2.0), MCP-native, self-host or managed.
 
 ## The problem it solves
 Ten people, ten AI chats, none of them visible to the rest of the team. Decisions are made in DMs, context is trapped in chat history, and every session starts from zero. That is the default AI workflow for many product teams in 2026 — and it is why teams adopt agentic workspaces.

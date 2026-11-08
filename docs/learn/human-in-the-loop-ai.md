@@ -100,4 +100,4 @@ When the reviewer lacks context, visibility, or time, any one of the three, the 
 Read next
 
 ## Design oversight per action class, not per system
-Maskin is the open-source, MCP-native workspace where oversight lives on the object model — per-loop autonomy, an event-sourced audit trail, and tiered approvals enforced at the governance layer. Apache 2.0, self-hostable, EU/US data residency.
+Maskin is the open-source, MCP-native workspace where oversight lives on the object model — per-loop autonomy, an event-sourced audit trail, and tiered approvals enforced at the governance layer. Apache 2.0, self-hostable.
