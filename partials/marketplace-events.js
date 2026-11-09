@@ -68,6 +68,8 @@
   }
 
   function firePageView() {
+    // The /marketplace/ index loads this script for its Install buttons only; it is not a loop page.
+    if (location.pathname.split("/").filter(Boolean).length < 2) return;
     var loop_slug = pageLoopSlug();
     if (!loop_slug) return;
     capture(
