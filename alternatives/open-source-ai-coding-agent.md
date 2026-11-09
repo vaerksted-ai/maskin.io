@@ -82,5 +82,5 @@ Wrong question — the tier-honest one is: for **which** object of work? If the 
 ## Cross-linking / further reading
 
 - **[AI product workspace vs AI coding agent](https://maskin.io/docs/ai-product-workspace-vs-coding-agent/)** — the definitional cut at the tier boundary.
-- **[Self-hosted AI agent control plane for knowledge work](https://maskin.io/alternatives/self-hosted-ai-agent-control-plane/)** — the sibling landing on the control-plane tier.
+- **[Self-hosted AI agent control plane for knowledge work](https://maskin.io/alternatives/self-hosted-ai-agents/)** — the sibling landing on the control-plane tier.
 - **[Open source Codex alternative](https://maskin.io/alternatives/open-source-alternative-to-codex/)** — sibling entry on the /alternatives/ shelf.
