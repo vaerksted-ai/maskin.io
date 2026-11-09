@@ -27,7 +27,7 @@ Pick a single, observable event that starts the loop. “All prospects that matc
 Keeping the trigger observable is what stops *polling-loop hell* — the ambient-agent failure mode where an SDR runs every 30 seconds and floods the reviewer with drafts nobody asked for. Trigger on state changes, not on time.
 
 ## Step 2 — Run the research step
-The trigger spawns an agent session against the new insight. The session’s job is to enrich the account and contact, pull the last 90 days of public signal (funding, hiring, product changes, competitor moves), and write a *why-now* hypothesis onto the insight’s metadata. Enrichment MCPs (Apollo, Clay, Tavily) are the tools the session calls; the findings become typed fields on the object, not a paragraph in a chat log.
+The trigger spawns an agent session against the new insight. The session’s job is to enrich the account and contact, pull the last 90 days of public signal (funding, hiring, product changes, [competitor moves](/marketplace/competitive-intelligence/)), and write a *why-now* hypothesis onto the insight’s metadata. Enrichment MCPs (Apollo, Clay, Tavily) are the tools the session calls; the findings become typed fields on the object, not a paragraph in a chat log.
 Writing structured findings back to the object matters because the draft step in Step 3 needs machine-readable inputs to produce a message that actually cites the research. A blob of text is a prompt; a typed field is context the agent can reason over. Recording the enrichment sources and timestamps on the insight also gives compliance a trail without extra work.
 
 ## Step 3 — Draft the first-touch message
