@@ -167,6 +167,12 @@
 
     <p class="positioning-line">A shaped bet goes in, code checked against the bet&rsquo;s own success criteria comes out, and a human approves the one step that deploys.</p>
 
+    <style id="loop-install-css">
+    .loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 1.5rem; }
+    .loop-install-lead a { color: inherit; text-decoration: underline; }
+    </style>
+    <p class="loop-install-lead">This loop can't be installed yet. In the meantime, <a href="/signup">try Maskin</a>.</p>
+
     <h2>The job</h2>
     <p>A bet is only done when the change is live and the numbers say it worked. Most teams lose that second half. The ticket closes when the code merges, nobody goes back to check the result, and the next planning meeting starts from memory.</p>
     <p>This loop keeps both halves attached. Success criteria are written and checked for measurability before any work starts. The work is planned into tasks with an owner each. Every change gets reviewed against its task. The release gets a final check before it can reach main. After it ships, the loop reads your product data and your customer feedback and posts a verdict on the bet. Your team keeps the shaping taste, the merge approval, and the last word on whether the bet won. The six stages and the three decisions a person keeps are laid out in <a href="/docs/learn/agentic-sdlc/">agentic SDLC explained</a>.</p>
@@ -251,7 +257,7 @@
     <div class="primitives">
       <div class="primitive">
         <p class="primitive__name">Loop</p>
-        <p class="primitive__def">A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome &mdash; not on <em>done for now</em>. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.</p>
+        <p class="primitive__def">A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome &mdash; not on <em>done for now</em>. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.</p>
       </div>
       <div class="primitive">
         <p class="primitive__name">Agent</p>
