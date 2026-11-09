@@ -5,6 +5,8 @@
 // `marketplace_workflow_page_view` names):
 //   marketplace_loop_page_view       { loop_slug, referrer_source }                  on load
 //   marketplace_loop_install_pressed { loop_slug, referrer_source, install_position } on Install click
+// Both also carry utm_source and utm_medium when the visit's link has them
+// (read once from location.search on load; omitted when absent, never stored).
 //
 // Contract with the page HTML (the two installable loops only):
 //   <a data-install-link data-install-slug="<slug>" href="/install/<app slug>">
@@ -41,6 +43,24 @@
     return candidate;
   }
 
+  // utm_source / utm_medium from the landing URL, read once. Only non-empty
+  // values are kept so events never carry empty strings or "undefined".
+  var utm = (() => {
+    var out = {};
+    try {
+      var params = new URLSearchParams(location.search);
+      ["utm_source", "utm_medium"].forEach((key) => {
+        var value = (params.get(key) || "").trim();
+        if (value) out[key] = value;
+      });
+    } catch (e) {}
+    return out;
+  })();
+
+  function withUtm(props) {
+    return Object.assign({}, props, utm);
+  }
+
   function capture(name, props) {
     if (typeof window.posthog === "undefined" || !window.posthog.capture)
       return;
@@ -50,10 +70,13 @@
   function firePageView() {
     var loop_slug = pageLoopSlug();
     if (!loop_slug) return;
-    capture("marketplace_loop_page_view", {
-      loop_slug: loop_slug,
-      referrer_source: normalizeReferrer(document.referrer),
-    });
+    capture(
+      "marketplace_loop_page_view",
+      withUtm({
+        loop_slug: loop_slug,
+        referrer_source: normalizeReferrer(document.referrer),
+      }),
+    );
   }
 
   function onInstallClick(e) {
@@ -62,12 +85,15 @@
       : null;
     if (!link) return;
     var wrap = link.closest("[data-loop-install]");
-    capture("marketplace_loop_install_pressed", {
-      loop_slug: link.getAttribute("data-install-slug") || pageLoopSlug(),
-      referrer_source: normalizeReferrer(document.referrer),
-      install_position:
-        (wrap && wrap.getAttribute("data-install-position")) || "unknown",
-    });
+    capture(
+      "marketplace_loop_install_pressed",
+      withUtm({
+        loop_slug: link.getAttribute("data-install-slug") || pageLoopSlug(),
+        referrer_source: normalizeReferrer(document.referrer),
+        install_position:
+          (wrap && wrap.getAttribute("data-install-position")) || "unknown",
+      }),
+    );
   }
 
   function init() {
