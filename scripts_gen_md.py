@@ -71,6 +71,7 @@ ORDER = [
   "marketplace/linkedin-content/index.html",
   "marketplace/product-delivery/index.html",
   "marketplace/competitive-intelligence/index.html",
+  "marketplace/accounting/index.html",
 ]
 
 class MD(HTMLParser):
