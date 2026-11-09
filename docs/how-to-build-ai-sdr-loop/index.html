@@ -272,7 +272,7 @@
 <p>Keeping the trigger observable is what stops <em>polling-loop hell</em> &mdash; the ambient-agent failure mode where an SDR runs every 30 seconds and floods the reviewer with drafts nobody asked for. Trigger on state changes, not on time.</p>
 
 <h2 id="step-2-run-the-research-step">Step 2 &mdash; Run the research step</h2>
-<p>The trigger spawns an agent session against the new insight. The session&rsquo;s job is to enrich the account and contact, pull the last 90 days of public signal (funding, hiring, product changes, competitor moves), and write a <em>why-now</em> hypothesis onto the insight&rsquo;s metadata. Enrichment MCPs (Apollo, Clay, Tavily) are the tools the session calls; the findings become typed fields on the object, not a paragraph in a chat log.</p>
+<p>The trigger spawns an agent session against the new insight. The session&rsquo;s job is to enrich the account and contact, pull the last 90 days of public signal (funding, hiring, product changes, <a href="/marketplace/competitive-intelligence/">competitor moves</a>), and write a <em>why-now</em> hypothesis onto the insight&rsquo;s metadata. Enrichment MCPs (Apollo, Clay, Tavily) are the tools the session calls; the findings become typed fields on the object, not a paragraph in a chat log.</p>
 <p>Writing structured findings back to the object matters because the draft step in Step 3 needs machine-readable inputs to produce a message that actually cites the research. A blob of text is a prompt; a typed field is context the agent can reason over. Recording the enrichment sources and timestamps on the insight also gives compliance a trail without extra work.</p>
 
 <h2 id="step-3-draft-the-first-touch-message">Step 3 &mdash; Draft the first-touch message</h2>
