@@ -46,6 +46,9 @@
 # Merged 2026-11-03: open source Claude Cowork page folded into the page that holds the head keyword.
 /alternatives/open-source-alternative-to-claude-cowork/  /alternatives/claude-cowork/  301
 /alternatives/open-source-alternative-to-claude-cowork   /alternatives/claude-cowork/  301
+# Merged 2026-11-09: control plane page folded into the self-hosted AI agents page.
+/alternatives/self-hosted-ai-agent-control-plane/  /alternatives/self-hosted-ai-agents/  301
+/alternatives/self-hosted-ai-agent-control-plane   /alternatives/self-hosted-ai-agents/  301
 
 # Danish intro deck v5 for prospects: short link (added 2026-11-04). Page is noindex and not in the sitemap.
 /intro  /deck/virksomheder/  302
