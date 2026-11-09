@@ -1751,12 +1751,14 @@ Self-host Maskin today, or take a hosted trial. Run Claude Code or Codex on the 
 # Agentic workspace vs knowledge space: why Obsidian, Mem, and Confluence stop before the bet
 An **agentic workspace** and a **knowledge space** look adjacent on a category slide and are actually two different tiers of tool. A knowledge space — Obsidian, Mem, Confluence, Raft — owns capture and retrieval. It stores what you know: notes, pages, and a linked graph of them, made searchable so future-you can find them. An agentic workspace sits downstream of that. The object of work is not a note — it is an insight that becomes a shaped bet with a win condition, and closes on a validated outcome. Both tiers are real, both are useful, and picking the right one depends on the honest answer to the closure diagnostic: can the tool tell you whether the work succeeded?
 This piece is the tier-3 leg of the [three tiers of AI-native work](/docs/three-tiers-ai-native-work/) framework — the tier whose object of work is a note and whose terminal event is someone opening it.
+This page is for heads of product whose team keeps its notes and decisions in a knowledge tool and wants to know whether that is enough. It gives a four-question check you can run on your last three decisions, and says when to run both tiers.
+[Book a meeting](https://meshfirm.com/bookmagnus) Bring one decision your team made last quarter and see where its owner, win condition and outcome check would live.
 > ✓
 > **Key takeaways**
 > **Knowledge spaces own capture.** The object of work is a note, a page, or a linked graph of them.
 > **The failure mode is not retrieval.** AI-native search across knowledge is now table stakes. The failure mode is closure — a captured insight never becomes a shaped bet with a win condition, and no loop terminates on an outcome.
 > **Agentic workspaces sit downstream.** The object of work is insight → bet → task → validated outcome, on typed objects agents can operate.
-> **They store what you know; Maskin turns what you know into decisions that run while you sleep.**
+> **They store what you know; Maskin keeps the decision, its win condition and its outcome check on one record.**
 > **Many teams will run both, and that is fine.** Obsidian for personal knowledge plus Maskin for team decisions is a legitimate stack.
 
 ## What a knowledge space actually is
@@ -1785,6 +1787,14 @@ The difference is the object model, and the row spine below is the one the tier-
 | Open source | Sometimes (Obsidian’s file format is open; others closed) | Apache 2.0, auditable and self-hostable |
 Read the two columns as tiers, not as a scoreboard, and read the Validation row as where the closure diagnostic lives: “the note is edited, or not” closes on an artifact; “outcome measured against win condition” closes on an outcome. The knowledge space’s column is correct for the tier it serves. The agentic workspace’s column is what the tier past capture looks like when the object of work carries a win condition instead of a link count.
 
+## A five-minute check for heads of product
+Take your team’s last three product decisions and run each through these checks: retrieval can surface notes, but it cannot tell you whether the work succeeded.
+1. **Is there a named owner?** A pass means each decision has a named owner. A fail means the decision is recorded without one.
+2. **Was the win condition written down before work started?** A pass means the decision had a written win condition before work began. A fail means there was no win condition, or it was written only after work started.
+3. **Is the lineage from the signal to the decision recorded?** A pass means you can trace the decision back to the insight or signal behind it. A fail means that connection is not recorded.
+4. **Did anyone measure the outcome against the win condition?** A pass means the outcome was measured against the condition when the work shipped. A fail means no such measurement was made.
+If two or more checks fail, your decision loop is running out of the knowledge space: notes may be captured, but the bet has no reliable path from signal to measured outcome. Put the loop on a tool that models shaped bets, win conditions, lineage, and outcomes, and keep the knowledge space for what it is good at, remembering what you want to keep.
+
 ## The honest case for running both
 Many teams will pick both, and that is the right answer for many teams. Obsidian for a founder’s second brain plus Maskin for the team’s decisions is a legitimate stack. Confluence for the durable wiki of “how we do things here” plus Maskin for the loop of “what we are deciding to ship this cycle” is another. If that durable wiki also needs to be something agents read before they answer, the surface for that is [running team knowledge as an LLM wiki](/marketplace/knowledge-wiki/). The two tiers do different jobs, and the honest read of the category is that they are complementary more often than they are competitive.
 Where the tiers genuinely collide is when a team tries to run their decision loop out of a knowledge space alone — an ADR archive as the only place decisions live, a Confluence page as the only place a shaped bet exists. That works up to the point where signal starts arriving from more sources than a human can capture into notes on the same day. Beyond that point, the knowledge space is being asked to be a workspace, and the closure diagnostic bites: no win condition on the note, no shipped outcome measured against it, no loop that terminates. The right answer is not to demand more of the knowledge space; it is to put the decision loop on a tier that models it.
@@ -1805,7 +1815,7 @@ No, and it usually shouldn’t. Personal knowledge and durable team wikis are th
 Closure. AI-native search has closed the “I can’t find the note I wrote” gap in most knowledge tools. What has not closed is the gap between the captured insight and the shipped decision — no note tool carries a win condition on the note or measures an outcome against it. The insight remains retrievable and inert. An agentic workspace models the closure step as first-class: the insight becomes a shaped bet with a win condition, the bet ships, and the loop terminates on a measured outcome.
 
 ### Can I export knowledge from Obsidian, Mem, or Confluence into Maskin?
-Insights land in Maskin as typed objects, so importing structured knowledge into an insight backlog is straightforward for teams that want to run a decision loop against notes they have already captured. In practice most teams don’t need to bulk-import — the loop cares about the signals that arrive going forward, and those come in through triggers on Slack, Intercom, PostHog, GitHub, and similar sources. Historical notes live where they live; the loop starts closing on the signals coming in now.
+Insights land in Maskin as typed objects, so importing structured knowledge into an insight backlog is straightforward for teams that want to run a decision loop against notes they have already captured. In practice most teams don’t need to bulk-import: the loop cares about the decisions you make from now on. Historical notes live where they live; the first decision you run through the loop starts closing.
 
 ### Is Maskin the right pick for a solo knowledge worker?
 Probably not. The loop is scoped to team decisions — shaped bets, human taste gates, shipped outcomes measured against a win condition — and the value compounds with more than one person and more than one source. A solo knowledge worker whose object of work is genuinely “notes I want to find later” is better served by a knowledge space. The moment the object of work becomes “decisions the team commits to and ships,” the tier changes.
@@ -1814,11 +1824,11 @@ Probably not. The loop is scoped to team decisions — shaped bets, human taste 
 This piece is the tier-3 leg of the trilogy hub, [The three tiers of AI-native work — the closure diagnostic](/docs/three-tiers-ai-native-work/), which runs the same diagnostic across all three tiers of AI-native work.
 If you’re evaluating the tier past capture, the two companion pieces are worth reading side by side. The [cornerstone on agentic workspaces](/docs/what-is-an-agentic-workspace/) walks the full shape end to end. The tier-2 companion, [AI product management tool: not a task tracker](/docs/ai-product-management-tool/), runs the same diagnostic against task trackers with AI summaries. For the operational expression of the anti-backlog doctrine that makes the bet a first-class object, see [bet-based product planning](/docs/bet-based-product-planning/).
 If you’re deciding which knowledge-layer architecture your agents should read from, [how to choose a knowledge layer for your agents](/docs/learn/choose-a-knowledge-layer/) walks the four options (retrieval-beside, stateful-runtime, temporal-knowledge-graph, typed workspace graph) and the two questions that decide.
-Maskin is open source under Apache 2.0. Self-hosting is free — clone the repo and run the loop on your own infrastructure. Hosted Pro is $20/seat/month with agent credits included; Team is $200/workspace/month with unlimited seats. The knowledge space keeps what you know; the agentic workspace turns what you know into decisions that ship.
+Maskin is open source under Apache 2.0. The knowledge space keeps what you know; the agentic workspace turns what you know into decisions that ship.
 Read next
 
-## Getting started is free
-Self-host Maskin today, or take a hosted trial. Run your knowledge space where you already have one and let Maskin close the loop on the decisions the team ships. The [agentic-workspace cornerstone](/docs/what-is-an-agentic-workspace/) and the [bet-based product planning](/docs/bet-based-product-planning/) guide are the two best next reads.
+## Heads of product, keep decisions in view
+Book a meeting and bring one decision your team made last quarter. We'll show where its owner, win condition and outcome check would live; nothing needs installing for the meeting. The [agentic-workspace cornerstone](/docs/what-is-an-agentic-workspace/) and the [bet-based product planning](/docs/bet-based-product-planning/) guide are the two best next reads.
 
 
 ---
