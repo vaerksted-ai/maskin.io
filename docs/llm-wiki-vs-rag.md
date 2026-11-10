@@ -2,12 +2,16 @@
 
 # LLM wiki vs RAG: which one your team actually needs
 **An LLM wiki and RAG are not competitors.** RAG embeds your sources and retrieves fragments at query time, assembling an answer fresh on every request. An LLM wiki compiles those sources into interlinked pages ahead of time, so an agent reads a stable artifact a human can audit. The wiki can feed a retrieval pipeline, and most teams end up running both — for different jobs.
+This page is for a CTO or head of engineering choosing how agents should read team knowledge from internal documents, tickets, and decisions. It explains the structural difference between retrieval and a compiled wiki, what a preregistered 2026 study found, and a ten-question test you can run on your own corpus before choosing RAG, a wiki, or both.
+Book a meeting and bring ten real questions your agents get asked. We’ll run them through the test described here together.
+[Book a meeting](https://meshfirm.com/bookmagnus) Bring ten real questions your agents get asked, and we’ll run the comparison with you.
 > ✓
 > **Key takeaways**
 > **RAG is a retrieval mechanism; an LLM wiki is a compiled artifact.** They sit at different layers, which is why comparing them head-to-head produces more heat than light.
 > **They compose.** The wiki is a clean source a retrieval pipeline can read; RAG serves the volatile material a wiki deliberately leaves out.
 > **A preregistered 2026 study found no architecture won on all three axes** — evidence organization, citation support, and cost. RAG held the cost line, the wiki connected findings better, and the judge was the tie-breaker.
 > **The deciding factor for a team is upkeep, not build.** Whoever owns the wiki after its first author changes roles decides whether it survives.
+> **Test it on your own corpus.** Ten real questions, scored for source citation and tokens per query, will tell you more than any benchmark.
 > **One wiki advantage survived the study:** every page cites the object its claim came from, so a reader walks back to the source instead of trusting a summary.
 
 ## The short answer: “versus” is the wrong frame
@@ -62,24 +66,22 @@ Run those against six questions, in the order that changes the answer:
 **RAG wins** when the corpus is large and moving, the questions are open-ended, and “close enough, retrieved fresh” beats “stable but expensive to keep current.”
 **You run both** when the wiki is the curated core and RAG serves the volatile edge — new tickets, fresh transcripts, anything that changes faster than a compile cycle. That hybrid is what the autocomplete traffic is already searching for — and if you are mapping the compiled artifact to the storage engine underneath it, [wiki-style knowledge vs an embedding store](/docs/knowledge-wiki-vs-vector-database/) covers where those two layers meet. For the wider decision across all four architectures agent knowledge can live in — retrieval-beside, stateful-runtime, temporal knowledge graph, and typed workspace graph — [how to choose a knowledge layer for your agents](/docs/learn/choose-a-knowledge-layer/) walks the two structural questions that decide it.
 
-## Running a wiki as a loop, not a side project
-Here the comparison stops being about architecture and starts being about ownership. The compile is the easy part. The failure mode is upkeep: a wiki that only gets written when someone remembers decays into a folder of half-true pages inside a quarter. Writing to it is a separate job from doing the work, and separate jobs lose.
-The teams that keep one alive do not add a writing chore. They make writing a byproduct of work that already closes, and reading a byproduct of work that already starts. That is the shape of a Maskin loop: a closed work item fires it, agents write the verdict and link the artifact, a human gates the taste-sensitive summaries, and it closes when a new hire or a new agent can read the page and stop needing to ask.
-One vocabulary note, because it matters when you go looking for tooling. “Loop” is now a two-vendor category noun — Linear shipped one in early September 2026, Atlassian followed ten days later — and in both cases the noun means recurring execution that lives inside that vendor’s own product. That naming collision is exactly why the primitives below are worded as carefully as they are.
+## Test it on your own corpus before you commit
+The preregistered 2026 study found no architecture won on every measure. RAG held the cost line, while the wiki connected findings better and provided claim-by-claim citations. The result also depended on the retrieval baseline and how answers were scored. The practical lesson is to measure on your own corpus, not assume the study predicts your costs or answer quality.
+1. Pick ten real questions your agents get asked. Use questions that reflect actual work, not examples invented to make one approach look good.
+2. Split them into single-fact lookups and questions that need the answer to connect information across several documents.
+3. Run both approaches on the same questions: retrieve source fragments at query time with RAG, and answer from a compiled wiki.
+4. For each answer, record whether it cites its source. Also record the tokens spent per query, so the query cost is visible.
+5. Compare the build cost separately from the query cost. The study found the wiki build cost about two orders of magnitude more, and it spent roughly 21 times more tokens per query. Check both costs for your own setup.
+Keep the questions and the way you assess answers consistent across both runs. For single-fact questions, check whether the answer finds the fact. For questions that need several documents, check whether it connects the findings. A citation is useful only if you can follow it back to the object the claim came from.
 
-### Loop
-A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop.
-**Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.**
-
-### Agent
-A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
-
-### MCP
-The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
-
-### Skill
-A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
-Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
+## Who owns the wiki next quarter
+Upkeep is the failure mode to plan for. A wiki written only when someone remembers can decay within a quarter. Pages can become stale, or nobody may review what agents are reading. Before building one, settle these responsibilities:
+- **A named owner:** one person responsible for keeping the wiki useful after its first author changes roles.
+- **What feeds it:** decide which team documents, tickets, and decisions belong in the source material.
+- **Who reviews a compile:** name who checks the compiled pages before agents read them.
+- **How stale pages are retired:** agree how the team identifies and removes pages that no longer reflect current decisions.
+If the answer to who owns it is nobody, use RAG for now rather than build a wiki without an owner. Maskin has an [LLM knowledge wiki loop](/marketplace/knowledge-wiki/) listing where closed bets and shipped decisions become typed pages that cite the object each claim came from.
 
 ## FAQ
 
@@ -103,7 +105,13 @@ Andrej Karpathy published the pattern as a public gist in April 2026, framing a 
 
 ### Graph RAG vs LLM wiki?
 Graph RAG builds a knowledge graph at retrieval time to improve multi-hop recall; an LLM wiki builds an interlinked page set ahead of time. They overlap in spirit — both trade raw chunks for structure — but graph RAG is still a query-time mechanism, while the wiki is a reviewable artifact a human can edit.
+
+### How do I test an LLM wiki against RAG on my own documents?
+Choose ten real questions your agents get asked, then split them into single-fact lookups and questions that need information connected across documents. Run both approaches on the same questions. For each answer, record whether it cites its source and the tokens spent per query. Compare build cost separately from query cost, since a wiki can cost more to build and more per query.
+
+### Who should own an LLM wiki on an engineering team?
+Name one person who is responsible for the wiki after its first author changes roles. Before building, also decide what material feeds it, who reviews compiled pages before agents read them, and how stale pages are retired. If nobody can own those tasks, the wiki is likely to rot. Use RAG for now rather than create an artifact the team will not maintain.
 Read next
 
-## Run your wiki as a loop, not a side project
-Maskin is the MCP-native workspace where closed bets compile into typed pages agents read before they answer — so the wiki is a byproduct of work that already closes. Open source under Apache 2.0. Self-host free, bring your own model.
+## CTOs: test your agent knowledge setup
+Book a meeting and bring ten real questions your agents get asked. We’ll run them through the test together, and nothing needs installing for the meeting.

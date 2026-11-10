@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LLM wiki vs RAG — which one your team actually needs — Maskin</title>
-<meta name="description" content="RAG retrieves fragments at query time; an LLM wiki compiles pages ahead of time. They solve different problems — here is how to decide which one your team needs.">
+<meta name="description" content="LLM wiki vs RAG for CTOs and heads of engineering: the structural difference, what a preregistered 2026 study found, and a ten-question test for your own corpus. Book a meeting.">
+
+<!-- Sitewide signup CTAs off for this page (build.sh opt-out marker: docnav__cta). Single CTA is Book a meeting. -->
 
 <!-- Canonical -->
 <link rel="canonical" href="https://maskin.io/docs/llm-wiki-vs-rag/">
@@ -21,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/docs/llm-wiki-vs-rag/">
 <meta property="og:title" content="LLM wiki vs RAG: which one your team actually needs">
-<meta property="og:description" content="RAG retrieves fragments at query time; an LLM wiki compiles pages ahead of time. They solve different problems — here is how to decide which one your team needs.">
+<meta property="og:description" content="LLM wiki vs RAG for CTOs and heads of engineering: the structural difference, what a preregistered 2026 study found, and a ten-question test for your own corpus. Book a meeting.">
 <meta property="og:image" content="https://maskin.io/og-image-llm-wiki-vs-rag.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -32,7 +34,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@maskin_io">
 <meta name="twitter:title" content="LLM wiki vs RAG: which one your team actually needs">
-<meta name="twitter:description" content="RAG is a mechanism, an LLM wiki is an artifact. They sit at different layers, and most teams end up running both — for different jobs.">
+<meta name="twitter:description" content="LLM wiki vs RAG for CTOs and heads of engineering: the structural difference, what a preregistered 2026 study found, and a ten-question test for your own corpus. Book a meeting.">
 <meta name="twitter:image" content="https://maskin.io/og-image-llm-wiki-vs-rag.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,12 +52,12 @@
       "@id": "https://maskin.io/docs/llm-wiki-vs-rag/#post",
       "headline": "LLM wiki vs RAG: which one your team actually needs",
       "name": "LLM wiki vs RAG",
-      "description": "RAG is a retrieval mechanism and an LLM wiki is a compiled artifact — different layers, not competitors. A preregistered 2026 study found no architecture won on evidence organization, citation support, and cost at once, so the honest choice is which axis to optimize.",
+      "description": "LLM wiki vs RAG for CTOs and heads of engineering: the structural difference, what a preregistered 2026 study found, and a ten-question test for your own corpus. Book a meeting.",
       "url": "https://maskin.io/docs/llm-wiki-vs-rag/",
       "mainEntityOfPage": "https://maskin.io/docs/llm-wiki-vs-rag/",
       "inLanguage": "en",
       "datePublished": "2026-09-25T00:00:00Z",
-      "dateModified": "2026-09-25T00:00:00Z",
+      "dateModified": "2026-11-10T00:00:00Z",
       "image": "https://maskin.io/og-image-llm-wiki-vs-rag.png",
       "author": {
         "@type": "Organization",
@@ -77,11 +79,26 @@
         "url": "https://maskin.io/"
       },
       "about": [
-        { "@type": "Thing", "name": "LLM wiki" },
-        { "@type": "Thing", "name": "Retrieval-augmented generation" },
-        { "@type": "Thing", "name": "Vector database" },
-        { "@type": "Thing", "name": "Knowledge base" },
-        { "@type": "Thing", "name": "Agentic workspace" }
+        {
+          "@type": "Thing",
+          "name": "LLM wiki"
+        },
+        {
+          "@type": "Thing",
+          "name": "Retrieval-augmented generation"
+        },
+        {
+          "@type": "Thing",
+          "name": "Vector database"
+        },
+        {
+          "@type": "Thing",
+          "name": "Knowledge base"
+        },
+        {
+          "@type": "Thing",
+          "name": "Agentic workspace"
+        }
       ]
     },
     {
@@ -165,6 +182,22 @@
             "@type": "Answer",
             "text": "Graph RAG builds a knowledge graph at retrieval time to improve multi-hop recall; an LLM wiki builds an interlinked page set ahead of time. They overlap in spirit — both trade raw chunks for structure — but graph RAG is still a query-time mechanism, while the wiki is a reviewable artifact a human can edit."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I test an LLM wiki against RAG on my own documents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose ten real questions your agents get asked, then split them into single-fact lookups and questions that need information connected across documents. Run both approaches on the same questions. For each answer, record whether it cites its source and the tokens spent per query. Compare build cost separately from query cost, since a wiki can cost more to build and more per query."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who should own an LLM wiki on an engineering team?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Name one person who is responsible for the wiki after its first author changes roles. Before building, also decide what material feeds it, who reviews compiled pages before agents read them, and how stale pages are retired. If nobody can own those tasks, the wiki is likely to rot. Use RAG for now rather than create an artifact the team will not maintain."
+          }
         }
       ]
     }
@@ -184,6 +217,9 @@
     <h1>LLM wiki vs RAG: which one your team actually needs</h1>
     <p class="lead"><strong>An LLM wiki and RAG are not competitors.</strong> RAG embeds your sources and retrieves fragments at query time, assembling an answer fresh on every request. An LLM wiki compiles those sources into interlinked pages ahead of time, so an agent reads a stable artifact a human can audit. The wiki can feed a retrieval pipeline, and most teams end up running both &mdash; for different jobs.</p>
 
+    <p>This page is for a CTO or head of engineering choosing how agents should read team knowledge from internal documents, tickets, and decisions. It explains the structural difference between retrieval and a compiled wiki, what a preregistered 2026 study found, and a ten-question test you can run on your own corpus before choosing RAG, a wiki, or both.</p><p>Book a meeting and bring ten real questions your agents get asked. We&rsquo;ll run them through the test described here together.</p>
+    <p><a class="btn-primary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener" data-track="docs_book_meeting_click" data-position="top">Book a meeting</a> <span style="color:var(--ink-3);margin-left:.5rem">Bring ten real questions your agents get asked, and we&rsquo;ll run the comparison with you.</span></p>
+
     <div class="callout callout--muted">
       <div class="callout__icon" aria-hidden="true">&#10003;</div>
       <div class="callout__body">
@@ -193,6 +229,7 @@
           <li><strong>They compose.</strong> The wiki is a clean source a retrieval pipeline can read; RAG serves the volatile material a wiki deliberately leaves out.</li>
           <li><strong>A preregistered 2026 study found no architecture won on all three axes</strong> &mdash; evidence organization, citation support, and cost. RAG held the cost line, the wiki connected findings better, and the judge was the tie-breaker.</li>
           <li><strong>The deciding factor for a team is upkeep, not build.</strong> Whoever owns the wiki after its first author changes roles decides whether it survives.</li>
+          <li><strong>Test it on your own corpus.</strong> Ten real questions, scored for source citation and tokens per query, will tell you more than any benchmark.</li>
           <li><strong>One wiki advantage survived the study:</strong> every page cites the object its claim came from, so a reader walks back to the source instead of trusting a summary.</li>
         </ul>
       </div>
@@ -259,25 +296,7 @@
     <p><strong>RAG wins</strong> when the corpus is large and moving, the questions are open-ended, and &ldquo;close enough, retrieved fresh&rdquo; beats &ldquo;stable but expensive to keep current.&rdquo;</p>
     <p><strong>You run both</strong> when the wiki is the curated core and RAG serves the volatile edge &mdash; new tickets, fresh transcripts, anything that changes faster than a compile cycle. That hybrid is what the autocomplete traffic is already searching for &mdash; and if you are mapping the compiled artifact to the storage engine underneath it, <a href="/docs/knowledge-wiki-vs-vector-database/">wiki-style knowledge vs an embedding store</a> covers where those two layers meet. For the wider decision across all four architectures agent knowledge can live in &mdash; retrieval-beside, stateful-runtime, temporal knowledge graph, and typed workspace graph &mdash; <a href="/docs/learn/choose-a-knowledge-layer/">how to choose a knowledge layer for your agents</a> walks the two structural questions that decide it.</p>
 
-    <h2>Running a wiki as a loop, not a side project</h2>
-    <p>Here the comparison stops being about architecture and starts being about ownership. The compile is the easy part. The failure mode is upkeep: a wiki that only gets written when someone remembers decays into a folder of half-true pages inside a quarter. Writing to it is a separate job from doing the work, and separate jobs lose.</p>
-    <p>The teams that keep one alive do not add a writing chore. They make writing a byproduct of work that already closes, and reading a byproduct of work that already starts. That is the shape of a Maskin loop: a closed work item fires it, agents write the verdict and link the artifact, a human gates the taste-sensitive summaries, and it closes when a new hire or a new agent can read the page and stop needing to ask.</p>
-    <p>One vocabulary note, because it matters when you go looking for tooling. &ldquo;Loop&rdquo; is now a two-vendor category noun &mdash; Linear shipped one in early September 2026, Atlassian followed ten days later &mdash; and in both cases the noun means recurring execution that lives inside that vendor&rsquo;s own product. That naming collision is exactly why the primitives below are worded as carefully as they are.</p>
-
-    <h3>Loop</h3>
-    <p>A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome &mdash; not on <em>done for now</em>. Every listing on the Marketplace is a loop.</p>
-    <p><strong>Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.</strong></p>
-
-    <h3>Agent</h3>
-    <p>A named role a model performs &mdash; an SEO analyst, a discovery synthesizer, an outbound writer. Not an <em>AI teammate</em>: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.</p>
-
-    <h3>MCP</h3>
-    <p>The wire an agent uses to reach the tools your team already uses &mdash; the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.</p>
-
-    <h3>Skill</h3>
-    <p>A packaged capability you attach to an agent &mdash; <em>draft a follow-up in our voice</em>, <em>summarize a customer call against our discovery template</em>. Skills are the reusable pieces of judgment your team is already building without realising it.</p>
-    <p>Inside a loop listing, agents / MCPs / skills appear as &ldquo;built with&rdquo; components of the loop, never as top-level marketplace sections of their own.</p>
-
+    <h2>Test it on your own corpus before you commit</h2><p>The preregistered 2026 study found no architecture won on every measure. RAG held the cost line, while the wiki connected findings better and provided claim-by-claim citations. The result also depended on the retrieval baseline and how answers were scored. The practical lesson is to measure on your own corpus, not assume the study predicts your costs or answer quality.</p><ol><li>Pick ten real questions your agents get asked. Use questions that reflect actual work, not examples invented to make one approach look good.</li><li>Split them into single-fact lookups and questions that need the answer to connect information across several documents.</li><li>Run both approaches on the same questions: retrieve source fragments at query time with RAG, and answer from a compiled wiki.</li><li>For each answer, record whether it cites its source. Also record the tokens spent per query, so the query cost is visible.</li><li>Compare the build cost separately from the query cost. The study found the wiki build cost about two orders of magnitude more, and it spent roughly 21 times more tokens per query. Check both costs for your own setup.</li></ol><p>Keep the questions and the way you assess answers consistent across both runs. For single-fact questions, check whether the answer finds the fact. For questions that need several documents, check whether it connects the findings. A citation is useful only if you can follow it back to the object the claim came from.</p><h2>Who owns the wiki next quarter</h2><p>Upkeep is the failure mode to plan for. A wiki written only when someone remembers can decay within a quarter. Pages can become stale, or nobody may review what agents are reading. Before building one, settle these responsibilities:</p><ul><li><strong>A named owner:</strong> one person responsible for keeping the wiki useful after its first author changes roles.</li><li><strong>What feeds it:</strong> decide which team documents, tickets, and decisions belong in the source material.</li><li><strong>Who reviews a compile:</strong> name who checks the compiled pages before agents read them.</li><li><strong>How stale pages are retired:</strong> agree how the team identifies and removes pages that no longer reflect current decisions.</li></ul><p>If the answer to who owns it is nobody, use RAG for now rather than build a wiki without an owner. Maskin has an <a href="/marketplace/knowledge-wiki/">LLM knowledge wiki loop</a> listing where closed bets and shipped decisions become typed pages that cite the object each claim came from.</p>
     <h2>FAQ</h2>
     <h3>Is an LLM wiki a RAG?</h3>
     <p>No. A RAG system embeds raw sources and retrieves fragments at query time, so the answer is assembled fresh on every request. An LLM wiki compiles those sources into interlinked pages ahead of time and stores them as a durable artifact. The wiki can feed a retrieval pipeline, but the wiki itself is the compiled knowledge, not the mechanism that reads from it.</p>
@@ -294,6 +313,10 @@
     <h3>Graph RAG vs LLM wiki?</h3>
     <p>Graph RAG builds a knowledge graph at retrieval time to improve multi-hop recall; an LLM wiki builds an interlinked page set ahead of time. They overlap in spirit &mdash; both trade raw chunks for structure &mdash; but graph RAG is still a query-time mechanism, while the wiki is a reviewable artifact a human can edit.</p>
 
+    <h3>How do I test an LLM wiki against RAG on my own documents?</h3>
+    <p>Choose ten real questions your agents get asked, then split them into single-fact lookups and questions that need information connected across documents. Run both approaches on the same questions. For each answer, record whether it cites its source and the tokens spent per query. Compare build cost separately from query cost, since a wiki can cost more to build and more per query.</p>
+    <h3>Who should own an LLM wiki on an engineering team?</h3>
+    <p>Name one person who is responsible for the wiki after its first author changes roles. Before building, also decide what material feeds it, who reviews compiled pages before agents read them, and how stale pages are retired. If nobody can own those tasks, the wiki is likely to rot. Use RAG for now rather than create an artifact the team will not maintain.</p>
     <div class="related">
       <p class="related__title">Read next</p>
       <div class="doc-cards">
@@ -320,16 +343,24 @@
       </div>
     </div>
     <div class="post-cta">
-      <h2>Run your wiki as a loop, not a side project</h2>
-      <p>Maskin is the MCP-native workspace where closed bets compile into typed pages agents read before they answer &mdash; so the wiki is a byproduct of work that already closes. Open source under Apache 2.0. Self-host free, bring your own model.</p>
+      <h2>CTOs: test your agent knowledge setup</h2>
+      <p>Book a meeting and bring ten real questions your agents get asked. We&rsquo;ll run them through the test together, and nothing needs installing for the meeting.</p>
       <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
-        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+        <a class="btn-primary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener" data-track="docs_book_meeting_click" data-position="bottom">Book a meeting</a>
       </div>
     </div>
   </main>
 </div>
 
 <script src="/docs/docs.js"></script>
+<script>
+(function () {
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[data-track='docs_book_meeting_click']");
+    if (!a || !window.posthog || !window.posthog.capture) return;
+    window.posthog.capture("docs_book_meeting_click", { page_slug: "llm-wiki-vs-rag", page_type: "article", language: "en", position: a.getAttribute("data-position"), page_path: location.pathname });
+  });
+})();
+</script>
 </body>
 </html>
