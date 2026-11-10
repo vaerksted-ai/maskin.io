@@ -73,7 +73,6 @@
       { label: "CLAUDE.md vs AGENTS.md", href: "/docs/claude-md-vs-agents-md/", nested: true },
       { label: "LLM wiki vs RAG", href: "/docs/llm-wiki-vs-rag/" },
       { label: "Bet-based product planning", href: "/docs/bet-based-product-planning/" },
-      { label: "How to run bet-based planning", href: "/docs/how-to-run-bet-based-planning/", nested: true },
       { label: "Bet vs backlog", href: "/docs/bet-vs-backlog/", nested: true },
       { label: "The AI-native product operating model", href: "/docs/ai-native-product-operating-model/", nested: true },
       { label: "Self-hosted AI workspace", href: "/docs/self-hosted-ai-workspace/" },
