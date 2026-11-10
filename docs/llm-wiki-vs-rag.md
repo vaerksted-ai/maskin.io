@@ -3,7 +3,7 @@
 # LLM wiki vs RAG: which one your team actually needs
 **An LLM wiki and RAG are not competitors.** RAG embeds your sources and retrieves fragments at query time, assembling an answer fresh on every request. An LLM wiki compiles those sources into interlinked pages ahead of time, so an agent reads a stable artifact a human can audit. The wiki can feed a retrieval pipeline, and most teams end up running both — for different jobs.
 This page is for a CTO or head of engineering choosing how agents should read team knowledge from internal documents, tickets, and decisions. It explains the structural difference between retrieval and a compiled wiki, what a preregistered 2026 study found, and a ten-question test you can run on your own corpus before choosing RAG, a wiki, or both.
-[Book a meeting](https://meshfirm.com/bookmagnus) Bring ten real questions your agents get asked, and we’ll run the comparison with you.
+[Book a meeting](https://meshfirm.com/bookmagnus) Bring your ten questions. We’ll score them together and read what the results point to.
 > ✓
 > **Key takeaways**
 > **RAG is a retrieval mechanism; an LLM wiki is a compiled artifact.** They sit at different layers, which is why comparing them head-to-head produces more heat than light.
@@ -24,7 +24,7 @@ That shape is genuinely good at one thing: open-ended recall over a large, shift
 ## What an LLM wiki actually does
 An LLM wiki is a **compile-time** pattern. Andrej Karpathy named it in a public gist in April 2026 as the alternative to two things teams were already doing: stuffing per-agent memory files, and bolting a retrieval layer onto raw documents.
 An LLM reads your sources once, extracts the durable claims, and writes them into interlinked pages with links back to the object each claim came from. Agents then read those pages before they answer. The difference that matters is who the artifact is for: a Notion or Confluence space is written for humans and searched by humans, while a wiki is written to be read by an agent and cites where each claim came from. Because the artifact is compiled ahead of time, the same question tends to return the same answer — and a reader can check the page it came from.
-That compiled shape is what [the LLM knowledge wiki loop](/marketplace/knowledge-wiki/) runs on: closed bets and shipped decisions written as typed pages agents pick up on the same graph they already work on.
+Maskin’s [LLM knowledge wiki](/marketplace/knowledge-wiki/) turns finished work and shipped decisions into pages agents can read.
 
 ## Mechanism vs artifact, and why the “vs” collapses
 RAG is a **mechanism**. An LLM wiki is an **artifact**. The cleanest way to hold the distinction is compiled versus interpreted: RAG interprets at request time, a wiki compiles ahead of it. A mechanism can read an artifact. An artifact does not replace the mechanism that reads it.
@@ -72,6 +72,12 @@ The preregistered 2026 study found no architecture won on every measure. RAG hel
 3. Run both approaches on the same questions: retrieve source fragments at query time with RAG, and answer from a compiled wiki.
 4. For each answer, record whether it cites its source. Also record the tokens spent per query, so the query cost is visible.
 5. Compare the build cost separately from the query cost. The study found the wiki build cost about two orders of magnitude more, and it spent roughly 21 times more tokens per query. Check both costs for your own setup.
+
+Then read the numbers by question type, and keep build cost separate from per-query tokens:
+- **Points to RAG:** single-fact lookups dominate, the answers already cite their sources, and tokens per query matter more than connecting findings across documents.
+- **Points to a wiki:** the cross-document questions are answered better and claim-by-claim citations are worth the build cost and the extra tokens per query.
+- **Points to both:** you have both kinds of question. Use the wiki for settled, citeable answers and RAG for the rest.
+
 Keep the questions and the way you assess answers consistent across both runs. For single-fact questions, check whether the answer finds the fact. For questions that need several documents, check whether it connects the findings. A citation is useful only if you can follow it back to the object the claim came from.
 
 ## Who owns the wiki next quarter
@@ -80,7 +86,7 @@ Upkeep is the failure mode to plan for. A wiki written only when someone remembe
 - **What feeds it:** decide which team documents, tickets, and decisions belong in the source material.
 - **Who reviews a compile:** name who checks the compiled pages before agents read them.
 - **How stale pages are retired:** agree how the team identifies and removes pages that no longer reflect current decisions.
-If the answer to who owns it is nobody, use RAG for now rather than build a wiki without an owner. Maskin has an [LLM knowledge wiki loop](/marketplace/knowledge-wiki/) listing where closed bets and shipped decisions become typed pages that cite the object each claim came from.
+If the answer to who owns it is nobody, use RAG for now rather than build a wiki without an owner. Maskin’s [LLM knowledge wiki](/marketplace/knowledge-wiki/) turns finished work and shipped decisions into pages that cite the source object behind each claim.
 
 ## FAQ
 
@@ -113,4 +119,4 @@ Name one person who is responsible for the wiki after its first author changes r
 Read next
 
 ## CTOs: test your agent knowledge setup
-Book a meeting and bring ten real questions your agents get asked. We’ll run them through the test together, and nothing needs installing for the meeting.
+Book a meeting and bring ten real questions your agents get asked. We’ll score them together and read the result.
