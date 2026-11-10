@@ -72,12 +72,10 @@ The preregistered 2026 study found no architecture won on every measure. RAG hel
 3. Run both approaches on the same questions: retrieve source fragments at query time with RAG, and answer from a compiled wiki.
 4. For each answer, record whether it cites its source. Also record the tokens spent per query, so the query cost is visible.
 5. Compare the build cost separately from the query cost. The study found the wiki build cost about two orders of magnitude more, and it spent roughly 21 times more tokens per query. Check both costs for your own setup.
-
 Then read the numbers by question type, and keep build cost separate from per-query tokens:
 - **Points to RAG:** single-fact lookups dominate, the answers already cite their sources, and tokens per query matter more than connecting findings across documents.
 - **Points to a wiki:** the cross-document questions are answered better and claim-by-claim citations are worth the build cost and the extra tokens per query.
 - **Points to both:** you have both kinds of question. Use the wiki for settled, citeable answers and RAG for the rest.
-
 Keep the questions and the way you assess answers consistent across both runs. For single-fact questions, check whether the answer finds the fact. For questions that need several documents, check whether it connects the findings. A citation is useful only if you can follow it back to the object the claim came from.
 
 ## Who owns the wiki next quarter
