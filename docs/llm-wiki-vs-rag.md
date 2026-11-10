@@ -3,7 +3,6 @@
 # LLM wiki vs RAG: which one your team actually needs
 **An LLM wiki and RAG are not competitors.** RAG embeds your sources and retrieves fragments at query time, assembling an answer fresh on every request. An LLM wiki compiles those sources into interlinked pages ahead of time, so an agent reads a stable artifact a human can audit. The wiki can feed a retrieval pipeline, and most teams end up running both — for different jobs.
 This page is for a CTO or head of engineering choosing how agents should read team knowledge from internal documents, tickets, and decisions. It explains the structural difference between retrieval and a compiled wiki, what a preregistered 2026 study found, and a ten-question test you can run on your own corpus before choosing RAG, a wiki, or both.
-Book a meeting and bring ten real questions your agents get asked. We’ll run them through the test described here together.
 [Book a meeting](https://meshfirm.com/bookmagnus) Bring ten real questions your agents get asked, and we’ll run the comparison with you.
 > ✓
 > **Key takeaways**
@@ -11,7 +10,7 @@ Book a meeting and bring ten real questions your agents get asked. We’ll run t
 > **They compose.** The wiki is a clean source a retrieval pipeline can read; RAG serves the volatile material a wiki deliberately leaves out.
 > **A preregistered 2026 study found no architecture won on all three axes** — evidence organization, citation support, and cost. RAG held the cost line, the wiki connected findings better, and the judge was the tie-breaker.
 > **The deciding factor for a team is upkeep, not build.** Whoever owns the wiki after its first author changes roles decides whether it survives.
-> **Test it on your own corpus.** Ten real questions, scored for source citation and tokens per query, will tell you more than any benchmark.
+> **Test it on your own corpus.** Ten real questions, scored for source citation and tokens per query, show whether the study’s result holds on your documents.
 > **One wiki advantage survived the study:** every page cites the object its claim came from, so a reader walks back to the source instead of trusting a summary.
 
 ## The short answer: “versus” is the wrong frame
