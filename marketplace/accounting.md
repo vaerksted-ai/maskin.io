@@ -4,7 +4,7 @@
 ![Kvitteringer går fra rod til orden, og én er markeret i blå.](/marketplace/accounting/accounting-hero-1200x628.png)
 
 ## Opgaven
-Månedens kvitteringer og bankposter samles i et udkast og en liste over punkter, der skal afklares, fx en manglende kvittering eller en betaling, der står to gange. Når tilbuddet starter, gennemgår en bogholder fra en samarbejdspartner udkastet og listen. Du beholder dit eget bogføringssystem, og Maskin bygger ovenpå det.
+Månedens kvitteringer og bankposter samles i et udkast og en liste over punkter, der skal afklares, fx en manglende kvittering eller en betaling, der står to gange. Når tilbuddet starter, gennemgår en bogholder fra en samarbejdspartner udkastet og listen. Du beholder dit eget bogføringssystem, og Maskin bygger ovenpå det. Vil du se forarbejdet til årsafslutningen vist live, før du beslutter dig, er der et gratis webinar på dansk den 25. november i rækken [Sæt strøm til din forretning](/da/saet-stroem/).
 Tilbuddet er bygget til at mindske kassen med kvitteringer, jagten på en bogholder og bilagsrod, der først opdages sent.
 Det er stadig dig og din bogholder, der svarer på spørgsmål og træffer beslutninger.
 

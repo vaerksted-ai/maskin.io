@@ -113,7 +113,8 @@
       { label: "Open source AI agents", href: "/alternatives/open-source-ai-agents/" }
     ]},
     { title: "Dansk", items: [
-      { label: "AI-automatisering", href: "/da/ai-automatisering/" }
+      { label: "AI-automatisering", href: "/da/ai-automatisering/" },
+      { label: "Sæt strøm til din forretning", href: "/da/saet-stroem/" }
     ]}
   ];
 
