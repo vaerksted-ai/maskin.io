@@ -8,7 +8,7 @@
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const SEATS = new Set(["customer-value", "accounting-25nov", "content-2dec", "sales-9dec", "service-16dec"]);
 const SERIES_SEGMENT_ID = "dbeb1ee8-2392-490e-8a21-16a64e9d26f4";
-const CONSENT_VERSIONS = new Set(["2026-11-13-v1"]);
+const CONSENT_VERSIONS = new Set(["consent-v1-2026-11-13"]);
 const STAFF_BANDS = new Set(["1 til 10", "11 til 50", "51 til 250", "Over 250"]);
 
 interface Env {
