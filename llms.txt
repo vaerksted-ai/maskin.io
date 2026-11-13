@@ -115,6 +115,7 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 
 ## Dansk (Danish)
 
+- [Sæt strøm til din forretning: fem gratis webinarer](https://maskin.io/da/saet-stroem/): Fem gratis danske webinarer for virksomhedsejere om kunder, bogføring, synlighed, salg og kundeservice, hvor et menneske godkender, og en samlet tilmelding til rækken.
 - [Hvad er en AI-agent?](https://maskin.io/da/hvad-er-en-ai-agent/): Forklaring af AI-agenter, forskellen på agent, chatbot og assistent, og hvad en agent koster at drive.
 - [AI-agenter: guide for danske virksomheder](https://maskin.io/da/ai-agenter/): Hvilke opgaver en dansk virksomhed kan give til en AI-agent, hvor grænsen går, og hvordan godkendelser fordeles.
 - [AI-automatisering: de første opgaver at automatisere](https://maskin.io/da/ai-automatisering/): De fem første opgaver, fire tests til at vælge, og et gennemgået eksempel på lead-opfølgning med godkendelse.
