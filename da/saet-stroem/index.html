@@ -150,13 +150,13 @@
       <fieldset><legend><strong>Hvilke webinarer vil du have besked om?</strong></legend>
         <label class="check"><input type="checkbox" name="seats" value="customer-value"> Sæt strøm til dine kunder (dato følger)</label><label class="check"><input type="checkbox" name="seats" value="accounting-25nov"> Sæt strøm til bogføringen (Onsdag 25. november 2026)</label><label class="check"><input type="checkbox" name="seats" value="content-2dec"> Sæt strøm til din synlighed (Onsdag 2. december 2026)</label><label class="check"><input type="checkbox" name="seats" value="sales-9dec"> Sæt strøm til salget (Onsdag 9. december 2026)</label><label class="check"><input type="checkbox" name="seats" value="service-16dec"> Sæt strøm til kundeservicen (Onsdag 16. december 2026)</label>
       </fieldset>
-      <label class="check"><input type="checkbox" name="consent" id="ss-consent" required> <span>Ja tak, send mig påmindelser og opfølgning om de webinarer, jeg har valgt, og besked om kommende webinarer i serien. Du kan afmelde dig når som helst.</span></label>
-      <p class="seat__soon">Afsender er Maskin. Du kan afmelde dig i hver mail.</p>
+      <p class="seat__soon">Navn, e-mail, virksomhed og antal ansatte udfylder du kun, hvis du vil have e-mails fra os.</p>
+      <label class="check"><input type="checkbox" name="consent" id="ss-consent" value="1" data-consent-version="2026-11-13-v1"> <span>Ja tak, send mig e-mails fra Maskin om de webinarer, jeg har valgt (påmindelser, optagelse og opfølgning), og besked om kommende webinarer i serien Sæt strøm. Du kan afmelde dig når som helst. Læs, hvordan vi bruger dine oplysninger, i vores <a href="/privacy/" target="_blank" rel="noopener">privatlivspolitik</a>.</span></label>
       <div class="cf-turnstile" data-sitekey="TURNSTILE_SITEKEY_PLACEHOLDER"></div>
       <button class="btn-primary" type="submit">Tilmeld mig rækken</button>
       <p class="signup__msg" id="ss-msg" role="status" aria-live="polite"></p>
     </form>
-    <p>Rækken giver dig påmindelser og opfølgning. For at få joinlinket skal du stadig tilmelde dig hvert webinar på dets egen side på Luma.</p>
+    <p>Du får webinarlinket og din bekræftelse fra Luma, også uden kryds. For at få joinlinket skal du tilmelde dig hvert webinar på dets egen side på Luma.</p>
 
     <h2>Spørgsmål og svar</h2>
     <h3>Er det gratis?</h3>
@@ -185,15 +185,19 @@
   f.addEventListener('submit',function(ev){
     ev.preventDefault(); m.textContent='';
     var seats=[].slice.call(f.querySelectorAll('input[name=seats]:checked')).map(function(x){return x.value;});
-    if(!f.first_name.value.trim()||!f.email.value.trim()||!f.company.value.trim()||!f.staff_band.value){m.textContent='Udfyld alle felter.';return;}
     if(!seats.length){m.textContent='Vælg mindst ét webinar.';return;}
-    if(!f.consent.checked){m.textContent='Sæt kryds ved samtykket for at tilmelde dig.';return;}
+    if(!f.consent.checked){
+      if(window.posthog) window.posthog.capture('hub_series_signup',{seats:seats.length,consent:false,page_path:location.pathname});
+      m.textContent='Uden kryds sender vi ingen e-mails, og vi gemmer intet. Tilmeld dig de åbne webinarer direkte på Luma ovenfor.';
+      return;
+    }
+    if(!f.first_name.value.trim()||!f.email.value.trim()||!f.company.value.trim()||!f.staff_band.value){m.textContent='Udfyld alle felter for at få e-mails.';return;}
     var tok=f.querySelector('[name=cf-turnstile-response]');
     var src=new URLSearchParams(location.search).get('utm_source')||'hub';
-    fetch('/capture/series-signup',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({first_name:f.first_name.value.trim(),email:f.email.value.trim(),company:f.company.value.trim(),staff_band:f.staff_band.value,seats:seats,consent:true,source:src,turnstile_token:tok?tok.value:''})})
+    fetch('/capture/series-signup',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({first_name:f.first_name.value.trim(),email:f.email.value.trim(),company:f.company.value.trim(),staff_band:f.staff_band.value,seats:seats,consent:true,consent_version:f.consent.getAttribute('data-consent-version'),source:src,turnstile_token:tok?tok.value:''})})
       .then(function(r){return r.json().then(function(j){return {ok:r.ok&&j.ok,j:j};});})
       .then(function(x){
-        if(x.ok){ if(window.posthog) window.posthog.capture('hub_series_signup',{seats:seats.length,page_path:location.pathname}); m.textContent='Tak. Du er tilmeldt rækken. Husk også at tilmelde dig hvert webinar på Luma.'; f.reset(); }
+        if(x.ok){ if(window.posthog) window.posthog.capture('hub_series_signup',{seats:seats.length,consent:true,page_path:location.pathname}); m.textContent='Tak. Du er tilmeldt rækken. Husk også at tilmelde dig hvert webinar på Luma.'; f.reset(); }
         else { m.textContent='Det lykkedes ikke. Prøv igen om lidt.'; }
       }).catch(function(){ m.textContent='Det lykkedes ikke. Prøv igen om lidt.'; });
   });
