@@ -5706,6 +5706,7 @@ The qualification loop is agnostic to which framework you pick. The framework fi
 ## AI lead qualification tools versus the qualification loop
 “AI lead qualification” and “lead qualification tools” are search terms with real buyer intent — the CPC on the AI-frame is around $39, on the tools-frame around $35, per Ubersuggest’s US pull for September 2026. What the SERP is largely selling under those queries is a black-box scoring API: give it your CRM, get a score back, trust the vendor’s model. Salesforce Einstein and HubSpot Predictive Lead Scoring are the incumbent versions of this shape; Clay and Instantly.ai are the newer specialist versions.
 The loop is a different shape. Instead of a score, you get a typed transition (`new_lead` → `qualified` or `rejected`) with a reason on the object. Instead of trusting a vendor’s model, you can inspect and edit the qualifier agent’s prompt and the ICP fields it reads. Instead of paying a per-lead API bill priced against the vendor’s cost of goods plus their margin, the agents run on your own model keys — Claude, GPT, or a fine-tuned local model routed through your own inference stack. If the qualifier agent gets a call wrong, the reason is on the record, the human can flip the status in a click, and the correction feeds the next lead’s read. A closed-box score doesn’t have that surface at all — you can override, but you can’t teach it what you overrode and why.
+If the step after qualification is outreach, [Open source AI SDR: six GitHub repos compared](/alternatives/open-source-ai-sdr/) covers the open source repos that research, draft and send, with their licences and upkeep.
 
 ## How rejected leads feed ICP refinement
 The single sentence a closed-SaaS lead-qualification page won’t write is this: the rejected lead is worth more than the accepted one. An accepted lead confirms your ICP; a rejected lead teaches you where your ICP hypothesis is wrong.
@@ -6116,7 +6117,7 @@ Sign in or sign up, then confirm the loop in the Maskin app.
 ![Kvitteringer går fra rod til orden, og én er markeret i blå.](/marketplace/accounting/accounting-hero-1200x628.png)
 
 ## Opgaven
-Månedens kvitteringer og bankposter samles i et udkast og en liste over punkter, der skal afklares, fx en manglende kvittering eller en betaling, der står to gange. Når tilbuddet starter, gennemgår en bogholder fra en samarbejdspartner udkastet og listen. Du beholder dit eget bogføringssystem, og Maskin bygger ovenpå det.
+Månedens kvitteringer og bankposter samles i et udkast og en liste over punkter, der skal afklares, fx en manglende kvittering eller en betaling, der står to gange. Når tilbuddet starter, gennemgår en bogholder fra en samarbejdspartner udkastet og listen. Du beholder dit eget bogføringssystem, og Maskin bygger ovenpå det. Vil du se forarbejdet til årsafslutningen vist live, før du beslutter dig, er der et gratis webinar på dansk den 25. november i rækken [Sæt strøm til din forretning](/da/saet-stroem/).
 Tilbuddet er bygget til at mindske kassen med kvitteringer, jagten på en bogholder og bilagsrod, der først opdages sent.
 Det er stadig dig og din bogholder, der svarer på spørgsmål og træffer beslutninger.
 
@@ -6149,3 +6150,76 @@ Tilbuddet starter, når en samarbejdspartner er på plads.
 
 ## Tag fat
 Tag en snak med Maskin-teamet om, hvordan en måned kan se ud.
+
+
+---
+
+> Source: https://maskin.io/da/saet-stroem/
+
+# Webinar for virksomheder: Sæt strøm til din forretning
+Fem webinarer. Fem måder at få mere ud af arbejdsdagen.
+Fra bogføring og kundeservice til markedsføring og salg. Vi viser dig, hvordan du kan gøre hverdagen lettere, få mere fra hånden og skabe mere værdi i din virksomhed.
+**Næste webinar: onsdag 25. november 2026, 15.00.** [Tilmeld dig på Luma](https://luma.com/92hrh644?utm_campaign=accounting-25nov&utm_source=hub)
+
+## De fem webinarer
+Dato følger
+
+### Sæt strøm til dine kunder
+Skab mere værdi for dem, du allerede har.
+Se, hvordan AI kan hjælpe dig med at skabe værdi for dine kunder.
+Lær dine kunder bedre at kende, forstå deres behov og find nye muligheder for at give dem en endnu bedre oplevelse. Få mere ud af dine kunderelationer, uden at bruge flere timer på hver enkelt.
+Tilmelding åbner snart. [Tilmeld dig rækken](#tilmeld-raekken), så får du besked.
+Onsdag 25. november 2026, 15.00 til 16.00
+
+### Sæt strøm til bogføringen
+Brug mindre tid på bilag og regnskab.
+AI til bogføringen, hvor du godkender.
+Slip for noget af det manuelle arbejde med bilag, fakturaer og bogføring. Se, hvordan du kan gøre regnskabet lettere at håndtere og få mere tid til at drive din virksomhed.
+Agenten finder manglende kvitteringer, afstemmer banken, peger på ubetalte fakturaer og samler spørgsmålene til din bogholder. Du eller din bogholder godkender. Agenten bogfører ikke selv og giver ingen skatte- eller juridisk rådgivning.
+Onsdag 2. december 2026, 15.00 til 16.00
+
+### Sæt strøm til din synlighed
+Bliv mere synlig uden at bruge hele dagen på sociale medier.
+Ugentligt indhold med AI-agenter i din virksomhed.
+Få hjælp til at finde på idéer, skrive opslag og planlægge indhold. Så bliver det nemmere at holde din virksomhed synlig og være top of mind hos dine kunder.
+En AI-agent skriver et udkast til opslaget, og du siger ja eller nej, før det bliver udgivet.
+Tilmelding åbner snart. [Tilmeld dig rækken](#tilmeld-raekken), så får du besked.
+Onsdag 9. december 2026, 15.00 til 16.00
+
+### Sæt strøm til salget
+Find nye kunder og kom hurtigere i dialog med dem.
+Find kunder med AI, hvor du godkender hver besked.
+Se, hvordan du kan finde relevante virksomheder og blive klogere på dem. Agenterne hjælper med kontakt til mulige kunder.
+Du godkender hver besked, før den sendes. Agenterne sender ikke noget for dig.
+Tilmelding åbner snart. [Tilmeld dig rækken](#tilmeld-raekken), så får du besked.
+Onsdag 16. december 2026, 15.00 til 16.00
+
+### Sæt strøm til kundeservicen
+Giv kunderne hurtigere svar, uden at sidde i indbakken hele dagen.
+Kundeservice med AI: delt indbakke eller Slack?
+Få hjælp til at håndtere kundehenvendelser, besvare de typiske spørgsmål og holde styr på dialogen. Så kan du give kunderne en god oplevelse, samtidig med at du får mere ro til andre opgaver.
+Se to måder at bruge en AI-agent til kundeservice på, i en delt indbakke og i Slack, vist side om side.
+Tilmelding åbner snart. [Tilmeld dig rækken](#tilmeld-raekken), så får du besked.
+
+## Tilmeld dig hele rækken
+Vælg de webinarer, der passer til de opgaver, du gerne vil have hjælp til i din virksomhed. Hvert webinar kræver sin egen tilmelding på Luma, så du får linket til hvert webinar, du vil deltage i.
+Navn, e-mail, virksomhed og antal ansatte udfylder du kun, hvis du vil have e-mails fra os.
+Du får webinarlinket og din bekræftelse, også uden kryds. Begge kommer fra Luma. For at få joinlinket skal du tilmelde dig hvert webinar på dets egen side på Luma.
+
+## Spørgsmål og svar
+
+### Er det gratis?
+Ja. Alle fem webinarer er gratis, foregår online og er på dansk. Du vælger selv, hvilke emner du vil følge. Hvert webinar har sin egen tilmelding på Luma, så tilmeld dig de enkelte webinarer, du vil deltage i. Der er ingen betaling for at tilmelde dig.
+
+### Skal jeg kunne noget med AI?
+Nej. Du behøver ikke have erfaring med AI eller kende tekniske begreber. Webinarerne tager udgangspunkt i opgaver fra arbejdsdagen og viser, hvordan en AI-agent kan hjælpe med dem. Du kan følge med uden særlige forudsætninger. Når noget skal sendes, godkender et menneske det først.
+
+### Hvem præsenterer?
+Maskin-teamet præsenterer webinarerne. Navnet på den, der præsenterer det enkelte webinar, står på webinarets tilmeldingsside på Luma. Hvert webinar tager udgangspunkt i én konkret opgave fra arbejdsdagen og varer en time, onsdag kl. 15.00 til 16.00. Alle webinarer er på dansk og foregår online.
+
+### Hvad hvis jeg ikke kan deltage?
+Tilmeld dig stadig, hvis emnet er relevant for dig. Webinaret optages, og alle, der har tilmeldt sig, får et link til optagelsen. I optagelsen kan fornavne og spørgsmål, du skriver, være synlige. Vil du ikke vises, kan du sende dit spørgsmål som svar på mailen i stedet.
+
+### Hvad sker der med mine data?
+Formularen her beder kun om dit navn, din e-mail, din virksomhed og virksomhedens størrelse, og kun hvis du vil have e-mails fra os. Oplysningerne bruges kun til mails om serien Sæt strøm. Du kan trække dit samtykke tilbage med afmeld i hver mail, du får fra os.
+Vil du vide mere om, hvad en AI-agent er, før du vælger? Læs [AI-automatisering: de første opgaver at automatisere](/da/ai-automatisering/) og [AI-agenter: guide for danske virksomheder](/da/ai-agenter/).
