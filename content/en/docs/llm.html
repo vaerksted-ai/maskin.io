@@ -1,0 +1,116 @@
+@@ meta
+title: LLM &amp; models: Claude routing and Enterprise endpoints — Maskin
+canonical: https://maskin.io/docs/llm/
+description: How Maskin chooses which model runs an agent: the five-tier routing order, Claude OAuth subscriptions, workspace Anthropic keys, Enterprise custom endpoints, and the system fallback.
+og:type: article
+og:url: https://maskin.io/docs/llm/
+og:title: LLM &amp; models: Claude routing and Enterprise endpoints — Maskin
+og:description: Maskin's five-tier model routing: Claude OAuth, workspace keys, Enterprise endpoints, and fallback.
+og:image: https://maskin.io/og-image.png?v=2
+active: /docs/llm/
+shell.head: h2
+shell.pre: p2
+shell.sidebar: s1
+shell.mainopen: m2
+shell.tail: t1
+@@ jsonld 0
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "LLM & models",
+      "name": "LLM & models",
+      "description": "How Maskin chooses which model runs an agent: the five-tier routing order, Claude OAuth subscriptions, workspace Anthropic keys, Enterprise custom endpoints, and the system fallback.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/llm/",
+      "isPartOf": "https://maskin.io/docs/",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "LLM & models",
+          "item": "https://maskin.io/docs/llm/"
+        }
+      ]
+    }
+  ]
+}
+
+@@ body
+
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / LLM &amp; models</p>
+
+    <p class="eyebrow">Self-hosting</p>
+    <h1>LLM &amp; models</h1>
+    <p class="lead">Maskin defaults to Claude. On the hosted service, trial, Pro and Team workspaces run on a Maskin-funded route, and Enterprise workspaces supply their own credential. For every agent run it resolves a model through a fixed priority order, so you can set a default and override it where you need to.</p>
+
+    <h2>Routing priority</h2>
+    <p>When a session starts, Maskin picks the first option that's configured, in this order:</p>
+    <ol>
+      <li><strong>Agent-level key</strong> — an Anthropic key set directly on the agent actor.</li>
+      <li><strong>Workspace custom endpoint</strong> — Enterprise only. An endpoint configured on the workspace that speaks Anthropic's API format.</li>
+      <li><strong>Claude OAuth</strong> — a workspace-level Claude Pro / Max / Teams subscription.</li>
+      <li><strong>Workspace Anthropic key</strong> — an Anthropic API key saved in workspace settings.</li>
+      <li><strong>System fallback</strong> — the operator-configured OpenRouter fallback (with a daily token cap).</li>
+    </ol>
+
+    <h2>Using Claude (the default)</h2>
+    <p>Two ways to give a workspace Claude access, both set <strong>in the app</strong> (Settings → Integrations / LLM keys):</p>
+    <ul>
+      <li><strong>Anthropic API key</strong> — paste your key; usage is billed to your Anthropic account. On a self-hosted instance the app refuses your own key until your user id is listed in <code>MASKIN_ENTERPRISE_ACTOR_IDS</code> (see <a href="/docs/get-started/self-hosted/">Step 2 of the self-hosted guide</a> for how to find the id and where to set it). Without it, set <code>MASKIN_FALLBACK_OPENROUTER_KEY</code> instead and sessions run on the default Maskin-funded model.</li>
+      <li><strong>Claude subscription</strong> — import a Pro/Max/Teams subscription via the <code>import_claude_subscription</code> tool / Claude OAuth flow, then check it with <code>get_claude_subscription_status</code>. The subscription tokens are stored encrypted.</li>
+    </ul>
+    <p>The default model is <code>claude-sonnet-4-6</code>, with a separate small/fast model for lightweight steps.</p>
+
+    <h2>Custom endpoint (Enterprise)</h2>
+    <p>Enterprise workspaces can also point agent sessions at their own Anthropic-compatible endpoint, using their own key. Set a <strong>custom LLM</strong> on the workspace to do it. The configuration carries:</p>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Field</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>base_url</code></td><td>The endpoint's API base.</td></tr>
+        <tr><td><code>api_key</code></td><td>Credential for that endpoint.</td></tr>
+        <tr><td><code>model</code></td><td>Main model id.</td></tr>
+        <tr><td><code>small_fast_model</code></td><td>Cheaper model for lightweight steps.</td></tr>
+      </tbody>
+    </table></div>
+    <p>This is set in workspace settings, not via environment variables.</p>
+
+    <h2>System fallback (operator)</h2>
+    <p>For workspaces with no model configured, operators can enable a shared fallback via environment. It's off unless a key is provided, and it enforces a per-actor daily token cap:</p>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Variable</th><th>Default</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>MASKIN_FALLBACK_OPENROUTER_KEY</code></td><td>—</td><td>Enables the fallback when set.</td></tr>
+        <tr><td><code>MASKIN_FALLBACK_BASE_URL</code></td><td><code>https://openrouter.ai/api</code></td><td>Fallback provider base URL.</td></tr>
+        <tr><td><code>MASKIN_FALLBACK_MODEL</code> · <code>MASKIN_FALLBACK_SMALL_MODEL</code></td><td><code>deepseek/deepseek-v4-flash</code></td><td>Fallback main / small models.</td></tr>
+        <tr><td><code>MASKIN_FALLBACK_DAILY_TOKEN_LIMIT</code></td><td><code>550000</code></td><td>Per-actor daily token cap.</td></tr>
+      </tbody>
+    </table></div>
+    <p>See the <a href="/docs/configuration/">configuration reference</a> for the full environment list.</p>
+
+    <div class="callout callout--muted">
+      <span class="callout__icon">i</span>
+      <span class="callout__body">Whatever model runs, per-session token usage and <code>totalCostUsd</code> are recorded — see <a href="/docs/agents/">Agents &amp; sessions</a>.</span>
+    </div>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/integrations/">← Integrations</a>
+      <a href="/docs/deployment/">Production deployment →</a>
+    </nav>
+  

@@ -1,0 +1,113 @@
+@@ meta
+title: Troubleshooting &amp; FAQ — Maskin Docs
+canonical: https://maskin.io/docs/troubleshooting/
+description: Fixes for common Maskin issues: real-time/SSE not updating, agent sessions failing to start, MCP 401s, integrations not connecting, webhooks, migrations, CORS — plus a short FAQ.
+og:type: article
+og:url: https://maskin.io/docs/troubleshooting/
+og:title: Troubleshooting &amp; FAQ — Maskin
+og:description: Fixes for common Maskin issues, plus a short FAQ.
+og:image: https://maskin.io/og-image.png?v=2
+active: /docs/troubleshooting/
+shell.head: h2
+shell.pre: p2
+shell.sidebar: s1
+shell.mainopen: m2
+shell.tail: t1
+@@ jsonld 0
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "Troubleshooting & FAQ",
+      "name": "Troubleshooting & FAQ",
+      "description": "Fixes for common Maskin issues: real-time/SSE not updating, agent sessions failing to start, MCP 401s, integrations not connecting, webhooks, migrations, CORS — plus a short FAQ.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/troubleshooting/",
+      "isPartOf": "https://maskin.io/docs/",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Troubleshooting",
+          "item": "https://maskin.io/docs/troubleshooting/"
+        }
+      ]
+    }
+  ]
+}
+
+@@ body
+
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Troubleshooting</p>
+
+    <p class="eyebrow">Self-hosting</p>
+    <h1>Troubleshooting &amp; FAQ</h1>
+    <p class="lead">The issues people hit most when self-hosting Maskin, and how to fix them. Most come down to one missing environment variable — see the <a href="/docs/configuration/">configuration reference</a> for the full list.</p>
+
+    <h2>The UI or session logs don't update live</h2>
+    <p>Real-time updates use PostgreSQL <code>LISTEN/NOTIFY</code> streamed over SSE. Connection poolers (PgBouncer, Supabase's pooled port, etc.) break LISTEN/NOTIFY. Set <code>DATABASE_URL_DIRECT</code> to a <strong>non-pooled</strong> connection in addition to <code>DATABASE_URL</code>. Also make sure your proxy isn't buffering <code>/api/events</code> responses.</p>
+
+    <h2>Agent sessions fail to start</h2>
+    <ul>
+      <li><strong>Runtime:</strong> sessions run in microVMs (microsandbox and libkrun) on an agent server, and there is no fallback without that runtime, so confirm the agent server is up and running it. In local development only, sessions start through <code>/var/run/docker.sock</code>, so confirm it's mounted into the app container.</li>
+      <li><strong>Image missing:</strong> the <code>agent-base</code> image must be built/pulled. In production, set <code>AGENT_BASE_IMAGE</code> to a full registry path (e.g. <code>yourorg/agent-base:latest</code>), not the local <code>:latest</code> tag.</li>
+      <li><strong>Scaling out:</strong> if you use <code>AGENT_SERVERS</code>, check each server is reachable and its <code>AGENT_SERVER_SECRET</code> matches.</li>
+    </ul>
+
+    <h2>MCP calls return 401, or Claude sees no tools</h2>
+    <ul>
+      <li>Check both headers: <code>Authorization: Bearer ank_…</code> and <code>X-Workspace-Id: &lt;uuid&gt;</code>.</li>
+      <li>Confirm the URL ends in <code>/mcp</code> and points at your instance.</li>
+      <li>In Claude Code, run <code>/reload-plugins</code> after adding the server. See <a href="/docs/get-started/self-hosted/">Self-hosted setup</a>.</li>
+    </ul>
+
+    <h2>Integrations won't connect, or stop working</h2>
+    <ul>
+      <li><code>INTEGRATION_ENCRYPTION_KEY</code> must be set. If it was <strong>changed</strong>, previously stored tokens can no longer be decrypted — reconnect the affected integrations.</li>
+      <li>OAuth redirects need a correct public <code>WEBHOOK_BASE_URL</code> / <code>FRONTEND_URL</code> and the provider's redirect URI registered. See <a href="/docs/integrations/">Integrations setup</a>.</li>
+    </ul>
+
+    <h2>Webhooks aren't being received</h2>
+    <p>Set a public <code>WEBHOOK_BASE_URL</code> reachable from the internet; providers deliver to <code>/api/webhooks/&lt;provider&gt;</code>. A 401/403 on delivery usually means a signing-secret mismatch — re-check the provider's secret (e.g. <code>SLACK_SIGNING_SECRET</code>, <code>GITHUB_APP_WEBHOOK_SECRET</code>, <code>LINEAR_WEBHOOK_SECRET</code>).</p>
+
+    <h2>I can't find my API key / can't sign in on a fresh instance</h2>
+    <p>On an empty database Maskin auto-bootstraps a dev actor, workspace, and API key (controlled by <code>MASKIN_AUTO_BOOTSTRAP</code>, default <code>true</code>) and prints the key in the <strong>startup banner</strong>. Once you've created your real first workspace and key, set <code>MASKIN_AUTO_BOOTSTRAP=false</code>.</p>
+
+    <h2>Database / migration errors on boot</h2>
+    <p>Migrations run automatically when the app starts. To run them out of band use <code>pnpm db:migrate</code>. Make sure <code>DATABASE_URL</code> points at a reachable PostgreSQL 16 instance and the role can create tables.</p>
+
+    <h2>Browser console shows CORS errors</h2>
+    <p>Set <code>CORS_ORIGIN</code> to your frontend origin(s), comma-separated. The dev default is <code>http://localhost:5173</code>.</p>
+
+    <h2>Agents error with "no model configured"</h2>
+    <p>A workspace needs a model. Add an Anthropic key or Claude subscription, or a custom LLM — Maskin resolves the model through a fixed priority order. See <a href="/docs/llm/">LLM &amp; models</a>.</p>
+    <p>On a self-hosted instance, saving your own Anthropic key fails with <em>"This workspace is on the Maskin-provided LLM plan and cannot add BYO LLM credentials"</em>, and <strong>Settings → LLM keys</strong> shows no key fields, until your user id is listed in <code>MASKIN_ENTERPRISE_ACTOR_IDS</code> in <code>.env</code> and the server is restarted. Find the id as the <code>"type": "human"</code> entry from <code>GET /api/actors</code> (steps in <a href="/docs/get-started/self-hosted/">Step 2 of the self-hosted guide</a>). Without the setting, set <code>MASKIN_FALLBACK_OPENROUTER_KEY</code> instead and sessions run on the default Maskin-funded model.</p>
+
+    <h2>FAQ</h2>
+    <p><strong>Is Maskin open source?</strong> Yes — Apache 2.0, on <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a>.</p>
+    <p><strong>Can I use models other than Claude?</strong> Agent sessions run Claude Code by default, or Codex, on your own Anthropic or OpenAI access. Enterprise workspaces can also point sessions at their own Anthropic-compatible endpoint, using their own key. Local models are not a path we have validated. See <a href="/docs/llm/">LLM &amp; models</a>.</p>
+    <p><strong>Where do I see what a run cost?</strong> Each session records token usage and <code>totalCostUsd</code> — see <a href="/docs/agents/">Agents &amp; sessions</a>.</p>
+    <p><strong>Do I have to self-host?</strong> No — managed hosting is available. <a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a>.</p>
+    <p><strong>Still stuck?</strong> Open an issue on <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a>, or <a href="/support/">contact Maskin support</a>. For security reports, email the contact on the <a href="/docs/security/">Security</a> page instead.</p>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/security/">← Security</a>
+      <span></span>
+    </nav>
+  

@@ -1,0 +1,140 @@
+@@ meta
+title: Maskin docs — MCP-native AI workspace, self-host or managed
+canonical: https://maskin.io/docs/
+description: Maskin documentation. Get started with Maskin — the open-source, MCP-native system where humans and AI agents close the loop together — learn the core concepts, the MCP tools, and how to self-host.
+og:type: website
+og:url: https://maskin.io/docs/
+og:title: Maskin docs — MCP-native AI workspace, self-host or managed
+og:description: Get started with Maskin — the open-source system where humans and AI agents close the loop together, from signal to shipped bet. Self-host or managed.
+og:image: https://maskin.io/og-image.png?v=2
+shell.head: h2
+shell.pre: p2
+shell.sidebar: s1
+shell.mainopen: m2
+shell.tail: t1
+@@ jsonld 0
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "headline": "Maskin docs",
+      "name": "Maskin docs",
+      "description": "Maskin documentation. Get started with Maskin — the open-source, MCP-native system where humans and AI agents close the loop together — learn the core concepts, the MCP tools, and how to self-host.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/",
+      "isPartOf": "https://maskin.io/docs/",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        }
+      ]
+    }
+  ]
+}
+
+@@ body
+
+    <p class="eyebrow">Documentation</p>
+    <h1>Maskin docs</h1>
+    <p class="lead">Maskin is the open-source, MCP-native system where your whole team — humans <em>and</em> AI agents — closes the loop together, from customer signal to shipped bet to measured outcome, with shared memory and a real process.</p>
+    <p>New here? Start with the overview, then dig into the concepts, the MCP tools, or how to run your own instance.</p>
+
+    <h2 id="in-these-docs">What's in these docs</h2>
+    <p>The docs are organised around how you actually use Maskin. <a href="/docs/concepts/">Core concepts</a> covers the object graph that everything else rests on — actors, workspaces, insights, bets, tasks, comments, and the triggers that close the loop between them. <a href="/docs/agents/">Agents and sessions</a> explains how AI agents live inside a workspace, take turns, and share memory with the humans they work alongside. <a href="/docs/architecture/">Architecture</a> is the wiring diagram — how the substrate, the MCP surface, and the LLM interact, so you can reason about latency, isolation, and the trust boundary.</p>
+    <p>The reference section is where you go once you know what you want. <a href="/docs/mcp-tools/">MCP tools</a> lists every tool an agent or Claude can call to drive a workspace, with schemas and worked examples. The <a href="/docs/api/">API reference</a> documents the HTTP surface for programmatic access outside MCP. <a href="/docs/configuration/">Configuration</a> covers environment variables, feature flags, and workspace-level settings. <a href="/docs/integrations/">Integrations</a> catalogues the connected systems — Slack, GitHub, Gmail, Calendar, HubSpot, Stripe, and more — each with its auth flow and the tool surface it exposes to agents.</p>
+    <p>Self-hosting is a first-class path. <a href="/docs/llm/">LLM and models</a> walks through how Maskin picks a model for each agent run: Claude by default, your own Anthropic key or subscription, and an Enterprise-only custom endpoint. <a href="/docs/deployment/">Production deployment</a> covers Docker, Kubernetes, secrets management, backups, and observability. <a href="/docs/security/">Security</a> is the trust model — permissions, sandboxing, credential handling, and exactly what agents can and cannot touch. <a href="/docs/troubleshooting/">Troubleshooting</a> is the runbook for the failure modes we have hit in production.</p>
+
+    <h2 id="who-its-for">Who each section is for</h2>
+    <p>Operators and founders evaluating Maskin should start with <a href="/docs/get-started/">Get started</a> and the <a href="/docs/what-is-an-agentic-workspace/">agentic workspace primer</a>. Developers wiring agents into their own product can jump straight to <a href="/docs/mcp-tools/">MCP tools</a> and the <a href="/docs/api/">API reference</a>. Platform engineers and SREs will get the most from <a href="/docs/get-started/self-hosted/">Self-hosted setup</a>, <a href="/docs/security/">Security</a>, and <a href="/docs/deployment/">Production deployment</a>. If you are comparing tools, the <a href="/alternatives/open-source-jira-alternative/">open source Jira alternative</a> and <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a> articles frame Maskin against the incumbents.</p>
+
+    <h2 id="where-to-start">Where to start</h2>
+    <p>The fastest path is the <a href="/docs/quickstart/">quickstart tutorial</a> — create a workspace, connect Claude over MCP, and run your first bet end-to-end in about ten minutes. From there, read <a href="/docs/concepts/">core concepts</a> to build the mental model, then pick the loop that matches your work — customer feedback, product planning, GTM, or ops — and adapt it. The <a href="/docs/what-is-mcp-native/">MCP-native primer</a> and the <a href="/docs/what-is-a-stateful-orchestration-substrate/">stateful orchestration substrate</a> article give the deeper why behind the architecture. For a dated log of what has shipped recently, see the <a href="/changelog/">latest updates</a>.</p>
+
+    <div class="doc-cards">
+      <a class="doc-card" href="/docs/get-started/">
+        <div class="doc-card__tag">Start here</div>
+        <div class="doc-card__title">Get started</div>
+        <div class="doc-card__desc">What Maskin is, the unified pipeline, and the two ways to run it.</div>
+        <div class="doc-card__arrow">Read the overview →</div>
+      </a>
+      <a class="doc-card" href="/docs/quickstart/">
+        <div class="doc-card__tag">Tutorial</div>
+        <div class="doc-card__title">Quickstart tutorial</div>
+        <div class="doc-card__desc">Empty instance to an agent doing real work in about ten minutes — the fastest hands-on path.</div>
+        <div class="doc-card__arrow">Take the tour →</div>
+      </a>
+      <a class="doc-card" href="/docs/concepts/">
+        <div class="doc-card__tag">Concepts</div>
+        <div class="doc-card__title">Core concepts</div>
+        <div class="doc-card__desc">Actors, workspaces, the Insights → Bets → Tasks object graph, comments, triggers.</div>
+        <div class="doc-card__arrow">Learn the model →</div>
+      </a>
+      <a class="doc-card" href="/docs/mcp-tools/">
+        <div class="doc-card__tag">Reference</div>
+        <div class="doc-card__title">MCP tools</div>
+        <div class="doc-card__desc">The tool surface agents and Claude use to drive a workspace.</div>
+        <div class="doc-card__arrow">Browse the tools →</div>
+      </a>
+      <a class="doc-card" href="/docs/get-started/self-hosted/">
+        <div class="doc-card__tag">Self-hosted</div>
+        <div class="doc-card__title">Self-hosted setup</div>
+        <div class="doc-card__desc">Run your own Maskin instance and connect Claude to it over MCP.</div>
+        <div class="doc-card__arrow">Set it up →</div>
+      </a>
+    </div>
+
+    <h2>Articles</h2>
+    <div class="doc-cards">
+      <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+        <div class="doc-card__tag">Concept</div>
+        <div class="doc-card__title">What is an agentic workspace?</div>
+        <div class="doc-card__desc">The category Maskin is built around — a shared surface where humans and AI agents work on the same typed objects, and the closed loop that defines it.</div>
+        <div class="doc-card__arrow">Read the primer →</div>
+      </a>
+      <a class="doc-card" href="/docs/what-is-mcp-native/">
+        <div class="doc-card__tag">Concept</div>
+        <div class="doc-card__title">What is MCP-native?</div>
+        <div class="doc-card__desc">The Model Context Protocol and why Maskin is built around it — the protocol as substrate, and bring-your-own-model made real.</div>
+        <div class="doc-card__arrow">Why the protocol matters →</div>
+      </a>
+      <a class="doc-card" href="/docs/what-is-a-stateful-orchestration-substrate/">
+        <div class="doc-card__tag">Concept</div>
+        <div class="doc-card__title">What is a stateful orchestration substrate?</div>
+        <div class="doc-card__desc">The shared, typed store that carries state between stateless AI agents — the pattern the community named in 72 hours in Aug 2026 to fix handoff amnesia.</div>
+        <div class="doc-card__arrow">Read the primer →</div>
+      </a>
+      <a class="doc-card" href="/docs/ai-product-management-tool/">
+        <div class="doc-card__tag">Guide</div>
+        <div class="doc-card__title">AI product management tool</div>
+        <div class="doc-card__desc">Why an AI product management tool should close the loop between learning and shipping — insight becomes a testable bet, owned by humans and agents.</div>
+        <div class="doc-card__arrow">Read the guide →</div>
+      </a>
+      <a class="doc-card" href="/docs/bet-based-product-planning/">
+        <div class="doc-card__tag">Guide</div>
+        <div class="doc-card__title">Bet-based product planning</div>
+        <div class="doc-card__desc">Shape Up's anti-backlog doctrine run as a live loop — plan in shaped bets with a win condition instead of a growing backlog.</div>
+        <div class="doc-card__arrow">Read the playbook →</div>
+      </a>
+      <a class="doc-card" href="/docs/self-hosted-ai-workspace/">
+        <div class="doc-card__tag">Self-hosted</div>
+        <div class="doc-card__title">Self-hosted AI workspace</div>
+        <div class="doc-card__desc">Self-hosted AI under Apache 2.0: run the closed loop on your own infrastructure with your own Claude or Codex access.</div>
+        <div class="doc-card__arrow">Run it yourself →</div>
+      </a>
+    </div>
+
+    <p>Prefer we run it for you? Managed hosting is available — <a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">book a meeting</a> with the founders.</p>
+  
