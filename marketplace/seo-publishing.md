@@ -13,7 +13,7 @@ The SEO publishing loop closes the gap between “we should write about X” and
 - **The brief becomes an approved draft.** A writer produces markdown against the brief; a human approves before it moves to publish. Override rate is measurable and watched.
 - **The approved draft becomes a live page.** HTML is built with the correct docs shell, JSON-LD schema, canonical, per-page OG image, and interlinking. Sitemap, llms.txt, and llms-full.txt are updated in the same commit.
 - **The live page gets measured.** An analyst tracks indexation, snippet eligibility, and traffic against the bet checkpoints; flagged audit issues (thin content, broken schema, CWV regressions) route back into the loop as tasks.
-The result: pages ship on a cadence a human editor can supervise but not personally execute. The wedge over “prompt ChatGPT for a blog post” is the loop shape — approval gate, live registration checklist, measured close — not the generation.
+The result: pages ship on a cadence a human editor can supervise but not personally execute. The wedge over “prompt ChatGPT for a blog post” is the loop shape — approval gate, live registration checklist, measured close — not the generation. If the pages are one part of a wider month of posts, the [content calendar](/marketplace/content-calendar/) keeps every post’s status in one place.
 
 ## The seven-step SEO content loop the video walks through
 1. **Signal.** A keyword-whitespace insight or a weekly Ubersuggest audit finding fires. The insight becomes a typed object with a testable frame.

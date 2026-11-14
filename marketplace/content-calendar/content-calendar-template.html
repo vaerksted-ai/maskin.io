@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Content calendar template</title>
+<meta name="robots" content="noindex, follow">
+<!-- UNPUBLISHED BUILD: file ships with the listing. The listing page is the page to rank, so keep this noindex. -->
+<style>
+:root{--bg:#0a0a12;--card:#13131f;--card2:#1a1a2b;--line:#26263a;--tx:#ececf4;--mu:#8d8da8;--ac:#6366f1;--ok:#34d399;--wa:#fbbf24;--no:#f87171}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(900px 300px at 50% -80px,#6366f124,transparent),var(--bg);color:var(--tx);font:14px/1.5 Geist,system-ui,"Segoe UI",sans-serif}
+button,input,select,textarea{font:inherit;color:var(--tx)}
+button{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer}
+button:hover{border-color:#3a3a5a}button.on{background:var(--ac);border-color:var(--ac)}
+button.go{border-color:var(--ok);color:var(--ok)}button.dn{border-color:var(--no);color:var(--no)}
+input,select,textarea{background:#0e0e18;border:1px solid var(--line);border-radius:8px;padding:6px 8px;width:100%}
+header{padding:14px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#0a0a12ee;z-index:5;backdrop-filter:blur(6px)}
+.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#title{font:italic 400 22px "Instrument Serif",Georgia,serif;background:none;border:none;width:auto;min-width:240px;padding:0}
+.sp{flex:1}
+.chs{margin-top:10px}.chs button{border-left-width:4px;opacity:.5}.chs button.on{opacity:1;background:var(--card2);border-color:var(--line)}
+.note{margin:12px 20px 0;padding:9px 14px;border:1px solid var(--line);border-radius:10px;color:var(--mu);background:var(--card);font-size:13px}
+main{display:grid;grid-template-columns:270px 1fr;gap:14px;padding:14px 20px 40px}
+aside h2{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mu);margin:0 0 6px}
+.side{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:12px}
+.side.over{border-color:var(--ac)}
+.item{display:block;width:100%;text-align:left;margin:4px 0;padding:6px 8px;border-radius:8px;background:var(--card2);border:1px solid var(--line);border-left:4px solid var(--ac);font-size:13px}
+.item small{color:var(--mu);display:block}
+table{border-collapse:collapse;width:100%;font-size:12px}th,td{padding:3px 4px;text-align:center;border-bottom:1px solid var(--line)}th{color:var(--mu);font-weight:500}
+td.g{color:var(--ok)}td.w{color:var(--wa)}td.z{color:var(--mu)}
+.goal{width:42px;padding:2px 4px;text-align:center}
+#grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.dh{color:var(--mu);font-size:12px;padding:2px 4px}
+.day{min-height:112px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:5px}
+.day.off{opacity:.4}.day.today{border-color:var(--ac)}.day.over{background:#1b1b33;border-color:var(--ac)}
+.dn{color:var(--mu);font-size:12px;margin-bottom:3px;display:flex;justify-content:space-between}
+.dn button{padding:0 6px;border:none;background:none;color:var(--mu)}
+.chip{display:block;width:100%;text-align:left;margin:3px 0;padding:3px 6px;font-size:12px;border-radius:6px;border:1px solid var(--line);background:var(--card2);border-left:4px solid var(--ac);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chip .b{float:right;margin-left:4px}.ok{color:var(--ok)}.wa{color:var(--wa)}
+.st-live,.st-published{box-shadow:inset 0 -2px 0 var(--ok)}.st-in_review{box-shadow:inset 0 -2px 0 var(--wa)}.st-approved{box-shadow:inset 0 -2px 0 #60a5fa}
+#list,#board{display:none;gap:10px}#list{flex-direction:column}
+#board{grid-template-columns:repeat(6,minmax(170px,1fr));overflow:auto}
+.col{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px;min-height:120px}.col h3{margin:0 0 6px;font-size:12px;color:var(--mu);text-transform:uppercase}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;border-left:4px solid var(--ac)}
+.badge{display:inline-block;padding:0 8px;border-radius:99px;font-size:11px;border:1px solid var(--line);color:var(--mu);margin-right:4px}
+#modal{display:none;position:fixed;inset:0;background:#000b;z-index:9;overflow:auto;padding:20px}
+#mb{max-width:560px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+#mb label{display:block;font-size:12px;color:var(--mu);margin:8px 0 2px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+a{color:#a5b4fc}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+@media(max-width:700px){#grid{display:none}#list{display:flex!important}.vt{display:none}}
+</style></head><body>
+<header>
+ <div class="bar">
+  <input id="title" value="Content calendar" aria-label="Calendar name">
+  <button class="vt" id="v-month" onclick="setView('month')">Month</button>
+  <button class="vt" id="v-week" onclick="setView('week')">Week</button>
+  <button class="vt" id="v-list" onclick="setView('list')">List</button>
+  <button class="vt" id="v-board" onclick="setView('board')">Board</button>
+  <span class="nv"><button onclick="nav(-1)" aria-label="Previous">&lt;</button> <button onclick="goToday()">Today</button> <button onclick="nav(1)" aria-label="Next">&gt;</button></span>
+  <b id="range"></b><span class="sp"></span>
+  <button class="go" onclick="openEdit(null)">+ New post</button>
+  <button onclick="exportCSV()">Export</button><button onclick="importCSV()">Import</button><button onclick="loadBlank()">Blank template</button><button onclick="loadExample()">Example</button>
+ </div>
+ <div class="bar chs" id="chs"></div>
+</header>
+<div class="note" id="note"></div>
+<main>
+ <aside>
+  <div class="side" id="drawer"><h2>Unscheduled ideas</h2><div id="unsched"></div><small style="color:var(--mu)">Drag a card onto a day. Drop a post here to unschedule it.</small></div>
+  <div class="side"><h2>Posts per week against goal</h2><div id="cad"></div><small style="color:var(--mu)">Goal is per account and week. Set it to what the team can really approve.</small></div>
+  <div class="side"><h2>Each post carries two gates</h2><small style="color:var(--mu)"><b class="ok">E</b> the editor has passed it. <b class="ok">Go</b> the account owner said go. A post is ready only with both. Status runs from proposed to live.</small></div>
+ </aside>
+ <section>
+  <div id="grid"></div><div id="list"></div><div id="board"></div>
+ </section>
+</main>
+<div id="modal" onclick="if(event.target===this)closeM()"><div id="mb"></div></div>
+<script id="seed" type="application/json">
+[
+{"date":"2026-11-02","channel":"linkedin","account":"Anna","title":"What a slow Monday taught us about ordering","pillar":"founder story","status":"live","editor":true,"go":true,"note":"Example. Already out"},
+{"date":"2026-11-04","channel":"linkedin","account":"Jonas","title":"Three questions to ask before you buy a roaster","pillar":"problem education","status":"published","editor":true,"go":true,"note":"Example. Short vertical video attached"},
+{"date":"2026-11-10","channel":"linkedin","account":"Anna","title":"Why we sell fewer blends than we could","pillar":"point of view","status":"proposed","note":"Example. Draft due Friday"},
+{"date":"2026-11-11","channel":"linkedin","account":"Company page","title":"Carousel: how green beans become your morning cup","pillar":"problem education","status":"in_progress","campaign":"origin-series","note":"Example. Carousel from the design team"},
+{"date":"2026-11-12","channel":"linkedin","account":"Anna","title":"A customer asked for decaf. Here is what we did","pillar":"customer insight","status":"proposed","note":"Example. Needs a named example"},
+{"date":"2026-11-13","channel":"blog","account":"Company site","title":"Guide: brewing ratios by method","pillar":"problem education","status":"proposed","campaign":"origin-series","note":"Example. One keyword, one reader"},
+{"date":"2026-11-16","channel":"linkedin","account":"Jonas","title":"What changed in our packing line this quarter","pillar":"product in context","status":"proposed","note":"Example"},
+{"date":"2026-11-18","channel":"linkedin","account":"Anna","title":"The rule we use to say no to new orders","pillar":"point of view","status":"in_review","editor":true,"note":"Example. Editor passed, waiting for the owner's go"},
+{"date":"2026-11-19","channel":"instagram","account":"Company page","title":"Photo set: roast day","pillar":"","status":"approved","editor":true,"go":true,"note":"Example"},
+{"date":"2026-11-20","channel":"linkedin","account":"Jonas","title":"Reading a roast curve in plain words","pillar":"problem education","status":"proposed","note":"Example"},
+{"date":"2026-11-24","channel":"event","account":"Anna","title":"Tasting evening for local cafes","pillar":"","status":"proposed","note":"Example. Event, not a post"},
+{"date":"2026-11-25","channel":"linkedin","account":"Anna","title":"What the tasting evening taught us","pillar":"customer insight","status":"proposed","note":"Example. Written only after the event"},
+{"date":"","channel":"youtube","account":"Company page","title":"Roast day walkthrough (long cut)","pillar":"","status":"in_progress","note":"Example. No date until the footage is in"},
+{"date":"","channel":"youtube","account":"Company page","title":"Three brewing mistakes (short cuts)","pillar":"","status":"proposed","note":"Example. Needs a recording session"}
+]
+</script>
+<script>
+/* ---- pure logic (also run by the tests) ---- */
+const CH={linkedin:{n:'LinkedIn',c:'#6366f1'},youtube:{n:'YouTube',c:'#ef4444'},instagram:{n:'Instagram',c:'#ec4899'},facebook:{n:'Facebook',c:'#3b82f6'},blog:{n:'Blog / site',c:'#10b981'},event:{n:'Event',c:'#f59e0b'}};
+const ST=['proposed','in_progress','in_review','approved','published','live'];
+const PIL=['','point of view','problem education','founder story','customer insight','product in context'];
+const COLS=['id','date','channel','account','title','pillar','status','editor','go','link','note','campaign'];
+const pad=n=>String(n).padStart(2,'0');
+const iso=d=>d.getUTCFullYear()+'-'+pad(d.getUTCMonth()+1)+'-'+pad(d.getUTCDate());
+const pd=s=>{const a=s.split('-').map(Number);return new Date(Date.UTC(a[0],a[1]-1,a[2]))};
+function addDays(s,n){const d=pd(s);d.setUTCDate(d.getUTCDate()+n);return iso(d)}
+function monday(s){return addDays(s,-((pd(s).getUTCDay()+6)%7))}
+function monthCells(y,m){const first=iso(new Date(Date.UTC(y,m,1))),start=monday(first),lastIso=iso(new Date(Date.UTC(y,m+1,0)));
+ const weeks=((pd(monday(lastIso))-pd(start))/864e5+7)/7;return Array.from({length:weeks*7},(_,i)=>addDays(start,i))}
+function q(v){v=v==null?'':String(v);return /[",\n\r]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
+function toCSV(ps){return [COLS.join(',')].concat(ps.map(p=>COLS.map(c=>q((c=='editor'||c=='go')?(p[c]?'yes':''):p[c])).join(','))).join('\n')}
+function parseRows(t){const rows=[];let r=[],f='',inq=false;
+ for(let i=0;i<t.length;i++){const c=t[i];
+  if(inq){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else inq=false}else f+=c}
+  else if(c=='"')inq=true;else if(c==','){r.push(f);f=''}
+  else if(c=='\n'||c=='\r'){if(c=='\r'&&t[i+1]=='\n')i++;r.push(f);f='';rows.push(r);r=[]}else f+=c}
+ if(f!==''||r.length){r.push(f);rows.push(r)}return rows}
+let seq=0;const newId=()=>'p'+(++seq)+'_'+Math.random().toString(36).slice(2,6);
+function clean(o){const p={id:String(o.id||'').replace(/[^A-Za-z0-9_-]/g,'')||newId(),date:/^\d{4}-\d{2}-\d{2}$/.test(o.date||'')?o.date:'',channel:CH[(o.channel||'').toLowerCase()]?o.channel.toLowerCase():'linkedin',
+ account:o.account||'',title:o.title||'Untitled',pillar:o.pillar||'',status:ST.includes(o.status)?o.status:'proposed',
+ editor:o.editor===true||/^(yes|true|1|x)$/i.test(o.editor||''),go:o.go===true||/^(yes|true|1|x)$/i.test(o.go||''),link:/^https?:\/\//i.test(o.link||'')?o.link:'',note:o.note||'',campaign:o.campaign||''};return p}
+function parseCSV(t){const rows=parseRows(t);if(!rows.length)return[];const h=rows[0].map(x=>x.trim().toLowerCase());
+ return rows.slice(1).filter(r=>r.some(x=>x.trim())).map(r=>{const o={};h.forEach((k,j)=>o[k]=r[j]===undefined?'':r[j]);return clean(o)})}
+function weekCount(ps,account,mon){const end=addDays(mon,6);return ps.filter(p=>p.account==account&&p.channel!='event'&&p.date>=mon&&p.date<=end).length}
+function movePost(ps,id,date){const p=ps.find(x=>x.id==id);if(p)p.date=date;return ps}
+
+/* ---- screen ---- */
+if(typeof document!=='undefined'&&document.getElementById){
+const $=id=>document.getElementById(id),esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const KEY='content-calendar-template-v1';
+let posts=[],view='month',cur=iso(new Date()),on={},goals={},dragId=null,example=true;
+const todayIso=iso(new Date());
+function save(){try{localStorage.setItem(KEY,JSON.stringify({posts,goals,t:$('title').value}))}catch(e){}}
+function seedPosts(){return JSON.parse($('seed').textContent).map(clean)}
+function loadExample(){posts=seedPosts();example=true;$('title').value='Content calendar, November 2026 (example)';cur='2026-11-09';goals={Anna:3,Jonas:3,'Company page':3};draw()}
+function loadBlank(){if(posts.length&&!confirm('Clear all posts and start from the blank template?'))return;posts=[];example=false;$('title').value='Content calendar';cur=todayIso;goals={};draw();save()}
+function accounts(){const s=new Set(Object.keys(goals));posts.forEach(p=>p.account&&p.channel=='linkedin'&&s.add(p.account));return[...s]}
+function shown(){return posts.filter(p=>on[p.channel])}
+function chip(p){const c=CH[p.channel].c;return `<button class="chip st-${p.status}" draggable="true" style="border-left-color:${c}" ondragstart="setDrag('${p.id}')" onclick="openEdit('${p.id}')" title="${esc(p.account+' · '+p.status.replace('_',' ')+(p.note?' · '+p.note:''))}"><span class="b">${p.editor?'<b class="ok">E</b> ':''}${p.go?'<b class="ok">Go</b>':''}</span>${esc(p.title)}</button>`}
+function dayCell(d,off,m){return `<div class="day ${off?'off':''} ${d==todayIso?'today':''}" ondragover="event.preventDefault();this.classList.add('over')" ondragleave="this.classList.remove('over')" ondrop="drop(event,'${d}')"><div class="dn"><span>${pd(d).getUTCDate()}${pd(d).getUTCDate()==1?' '+pd(d).toLocaleString('en',{month:'short',timeZone:'UTC'}):''}</span><button onclick="openEdit(null,'${d}')" aria-label="Add post on ${d}">+</button></div>${shown().filter(p=>p.date==d).map(chip).join('')}</div>`}
+function drop(e,d){e.preventDefault();e.currentTarget.classList.remove('over');if(dragId){movePost(posts,dragId,d);dragId=null;draw();save()}}
+function dropDrawer(e){e.preventDefault();if(dragId){movePost(posts,dragId,'');dragId=null;draw();save()}}
+function card(p){const c=CH[p.channel].c;return `<div class="card" style="border-left-color:${c}"><b>${esc(p.title)}</b><div class="row" style="margin:4px 0"><span class="badge" style="color:${c}">${CH[p.channel].n}</span><span class="badge">${esc(p.account||'no account')}</span><span class="badge">${p.status.replace('_',' ')}</span>${p.pillar?`<span class="badge">${esc(p.pillar)}</span>`:''}<span class="badge">${p.date||'unscheduled'}</span><span class="${p.editor?'ok':''} badge">Editor ${p.editor?'passed':'open'}</span><span class="${p.go?'ok':''} badge">Go ${p.go?'given':'open'}</span></div>${p.note?`<div style="color:var(--mu);font-size:13px">${esc(p.note)}</div>`:''}<div class="row" style="margin-top:6px"><button onclick="openEdit('${p.id}')">Edit</button>${p.link?`<a href="${esc(p.link)}" target="_blank" rel="noopener">Open post</a>`:''}</div></div>`}
+function draw(){
+ $('chs').innerHTML=Object.keys(CH).map(k=>{if(on[k]===undefined)on[k]=true;return `<button class="${on[k]?'on':''}" style="border-left-color:${CH[k].c}" onclick="toggleCh('${k}')">${CH[k].n} (${posts.filter(p=>p.channel==k).length})</button>`}).join('');
+ $('note').innerHTML=example?'Example data: a made-up coffee roaster, for illustration only. Click Blank template to start your own. This page keeps your changes in your browser only: use Export to keep a copy.':'Your calendar. Changes stay in this browser only if it allows storage. Use Export to keep a copy.';
+ ['month','week','list','board'].forEach(v=>{const b=$('v-'+v);if(b)b.className='vt'+(view==v?' on':'')});
+ $('grid').style.display=(view=='month'||view=='week')?'grid':'none';document.querySelector('.nv').style.display=(view=='month'||view=='week')?'':'none';if(view=='list'||view=='board')$('range').textContent='All posts';$('list').style.display=view=='list'?'flex':'none';$('board').style.display=view=='board'?'grid':'none';
+ let g='',cells;
+ if(view=='month'){const d=pd(cur);cells=monthCells(d.getUTCFullYear(),d.getUTCMonth());$('range').textContent=d.toLocaleString('en',{month:'long',year:'numeric',timeZone:'UTC'});
+  g=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x=>`<div class="dh">${x}</div>`).join('')+cells.map(x=>dayCell(x,pd(x).getUTCMonth()!=d.getUTCMonth())).join('')}
+ else if(view=='week'){const m=monday(cur);cells=Array.from({length:7},(_,i)=>addDays(m,i));$('range').textContent='Week of '+m;
+  g=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x=>`<div class="dh">${x}</div>`).join('')+cells.map(x=>dayCell(x,false)).join('')}
+ $('grid').innerHTML=g;
+ const l=shown().slice().sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999'));
+ $('list').innerHTML=l.length?l.map(card).join(''):'<div class="card">No posts. Click + New post.</div>';
+ $('board').innerHTML=ST.map(s=>`<div class="col"><h3>${s.replace('_',' ')}</h3>${shown().filter(p=>p.status==s).map(chip).join('')}</div>`).join('');
+ const un=shown().filter(p=>!p.date);$('unsched').innerHTML=un.length?un.map(p=>`<button class="item" draggable="true" style="border-left-color:${CH[p.channel].c}" ondragstart="setDrag('${p.id}')" onclick="openEdit('${p.id}')">${esc(p.title)}<small>${CH[p.channel].n} · ${p.status.replace('_',' ')}</small></button>`).join(''):'<small style="color:var(--mu)">Nothing waiting.</small>';
+ const d0=pd(cur),first=monday(iso(new Date(Date.UTC(d0.getUTCFullYear(),d0.getUTCMonth(),1)))),last=iso(new Date(Date.UTC(d0.getUTCFullYear(),d0.getUTCMonth()+1,0))),acc=accounts(),weeks=[];
+ for(let w=first;w<=last;w=addDays(w,7))weeks.push(w);
+ $('cad').innerHTML=acc.length?`<table><tr><th>Week</th>${acc.map(a=>`<th>${esc(a)}<br><input class="goal" type="number" min="0" max="14" value="${goals[a]==null?3:goals[a]}" data-a="${esc(a)}" onchange="setGoal(this.dataset.a,this.value)" aria-label="Goal for ${esc(a)}"></th>`).join('')}</tr>${weeks.map(w=>`<tr><th>${w.slice(5)}</th>${acc.map(a=>{const n=weekCount(posts,a,w),t=goals[a]==null?3:goals[a];return `<td class="${n>=t?'g':n>0?'w':'z'}">${n}/${t}</td>`}).join('')}</tr>`).join('')}</table>`:'<small style="color:var(--mu)">Add a LinkedIn post with an account to see the weekly count.</small>'}
+function nav(n){const d=pd(cur);if(view=='week')cur=addDays(cur,7*n);else{d.setUTCMonth(d.getUTCMonth()+n,1);cur=iso(d)}draw()}
+function goToday(){cur=todayIso;draw()}
+function setView(v){view=v;draw()}
+function setDrag(id){dragId=id}
+function toggleCh(k){on[k]=!on[k];draw()}
+function setGoal(a,v){goals[a]=Math.max(0,+v||0);draw();save()}
+function copyOt(){const t=$('ot');t.select();try{document.execCommand('copy')}catch(e){}}
+function closeM(){$('modal').style.display='none'}
+function openEdit(id,date){const p=id?posts.find(x=>x.id==id):clean({date:date||'',account:accounts()[0]||''});
+ const o=(arr,v,f)=>arr.map(x=>`<option value="${esc(x)}" ${x==v?'selected':''}>${esc(f?f(x):x)}</option>`).join('');
+ $('mb').innerHTML=`<h3 style="margin:0 0 6px">${id?'Edit post':'New post'}</h3>
+ <label>Title</label><input id="f_title" value="${esc(p.title=='Untitled'&&!id?'':p.title)}">
+ <div class="two"><div><label>Channel</label><select id="f_channel">${o(Object.keys(CH),p.channel,k=>CH[k].n)}</select></div><div><label>Account or owner</label><input id="f_account" value="${esc(p.account)}"></div></div>
+ <div class="two"><div><label>Date (empty = unscheduled)</label><input id="f_date" type="date" value="${p.date}"></div><div><label>Status</label><select id="f_status">${o(ST,p.status,s=>s.replace('_',' '))}</select></div></div>
+ <div class="two"><div><label>Pillar</label><select id="f_pillar">${o(PIL,p.pillar,s=>s||'none')}</select></div><div><label>Campaign (links pieces of one idea)</label><input id="f_campaign" value="${esc(p.campaign)}"></div></div>
+ <div class="row" style="margin:8px 0"><label style="margin:0"><input id="f_editor" type="checkbox" style="width:auto" ${p.editor?'checked':''}> Editor passed</label><label style="margin:0"><input id="f_go" type="checkbox" style="width:auto" ${p.go?'checked':''}> Owner said go</label></div>
+ <label>Link to the post</label><input id="f_link" value="${esc(p.link)}"><label>Note</label><textarea id="f_note" rows="3">${esc(p.note)}</textarea>
+ <div class="row" style="margin-top:10px"><button class="go" onclick="savePost('${id||''}')">Save</button>${id?`<button class="dn" onclick="delPost('${id}')">Delete</button>`:''}<button onclick="closeM()">Close</button></div>`;
+ $('modal').style.display='block'}
+function savePost(id){const g=k=>$('f_'+k).value,p=clean({id:id||undefined,title:g('title').trim()||'Untitled',channel:g('channel'),account:g('account').trim(),date:g('date'),status:g('status'),pillar:g('pillar'),campaign:g('campaign').trim(),editor:$('f_editor').checked,go:$('f_go').checked,link:g('link').trim(),note:g('note').trim()});
+ const i=posts.findIndex(x=>x.id==id);if(i>=0)posts[i]=p;else posts.push(p);if(p.date)cur=p.date;closeM();draw();save()}
+function delPost(id){posts=posts.filter(x=>x.id!=id);closeM();draw();save()}
+function showText(title,text,editable){$('mb').innerHTML=`<h3 style="margin:0 0 6px">${title}</h3><textarea id="ot" rows="14" ${editable?'':'readonly'}>${esc(text)}</textarea><div class="row" style="margin-top:8px">${editable?'<button class="go" onclick="doImport()">Load these posts</button>':'<button onclick="copyOt()">Select and copy</button>'}<button onclick="closeM()">Close</button></div>`;$('modal').style.display='block';setTimeout(()=>{const t=$('ot');t.focus();if(!editable)t.select()},40)}
+function exportCSV(){showText('Export: select all, copy, paste in a sheet',toCSV(posts),false)}
+function importCSV(){showText('Import: paste CSV with the same columns',COLS.join(','),true)}
+function doImport(){const r=parseCSV($('ot').value);if(!r.length){alert('No rows found. Use the header row from Export.');return}posts=r;example=false;const d=r.find(p=>p.date);cur=d?d.date:todayIso;closeM();draw();save()}
+Object.assign(window,{nav,goToday,setView,closeM,openEdit,savePost,delPost,exportCSV,importCSV,doImport,loadBlank,loadExample,drop,dropDrawer,setDrag,toggleCh,setGoal,copyOt});
+$('drawer').addEventListener('dragover',e=>{e.preventDefault();$('drawer').classList.add('over')});$('drawer').addEventListener('dragleave',()=>$('drawer').classList.remove('over'));$('drawer').addEventListener('drop',e=>{$('drawer').classList.remove('over');dropDrawer(e)});
+$('title').addEventListener('change',save);
+let st=null;try{st=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(st&&st.posts){posts=st.posts.map(clean);goals=st.goals||{};$('title').value=st.t||'Content calendar';example=false;const d=posts.find(p=>p.date);cur=d?d.date:todayIso;draw()}else loadExample();
+}
+if(typeof module!=='undefined')module.exports={iso,pd,addDays,monday,monthCells,toCSV,parseCSV,clean,weekCount,movePost,ST,CH};
+</script></body></html>

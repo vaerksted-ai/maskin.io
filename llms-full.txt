@@ -5564,7 +5564,7 @@ The SEO publishing loop closes the gap between “we should write about X” and
 - **The brief becomes an approved draft.** A writer produces markdown against the brief; a human approves before it moves to publish. Override rate is measurable and watched.
 - **The approved draft becomes a live page.** HTML is built with the correct docs shell, JSON-LD schema, canonical, per-page OG image, and interlinking. Sitemap, llms.txt, and llms-full.txt are updated in the same commit.
 - **The live page gets measured.** An analyst tracks indexation, snippet eligibility, and traffic against the bet checkpoints; flagged audit issues (thin content, broken schema, CWV regressions) route back into the loop as tasks.
-The result: pages ship on a cadence a human editor can supervise but not personally execute. The wedge over “prompt ChatGPT for a blog post” is the loop shape — approval gate, live registration checklist, measured close — not the generation.
+The result: pages ship on a cadence a human editor can supervise but not personally execute. The wedge over “prompt ChatGPT for a blog post” is the loop shape — approval gate, live registration checklist, measured close — not the generation. If the pages are one part of a wider month of posts, the [content calendar](/marketplace/content-calendar/) keeps every post’s status in one place.
 
 ## The seven-step SEO content loop the video walks through
 1. **Signal.** A keyword-whitespace insight or a weekly Ubersuggest audit finding fires. The insight becomes a typed object with a testable frame.
@@ -5706,6 +5706,7 @@ The qualification loop is agnostic to which framework you pick. The framework fi
 ## AI lead qualification tools versus the qualification loop
 “AI lead qualification” and “lead qualification tools” are search terms with real buyer intent — the CPC on the AI-frame is around $39, on the tools-frame around $35, per Ubersuggest’s US pull for September 2026. What the SERP is largely selling under those queries is a black-box scoring API: give it your CRM, get a score back, trust the vendor’s model. Salesforce Einstein and HubSpot Predictive Lead Scoring are the incumbent versions of this shape; Clay and Instantly.ai are the newer specialist versions.
 The loop is a different shape. Instead of a score, you get a typed transition (`new_lead` → `qualified` or `rejected`) with a reason on the object. Instead of trusting a vendor’s model, you can inspect and edit the qualifier agent’s prompt and the ICP fields it reads. Instead of paying a per-lead API bill priced against the vendor’s cost of goods plus their margin, the agents run on your own model keys — Claude, GPT, or a fine-tuned local model routed through your own inference stack. If the qualifier agent gets a call wrong, the reason is on the record, the human can flip the status in a click, and the correction feeds the next lead’s read. A closed-box score doesn’t have that surface at all — you can override, but you can’t teach it what you overrode and why.
+If the step after qualification is outreach, [Open source AI SDR: six GitHub repos compared](/alternatives/open-source-ai-sdr/) covers the open source repos that research, draft and send, with their licences and upkeep.
 
 ## How rejected leads feed ICP refinement
 The single sentence a closed-SaaS lead-qualification page won’t write is this: the rejected lead is worth more than the accepted one. An accepted lead confirms your ICP; a rejected lead teaches you where your ICP hypothesis is wrong.
@@ -5851,7 +5852,7 @@ Your team runs the customer tests, using the evidence Maskin brings.
 You decide which opportunities to take on. Nothing moves forward without your call.
 *Where this is going:* opportunities shown sized and ranked, and a product brief and prototype before you commit. Neither is available yet.
 ![The product discovery loop — customer signal, typed insight, shaped bet.](/og-image-product-discovery.png)
-The goal is a shipped bet tied back to what customers said, not an interview scheduled. Maskin continuously takes in customer calls, sales meetings, and customer and community feedback, and watches competitors and the market. An agent keeps your written-down strategy up to date. Maskin checks what it hears against that strategy, then groups it into opportunities with the evidence behind each one. Strong opportunities become bets staged at the opportunity status in your workspace, and custom views let you shape how results look for your team. A person decides what moves forward. Checking, after a bet ships, whether it eased the problem is where this loop is heading. The same approach applies on the retention side, with [the same signal-to-bet pattern applied to churn](/docs/at-risk-account-alerts/). Shipped bets are also the raw material for the [LinkedIn content loop](/marketplace/linkedin-content/), which turns what shipped this fortnight into posts the account owner approves. Once a bet is shaped, the [product delivery loop](/marketplace/product-delivery/) can take it from there: it plans the work, builds and reviews every change, and checks the result against the success criteria you wrote first. If you synthesize research in Claude Code today, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers what that setup does well and where a team record takes over.
+The goal is a shipped bet tied back to what customers said, not an interview scheduled. Maskin continuously takes in customer calls, sales meetings, and customer and community feedback, and watches competitors and the market. An agent keeps your written-down strategy up to date. Maskin checks what it hears against that strategy, then groups it into opportunities with the evidence behind each one. Strong opportunities become bets staged at the opportunity status in your workspace, and custom views let you shape how results look for your team. A person decides what moves forward. Checking, after a bet ships, whether it eased the problem is where this loop is heading. The same approach applies on the retention side, with [the same signal-to-bet pattern applied to churn](/docs/at-risk-account-alerts/). Shipped bets are also the raw material for the [LinkedIn content loop](/marketplace/linkedin-content/), which turns what shipped this fortnight into posts the account owner approves, and for the [content calendar](/marketplace/content-calendar/), where every idea comes with its source. Once a bet is shaped, the [product delivery loop](/marketplace/product-delivery/) can take it from there: it plans the work, builds and reviews every change, and checks the result against the success criteria you wrote first. If you synthesize research in Claude Code today, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers what that setup does well and where a team record takes over.
 For product teams whose research folder never quite makes it into the roadmap.
 
 ## What this loop is built with
@@ -5893,7 +5894,7 @@ Keep a founder-voice LinkedIn presence going from the moments already happening 
 1. Every two weeks, Maskin reads the last fortnight: what shipped, what feedback came in, and how recent posts did.
 2. From that, it writes interview questions for each account owner, so every post starts from something true.
 3. The account owners answer. The real stories, opinions, and numbers only they hold are the raw material, and this is the human step the whole fortnight hangs on.
-4. Once the answers are in, Maskin plans a calendar of up to 10 posts across personal accounts and the company page, and drafts all of them in one pass, each in that account’s voice, with media noted where a visual helps.
+4. Once the answers are in, Maskin plans [a calendar](/marketplace/content-calendar/) of up to 10 posts across personal accounts and the company page, and drafts all of them in one pass, each in that account’s voice, with media noted where a visual helps.
 5. An editor agent reads every draft the way a busy follower would and sends weak ones back for rework. Then the account owner reads each post, tweaks or kills it, and approves it.
 6. Approved posts go live on their scheduled day. On some accounts Maskin posts for you, and on others the owner pastes the approved text into LinkedIn.
 7. Two weeks later, the retro reads how the posts did and files what to do more and less of, and the next plan starts from it.
@@ -5925,6 +5926,95 @@ Yes, as long as the substance is yours. In this loop the account owner answers i
 
 ### Why is there so much AI-generated content on LinkedIn?
 A post written from a prompt alone has nothing real behind it, so it reads like every other one. This loop starts from the other end: what your team shipped, what feedback came in, and what the account owners say in their interview. An editor agent checks every draft, and the owner can drop any draft that falls short before it goes live.
+Related loops on the marketplace
+
+
+---
+
+> Source: https://maskin.io/marketplace/content-calendar/
+
+# A content calendar template for a month of posts
+Run your content calendar in Maskin so your team decides what to say while Maskin plans the month, drafts to the plan and keeps every post’s status in one place.
+[Want the posts written too?](/marketplace/linkedin-content/)
+![A month calendar with posts marked published, owner’s go, checked and draft, and empty slots left empty.](/marketplace/content-calendar/content-calendar-hero.png)
+
+## The job
+Plan a month of posts in one calendar. Check and approve each post before it goes out. On a set day each week, read reach and visits by channel to see what each one did.
+**Replaces:** a spreadsheet, a scheduling tool’s calendar, a planning retainer.
+The topics, real stories and the go on every post stay human.
+
+## Your team keeps / Maskin runs
+| Your team keeps | Maskin runs |
+| --- | --- |
+| The buyer and topics | Collecting questions |
+| The real stories and recordings | Planning the month around what the team can really approve |
+| The go on each post | Drafting to the plan |
+| What is never claimed | Checking each draft against the plan |
+|  | Keeping dates and statuses |
+|  | The weekly read |
+
+## How the loop runs
+1. Bring an idea and its source.
+2. Maskin plans the month around what the team can really approve.
+3. Maskin drafts to the plan.
+4. Choose or add a picture.
+5. **Check (human gate):** a team member checks the draft.
+6. **Owner’s go (human gate):** the owner approves the post.
+7. Publish the post, read weekly reach and visits, then bring the result into the next idea.
+![The seven steps of the content calendar loop in a row: idea, plan, draft, picture, check, owner’s go, publish and read. Check and owner’s go are marked as the two gates, and an arrow runs from step 7 back to step 1.](/marketplace/content-calendar/content-calendar-flow.png)
+
+## Trust
+- A post without the owner’s go does not go out.
+- Maskin works from your ideas and calendar and writes back only statuses and links.
+- If there is no good idea for a slot, the slot stays empty.
+
+## Run it
+[Get the calendar template](/marketplace/content-calendar/content-calendar-template.html)
+Start with made-up coffee-roaster example data or a blank calendar; changes stay in your browser, and Export keeps a copy.
+
+## What a content plan needs
+- **Buyer:** people choosing coffee to brew at home.
+- **Topics:** roast choices, brewing tips and the people behind the roaster.
+- **Channels and real capacity:** the channels the team uses and the posts it can review.
+- **Ideas with a source:** a customer question or a story from the roasting room.
+- **Weekly rhythm:** a regular day to plan, review and publish.
+- **Gates:** a team check, then the owner’s go.
+- **Measures:** a set weekly read of reach and visits by channel.
+
+## What this loop is built with
+Loop
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome, not on *done for now*. Every listing on the Marketplace is a loop.
+**Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
+Agent
+A named role a model performs: an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
+MCP
+The wire an agent uses to reach the tools your team already uses: the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
+Skill
+A packaged capability you attach to an agent: *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
+Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
+
+## FAQ
+
+### What views does the calendar file have?
+Month, week, list and board views.
+
+### Can I change a post’s date?
+Yes. Drag it to reschedule.
+
+### Can I set a weekly goal?
+Yes. The calendar file supports a weekly goal per account.
+
+### What marks can the calendar file show?
+Two marks: Checked (shown as E) and Owner’s go (shown as Go).
+
+### Can I start blank or use a CSV?
+Yes. The calendar file has a blank start and supports CSV in and out.
+
+### What does the weekly read cover?
+Reach and visits by channel.
+
+### What should a content calendar include?
+Include buyer, topics, channels and the posts the team can review, sourced ideas, a weekly day to plan, review and publish, a team check then the owner’s go, and a weekly read of reach and visits by channel. The list above shows all seven for a made-up coffee roaster.
 Related loops on the marketplace
 
 
