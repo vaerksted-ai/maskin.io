@@ -22,7 +22,7 @@ Keep a founder-voice LinkedIn presence going from the moments already happening 
 1. Every two weeks, Maskin reads the last fortnight: what shipped, what feedback came in, and how recent posts did.
 2. From that, it writes interview questions for each account owner, so every post starts from something true.
 3. The account owners answer. The real stories, opinions, and numbers only they hold are the raw material, and this is the human step the whole fortnight hangs on.
-4. Once the answers are in, Maskin plans a calendar of up to 10 posts across personal accounts and the company page, and drafts all of them in one pass, each in that account’s voice, with media noted where a visual helps.
+4. Once the answers are in, Maskin plans [a calendar](/marketplace/content-calendar/) of up to 10 posts across personal accounts and the company page, and drafts all of them in one pass, each in that account’s voice, with media noted where a visual helps.
 5. An editor agent reads every draft the way a busy follower would and sends weak ones back for rework. Then the account owner reads each post, tweaks or kills it, and approves it.
 6. Approved posts go live on their scheduled day. On some accounts Maskin posts for you, and on others the owner pastes the approved text into LinkedIn.
 7. Two weeks later, the retro reads how the posts did and files what to do more and less of, and the next plan starts from it.
