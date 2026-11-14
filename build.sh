@@ -101,6 +101,28 @@ find dist -type f -name '*.html' | while IFS= read -r html; do
   ' "$html" > "$html.tmp" && mv "$html.tmp" "$html"
 done
 
+# page-context.js: page_type and language on every PostHog event (before_send). It must run
+# before posthog.init, so it goes in as the first script in <head>; then every init config
+# gets before_send. Idempotent. The check at the end fails the build if an init was missed.
+cp partials/page-context.js dist/page-context.js
+find dist -type f -name '*.html' | while IFS= read -r html; do
+  if grep -q 'page-context.js' "$html" || ! grep -q "<head>" "$html"; then
+    continue
+  fi
+  sed -i 's|<head>|<head>\n<script src="/page-context.js"></script>|' "$html"
+done
+find dist -type f -name '*.html' | while IFS= read -r html; do
+  if grep -q "posthog.init" "$html" && ! grep -q "before_send" "$html"; then
+    sed -i "s|person_profiles: 'identified_only',|person_profiles: 'identified_only',\n    before_send: window.maskinBeforeSend,|" "$html"
+  fi
+done
+missing=$(grep -rl "posthog.init" dist --include='*.html' | xargs grep -L "before_send" || true)
+if [ -n "$missing" ]; then
+  echo "Error: posthog.init without before_send (page_type/language would be missing) in:" >&2
+  echo "$missing" >&2
+  exit 1
+fi
+
 # Load seo-cta.js (seo_cta_clicked) on every page, after the PostHog snippet. Idempotent.
 find dist -type f -name '*.html' | while IFS= read -r html; do
   if grep -q 'seo-cta.js' "$html" || ! grep -q "</head>" "$html"; then
