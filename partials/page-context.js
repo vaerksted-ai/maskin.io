@@ -8,7 +8,7 @@
 //             Without the meta tag the type is derived from the URL path (rules below).
 //
 // Page types: home, hub, article, guide, documentation, landing_page, case,
-//             changelog, legal, other
+//             comparison, changelog, legal, other
 // Path rules: /                          home
 //             /da/ /sv/ /docs/ /docs/learn/ /marketplace/ /alternatives/ /loops/   hub
 //             /changelog/                changelog
@@ -16,12 +16,12 @@
 //             /docs/learn/<page>/        guide
 //             /docs/<page>/              documentation
 //             /da/<page>/ /sv/<page>/ /loops/<page>/                              article
-//             /alternatives/<page>/ /marketplace/<page>/ /solutions/<page>/
-//             /small-business/ /onboarding/ /deck/                                landing_page
+//             /alternatives/<page>/      comparison
+//             /marketplace/<page>/ /solutions/<page>/ /small-business/ /onboarding/ /deck/   landing_page
 //             anything else              other
 (function () {
   "use strict";
-  var TYPES = ["home", "hub", "article", "guide", "documentation", "landing_page", "case", "changelog", "legal", "other"];
+  var TYPES = ["home", "hub", "article", "guide", "documentation", "landing_page", "case", "comparison", "changelog", "legal", "other"];
 
   function language() {
     var l = (document.documentElement.getAttribute("lang") || "en").toLowerCase().split("-")[0];
@@ -46,7 +46,8 @@
       return "documentation";
     }
     if (top === "da" || top === "sv" || top === "loops") return seg.length === 1 ? "hub" : "article";
-    if (top === "alternatives" || top === "marketplace") return seg.length === 1 ? "hub" : "landing_page";
+    if (top === "alternatives") return seg.length === 1 ? "hub" : "comparison";
+    if (top === "marketplace") return seg.length === 1 ? "hub" : "landing_page";
     return "other";
   }
 
