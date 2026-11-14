@@ -4,12 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>%%title%%</title>
-<meta name="description" content="%%description%%">
-
-<!-- Sitewide signup CTAs off for this page (build.sh opt-out marker: docnav__cta). Single CTA is Book a meeting. -->
+<meta name="description" content="%%description%%">%%cta_off_comment%%
 
 <!-- Canonical -->
-<link rel="canonical" href="%%canonical%%">
+<link rel="canonical" href="%%canonical%%">%%robots_line%%
 
 <!-- Favicons -->
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -24,11 +22,11 @@
 <meta property="og:url" content="%%og:url%%">
 <meta property="og:title" content="%%og:title%%">
 <meta property="og:description" content="%%og:description%%">
-<meta property="og:image" content="%%og:image%%">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image" content="%%og:image%%">%%og_image_alt_line%%
+<meta property="og:image:width" content="%%og:image:width%%">
+<meta property="og:image:height" content="%%og:image:height%%">
 <meta property="og:site_name" content="Maskin">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="en_US">%%article_lines%%
 
 <!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image">
@@ -43,5 +41,4 @@
 
 <link rel="stylesheet" href="/docs/docs.css">
 
-<script type="application/ld+json">%%jsonld.0%%</script>
-</head>
+%%head_extra%%%%jsonld_blocks%%</head>
