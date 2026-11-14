@@ -1,12 +1,15 @@
 > Source: https://maskin.io/docs/bet-based-product-planning/
 
 # Bet-based product planning: the anti-backlog doctrine
-**Bet-based product planning** is the anti-backlog doctrine: instead of a growing backlog of tickets, a team plans in shaped bets — bounded work with an explicit win condition — runs each inside a fixed cycle, and measures the outcome before picking the next one. The loop is insight → bet → execution → validation → repeat.
-**Bet-based product planning** is the anti-backlog doctrine: instead of managing a growing backlog of tickets, a team plans in a small set of shaped bets — appetite-bounded pieces of work with an explicit win condition — runs them on a fixed cycle, and validates the result before picking the next one. The idea was popularised by Shape Up, Basecamp’s planning methodology, and its core claim is that planning should be a loop of decisions you prove out, not a queue of tasks you grind through. Bet-based product planning has a genuine and growing following, and it is just as genuinely contested — a documented niche, not a settled consensus. (see [What is an agentic workspace?](/docs/what-is-an-agentic-workspace/) for the full model).
+**Bet-based product planning** is the anti-backlog doctrine: a team plans in a few shaped bets, each a bounded piece of work with an explicit win condition, runs each inside a fixed cycle, and measures the outcome before choosing the next. The loop is insight → bet → execution → validation → repeat.
+This page is for a head of product or CPO whose backlog keeps growing and no longer helps the team decide what matters. It gives you four steps for replacing a queue of tickets with a small set of bounded bets, plus a five-minute check you can run on your next candidate before it enters a cycle.
+You do not need to rebuild your planning process first. Bring one real backlog item to a meeting, and we will shape it into a bet with an owner, appetite and win condition. Book a meeting with the button below.
+[Book a meeting](https://meshfirm.com/bookmagnus) Bring one backlog item to shape into a bet with an owner, appetite and win condition; nothing needs installing.
 > ✓
 > **Key takeaways**
 > **Bet-based product planning means planning in shaped bets — bounded work with a clear win condition — instead of a running backlog:** the loop is insight → bet → execution → validation → repeat.
 > **The doctrine comes from Shape Up (Basecamp, 2019).** It is influential but contested, with critics calling it company-specific and rigid and reporting teams that switch back.
+> **You can run it in four steps:** shape a bet, set a win condition, run a fixed cycle, validate the outcome. A five-minute check tells you whether your next item is a bet or still a ticket.
 > **In Maskin, a bet is not a label on a ticket.** It is a first-class, machine-readable object shaped from raw insight, carrying a win condition, and jointly owned by a human and by agents.
 > **Bet-based planning pairs naturally with AI agents.** Agents can own continuous signal capture and mechanical closure while humans keep the taste decisions.
 > **The niche is live and growing.** Tracxn counts ~60 native-AI-in-product-management companies, ~$500M raised, one unicorn, with 2026 funding up ~170% year-over-year (Tracxn, 2026).
@@ -30,7 +33,7 @@ Bet-based planning has a real following, and it has real critics — and the cri
 Practitioners report that teams sometimes adopt the form and then switch back, because the ceremony — cycle planning, shaping sheets, appetite debates — starts to feel like overhead without the promised focus. The honest framing is that bet-based planning is a documented niche with a strong, self-consistent logic, not an enterprise consensus. Teams adopt it, defend it, and write about it; equally, they critique it, modify it, and abandon it. Understanding this is part of planning well: the doctrine’s value is the loop it insists on, which survives even when the specific Basecamp rituals do not.
 
 ## What is a bet in Maskin?
-Most planning tools treat a bet as a label pasted onto a ticket — a status field or a tag. Maskin takes the doctrine’s claim about the unit of work literally and makes the bet a first-class, machine-readable object, part of a unified object model in which insights, bets, and tasks are all objects connected by typed relationships (Maskin architecture, 2026). A bet in Maskin is defined by what it is, not by what it is called:
+Most planning tools treat a bet as a label pasted onto a ticket — a status field or a tag. Maskin takes the doctrine’s claim about the unit of work literally and makes the bet a first-class, machine-readable object, part of a unified object model in which insights, bets, and tasks are all objects connected by typed relationships (Maskin architecture, 2026; the [agentic workspace](/docs/what-is-an-agentic-workspace/) page covers the full model). A bet in Maskin is defined by what it is, not by what it is called:
 - **It is shaped from raw insight.** A bet begins as a signal — feedback, a market move, churn risk, a competitive shift — not a guess. [At-risk account alerts](/docs/at-risk-account-alerts/) are a worked case: a churn signal becomes a shaped recovery bet. The insight exists as an object before the bet does, and the bet carries the lineage back to it.
 - **It carries a win condition.** A bet without an outcome is a ticket. The win condition is what makes the bet testable and what lets the loop measure whether it succeeded.
 - **It is jointly owned.** Agents bring the signal and the execution; humans bring taste and the approval. The ownership is explicit on the object, not assumed.
@@ -58,13 +61,27 @@ This is also why bet-based planning pairs with the broader shift to loop enginee
 Bet-based planning is not a footnote in an old methodology book; it sits inside a market that is actively forming around it. Tracxn counts roughly sixty companies in native-AI-in-product-management — including teams explicitly built around bet- and shape-based planning — with about $500M raised over a decade, eleven at Series A or beyond, and one unicorn (Tracxn, 2026). Funding in 2026 is up about 170% year-over-year. Those numbers describe a small, young, fast-moving wedge, not a settled category.
 The incumbents' behaviour is the most telling signal. In 2026, Atlassian opened its Teamwork Graph as an agent context layer via Rovo and reported agentic automations up 7x in six months; Notion shipped Custom Agents and a Developer Platform; [Linear](/alternatives/open-source-linear-alternative/) released its own agent grounded in roadmap, code, and issues. Each of those moves is the big tooling players converging on the same human-plus-AI loop thesis that bet-based planning articulates — work as a closed loop over a shared model of what matters, rather than a queue of tickets. The doctrine’s focus on a small set of jointly-owned, outcome-carrying bets is the planning layer of that same thesis.
 
-## How to run bet-based product planning
-Bet-based product planning is a loop, not a set of tools. These are the five moves the doctrine requires, in order — each derived from the definitions above.
-1. **Capture the insight.** Source raw signal — customer feedback, a market move, churn risk, a competitive shift — as an insight before any bet exists. Under bet-based planning, work enters because it was shaped from an insight, not because anyone can file a ticket.
-2. **Shape the insight into a bet.** Define the bet's boundaries: a stated win condition, an appetite (the time and money it is worth spending), and an owner. If it does not fit the appetite, it is cut or reshaped — never quietly extended.
-3. **Commit a small set inside a fixed cycle.** Pick a small number of shaped bets deliberately and run them inside a fixed time-box (Shape Up uses six-week cycles). There is no prioritisation ceremony scoring a long list against each other.
-4. **Execute jointly with agents on typed objects.** Let agents run the continuous work — signal capture, synthesis, drafting, mechanical closure. Keep humans on the taste decisions: which bets deserve the cycle and which outcomes actually matter.
-5. **Validate against the win condition and reopen the loop.** When the bet ships, measure the outcome against its win condition, notify the requester, and shape the next cycle's bets from what was learned. The loop does not stop at delivery.
+## How to run bet-based product planning in four steps
+Replace the open-ended queue with a small set of bounded bets, then check what each one achieved before choosing the next.
+1. **Shape a bet.** Start with a signal that points to a problem or opportunity worth pursuing, then define the boundaries before scheduling work. Write down the problem, what is in scope and explicitly out of scope, the appetite for time and money, and a rough shape of the approach, and the name of the one person who drives it. If you cannot state the appetite or name a driver, the work is not shaped yet.
+2. **Set a win condition.** Write down the intended outcome while shaping the bet, not when the work ships. Make it specific and observable enough that an outside person can say whether the bet won or lost without debate. Test it by asking whether a machine could read the condition and report whether it was met; if not, sharpen it.
+3. **Run a fixed cycle.** Treat the appetite as a fixed time box, and choose only a small set of bets for the cycle. Shape Up, from Basecamp in 2019, uses six-week cycles followed by a cooldown, but the cycle length is a team decision. If a bet does not fit the box, cut or reshape its scope rather than extending the cycle.
+4. **Validate the outcome.** When the work ships, compare its outcome with the win condition written at the start. Record the result and what the team learned so the evidence can inform the next cycle, rather than closing a ticket and losing the context. A person makes the final call on whether the win condition was genuinely met.
+
+### A worked example: one backlog ticket, rewritten as a bet
+This example is illustrative: the team, person and numbers are invented, not a customer result.
+| Backlog ticket | Same item as a bet |
+| --- | --- |
+| Title: Improve onboardingDescription: Users drop off during setup, make it betterPriority: P2Owner: noneEnd date: none | Title: Cut setup drop-off by getting new teams to a first shared projectProblem: 38% of new workspaces never create a first shared project in week oneOut of scope: pricing page, SSO, redesigning the whole dashboardOwner: Priya, product leadAppetite: one 3-week cycle, two engineers and one designer. Hard stop: if it does not fit, cut it, do not extend itWin condition: by day 21 after release, at least 55% of new workspaces create a first shared project within 7 days, read from the product analytics dashboard, and week-one support tickets tagged “setup” do not riseWho judges: the owner records the result and a person confirms it |
+The ticket gives a person nothing to hold the team to and a machine nothing to check. The bet names one driver, a fixed budget and a condition that can be read from a dashboard, so an agent can report “met” or “not met” on day 21 without anyone arguing about what “better” meant.
+
+### A five-minute check for your next bet
+Take one candidate item and answer yes or no to each question before it enters a cycle:
+1. Is there a named owner who will drive this bet?
+2. Is the appetite stated as a bounded amount of time and money?
+3. Could an outside observer judge whether the win condition was met without debate?
+4. Is it clear where the outcome and result will be recorded?
+If two or more answers are no, the item is still a ticket, not a bet.
 Product teams applying this to their own week can start with the [product-team getting-started sequence](/solutions/product-teams/), which shows what a first-day workspace looks like for a PM or CPO.
 
 ## FAQ
@@ -89,7 +106,19 @@ Agents fit by splitting the loop. They are strong at the continuous work the doc
 
 ### What happens after a bet ships?
 Validation closes the loop. When a bet ships, its outcome is measured against the win condition, the requester is notified, and the follow-up bets are shaped from what was learned. The loop does not stop at delivery — that is precisely what distinguishes the anti-backlog doctrine from a backlog, where a shipped ticket is simply closed and forgotten. A bet’s result feeds the next cycle, so the team plans from evidence rather than from aspiration.
+
+### How long does a bet-based planning cycle take?
+The team decides the length. Shape Up, the approach published by Basecamp in 2019, uses six-week cycles followed by a cooldown. The important constraint is a fixed box that forces trade-offs. If a bet does not fit, cut or reshape its scope instead of extending the cycle. Commit to a small set of bets for each cycle.
+
+### What should a good win condition look like?
+A good win condition is written when the bet is shaped and describes a specific, observable outcome. An outside observer should be able to judge whether it was met without debate. Try asking whether a machine could read the condition and report the result. If the answer is no, make the condition more precise before the work starts.
+
+### Does bet-based planning replace Scrum?
+Not necessarily. Bet-based planning defines what the team commits to, the appetite for the work, and how it will judge success. Scrum concerns the execution cadence. A team can use bets alongside sprints. What bets replace is a long priority-sorted backlog acting as the planning commitment, rather than a small set of bounded bets with outcomes to validate.
+
+### What happens to ideas that are not chosen?
+They can wait to be shaped for a future cycle, or be discarded on purpose. An unchosen idea is not treated as a commitment or left in a queue that keeps growing. Retain the insight behind it, but schedule work only once it has been shaped into a bet. New evidence can give the idea a reason to be considered again.
 Read next
 
-## Getting started is free
-Self-host today, or take a hosted trial and read the [agentic-workspace guide](/docs/what-is-an-agentic-workspace/) while you decide.
+## Turn one backlog item into a bet
+Book a meeting and bring one backlog item. We will shape it into a bet together, and nothing needs installing for the meeting. The [agentic-workspace guide](/docs/what-is-an-agentic-workspace/) is the best next read.

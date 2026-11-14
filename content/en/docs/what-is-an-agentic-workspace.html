@@ -1,0 +1,181 @@
+@@ meta
+title: What Is an Agentic Workspace? | Maskin
+canonical: https://maskin.io/docs/what-is-an-agentic-workspace/
+description: An agentic workspace is a shared, persistent environment where humans and AI agents work on the same typed objects. Here is how Maskin runs a closed loop — insight, bet, task, shipped — on repeat.
+og:type: article
+og:url: https://maskin.io/docs/what-is-an-agentic-workspace/
+og:title: What Is an Agentic Workspace?
+og:description: A shared, persistent environment where humans and AI agents work on the same typed objects — insights, bets, tasks — instead of everyone running their own private AI chat.
+og:image: https://maskin.io/og-image.png?v=2
+article:published_time: 2026-08-21T00:00:00Z
+article:modified_time: 2026-09-19T00:00:00Z
+active: /docs/what-is-an-agentic-workspace/
+shell.pre: p1
+shell.mainopen: m1
+shell.tail: t1
+@@ jsonld 0
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "What Is an Agentic Workspace?",
+      "name": "What Is an Agentic Workspace?",
+      "description": "A shared, persistent environment where humans and AI agents work on the same object model — instead of everyone running their own private AI chat. Maskin turns it into a closed loop: insight, bet, task, shipped, repeat.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/what-is-an-agentic-workspace/",
+      "datePublished": "2026-08-21T00:00:00Z",
+      "dateModified": "2026-09-19T00:00:00Z",
+      "isPartOf": "https://maskin.io/",
+      "image": "https://maskin.io/og-image.png",
+      "author": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" },
+      "publisher": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://maskin.io/docs/what-is-an-agentic-workspace/" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
+        { "@type": "ListItem", "position": 2, "name": "What Is an Agentic Workspace?", "item": "https://maskin.io/docs/what-is-an-agentic-workspace/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is an agentic workspace the same as ChatGPT?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — a chatbot answers a question; an agentic workspace runs work to completion on shared objects that persist after the chat ends."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it replace my PM tooling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It replaces the parts where progress evaporates — the ad-hoc AI chats and disconnected trackers — and keeps the integrations (Slack, Linear, GitHub, Intercom, PostHog, HubSpot)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to run agents myself?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — hosted plans run agents for you; self-host keeps everything on your infrastructure."
+          }
+        }
+      ]
+    }
+  ]
+}
+
+@@ body
+
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / What is an agentic workspace?</p>
+    <p class="eyebrow">Guide · Core concept</p>
+    <h1>What is an agentic workspace?</h1>
+    <p class="lead">An <strong>agentic workspace</strong> is a shared, persistent environment where humans and AI agents work together on the same typed objects &mdash; insights, bets, tasks &mdash; instead of each person running their own private AI chat. It is the category Maskin is built around (see <a href="/docs/what-is-mcp-native/">MCP-native workspace</a> and <a href="/docs/ai-product-management-tool/">the AI product-management angle</a> for the adjacent views).</p>
+
+  <div class="callout callout--muted">
+    <div class="callout__icon" aria-hidden="true">✓</div>
+    <div class="callout__body"><strong>Key takeaways</strong>
+      <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+        <li>An agentic workspace is a shared surface where people and agents co-operate on persistent, typed objects &mdash; not chatbots bolted onto a document.</li>
+        <li>Maskin runs a closed loop &mdash; insight &rarr; bet &rarr; task &rarr; shipped &rarr; repeat &mdash; on one shared object model.</li>
+        <li>Agents act autonomously and are pulled in only when a decision needs human taste.</li>
+        <li>Open source (Apache 2.0), MCP-native, self-host or managed.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>The problem it solves</h2>
+  <p>Ten people, ten AI chats, none of them visible to the rest of the team. Decisions are made in DMs, context is trapped in chat history, and every session starts from zero. That is the default AI workflow for many product teams in 2026 &mdash; and it is why teams adopt agentic workspaces.</p>
+  <p>The core failure of chat-first AI is that it helps one person and the organisation learns nothing: progress evaporates overnight. An agentic workspace fixes that by making the <strong>work itself</strong> the shared surface, instead of the conversation.</p>
+
+  <h2>Agentic, not chatty: agents act until done</h2>
+  <p>A chatbot answers a question. An agentic workspace runs a loop: it observes, reasons, acts, and keeps going until the outcome is verified &mdash; then it reports back. That &ldquo;closed loop&rdquo; is what separates real agents from one-shot assistants &mdash; and for the narrower distinction against the workflow framing, <a href="/docs/learn/agentic-workflow-vs-closed-loop/">why closed loops replace agentic workflows</a> walks it out.</p>
+  <p>In Maskin, work enters through <strong>triggers</strong> &mdash; a Slack message, a new customer complaint, a scheduled morning scan. Agents with defined roles &mdash; not just prompts &mdash; pick it up. The Feedback Monitor reads signals, the Bet Strategist shapes them into a bet, the Developer ships, and an agent validates whether the bet hit its target.</p>
+
+  <h2>The closed loop: insight &rarr; bet &rarr; task &rarr; shipped &rarr; repeat</h2>
+  <p>Maskin&rsquo;s core loop has four moves:</p>
+  <ol>
+    <li><strong>Insight</strong> &mdash; raw signal enters the workspace (from Slack, Intercom, PostHog, HubSpot, Reddit, X, LinkedIn, <a href="/marketplace/competitive-intelligence/">competitor changelogs</a>).</li>
+    <li><strong>Bet</strong> &mdash; the signal is shaped into a testable bet with a clear win condition.</li>
+    <li><strong>Task</strong> &mdash; the bet breaks into work the team and agents execute.</li>
+    <li><strong>Shipped + validated</strong> &mdash; when it goes live the loop closes: outcomes are measured and the customer or requester who prompted it is notified.</li>
+  </ol>
+  <p>The loop repeats. Nothing is a one-shot session. Teams that want to stand this loop up on their own work start with <a href="/onboarding/">a free 60 minute onboarding</a> &mdash; we set up your first self-learning loop with you, live, on your own stack.</p>
+
+  <h2>The object model: humans and agents share the same objects</h2>
+  <p>Insights, bets, and tasks are first-class typed objects owned jointly by humans and agents &mdash; not chat history. Memory persists across sessions, threads attach to the work (not to a Slack channel), and an agent&rsquo;s blocker sits next to the approval needed on the same object.</p>
+  <p>This is the structural difference from a task tracker with a summariser bolted on: the <strong>object of work</strong> is shared, so everyone &mdash; human or agent &mdash; sees the same state.</p>
+
+  <h2>How it fits a product team</h2>
+  <p>Small teams operate many agents through an abstraction layer and get pulled in only for decisions that need a human. Pre-built closed loops handle the rest (see <a href="/docs/ai-product-management-tool/">AI product management tool</a> and <a href="/docs/bet-based-product-planning/">Bet-based product planning</a>):</p>
+  <ul>
+    <li><strong><a href="/loops/ai-customer-feedback-loop/">Customer feedback</a></strong> &mdash; feedback from Slack/Intercom becomes an insight, then a bet, then a shipped change, with the customer notified.</li>
+    <li><strong>Market signals</strong> &mdash; Reddit, X, LinkedIn and forums are monitored, synthesised into insights and turned into bets.</li>
+    <li><strong>Churn &amp; expansion</strong> &mdash; usage drops and error spikes are watched; <a href="/docs/at-risk-account-alerts/">at-risk account alerts</a> arrive with full context and a prepared recovery plan.</li>
+    <li><strong>Lost deals &rarr; roadmap</strong> &mdash; closed-lost reasons are weighted by ARR and shaped into roadmap bets.</li>
+    <li><strong>Competitive intelligence</strong> &mdash; vendor changelogs and pricing pages <a href="/loops/competitive-intelligence/">route battlecards to sales and feature gaps to product</a>.</li>
+    <li><strong>Team knowledge</strong> &mdash; <a href="/marketplace/knowledge-wiki/">a wiki your agents read before they answer</a> compiles closed bets and shipped decisions into a living record every future agent picks up on the same graph (see <a href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a> for how that compiled layer differs from query-time retrieval).</li>
+    <li><strong>Product discovery</strong> &mdash; <a href="/marketplace/product-discovery/">the product discovery loop &mdash; signal to shipped bet</a> keeps interviews, tickets, and reviews on the same typed graph as the bets you&rsquo;re already shipping, so the loop closes on a validated bet instead of an opportunity board.</li>
+  </ul>
+
+  <h2>Agentic workspaces vs. what came before</h2>
+  <p>The field splits into three tiers:</p>
+  <ul>
+    <li><strong>Agent-native platforms</strong> &mdash; big-model vendor workspaces turned the agent loop into a platform feature.</li>
+    <li><strong>Incumbent task suites</strong> &mdash; Notion, Asana, Jira, Linear, monday bolt AI onto trackers; the object stays a task.</li>
+    <li><strong>Knowledge spaces</strong> &mdash; Obsidian, Mem, Confluence, Raft hold notes but stop before the decision.</li>
+  </ul>
+  <p>Maskin&rsquo;s edge is the loop itself on one shared object model &mdash; MCP-native, Apache-2.0, self-hostable. Inside the field there is a second cut, between products that make a persona the unit of work and products that make a typed object the unit of work; <a href="/docs/composable-ai-agents-vs-ai-employees/">the two camps of AI employees and composable agents</a> are compared in full. Buyers who start from a vendor product often search for an <a href="/alternatives/claude-cowork/">open-source alternative to Claude Cowork</a> or an <a href="/alternatives/open-source-alternative-to-codex/">open-source alternative to Codex</a>; those pages compare the options directly.</p>
+
+  <h2>Getting started</h2>
+  <p>Self-host the open-source repo or go managed &mdash; either way the loop runs on the same object model. The <a href="/docs/get-started/">get-started guide</a> walks through it end to end, and the <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a> guide covers running the closed loop on your own infrastructure with bring-your-own-model. Product teams can also start with the <a href="/solutions/product-teams/">product-team getting-started sequence</a>, which walks through what day one in the workspace looks like for a PM or CPO.</p>
+
+  <h2>FAQ</h2>
+  <h3>Is an agentic workspace the same as ChatGPT?</h3>
+  <p>No &mdash; a chatbot answers a question; an agentic workspace runs work to completion on shared objects.</p>
+  <h3>Does it replace my PM tooling?</h3>
+  <p>It replaces the parts where progress evaporates &mdash; the ad-hoc AI chats and disconnected trackers &mdash; and keeps the integrations (Slack, Linear, GitHub, Intercom, PostHog, HubSpot).</p>
+  <h3>Do I need to run agents myself?</h3>
+  <p>No &mdash; hosted plans run them for you; self-host keeps everything on your infrastructure.</p>
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+<a class="doc-card" href="/docs/what-is-mcp-native/">
+        <div class="doc-card__title">What is MCP-native?</div>
+        <div class="doc-card__desc">The protocol layer behind bring-your-own-model.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/ai-product-management-tool/">
+        <div class="doc-card__title">AI product management tool</div>
+        <div class="doc-card__desc">The loop, not a tracker &mdash; raw insight becomes a testable bet.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/bet-based-product-planning/">
+        <div class="doc-card__title">Bet-based product planning</div>
+        <div class="doc-card__desc">The anti-backlog doctrine, on the same closed loop.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/self-hosted-ai-workspace/">
+        <div class="doc-card__title">Self-hosted AI workspace</div>
+        <div class="doc-card__desc">Run the closed loop on your own infrastructure, bring your own model.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a><a class="doc-card" href="/docs/what-is-a-stateful-orchestration-substrate/">
+        <div class="doc-card__title">What is a stateful orchestration substrate?</div>
+        <div class="doc-card__desc">Why stateless agents need a shared store to hand work off.</div>
+        <div class="doc-card__arrow">Read &rarr;</div>
+      </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Getting started is free</h2>
+      <p>Self-host today, or take a hosted trial and read the <a href="/docs/what-is-mcp-native/">MCP-native guide</a> while you decide.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  

@@ -1,0 +1,113 @@
+@@ meta
+title: Security — self-hosted, AES-256 — Maskin
+canonical: https://maskin.io/docs/security/
+description: Maskin's security model: API-key authentication, workspace isolation and roles, AES-256-GCM credential encryption, sandboxed agent execution, webhook verification, the audit log, and responsible disclosure.
+og:type: article
+og:url: https://maskin.io/docs/security/
+og:title: Security — self-hosted, AES-256 — Maskin
+og:description: Authentication, workspace isolation, encrypted credentials, sandboxed agents, and responsible disclosure.
+og:image: https://maskin.io/og-image.png?v=2
+active: /docs/security/
+shell.pre: p2
+shell.mainopen: m2
+shell.tail: t1
+@@ jsonld 0
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "Security",
+      "name": "Security",
+      "description": "Maskin's security model: API-key authentication, workspace isolation and roles, AES-256-GCM credential encryption, sandboxed agent execution, webhook verification, the audit log, and responsible disclosure.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/security/",
+      "isPartOf": "https://maskin.io/docs/",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Security",
+          "item": "https://maskin.io/docs/security/"
+        }
+      ]
+    }
+  ]
+}
+
+@@ body
+
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Security</p>
+
+    <p class="eyebrow">Self-hosting</p>
+    <h1>Security</h1>
+    <p class="lead">How Maskin protects credentials, separates workspaces in the API, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.</p>
+
+    <h2>Authentication</h2>
+    <p>Every request authenticates with a bearer API key (prefixed <code>ank_</code>). Keys are <strong>stored as issued</strong>, not hashed; hashing is planned. Auth is <strong>stateless</strong>: no cookies or server sessions. Keys are per-actor and can be rotated with <code>regenerate_api_key</code>, which immediately invalidates the old value.</p>
+
+    <h2>Authorization &amp; tenant isolation</h2>
+    <p>Workspace-scoped requests carry an <code>X-Workspace-Id</code> header. Workspace isolation is enforced in the API, route by route, not by database-level row security, so it depends on each route checking the workspace. Memberships carry a role (<code>owner</code>, <code>admin</code>, <code>member</code>, <code>viewer</code>). Owner and admin roles gate member management, invites, billing and workspace settings. Viewers are read-only in the app by design, and the server refuses writes from viewers except a short list of their own settings and account actions. This is enforced by a route list checked in CI.</p>
+    <p>Agents cannot send LinkedIn messages, invitations, posts, comments or edits, or post or edit Slack messages, until a person approves the exact text. Editing the text withdraws the approval.</p>
+
+    <h2>Credential encryption at rest</h2>
+    <p>Integration credentials, including OAuth tokens, are encrypted with <strong>AES-256-GCM</strong> using <code>INTEGRATION_ENCRYPTION_KEY</code> (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as <code>iv:authTag:ciphertext</code>.</p>
+    <div class="callout">
+      <span class="callout__icon">!</span>
+      <span class="callout__body">Set <code>INTEGRATION_ENCRYPTION_KEY</code> explicitly in production and keep it stable — rotating it makes previously stored credentials undecryptable, so connections must be re-established.</span>
+    </div>
+
+    <h2>Sandboxed agent execution</h2>
+    <p>Each agent session runs in its own <strong>ephemeral microVM</strong> (libkrun, managed through microsandbox) on a dedicated <a href="/docs/agents/">agent server</a>, started from the <code>agent-base</code> image, one per run and stopped and removed when the session completes. The app hands sessions to the agent server over HTTPS and does not launch them through a Docker socket.</p>
+    <p>Docker is for local development only. There is no fallback that runs agents without the microVM runtime, so a self-host needs an agent server running microsandbox and libkrun. Locally, treat access to the host Docker socket (<code>/var/run/docker.sock</code>) as root-equivalent and restrict it to the app. For the policy layer above the sandbox &mdash; who signs off on agent actions, and how those approvals get recorded &mdash; see the <a href="/docs/learn/ai-agent-governance/">governance framework for AI agents</a>.</p>
+
+    <h2>Webhook verification</h2>
+    <p>Inbound webhooks are signature-verified per provider before processing:</p>
+    <div class="doc-table-wrap"><table class="doc-table">
+      <thead><tr><th>Provider</th><th>Verification</th></tr></thead>
+      <tbody>
+        <tr><td>Slack</td><td>HMAC-SHA256 over the raw body + timestamp (<code>x-slack-signature</code>).</td></tr>
+        <tr><td>GitHub</td><td><code>x-hub-signature-256</code> HMAC.</td></tr>
+        <tr><td>Linear</td><td><code>linear-signature</code> HMAC.</td></tr>
+        <tr><td>Gmail</td><td>Pub/Sub push with OIDC JWT verification.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Audit log</h2>
+    <p>Every change is recorded in an event log that is insert-only by convention (see <a href="/docs/architecture/">Architecture</a>), giving you a trail of who — human or agent — did what, and when.</p>
+
+    <h2>Hardening your deployment</h2>
+    <ul>
+      <li>Terminate <strong>TLS</strong> at your proxy/load balancer in front of the app.</li>
+      <li>Set <code>CORS_ORIGIN</code> to your real frontend origin(s) only.</li>
+      <li>Set <code>TRUSTED_PROXY_CIDRS</code> to your CDN/LB ranges so <code>X-Forwarded-For</code> is honored only from trusted hops.</li>
+      <li>Restrict access to the Docker socket and your database/object-store credentials.</li>
+      <li>See the <a href="/docs/configuration/">configuration reference</a> and <a href="/docs/deployment/">production deployment</a> for the full list.</li>
+    </ul>
+
+    <h2>Reporting a vulnerability</h2>
+    <div class="callout">
+      <span class="callout__icon">!</span>
+      <span class="callout__body"><strong>Please do not open a public GitHub issue for security reports.</strong> Email <!--email_off--><a href="mailto:ai@maskin.io">ai@maskin.io</a><!--/email_off--> with a description and reproduction steps. You can expect acknowledgment within <strong>48 hours</strong>, with critical fixes targeted within <strong>7 days</strong>. Responsible reporters are credited in release notes unless they prefer to stay anonymous. See <a href="https://github.com/sindre-ai/maskin/blob/main/SECURITY.md" target="_blank" rel="noopener">SECURITY.md</a> for the full policy.</span>
+    </div>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/deployment/">← Production deployment</a>
+      <a href="/docs/troubleshooting/">Troubleshooting →</a>
+    </nav>
+  

@@ -1,0 +1,159 @@
+@@ meta
+title: Self-hosted setup — Maskin Docs
+canonical: https://maskin.io/docs/get-started/self-hosted/
+description: Set up the self-hosted version of Maskin: run your own instance and connect Claude (Code or Desktop) to it over MCP.
+og:type: article
+og:url: https://maskin.io/docs/get-started/self-hosted/
+og:title: Self-hosted setup — Maskin
+og:description: Run your own Maskin instance and connect Claude to it over MCP.
+og:image: https://maskin.io/og-image.png?v=2
+active: /docs/get-started/self-hosted/
+shell.pre: p2
+shell.mainopen: m2
+shell.tail: t1
+@@ jsonld 0
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "Self-hosted setup",
+      "name": "Self-hosted setup",
+      "description": "Set up the self-hosted version of Maskin: run your own instance and connect Claude (Code or Desktop) to it over MCP.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/get-started/self-hosted/",
+      "isPartOf": "https://maskin.io/docs/",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Get started",
+          "item": "https://maskin.io/docs/get-started/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Self-hosted setup",
+          "item": "https://maskin.io/docs/get-started/self-hosted/"
+        }
+      ]
+    }
+  ]
+}
+
+@@ body
+
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / <a href="/docs/get-started/">Get started</a> / Self-hosted setup</p>
+
+    <p class="eyebrow">Self-hosted</p>
+    <h1>Self-hosted setup</h1>
+    <p class="lead">Run your own Maskin instance and connect Claude — Code or Desktop — to it over MCP, so you can drive a workspace from inside Claude.</p>
+
+    <div class="callout">
+      <span class="callout__icon">!</span>
+      <span class="callout__body">This guide is for the <strong>self-hosted</strong> version of Maskin — connecting Claude to a Maskin instance you run yourself. Want us to host it instead? <a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a>.</span>
+    </div>
+
+    <h2>Prerequisites</h2>
+    <ul>
+      <li><strong>Claude Code</strong> or <strong>Claude Desktop</strong> installed.</li>
+      <li>An <strong>Anthropic API key</strong> — Maskin runs Claude Code in sandboxes and uses this key. A fresh instance only accepts it after you set one environment variable (Step 2).</li>
+      <li>A <strong>running Maskin instance</strong> (set one up below).</li>
+    </ul>
+
+    <h2>Run your Maskin server</h2>
+    <p>Clone the open-source repo, install with pnpm, run pnpm dev. Needs Node 20+, pnpm and Docker.</p>
+    <pre><code>git clone https://github.com/sindre-ai/maskin.git &amp;&amp; cd maskin
+pnpm install
+pnpm dev</code></pre>
+    <p>The app opens on port 5173 (<code>http://localhost:5173</code>) and the API runs on port 3000. On first run it bootstraps a dev actor, a workspace, and an API key (printed in the startup banner). For a real deployment, put it behind your own domain (referred to below as <code>https://&lt;your-maskin-host&gt;</code>) and review the <a href="/docs/configuration/">configuration reference</a>.</p>
+
+    <h2>Step 1 — Sign in and create a workspace</h2>
+    <ol>
+      <li>Open your instance at <code>http://localhost:5173</code> (or <code>https://&lt;your-maskin-host&gt;</code>) and sign in.</li>
+      <li>Create your first workspace when prompted.</li>
+    </ol>
+    <p>Once you're in, you'll see the unified pipeline view: <strong>Insights → Bets → Tasks</strong>.</p>
+
+    <h2>Step 2 — Add your Anthropic API key</h2>
+    <p>A fresh instance runs agents on a Maskin-funded model and refuses your own key: saving one returns <em>"This workspace is on the Maskin-provided LLM plan and cannot add BYO LLM credentials"</em>, and <strong>Settings → LLM keys</strong> shows no key fields. To bring your own key, list your user id in <code>MASKIN_ENTERPRISE_ACTOR_IDS</code> first.</p>
+    <ol>
+      <li>Create an API key as in Step 3, then find your user id (the entry with <code>"type": "human"</code>):
+        <pre><code>curl -s http://localhost:3000/api/actors \
+  -H "Authorization: Bearer &lt;YOUR_MASKIN_API_KEY&gt;"</code></pre>
+      </li>
+      <li>Add it to the <code>.env</code> file in the repo root (several ids can be comma-separated), then restart the server:
+        <pre><code>MASKIN_ENTERPRISE_ACTOR_IDS=&lt;your-user-id&gt;</code></pre>
+      </li>
+      <li>Open <strong>Settings → LLM keys</strong>, paste your Anthropic API key and <strong>Save</strong>.</li>
+    </ol>
+    <p>Without this setting, agent sessions need <code>MASKIN_FALLBACK_OPENROUTER_KEY</code> instead and run on the default Maskin-funded model.</p>
+
+    <h2>Step 3 — Get your Maskin API key and workspace ID</h2>
+    <ol>
+      <li>Open <strong>Settings → API keys</strong>, click <strong>Create key</strong>, and copy the <code>ank_…</code> value.</li>
+      <li>Open <strong>Settings → Workspace</strong> and copy the <strong>Workspace ID</strong> (a UUID).</li>
+    </ol>
+
+    <h2>Step 4 — Connect Claude to your Maskin MCP</h2>
+
+    <h3>Claude Code</h3>
+    <p>Register the MCP server. The URL of your instance goes after the server name:</p>
+    <pre><code>claude mcp add --transport http maskin \
+  https://&lt;your-maskin-host&gt;/mcp \
+  --header "Authorization: Bearer &lt;YOUR_MASKIN_API_KEY&gt;" \
+  --header "X-Workspace-Id: &lt;YOUR_WORKSPACE_ID&gt;"</code></pre>
+    <p>Then reload plugins:</p>
+    <pre><code>/reload-plugins</code></pre>
+
+    <h3>Claude Desktop</h3>
+    <p>Open <strong>Settings → Developer → Edit config</strong> and add the <code>maskin</code> server:</p>
+    <pre><code>{
+  "mcpServers": {
+    "maskin": {
+      "type": "http",
+      "url": "https://&lt;your-maskin-host&gt;/mcp",
+      "headers": {
+        "Authorization": "Bearer &lt;YOUR_MASKIN_API_KEY&gt;",
+        "X-Workspace-Id": "&lt;YOUR_WORKSPACE_ID&gt;"
+      }
+    }
+  }
+}</code></pre>
+    <p>Save and restart Claude Desktop.</p>
+
+    <h2>Step 5 — Make your first MCP call</h2>
+    <p>Ask Claude:</p>
+    <pre><code>Use the maskin MCP to call get_started.</code></pre>
+    <p>The <code>get_started</code> tool previews and applies a workspace template — <strong>development</strong>, <strong>growth</strong>, or <strong>custom</strong> — seeding your workspace with object types, statuses, custom fields, and an initial set of objects. See the full tool set in the <a href="/docs/mcp-tools/">MCP tools reference</a>.</p>
+
+    <h2>What's next</h2>
+    <ul>
+      <li>Take the tour → <a href="/docs/quickstart/">Quickstart tutorial</a> — seed a workspace, create your first insight and bet, and put an agent to work end-to-end.</li>
+      <li>Invite teammates from <strong>Settings → Members</strong>.</li>
+      <li>Wire up integrations (Slack, GitHub, Linear, Gmail, PostHog) — see <a href="/docs/integrations/">Integrations setup</a>.</li>
+      <li>Tune your deployment with the <a href="/docs/configuration/">configuration reference</a>.</li>
+      <li>Learn how agents run → <a href="/docs/agents/">Agents &amp; sessions</a>.</li>
+    </ul>
+    <p>Questions or issues? Open an issue on <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a>, or read the README for the data model and agent-session details.</p>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/get-started/">← Get started</a>
+      <a href="/docs/quickstart/">Quickstart tutorial →</a>
+    </nav>
+  

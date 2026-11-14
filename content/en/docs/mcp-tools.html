@@ -1,0 +1,339 @@
+@@ meta
+title: MCP tools: verbs, object types, typed graph — Maskin
+canonical: https://maskin.io/docs/mcp-tools/
+description: MCP tools are the verbs an MCP server exposes to AI agents. Maskin's server has about 100 tools, 12 of them for an agent's own computer, extension tools extra, plus the knowledge and loop object types.
+og:type: article
+og:url: https://maskin.io/docs/mcp-tools/
+og:title: MCP tools: verbs, object types, typed graph — Maskin
+og:description: MCP tools are the verbs an MCP server exposes to AI agents. Maskin's server has about 100 tools, 12 of them for an agent's own computer, extension tools extra, plus the knowledge and loop object types.
+og:image: https://maskin.io/og-image-mcp-tools.png
+active: /docs/mcp-tools/
+shell.pre: p2
+shell.mainopen: m4
+shell.tail: t1
+@@ jsonld 0
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://maskin.io/docs/mcp-tools/#article",
+      "headline": "MCP tools in Maskin: verbs, object types, and the typed workspace graph",
+      "description": "MCP tools are the verbs an MCP server exposes to AI agents. Maskin's server has about 100 tools, 12 of them for an agent's own computer, extension tools extra, plus the knowledge and loop object types.",
+      "datePublished": "2026-09-25T00:00:00Z",
+      "dateModified": "2026-10-24T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "image": "https://maskin.io/og-image-mcp-tools.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://maskin.io/docs/mcp-tools/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "MCP tools in Maskin: verbs, object types, and the typed workspace graph",
+          "item": "https://maskin.io/docs/mcp-tools/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are MCP tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed JSONSchema-defined input and a documented output. A tool call names both the verb and the shape it operates on: e.g. create_objects with a node of type: \"knowledge\". Maskin's MCP server has about 100 tools, 12 of them for an agent's own computer, extension tools extra. Those 12 tools drive an agent's own computer and are gated by a workspace flag, so not every workspace gets them. The main clusters are: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup. Every read or write against the workspace graph flows through one of them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between MCP tools and MCP resources?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tools are verbs — write-path actions with side effects. Resources are read-only URIs a server exposes for context lookup without invoking an action. In Maskin, first-class typed rows (knowledge, loop, insight, bet, task, and custom types) are operated on by tools like create_objects and update_objects; opaque blobs (uploads, generated files, screenshots) are stored via create_file and attached to objects. Prefer a typed knowledge object when the content is human-readable reference material; prefer a file when it is a raw artifact."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I list all MCP tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MCP clients (Claude, Claude Code, Cursor, ChatGPT, VS Code) surface the full manifest under the connected server — every tool has a name, description, and JSONSchema parameter shape. Programmatically, an MCP client discovers tools by calling tools/list on the server; the response is the source of truth for what is callable, and Maskin adds tools without breaking older ones. For a functional view of Maskin's tools, see the main clusters above (object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do MCP tools relate to Maskin's object types?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MCP tools are verbs; object types are nouns. The tool declares the operation (create, update, list, search); the type declares the shape being operated on. A single call names both — e.g. create_objects with a node of type: \"knowledge\" and a valid metadata payload for that type (loops are the exception and go through create_loop). Type-specific validity (statuses, required fields, enum values) is enforced server-side on the write path against the workspace schema. Discover the type set with get_workspace_schema."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I create custom MCP tools in Maskin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The platform tools are server-defined; extensions can add more per workspace. What you can customise most directly is what those verbs operate on. Object types, their custom metadata fields, valid statuses per type, and relationship types are workspace-configurable through the extension system (create_extension, create_workspace_field). Once configured, a custom stakeholder or experiment type behaves identically to a built-in: the same create_objects, get_objects, update_objects verbs apply, and get_workspace_schema reflects the live configuration."
+          }
+        }
+      ]
+    }
+  ]
+}
+
+@@ body
+
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / MCP tools</p>
+    <p class="eyebrow">Reference</p>
+    <h1>MCP tools in Maskin: verbs, object types, and the typed workspace graph</h1>
+    <p class="lead">MCP tools are the callable operations a Model Context Protocol server exposes to AI agents, each one a verb with a typed input schema, such as <code>create_objects</code> or <code>get_objects</code>. Maskin's MCP server has about 100 tools, 12 of them for an agent's own computer, extension tools extra. Those 12 tools drive an agent's own computer. This reference groups the verbs by cluster and documents two core object types they operate on: <code>knowledge</code> and <code>loop</code>.</p>
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">&#10003;</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul>
+          <li>MCP tools are verbs; object types are nouns. A tool call names both — the tool declares the operation, the type declares the shape being written or read.</li>
+          <li>Maskin's MCP server has about 100 tools, 12 of them for an agent's own computer, extension tools extra. Those 12 tools drive an agent's own computer and are gated by a workspace flag, so not every workspace gets them. The main clusters are: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup.</li>
+          <li>Edges have three write paths: <code>create_objects</code> and <code>update_objects</code> take an <code>edges</code> parameter for object-to-object links, and <code>create_relationship</code> writes one edge at a time between objects or files.</li>
+          <li>Conversations (chats with participants) and comments (events on an object) are different channels with different length limits: 8,000 characters for a conversation message, 2,000 for a comment.</li>
+          <li>Object types (<code>insight</code>, <code>bet</code>, <code>task</code>, <code>knowledge</code>, <code>loop</code>, <code>content</code>, plus custom types) are workspace-configurable — call <code>get_workspace_schema</code> to see the live list, valid statuses, and metadata fields.</li>
+          <li><code>knowledge</code> is the durable, curated reference layer: statused <code>draft → validated → deprecated</code>, carrying <code>summary</code>, <code>doc_type</code>, <code>confidence</code>, and a review cadence.</li>
+          <li><code>loop</code> is a named, iterative multi-agent process that wraps triggers + agents around a pipeline of object states — objects of any type flow through it via the <code>in_loop</code> edge. Loops are created with <code>create_loop</code>, not <code>create_objects</code>.</li>
+        </ul>
+      </div>
+    </div>
+    <h2>The MCP tools Maskin exposes</h2>
+    <p>Maskin's MCP server surfaces its verbs under the <code>mcp__maskin__</code> namespace. Each tool has a JSONSchema-defined parameter shape and validates its input server-side; type-specific validity (statuses, required fields, enum values) is enforced on the write path against <code>settings.statuses.&lt;type&gt;</code> and workspace-configured field schemas.</p>
+    <p>Coding agents are MCP clients too. On <a href="/alternatives/open-source-ai-coding-agent/">the open-source AI coding agent shortlist</a>, Cline is MCP-native and Goose builds its tool use on MCP, so either can call the verbs below.</p>
+    <p>The main clusters are:</p>
+    <ul>
+      <li>Object operations — create, read, update, delete typed rows in the graph.</li>
+      <li>Relationship operations — write, enumerate, traverse, and delete edges.</li>
+      <li>Schema and discovery — inspect live type, status, and field configuration.</li>
+      <li>Triggers and loops — steps and processes that wire agents to object state.</li>
+      <li>Comments, events, actors — the agent-to-human channel and event timeline.</li>
+      <li>Files and integrations — raw blob storage plus provider wiring.</li>
+      <li>Extensions, sessions, workspace fields, skills — workspace customisation.</li>
+      <li>Conversations, inbox, workspace setup — chats and the unread feed.</li>
+    </ul>
+    <p><strong>Object operations.</strong></p>
+    <ul>
+      <li><code>create_objects</code> — create one or more typed objects in a single call. It takes a required <code>workspace_id</code> and a <code>nodes</code> array of up to 50 objects, each with a <code>$id</code> (a temporary id you choose), a <code>type</code> and a <code>status</code>. It validates <code>type</code>, <code>status</code>, and <code>metadata</code> against the workspace schema and rejects the call with a field-level error if any value is out of range. Loops are the exception: they go through <code>create_loop</code>.</li>
+      <li><code>get_objects</code> — fetch by id with opt-in blocks (<code>content</code>, <code>metadata</code>, <code>relationships</code>, <code>connected_objects</code>, <code>events</code>, <code>files</code>); returns an always-on <code>setup</code> block with readiness checks.</li>
+      <li><code>update_objects</code> — patch <code>title</code>, <code>content</code>, <code>status</code>, <code>metadata</code>, or <code>driver</code>; the same call can create relationships through its <code>edges</code> parameter, so single-call "update fields + link" flows are the norm.</li>
+      <li><code>delete_object</code> — remove an object along with its edges; use archival status where lineage matters.</li>
+      <li><code>list_objects</code> / <code>search_objects</code> — enumerate by type/status or search title + content with <code>metadata_eq</code> filters; both are paginated.</li>
+    </ul>
+    <p><strong>Relationship operations.</strong></p>
+    <ul>
+      <li><code>create_relationship</code> — write one directed, typed edge. Parameters: <code>source_id</code>, <code>target_id</code>, <code>type</code>, and an optional <code>workspace_id</code>. Each endpoint can be an object or a file; the server works out which from the id, so you never pass a kind. Calling it twice with the same source, target and type succeeds both times and stores one edge. If either id is not an object or file in the workspace, the call fails with a 404 that lists the ids it could not resolve. Conversation and session endpoints cannot be written through this tool.</li>
+      <li><code>list_relationships</code> — direction-agnostic (<code>object_id</code>) or directional (<code>source_id</code> / <code>target_id</code>) enumeration; use direction-agnostic mode when you want every edge on an object regardless of orientation.</li>
+      <li><code>traverse_graph</code> — bounded multi-hop breadth-first traversal from a start object; useful for resolving <code>supersedes</code> / <code>contradicts</code> chains, walking <code>breaks_into</code> hierarchies, or pulling multi-hop context in one call.</li>
+      <li><code>delete_relationship</code> — remove a single edge by its edge id (<code>id</code>, plus optional <code>workspace_id</code>); works for edges with file endpoints too, and the objects on either end stay.</li>
+    </ul>
+    <p><strong>Which tool writes which edge.</strong></p>
+    <ul>
+      <li>New objects plus their edges in one go: <code>create_objects</code> with its <code>edges</code> parameter. One atomic call creates up to 50 objects, and edges can point at new objects by their temporary <code>$id</code> or at existing objects by uuid. Object endpoints only.</li>
+      <li>An edge between two existing objects: <code>update_objects</code> with <code>edges</code> (no object change needed), or <code>create_relationship</code> for a single edge.</li>
+      <li>Any edge with a file at one end, added after the fact: <code>create_relationship</code>. Example: to attach an uploaded file to a bet, set <code>source_id</code> to the bet, <code>target_id</code> to the file, and <code>type</code> to <code>attached</code>.</li>
+      <li>Removing an edge: <code>delete_relationship</code>.</li>
+    </ul>
+    <p>The <code>type</code> string is not an enum on the tool. The five built-in types are <code>informs</code>, <code>breaks_into</code>, <code>blocks</code>, <code>relates_to</code> and <code>duplicates</code>; extensions and modules add more (<code>attached</code>, <code>in_loop</code>, <code>supersedes</code>, <code>contradicts</code>, <code>about</code>, and so on), and workspaces can declare their own. Read the live list from the <code>relationship_types</code> field of <code>get_workspace_schema</code> instead of hardcoding it.</p>
+    <p><strong>Schema and discovery.</strong></p>
+    <ul>
+      <li><code>get_workspace_schema</code> — the single source of truth for object types, their custom metadata fields, valid statuses per type, and configured relationship types. Call this before hardcoding any enum against product defaults; workspaces override or extend defaults through the extension system.</li>
+      <li><code>list_workspaces</code> — enumerate the workspaces the caller belongs to; this is where the <code>workspace_id</code> that most write tools require comes from.</li>
+    </ul>
+    <p><strong>Triggers and loops.</strong></p>
+    <ul>
+      <li><code>create_trigger</code> / <code>update_trigger</code> / <code>delete_trigger</code> / <code>list_triggers</code> — a trigger is a step: it fires a named agent when an object matches an event predicate (<code>created</code>, <code>status_changed</code>, <code>commented</code>, ...) or on a cron schedule.</li>
+      <li><code>create_loop</code> / <code>get_loop</code> / <code>update_loop</code> / <code>delete_loop</code> / <code>list_loops</code> — a loop wraps a set of triggers + agents around a pipeline of object states; objects join it via the <code>in_loop</code> edge, <code>entry_condition</code> and <code>close_condition</code> are plain-language prose describing that pipeline, and <code>closed_statuses</code> is the done-marker the read path actually uses. <code>create_loop</code> is the only way to create a loop; <code>create_objects</code> does not wire a loop's trigger and membership metadata.</li>
+      <li>To run an agent outside the trigger fabric, use <code>create_session</code> (listed under extensions, sessions, workspace fields and skills below). There is no separate run-agent tool.</li>
+    </ul>
+    <p><strong>Comments, events, actors.</strong></p>
+    <ul>
+      <li><code>create_comment</code> / <code>get_comments</code> — post comments on any object; comments carry <code>@mentions</code>, an <code>attention</code> score, an optional structured <code>decision</code> payload, and a <code>metadata.tasks</code> array that renders a live checklist. This is the primary agent-to-human channel.</li>
+      <li><code>get_events</code> — timeline of lifecycle changes and comments on an object.</li>
+      <li><code>list_actors</code> / <code>get_actor</code> / <code>create_actor</code> / <code>update_actor</code> — humans and agents that own or drive objects; each actor has a short description and, for agents, a system prompt that is the source of truth for their instructions (the role-level counterpart of <a href="/docs/claude-md-vs-agents-md/">AGENTS.md and CLAUDE.md</a> files in a repo).</li>
+    </ul>
+    <p><strong>Files and integrations.</strong></p>
+    <ul>
+      <li><code>create_file</code> / <code>get_file</code> / <code>update_file</code> / <code>list_files</code> / <code>delete_file</code> — raw blobs addressed by id and attached to objects or comments. Different from typed <code>knowledge</code>: files are opaque bytes, <code>knowledge</code> is a first-class typed row in the graph.</li>
+      <li><code>list_integration_providers</code> / <code>list_integrations</code> / <code>connect_integration</code> / <code>disconnect_integration</code> — provider wiring; the provider registry is what the workspace can talk to. The supported providers, their auth types, and which of them expose MCP tools to agents are listed on the <a href="/docs/integrations/">integrations page</a>. For Google Search Console: reads your Search Console data, with sitemap changes only if you grant write.</li>
+    </ul>
+    <p><strong>Extensions, sessions, workspace fields, skills.</strong></p>
+    <ul>
+      <li><code>create_extension</code> / <code>update_extension</code> / <code>delete_extension</code> / <code>list_extensions</code> — extensions declare custom object types, custom metadata fields, and workspace-specific relationship types.</li>
+      <li><code>create_session</code> / <code>get_session</code> / <code>get_session_logs</code> / <code>stop_session</code> / <code>pause_session</code> / <code>resume_session</code> / <code>list_sessions</code> — agent runtime sessions; the object that captures a specific agent invocation and its transcript. <code>get_session</code> returns the session's details, and <code>get_session_logs</code> pages through its log history: newest first by default, so a failure is at the top, with <code>before_id</code> and <code>after_id</code> cursors, an optional <code>stream</code> filter (<code>stdout</code>, <code>stderr</code> or <code>system</code>) and up to 500 rows per page.</li>
+      <li><code>create_session</code> is also how you invoke an agent directly on an object. With <code>wait: true</code> it blocks until the session finishes (up to about 11 minutes) and returns the result, so use it when you need the answer in the current session. Without <code>wait</code> it returns at once and the agent works in the background; use that, or an <code>@mention</code> comment, when you do not need to block. Earlier versions had a separate <code>run_agent</code> tool. It was removed on 2026-10-12 and <code>create_session</code> replaces it.</li>
+      <li><code>create_workspace_field</code> / <code>update_workspace_field</code> / <code>delete_workspace_field</code> — declare custom metadata fields per object type at the workspace level.</li>
+      <li><code>create_workspace_skill</code> / <code>get_workspace_skill</code> / <code>list_workspace_skills</code> / <code>update_workspace_skill</code> / <code>delete_workspace_skill</code> — workspace-scoped skill packs that agents can invoke; the recipe layer above the raw MCP verbs.</li>
+    </ul>
+    <p><strong>Conversations, inbox, workspace setup.</strong></p>
+    <p>A conversation is a chat between people and agents. It is not attached to any object, which is what separates it from a comment.</p>
+    <ul>
+      <li><strong>Conversation message:</strong> up to 8,000 characters, sent to a list of participants. Each participant has their own read position, tracked by message id. Mentioning a workspace agent in a message adds it to the chat.</li>
+      <li><strong>Comment:</strong> up to 2,000 characters, posted on an object. Supports threads, <code>@mentions</code>, an <code>attention</code> score and a <code>decision</code> card, and is what reaches a human's For You feed.</li>
+    </ul>
+    <p>To talk to a human about an object, use <code>create_comment</code>. To leave a note inside a chat you are already part of, use <code>post_conversation_message</code>.</p>
+    <ul>
+      <li><code>get_conversation</code> — takes <code>conversation_id</code>. Returns the conversation, your own state in it (pinned, archived, unread count, last read message id), and the active participants with name, type and who added them.</li>
+      <li><code>list_conversation_messages</code> — takes <code>conversation_id</code>, optional <code>before_id</code> / <code>after_id</code> message ids, and a <code>limit</code> of 1 to 200 (default 50). Returns messages newest first with a has-more flag. Paging is by message id, not by time, and reading does not move your read position.</li>
+      <li><code>post_conversation_message</code> — takes <code>conversation_id</code>, <code>content</code> (1 to 8,000 characters) and optional <code>metadata</code>: up to 10 attachments, up to 50 mentions, plus context objects. It is not idempotent, so a retry posts a second message.</li>
+    </ul>
+    <p>The conversation tools are mostly useful inside chat sessions.</p>
+    <ul>
+      <li><code>list_unread</code> — a page of objects with unread activity for the caller (<code>limit</code> 1 to 100, default 25, plus a <code>cursor</code>). Each row carries the unread count, mention count, highest attention score, latest event id and the latest mention. It covers objects only (not conversations) and shows only the caller's own feed.</li>
+      <li><code>mark_read</code> — takes <code>entity_type</code> (<code>object</code>), <code>entity_id</code> and <code>last_event_id</code>, the latest event id you have seen, as returned by <code>list_unread</code>. The stored read position only ever moves forward. There is no tool to mark something unread again.</li>
+      <li><code>get_started</code> — orientation for a fresh workspace. With no <code>loop_id</code> it lists the marketplace loops you can install; with a <code>loop_id</code> and <code>confirm</code> it optionally renames the workspace and installs that loop. It returns plain text and is a setup step, not part of everyday work.</li>
+      <li><code>create_workspace</code> — takes a <code>name</code> and optional <code>settings</code>, and has no <code>workspace_id</code>. The caller becomes owner.</li>
+      <li><code>update_workspace</code> — takes the workspace <code>id</code>, a <code>name</code> and <code>settings</code>. Settings are merged into the existing ones.</li>
+    </ul>
+    <p>A full call names both a verb and a type: e.g. <code>create_objects</code> with a node of <code>type: "knowledge"</code> and a <code>metadata</code> payload validated against the <code>knowledge</code> schema. The next section documents two of the object types those tools operate on in depth.</p>
+    <h2>Object types the tools operate on</h2>
+    <p>Every MCP tool call reads or writes objects of a declared type. <code>get_workspace_schema</code> returns the full list of types for a workspace — built-ins (<code>insight</code>, <code>bet</code>, <code>task</code>, <code>knowledge</code>, <code>loop</code>, <code>content</code>, <code>actor</code>) plus custom types declared through the extension system. This reference documents two core types in depth: <code>knowledge</code> (the durable reference layer) and <code>loop</code> (the iterative process container).</p>
+    <h3><code>knowledge</code></h3>
+    <p><strong>What it is.</strong> A durable, curated, human-readable reference page — the layer that outlives the work that produced it. Where an <code>insight</code> is one atomic piece of evidence and a <code>bet</code> is a time-boxed outcome, <code>knowledge</code> is the settled record: what we know, at what confidence, as of when.</p>
+    <p><strong>Not the same as a File.</strong> <code>create_file</code> stores raw blobs in object storage, addressed by id and attached to objects or comments. <code>knowledge</code> is structured, typed, statused, and first-class in the graph — it has a driver, relationships, and comments. The workspace wiki renders <code>knowledge</code> objects for humans; it is not a separate store.</p>
+    <p><strong>Status lifecycle (default):</strong> <code>draft → validated → deprecated</code>.</p>
+    <ul>
+      <li><code>draft</code> — authored, not yet reviewed.</li>
+      <li><code>validated</code> — reviewed and true as of <code>last_validated_at</code>; the state a page should reach before downstream consumers rely on it.</li>
+      <li><code>deprecated</code> — superseded or no longer true; kept for lineage, not deleted.</li>
+    </ul>
+    <p>Progression is convention, not enforcement: any status is settable through the API. Agents and human curators maintain the ladder. Per-type status validity is workspace-configurable via <code>settings.statuses.knowledge</code> and readable at runtime with <code>get_workspace_schema</code>.</p>
+    <p><strong>Custom metadata fields.</strong></p>
+    <ul>
+      <li><code>summary</code> (required) — one-line abstract.</li>
+      <li><code>doc_type</code> — one of <code>topic_page</code>, <code>playbook</code>, <code>operational</code>, <code>profile</code>, <code>changelog</code>, <code>reference</code>, <code>note</code>.</li>
+      <li><code>provenance</code> — where the content came from (session id, distilled bet, external source).</li>
+      <li><code>last_validated_at</code> (date) — when the page was last reviewed and confirmed true.</li>
+      <li><code>review_by</code> (date) — when the page should be re-reviewed.</li>
+      <li><code>confidence</code> — <code>low</code> / <code>medium</code> / <code>high</code>.</li>
+      <li><code>tags</code> — free-form.</li>
+    </ul>
+    <p><strong>Worked <code>create_objects</code> call.</strong> Minimal payload to open a <code>knowledge</code> page in <code>draft</code> with the required <code>summary</code> and the two most-consulted optional fields (<code>doc_type</code>, <code>confidence</code>). <code>workspace_id</code> is required; get it from <code>list_workspaces</code>. Each node needs a <code>$id</code> (any temporary string, used only to reference the node in <code>edges</code>), a <code>type</code> and a <code>status</code>:</p>
+    <pre><code>{
+  "workspace_id": "&lt;workspace id from list_workspaces&gt;",
+  "nodes": [
+    {
+      "$id": "k1",
+      "type": "knowledge",
+      "title": "Enterprise buyer decision criteria",
+      "status": "draft",
+      "content": "Enterprise buyers rank audit surface, integration effort, and identity model above headline price. Source: 18 discovery calls, Q1 2026.",
+      "metadata": {
+        "summary": "Enterprise buyers weight audit, integration, and identity above price — distilled from 18 Q1 2026 discovery calls.",
+        "doc_type": "topic_page",
+        "confidence": "high",
+        "last_validated_at": "2026-03-15"
+      }
+    }
+  ]
+}</code></pre>
+    <p>The server validates <code>status</code> against <code>settings.statuses.knowledge</code>, <code>doc_type</code> and <code>confidence</code> against their configured enums, and rejects the call with a field-level error if any value is out of range. To link the new page to existing objects in the same call, add an <code>edges</code> array whose entries use <code>source</code> and <code>target</code> (the node's <code>$id</code> or an existing object's uuid) plus a <code>type</code>.</p>
+    <p><strong>Relationships.</strong> Extension-declared: <code>supersedes</code> (this page replaces an entire past frame), <code>contradicts</code> (this page conflicts with another), <code>about</code> (this page is about a subject or entity). General edges also apply: <code>informs</code>, <code>relates_to</code>, <code>breaks_into</code>, <code>blocks</code>, <code>duplicates</code>.</p>
+    <p><strong>How it relates to <code>insight</code> / <code>bet</code> / <code>task</code>.</strong></p>
+    <ul>
+      <li><code>insight</code> → <code>knowledge</code>: atomic evidence clusters and settles into a reference page; the page <code>informs</code> downstream bets.</li>
+      <li><code>bet</code> → <code>knowledge</code>: a bet's verdict (<code>succeeded</code> / <code>failed</code>) is raw material for a durable learning — the bet outcome is recorded, the page outlives it.</li>
+      <li><code>task</code> → <code>knowledge</code>: rarely direct; tasks produce artefacts, and artefacts (or the bet they served) get distilled into knowledge.</li>
+      <li><code>knowledge</code> ↔ <code>knowledge</code>: <code>supersedes</code> / <code>contradicts</code> keep the record honest when a fact is replaced or conflicts. Supersede and keep the lineage; do not delete-and-recreate.</li>
+    </ul>
+    <h3><code>loop</code></h3>
+    <p><strong>What it is.</strong> A named, iterative multi-agent process. A loop wraps <strong>triggers (steps) + agents + a pipeline of object states</strong>: a step and a trigger are the same thing — each step fires an agent when an object changes state (<code>created</code>, <code>status_changed</code>, ...) or on a cron schedule. A loop is the process <em>container</em>; the objects it acts on are members flowing through it.</p>
+    <p><strong>Custom metadata fields.</strong></p>
+    <ul>
+      <li><code>entry_condition</code> — plain-language prose describing what enters the loop; descriptive only, never runtime-evaluated.</li>
+      <li><code>close_condition</code> — plain-language prose describing when a member is done; descriptive only, never runtime-evaluated. The prose closes nothing — a member closes when its own status reaches a terminal status for its type.</li>
+      <li><code>closed_statuses</code> — the real done-marker: which statuses count as "done," per object type, used by the read path to derive <code>closedCount</code>. Set with <code>create_loop</code> and edited via <code>update_loop</code>.</li>
+      <li><code>installed_from_marketplace_loop_id</code> — set when the loop was installed from a marketplace template.</li>
+    </ul>
+    <p><strong>Status lifecycle — workspace-configurable graduated-trust ladder.</strong> A loop moves along a spectrum as it earns trust, and can be paused from any rung. The valid set is workspace-configured (<code>settings.statuses.loop</code>) and enforced by the server on every write. The spectrum runs:</p>
+    <pre><code>draft  →  supervised  →  autonomous
+          (paused reachable from any rung)</code></pre>
+    <ul>
+      <li><code>draft</code> — set up, not live; nothing fires for real.</li>
+      <li><code>supervised</code> — the loop runs on its own, but material calls pass a human gate.</li>
+      <li><code>autonomous</code> — runs end-to-end; a human samples outputs and steps in when members stall or go off-track.</li>
+      <li><code>paused</code> — reachable from <strong>any</strong> rung; disables every trigger the loop references until resumed.</li>
+    </ul>
+    <p>The set is workspace-configurable, and workspaces may configure additional rungs and terminal states. <strong>Read the actual set for your workspace at runtime with <code>get_workspace_schema</code></strong> — do not assume a concrete ladder from this reference.</p>
+    <p>Two mechanics worth knowing:</p>
+    <ol>
+      <li><strong>Validity is enforced per workspace on the write path.</strong> <code>create_loop</code>, <code>update_loop</code>, <code>create_objects</code>, <code>update_objects</code>, and the bulk-update path each validate an incoming <code>status</code> against <code>settings.statuses.&lt;type&gt;</code>, so a workspace on a different ladder simply enforces that ladder.</li>
+      <li><strong>Reading the ladder.</strong> Call <code>get_workspace_schema</code> and inspect <code>settings.statuses.loop</code>. Do not hardcode a status list against the product default.</li>
+    </ol>
+    <p><strong>Worked <code>create_loop</code> call.</strong> Loops are created with <code>create_loop</code>, not <code>create_objects</code>. Minimal payload to stand up a <code>supervised</code> product-discovery loop that ingests <code>insight</code> objects and closes members once they reach a scored or discarded state (or, for bets it spawns, a succeeded or failed state). <code>workspace_id</code> and <code>name</code> are required; get the workspace id from <code>list_workspaces</code>. The status values in <code>closed_statuses</code> are checked against your workspace schema, so use the statuses your workspace actually defines for each type:</p>
+    <pre><code>{
+  "workspace_id": "&lt;workspace id from list_workspaces&gt;",
+  "name": "Product discovery loop",
+  "status": "supervised",
+  "content": "Takes new insights, clusters and scores them, and spawns bets from the strongest clusters.",
+  "entry_condition": "new insight objects are added to the loop",
+  "close_condition": "a member is done once its status reaches one listed in closed_statuses for its type",
+  "closed_statuses": {
+    "insight": ["scored", "discarded"],
+    "bet": ["succeeded", "failed"]
+  }
+}</code></pre>
+    <p>This call stands up the loop container, its descriptive entry/close prose, and its per-type <code>closed_statuses</code>. Steps can be authored inline in the same call through the <code>steps</code> parameter (each step names an agent, a prompt, and a <code>when</code> of either a cron schedule or an object type plus action), or attached later from existing triggers with <code>trigger_ids</code>. Existing objects can join at creation through <code>object_ids</code>, each becoming an <code>in_loop</code> edge.</p>
+    <p><strong>Relationships.</strong> Loop membership is the <code>in_loop</code> edge from the loop to the object. This is the loop↔work relationship; it is not one of the semantic edges (<code>informs</code>, <code>blocks</code>, etc.). Loop steps are triggers (<code>create_trigger</code> / <code>update_trigger</code>); a step authored inline on a loop becomes a trigger attached to it. General edges (<code>relates_to</code>, <code>blocks</code>, ...) apply as usual.</p>
+    <p><strong>How it relates to <code>insight</code> / <code>bet</code> / <code>task</code>.</strong> Membership, not a peer relationship. Objects of <em>any</em> type — <code>insight</code>, <code>bet</code>, <code>task</code>, or a custom type — flow through a loop via <code>in_loop</code> (the explicit membership edge — nothing is inducted by the prose conditions). A member closes when its own status reaches a terminal status for its type; the read path derives <code>inProgressCount</code> / <code>closedCount</code> / <code>medianTimeToCloseMs</code> from the <code>in_loop</code> edge plus that status. The prose <code>entry_condition</code> / <code>close_condition</code> describe intent; they gate and close nothing at runtime. So a loop is the process <em>around</em> the work, not another kind of work: e.g. a Product-Discovery loop takes <code>insight</code> objects in at <code>new</code>, moves them through <code>clustered</code> and <code>scored</code>, and produces <code>bet</code> objects; a delivery loop takes <code>task</code> objects from <code>todo</code> to <code>done</code>. The loop's trust rung governs how much of that runs without a human gate.</p>
+    <h2>FAQ</h2>
+    <h3>What are MCP tools?</h3>
+    <p>MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed JSONSchema-defined input and a documented output. A tool call names both the verb and the shape it operates on: e.g. <code>create_objects</code> with a node of <code>type: "knowledge"</code>. Maskin's MCP server has about 100 tools, 12 of them for an agent's own computer, extension tools extra. Those 12 tools drive an agent's own computer and are gated by a workspace flag, so not every workspace gets them. The main clusters are: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup. Every read or write against the workspace graph flows through one of them.</p>
+    <h3>What is the difference between MCP tools and MCP resources?</h3>
+    <p>Tools are verbs — write-path actions with side effects. Resources are read-only URIs a server exposes for context lookup without invoking an action. In Maskin, first-class typed rows (<code>knowledge</code>, <code>loop</code>, <code>insight</code>, <code>bet</code>, <code>task</code>, and custom types) are operated on by tools like <code>create_objects</code> and <code>update_objects</code>; opaque blobs (uploads, generated files, screenshots) are stored via <code>create_file</code> and attached to objects. Prefer a typed <code>knowledge</code> object when the content is human-readable reference material; prefer a file when it is a raw artifact. For the full decision rule across tools, resources and prompts, and what Maskin&rsquo;s server registers for each, see <a href="/docs/mcp-tools-vs-resources/">MCP tools vs resources vs prompts</a>.</p>
+    <h3>How do I list all MCP tools?</h3>
+    <p>MCP clients (Claude, Claude Code, Cursor, ChatGPT, VS Code) surface the full manifest under the connected server — every tool has a name, description, and JSONSchema parameter shape. Programmatically, an MCP client discovers tools by calling <code>tools/list</code> on the server; the response is the source of truth for what is callable, and Maskin adds tools without breaking older ones. For a functional view of Maskin's tools, see the main clusters above (object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup).</p>
+    <h3>How do MCP tools relate to Maskin's object types?</h3>
+    <p>MCP tools are verbs; object types are nouns. The tool declares the operation (<code>create</code>, <code>update</code>, <code>list</code>, <code>search</code>); the type declares the shape being operated on. A single call names both — e.g. <code>create_objects</code> with a node of <code>type: "knowledge"</code> and a valid <code>metadata</code> payload for that type (loops are the exception and go through <code>create_loop</code>). Type-specific validity (statuses, required fields, enum values) is enforced server-side on the write path against the workspace schema. Discover the type set with <code>get_workspace_schema</code>.</p>
+    <h3>Can I create custom MCP tools in Maskin?</h3>
+    <p>The platform tools are server-defined; extensions can add more per workspace. What you can customise most directly is what those verbs operate on. Object types, their custom metadata fields, valid statuses per type, and relationship types are workspace-configurable through the extension system (<code>create_extension</code>, <code>create_workspace_field</code>). Once configured, a custom <code>stakeholder</code> or <code>experiment</code> type behaves identically to a built-in: the same <code>create_objects</code>, <code>get_objects</code>, <code>update_objects</code> verbs apply, and <code>get_workspace_schema</code> reflects the live configuration.</p>
+    <div class="post-cta">
+      <h2>Drive the workspace over the wire</h2>
+      <p>Every Maskin object, relationship, trigger, and loop is reachable through the MCP server. Open source under Apache 2.0. Self-host free, bring your own model.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  

@@ -1,0 +1,120 @@
+@@ meta
+title: Production deployment — Maskin Docs
+canonical: https://maskin.io/docs/deployment/
+description: Deploy Maskin to production: the prod docker-compose stack, database and storage, agent execution, webhooks and networking, and a pre-flight checklist.
+og:type: article
+og:url: https://maskin.io/docs/deployment/
+og:title: Production deployment — Maskin
+og:description: Deploy Maskin to production: the prod stack, database, storage, agents, webhooks, and a checklist.
+og:image: https://maskin.io/og-image.png?v=2
+active: /docs/deployment/
+shell.pre: p2
+shell.mainopen: m2
+shell.tail: t1
+@@ jsonld 0
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "Production deployment",
+      "name": "Production deployment",
+      "description": "Deploy Maskin to production: the prod docker-compose stack, database and storage, agent execution, webhooks and networking, and a pre-flight checklist.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/deployment/",
+      "isPartOf": "https://maskin.io/docs/",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Production deployment",
+          "item": "https://maskin.io/docs/deployment/"
+        }
+      ]
+    }
+  ]
+}
+
+@@ body
+
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Production deployment</p>
+
+    <p class="eyebrow">Self-hosting</p>
+    <h1>Production deployment</h1>
+    <p class="lead">The <a href="/docs/get-started/self-hosted/">self-hosted setup</a> gets you running locally. This page covers the differences for a real deployment — the production stack, durable data, agent execution, and networking.</p>
+
+    <div class="callout callout--muted">
+      <span class="callout__icon">i</span>
+      <span class="callout__body">The repo's <code>docker-compose.prod.yml</code> is the source of truth. Treat the commands here as orientation and adapt to your platform (a managed Postgres + object store is recommended over in-cluster containers).</span>
+    </div>
+
+    <h2>The production stack</h2>
+    <p>The prod compose file builds on the dev services and adds an application container plus the agent base image:</p>
+    <pre><code>docker compose -f docker-compose.prod.yml up -d --build</code></pre>
+    <ul>
+      <li><strong>app</strong> — runs database migrations on boot, then starts the backend. It serves the built frontend SPA from <code>STATIC_DIR</code> (e.g. <code>/app/apps/web/dist</code>), so one container answers both the UI and the API on <code>PORT</code> (3000).</li>
+      <li><strong>postgres</strong> — PostgreSQL 16 (use a managed instance in production where possible).</li>
+      <li><strong>seaweedfs</strong> — S3-compatible storage (or point <code>S3_*</code> at AWS S3 / MinIO).</li>
+      <li><strong>agent-base</strong> — the image used for agent sessions; built from <code>docker/agent-base/</code>.</li>
+    </ul>
+    <p>Production sessions run in microVMs on a dedicated agent server, not through the app host's Docker socket. If you mount <code>/var/run/docker.sock</code> for local development, restrict access to it.</p>
+
+    <h2>Essentials to set</h2>
+    <ul>
+      <li><code>NODE_ENV=production</code></li>
+      <li><code>DATABASE_URL</code> — your Postgres connection. If you front Postgres with a pooler, also set <code>DATABASE_URL_DIRECT</code> (a non-pooled connection) so PG LISTEN/NOTIFY — and therefore real-time SSE — keeps working.</li>
+      <li><code>S3_ENDPOINT</code> / <code>S3_BUCKET</code> / <code>S3_ACCESS_KEY</code> / <code>S3_SECRET_KEY</code> / <code>S3_REGION</code> — durable object storage.</li>
+      <li><code>INTEGRATION_ENCRYPTION_KEY</code> — set explicitly (don't rely on the dev auto-generated key, which would invalidate stored tokens on rotation).</li>
+      <li><code>MASKIN_AUTO_BOOTSTRAP=false</code> once you've created your real first workspace and key.</li>
+    </ul>
+    <p>Migrations run automatically on app start; you can also run <code>pnpm db:migrate</code> out of band.</p>
+
+    <h2>Agent execution at scale</h2>
+    <p>Production sessions run in ephemeral microVMs (microsandbox and libkrun) on dedicated <a href="/docs/agents/">agent servers</a>. Docker on the app host is for local development only, and there is no fallback that runs agents without the microVM runtime. Point the app at your agent servers:</p>
+    <ul>
+      <li><code>AGENT_BASE_IMAGE</code> — a full registry path (e.g. <code>yourorg/agent-base:latest</code>), not the local tag.</li>
+      <li><code>AGENT_SERVERS</code> — comma-separated <code>url|secret</code> entries; sessions are dispatched to the least-loaded server.</li>
+      <li><code>AGENT_SERVER_SECRET</code>, <code>MASKIN_AGENT_SERVER_PUBLIC_HOST</code>, <code>AGENT_SERVER_MAX_SESSIONS</code> — agent-server auth, public host, and concurrency.</li>
+      <li><code>WARM_POOL_IMAGE</code> / <code>WARM_POOL_REFRESH_MINUTES</code> — optional warm pool to cut cold starts.</li>
+    </ul>
+
+    <h2>Networking, webhooks &amp; security</h2>
+    <ul>
+      <li><code>WEBHOOK_BASE_URL</code> — your public URL; providers deliver to <code>/api/webhooks/&lt;provider&gt;</code>. Required for <a href="/docs/integrations/">integrations</a>.</li>
+      <li><code>CORS_ORIGIN</code> — set to your real frontend origin(s).</li>
+      <li><code>TRUSTED_PROXY_CIDRS</code> — set to your CDN/load-balancer ranges so <code>X-Forwarded-For</code> is honored only from trusted hops.</li>
+      <li><code>FRONTEND_URL</code> / <code>API_BASE_URL</code> — used for redirects and by MCP agents.</li>
+      <li>Terminate TLS at your proxy/load balancer in front of the app.</li>
+    </ul>
+
+    <h2>Pre-flight checklist</h2>
+    <ul>
+      <li>Durable Postgres + object storage provisioned and backed up.</li>
+      <li><code>NODE_ENV=production</code>, encryption key, and S3 creds set.</li>
+      <li><code>DATABASE_URL_DIRECT</code> set if using a pooler (keeps SSE alive).</li>
+      <li>Public <code>WEBHOOK_BASE_URL</code> + TLS; <code>CORS_ORIGIN</code> and <code>TRUSTED_PROXY_CIDRS</code> locked down.</li>
+      <li>Agent image pushed to a registry; <code>AGENT_SERVERS</code> configured if scaling out.</li>
+      <li>Optional analytics keys (<code>POSTHOG_*</code>) and integration OAuth credentials.</li>
+    </ul>
+    <p>Full variable list: <a href="/docs/configuration/">configuration reference</a>.</p>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/llm/">← LLM &amp; models</a>
+      <a href="/docs/configuration/">Configuration →</a>
+    </nav>
+  

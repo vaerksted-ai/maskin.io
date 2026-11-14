@@ -1,0 +1,323 @@
+@@ meta
+title: Human on the Loop: When Oversight of AI Agents Is Real | Maskin
+canonical: https://maskin.io/docs/learn/human-in-the-loop-ai/
+description: Human on the loop: supervise autonomous AI agents through escalation gates, not per-action approval. HOTL vs HITL, override rate, EU AI Act Article 14.
+og:type: article
+og:url: https://maskin.io/docs/learn/human-in-the-loop-ai/
+og:title: Human on the Loop: When Oversight of AI Agents Is Real
+og:description: Human on the loop: supervise autonomous AI agents through escalation gates, not per-action approval. HOTL vs HITL, override rate, EU AI Act Article 14.
+og:image: https://maskin.io/docs/learn/human-in-the-loop-ai/og.png
+robots: noindex, follow
+article:published_time: 2026-08-29T00:00:00Z
+article:modified_time: 2026-10-25T00:00:00Z
+active: /docs/learn/human-in-the-loop-ai/
+shell.pre: p1
+shell.mainopen: m1
+shell.tail: t1
+@@ jsonld 0
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://maskin.io/docs/learn/human-in-the-loop-ai/#post",
+      "headline": "Human on the loop: the honest oversight pattern for autonomous agents",
+      "name": "Human on the Loop: When Oversight of AI Agents Is Real",
+      "description": "Human on the loop: supervise autonomous AI agents through escalation gates, not per-action approval. HOTL vs HITL, override rate, EU AI Act Article 14.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/learn/human-in-the-loop-ai/",
+      "mainEntityOfPage": "https://maskin.io/docs/learn/human-in-the-loop-ai/",
+      "image": "https://maskin.io/docs/learn/human-in-the-loop-ai/og.png",
+      "datePublished": "2026-08-29T00:00:00Z",
+      "dateModified": "2026-10-25T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://maskin.io/icon-512.png"
+        }
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Human on the loop"
+        },
+        {
+          "@type": "Thing",
+          "name": "Human in the loop AI"
+        },
+        {
+          "@type": "Thing",
+          "name": "Override rate"
+        },
+        {
+          "@type": "Thing",
+          "name": "EU AI Act Article 14"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI oversight"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Learn",
+          "item": "https://maskin.io/docs/learn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Human on the loop",
+          "item": "https://maskin.io/docs/learn/human-in-the-loop-ai/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is human on the loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Human on the loop is an oversight pattern where an autonomous AI agent runs on its own and a person supervises through review surfaces, sampled audits, and named escalation gates. The human is the auditor, not the per-action approver. It works for bulk, reversible actions and fails when the escalation policy is under-specified."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between human in the loop and human on the loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Human in the loop puts the person inside the transaction: nothing ships until they approve. Human on the loop puts them above it: the agent runs, and the human supervises through dashboards and escalation gates. HITL fails when reviewers rubber-stamp; HOTL fails when escalation rules are vague. Most production systems use both, chosen per action class."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does human out of the loop mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Human out of the loop means the system acts with no person reviewing or approving its outputs, before or after. It is only defensible where a wrong action is cheap and fully reversible. Everywhere else, the usual move is to put a human on the loop for bulk work and in the loop for irreversible actions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an example of human on the loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A background agent that triages and tags incoming work on its own, while a person reviews a sampled audit and gets paged when the agent hits a named escalation condition, is human on the loop. The same agent still asks for explicit approval before an irreversible step such as issuing a refund, which is human in the loop for that one action class."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the EU AI Act require human in the loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Article 14 of the EU AI Act requires effective, commensurate human oversight of high-risk AI systems. Article 14(4) lists five duties the arrangement must enable: understand and monitor, resist automation bias, interpret the output, decide to override or reverse it, and intervene or stop the system. The word \"loop\" does not appear. HOTL can satisfy Article 14 for many action classes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is override rate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Override rate is the share of AI outputs a human reviewer changes, rejects, or escalates. It is the honest way to tell real oversight from theater. Stuck at 0% signals rubber-stamping; stuck above 20% signals a broken model. Real oversight sits between the two and is monitored per action class, alongside override latency."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is human in the loop not enough?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When the reviewer lacks context, visibility, or time, any one of the three, the loop is compliance decoration. It is also not enough when action volume is too high for meaningful review, when the model's failure modes sit outside the reviewer's expertise, or when the wrong-outcome window closes faster than the response time."
+          }
+        }
+      ]
+    }
+  ]
+}
+
+@@ body
+
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Learn / Human on the loop</p>
+    <p class="eyebrow">Article · Learn</p>
+    <h1>Human on the loop: the honest oversight pattern for autonomous agents</h1>
+    <p class="lead"><strong>Human on the loop (HOTL) means a person supervises an autonomous AI agent through review surfaces and named escalation gates, instead of approving every action before it runs.</strong> The agent works on its own; events, not people, trigger a human. Human in the loop (HITL) is the opposite: nothing commits until a person says yes.</p>
+    <p>Neither is automatically safer. Which one is real oversight depends on one measurable thing: override rate. If you run agents that act on their own schedule, this page covers the vocabulary, the failure mode of each pattern, what EU AI Act Article 14 actually requires, and how to set the dial per action class. For the developer-side question of how agent SDKs implement the approval gate itself, see the sibling page <a href="/docs/learn/human-in-the-loop/">Human in the loop, re-defined: the approval gate before side-effecting tool calls</a>.</p>
+
+    <div class="callout callout--muted">
+      <div class="callout__icon" aria-hidden="true">✓</div>
+      <div class="callout__body">
+        <strong>Key takeaways</strong>
+        <ul style="margin:.5rem 0 0 1.1rem;color:var(--ink-2)">
+          <li><strong>Human on the loop</strong> means a human supervises an autonomous agent through review surfaces and escalation gates. <strong>Human in the loop</strong> means a human approves an output before it commits. The preposition is a design decision, not a semantic quibble.</li>
+          <li><strong>The two patterns fail differently.</strong> HITL fails when the reviewer becomes a rubber stamp. HOTL fails when the escalation policy is under-specified and the agent commits something irreversible because nothing flagged it.</li>
+          <li><strong>The honest metric is override rate.</strong> Stuck at 0%, the reviewer is rubber-stamping. Stuck above 20%, the model is broken and the human is doing its job. Both bounds apply to any review surface, including HOTL sample audits.</li>
+          <li><strong>Override latency matters as much.</strong> If the human&rsquo;s response time is slower than the action&rsquo;s commit window, the oversight claim is theater by construction.</li>
+          <li><strong>EU AI Act Article 14 does not mandate human in the loop by name.</strong> It requires effective, commensurate oversight and lists five duties in Article 14(4)(a) to (e). HOTL can satisfy them for many action classes.</li>
+          <li><strong>The right architecture is a tiered approval policy</strong>: autonomy for low-stakes work, HOTL for bulk reversible work, HITL for irreversible or high-blast-radius actions, enforced at a governance layer and not inside agent code.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>What is human on the loop?</h2>
+    <p>Human on the loop describes a system where the agent runs continuously and the person sits above the work: watching dashboards, sampling outputs, and answering when the agent escalates. The human is the auditor, not the trigger.</p>
+    <p>The design problem is not new for background agents. In his January 2025 post on ambient agents, Harrison Chase of LangChain describes three human-in-the-loop patterns for agents that run on events: notify, question, and review.<sup><a href="#fn3" id="fnref3">3</a></sup> In our reading, each is an escalation gate: notify flags something the agent should not act on alone, question asks for missing input, and review hands a proposed action back for sign-off. The <a href="/docs/ambient-agent-workspace/">ambient agent workspace</a> explainer walks through why that shift matters: chat is the wrong interface for work that runs on events, and the &ldquo;inbox&rdquo; of an ambient system is a typed object graph, not a queue of approvals.</p>
+    <p>Two things make HOTL different from &ldquo;the agent just runs&rdquo;:</p>
+    <ul>
+      <li><strong>Named escalation gates.</strong> The agent has an explicit list of conditions under which it must stop and ask: confidence below a threshold, an action that crosses a blast-radius line, an action class nobody has cleared yet.</li>
+      <li><strong>Review surfaces the human actually reads.</strong> Dashboards, sampled audits, and an event trail of everything the agent did. If nobody looks at them, you have autonomy with a logo on it.</li>
+    </ul>
+
+    <h2>Human on the loop vs human in the loop: what is the difference?</h2>
+    <figure style="margin:1.5rem 0">
+      <img src="/docs/learn/images/maskin-hotl-vs-hitl-diagram.png" srcset="/docs/learn/images/maskin-hotl-vs-hitl-diagram.png 1200w, /docs/learn/images/maskin-hotl-vs-hitl-diagram@2x.png 2400w" sizes="(min-width: 900px) 760px, 100vw" width="1200" height="628" alt="Diagram comparing human in the loop (human inside the approval transaction) with human on the loop (human above an autonomous agent, reached through escalation gates)" style="width:100%;height:auto;border-radius:10px;border:1px solid var(--rule)" loading="lazy">
+    </figure>
+    <p>Human in the loop puts the human inside the transaction: nothing ships until they approve. Human on the loop puts the human above it. In HITL the human is the trigger. In HOTL an event is the trigger and the human is the auditor. A third state, human out of the loop, means no person reviews outputs at all, and it is only defensible where being wrong costs almost nothing.</p>
+    <div class="doc-table-wrap">
+    <table class="doc-table">
+      <thead>
+        <tr><th>&nbsp;</th><th>Human in the loop (HITL)</th><th>Human on the loop (HOTL)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Where the human sits</td><td>Inside the transaction</td><td>Above the work</td></tr>
+        <tr><td>What triggers a human</td><td>Every action in the gated class</td><td>An escalation event or a scheduled review</td></tr>
+        <tr><td>The human&rsquo;s job</td><td>Approve, edit, or reject</td><td>Supervise, sample, intervene, stop</td></tr>
+        <tr><td>Typical failure</td><td>Rubber-stamping once the queue gets long</td><td>Under-specified escalation: an irreversible action nobody flagged</td></tr>
+        <tr><td>Best fit</td><td>Irreversible or high-blast-radius actions</td><td>Bulk, reversible, high-frequency actions</td></tr>
+        <tr><td>What to measure</td><td>Override rate and override latency</td><td>Override rate on sampled audits, plus whether escalations fire at all</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>HITL and HOTL are not synonyms in disguise. They fail differently, so choosing between them is a decision about which failure mode you can live with, per action class. HITL is also the pattern the agent frameworks have standardised on at the code level: OpenAI, Cloudflare, Microsoft and Temporal all ship an approval primitive. That story is covered in <a href="/docs/learn/human-in-the-loop/">the SDK-primitive page</a>; this page stays on the oversight question that sits above it. Loop engineers hit the same wall: in <a href="/docs/what-is-loop-engineering/">loop engineering</a>, the scheduled human gate is the part that erodes first.</p>
+
+    <h2>When is human oversight real, and when is it theater? The override-rate test</h2>
+    <p>The honest way to tell whether an oversight claim is real is to measure one number: <strong>override rate</strong>, the share of AI outputs the human actually changes, rejects, or escalates before or after the action commits.</p>
+    <p>Two bounds separate real oversight from theater. If the override rate is stuck at <strong>0%</strong>, the reviewer has become a rubber stamp: nothing has ever come back wrong, so they click approve without reading. If it is stuck <strong>above 20%</strong>, the model is broken and the human is doing the model&rsquo;s job under an oversight banner. Real oversight sits in the middle band and is watched over time, because a drifting override rate is the earliest signal that something has changed. The same failure shows up in recurring knowledge work, where <a href="/docs/learn/agentic-loops-for-knowledge-workers/">a human gate that becomes a rubber stamp</a> is one of three ways a finish line goes wrong.</p>
+    <p>For HOTL the same logic applies to the review surfaces. A sampled audit that never finds anything to fix is either a perfect agent or a reviewer who is not reading, and you cannot tell which without the number. Our view: a HOTL setup where no escalation has ever fired deserves suspicion, not applause.</p>
+    <p>The frame did not originate here. MIT Technology Review&rsquo;s April 16, 2026 piece on the illusion of AI oversight made the point plainly: humans nominally in the loop but working under workflow pressure and without visibility produce the appearance of oversight, not the substance.<sup><a href="#fn1" id="fnref1">1</a></sup> The phrase for the failure mode is the <strong>&ldquo;warm body in the loop&rdquo;</strong>: a person kept in place for the sake of having one, with no real ability to intervene. Crootof, Kaminski and Price include &ldquo;warm body&rdquo; roles in their 2023 typology of the jobs a human can be given in a human-in-the-loop system.<sup><a href="#fn4" id="fnref4">4</a></sup> Schwemer and Koivisto&rsquo;s 2025 Verfassungsblog piece, &ldquo;A Warm Body in the Loop,&rdquo; carries the idea into EU tech regulation and asks whether human involvement is meaningful or merely symbolic.<sup><a href="#fn2" id="fnref2">2</a></sup></p>
+    <p>A second metric belongs next to override rate: <strong>override latency</strong>. If the reviewer&rsquo;s median time-to-intervene is longer than the time it takes the wrong outcome to commit, the oversight claim is theater by construction, whatever the override rate says. A moderator with a two-minute median response on a queue that ships in ten seconds is not in any operational sense &ldquo;in the loop,&rdquo; and a supervisor who reads the dashboard on Fridays is not &ldquo;on the loop&rdquo; of an agent that acts hourly.</p>
+    <p>The two-metric frame, override rate plus override latency, watched per action class, is what turns an oversight claim from marketing into something an auditor can check. It also explains why a uniform &ldquo;add a human review step&rdquo; policy destroys agent value without buying real safety: the queue gets too long, the reviewer&rsquo;s context gets too thin, and the override rate collapses to zero.</p>
+
+    <h2>What does EU AI Act Article 14 actually require?</h2>
+    <p>Article 14 of the EU AI Act is the section most often cited in &ldquo;the AI Act requires human in the loop&rdquo; claims. Read the text: <strong>Article 14 does not mandate human in the loop by name.</strong> It requires <em>effective, commensurate human oversight</em> for high-risk AI systems, which is a different thing.</p>
+    <p>Article 14(4) lists five things the oversight arrangement must enable the assigned natural persons to do, as appropriate and proportionate, in points (a) to (e):</p>
+    <ol>
+      <li><strong>Understand and monitor.</strong> Properly understand the relevant capacities and limitations of the high-risk system, and duly monitor its operation, including to detect and address anomalies, dysfunctions and unexpected performance. (Article 14(4)(a))</li>
+      <li><strong>Resist automation bias.</strong> Remain aware of the possible tendency to rely, or over-rely, on the system&rsquo;s output, in particular where the system provides information or recommendations for decisions that people take. (Article 14(4)(b))</li>
+      <li><strong>Interpret the output.</strong> Correctly interpret the system&rsquo;s output, taking into account the interpretation tools and methods available. (Article 14(4)(c))</li>
+      <li><strong>Decide to override.</strong> Decide, in any particular situation, not to use the system, or to disregard, override or reverse its output. (Article 14(4)(d))</li>
+      <li><strong>Intervene or stop.</strong> Intervene in the operation of the system or interrupt it through a &ldquo;stop&rdquo; button or a similar procedure that lets it come to a halt in a safe state. (Article 14(4)(e))</li>
+    </ol>
+    <p>The word &ldquo;loop&rdquo; does not appear. The article is agnostic on whether the human sits in the transaction (HITL) or on it (HOTL). What it demands is that the arrangement, whichever shape it takes, actually delivers the five capabilities in practice. That is why the honest way to design against Article 14 is to specify oversight per action class, not per system: a HOTL arrangement can cover bulk pipeline actions and a HITL arrangement the irreversible or high-blast-radius ones, in the same product.</p>
+    <p>The compliance implication is uncomfortable for vendors selling &ldquo;HITL for AI Act&rdquo; as a single feature. A uniform HITL policy that produces a 0% override rate fails Article 14&rsquo;s effectiveness test as clearly as no oversight at all. The auditor&rsquo;s question is not &ldquo;is there a human?&rdquo; It is &ldquo;can the human do all five: understand and monitor, resist automation bias, interpret the output, override it, and stop the system?&rdquo; Read <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener nofollow">Article 14 on EUR-Lex</a> directly before you build against it.</p>
+
+    <h2>When to use human on the loop, human in the loop, or a tiered policy</h2>
+    <p>Deciding between HITL and HOTL is not a system-wide choice. It is a per-action-class choice, and the right architecture for most production systems is a <strong>tiered approval policy</strong>: HOTL as the default for bulk reversible actions, HITL routed only to irreversible or high-blast-radius actions, and full autonomy where being wrong costs next to nothing.</p>
+    <p>One agent usually spans several classes. A support agent might tag and route incoming tickets on its own, have a person sample-audit its draft replies, and require explicit approval before issuing a refund. The autonomy dial differs by class, and that is the point. A delivery lifecycle is the same pattern at team scale: in the <a href="/docs/learn/agentic-sdlc/">agentic SDLC</a> a person approves three decisions, and nobody approves build, review or verify.</p>
+    <p>Three questions set the dial for a given action class:</p>
+    <ul>
+      <li><strong>Reversibility.</strong> Reversible at negligible cost (a draft the user will edit, a tag on an internal note): autonomy or sample-audit HOTL. Irreversible (email sent, payment moved, record deleted): HITL or a hard confirmation gate.</li>
+      <li><strong>Blast radius.</strong> How many downstream systems, customers, or dollars does the wrong action touch? A wrong tag on one internal document is small. A wrong bulk email to a customer segment is large.</li>
+      <li><strong>Frequency and review capacity.</strong> If an action class fires a thousand times a day, per-action approval will collapse to a 0% override rate within a week because the queue is too deep to review. Either tighten the model, or split the class and gate only the high-stakes fraction.</li>
+    </ul>
+    <p>A tiered policy avoids the &ldquo;uniform HITL everywhere&rdquo; trap, which destroys agent value without buying safety. It introduces its own failure: under-specification. An action class not assigned to a tier defaults to whatever autonomy the agent already has, which is often more than the operator would have chosen. Name the classes and their tiers before the agent ships, and enforce the policy at a governance layer, not in agent code. An agent that decides its own oversight is a self-signed certificate.</p>
+    <p>Putting that policy into practice is what the free onboarding is for: <a href="/onboarding/">loops that graduate from dry run to semi- or fully autonomous</a> earn their tier on evidence, with a human gate on every material call.</p>
+
+    <h2>What real human on the loop looks like in a workspace</h2>
+    <p>Real HOTL is a set of visible artefacts, not a slogan. Four things are load-bearing:</p>
+    <ul>
+      <li><strong>Named oversight gates on the object model.</strong> Each action class the agent can take is assigned a tier (autonomy, HOTL sample, or HITL), and the tier is a property of the object, not a runtime decision the agent makes for itself.</li>
+      <li><strong>Override rate and override latency visible per class.</strong> Both live on a dashboard the operator actually reads, watched over time.</li>
+      <li><strong>Tiered approvals enforced at the governance layer.</strong> The agent cannot escalate its own tier. Policy is set outside the agent and enforced when the agent tries to act.</li>
+      <li><strong>An event-sourced audit trail.</strong> Every action, intervention and halt is a typed event, so an auditor can reconstruct the oversight arrangement after the fact.</li>
+    </ul>
+    <p>Maskin&rsquo;s workspace is built on a typed object graph of insights, bets, tasks and loops, with per-loop autonomy settings and an audit trail that treats every agent action as a typed transition. Gates live on the object, override rate is measurable per action class, and the audit trail is the graph&rsquo;s own history. The deeper architecture write-up is the <a href="/docs/ambient-agent-workspace/">ambient agent workspace</a> piece. A concrete example of a human gate on a decision is <a href="/docs/at-risk-account-alerts/">the human call on an at-risk account&rsquo;s recovery bet</a>, where a person decides whether the bet is right and commits the resources. A lighter-weight example is the <a href="/marketplace/linkedin-content/">LinkedIn content loop</a>: an editor agent checks every draft, and the account owner approves each post before it goes live.</p>
+
+    <h2>FAQ</h2>
+    <h3>What is human on the loop?</h3>
+    <p>Human on the loop is an oversight pattern where an autonomous AI agent runs on its own and a person supervises through review surfaces, sampled audits, and named escalation gates. The human is the auditor, not the per-action approver. It works for bulk, reversible actions and fails when the escalation policy is under-specified.</p>
+    <h3>What is the difference between human in the loop and human on the loop?</h3>
+    <p>Human in the loop puts the person inside the transaction: nothing ships until they approve. Human on the loop puts them above it: the agent runs, and the human supervises through dashboards and escalation gates. HITL fails when reviewers rubber-stamp; HOTL fails when escalation rules are vague. Most production systems use both, chosen per action class.</p>
+    <h3>What does human out of the loop mean?</h3>
+    <p>Human out of the loop means the system acts with no person reviewing or approving its outputs, before or after. It is only defensible where a wrong action is cheap and fully reversible. Everywhere else, the usual move is to put a human on the loop for bulk work and in the loop for irreversible actions.</p>
+    <h3>What is an example of human on the loop?</h3>
+    <p>A background agent that triages and tags incoming work on its own, while a person reviews a sampled audit and gets paged when the agent hits a named escalation condition, is human on the loop. The same agent still asks for explicit approval before an irreversible step such as issuing a refund, which is human in the loop for that one action class.</p>
+    <h3>Does the EU AI Act require human in the loop?</h3>
+    <p>No. Article 14 of the EU AI Act requires effective, commensurate human oversight of high-risk AI systems. Article 14(4) lists five duties the arrangement must enable: understand and monitor, resist automation bias, interpret the output, decide to override or reverse it, and intervene or stop the system. The word &ldquo;loop&rdquo; does not appear. HOTL can satisfy Article 14 for many action classes.</p>
+    <h3>What is override rate?</h3>
+    <p>Override rate is the share of AI outputs a human reviewer changes, rejects, or escalates. It is the honest way to tell real oversight from theater. Stuck at 0% signals rubber-stamping; stuck above 20% signals a broken model. Real oversight sits between the two and is monitored per action class, alongside override latency.</p>
+    <h3>When is human in the loop not enough?</h3>
+    <p>When the reviewer lacks context, visibility, or time, any one of the three, the loop is compliance decoration. It is also not enough when action volume is too high for meaningful review, when the model&rsquo;s failure modes sit outside the reviewer&rsquo;s expertise, or when the wrong-outcome window closes faster than the response time.</p>
+
+    <h2 id="sources">Sources</h2>
+    <ol class="sources">
+      <li id="fn1"><strong>Stephanie Arnett / MIT Technology Review</strong>, <em>Why having &ldquo;humans in the loop&rdquo; in an AI war is an illusion</em> (2026-04-16). <a href="https://www.technologyreview.com/2026/04/16/1136029/humans-in-the-loop-ai-war-illusion/" target="_blank" rel="noopener nofollow">technologyreview.com/2026/04/16/1136029/humans-in-the-loop-ai-war-illusion</a>. Source for the illusion-of-oversight framing: a human nominally in the loop but under workflow pressure and without visibility provides the appearance of oversight, not the substance. <a href="#fnref1">↩</a></li>
+      <li id="fn2"><strong>Sebastian Schwemer and Ida Koivisto / Verfassungsblog</strong>, <em>A Warm Body in the Loop: Rethinking Human Control of AI in EU Tech Regulation</em> (2025-09-18). <a href="https://verfassungsblog.de/warm-body-in-the-loop/" target="_blank" rel="noopener nofollow">verfassungsblog.de/warm-body-in-the-loop</a>. Applies the &ldquo;warm body&rdquo; idea to EU tech regulation and asks whether human involvement is meaningful or merely symbolic. <a href="#fnref2">↩</a></li>
+      <li id="fn3"><strong>Harrison Chase / LangChain</strong>, <em>Introducing Ambient Agents</em> (Jan 2025). <a href="https://www.langchain.com/blog/introducing-ambient-agents" target="_blank" rel="noopener nofollow">langchain.com/blog/introducing-ambient-agents</a>. Describes three human-in-the-loop patterns for ambient agents: notify, question, and review. <a href="#fnref3">↩</a></li>
+      <li id="fn4"><strong>Rebecca Crootof, Margot E. Kaminski and W. Nicholson Price II</strong>, <em>Humans in the Loop</em>, 76 Vanderbilt Law Review 429 (2023). <a href="https://scholarship.law.vanderbilt.edu/vlr/vol76/iss2/2" target="_blank" rel="noopener nofollow">scholarship.law.vanderbilt.edu/vlr/vol76/iss2/2</a>. Its typology of human roles includes &ldquo;warm body&rdquo; roles. <a href="#fnref4">↩</a></li>
+    </ol>
+
+    <div class="related">
+      <p class="related__title">Read next</p>
+      <div class="doc-cards">
+        <a class="doc-card" href="/docs/ambient-agent-workspace/">
+          <div class="doc-card__title">Ambient agent workspace</div>
+          <div class="doc-card__desc">The fifth post-chat pattern &mdash; a typed object graph humans review as state, with the human on-the-loop.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
+          <div class="doc-card__title">What is an agentic workspace?</div>
+          <div class="doc-card__desc">The cornerstone &mdash; the object of work is the workspace, not the chat.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/what-is-a-stateful-orchestration-substrate/">
+          <div class="doc-card__title">Stateful orchestration substrate</div>
+          <div class="doc-card__desc">The shared typed store that carries state between stateless agents so a pipeline produces coherent work.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+        <a class="doc-card" href="/docs/self-hosted-ai-workspace/">
+          <div class="doc-card__title">Self-hosted AI workspace</div>
+          <div class="doc-card__desc">Run the full ambient loop on your own infrastructure, bring your own model.</div>
+          <div class="doc-card__arrow">Read &rarr;</div>
+        </a>
+      </div>
+    </div>
+    <div class="post-cta">
+      <h2>Design oversight per action class, not per system</h2>
+      <p>Maskin is the open-source, MCP-native workspace where oversight lives on the object model &mdash; per-loop autonomy, an event-sourced audit trail, and tiered approvals enforced at the governance layer. Apache 2.0, self-hostable.</p>
+      <div class="post-cta__actions">
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
+      </div>
+    </div>
+  
