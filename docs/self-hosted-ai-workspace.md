@@ -15,7 +15,7 @@ Self-hosted AI means the AI runs on infrastructure you control, not a vendor’s
 
 ## Why self-host an AI workspace at all
 Three buyers reach for self-hosting, and they want different things:
-- **Data sovereignty.** The work — customer feedback, churn signals, roadmap material — never leaves your infrastructure. No hosted vendor’s retention policy to trust, no third-party subprocessors to audit, no cross-border transfer question to answer.
+- **Data sovereignty.** The workspace, its database and its records — customer feedback, churn signals, roadmap material — run on infrastructure you control, so no hosted vendor’s retention policy applies to them. Agent work still goes to the model provider you choose, using your own key, so check that provider’s terms and regions. Self-hosting does not remove that transfer.
 - **Control over model access.** Hosted workspaces tend to bundle the vendor’s model. Self-hosting decouples the workspace from that bundle: you run the Claude Code or Codex CLI with your own Anthropic or OpenAI access, on your terms.
 - **Auditability.** The code is open and inspectable. For an AI tool that decides which agents see what and how loops are bounded, read-the-code becomes a governance feature, not a nicety.
 Hosted vendor workspaces can’t fully answer any of these — your data and your model access are the product. Self-host is the control-plane answer, and open source is what makes each of the three claims verifiable rather than a promise. If you are still choosing between kinds of self-hosted agent tooling, the [2026 landscape of self-hosted AI agents](/alternatives/self-hosted-ai-agents/) sorts the open-source field into four categories and shows where a workspace like Maskin fits.
