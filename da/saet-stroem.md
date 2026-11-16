@@ -1,18 +1,11 @@
 > Source: https://maskin.io/da/saet-stroem/
 
 # Webinar: Sæt strøm til din forretning
-Fem webinarer. Fem måder at få mere ud af arbejdsdagen.
+Fire webinarer. Fire måder at få mere ud af arbejdsdagen.
 Fra bogføring og kundeservice til markedsføring og salg. Vi viser dig, hvordan du kan gøre hverdagen lettere, få mere fra hånden og skabe mere værdi i din virksomhed.
 **Næste webinar: onsdag 25. november 2026, 15.00.** [Tilmeld dig på Luma](https://luma.com/92hrh644?utm_campaign=accounting-25nov&utm_source=hub)
 
-## De fem webinarer
-Dato følger
-
-### Sæt strøm til dine kunder
-Skab mere værdi for dem, du allerede har.
-Se, hvordan AI kan hjælpe dig med at skabe værdi for dine kunder.
-Lær dine kunder bedre at kende, forstå deres behov og find nye muligheder for at give dem en endnu bedre oplevelse. Få mere ud af dine kunderelationer, uden at bruge flere timer på hver enkelt.
-Tilmelding åbner snart. Dette webinar er ikke en del af serien.
+## De fire webinarer
 Onsdag 25. november 2026, 15.00 til 16.00
 
 ### Sæt strøm til årsafslutningen
@@ -53,7 +46,7 @@ Du får webinarlinket og din bekræftelse, også uden kryds. Begge kommer fra Lu
 ## Spørgsmål og svar
 
 ### Er det gratis?
-Ja. Alle fem webinarer er gratis, foregår online og er på dansk. Du vælger selv, hvilke emner du vil følge. Hvert webinar har sin egen tilmelding på Luma, så tilmeld dig de enkelte webinarer, du vil deltage i. Der er ingen betaling for at tilmelde dig.
+Ja. Alle fire webinarer er gratis, foregår online og er på dansk. Du vælger selv, hvilke emner du vil følge. Hvert webinar har sin egen tilmelding på Luma, så tilmeld dig de enkelte webinarer, du vil deltage i. Der er ingen betaling for at tilmelde dig.
 
 ### Skal jeg kunne noget med AI?
 Nej. Du behøver ikke have erfaring med AI eller kende tekniske begreber. Webinarerne tager udgangspunkt i opgaver fra arbejdsdagen og viser, hvordan en AI-agent kan hjælpe med dem. Du kan følge med uden særlige forudsætninger. Når noget skal sendes, godkender et menneske det først.
