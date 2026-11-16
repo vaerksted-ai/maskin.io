@@ -2,15 +2,15 @@
 
 # A wiki your agents read before they answer.
 Team memory that new hires and new agents bootstrap from — indexed, typed, MCP-native.
-![The LLM knowledge wiki loop — a closed bet becomes a typed, interlinked wiki page that agents read before they answer.](/og-image-knowledge-wiki.png)
-The knowledge wiki loop keeps a living, agent-readable record of every decision your team ships. A closed bet (one that has run through the [product delivery loop](/marketplace/product-delivery/), for instance) fires the loop; agents write the verdict, index the artifacts, and link them to the object they came from; a human gates the taste-sensitive summaries. Every future agent your team spawns reads from the same graph before it answers — so the wiki isn’t a Notion side-project that rots the moment its author changes roles, it’s the same substrate the rest of your team already operates on.
+![The LLM knowledge wiki flow — a closed bet becomes a typed, interlinked wiki page that agents read before they answer.](/og-image-knowledge-wiki.png)
+The knowledge wiki flow keeps a living, agent-readable record of every decision your team ships. A closed bet (one that has run through the [product delivery flow](/marketplace/product-delivery/), for instance) fires the flow; agents write the verdict, index the artifacts, and link them to the object they came from; a human gates the taste-sensitive summaries. Every future agent your team spawns reads from the same graph before it answers — so the wiki isn’t a Notion side-project that rots the moment its author changes roles, it’s the same substrate the rest of your team already operates on.
 For product teams tired of re-answering the same question because the last answer lived in someone’s DMs.
-There is no walkthrough video for this loop yet.
-This loop can't be installed yet. In the meantime, [try Maskin](/signup).
+There is no walkthrough video for this flow yet.
+This flow can't be installed yet. In the meantime, [try Maskin](/signup).
 
 ## Key takeaways
 - An LLM wiki is a knowledge base an LLM compiles from your own sources into interlinked pages that agents read before they answer. Andrej Karpathy named the pattern in April 2026 as the alternative to per-agent memory files and query-time RAG.
-- This loop keeps that base alive: a closed bet fires it, agents write the verdict and index the artifact, and a human gates the taste-sensitive summaries.
+- This flow keeps that base alive: a closed bet fires it, agents write the verdict and index the artifact, and a human gates the taste-sensitive summaries.
 - Team memory is the unit here, not personal memory. Most of the head volume on the search term is Karpathy-navigational; the unclaimed slice is how a team actually runs one.
 - Every entry is typed and linked to the bet, insight, or decision it came from, so a reader walks back to the source instead of trusting a summary.
 - New hires and new agents bootstrap from the same graph, so onboarding stops being a separate doc that drifts from the work.
@@ -20,18 +20,18 @@ An LLM wiki is a knowledge base an LLM compiles from your own material into inte
 It is worth separating the wiki from its neighbours. A RAG index embeds your sources and retrieves pieces at query time; an LLM wiki compiles the sources into pages once and links them, so the same question tends to return the same answer. A Notion or Confluence space is written for humans and searched by humans; an LLM wiki is written to be read by an agent, and it cites the object each claim came from. Both are a durable, interlinked record, but the reader is different, and that changes how the record has to be maintained — and for the storage-engine side of the same distinction, [wiki-style knowledge vs an embedding store](/docs/knowledge-wiki-vs-vector-database/) walks through why one is content and the other is infrastructure.
 The failure mode is not the compile step. It is the upkeep. A wiki that only gets written when someone remembers to write it decays into a folder of half-true pages inside a quarter.
 
-## How the loop closes
+## How the flow closes
 - **Fires when** a bet closes, a decision ships, or a piece of work ends with a verdict worth keeping.
 - **Writes the verdict** — an agent captures what was decided, why, and what it displaced, in the voice and format the team already reads.
 - **Indexes and links** — the entry is attached to the bet, insight, or object it came from, so the graph stays walkable in both directions.
 - **Human gates** the taste-sensitive summaries: positioning, customer-facing language, anything that states a fact about the company rather than about the work.
 - **Closes on** a page a new hire or a new agent can read to answer a question without asking a person.
-That last line is the close condition. The loop is not done when the page is written. It is done when someone, or something, reads it and stops needing to ask.
+That last line is the close condition. The flow is not done when the page is written. It is done when someone, or something, reads it and stops needing to ask.
 
 ## Why team wikis rot, and why this one does not
 Every team has tried the shared wiki. The pattern is always the same: a burst of writing at the start, a slow drift, and a final state where the newest pages are the least accurate and nobody trusts any of it. The cause is not laziness. It is that writing to the wiki is a separate job from doing the work, and separate jobs lose.
-This loop removes the separate job. Writing to the wiki is a byproduct of closing a bet, which the team is already doing. Reading from the wiki is a byproduct of starting work, because the agent reads it before it answers. Nobody has to remember the wiki exists, because it sits on the path of work the team already runs.
-The typed graph is what makes that possible. A page is not a floating document; it is attached to the object it describes. When the object changes, the link tells you which page to revisit. When a new agent joins, it does not read a stale onboarding doc. It reads the same graph the rest of the team operates on. Other loops read from that graph too: the [LinkedIn content loop](/marketplace/linkedin-content/) starts each fortnight from the shipped work, feedback, and signals already recorded there.
+This flow removes the separate job. Writing to the wiki is a byproduct of closing a bet, which the team is already doing. Reading from the wiki is a byproduct of starting work, because the agent reads it before it answers. Nobody has to remember the wiki exists, because it sits on the path of work the team already runs.
+The typed graph is what makes that possible. A page is not a floating document; it is attached to the object it describes. When the object changes, the link tells you which page to revisit. When a new agent joins, it does not read a stale onboarding doc. It reads the same graph the rest of the team operates on. Other flows read from that graph too: the [LinkedIn content flow](/marketplace/linkedin-content/) starts each fortnight from the shipped work, feedback, and signals already recorded there.
 
 ## Built with
 - **Signal sources** — closed bets, shipped decisions, customer calls, and the object graph the team already works on.
@@ -40,17 +40,17 @@ The typed graph is what makes that possible. A page is not a floating document; 
 - **Skills** — *write the verdict in our voice*, *summarize a decision against our template*.
 - **Human gates** — the person who owns the summary when it states something customer-facing or company-level.
 
-## What’s inside the loop
-Loop
-A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop.
-**Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
+## What’s inside the flow
+Flow
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a flow.
+**Maskin flows carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
 Agent
 A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP
 The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
 Skill
 A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
-Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
+Inside a flow listing, agents / MCPs / skills appear as “built with” components of the flow, never as top-level marketplace sections of their own.
 
 ## FAQ
 
@@ -77,4 +77,4 @@ Karpathy published the pattern as a public gist, so the approach itself is open,
 
 ### How does an LLM wiki connect to MCP?
 MCP is the wire. The wiki lives in one place and agents reach it through an MCP server, the same way they reach the CRM or the repo. That matters because it keeps the wiki out of any single tool. A coding agent, a research agent, and a support agent can all read the same pages under the same gates, without anyone copying the content between products.
-Related loops on the marketplace
+Related flows on the marketplace
