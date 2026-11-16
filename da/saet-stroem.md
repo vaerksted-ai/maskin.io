@@ -1,6 +1,6 @@
 > Source: https://maskin.io/da/saet-stroem/
 
-# Webinar for virksomheder: Sæt strøm til din forretning
+# Webinar: Sæt strøm til din forretning
 Fem webinarer. Fem måder at få mere ud af arbejdsdagen.
 Fra bogføring og kundeservice til markedsføring og salg. Vi viser dig, hvordan du kan gøre hverdagen lettere, få mere fra hånden og skabe mere værdi i din virksomhed.
 **Næste webinar: onsdag 25. november 2026, 15.00.** [Tilmeld dig på Luma](https://luma.com/92hrh644?utm_campaign=accounting-25nov&utm_source=hub)
@@ -12,7 +12,7 @@ Dato følger
 Skab mere værdi for dem, du allerede har.
 Se, hvordan AI kan hjælpe dig med at skabe værdi for dine kunder.
 Lær dine kunder bedre at kende, forstå deres behov og find nye muligheder for at give dem en endnu bedre oplevelse. Få mere ud af dine kunderelationer, uden at bruge flere timer på hver enkelt.
-Tilmelding åbner snart. [Tilmeld dig rækken](#tilmeld-raekken), så får du besked.
+Tilmelding åbner snart. Dette webinar er ikke en del af serien.
 Onsdag 25. november 2026, 15.00 til 16.00
 
 ### Sæt strøm til årsafslutningen
@@ -27,7 +27,7 @@ Bliv mere synlig uden at bruge hele dagen på sociale medier.
 Ugentligt indhold med AI-agenter i din virksomhed.
 Få hjælp til at finde på idéer, skrive opslag og planlægge indhold. Så bliver det nemmere at holde din virksomhed synlig og være top of mind hos dine kunder.
 En AI-agent skriver et udkast til opslaget, og du siger ja eller nej, før det bliver udgivet.
-Tilmelding åbner snart. [Tilmeld dig rækken](#tilmeld-raekken), så får du besked.
+Tilmelding åbner snart. [Tilmeld dig serien](#tilmeld-serien), så får du besked.
 Onsdag 9. december 2026, 15.00 til 16.00
 
 ### Sæt strøm til salget
@@ -35,7 +35,7 @@ Find nye kunder og kom hurtigere i dialog med dem.
 Find kunder med AI, hvor du godkender hver besked.
 Se, hvordan du kan finde relevante virksomheder og blive klogere på dem. Agenterne hjælper med kontakt til mulige kunder.
 Du godkender hver besked, før den sendes. Agenterne sender ikke noget uden dit ja.
-Tilmelding åbner snart. [Tilmeld dig rækken](#tilmeld-raekken), så får du besked.
+Tilmelding åbner snart. [Tilmeld dig serien](#tilmeld-serien), så får du besked.
 Onsdag 16. december 2026, 15.00 til 16.00
 
 ### Sæt strøm til kundeservicen
@@ -43,9 +43,9 @@ Giv kunderne hurtigere svar, uden at sidde i indbakken hele dagen.
 Kundeservice med AI: delt indbakke eller Slack?
 Få hjælp til at håndtere kundehenvendelser, besvare de typiske spørgsmål og holde styr på dialogen. Så kan du give kunderne en god oplevelse, samtidig med at du får mere ro til andre opgaver.
 Se to måder at bruge en AI-agent til kundeservice på, i en delt indbakke og i Slack, vist side om side.
-Tilmelding åbner snart. [Tilmeld dig rækken](#tilmeld-raekken), så får du besked.
+Tilmelding åbner snart. [Tilmeld dig serien](#tilmeld-serien), så får du besked.
 
-## Tilmeld dig hele rækken
+## Tilmeld dig hele serien
 Vælg de webinarer, der passer til de opgaver, du gerne vil have hjælp til i din virksomhed. Hvert webinar kræver sin egen tilmelding på Luma, så du får linket til hvert webinar, du vil deltage i.
 Navn, e-mail, virksomhed og antal ansatte udfylder du kun, hvis du vil have e-mails fra os.
 Du får webinarlinket og din bekræftelse, også uden kryds. Begge kommer fra Luma. For at få joinlinket skal du tilmelde dig hvert webinar på dets egen side på Luma.
