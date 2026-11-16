@@ -16,9 +16,9 @@ Tilmelding åbner snart. [Tilmeld dig rækken](#tilmeld-raekken), så får du be
 Onsdag 25. november 2026, 15.00 til 16.00
 
 ### Sæt strøm til årsafslutningen
-Brug mindre tid på bilag og regnskab.
+Se, hvordan en AI-agent gør det grove forarbejde til årsafslutningen, så du kun skal godkende.
 AI til bogføringen, hvor du godkender.
-Slip for noget af det manuelle arbejde med bilag, fakturaer og bogføring. Se, hvordan du kan gøre regnskabet lettere at håndtere og få mere tid til at drive din virksomhed.
+Slip for noget af det manuelle arbejde med bilag, fakturaer og bogføring. Se, hvordan du kan gøre bogføringen lettere at håndtere og få mere tid til at drive din virksomhed.
 Agenten finder manglende kvitteringer, afstemmer banken, peger på ubetalte fakturaer og samler spørgsmålene til din bogholder. Du eller din bogholder godkender. Agenten bogfører ikke selv og giver ingen skatte- eller juridisk rådgivning.
 Onsdag 2. december 2026, 15.00 til 16.00
 
