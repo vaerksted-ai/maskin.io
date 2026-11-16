@@ -6267,14 +6267,14 @@ Lær dine kunder bedre at kende, forstå deres behov og find nye muligheder for 
 Tilmelding åbner snart. [Tilmeld dig rækken](#tilmeld-raekken), så får du besked.
 Onsdag 25. november 2026, 15.00 til 16.00
 
-### Sæt strøm til bogføringen
+### Sæt strøm til årsafslutningen
 Brug mindre tid på bilag og regnskab.
 AI til bogføringen, hvor du godkender.
 Slip for noget af det manuelle arbejde med bilag, fakturaer og bogføring. Se, hvordan du kan gøre regnskabet lettere at håndtere og få mere tid til at drive din virksomhed.
 Agenten finder manglende kvitteringer, afstemmer banken, peger på ubetalte fakturaer og samler spørgsmålene til din bogholder. Du eller din bogholder godkender. Agenten bogfører ikke selv og giver ingen skatte- eller juridisk rådgivning.
 Onsdag 2. december 2026, 15.00 til 16.00
 
-### Sæt strøm til din synlighed
+### Sæt strøm til dit indhold
 Bliv mere synlig uden at bruge hele dagen på sociale medier.
 Ugentligt indhold med AI-agenter i din virksomhed.
 Få hjælp til at finde på idéer, skrive opslag og planlægge indhold. Så bliver det nemmere at holde din virksomhed synlig og være top of mind hos dine kunder.
@@ -6317,5 +6317,5 @@ Maskin-teamet præsenterer webinarerne. Navnet på den, der præsenterer det enk
 Tilmeld dig stadig, hvis emnet er relevant for dig. Webinaret optages, og alle, der har tilmeldt sig, får et link til optagelsen. I optagelsen kan fornavne og spørgsmål, du skriver, være synlige. Vil du ikke vises, kan du sende dit spørgsmål som svar på mailen i stedet.
 
 ### Hvad sker der med mine data?
-Formularen her beder kun om dit navn, din e-mail, din virksomhed og virksomhedens størrelse, og kun hvis du vil have e-mails fra os. Oplysningerne bruges kun til mails om serien Sæt strøm. Du kan trække dit samtykke tilbage med afmeld i hver mail, du får fra os.
+Formularen her beder kun om dit navn, din e-mail, din virksomhed og virksomhedens størrelse, og kun hvis du vil have e-mails fra os. Oplysningerne bruges kun til mails om serien Sæt strøm og til tilbuddet om en gratis samtale. Du kan trække dit samtykke tilbage ved at klikke afmeld i hver mail, du får fra os.
 Vil du vide mere om, hvad en AI-agent er, før du vælger? Læs [AI-automatisering: de første opgaver at automatisere](/da/ai-automatisering/) og [AI-agenter: guide for danske virksomheder](/da/ai-agenter/).
