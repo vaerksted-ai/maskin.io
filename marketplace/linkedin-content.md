@@ -1,8 +1,8 @@
 > Source: https://maskin.io/marketplace/linkedin-content/
 
 # Run LinkedIn content in Maskin so your team keeps its voice and the final say while Maskin reads what happened this week, plans the calendar, drafts every post, and keeps a steady posting rhythm going.
-![The LinkedIn content loop: a seven-step cycle from interview to approved post to retro.](/og-image-linkedin-content.png)
-This loop can't be installed yet. In the meantime, [try Maskin](/signup).
+![The LinkedIn content flow: a seven-step cycle from interview to approved post to retro.](/og-image-linkedin-content.png)
+This flow can't be installed yet. In the meantime, [try Maskin](/signup).
 
 ## The job
 Keep a founder-voice LinkedIn presence going from the moments already happening inside your business: a shipped feature, a customer win, a competitor move, a hard lesson. The result is a steady posting rhythm, planned two weeks at a time, and founder time back for the work only founders can do, instead of writing posts cold at 11pm on Sunday. The work is done when the post is live on LinkedIn and the next retro has read how it did, not when a draft is generated.
@@ -18,7 +18,7 @@ Keep a founder-voice LinkedIn presence going from the moments already happening 
 | The judgement to kill a weak draft | Reworking the drafts that get sent back |
 | On some accounts, pasting the approved post into LinkedIn | Posting for you on the others, then a retro every two weeks that reads how posts did |
 
-## How the loop runs
+## How the flow runs
 1. Every two weeks, Maskin reads the last fortnight: what shipped, what feedback came in, and how recent posts did.
 2. From that, it writes interview questions for each account owner, so every post starts from something true.
 3. The account owners answer. The real stories, opinions, and numbers only they hold are the raw material, and this is the human step the whole fortnight hangs on.
@@ -28,30 +28,30 @@ Keep a founder-voice LinkedIn presence going from the moments already happening 
 7. Two weeks later, the retro reads how the posts did and files what to do more and less of, and the next plan starts from it.
 
 ## Trust surface
-- **Voice is a [workspace skill](/docs/learn/agent-skills/), not a prompt.** Each account (a founder’s personal profile, a teammate’s, the company page) has a voice skill the loop applies. If an account has no voice skill yet, one is drafted and approved by its owner first. Nobody posts in a voice its owner hasn’t signed off.
+- **Voice is a [workspace skill](/docs/learn/agent-skills/), not a prompt.** Each account (a founder’s personal profile, a teammate’s, the company page) has a voice skill the flow applies. If an account has no voice skill yet, one is drafted and approved by its owner first. Nobody posts in a voice its owner hasn’t signed off.
 - **Nothing goes out unapproved.** An editor agent checks every draft, and the account owner [approves each post](/docs/learn/human-in-the-loop-ai/) before it goes live.
 - **Weak drafts get killed, not shipped.** The editor sends weak drafts back for rework, and a draft that can’t be saved is dropped instead of posted.
 
 ## Run it
-**Book a demo:** see the loop running on the Maskin Team’s own LinkedIn profiles and company page, then decide whether to run it on yours.
+**Book a demo:** see the flow running on the Maskin Team’s own LinkedIn profiles and company page, then decide whether to run it on yours.
 
-## What’s inside the loop
-Loop
-A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome, not on *done for now*. Every listing on the Marketplace is a loop.
-**Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
+## What’s inside the flow
+Flow
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome, not on *done for now*. Every listing on the Marketplace is a flow.
+**Maskin flows carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
 Agent
 A named role a model performs: an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP
 The wire an agent uses to reach the tools your team already uses: the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
 Skill
 A packaged capability you attach to an agent: *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
-Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
+Inside a flow listing, agents / MCPs / skills appear as “built with” components of the flow, never as top-level marketplace sections of their own.
 
 ## FAQ
 
 ### Can I use AI to create content for LinkedIn?
-Yes, as long as the substance is yours. In this loop the account owner answers interview questions about what actually happened, a voice skill for that account shapes the draft, an editor agent checks it, and the owner approves every post before it goes live. The AI does the reading, planning, and drafting. You bring the stories and keep the final say, including the right to kill a draft.
+Yes, as long as the substance is yours. In this flow the account owner answers interview questions about what actually happened, a voice skill for that account shapes the draft, an editor agent checks it, and the owner approves every post before it goes live. The AI does the reading, planning, and drafting. You bring the stories and keep the final say, including the right to kill a draft.
 
 ### Why is there so much AI-generated content on LinkedIn?
-A post written from a prompt alone has nothing real behind it, so it reads like every other one. This loop starts from the other end: what your team shipped, what feedback came in, and what the account owners say in their interview. An editor agent checks every draft, and the owner can drop any draft that falls short before it goes live.
-Related loops on the marketplace
+A post written from a prompt alone has nothing real behind it, so it reads like every other one. This flow starts from the other end: what your team shipped, what feedback came in, and what the account owners say in their interview. An editor agent checks every draft, and the owner can drop any draft that falls short before it goes live.
+Related flows on the marketplace

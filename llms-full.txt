@@ -5559,21 +5559,21 @@ An AI SDR is a loop, not a product. If you want the loop — signal, research, d
 > Source: https://maskin.io/marketplace/seo-publishing/
 
 # Ship SEO pages that end when they rank, not when they publish.
-One loop from keyword bracket to indexed rank — human gates the intent read and the send-to-publish.
+One flow from keyword bracket to indexed rank — human gates the intent read and the send-to-publish.
 ![A SERP for ‘seo publishing loop’: two generic AI-content results bracket a featured Maskin result whose voice is recognisably the team’s — not a generic paste. Editorial hero: ‘Rank on your voice, not a generic paste.’](/hero-seo-publishing.png)
-The SEO publishing loop closes on the outcome (a page in the target rank range), not the activity (a Notion doc marked done). Research fires the loop against a query bracket; agents draft to the winning intent; a human gates the intent read and the publish; agents track index and rank until the close condition is met. Every artifact — the query bracket, the draft, the published URL, the rank checks — lives on the same typed graph, so the next page inherits everything the last one learned.
+The SEO publishing flow closes on the outcome (a page in the target rank range), not the activity (a Notion doc marked done). Research fires the flow against a query bracket; agents draft to the winning intent; a human gates the intent read and the publish; agents track index and rank until the close condition is met. Every artifact — the query bracket, the draft, the published URL, the rank checks — lives on the same typed graph, so the next page inherits everything the last one learned.
 For product teams who own their own growth pages and are done losing weeks to *draft in Notion, publish somewhere else, forget who owns rank checks*.
-This loop can't be installed yet. In the meantime, [try Maskin](/signup).
+This flow can't be installed yet. In the meantime, [try Maskin](/signup).
 
-## What an SEO content loop gets you
-The SEO publishing loop closes the gap between “we should write about X” and “X is a live, indexed, snippet-eligible page on our site.” It runs continuously, so weekly audit findings, keyword whitespace, and shipped-in-public changelog entries all end up as real pages without a human touching HTML.
+## What an SEO content flow gets you
+The SEO publishing flow closes the gap between “we should write about X” and “X is a live, indexed, snippet-eligible page on our site.” It runs continuously, so weekly audit findings, keyword whitespace, and shipped-in-public changelog entries all end up as real pages without a human touching HTML.
 - **Keyword insight becomes a shaped brief.** A researcher walks the SERP, names the anti-frame the incumbents haven’t claimed, and shapes a brief instead of dumping a keyword list.
 - **The brief becomes an approved draft.** A writer produces markdown against the brief; a human approves before it moves to publish. Override rate is measurable and watched.
 - **The approved draft becomes a live page.** HTML is built with the correct docs shell, JSON-LD schema, canonical, per-page OG image, and interlinking. Sitemap, llms.txt, and llms-full.txt are updated in the same commit.
-- **The live page gets measured.** An analyst tracks indexation, snippet eligibility, and traffic against the bet checkpoints; flagged audit issues (thin content, broken schema, CWV regressions) route back into the loop as tasks.
-The result: pages ship on a cadence a human editor can supervise but not personally execute. The wedge over “prompt ChatGPT for a blog post” is the loop shape — approval gate, live registration checklist, measured close — not the generation. If the pages are one part of a wider month of posts, the [content calendar](/marketplace/content-calendar/) keeps every post’s status in one place.
+- **The live page gets measured.** An analyst tracks indexation, snippet eligibility, and traffic against the bet checkpoints; flagged audit issues (thin content, broken schema, CWV regressions) route back into the flow as tasks.
+The result: pages ship on a cadence a human editor can supervise but not personally execute. The wedge over “prompt ChatGPT for a blog post” is the flow shape — approval gate, live registration checklist, measured close — not the generation. If the pages are one part of a wider month of posts, the [content calendar](/marketplace/content-calendar/) keeps every post’s status in one place.
 
-## The seven-step SEO content loop the video walks through
+## The seven-step SEO content flow the video walks through
 1. **Signal.** A keyword-whitespace insight or a weekly Ubersuggest audit finding fires. The insight becomes a typed object with a testable frame.
 2. **Research.** An agent walks the top 10-20 SERP results, extracts the anti-frame, and drafts a brief. A human approves the brief before writing starts.
 3. **Draft.** An agent writes the markdown content object against the approved brief, in the site’s voice.
@@ -5581,13 +5581,13 @@ The result: pages ship on a cadence a human editor can supervise but not persona
 5. **Publish.** An agent builds the HTML page with the correct docs shell, JSON-LD, canonical, per-page OG image, interlinking, and registers it in sitemap.xml, docs.js nav, llms.txt, and llms-full.txt in a single commit.
 6. **Measure.** An analyst tracks indexation, snippet eligibility, and traffic against the bet’s checkpoints; flagged audit issues fire as tasks routed back to the publisher.
 7. **Close.** A page counts as shipped only once it is indexed, snippet-eligible, AND being tracked. Publishing without measurement is noise.
-![Loop-flow diagram of the seven-step SEO publishing loop. Seven nodes across a single row: 01 Topic lands in queue, 02 Maskin pulls SERP + your existing pages, 03 Drafts to searcher intent in your voice, 04 Editor approves (marked as a human gate with a rounded amber square), 05 Ships to your CMS, 06 Rank tracked; refresh if it slips, 07 Every page teaches the next (marked as the close condition in blue). A dashed loop-back arc from 07 back to 01 with the caption ‘closes back to the queue — next topic reads sharper’.](/loop-flow-seo-publishing.png)
-The loop — not a pipeline that ends at publish.
+![Flow diagram of the seven-step SEO publishing flow. Seven nodes across a single row: 01 Topic lands in queue, 02 Maskin pulls SERP + your existing pages, 03 Drafts to searcher intent in your voice, 04 Editor approves (marked as a human gate with a rounded amber square), 05 Ships to your CMS, 06 Rank tracked; refresh if it slips, 07 Every page teaches the next (marked as the close condition in blue). A dashed loop-back arc from 07 back to 01 with the caption ‘closes back to the queue — next topic reads sharper’.](/loop-flow-seo-publishing.png)
+The flow — not a pipeline that ends at publish.
 
-## What this loop is built with
-Named the same on every loop page so the shape is portable. Below the fold on purpose — the loop is what closes; the primitives are just the parts. Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
-Loop
-A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.
+## What this flow is built with
+Named the same on every flow page so the shape is portable. Below the fold on purpose — the flow is what closes; the primitives are just the parts. Inside a flow listing, agents / MCPs / skills appear as “built with” components of the flow, never as top-level marketplace sections of their own.
+Flow
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a flow. Maskin flows carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.
 Agent
 A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP
@@ -5597,11 +5597,11 @@ A packaged capability you attach to an agent — *draft a follow-up in our voice
 Full concept map: [Agent skills vs MCP vs cursor rules vs workflows](/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/) explains where each layer belongs.
 
 ## Why being the cited source now matters as much as ranking
-HubSpot, the company that wrote much of the inbound playbook, put numbers on the shift in a Fortune essay on 22 September 2026: its blog lost 5 million visits in a thirty-day period, while AI search usage climbed 37% and traditional search declined 11% ([Bodnar and Flanagan, Fortune](https://fortune.com/2026/09/22/hubspot-ai-impact-marketing-blog-posts-traffic/)). Our reading is that a page which ranks but is never quoted by an answer engine is losing ground, so this loop ships pages built to be cited: a direct answer up top, citeable headings, JSON-LD, and an llms.txt entry in the same commit.
-One naming note: HubSpot's *Loop Marketing* is a framework for marketing teams. The loop here is the general kind, a workspace object with a trigger, steps, a close condition and human gates. [Loop engineering vs Loop Marketing](/docs/what-is-loop-engineering/#loop-engineering-vs-loop-marketing) spells out the difference.
+HubSpot, the company that wrote much of the inbound playbook, put numbers on the shift in a Fortune essay on 22 September 2026: its blog lost 5 million visits in a thirty-day period, while AI search usage climbed 37% and traditional search declined 11% ([Bodnar and Flanagan, Fortune](https://fortune.com/2026/09/22/hubspot-ai-impact-marketing-blog-posts-traffic/)). Our reading is that a page which ranks but is never quoted by an answer engine is losing ground, so this flow ships pages built to be cited: a direct answer up top, citeable headings, JSON-LD, and an llms.txt entry in the same commit.
+One naming note: HubSpot's *Loop Marketing* is a framework for marketing teams. The flow here is the general kind, a workspace object with a trigger, steps, a close condition and human gates. [Loop engineering vs Loop Marketing](/docs/what-is-loop-engineering/#loop-engineering-vs-loop-marketing) spells out the difference.
 
 ## Programmatic SEO and content operations: why publish this way instead of prompting ChatGPT
-Prompting a chat model for a blog post gets you a page. Running the loop gets you a page that’s indexed, snippet-eligible, tracked, and re-audited weekly by an agent that already knows the site’s conventions. The gap between the two shows up around week six, when the chat-model pages are quietly de-indexed for thin content and the loop-shaped pages are pulling traffic that compounds. The [override rate](/docs/learn/human-in-the-loop-ai/) at the approval gate is the only honest signal that the loop is real and not theatre.
+Prompting a chat model for a blog post gets you a page. Running the flow gets you a page that’s indexed, snippet-eligible, tracked, and re-audited weekly by an agent that already knows the site’s conventions. The gap between the two shows up around week six, when the chat-model pages are quietly de-indexed for thin content and the flow-shaped pages are pulling traffic that compounds. The [override rate](/docs/learn/human-in-the-loop-ai/) at the approval gate is the only honest signal that the flow is real and not theatre.
 Read next
 
 
@@ -5610,42 +5610,42 @@ Read next
 > Source: https://maskin.io/marketplace/outbound/
 
 # Run outbound that closes on a booked call, not a queue drained.
-Prospect research, personalized draft, reply-handling as one loop — humans gate the send, agents wire the rest.
-The outbound loop closes on the outcome (call booked, or a clean disqualify), not the activity (emails queued). A signal fires it — an in-ICP hire, a funding round, a jobs post. Agents research the account, draft the sequence, wait for a human send-gate, track replies, and either book or archive. Every touchpoint stays typed against the same account object, so nothing is retyped between the enrichment tool, the sender, and the CRM.
+Prospect research, personalized draft, reply-handling as one flow — humans gate the send, agents wire the rest.
+The outbound flow closes on the outcome (call booked, or a clean disqualify), not the activity (emails queued). A signal fires it — an in-ICP hire, a funding round, a jobs post. Agents research the account, draft the sequence, wait for a human send-gate, track replies, and either book or archive. Every touchpoint stays typed against the same account object, so nothing is retyped between the enrichment tool, the sender, and the CRM.
 For product-led teams whose first sales motion is founder-run or PM-run and can’t afford a rep-shaped stack yet.
-There is no walkthrough video for this loop yet.
-This loop can't be installed yet. In the meantime, [try Maskin](/signup).
+There is no walkthrough video for this flow yet.
+This flow can't be installed yet. In the meantime, [try Maskin](/signup).
 
-## What a cold email loop gets you
-The outbound loop closes the gap between “this account matched our ICP” and “a warm reply is in the account owner’s inbox.” It runs continuously against a signal feed, drafts personalised messages, sends only what a human has approved, and routes replies back to the humans who can close them. The wedge over closed AI SDR SaaS isn’t the model — it’s the loop shape and the audit trail. The same workspace also runs the [LinkedIn content loop](/marketplace/linkedin-content/), which keeps a founder-voice LinkedIn presence going alongside outreach.
+## What a cold email flow gets you
+The outbound flow closes the gap between “this account matched our ICP” and “a warm reply is in the account owner’s inbox.” It runs continuously against a signal feed, drafts personalised messages, sends only what a human has approved, and routes replies back to the humans who can close them. The wedge over closed AI SDR SaaS isn’t the model — it’s the flow shape and the audit trail. The same workspace also runs the [LinkedIn content flow](/marketplace/linkedin-content/), which keeps a founder-voice LinkedIn presence going alongside outreach.
 - **Direct API costs run $50–200/mo** at typical OSS-stack volume; the closed SaaS bill is $2,000–5,000/mo per seat, and the honest split is roughly 10–15% API markup, 40% activation-and-plumbing services, 45% brand insulation.
 - **Every prospect, message, and reply is a queryable row.** The state lives on Maskin’s typed object graph, not a vendor dashboard. That’s the audit trail your GTM leader wants.
-- **Human-on-the-loop with a measured [override rate](/docs/learn/human-in-the-loop-ai/)** is the operational difference between a working loop and a demo. Stuck at 0% is rubber-stamping; above 20% is a broken model; the real gate sits in the middle band.
+- **Human-on-the-loop with a measured [override rate](/docs/learn/human-in-the-loop-ai/)** is the operational difference between a working flow and a demo. Stuck at 0% is rubber-stamping; above 20% is a broken model; the real gate sits in the middle band.
 - **The sender lane is your own.** LinkedIn via Unipile’s MCP, or a warmed email domain via Postmark or Resend — not a shared pool that gets your primary domain blacklisted when one prompt regression fires.
 
-## The seven-step cold email loop
+## The seven-step cold email flow
 1. **Signal.** A prospect matches the ICP or a triggered event fires — a job change, a funding round, a competitor’s customer showing account activity.
 2. **Research.** An agent enriches the account and contact, pulls the last 90 days of public signal, drafts a hypothesis on why now.
 3. **Draft.** An agent writes a first-touch message calibrated to the researched signal, in the sender’s voice.
 4. **Human approval.** A human reviews the draft — or a sampled fraction of drafts, if the volume warrants — before it sends. The override rate is measured and watched over time.
 5. **Send.** The message goes out through the sender lane (LinkedIn via Unipile, or a warmed email domain via Postmark or Resend).
 6. **Reply routing.** Replies are classified as warm (route to the account owner as a booked-conversation candidate), objection (route back to the agent for the follow-up sequence), or unsubscribe (honour and suppress).
-7. **Close.** A meeting booked, or the sequence exits without conversion after N touches. The outcome updates the loop’s win-rate metrics.
+7. **Close.** A meeting booked, or the sequence exits without conversion after N touches. The outcome updates the flow’s win-rate metrics.
 
-## What this loop is built with
-Named the same on every loop page so the shape is portable. Below the fold on purpose — the loop is what closes; the primitives are just the parts. Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
-Loop
-A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.
+## What this flow is built with
+Named the same on every flow page so the shape is portable. Below the fold on purpose — the flow is what closes; the primitives are just the parts. Inside a flow listing, agents / MCPs / skills appear as “built with” components of the flow, never as top-level marketplace sections of their own.
+Flow
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a flow. Maskin flows carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.
 Agent
 A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP
 The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
 Skill
 A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
-Full concept map: [Agent skills vs MCP vs cursor rules vs workflows](/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/) explains where each layer belongs. Concrete step-by-step build: [How to build an AI SDR loop in Maskin](/docs/how-to-build-ai-sdr-loop/). Honest OSS landscape: [Open source AI SDR](/alternatives/open-source-ai-sdr/).
+Full concept map: [Agent skills vs MCP vs cursor rules vs workflows](/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/) explains where each layer belongs. Concrete step-by-step build: [How to build an AI SDR flow in Maskin](/docs/how-to-build-ai-sdr-loop/). Honest OSS landscape: [Open source AI SDR](/alternatives/open-source-ai-sdr/).
 
 ## Cold email vs outbound sales: when the closed AI SDR SaaS is still the right answer
-An AI SDR without a human approval gate is one bad prompt away from your domain being blacklisted. If your team doesn’t have the GTM engineering to own deliverability, sender-reputation, and prompt-quality tuning, the closed bill is a service contract, not a rip-off — and 11x, Artisan, Qualified, SalesForge, and AiSDR are all reasonable answers. The loop wins when the team already runs its own outbound stack and would rather own the state than rent it. Both answers are defensible; pretending otherwise is what makes most OSS-alt content read as sales copy. Outbound also assumes someone has already decided which accounts are worth a message; for the inbound side of the same question, the [lead qualification loop](/marketplace/lead-qualification/) gates each lead with a human call before a rep touches it.
+An AI SDR without a human approval gate is one bad prompt away from your domain being blacklisted. If your team doesn’t have the GTM engineering to own deliverability, sender-reputation, and prompt-quality tuning, the closed bill is a service contract, not a rip-off — and 11x, Artisan, Qualified, SalesForge, and AiSDR are all reasonable answers. The flow wins when the team already runs its own outbound stack and would rather own the state than rent it. Both answers are defensible; pretending otherwise is what makes most OSS-alt content read as sales copy. Outbound also assumes someone has already decided which accounts are worth a message; for the inbound side of the same question, the [lead qualification flow](/marketplace/lead-qualification/) gates each lead with a human call before a rep touches it.
 Read next
 
 
@@ -5653,12 +5653,12 @@ Read next
 
 > Source: https://maskin.io/marketplace/lead-qualification/
 
-# Lead qualification on a loop, not a spreadsheet
+# Lead qualification on a flow, not a spreadsheet
 Run lead qualification in Maskin so your team owns your ICP and the rep conversations — while Maskin reads every inbound lead, gates the noise, and hands only the ones worth working to your team.
 Stop burning SDR hours on inbound leads that never convert. Every form-fill, demo request, and pricing-page bounce is read the moment it lands and cleared against what your team has learned from every deal that closed and every one that didn’t — so your reps only ever work leads a human has confirmed. Every rejection stamps a reason on the record, and next week’s leads are read against a sharper definition than last week’s.
 **Replaces:** third-party lead-scoring SaaS · manual SDR triage on inbound queues · custom CRM scoring that rots between quarters · agency-run BDR retainers
 **Stays human:** what your ICP actually is · which leads are worth a rep’s time · the read on why a lead was wrong · the change to how future leads are read
-This loop can't be installed yet. In the meantime, [try Maskin](/signup).
+This flow can't be installed yet. In the meantime, [try Maskin](/signup).
 
 ## What your team keeps, what Maskin runs
 | Your team keeps | Maskin runs |
@@ -5669,7 +5669,7 @@ This loop can't be installed yet. In the meantime, [try Maskin](/signup).
 | The actual rep conversations | Stamping every rejection with a reason on the record |
 | The strategy call on which segments to chase | Clustering the reject reasons weekly into an ICP update proposal |
 
-## How the loop runs
+## How the flow runs
 1. A lead lands — a demo form, a downloaded asset, a pricing-page bounce, an SDR-sourced contact.
 2. Maskin reads the account against your ICP and the human on the form against your buyer / user / gatekeeper shape.
 3. It checks the intent — is this a real buying signal (demo, pricing, integration doc, comparison) or noise (blog subscribe, event RSVP, competitor content).
@@ -5682,48 +5682,48 @@ This loop can't be installed yet. In the meantime, [try Maskin](/signup).
 - **Human gates:** every promote-to-rep and every reject-with-reason is a human call; the ICP definition only changes when your team says so.
 - **Your data stays yours:** Maskin reads your CRM, your enrichment tools, and your form data; it writes the qualification decision back to the same records — no shadow queue.
 - **Fails safely:** if the three reads can’t agree with confidence, the lead pauses for a human read — nothing gets promoted without confirmation and nothing gets rejected silently.
-Run this loop
-See the loop running on the Maskin Team’s own inbound, then decide whether to run it on yours.
+Run this flow
+See the flow running on the Maskin Team’s own inbound, then decide whether to run it on yours.
 > ✓
 > **Key takeaways**
 > Lead qualification closes on a typed transition (`qualified` or `rejected` with a reason on the object), not on a numeric score in a CRM field.
-> The SDR hour is the operational constraint. The loop’s job is to pre-clear the queue so the rep only works leads a human has confirmed.
-> Every rejection updates the ICP hypothesis the next lead is read against — the reject side is what makes it a loop, not a filter.
-> BANT, MEDDIC, and any other framework fit inside the loop as typed fields. The loop is framework-agnostic and survives framework changes.
+> The SDR hour is the operational constraint. The flow’s job is to pre-clear the queue so the rep only works leads a human has confirmed.
+> Every rejection updates the ICP hypothesis the next lead is read against — the reject side is what makes it a flow, not a filter.
+> BANT, MEDDIC, and any other framework fit inside the flow as typed fields. The flow is framework-agnostic and survives framework changes.
 > The qualifier agent runs on your own model keys and is inspectable end to end — not a black-box score returned from a vendor’s API.
 
 ## What lead qualification actually is (and where teams get burned)
 Lead qualification is the process of evaluating whether an inbound or outbound prospect fits your ideal customer profile (ICP) and has the budget, authority, need, and timeline to buy — before a sales rep spends time on outreach. It is the gate between the traffic your marketing spend produces and the hours your sales team can actually work.
 In practice, most teams get burned in one of three shapes. They eyeball each lead and burn qualified-time on unqualified names. They buy a dedicated qualification tool and inherit its scoring assumptions unchanged. Or they bolt custom scoring onto a CRM and rebuild it every quarter as the ICP drifts and the sales team stops trusting the handoff. The pattern underneath all three is the same: qualification is treated as a step (a score, a flag, a status change) rather than a bounded cycle that ends on a concrete outcome.
-The loop framing corrects for that. Qualification is not a step in a spreadsheet; it is a cycle that ends on a promoted lead (with a rep working it) or a rejected one (with a reason stamped on it that feeds back into how the next lead gets read). The typed rejection reasons are what the eyeball approach loses first, and what the score-in-a-CRM approach never captures in the first place.
+The flow framing corrects for that. Qualification is not a step in a spreadsheet; it is a cycle that ends on a promoted lead (with a rep working it) or a rejected one (with a reason stamped on it that feeds back into how the next lead gets read). The typed rejection reasons are what the eyeball approach loses first, and what the score-in-a-CRM approach never captures in the first place.
 
 ## Lead qualification in sales: gating the SDR hour
-An SDR hour is the most expensive minute in an early-stage go-to-market motion. If your SDR spends it on a lead that never converts, you didn’t just lose the hour — you lost the outreach that a real ICP-fit lead would have gotten instead. The qualification loop gates the SDR hour by name.
+An SDR hour is the most expensive minute in an early-stage go-to-market motion. If your SDR spends it on a lead that never converts, you didn’t just lose the hour — you lost the outreach that a real ICP-fit lead would have gotten instead. The qualification flow gates the SDR hour by name.
 The move is: every inbound lead lands as a typed contact object with status `new_lead`. Agents run three reads before an SDR ever sees it. Is this account in the ICP shape (industry, size band, buying stage)? Is the human on the form the right role (buyer, user, or gatekeeper)? Is the intent signal real (demo booked, pricing page, integration doc, comparison page) or noise (blog subscribe, event RSVP, competitor content download)? Only leads that clear all three get promoted to `qualified` for a human gate. Everything else lands on `rejected` with a reason stamped on the record — the human never has to sort through the false positives, but the rejection is legible, countable, and re-readable later.
-The result is that the SDR only ever works leads a human has confirmed. The rep’s calendar shifts from “chase every form fill” to “work the queue of pre-cleared handoffs”. That’s the sales-side outcome the loop is built to close on. Once a lead is qualified, the next step is the [outbound loop](/marketplace/outbound/), which runs the researched, human-approved first touch.
+The result is that the SDR only ever works leads a human has confirmed. The rep’s calendar shifts from “chase every form fill” to “work the queue of pre-cleared handoffs”. That’s the sales-side outcome the flow is built to close on. Once a lead is qualified, the next step is the [outbound flow](/marketplace/outbound/), which runs the researched, human-approved first touch.
 
 ## Lead qualification in marketing: MQL to SQL without the guessing
-The classic marketing move is a lead scoring model — every action worth some points, one threshold hands off as an MQL, a higher threshold becomes an SQL. It works for a while, then the ICP drifts, the scoring stays fixed, and the sales team stops trusting the handoff. The qualification loop replaces the scoring model with a running conversation between what marketing sent and what sales rejected.
-Every rejected lead’s reason updates the ICP hypothesis the next lead is read against. If sales keeps rejecting leads from sub-50-employee SaaS accounts because they can’t afford the tier, that reason accumulates on the object graph and the ICP band narrows on the next weekly read. If the reason is “right company, wrong role”, the marketing form asks for role sooner. The typed graph makes the feedback loop mechanical — marketing sees which of their signals actually promote to a rep-worked handoff, and which don’t. That’s the difference between a scoring model and a qualification loop: one is a static function, the other is a system that learns from its own rejects.
+The classic marketing move is a lead scoring model — every action worth some points, one threshold hands off as an MQL, a higher threshold becomes an SQL. It works for a while, then the ICP drifts, the scoring stays fixed, and the sales team stops trusting the handoff. The qualification flow replaces the scoring model with a running conversation between what marketing sent and what sales rejected.
+Every rejected lead’s reason updates the ICP hypothesis the next lead is read against. If sales keeps rejecting leads from sub-50-employee SaaS accounts because they can’t afford the tier, that reason accumulates on the object graph and the ICP band narrows on the next weekly read. If the reason is “right company, wrong role”, the marketing form asks for role sooner. The typed graph makes the feedback loop mechanical — marketing sees which of their signals actually promote to a rep-worked handoff, and which don’t. That’s the difference between a scoring model and a qualification flow: one is a static function, the other is a system that learns from its own rejects.
 
 ## BANT, MEDDIC, and the qualification frameworks
 BANT — Budget, Authority, Need, Timeline — is still the dominant practitioner vocabulary, and the phrase most sales teams reach for when they explain qualification to a new hire. MEDDIC (Metrics, Economic buyer, Decision criteria, Decision process, Identify pain, Champion) is what enterprise sales teams use when the deal complexity outgrows BANT’s four questions. CHAMP and GPCTBA/C&I are the same idea reshuffled. Neither the choice of framework nor the acronym is where teams win or lose; the checklist is not the constraint.
-The qualification loop is agnostic to which framework you pick. The framework fits inside the loop, not the other way around. Whatever fields your qualifier agent reads — budget bands, authority signal, urgency criteria, or the deeper MEDDIC properties — become typed properties on the contact object. When a lead is promoted, those fields are on the record for the rep to open the call on. When it’s rejected, the field that failed becomes the reason. That’s what makes the framework durable across ICP changes: you can change which fields you gate on without rebuilding the model, because the loop, not the checklist, is doing the work.
+The qualification flow is agnostic to which framework you pick. The framework fits inside the flow, not the other way around. Whatever fields your qualifier agent reads — budget bands, authority signal, urgency criteria, or the deeper MEDDIC properties — become typed properties on the contact object. When a lead is promoted, those fields are on the record for the rep to open the call on. When it’s rejected, the field that failed becomes the reason. That’s what makes the framework durable across ICP changes: you can change which fields you gate on without rebuilding the model, because the flow, not the checklist, is doing the work.
 
-## AI lead qualification tools versus the qualification loop
+## AI lead qualification tools versus the qualification flow
 “AI lead qualification” and “lead qualification tools” are search terms with real buyer intent — the CPC on the AI-frame is around $39, on the tools-frame around $35, per Ubersuggest’s US pull for September 2026. What the SERP is largely selling under those queries is a black-box scoring API: give it your CRM, get a score back, trust the vendor’s model. Salesforce Einstein and HubSpot Predictive Lead Scoring are the incumbent versions of this shape; Clay and Instantly.ai are the newer specialist versions.
-The loop is a different shape. Instead of a score, you get a typed transition (`new_lead` → `qualified` or `rejected`) with a reason on the object. Instead of trusting a vendor’s model, you can inspect and edit the qualifier agent’s prompt and the ICP fields it reads. Instead of paying a per-lead API bill priced against the vendor’s cost of goods plus their margin, the agents run on your own model keys — Claude, GPT, or a fine-tuned local model routed through your own inference stack. If the qualifier agent gets a call wrong, the reason is on the record, the human can flip the status in a click, and the correction feeds the next lead’s read. A closed-box score doesn’t have that surface at all — you can override, but you can’t teach it what you overrode and why.
+The flow is a different shape. Instead of a score, you get a typed transition (`new_lead` → `qualified` or `rejected`) with a reason on the object. Instead of trusting a vendor’s model, you can inspect and edit the qualifier agent’s prompt and the ICP fields it reads. Instead of paying a per-lead API bill priced against the vendor’s cost of goods plus their margin, the agents run on your own model keys — Claude, GPT, or a fine-tuned local model routed through your own inference stack. If the qualifier agent gets a call wrong, the reason is on the record, the human can flip the status in a click, and the correction feeds the next lead’s read. A closed-box score doesn’t have that surface at all — you can override, but you can’t teach it what you overrode and why.
 If the step after qualification is outreach, [Open source AI SDR: six GitHub repos compared](/alternatives/open-source-ai-sdr/) covers the open source repos that research, draft and send, with their licences and upkeep.
 
 ## How rejected leads feed ICP refinement
 The single sentence a closed-SaaS lead-qualification page won’t write is this: the rejected lead is worth more than the accepted one. An accepted lead confirms your ICP; a rejected lead teaches you where your ICP hypothesis is wrong.
 Every rejection stamps a typed reason on the contact object. Weekly, the qualifier agent clusters those reasons and drafts an ICP update. Which segments are over-fitting (too many rejections on “wrong-industry”, the segment cost is now visible)? Which are under-fitting (a segment that keeps making it past the gate and converting but was never in the original ICP shape)? Which criteria are noise (a field that predicts nothing and can be dropped from the read)? A human gates the ICP update itself — this is a taste call, not an automation — but the draft is done, and the evidence is on the object graph, not in someone’s memory or in a screenshot in Slack.
-That is the loop that no scoring model produces. It is also what makes lead qualification a loop rather than a step: the reject side has to feed the read side, or the qualifier is just a filter that never learns.
+That is the flow that no scoring model produces. It is also what makes lead qualification a flow rather than a step: the reject side has to feed the read side, or the qualifier is just a filter that never learns.
 
 ## FAQ
 
 ### What is lead qualification?
-Lead qualification is the process of evaluating whether an inbound or outbound prospect fits your ideal customer profile (ICP) and has the budget, authority, need, and timeline to buy — before a sales rep spends time on outreach. In the loop framing, it ends on a typed transition: `qualified` (a rep works it) or `rejected` (with a reason stamped on the record that feeds back into the ICP).
+Lead qualification is the process of evaluating whether an inbound or outbound prospect fits your ideal customer profile (ICP) and has the budget, authority, need, and timeline to buy — before a sales rep spends time on outreach. In the flow framing, it ends on a typed transition: `qualified` (a rep works it) or `rejected` (with a reason stamped on the record that feeds back into the ICP).
 
 ### How does lead qualification work?
 Every inbound lead lands as a typed contact object. Agents run three reads — ICP-fit, buyer-role, intent-signal — against your validated ICP. A human gates the promote-to-rep and the reject-with-reason. Rejected leads carry a typed reason (`wrong_industry`, `sub_50_employees`, `wrong_role`, `noise_intent`) that the qualifier clusters weekly into an ICP update proposal — the reject side is where the ICP learns.
@@ -5738,16 +5738,16 @@ In sales, lead qualification gates the SDR hour — the most expensive minute in
 In marketing, lead qualification is the MQL-to-SQL handoff — but reframed as a running conversation with sales, not a scoring threshold. Every rejected lead’s reason updates the ICP hypothesis the next lead is read against. Marketing sees which of their signals actually promote to a rep-worked handoff, and which don’t. It’s a system that learns from its own rejects, not a static function.
 
 ### What is the BANT lead qualification framework?
-BANT — Budget, Authority, Need, Timeline — is a four-axis rubric for qualifying a lead. It’s still the dominant practitioner vocabulary in sales. In the loop framing, BANT (or MEDDIC, CHAMP, or a custom rubric) isn’t the constraint. It fits inside the loop as typed fields on the contact object — the loop, not the checklist, is what does the work.
+BANT — Budget, Authority, Need, Timeline — is a four-axis rubric for qualifying a lead. It’s still the dominant practitioner vocabulary in sales. In the flow framing, BANT (or MEDDIC, CHAMP, or a custom rubric) isn’t the constraint. It fits inside the flow as typed fields on the contact object — the flow, not the checklist, is what does the work.
 
 ## AI lead follow up for small business
-A new enquiry comes in through a form or an email, and the reply arrives hours later, or never. For a small business, that gap is where the sale goes. In this loop Maskin reads each new enquiry the moment it lands, looks the lead up in your CRM or inbox history, drafts a reply that answers what they asked, and proposes the next step, such as a time to talk. A person approves every reply before it is sent.
-This is for people who came to you. Reaching out to people who have not is the [outbound loop](/marketplace/outbound/).
+A new enquiry comes in through a form or an email, and the reply arrives hours later, or never. For a small business, that gap is where the sale goes. In this flow Maskin reads each new enquiry the moment it lands, looks the lead up in your CRM or inbox history, drafts a reply that answers what they asked, and proposes the next step, such as a time to talk. A person approves every reply before it is sent.
+This is for people who came to you. Reaching out to people who have not is the [outbound flow](/marketplace/outbound/).
 It works with the CRM or inbox you already use, so nobody switches systems.
 
-## What this loop is built with
-Loop
-A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.
+## What this flow is built with
+Flow
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a flow. Maskin flows carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.
 Agent
 A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP
@@ -5763,15 +5763,15 @@ Read next
 
 # A wiki your agents read before they answer.
 Team memory that new hires and new agents bootstrap from — indexed, typed, MCP-native.
-![The LLM knowledge wiki loop — a closed bet becomes a typed, interlinked wiki page that agents read before they answer.](/og-image-knowledge-wiki.png)
-The knowledge wiki loop keeps a living, agent-readable record of every decision your team ships. A closed bet (one that has run through the [product delivery loop](/marketplace/product-delivery/), for instance) fires the loop; agents write the verdict, index the artifacts, and link them to the object they came from; a human gates the taste-sensitive summaries. Every future agent your team spawns reads from the same graph before it answers — so the wiki isn’t a Notion side-project that rots the moment its author changes roles, it’s the same substrate the rest of your team already operates on.
+![The LLM knowledge wiki flow — a closed bet becomes a typed, interlinked wiki page that agents read before they answer.](/og-image-knowledge-wiki.png)
+The knowledge wiki flow keeps a living, agent-readable record of every decision your team ships. A closed bet (one that has run through the [product delivery flow](/marketplace/product-delivery/), for instance) fires the flow; agents write the verdict, index the artifacts, and link them to the object they came from; a human gates the taste-sensitive summaries. Every future agent your team spawns reads from the same graph before it answers — so the wiki isn’t a Notion side-project that rots the moment its author changes roles, it’s the same substrate the rest of your team already operates on.
 For product teams tired of re-answering the same question because the last answer lived in someone’s DMs.
-There is no walkthrough video for this loop yet.
-This loop can't be installed yet. In the meantime, [try Maskin](/signup).
+There is no walkthrough video for this flow yet.
+This flow can't be installed yet. In the meantime, [try Maskin](/signup).
 
 ## Key takeaways
 - An LLM wiki is a knowledge base an LLM compiles from your own sources into interlinked pages that agents read before they answer. Andrej Karpathy named the pattern in April 2026 as the alternative to per-agent memory files and query-time RAG.
-- This loop keeps that base alive: a closed bet fires it, agents write the verdict and index the artifact, and a human gates the taste-sensitive summaries.
+- This flow keeps that base alive: a closed bet fires it, agents write the verdict and index the artifact, and a human gates the taste-sensitive summaries.
 - Team memory is the unit here, not personal memory. Most of the head volume on the search term is Karpathy-navigational; the unclaimed slice is how a team actually runs one.
 - Every entry is typed and linked to the bet, insight, or decision it came from, so a reader walks back to the source instead of trusting a summary.
 - New hires and new agents bootstrap from the same graph, so onboarding stops being a separate doc that drifts from the work.
@@ -5781,18 +5781,18 @@ An LLM wiki is a knowledge base an LLM compiles from your own material into inte
 It is worth separating the wiki from its neighbours. A RAG index embeds your sources and retrieves pieces at query time; an LLM wiki compiles the sources into pages once and links them, so the same question tends to return the same answer. A Notion or Confluence space is written for humans and searched by humans; an LLM wiki is written to be read by an agent, and it cites the object each claim came from. Both are a durable, interlinked record, but the reader is different, and that changes how the record has to be maintained — and for the storage-engine side of the same distinction, [wiki-style knowledge vs an embedding store](/docs/knowledge-wiki-vs-vector-database/) walks through why one is content and the other is infrastructure.
 The failure mode is not the compile step. It is the upkeep. A wiki that only gets written when someone remembers to write it decays into a folder of half-true pages inside a quarter.
 
-## How the loop closes
+## How the flow closes
 - **Fires when** a bet closes, a decision ships, or a piece of work ends with a verdict worth keeping.
 - **Writes the verdict** — an agent captures what was decided, why, and what it displaced, in the voice and format the team already reads.
 - **Indexes and links** — the entry is attached to the bet, insight, or object it came from, so the graph stays walkable in both directions.
 - **Human gates** the taste-sensitive summaries: positioning, customer-facing language, anything that states a fact about the company rather than about the work.
 - **Closes on** a page a new hire or a new agent can read to answer a question without asking a person.
-That last line is the close condition. The loop is not done when the page is written. It is done when someone, or something, reads it and stops needing to ask.
+That last line is the close condition. The flow is not done when the page is written. It is done when someone, or something, reads it and stops needing to ask.
 
 ## Why team wikis rot, and why this one does not
 Every team has tried the shared wiki. The pattern is always the same: a burst of writing at the start, a slow drift, and a final state where the newest pages are the least accurate and nobody trusts any of it. The cause is not laziness. It is that writing to the wiki is a separate job from doing the work, and separate jobs lose.
-This loop removes the separate job. Writing to the wiki is a byproduct of closing a bet, which the team is already doing. Reading from the wiki is a byproduct of starting work, because the agent reads it before it answers. Nobody has to remember the wiki exists, because it sits on the path of work the team already runs.
-The typed graph is what makes that possible. A page is not a floating document; it is attached to the object it describes. When the object changes, the link tells you which page to revisit. When a new agent joins, it does not read a stale onboarding doc. It reads the same graph the rest of the team operates on. Other loops read from that graph too: the [LinkedIn content loop](/marketplace/linkedin-content/) starts each fortnight from the shipped work, feedback, and signals already recorded there.
+This flow removes the separate job. Writing to the wiki is a byproduct of closing a bet, which the team is already doing. Reading from the wiki is a byproduct of starting work, because the agent reads it before it answers. Nobody has to remember the wiki exists, because it sits on the path of work the team already runs.
+The typed graph is what makes that possible. A page is not a floating document; it is attached to the object it describes. When the object changes, the link tells you which page to revisit. When a new agent joins, it does not read a stale onboarding doc. It reads the same graph the rest of the team operates on. Other flows read from that graph too: the [LinkedIn content flow](/marketplace/linkedin-content/) starts each fortnight from the shipped work, feedback, and signals already recorded there.
 
 ## Built with
 - **Signal sources** — closed bets, shipped decisions, customer calls, and the object graph the team already works on.
@@ -5801,17 +5801,17 @@ The typed graph is what makes that possible. A page is not a floating document; 
 - **Skills** — *write the verdict in our voice*, *summarize a decision against our template*.
 - **Human gates** — the person who owns the summary when it states something customer-facing or company-level.
 
-## What’s inside the loop
-Loop
-A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop.
-**Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
+## What’s inside the flow
+Flow
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a flow.
+**Maskin flows carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
 Agent
 A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP
 The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
 Skill
 A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
-Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
+Inside a flow listing, agents / MCPs / skills appear as “built with” components of the flow, never as top-level marketplace sections of their own.
 
 ## FAQ
 
@@ -5838,7 +5838,7 @@ Karpathy published the pattern as a public gist, so the approach itself is open,
 
 ### How does an LLM wiki connect to MCP?
 MCP is the wire. The wiki lives in one place and agents reach it through an MCP server, the same way they reach the CRM or the repo. That matters because it keeps the wiki out of any single tool. A coding agent, a research agent, and a support agent can all read the same pages under the same gates, without anyone copying the content between products.
-Related loops on the marketplace
+Related flows on the marketplace
 
 
 ---
@@ -5847,7 +5847,7 @@ Related loops on the marketplace
 
 # Close the loop from customer signal to shipped bet.
 Maskin reads customer calls, requests and market news against your strategy, so you know what to build next, with evidence behind every opportunity.
-Sign in or sign up, then confirm the loop in the Maskin app.
+Sign in or sign up, then confirm the flow in the Maskin app.
 1. Build your strategy
 Write down what matters to your team. Maskin uses it to check everything it hears.
 2. Find the right opportunities
@@ -5858,21 +5858,21 @@ Strong opportunities become bets staged at the opportunity status in your worksp
 Your team runs the customer tests, using the evidence Maskin brings.
 You decide which opportunities to take on. Nothing moves forward without your call.
 *Where this is going:* opportunities shown sized and ranked, and a product brief and prototype before you commit. Neither is available yet.
-![The product discovery loop — customer signal, typed insight, shaped bet.](/og-image-product-discovery.png)
-The goal is a shipped bet tied back to what customers said, not an interview scheduled. Maskin continuously takes in customer calls, sales meetings, and customer and community feedback, and watches competitors and the market. An agent keeps your written-down strategy up to date. Maskin checks what it hears against that strategy, then groups it into opportunities with the evidence behind each one. Strong opportunities become bets staged at the opportunity status in your workspace, and custom views let you shape how results look for your team. A person decides what moves forward. Checking, after a bet ships, whether it eased the problem is where this loop is heading. The same approach applies on the retention side, with [the same signal-to-bet pattern applied to churn](/docs/at-risk-account-alerts/). Shipped bets are also the raw material for the [LinkedIn content loop](/marketplace/linkedin-content/), which turns what shipped this fortnight into posts the account owner approves, and for the [content calendar](/marketplace/content-calendar/), where every idea comes with its source. Once a bet is shaped, the [product delivery loop](/marketplace/product-delivery/) can take it from there: it plans the work, builds and reviews every change, and checks the result against the success criteria you wrote first. If you synthesize research in Claude Code today, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers what that setup does well and where a team record takes over.
+![The product discovery flow — customer signal, typed insight, shaped bet.](/og-image-product-discovery.png)
+The goal is a shipped bet tied back to what customers said, not an interview scheduled. Maskin continuously takes in customer calls, sales meetings, and customer and community feedback, and watches competitors and the market. An agent keeps your written-down strategy up to date. Maskin checks what it hears against that strategy, then groups it into opportunities with the evidence behind each one. Strong opportunities become bets staged at the opportunity status in your workspace, and custom views let you shape how results look for your team. A person decides what moves forward. Checking, after a bet ships, whether it eased the problem is where this flow is heading. The same approach applies on the retention side, with [the same signal-to-bet pattern applied to churn](/docs/at-risk-account-alerts/). Shipped bets are also the raw material for the [LinkedIn content flow](/marketplace/linkedin-content/), which turns what shipped this fortnight into posts the account owner approves, and for the [content calendar](/marketplace/content-calendar/), where every idea comes with its source. Once a bet is shaped, the [product delivery flow](/marketplace/product-delivery/) can take it from there: it plans the work, builds and reviews every change, and checks the result against the success criteria you wrote first. If you synthesize research in Claude Code today, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers what that setup does well and where a team record takes over.
 For product teams whose research folder never quite makes it into the roadmap.
 
-## What this loop is built with
-Named the same on every loop page so the shape is portable. Below the fold on purpose — the loop is what closes; the primitives are just the parts. Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
-Loop
-A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.
+## What this flow is built with
+Named the same on every flow page so the shape is portable. Below the fold on purpose — the flow is what closes; the primitives are just the parts. Inside a flow listing, agents / MCPs / skills appear as “built with” components of the flow, never as top-level marketplace sections of their own.
+Flow
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a flow. Maskin flows carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.
 Agent
 A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP
 The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
 Skill
 A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
-Sign in or sign up, then confirm the loop in the Maskin app.
+Sign in or sign up, then confirm the flow in the Maskin app.
 
 
 ---
@@ -5880,8 +5880,8 @@ Sign in or sign up, then confirm the loop in the Maskin app.
 > Source: https://maskin.io/marketplace/linkedin-content/
 
 # Run LinkedIn content in Maskin so your team keeps its voice and the final say while Maskin reads what happened this week, plans the calendar, drafts every post, and keeps a steady posting rhythm going.
-![The LinkedIn content loop: a seven-step cycle from interview to approved post to retro.](/og-image-linkedin-content.png)
-This loop can't be installed yet. In the meantime, [try Maskin](/signup).
+![The LinkedIn content flow: a seven-step cycle from interview to approved post to retro.](/og-image-linkedin-content.png)
+This flow can't be installed yet. In the meantime, [try Maskin](/signup).
 
 ## The job
 Keep a founder-voice LinkedIn presence going from the moments already happening inside your business: a shipped feature, a customer win, a competitor move, a hard lesson. The result is a steady posting rhythm, planned two weeks at a time, and founder time back for the work only founders can do, instead of writing posts cold at 11pm on Sunday. The work is done when the post is live on LinkedIn and the next retro has read how it did, not when a draft is generated.
@@ -5897,7 +5897,7 @@ Keep a founder-voice LinkedIn presence going from the moments already happening 
 | The judgement to kill a weak draft | Reworking the drafts that get sent back |
 | On some accounts, pasting the approved post into LinkedIn | Posting for you on the others, then a retro every two weeks that reads how posts did |
 
-## How the loop runs
+## How the flow runs
 1. Every two weeks, Maskin reads the last fortnight: what shipped, what feedback came in, and how recent posts did.
 2. From that, it writes interview questions for each account owner, so every post starts from something true.
 3. The account owners answer. The real stories, opinions, and numbers only they hold are the raw material, and this is the human step the whole fortnight hangs on.
@@ -5907,33 +5907,33 @@ Keep a founder-voice LinkedIn presence going from the moments already happening 
 7. Two weeks later, the retro reads how the posts did and files what to do more and less of, and the next plan starts from it.
 
 ## Trust surface
-- **Voice is a [workspace skill](/docs/learn/agent-skills/), not a prompt.** Each account (a founder’s personal profile, a teammate’s, the company page) has a voice skill the loop applies. If an account has no voice skill yet, one is drafted and approved by its owner first. Nobody posts in a voice its owner hasn’t signed off.
+- **Voice is a [workspace skill](/docs/learn/agent-skills/), not a prompt.** Each account (a founder’s personal profile, a teammate’s, the company page) has a voice skill the flow applies. If an account has no voice skill yet, one is drafted and approved by its owner first. Nobody posts in a voice its owner hasn’t signed off.
 - **Nothing goes out unapproved.** An editor agent checks every draft, and the account owner [approves each post](/docs/learn/human-in-the-loop-ai/) before it goes live.
 - **Weak drafts get killed, not shipped.** The editor sends weak drafts back for rework, and a draft that can’t be saved is dropped instead of posted.
 
 ## Run it
-**Book a demo:** see the loop running on the Maskin Team’s own LinkedIn profiles and company page, then decide whether to run it on yours.
+**Book a demo:** see the flow running on the Maskin Team’s own LinkedIn profiles and company page, then decide whether to run it on yours.
 
-## What’s inside the loop
-Loop
-A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome, not on *done for now*. Every listing on the Marketplace is a loop.
-**Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
+## What’s inside the flow
+Flow
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome, not on *done for now*. Every listing on the Marketplace is a flow.
+**Maskin flows carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
 Agent
 A named role a model performs: an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP
 The wire an agent uses to reach the tools your team already uses: the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
 Skill
 A packaged capability you attach to an agent: *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
-Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
+Inside a flow listing, agents / MCPs / skills appear as “built with” components of the flow, never as top-level marketplace sections of their own.
 
 ## FAQ
 
 ### Can I use AI to create content for LinkedIn?
-Yes, as long as the substance is yours. In this loop the account owner answers interview questions about what actually happened, a voice skill for that account shapes the draft, an editor agent checks it, and the owner approves every post before it goes live. The AI does the reading, planning, and drafting. You bring the stories and keep the final say, including the right to kill a draft.
+Yes, as long as the substance is yours. In this flow the account owner answers interview questions about what actually happened, a voice skill for that account shapes the draft, an editor agent checks it, and the owner approves every post before it goes live. The AI does the reading, planning, and drafting. You bring the stories and keep the final say, including the right to kill a draft.
 
 ### Why is there so much AI-generated content on LinkedIn?
-A post written from a prompt alone has nothing real behind it, so it reads like every other one. This loop starts from the other end: what your team shipped, what feedback came in, and what the account owners say in their interview. An editor agent checks every draft, and the owner can drop any draft that falls short before it goes live.
-Related loops on the marketplace
+A post written from a prompt alone has nothing real behind it, so it reads like every other one. This flow starts from the other end: what your team shipped, what feedback came in, and what the account owners say in their interview. An editor agent checks every draft, and the owner can drop any draft that falls short before it goes live.
+Related flows on the marketplace
 
 
 ---
@@ -5960,7 +5960,7 @@ The topics, real stories and the go on every post stay human.
 |  | Keeping dates and statuses |
 |  | The weekly read |
 
-## How the loop runs
+## How the flow runs
 1. Bring an idea and its source.
 2. Maskin plans the month around what the team can really approve.
 3. Maskin drafts to the plan.
@@ -5968,7 +5968,7 @@ The topics, real stories and the go on every post stay human.
 5. **Check (human gate):** a team member checks the draft.
 6. **Owner’s go (human gate):** the owner approves the post.
 7. Publish the post, read weekly reach and visits, then bring the result into the next idea.
-![The seven steps of the content calendar loop in a row: idea, plan, draft, picture, check, owner’s go, publish and read. Check and owner’s go are marked as the two gates, and an arrow runs from step 7 back to step 1.](/marketplace/content-calendar/content-calendar-flow.png)
+![The seven steps of the content calendar flow in a row: idea, plan, draft, picture, check, owner’s go, publish and read. Check and owner’s go are marked as the two gates, and an arrow runs from step 7 back to step 1.](/marketplace/content-calendar/content-calendar-flow.png)
 
 ## Trust
 - A post without the owner’s go does not go out.
@@ -5988,17 +5988,17 @@ Start with made-up coffee-roaster example data or a blank calendar; changes stay
 - **Gates:** a team check, then the owner’s go.
 - **Measures:** a set weekly read of reach and visits by channel.
 
-## What this loop is built with
-Loop
-A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome, not on *done for now*. Every listing on the Marketplace is a loop.
-**Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
+## What this flow is built with
+Flow
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome, not on *done for now*. Every listing on the Marketplace is a flow.
+**Maskin flows carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
 Agent
 A named role a model performs: an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP
 The wire an agent uses to reach the tools your team already uses: the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
 Skill
 A packaged capability you attach to an agent: *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
-Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
+Inside a flow listing, agents / MCPs / skills appear as “built with” components of the flow, never as top-level marketplace sections of their own.
 
 ## FAQ
 
@@ -6022,7 +6022,7 @@ Reach and visits by channel.
 
 ### What should a content calendar include?
 Include buyer, topics, channels and the posts the team can review, sourced ideas, a weekly day to plan, review and publish, a team check then the owner’s go, and a weekly read of reach and visits by channel. The list above shows all seven for a made-up coffee roaster.
-Related loops on the marketplace
+Related flows on the marketplace
 
 
 ---
@@ -6031,14 +6031,14 @@ Related loops on the marketplace
 
 # Bets in. Verified code out.
 Run agentic software development in Maskin so your team owns the bet and the final call, while Maskin plans the work, builds it, reviews every change, and checks the result against the success criteria you wrote first.
-![The product delivery loop — bets in, verified code out.](/og-image-product-delivery.png)
+![The product delivery flow — bets in, verified code out.](/og-image-product-delivery.png)
 A shaped bet goes in, code checked against the bet’s own success criteria comes out, and a human approves the one step that deploys.
-This loop can't be installed yet. In the meantime, [try Maskin](/signup).
+This flow can't be installed yet. In the meantime, [try Maskin](/signup).
 
 ## The job
 A bet is only done when the change is live and the numbers say it worked. Most teams lose that second half. The ticket closes when the code merges, nobody goes back to check the result, and the next planning meeting starts from memory.
-This loop keeps both halves attached. Success criteria are written and checked for measurability before any work starts. The work is planned into tasks with an owner each. Every change gets reviewed against its task. The release gets a final check before it can reach main. After it ships, the loop reads your product data and your customer feedback and posts a verdict on the bet. Your team keeps the shaping taste, the merge approval, and the last word on whether the bet won. The six stages and the three decisions a person keeps are laid out in [agentic SDLC explained](/docs/learn/agentic-sdlc/).
-It is the output side of the [product discovery loop](/marketplace/product-discovery/): discovery turns customer signal into a shaped bet, delivery turns that bet into shipped, verified code. The [bet-based planning](/docs/bet-based-product-planning/) method sits underneath both.
+This flow keeps both halves attached. Success criteria are written and checked for measurability before any work starts. The work is planned into tasks with an owner each. Every change gets reviewed against its task. The release gets a final check before it can reach main. After it ships, the flow reads your product data and your customer feedback and posts a verdict on the bet. Your team keeps the shaping taste, the merge approval, and the last word on whether the bet won. The six stages and the three decisions a person keeps are laid out in [agentic SDLC explained](/docs/learn/agentic-sdlc/).
+It is the output side of the [product discovery flow](/marketplace/product-discovery/): discovery turns customer signal into a shaped bet, delivery turns that bet into shipped, verified code. The [bet-based planning](/docs/bet-based-product-planning/) method sits underneath both.
 **Replaces:** sprint-planning ceremonies · a delivery lead chasing status across tickets and pull requests · hand-run release checklists · close-out reviews nobody gets round to.
 **Stays human:** which bets are worth shaping · approving the merge to main · the final call on every bet (succeeded, failed, paused, archived).
 
@@ -6051,7 +6051,7 @@ It is the output side of the [product discovery loop](/marketplace/product-disco
 | What goes back into discovery | Reviewing every change against the task it came from |
 | The decision to pause or kill a bet | Checking the release, then reading product data and customer feedback after it ships |
 
-## How the loop runs
+## How the flow runs
 1. A bet is shaped and ready to build. Maskin checks that its Won and Lost criteria can be measured with the data you already collect, and flags any that can’t.
 2. Maskin locks the spec, breaks the bet into tasks, gives each task an owner and sets up the branch the work lands on.
 3. Each task goes to the agent that owns it. For code, a developer agent writes the change and opens a pull request.
@@ -6068,7 +6068,7 @@ It is the output side of the [product discovery loop](/marketplace/product-disco
 - **Fails safely:** if a change fails review or the release check, it stops there and goes back to the task. A safety-net sweep also catches any merged pull request whose bet was left open.
 
 ## Pick per bet, not per team
-You don’t have to move everything. Run this loop on the bets that suit it, such as AI-heavy work or small teams with tight engineering time, and keep the rest in Jira or Linear. Both paths read from the same shaped bet and write the result back to the same place. If you are weighing a full move off Jira, the [open source Jira alternative](/alternatives/open-source-jira-alternative/) page compares the open source trackers with this bet-based approach. The [product teams guide](/solutions/product-teams/) walks through both paths.
+You don’t have to move everything. Run this flow on the bets that suit it, such as AI-heavy work or small teams with tight engineering time, and keep the rest in Jira or Linear. Both paths read from the same shaped bet and write the result back to the same place. If you are weighing a full move off Jira, the [open source Jira alternative](/alternatives/open-source-jira-alternative/) page compares the open source trackers with this bet-based approach. The [product teams guide](/solutions/product-teams/) walks through both paths.
 
 ## Frequently asked questions
 
@@ -6079,7 +6079,7 @@ Software work where AI agents each own a step: planning, building, reviewing, ch
 No. Your team decides which bets are worth shaping, approves the merge to main, and makes the final call on every bet. The agents take the planning, building and review steps in between.
 
 ### Do I have to leave Jira or Linear?
-No. Pick per bet. Run this loop on the bets that suit it and keep the rest in Jira or Linear. Both read from the same shaped bet and write the result back to the same place.
+No. Pick per bet. Run this flow on the bets that suit it and keep the rest in Jira or Linear. Both read from the same shaped bet and write the result back to the same place.
 
 ### Can anything reach production without a person?
 No. A release check scores the risk of the bet’s pull request, and a person approves the merge to main. Nothing deploys without that approval.
@@ -6091,20 +6091,20 @@ In your repository. Maskin works through your repo and your pull requests, so th
 You write the Won and Lost criteria first, and Maskin checks they can be measured with data you already collect. After release it reads your product data and posts a Won, Lost or Inconclusive verdict, then reads customer and team feedback and posts a second one. You make the final call.
 
 ## Proof
-The Maskin Team ships Maskin through this loop. Shaping, planning, building, review, release check and verdict all run inside the product described on this page.
+The Maskin Team ships Maskin through this flow. Shaping, planning, building, review, release check and verdict all run inside the product described on this page.
 
 ## Run it
-See the loop run, then decide whether to run it on your repo. Or [start your workspace](https://maskin.io/signup).
+See the flow run, then decide whether to run it on your repo. Or [start your workspace](https://maskin.io/signup).
 
-## Related loops
-- [The product discovery loop](/marketplace/product-discovery/): what feeds this loop.
-- [The LLM knowledge wiki loop](/marketplace/knowledge-wiki/): the context agents read before they plan.
-- [The SEO publishing loop](/marketplace/seo-publishing/): another shaped bet turned into a shipped page.
+## Related flows
+- [The product discovery flow](/marketplace/product-discovery/): what feeds this flow.
+- [The LLM knowledge wiki flow](/marketplace/knowledge-wiki/): the context agents read before they plan.
+- [The SEO publishing flow](/marketplace/seo-publishing/): another shaped bet turned into a shipped page.
 
-## What this loop is built with
-Named the same on every loop page so the shape is portable. Below the fold on purpose — the loop is what closes; the primitives are just the parts. Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
-Loop
-A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a loop. Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.
+## What this flow is built with
+Named the same on every flow page so the shape is portable. Below the fold on purpose — the flow is what closes; the primitives are just the parts. Inside a flow listing, agents / MCPs / skills appear as “built with” components of the flow, never as top-level marketplace sections of their own.
+Flow
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a flow. Maskin flows carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.
 Agent
 A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP
@@ -6117,9 +6117,9 @@ A packaged capability you attach to an agent — *draft a follow-up in our voice
 
 > Source: https://maskin.io/marketplace/competitive-intelligence/
 
-# Run competitor intelligence as one loop, not five dashboards.
+# Run competitor intelligence as one flow, not five dashboards.
 Maskin watches every competitor move, drafts the battlecard for sales, and shapes the product-gap bet for the roadmap. Your team owns the strategic read.
-Sign in or sign up, then confirm the loop in the Maskin app.
+Sign in or sign up, then confirm the flow in the Maskin app.
 Turn every competitor move into two shipped outcomes at once: a battlecard your sales team actually uses, and a shaped bet for product where the signal reveals a real gap. The work is done when the battlecard is live in the channel the field reads and the product bet has an outcome measured against competitor close-rate on the affected segment, not when a dashboard is updated.
 **Replaces:** CI point-SaaS whose signal only reaches sales · analyst hours on manual competitor tracking · product-gap signals lost between sales and roadmap · dashboards nobody reads twice
 **Stays human:** which competitors matter and why · the sales-narrative read on any battlecard change · the “is this a real product gap?” call · the roadmap decision
@@ -6142,25 +6142,25 @@ One signal, two lanes, one graph: both lanes close.
 | The roadmap decision | Routing each signal to the right lane: sales, product, or both |
 | The positioning strategy | Measuring after ship whether close-rate against the competitor actually moved |
 
-## How the loop runs
+## How the flow runs
 1. A competitor ships something: a changelog entry, a pricing change, a new release, a Product Hunt launch.
 2. Maskin catches the diff and classifies it: does this need a battlecard update, does it reveal a product gap, or both.
 3. It drafts both lanes in parallel: the battlecard update for sales, and the shaped bet for product with a measurable win condition.
 4. Sales enablement approves the battlecard from the channel it already lives in.
 5. Your PM approves the bet in the workspace.
 6. The battlecard ships to the sales channel the field reads; the bet moves into the roadmap.
-7. After ship, the loop checks whether close-rate against the competitor actually moved on the affected segment. The outcome, not the dashboard, closes the work.
+7. After ship, the flow checks whether close-rate against the competitor actually moved on the affected segment. The outcome, not the dashboard, closes the work.
 
 ## Trust surface
 - **Human gates:** sales enablement approves the battlecard; a PM approves the bet; no positioning claim goes out without your sign-off.
 - **Your data stays yours:** Maskin watches public sources on your list; it writes back into your battlecard tool, your roadmap, and your CRM. No external dashboard to check.
 - **Fails safely:** if the diff is ambiguous, the signal pauses for a human classifier read. Nothing ships with a wrong-lane routing.
 
-## Run this loop
-**[Book a demo](https://meshfirm.com/bookmagnus)**: see the loop running on our own competitor set, then decide whether to run it on yours.
+## Run this flow
+**[Book a demo](https://meshfirm.com/bookmagnus)**: see the flow running on our own competitor set, then decide whether to run it on yours.
 
-## How the loop closes
-The mechanics, the object model and the honest limits are in the [competitive intelligence loop deep doc](/loops/competitive-intelligence/).
+## How the flow closes
+The mechanics, the object model and the honest limits are in the [competitive intelligence flow deep doc](/loops/competitive-intelligence/).
 - **Fires when** a competitor changelog, pricing page, GitHub release, or Product Hunt launch changes. Diffs on the page, not scrapes of the marketing copy.
 - **Classifies into one or both lanes.** An agent asks two independent questions of every captured change: does this need a battlecard update, and does it reveal a product gap. Tags one, the other, or both.
 - **Drafts both lanes in parallel.** The battlecard update (new claim, counter, objection handling) and the shaped bet (with a win condition like *“ship response X, close-rate against competitor Y improves by Z pp on the affected segment”*).
@@ -6180,13 +6180,13 @@ Modern competitive intelligence is gathered from public signal sources, not huma
 Yes, when it stays on public information: changelogs, pricing pages, release notes, product launches, patent filings, marketing copy. That’s standard competitive intelligence practice and how most programs run. What crosses the line is corporate espionage: obtaining trade secrets through misrepresentation, hacking, or breaches of confidentiality. Legitimate CI operates roughly under the same boundary investigative journalism does. Public sources are fine, unlawful access is not.
 
 ### What are competitive intelligence tools?
-Competitive intelligence tools help teams capture competitor signals and turn them into deliverables. Klue and Crayon lead the sales-enablement side, strong at battlecards for the sales lane. Contify covers the market-monitoring side. What most of them share is a dashboard as the endpoint: signals get captured and displayed, but often don’t cross into product decisions. That’s the specific gap this loop is built around.
+Competitive intelligence tools help teams capture competitor signals and turn them into deliverables. Klue and Crayon lead the sales-enablement side, strong at battlecards for the sales lane. Contify covers the market-monitoring side. What most of them share is a dashboard as the endpoint: signals get captured and displayed, but often don’t cross into product decisions. That’s the specific gap this flow is built around.
 
 ### What’s the difference between competitor intelligence and competitive intelligence?
-In common use, the two terms are near-synonyms and get interchanged freely. Where they diverge: competitive intelligence usually spans the whole market (trends, adjacent categories, macro shifts). Competitor intelligence is narrower, focused on specific rival companies you track by name. This loop is competitor intelligence. It watches a defined list of competitors and routes their signals into two lanes with human gates on each.
+In common use, the two terms are near-synonyms and get interchanged freely. Where they diverge: competitive intelligence usually spans the whole market (trends, adjacent categories, macro shifts). Competitor intelligence is narrower, focused on specific rival companies you track by name. This flow is competitor intelligence. It watches a defined list of competitors and routes their signals into two lanes with human gates on each.
 
 ### Are there competitor monitoring tools that do this?
-Yes, for the sales lane. Klue and Crayon lead the sales-enablement side, strong at battlecards, and Contify covers market monitoring. What most competitor monitoring tools share is a dashboard as the endpoint: signals get captured and displayed, but often don’t cross into product decisions. This loop routes the same signal to product as a shaped bet with a human gate on it.
+Yes, for the sales lane. Klue and Crayon lead the sales-enablement side, strong at battlecards, and Contify covers market monitoring. What most competitor monitoring tools share is a dashboard as the endpoint: signals get captured and displayed, but often don’t cross into product decisions. This flow routes the same signal to product as a shaped bet with a human gate on it.
 
 ## Built with
 - **Signal sources:** competitor changelogs, pricing pages, GitHub release notes, Product Hunt launches.
@@ -6194,15 +6194,15 @@ Yes, for the sales lane. Klue and Crayon lead the sales-enablement side, strong 
 - **MCPs:** Slack, HubSpot or Salesforce, GitHub, PostHog, the sales enablement platform of record.
 - **Skills:** *write in our voice*, *shape a bet against a competitor signal*.
 - **Human gates:** sales enablement on the battlecard; a PM on the bet.
-Every listing on the Marketplace is a loop: something fires it, agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome. Agents, MCPs and skills show up here only as the parts the loop is built from.
+Every listing on the Marketplace is a flow: something fires it, agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome. Agents, MCPs and skills show up here only as the parts the flow is built from.
 
-## Related loops on the marketplace
-- [Product discovery loop](/marketplace/product-discovery/): interviews, tickets, and reviews land as typed insight, and the loop closes when a shaped bet ships against them.
-- [Knowledge wiki loop](/marketplace/knowledge-wiki/): team memory that new hires and new agents bootstrap from.
-- [SEO publishing loop](/marketplace/seo-publishing/): one loop from keyword bracket to indexed rank, with humans gating the intent read and the send-to-publish.
-- [Outbound loop](/marketplace/outbound/): prospect research, personalized draft, and reply-handling as one loop, with humans gating the send.
-- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): the cornerstone read on the workspace these loops run in.
-Sign in or sign up, then confirm the loop in the Maskin app.
+## Related flows on the marketplace
+- [Product discovery flow](/marketplace/product-discovery/): interviews, tickets, and reviews land as typed insight, and the flow closes when a shaped bet ships against them.
+- [Knowledge wiki flow](/marketplace/knowledge-wiki/): team memory that new hires and new agents bootstrap from.
+- [SEO publishing flow](/marketplace/seo-publishing/): one flow from keyword bracket to indexed rank, with humans gating the intent read and the send-to-publish.
+- [Outbound flow](/marketplace/outbound/): prospect research, personalized draft, and reply-handling as one flow, with humans gating the send.
+- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): the cornerstone read on the workspace these flows run in.
+Sign in or sign up, then confirm the flow in the Maskin app.
 
 
 ---

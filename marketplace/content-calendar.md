@@ -20,7 +20,7 @@ The topics, real stories and the go on every post stay human.
 |  | Keeping dates and statuses |
 |  | The weekly read |
 
-## How the loop runs
+## How the flow runs
 1. Bring an idea and its source.
 2. Maskin plans the month around what the team can really approve.
 3. Maskin drafts to the plan.
@@ -28,7 +28,7 @@ The topics, real stories and the go on every post stay human.
 5. **Check (human gate):** a team member checks the draft.
 6. **Owner’s go (human gate):** the owner approves the post.
 7. Publish the post, read weekly reach and visits, then bring the result into the next idea.
-![The seven steps of the content calendar loop in a row: idea, plan, draft, picture, check, owner’s go, publish and read. Check and owner’s go are marked as the two gates, and an arrow runs from step 7 back to step 1.](/marketplace/content-calendar/content-calendar-flow.png)
+![The seven steps of the content calendar flow in a row: idea, plan, draft, picture, check, owner’s go, publish and read. Check and owner’s go are marked as the two gates, and an arrow runs from step 7 back to step 1.](/marketplace/content-calendar/content-calendar-flow.png)
 
 ## Trust
 - A post without the owner’s go does not go out.
@@ -48,17 +48,17 @@ Start with made-up coffee-roaster example data or a blank calendar; changes stay
 - **Gates:** a team check, then the owner’s go.
 - **Measures:** a set weekly read of reach and visits by channel.
 
-## What this loop is built with
-Loop
-A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome, not on *done for now*. Every listing on the Marketplace is a loop.
-**Maskin loops carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
+## What this flow is built with
+Flow
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome, not on *done for now*. Every listing on the Marketplace is a flow.
+**Maskin flows carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
 Agent
 A named role a model performs: an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
 MCP
 The wire an agent uses to reach the tools your team already uses: the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
 Skill
 A packaged capability you attach to an agent: *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
-Inside a loop listing, agents / MCPs / skills appear as “built with” components of the loop, never as top-level marketplace sections of their own.
+Inside a flow listing, agents / MCPs / skills appear as “built with” components of the flow, never as top-level marketplace sections of their own.
 
 ## FAQ
 
@@ -82,4 +82,4 @@ Reach and visits by channel.
 
 ### What should a content calendar include?
 Include buyer, topics, channels and the posts the team can review, sourced ideas, a weekly day to plan, review and publish, a team check then the owner’s go, and a weekly read of reach and visits by channel. The list above shows all seven for a made-up coffee roaster.
-Related loops on the marketplace
+Related flows on the marketplace
