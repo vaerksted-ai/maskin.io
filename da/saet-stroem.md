@@ -34,7 +34,7 @@ Onsdag 9. december 2026, 15.00 til 16.00
 Find nye kunder og kom hurtigere i dialog med dem.
 Find kunder med AI, hvor du godkender hver besked.
 Se, hvordan du kan finde relevante virksomheder og blive klogere på dem. Agenterne hjælper med kontakt til mulige kunder.
-Du godkender hver besked, før den sendes. Agenterne sender ikke noget for dig.
+Du godkender hver besked, før den sendes. Agenterne sender ikke noget uden dit ja.
 Tilmelding åbner snart. [Tilmeld dig rækken](#tilmeld-raekken), så får du besked.
 Onsdag 16. december 2026, 15.00 til 16.00
 
