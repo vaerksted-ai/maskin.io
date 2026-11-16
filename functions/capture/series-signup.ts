@@ -3,12 +3,12 @@
 // Flow: validate -> consent check -> Turnstile verify -> Resend contact in the series segment.
 // Does one thing: adds a contact to the saet-stroem-series segment. Reuses the RESEND_API_KEY the email capture already uses.
 // Fails closed: with no RESEND_API_KEY or TURNSTILE_SECRET it returns 503 and stores nothing, and without consent=true it stores nothing.
-// Consent is an unticked box ticked by the person, covers only this series, and the wording version is stored with the consent time.
+// Consent is an unticked box ticked by the person, covers this series and the free call offer, and the wording version is stored with the consent time.
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const SEATS = new Set(["customer-value", "accounting-25nov", "content-2dec", "sales-9dec", "service-16dec"]);
 const SERIES_SEGMENT_ID = "dbeb1ee8-2392-490e-8a21-16a64e9d26f4";
-const CONSENT_VERSIONS = new Set(["consent-v2-2026-11-16"]);
+const CONSENT_VERSIONS = new Set(["consent-v3-2026-11-16"]);
 const STAFF_BANDS = new Set(["1 til 10", "11 til 50", "51 til 250", "Over 250"]);
 
 interface Env {
