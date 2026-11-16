@@ -134,7 +134,7 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Skal vi være tekniske?",
+          "name": "Skal vi være teknisk kyndige?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Nej. Du beskriver opgaven med almindelige ord. Maskin-teamet står for opsætningen."
@@ -145,7 +145,7 @@
           "name": "Hvad hvis den laver en fejl?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Den kan ikke sende noget uden godkendelse. Så fejl bliver fanget, før en kunde ser dem. Derfor starter alle opgaver som udkast, der ikke kan sendes."
+            "text": "Den kan ikke sende noget uden godkendelse. Så fejl bliver fanget, før en kunde ser dem. Derfor starter alle opgaver som kladder."
           }
         },
         {
@@ -169,7 +169,7 @@
           "name": "Hvordan adskiller det sig fra Productboard eller værktøjer til produktplaner?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Productboard er bygget til at indsamle feedback og vise produktplaner. Maskin samler kundernes input, beslutningen og resultatet i én post. Der er ikke nogen kundeportal eller visning af produktplaner."
+            "text": "Productboard er bygget til at indsamle feedback og vise produktplaner. Maskin samler kundernes input, beslutningen og resultatet i ét Item. Der er ikke nogen kundeportal eller visning af produktplaner."
           }
         },
         {
@@ -225,7 +225,7 @@
     <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
     <li><a href="/login">Log ind</a></li>
   </ul>
-  <a class="nav__drawer-cta" href="/signup">Opret konto gratis →</a>
+  <a class="nav__drawer-cta" href="/signup">Opret gratis konto →</a>
 </nav>
 
 <!-- ═══════════════════════════════════════════════════ HERO -->
@@ -308,7 +308,7 @@
       <div class="how-card reveal reveal--d3">
         <div class="how-card__num">04</div>
         <h3 class="how-card__title">Items</h3>
-        <p class="how-card__body">Den fælles post, som alle Flows læser og opdaterer. For eksempel bliver en indsigt til et væddemål, som bliver til en opgave. Alle tre ligger samme sted.</p>
+        <p class="how-card__body">Den fælles registrering, som alle Flows læser og opdaterer. For eksempel bliver en indsigt til et bet, som bliver til en opgave. Alle tre ligger samme sted.</p>
       </div>
     </div>
   </div>
@@ -332,7 +332,7 @@
         <span class="jobs-list__line">Et første svar er klar på få minutter. De svære sager sendes til den rette person.</span>
       </li>
       <li class="jobs-list__item">
-        <span class="jobs-list__role">For sent betalte fakturaer</span>
+        <span class="jobs-list__role">Forfaldne fakturaer</span>
         <span class="jobs-list__line">Finder de fakturaer, der er forfaldne, og skriver en høflig påmindelse til hver enkelt.</span>
       </li>
       <li class="jobs-list__item">
@@ -353,7 +353,7 @@
     <div class="reveal">
       <div class="section-tag">Se en opgave i gang</div>
       <h2 class="section-title">Sådan kan en mandag se ud.</h2>
-      <p class="section-sub" style="margin-top:.875rem">Et eksempel, ikke en rigtig kunde: opfølgning på for sent betalte fakturaer.</p>
+      <p class="section-sub" style="margin-top:.875rem">Et eksempel, ikke en rigtig kunde: opfølgning på forfaldne fakturaer.</p>
     </div>
 
     <ol class="example-steps reveal">
@@ -384,7 +384,7 @@
   <div class="wrap">
     <div class="reveal" style="text-align:center">
       <div class="section-tag">Priser</div>
-      <h2 class="section-title">To planer. Én pris for hele teamet.</h2>
+      <h2 class="section-title">Én pris for hele teamet.</h2>
       <p class="section-sub" style="margin:.875rem auto 0">Prisen gælder pr. arbejdsområde, ikke pr. person, i kroner og uden moms. Faktureres månedligt. Du får den aktuelle pris, når du booker et opkald.</p>
     </div>
 
@@ -392,14 +392,14 @@
       <div class="pricing-card">
         <div class="pricing-card__header">
           <div class="pricing-card__name">Pro</div>
-          <div class="pricing-card__price"><span class="pricing-card__amount">Pris ved opkald</span><span class="pricing-card__per"></span></div>
+          <div class="pricing-card__price"><span class="pricing-card__amount">Pris ved forespørgsel</span><span class="pricing-card__per"></span></div>
         </div>
         <a class="pricing-card__cta btn-secondary" href="https://maskin.io/bookseb">Book a call</a>
       </div>
       <div class="pricing-card">
         <div class="pricing-card__header">
           <div class="pricing-card__name">Starter</div>
-          <div class="pricing-card__price"><span class="pricing-card__amount">Pris ved opkald</span><span class="pricing-card__per"></span></div>
+          <div class="pricing-card__price"><span class="pricing-card__amount">Pris ved forespørgsel</span><span class="pricing-card__per"></span></div>
         </div>
         <a class="pricing-card__cta btn-secondary" href="https://maskin.io/bookseb">Book a call</a>
       </div>
@@ -419,9 +419,9 @@
     <ul class="tech-list reveal">
       <li><strong>Open source.</strong> Apache 2.0. Hver linje ligger på <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a>.</li>
       <li><strong>Host selv.</strong> Kør det på din egen infrastruktur, eller brug den administrerede løsning. <a href="/docs/self-hosted-ai-workspace/">AI-arbejdsområde, du selv hoster</a>. Sammenligner du muligheder? Se <a href="/alternatives/self-hosted-ai-agents/">oversigten over AI-agenter, du selv kan hoste, i 2026</a>.</li>
-      <li><strong>Brug din egen model.</strong> Arbejdsområder, du selv hoster, og Enterprise-arbejdsområder bruger din egen Anthropic- eller OpenAI-adgang. Der lægges ikke noget oven i udgifterne til AI.</li>
-      <li><strong>Flows og Marketplace.</strong> Byg dine egne Flows, eller start med en løsning fra <a href="/marketplace/">Marketplace</a>, for eksempel <a href="/marketplace/product-discovery/">løsningen til produktudvikling</a>, der gør kundernes input til væddemål, som bliver ført ud i livet. Er begreberne nye for dig? Læs om <a href="/docs/concepts/">begreberne</a>.</li>
-      <li><strong>Agenter kan læse med.</strong> Agenter styrer hvert Item med <a href="/docs/mcp-tools/">MCP-værktøjerne</a>, indlæser <a href="/docs/learn/agent-skills/">agentfærdigheder</a> og læser en <a href="/marketplace/knowledge-wiki/">LLM-wiki</a>, før de svarer.</li>
+      <li><strong>Brug din egen model.</strong> Arbejdsområder, du selv hoster, og Enterprise-arbejdsområder bruger din egen Anthropic- eller OpenAI-adgang. Ingen påslag på dit AI-forbrug.</li>
+      <li><strong>Flows og Marketplace.</strong> Byg dine egne Flows, eller start med en løsning fra <a href="/marketplace/">Marketplace</a>, for eksempel <a href="/marketplace/product-discovery/">Product Discovery-løsningen</a>, der gør kundernes input til bets, som bliver leveret. Er begreberne nye for dig? Læs om <a href="/docs/concepts/">begreberne</a>.</li>
+      <li><strong>Læsbart for agenter.</strong> Agenter styrer hvert Item med <a href="/docs/mcp-tools/">MCP-værktøjerne</a>, indlæser <a href="/docs/learn/agent-skills/">agentfærdigheder</a> og læser en <a href="/marketplace/knowledge-wiki/">LLM-wiki</a>, før de svarer.</li>
       <li><strong>Gratis introduktion.</strong> Maskin-teamet sætter dit første Flow op sammen med dig. <a href="/onboarding/">Book en gratis introduktion på 60 minutter</a>.</li>
     </ul>
   </div>
@@ -438,7 +438,7 @@
     <div class="faq-grid faq-grid--single reveal">
 
       <div class="faq-item">
-        <div class="faq-item__q">Skal vi være tekniske?
+        <div class="faq-item__q">Skal vi være teknisk kyndige?
           <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
         </div>
         <div class="faq-item__a">Nej. Du beskriver opgaven med almindelige ord. Maskin-teamet står for opsætningen.</div>
@@ -448,7 +448,7 @@
         <div class="faq-item__q">Hvad hvis den laver en fejl?
           <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
         </div>
-        <div class="faq-item__a">Den kan ikke sende noget uden godkendelse. Så fejl bliver fanget, før en kunde ser dem. Derfor starter alle opgaver som udkast, der ikke kan sendes.</div>
+        <div class="faq-item__a">Den kan ikke sende noget uden godkendelse. Så fejl bliver fanget, før en kunde ser dem. Derfor starter alle opgaver som kladder.</div>
       </div>
 
       <div class="faq-item">
@@ -469,7 +469,7 @@
         <div class="faq-item__q">Hvordan adskiller det sig fra Productboard eller værktøjer til produktplaner?
           <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
         </div>
-        <div class="faq-item__a">Productboard er bygget til at indsamle feedback og vise produktplaner. Maskin samler kundernes input, beslutningen og resultatet i én post. Der er ikke nogen kundeportal eller visning af produktplaner. <a href="/alternatives/productboard/">Læs sammenligningen med Productboard</a>.</div>
+        <div class="faq-item__a">Productboard er bygget til at indsamle feedback og vise produktplaner. Maskin samler kundernes input, beslutningen og resultatet i ét Item. Der er ikke nogen kundeportal eller visning af produktplaner. <a href="/alternatives/productboard/">Læs sammenligningen med Productboard</a>.</div>
       </div>
 
       <div class="faq-item">
@@ -547,7 +547,7 @@
         <li><a href="/docs/ai-product-management-tool/">Produktstyring med AI</a></li>
         <li><a href="/changelog/">Ændringslog</a></li>
         <li><a href="https://maskin.io/docs/">Dokumentation</a></li>
-        <li><a href="/privacy/">Privatliv</a></li>
+        <li><a href="/privacy/">Privatlivspolitik</a></li>
         <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book et møde</a></li>
         <li><!--email_off--><a href="mailto:ai@maskin.io">Kontakt</a><!--/email_off--></li>
