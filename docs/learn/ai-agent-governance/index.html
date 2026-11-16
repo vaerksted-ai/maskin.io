@@ -126,6 +126,14 @@
         },
         {
           "@type": "Question",
+          "name": "What are AI agent guardrails?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Guardrails define an agent's allowed boundaries. Each agent is identified separately rather than using a person's login or a shared key. Permissions can separate actions such as drafting and sending, and can be withdrawn in one step. Changes carry the acting agent's identity, so actions can be traced and access paused or revoked; some actions require human approval each time."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Is AI agent governance the same as an agent control plane?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -204,6 +212,8 @@
         </ul>
       </div>
     </div>
+    <h2>What are AI agent guardrails?</h2>
+    <p>AI agent guardrails are limits on what an agent may do. They give each agent its own identity, grant permissions for individual actions, and record every change with the acting agent attached to the work. Agents can be paused or revoked.</p>
     <h2>Governance in three primitives</h2>
     <p>The three primitives of operator-level agent governance are:</p>
     <ol>
@@ -285,6 +295,8 @@
     <h2>FAQ</h2>
     <h3>What is AI agent governance?</h3>
     <p>The set of controls that make agent actions attributable, permissioned and auditable. For an engineering leader that means three things: each agent has its own identity, each permission covers one action, and every change is an event on the object it touched. Enterprise programs add SSO, SCIM, SOC 2 and formal risk documentation on top. Both are governance; they answer different questions.</p>
+    <h3>What are AI agent guardrails?</h3>
+    <p>Guardrails define an agent's allowed boundaries. Each agent is identified separately rather than using a person's login or a shared key. Permissions can separate actions such as drafting and sending, and can be withdrawn in one step. Changes carry the acting agent's identity, so actions can be traced and access paused or revoked; some actions require human approval each time.</p>
     <h3>Is AI agent governance the same as an agent control plane?</h3>
     <p>Overlapping, not identical. A control plane is the operator surface that runs a fleet of agent sessions. Governance is the set of properties (permissions, attribution, audit) that make that surface trustworthy. A control plane without governance is a dashboard; governance without a control plane is a policy with nothing to enforce it on.</p>
     <h3>How is this different from enterprise AI governance?</h3>
