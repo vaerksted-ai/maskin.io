@@ -20,6 +20,7 @@
       { label: "The lead qualification loop", href: "/marketplace/lead-qualification/", nested: true },
       { label: "The LLM knowledge wiki loop", href: "/marketplace/knowledge-wiki/", nested: true },
       { label: "The LinkedIn content loop", href: "/marketplace/linkedin-content/", nested: true },
+      { label: "The content calendar", href: "/marketplace/content-calendar/", nested: true },
       { label: "The product delivery loop", href: "/marketplace/product-delivery/", nested: true },
       { label: "Månedens bilag (dansk)", href: "/marketplace/accounting/", nested: true },
       { label: "AI customer feedback loop", href: "/loops/ai-customer-feedback-loop/", nested: true },

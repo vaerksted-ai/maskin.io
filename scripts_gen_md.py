@@ -69,6 +69,7 @@ ORDER = [
   "marketplace/knowledge-wiki/index.html",
   "marketplace/product-discovery/index.html",
   "marketplace/linkedin-content/index.html",
+  "marketplace/content-calendar/index.html",
   "marketplace/product-delivery/index.html",
   "marketplace/competitive-intelligence/index.html",
   "marketplace/accounting/index.html",

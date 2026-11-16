@@ -1,8 +1,9 @@
 name: Regenerate docs mirrors
 
 # Manual only. Refreshes the .md mirrors and llms-full.txt from the docs HTML
-# (scripts_gen_md.py) and, optionally, adds a new page to every baked-in docs sidebar
-# (scripts_sync_sidebar.py). Commits the result back to the ref it was run on.
+# (scripts_gen_md.py) and, optionally, adds a new page to the shared docs sidebar template and the
+# NAV array (scripts_sync_sidebar.py), then regenerates docs/**/index.html (scripts_build_pages.mjs).
+# Commits the result back to the ref it was run on.
 on:
   workflow_dispatch:
     inputs:
@@ -27,6 +28,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
       - name: Sync sidebar
         if: ${{ inputs.sidebar_new_slug != '' }}
         env:
@@ -34,6 +38,8 @@ jobs:
           LABEL: ${{ inputs.sidebar_label }}
           AFTER_SLUG: ${{ inputs.sidebar_after_slug }}
         run: python3 scripts_sync_sidebar.py "$NEW_SLUG" "$LABEL" "$AFTER_SLUG"
+      - name: Regenerate docs pages
+        run: node scripts_build_pages.mjs --write
       - name: Regenerate md mirrors and llms-full.txt
         run: python3 scripts_gen_md.py
       - name: Commit

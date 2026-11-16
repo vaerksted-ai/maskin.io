@@ -12,6 +12,9 @@ You are the person who gets the call when an agent sends the wrong thing to a cu
 > **The audit trail is the object graph.** Every status change, metadata write and new relationship is an event with an actor attached. "What did this agent do last week" is a query, not a project.
 > **Gate the material call, not the model call.** Sending a message, promoting a lead, publishing a page: these transitions need a governance answer. The model's reasoning inside a session does not.
 
+## What are AI agent guardrails?
+AI agent guardrails are limits on what an agent may do. They give each agent its own identity, grant permissions for individual actions, and record every change with the acting agent attached to the work. Agents can be paused or revoked.
+
 ## Governance in three primitives
 The three primitives of operator-level agent governance are:
 1. Actors as first-class identities, not service accounts owned by a person.
@@ -94,6 +97,9 @@ The governance surface is Apache-2.0 and [self-hostable](/docs/get-started/self-
 
 ### What is AI agent governance?
 The set of controls that make agent actions attributable, permissioned and auditable. For an engineering leader that means three things: each agent has its own identity, each permission covers one action, and every change is an event on the object it touched. Enterprise programs add SSO, SCIM, SOC 2 and formal risk documentation on top. Both are governance; they answer different questions.
+
+### What are AI agent guardrails?
+Guardrails define an agent's allowed boundaries. Each agent is identified separately rather than using a person's login or a shared key. Permissions can separate actions such as drafting and sending, and can be withdrawn in one step. Changes carry the acting agent's identity, so actions can be traced and access paused or revoked; some actions require human approval each time.
 
 ### Is AI agent governance the same as an agent control plane?
 Overlapping, not identical. A control plane is the operator surface that runs a fleet of agent sessions. Governance is the set of properties (permissions, attribution, audit) that make that surface trustworthy. A control plane without governance is a dashboard; governance without a control plane is a policy with nothing to enforce it on.

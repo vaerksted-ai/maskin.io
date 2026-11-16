@@ -42,7 +42,7 @@ Small teams operate many agents through an abstraction layer and get pulled in o
 ## Agentic workspaces vs. what came before
 The field splits into three tiers:
 - **Agent-native platforms** — big-model vendor workspaces turned the agent loop into a platform feature.
-- **Incumbent task suites** — Notion, Asana, Jira, Linear, monday bolt AI onto trackers; the object stays a task.
+- **Incumbent task suites** — Notion, Asana, Jira, Linear, monday bolt AI onto trackers; the object stays a task. Looking for a [Jira open source alternative](/alternatives/open-source-jira-alternative/)? Plane, OpenProject and Taiga keep the same ticket model.
 - **Knowledge spaces** — Obsidian, Mem, Confluence, Raft hold notes but stop before the decision.
 Maskin’s edge is the loop itself on one shared object model — MCP-native, Apache-2.0, self-hostable. Inside the field there is a second cut, between products that make a persona the unit of work and products that make a typed object the unit of work; [the two camps of AI employees and composable agents](/docs/composable-ai-agents-vs-ai-employees/) are compared in full. Buyers who start from a vendor product often search for an [open-source alternative to Claude Cowork](/alternatives/claude-cowork/) or an [open-source alternative to Codex](/alternatives/open-source-alternative-to-codex/); those pages compare the options directly.
 

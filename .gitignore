@@ -1,3 +1,6 @@
 # Build output
 dist/
 .wrangler/
+
+# Claude Code local settings (can hold approved commands with typed secrets)
+.claude/settings.local.json
