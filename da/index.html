@@ -3,15 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maskin på dansk: AI-agenter, der tager et job hele vejen | Maskin</title>
-<meta name="description" content="Maskin på dansk: en open source-arbejdsplads, hvor AI-agenter og mennesker arbejder på de samme objekter, og et menneske godkender, før noget forlader virksomheden.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script>try{if(localStorage.getItem('maskin-api-key'))window.location.replace('/workspaces')}catch(e){}</script>
+<title>Maskin: ansæt AI-agenter og få arbejdet gjort</title>
+<meta name="description" content="Ansæt AI-agenter til rutineopgaver i dine værktøjer. En person godkender hvert resultat, før det sendes. Book et opkald.">
 
+<!-- Canonical -->
 <link rel="canonical" href="https://maskin.io/da/">
 <link rel="alternate" hreflang="en" href="https://maskin.io/">
 <link rel="alternate" hreflang="da" href="https://maskin.io/da/">
 <link rel="alternate" hreflang="sv" href="https://maskin.io/sv/">
 <link rel="alternate" hreflang="x-default" href="https://maskin.io/">
 
+<!-- Favicons -->
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -19,46 +24,162 @@
 <meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
 
+<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://maskin.io/da/">
-<meta property="og:title" content="Maskin på dansk">
-<meta property="og:description" content="Maskin på dansk: en open source-arbejdsplads, hvor AI-agenter og mennesker arbejder på de samme objekter, og et menneske godkender, før noget forlader virksomheden.">
-<meta property="og:image" content="https://maskin.io/og-image.png">
+<meta property="og:title" content="Ansæt AI-agenter. Få arbejdet gjort.">
+<meta property="og:description" content="Ansæt AI-agenter til rutineopgaver i dine værktøjer. En person godkender hvert resultat, før det sendes. Book et opkald.">
+<meta property="og:image" content="https://maskin.io/og-image-home.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Maskin">
 <meta property="og:locale" content="da_DK">
 
+<!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@maskin_io">
-<meta name="twitter:title" content="Maskin på dansk">
-<meta name="twitter:description" content="Maskin på dansk: en open source-arbejdsplads, hvor AI-agenter og mennesker arbejder på de samme objekter, og et menneske godkender, før noget forlader virksomheden.">
-<meta name="twitter:image" content="https://maskin.io/og-image.png">
+<meta name="twitter:title" content="Ansæt AI-agenter. Få arbejdet gjort.">
+<meta name="twitter:description" content="Ansæt AI-agenter til rutineopgaver i dine værktøjer. En person godkender hvert resultat, før det sendes. Book et opkald.">
+<meta name="twitter:image" content="https://maskin.io/og-image-home.png">
+
+<!-- LinkedIn (uses OG tags — no extra tags needed) -->
+
+<!-- Maskin backend base URL for the landing-page guest Bet Strategist endpoint. Override per environment. -->
+<meta name="maskin-api-base" content="https://maskin.io" />
+
+<!-- PostHog analytics. Autocapture (CTA clicks), pageviews, and scroll depth are on by default.
+     The key below is replaced at build time by the POSTHOG_PROJECT_KEY environment variable. -->
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('POSTHOG_PROJECT_KEY', {
+    api_host: 'https://eu.i.posthog.com',
+    person_profiles: 'identified_only',
+    defaults: '2025-05-24'
+  });
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Google Fonts loaded non-render-blocking so mobile FCP/LCP paint immediately with system fallback (display:swap upgrades in place). -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 
-<link rel="stylesheet" href="/docs/docs.css">
+<link rel="stylesheet" href="/home.css">
 
+<!-- ─── STRUCTURED DATA (JSON-LD) ───────────────────────────
+     Machine-readable description for search engines and LLMs.
+     Keep values in sync with the meta tags above and the pricing/FAQ sections. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "WebPage",
-      "@id": "https://maskin.io/da/#page",
-      "name": "Maskin på dansk",
-      "description": "Maskin på dansk: en open source-arbejdsplads, hvor AI-agenter og mennesker arbejder på de samme objekter, og et menneske godkender, før noget forlader virksomheden.",
-      "inLanguage": "da",
-      "url": "https://maskin.io/da/",
-      "isPartOf": { "@type": "WebSite", "name": "Maskin", "url": "https://maskin.io/" }
+      "@type": "Organization",
+      "@id": "https://maskin.io/#organization",
+      "name": "Maskin",
+      "url": "https://maskin.io/",
+      "logo": "https://maskin.io/icon-512.png",
+      "description": "Ejere og ledere giver rutineopgaver som opfølgning på salg, kundesvar, for sent betalte fakturaer og ugentlige oversigter til AI-agenter, der udfører dem som Flows. En person godkender hvert resultat, før det bliver sendt. Maskin er open source under Apache 2.0. Du kan hoste det selv eller bruge den administrerede løsning.",
+      "email": "ai@maskin.io",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "ai@maskin.io",
+        "availableLanguage": "da"
+      },
+      "sameAs": [
+        "https://github.com/sindre-ai/maskin",
+        "https://x.com/maskin_io"
+      ]
     },
     {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Maskin", "item": "https://maskin.io/" },
-        { "@type": "ListItem", "position": 2, "name": "Maskin på dansk", "item": "https://maskin.io/da/" }
+      "@type": "WebSite",
+      "@id": "https://maskin.io/#website",
+      "url": "https://maskin.io/",
+      "name": "Maskin",
+      "publisher": {
+        "@id": "https://maskin.io/#organization"
+      },
+      "inLanguage": "da"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://maskin.io/#software",
+      "name": "Maskin",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "AI agent workspace",
+      "operatingSystem": "Web, Docker (selvhostet)",
+      "url": "https://maskin.io/",
+      "downloadUrl": "https://github.com/sindre-ai/maskin",
+      "softwareHelp": "https://maskin.io/docs/",
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "isAccessibleForFree": true,
+      "description": "Ejere og ledere giver rutineopgaver som opfølgning på salg, kundesvar, for sent betalte fakturaer og ugentlige oversigter til AI-agenter, der udfører dem som Flows. En person godkender hvert resultat, før det bliver sendt. Maskin er open source under Apache 2.0. Du kan hoste det selv eller bruge den administrerede løsning.",
+      "featureList": [
+        "Bygget til MCP — styr arbejdsområdet fra Claude Code eller Claude Desktop",
+        "Fælles arbejdsområde for mennesker og AI-agenter",
+        "Samlet proces: Indsigter → Bets → Opgaver",
+        "For You, Flows, Chat og Items",
+        "Brug din egen Anthropic- eller OpenAI-adgang i arbejdsområder, du selv hoster, og Enterprise-arbejdsområder",
+        "Open source under Apache 2.0",
+        "Host selv fra open source-arkivet, eller brug administreret hosting"
+      ],
+      "publisher": {
+        "@id": "https://maskin.io/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://maskin.io/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Skal vi være tekniske?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nej. Du beskriver opgaven med almindelige ord. Maskin-teamet står for opsætningen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvad hvis den laver en fejl?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Den kan ikke sende noget uden godkendelse. Så fejl bliver fanget, før en kunde ser dem. Derfor starter alle opgaver som udkast, der ikke kan sendes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Er det bare en chatbot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nej. En chatbot besvarer spørgsmål. En Maskin-agent udfører opgaven og beder dig derefter om at godkende resultatet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvad koster det?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Der er to dele: én månedlig pris pr. arbejdsområde, ikke pr. person, og en gratis introduktion og opsætning på 60 minutter for hver ny kunde. Du får den aktuelle pris, når du booker et opkald. Priser er i kroner og uden moms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvordan adskiller det sig fra Productboard eller værktøjer til produktplaner?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Productboard er bygget til at indsamle feedback og vise produktplaner. Maskin samler kundernes input, beslutningen og resultatet i én post. Der er ikke nogen kundeportal eller visning af produktplaner."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hvad skete der med loops og objects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Flows hed tidligere loops, og Items hed tidligere objects. Det er det samme, bare med nye navne."
+          }
+        }
       ]
     }
   ]
@@ -67,58 +188,946 @@
 </head>
 <body>
 
-<nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/da/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/da/">Forside</a></li><li><a href="/docs/" lang="en">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener" lang="en">GitHub</a></li><li class="docnav__hide-sm"><a href="/bookseb" target="_blank" rel="noopener">Book et møde</a></li><li class="docnav__cta-wrap"><a class="docnav__cta" href="/signup">Opret konto</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Skift mellem lyst og mørkt tema" title="Skift mellem lyst og mørkt tema"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
-
-<noscript><div class="wrap" style="padding:1rem 0"><a href="/da/">&larr; Forside</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
-<div class="wrap doc-layout">
-<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Dansk"><p class="doc-sidebar__title">Dansk</p><ul class="doc-sidebar__list"><li><a class="is-active" aria-current="page" href="/da/">Maskin på dansk</a></li><li><a href="/da/hvad-er-en-ai-agent/">Hvad er en AI-agent?</a></li><li><a href="/da/ai-agenter/">AI-agenter</a></li><li><a href="/da/ai-automatisering/">AI-automatisering</a></li><li><a href="/da/ai-vaerktoejer/">AI-værktøjer</a></li><li><a href="/da/saet-stroem/">Sæt strøm til din forretning</a></li></ul></nav></aside>
-  <main class="doc-content">
-    <p class="eyebrow">Dansk</p>
-    <h1>Maskin på dansk</h1>
-    <p class="lead">Byg Loops, hvor AI-agenter tager et job i din virksomhed hele vejen, fra kundesignal til leveret resultat.</p>
-    <p>Maskin er en open source-arbejdsplads, hvor agenter og mennesker arbejder på de samme objekter. Agenten udarbejder, og et menneske godkender, før noget forlader virksomheden. Godkendelse er et statusskifte, og du kan sætte det op, så kun et menneske kan sætte det.</p>
-    <p>En Loop er en navngiven proces omkring objekter, med en indgang, faste trin og en lukkebetingelse. Du kan starte med ét job og lade et menneske have det sidste ord.</p>
-
-    <h2>Hvem er den danske del til?</h2>
-    <p>Den er til dig, der driver eller leder en dansk virksomhed og skal afgøre, hvad AI faktisk kan overtage, før du vælger værktøj. Guiderne tager udgangspunkt i konkrete opgaver, ikke i teknologien.</p>
-    <p>Er begreberne nye, så start med <a href="/da/hvad-er-en-ai-agent/">Hvad er en AI-agent?</a>, der forklarer forskellen på agent, chatbot og assistent og hvad en agent koster at drive. <a href="/da/ai-agenter/">AI-agenter: guide for danske virksomheder</a> viser fem opgaver, en agent kan tage, hvor grænsen går, og hvordan I fordeler godkendelserne. Vil du vide, hvad der er værd at automatisere først, giver <a href="/da/ai-automatisering/">AI-automatisering</a> fem opgaver, fire tests til at vælge og et gennemgået eksempel på lead-opfølgning. Og når I skal vælge værktøj, sammenligner <a href="/da/ai-vaerktoejer/">AI-værktøjer til virksomheder</a> de fire slags og peger på, hvad I skal spørge en leverandør om data. Vil du se det i praksis, viser de fire gratis webinarer i <a href="/da/saet-stroem/">Sæt strøm til din forretning</a> ét stykke arbejde ad gangen, fra bogføring og indhold til salg og kundeservice. Vil du se et konkret tilbud, samler <a href="/marketplace/accounting/">Månedens bilag</a> månedens kvitteringer og bankposter i et udkast, som en bogholder gennemgår.</p>
-
-    <h2>Læs på dansk</h2>
-    <div class="doc-cards">
-      <a class="doc-card" href="/da/hvad-er-en-ai-agent/">
-        <div class="doc-card__title">Hvad er en AI-agent? Forklaret til dig, der skal beslutte, om virksomheden har brug for en</div>
-        <div class="doc-card__desc">Hvad er en AI-agent, og hvad er forskellen på agent, chatbot og assistent? Tre konkrete opgaver, hvad det koster at drive, og hvornår du ikke skal bruge en.</div>
-        <div class="doc-card__arrow">Læs &rarr;</div>
-      </a>
-      <a class="doc-card" href="/da/ai-agenter/">
-        <div class="doc-card__title">AI-agenter: guide for danske virksomheder</div>
-        <div class="doc-card__desc">Fem opgaver en dansk virksomhed kan give til en AI-agent, hvor grænsen går, og hvordan I kommer i gang med godkendelser.</div>
-        <div class="doc-card__arrow">Læs &rarr;</div>
-      </a>
-      <a class="doc-card" href="/da/ai-automatisering/">
-        <div class="doc-card__title">AI-automatisering: de første opgaver at automatisere</div>
-        <div class="doc-card__desc">De fem første opgaver at automatisere med AI i en virksomhed, fire tests til at vælge, og et gennemgået eksempel på lead-opfølgning med godkendelse.</div>
-        <div class="doc-card__arrow">Læs &rarr;</div>
-      </a>
-      <a class="doc-card" href="/da/ai-vaerktoejer/">
-        <div class="doc-card__title">Bedste AI-værktøjer til virksomheder: 4 slags og hvordan I vælger</div>
-        <div class="doc-card__desc">De fire slags AI-værktøjer (assistent, automatisering, opgaveværktøj, agent-arbejdsplads), hvornår hver passer, og hvad I skal spørge om databeskyttelse.</div>
-        <div class="doc-card__arrow">Læs &rarr;</div>
-      </a>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="/da/" style="display:flex;align-items:center;gap:.5rem">
+      <svg width="28" height="28" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="80" height="80" rx="14" fill="#111110"/>
+        <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+      </svg>
+      Maskin
+    </a>
+    <ul class="nav__links">
+      <li><a href="#use-cases">Anvendelse</a></li>
+      <li><a href="/marketplace/">Marketplace</a></li>
+      <li><a href="#method">Sådan fungerer det</a></li>
+      <li><a href="#pricing">Priser</a></li>
+      <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a class="nav__login" href="/login">Log ind</a></li>
+      <li><a class="nav__signup" href="/signup">Opret konto</a></li>
+    </ul>
+    <div class="nav__mobile-actions">
+      <a class="nav__mobile-signup" href="/signup">Opret konto</a>
+      <button class="nav__hamburger" id="navHamburger" aria-label="Åbn menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <p>Resten af sitet, inklusive dokumentationen, er på engelsk. <a href="/docs/" lang="en">Gå til dokumentationen (engelsk)</a>.</p>
+  </div>
+</nav>
+<!-- Mobile nav drawer -->
+<nav class="nav__drawer" id="navDrawer" aria-label="Mobilnavigation">
+  <ul>
+    <li><a href="#use-cases">Anvendelse</a></li>
+    <li><a href="/marketplace/">Marketplace</a></li>
+    <li><a href="#method">Sådan fungerer det</a></li>
+    <li><a href="#pricing">Priser</a></li>
+    <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+    <li><a href="/login">Log ind</a></li>
+  </ul>
+  <a class="nav__drawer-cta" href="/signup">Opret konto gratis →</a>
+</nav>
 
-    <div class="post-cta">
-      <h2>Start med ét job og et menneske på knappen</h2>
-      <p>Apache 2.0 og kan selvhostes.</p>
-      <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Selvhost fra GitHub</a>
-        <a class="btn-secondary" href="/bookseb" target="_blank" rel="noopener">Book en prøve</a>
+<!-- ═══════════════════════════════════════════════════ HERO -->
+<section class="hero section">
+  <div class="hero__glow"></div>
+  <div class="wrap">
+    <div class="hero__grid hero__grid--single">
+      <div class="hero__copy">
+        <h1 class="hero__headline">Ansæt AI-agenter.<br>Få arbejdet <em>gjort</em>.</h1>
+        <p class="hero__sub">Dit team bruger ugen på tilbud, fakturaer, kundemails og rapporter.</p>
+        <p class="hero__sub">Flere medarbejdere koster tid og penge. En chatbot besvarer kun spørgsmål, så nogen skal stadig udføre arbejdet.</p>
+        <p class="hero__sub hero__sub--solution">Maskin-agenter klarer rutinearbejdet i de værktøjer, du allerede bruger. En person godkender hvert resultat, før det bliver sendt.</p>
+        <div class="hero__actions">
+          <a class="btn-primary" href="https://maskin.io/bookseb">Book et opkald</a>
+        </div>
       </div>
     </div>
-  </main>
-</div>
+  </div>
+</section>
 
-<script src="/docs/docs.js"></script>
+<!-- ═══════════════════════════════════════════════════ PROOF STRIP -->
+<section class="proof-strip">
+  <div class="wrap">
+    <p class="proof-strip__text">Maskin-teamet klarer selv den daglige opfølgning på salg, markedsføring og produktarbejde med AI-agenter. Mennesker træffer beslutningerne.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ HIRE, BRIEF, APPROVE -->
+<section class="section" id="method">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">Sådan fungerer det</div>
+      <h2 class="section-title">Ansæt, forklar, godkend.</h2>
+    </div>
+
+    <div class="how-grid how-grid--3">
+      <div class="how-card reveal">
+        <div class="how-card__num">01</div>
+        <h3 class="how-card__title">Ansæt</h3>
+        <p class="how-card__body">Fortæl Maskin-teamet på et kort opkald, hvilken opgave der tager mest tid. Den opgave er din første ansættelse.</p>
+      </div>
+      <div class="how-card reveal reveal--d1">
+        <div class="how-card__num">02</div>
+        <h3 class="how-card__title">Forklar</h3>
+        <p class="how-card__body">Beskriv opgaven med almindelige ord. Maskin-teamet sætter agenten op i de værktøjer, du allerede bruger.</p>
+      </div>
+      <div class="how-card reveal reveal--d2">
+        <div class="how-card__num">03</div>
+        <h3 class="how-card__title">Godkend</h3>
+        <p class="how-card__body">Intet bliver sendt, før en person, du vælger, siger ja.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ FOUR PARTS -->
+<section class="section" id="how-it-works">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">Sådan fungerer det</div>
+      <h2 class="section-title">For You, Flows, Chat, Items.</h2>
+    </div>
+
+    <div class="how-grid">
+      <div class="how-card reveal">
+        <div class="how-card__num">01</div>
+        <h3 class="how-card__title">For You</h3>
+        <p class="how-card__body">Det eneste sted, hvor du bliver bedt om at tage stilling. En kort, prioriteret liste over det, der venter på dig, for eksempel &ldquo;godkend dette svar, før det bliver sendt&rdquo;.</p>
+      </div>
+      <div class="how-card reveal reveal--d1">
+        <div class="how-card__num">02</div>
+        <h3 class="how-card__title">Flows</h3>
+        <p class="how-card__body">De gentagne opgaver, der kører i baggrunden, fra et signal kommer ind, til et resultat er klar. For eksempel læser et support-Flow en henvendelse, skriver et udkast til svar og venter på dit ja.</p>
+      </div>
+      <div class="how-card reveal reveal--d2">
+        <div class="how-card__num">03</div>
+        <h3 class="how-card__title">Chat</h3>
+        <p class="how-card__body">Tal med en agent, der allerede kender dit arbejde og dine Items. Spørg, hvorfor den gjorde noget, eller ændr, hvad den skal gøre næste gang. Det er forskellen fra en almindelig chatbot, der starter fra bunden hver gang.</p>
+      </div>
+      <div class="how-card reveal reveal--d3">
+        <div class="how-card__num">04</div>
+        <h3 class="how-card__title">Items</h3>
+        <p class="how-card__body">Den fælles post, som alle Flows læser og opdaterer. For eksempel bliver en indsigt til et væddemål, som bliver til en opgave. Alle tre ligger samme sted.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ JOBS -->
+<section class="section section--linen" id="use-cases">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">Opgaver, du kan give videre</div>
+      <h2 class="section-title">Opgaverne, der fylder hele ugen.</h2>
+    </div>
+
+    <ul class="jobs-list reveal">
+      <li class="jobs-list__item">
+        <span class="jobs-list__role">Opfølgning på salg</span>
+        <span class="jobs-list__line">Skriver et udkast til næste besked til alle potentielle kunder, der ikke har svaret. En person godkender beskeden, før den bliver sendt.</span>
+      </li>
+      <li class="jobs-list__item">
+        <span class="jobs-list__role">Kundesvar</span>
+        <span class="jobs-list__line">Et første svar er klar på få minutter. De svære sager sendes til den rette person.</span>
+      </li>
+      <li class="jobs-list__item">
+        <span class="jobs-list__role">For sent betalte fakturaer</span>
+        <span class="jobs-list__line">Finder de fakturaer, der er forfaldne, og skriver en høflig påmindelse til hver enkelt.</span>
+      </li>
+      <li class="jobs-list__item">
+        <span class="jobs-list__role">Ugentlig oversigt</span>
+        <span class="jobs-list__line">Hvad er kommet ind, hvad er forfaldent, og hvad kræver en beslutning? Klar hver mandag.</span>
+      </li>
+      <li class="jobs-list__item">
+        <span class="jobs-list__role">Research</span>
+        <span class="jobs-list__line">Undersøger et spørgsmål og skriver en kort opsummering.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ ONE JOB IN PROGRESS -->
+<section class="section">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">Se en opgave i gang</div>
+      <h2 class="section-title">Sådan kan en mandag se ud.</h2>
+      <p class="section-sub" style="margin-top:.875rem">Et eksempel, ikke en rigtig kunde: opfølgning på for sent betalte fakturaer.</p>
+    </div>
+
+    <ol class="example-steps reveal">
+      <li><span class="example-steps__time">08:02</span><span>Agenten åbner dit regnskabsværktøj og finder de 6 fakturaer, der er forfaldne.</span></li>
+      <li><span class="example-steps__time">08:09</span><span>Den skriver en høflig påmindelse til hver enkelt i din tone.</span></li>
+      <li><span class="example-steps__time">08:10</span><span>Den spørger: &ldquo;Skal jeg sende de 6 påmindelser?&rdquo; Du siger ja til 5 og retter 1.</span></li>
+      <li><span class="example-steps__time">08:11</span><span>Sendt.</span></li>
+    </ol>
+    <p class="example-steps__after reveal">Du brugte to minutter. Agenten klarede resten.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ YOU STAY IN CHARGE -->
+<section class="section section--linen">
+  <div class="wrap">
+    <div class="reveal" style="max-width:640px">
+      <div class="section-tag">Du bestemmer</div>
+      <h2 class="section-title">Intet bliver sendt uden dit ja.</h2>
+      <p class="section-sub" style="margin-top:.875rem">Intet bliver sendt til en kunde, leverandør eller din revisor, før en person, du vælger, siger ja.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ PRICING
+     PRICES LIVE HERE ONLY. Pricing is in flux: change the two amounts, the setup line and the currency note
+     in this block and nowhere else (the FAQ answer points back to this block and repeats no numbers). -->
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <div class="section-tag">Priser</div>
+      <h2 class="section-title">To planer. Én pris for hele teamet.</h2>
+      <p class="section-sub" style="margin:.875rem auto 0">Prisen gælder pr. arbejdsområde, ikke pr. person, i kroner og uden moms. Faktureres månedligt. Du får den aktuelle pris, når du booker et opkald.</p>
+    </div>
+
+    <div class="pricing-grid pricing-grid--2 reveal" style="margin-top:3rem">
+      <div class="pricing-card">
+        <div class="pricing-card__header">
+          <div class="pricing-card__name">Pro</div>
+          <div class="pricing-card__price"><span class="pricing-card__amount">Pris ved opkald</span><span class="pricing-card__per"></span></div>
+        </div>
+        <a class="pricing-card__cta btn-secondary" href="https://maskin.io/bookseb">Book a call</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card__header">
+          <div class="pricing-card__name">Starter</div>
+          <div class="pricing-card__price"><span class="pricing-card__amount">Pris ved opkald</span><span class="pricing-card__per"></span></div>
+        </div>
+        <a class="pricing-card__cta btn-secondary" href="https://maskin.io/bookseb">Book a call</a>
+      </div>
+    </div>
+
+    <p class="pricing-note reveal">Hver ny kunde får en gratis introduktion og opsætning på 60 minutter med Maskin-teamet. <a href="https://maskin.io/bookseb">Book den her</a>.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ FOR TECHNICAL TEAMS -->
+<section class="section section--linen" id="technical">
+  <div class="wrap">
+    <div class="reveal" style="max-width:720px">
+      <div class="section-tag">Til tekniske teams</div>
+      <h2 class="section-title">Open source, og du bestemmer, hvor det kører.</h2>
+    </div>
+    <ul class="tech-list reveal">
+      <li><strong>Open source.</strong> Apache 2.0. Hver linje ligger på <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a>.</li>
+      <li><strong>Host selv.</strong> Kør det på din egen infrastruktur, eller brug den administrerede løsning. <a href="/docs/self-hosted-ai-workspace/">AI-arbejdsområde, du selv hoster</a>. Sammenligner du muligheder? Se <a href="/alternatives/self-hosted-ai-agents/">oversigten over AI-agenter, du selv kan hoste, i 2026</a>.</li>
+      <li><strong>Brug din egen model.</strong> Arbejdsområder, du selv hoster, og Enterprise-arbejdsområder bruger din egen Anthropic- eller OpenAI-adgang. Der lægges ikke noget oven i udgifterne til AI.</li>
+      <li><strong>Flows og Marketplace.</strong> Byg dine egne Flows, eller start med en løsning fra <a href="/marketplace/">Marketplace</a>, for eksempel <a href="/marketplace/product-discovery/">løsningen til produktudvikling</a>, der gør kundernes input til væddemål, som bliver ført ud i livet. Er begreberne nye for dig? Læs om <a href="/docs/concepts/">begreberne</a>.</li>
+      <li><strong>Agenter kan læse med.</strong> Agenter styrer hvert Item med <a href="/docs/mcp-tools/">MCP-værktøjerne</a>, indlæser <a href="/docs/learn/agent-skills/">agentfærdigheder</a> og læser en <a href="/marketplace/knowledge-wiki/">LLM-wiki</a>, før de svarer.</li>
+      <li><strong>Gratis introduktion.</strong> Maskin-teamet sætter dit første Flow op sammen med dig. <a href="/onboarding/">Book en gratis introduktion på 60 minutter</a>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ QUESTIONS -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="faq-header reveal">
+      <div class="section-tag">Svar på dine spørgsmål</div>
+      <h2 class="section-title">Enkle spørgsmål. Klare svar.</h2>
+    </div>
+
+    <div class="faq-grid faq-grid--single reveal">
+
+      <div class="faq-item">
+        <div class="faq-item__q">Skal vi være tekniske?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">Nej. Du beskriver opgaven med almindelige ord. Maskin-teamet står for opsætningen.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">Hvad hvis den laver en fejl?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">Den kan ikke sende noget uden godkendelse. Så fejl bliver fanget, før en kunde ser dem. Derfor starter alle opgaver som udkast, der ikke kan sendes.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">Er det bare en chatbot?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">Nej. En chatbot besvarer spørgsmål. En Maskin-agent udfører opgaven og beder dig derefter om at godkende resultatet.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">Hvad koster det?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">Der er to dele: én månedlig pris pr. arbejdsområde, ikke pr. person, og en gratis introduktion og opsætning på 60 minutter for hver ny kunde. Du får den aktuelle pris, når du booker et opkald. Priser er i kroner og uden moms.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">Hvordan adskiller det sig fra Productboard eller værktøjer til produktplaner?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">Productboard er bygget til at indsamle feedback og vise produktplaner. Maskin samler kundernes input, beslutningen og resultatet i én post. Der er ikke nogen kundeportal eller visning af produktplaner. <a href="/alternatives/productboard/">Læs sammenligningen med Productboard</a>.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__q">Hvad skete der med loops og objects?
+          <svg class="faq-item__q-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div class="faq-item__a">Flows hed tidligere loops, og Items hed tidligere objects. Det er det samme, bare med nye navne.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section section--linen" id="laes-paa-dansk">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-tag">Dansk</div>
+      <h2 class="section-title">Læs på dansk.</h2>
+    </div>
+    <ul class="jobs-list reveal">
+      <li class="jobs-list__item">
+        <span class="jobs-list__role"><a href="/da/hvad-er-en-ai-agent/">Hvad er en AI-agent?</a></span>
+        <span class="jobs-list__line">Forskellen på agent, chatbot og assistent, tre konkrete opgaver og hvad det koster at drive en.</span>
+      </li>
+      <li class="jobs-list__item">
+        <span class="jobs-list__role"><a href="/da/ai-agenter/">AI-agenter</a></span>
+        <span class="jobs-list__line">Fem opgaver en dansk virksomhed kan give til en AI-agent, hvor grænsen går, og hvordan I kommer i gang med godkendelser.</span>
+      </li>
+      <li class="jobs-list__item">
+        <span class="jobs-list__role"><a href="/da/ai-automatisering/">AI-automatisering</a></span>
+        <span class="jobs-list__line">De fem første opgaver at automatisere med AI, fire tests til at vælge, og et gennemgået eksempel på lead-opfølgning.</span>
+      </li>
+      <li class="jobs-list__item">
+        <span class="jobs-list__role"><a href="/da/ai-vaerktoejer/">AI-værktøjer til virksomheder</a></span>
+        <span class="jobs-list__line">De fire slags AI-værktøjer, hvornår hver passer, og hvad I skal spørge en leverandør om databeskyttelse.</span>
+      </li>
+      <li class="jobs-list__item">
+        <span class="jobs-list__role"><a href="/da/saet-stroem/">Sæt strøm til din forretning</a></span>
+        <span class="jobs-list__line">Fem gratis webinarer, der viser ét stykke arbejde ad gangen, fra kunder og bogføring til salg og kundeservice.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ REPEAT CTA -->
+<section class="section cta-section section--linen">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;max-width:640px;margin-inline:auto">
+      <h2 class="section-title">Fortæl Maskin-teamet, hvilken opgave du først vil give videre.</h2>
+      <div class="cta-actions" style="justify-content:center;margin-top:2rem">
+        <a class="btn-primary" href="https://maskin.io/bookseb">Book et opkald</a>
+      </div>
+      <p class="cta-email-note" style="margin-top:1.25rem;font-size:.875rem;color:var(--ink-2)">Foretrækker du e-mail? <!--email_off--><a href="mailto:ai@maskin.io" style="color:var(--accent);font-weight:500">ai@maskin.io</a><!--/email_off--></p>
+      <p class="cta-founder-note">Bygget i København af <a href="https://vaerksted.ai" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px;opacity:.7">Værksted</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <span class="footer__logo" style="display:flex;align-items:center;gap:.5rem">
+          <svg width="22" height="22" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect class="footer__logo-svg-bg" width="80" height="80" rx="14" fill="#FAFAF8"/>
+            <path class="footer__logo-svg-path" d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#111110" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+          </svg>
+          Maskin
+        </span>
+        <span class="footer__def"><em>Maskin</em> — skandinavisk for “maskine”.</span>
+      </div>
+      <ul class="footer__links">
+        <li><a href="/docs/self-hosted-ai-workspace/">AI-arbejdsområde, du selv hoster</a></li>
+        <li><a href="/docs/ai-product-management-tool/">Produktstyring med AI</a></li>
+        <li><a href="/changelog/">Ændringslog</a></li>
+        <li><a href="https://maskin.io/docs/">Dokumentation</a></li>
+        <li><a href="/privacy/">Privatliv</a></li>
+        <li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book et møde</a></li>
+        <li><!--email_off--><a href="mailto:ai@maskin.io">Kontakt</a><!--/email_off--></li>
+      </ul>
+      <span class="footer__copy">© 2026 <a href="https://vaerksted.ai" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Værksted</a> · Apache 2.0</span>
+      <button class="theme-toggle" id="themeToggle" aria-label="Skift mørk tilstand" title="Skift mørk tilstand">
+        <svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Hamburger menu ─────────────────────────────── */
+const hamburger = document.getElementById('navHamburger');
+const drawer    = document.getElementById('navDrawer');
+if (hamburger && drawer) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  // Close on link click
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      drawer.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
+/* ── NAV scroll ────────────────────────────────── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 24);
+}, { passive: true });
+
+/* ── Scroll reveals ────────────────────────────── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ── FAQ accordion ─────────────────────────────── */
+document.querySelectorAll('.faq-item').forEach(item => {
+  // Make each item a real, focusable control for keyboard + screen-reader users
+  item.setAttribute('role', 'button');
+  item.setAttribute('tabindex', '0');
+  item.setAttribute('aria-expanded', 'false');
+
+  const toggle = () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(o => {
+      o.classList.remove('open');
+      o.setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      item.setAttribute('aria-expanded', 'true');
+    }
+  };
+
+  item.addEventListener('click', toggle);
+  item.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+  });
+});
+
+/* ── Loop diagram animation ────────────────────── */
+const steps = [
+  { card:'card-insight',   paths:['path-ib'], agents:['agent-analyst'],    status:'Analyst surfaces a signal → insight' },
+  { card:'card-bet',       paths:['path-bt'], agents:['agent-strategist'], status:'Human shapes it into a bet' },
+  { card:'card-task',      paths:['path-tk'], agents:['agent-dev'],        status:'Agents decompose and ship the work' },
+  { card:'card-knowledge', paths:['path-ki'], agents:['agent-knowledge'],  status:'Outcome measured — the org learns, loop repeats' }
+];
+
+const ALL_CARDS  = ['card-insight','card-bet','card-task','card-knowledge'];
+const ALL_PATHS  = ['path-ib','path-bt','path-tk','path-ki'];
+const ALL_AGENTS = ['agent-analyst','agent-strategist','agent-dev','agent-knowledge'];
+const statusEl   = document.getElementById('loopStatus');
+let stepIdx = 0, loopInterval = null;
+
+function runStep() {
+  const s = steps[stepIdx];
+  ALL_CARDS.forEach(id  => document.getElementById(id)?.classList.remove('active'));
+  ALL_PATHS.forEach(id  => document.getElementById(id)?.classList.remove('lit'));
+  ALL_AGENTS.forEach(id => document.getElementById(id)?.classList.remove('visible'));
+  document.getElementById(s.card)?.classList.add('active');
+  s.paths.forEach(id  => document.getElementById(id)?.classList.add('lit'));
+  s.agents.forEach(id => document.getElementById(id)?.classList.add('visible'));
+  if (statusEl) statusEl.textContent = s.status;
+  stepIdx = (stepIdx + 1) % steps.length;
+}
+
+const diagramEl = document.getElementById('loopDiagram');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (diagramEl && prefersReducedMotion) {
+  // Honor reduced motion: light the full ring once, no cycling.
+  ALL_CARDS.forEach(id  => document.getElementById(id)?.classList.add('active'));
+  ALL_PATHS.forEach(id  => document.getElementById(id)?.classList.add('lit'));
+  if (statusEl) statusEl.textContent = 'insight → bet → task → knowledge → repeat';
+} else if (diagramEl) {
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !loopInterval) {
+        runStep();
+        loopInterval = setInterval(runStep, 2200);
+      } else if (!e.isIntersecting && loopInterval) {
+        clearInterval(loopInterval);
+        loopInterval = null;
+      }
+    });
+  }, { threshold: 0.25 }).observe(diagramEl);
+}
+
+/* ── Focus the prompt input when arriving via a "Try it" link ── */
+document.querySelectorAll('a[href="#try"]').forEach(link => {
+  link.addEventListener('click', () => {
+    // Let the smooth scroll begin, then drop the cursor in the box without re-scrolling.
+    window.setTimeout(() => {
+      const input = document.getElementById('prompt-input');
+      if (input) { try { input.focus({ preventScroll: true }); } catch (e) { input.focus(); } }
+    }, 700);
+  });
+});
+
+/* ── Demo video: clean (no native controls) — click to play/pause,
+      small button to toggle sound, muted autoplay on scroll ── */
+(function () {
+  const frame = document.getElementById('demoFrame');
+  const video = document.getElementById('demoVideo');
+  if (!frame || !video) return;
+  const placeholder = frame.querySelector('.demo-placeholder');
+  const playBtn = frame.querySelector('.demo-play-btn');
+  const unmute = document.getElementById('demoUnmute');
+  const unmuteLabel = document.getElementById('demoUnmuteLabel');
+  let revealed = false;
+
+  function reveal() {
+    if (revealed) return;
+    revealed = true;
+    if (placeholder) placeholder.style.display = 'none';
+    video.style.display = 'block';
+    if (unmute) unmute.style.display = 'inline-flex';
+  }
+  function syncSound() {
+    if (!unmute) return;
+    unmute.classList.toggle('is-on', !video.muted);
+    if (unmuteLabel) unmuteLabel.textContent = video.muted ? 'Sound off' : 'Sound on';
+    unmute.setAttribute('aria-label', video.muted ? 'Turn sound on' : 'Mute');
+  }
+
+  // Click the video itself to play/pause.
+  video.addEventListener('click', () => {
+    if (video.paused) { const p = video.play(); if (p && p.catch) p.catch(() => {}); }
+    else video.pause();
+  });
+  // Sound toggle (doesn't pause the video).
+  if (unmute) unmute.addEventListener('click', (e) => {
+    e.stopPropagation();
+    video.muted = !video.muted;
+    syncSound();
+  });
+  // Manual play button (used before autoplay / under reduced motion) — start with sound.
+  if (playBtn) playBtn.addEventListener('click', () => {
+    reveal();
+    video.muted = false;
+    syncSound();
+    const p = video.play(); if (p && p.catch) p.catch(() => {});
+  });
+
+  // Autoplay muted on scroll (skip under reduced motion).
+  if (!prefersReducedMotion) {
+    new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          reveal();
+          const p = video.play();
+          if (p && p.catch) p.catch(() => {});
+          syncSound();
+        } else if (!video.paused) {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.5 }).observe(frame);
+  }
+})();
+
+/* ── Dark mode toggle ──────────────────────────── */
+(function() {
+  const root = document.documentElement;
+  const btn  = document.getElementById('themeToggle');
+  let stored;
+  try { stored = localStorage.getItem('theme'); } catch(e) {}
+
+  if (stored === 'dark' || stored === 'light') {
+    root.setAttribute('data-theme', stored);
+  }
+
+  function getEffectiveTheme() {
+    const attr = root.getAttribute('data-theme');
+    if (attr === 'dark') return 'dark';
+    if (attr === 'light') return 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const next = getEffectiveTheme() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch(e) {}
+    });
+  }
+})();
+</script>
+
+<script>
+/* ===== Prompt bar: smart-route text vs URL vs file =====
+   The submit handler dispatches a `maskin:prompt-submit` CustomEvent
+   so the inline renderer and the funnel can wire in without touching
+   this module. */
+(function() {
+  const wrap = document.getElementById('prompt-bar-wrap');
+  if (!wrap) return;
+
+  const form    = document.getElementById('prompt-form');
+  const input   = document.getElementById('prompt-input');
+  const submit  = document.getElementById('prompt-submit');
+  const fileEl  = document.getElementById('prompt-file');
+  const attachBtn = document.getElementById('prompt-attach');
+  const hint    = document.getElementById('prompt-route-hint');
+  const filePill = document.getElementById('prompt-file-pill');
+  const fileName = document.getElementById('prompt-file-name');
+  const fileClear = document.getElementById('prompt-file-clear');
+
+  const URL_RE = /^https?:\/\/[^\s]+$/i;
+
+  function classify(text, file) {
+    if (file) return 'file';
+    const trimmed = (text || '').trim();
+    if (!trimmed) return 'empty';
+    if (URL_RE.test(trimmed)) return 'url';
+    return 'text';
+  }
+
+  let attachedFile = null;
+
+  function autosize() {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 240) + 'px';
+  }
+
+  function updateRouteHint() {
+    const kind = classify(input.value, attachedFile);
+    submit.disabled = (kind === 'empty');
+    if (kind === 'empty') {
+      hint.classList.remove('is-visible');
+      hint.textContent = '';
+      return;
+    }
+    const label = {
+      text: 'Drafting your bet from <b>text</b>',
+      url:  'Reading the <b>URL</b> first',
+      file: 'Reading your <b>file</b> first'
+    }[kind];
+    hint.innerHTML = label;
+    hint.classList.add('is-visible');
+  }
+
+  function setFile(file) {
+    attachedFile = file || null;
+    if (attachedFile) {
+      fileName.textContent = attachedFile.name;
+      filePill.classList.add('is-visible');
+    } else {
+      filePill.classList.remove('is-visible');
+      fileEl.value = '';
+    }
+    updateRouteHint();
+  }
+
+  input.addEventListener('input', () => { autosize(); updateRouteHint(); });
+  fileEl.addEventListener('change', () => setFile(fileEl.files && fileEl.files[0]));
+  attachBtn.addEventListener('click', () => fileEl.click());
+  fileClear.addEventListener('click', () => setFile(null));
+
+  // Template chips: prefill the prompt, then reuse the normal input flow.
+  document.querySelectorAll('.prompt-chip--template').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const text = chip.getAttribute('data-template') || '';
+      if (!text) return;
+      input.value = text;
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+      input.focus();
+    });
+  });
+
+  let dragDepth = 0;
+  form.addEventListener('dragenter', (e) => {
+    if (!e.dataTransfer || !Array.from(e.dataTransfer.types || []).includes('Files')) return;
+    e.preventDefault();
+    dragDepth++;
+    form.classList.add('is-dragover');
+  });
+  form.addEventListener('dragover', (e) => {
+    if (!e.dataTransfer) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+  });
+  form.addEventListener('dragleave', () => {
+    dragDepth = Math.max(0, dragDepth - 1);
+    if (dragDepth === 0) form.classList.remove('is-dragover');
+  });
+  form.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dragDepth = 0;
+    form.classList.remove('is-dragover');
+    const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+    if (file) setFile(file);
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+      e.preventDefault();
+      if (!submit.disabled) form.requestSubmit();
+    }
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const kind = classify(input.value, attachedFile);
+    if (kind === 'empty') return;
+    const detail = {
+      kind,
+      text: 'I want to create a new bet: ' + input.value.trim() + '. use the workspace-observer-onboarding skill to help me create it.',
+      file: attachedFile,
+      url: kind === 'url' ? input.value.trim() : null
+    };
+    console.info('[maskin] prompt-submit', { kind, hasFile: !!attachedFile, len: detail.text.length });
+    if (window.posthog) posthog.capture('hero_prompt_submitted', { kind, has_file: !!attachedFile, length: detail.text.length });
+    form.dispatchEvent(new CustomEvent('maskin:prompt-submit', { detail, bubbles: true }));
+  });
+
+  window.__maskinPromptRoute = { classify };
+
+  autosize();
+  updateRouteHint();
+})();
+</script>
+
+<script>
+/* ===== Inline draft: save prompt + hand off to signup =====
+   Subscribes to the smart-router's `maskin:prompt-submit`, persists the
+   prompt to localStorage, and navigates to the signup URL with the
+   prompt as a query param so the post-signup flow can pick it up. */
+(function() {
+  const promptForm = document.getElementById('prompt-form');
+  const promptStream = document.getElementById('draft-stream');
+  if (!promptForm || !promptStream) return;
+
+  const pendingPromptKey = 'maskin_pending_prompt';
+  const signupUrl = (
+    location.hostname === 'localhost' ||
+    location.hostname === '127.0.0.1' ||
+    location.hostname === '::1'
+  )
+    ? 'http://localhost:5173/signup'
+    : '/signup';
+  const promptToSignupUrl = (prompt) =>
+    signupUrl + '?pending_prompt=' + encodeURIComponent(prompt);
+
+  function showSaveError() {
+    promptStream.hidden = false;
+    promptStream.className = 'draft-stream is-visible is-error';
+    promptStream.innerHTML =
+      '<div class="draft-stream-header"><span class="draft-stream-dot" aria-hidden="true"></span><span>Prompt not saved</span></div>' +
+      '<div class="draft-stream-body"><p>We could not save your prompt locally. Please try again.</p></div>';
+  }
+
+  document.addEventListener('maskin:prompt-submit', function(e) {
+    if (!e.detail || !e.detail.text) return;
+    try {
+      localStorage.setItem(pendingPromptKey, e.detail.text);
+      console.info('[maskin] prompt saved for signup', { kind: e.detail.kind, len: e.detail.text.length });
+      window.setTimeout(function() {
+        window.location.assign(promptToSignupUrl(e.detail.text));
+      }, 200);
+    } catch (err) {
+      console.error('[maskin] failed to save pending prompt', err);
+      showSaveError();
+    }
+  });
+})();
+</script>
+
+<script>
+/* ===== Funnel instrumentation =====
+   Listens for the prompt-bar CustomEvents, plus a page_view on load and
+   a signup_cta_click on any link that points at the signup path. Each
+   event carries a persistent `anonId` (localStorage) and a per-tab
+   `sessionId` (sessionStorage). Events post in small batches to the
+   public maskin endpoint via `sendBeacon` on visibility/page-hide and
+   via `fetch(keepalive)` for in-page flushes. */
+(function() {
+  var metaEl = document.querySelector('meta[name="maskin-api-base"]');
+  var apiBase = (metaEl && metaEl.getAttribute('content')) || 'https://maskin.io';
+  var ENDPOINT = apiBase + '/api/public/landing-events';
+  var SIGNUP_HREF_RE = /\/(docs\/get-started|signup|sign-up|register)(\/|$)/i;
+  var BATCH_MAX = 12;
+  var FLUSH_MS = 2500;
+
+  function uuid() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+      try { return window.crypto.randomUUID(); } catch (e) {}
+    }
+    return 'fid-' + Math.random().toString(36).slice(2, 10) + '-' + Date.now().toString(36);
+  }
+
+  function readStored(storage, key) {
+    try { return storage.getItem(key); } catch (e) { return null; }
+  }
+  function writeStored(storage, key, value) {
+    try { storage.setItem(key, value); } catch (e) {}
+  }
+
+  var anonId = readStored(window.localStorage, 'maskin_anon_id');
+  if (!anonId) {
+    anonId = uuid();
+    writeStored(window.localStorage, 'maskin_anon_id', anonId);
+  }
+  var sessionId = readStored(window.sessionStorage, 'maskin_landing_sid');
+  if (!sessionId) {
+    sessionId = uuid();
+    writeStored(window.sessionStorage, 'maskin_landing_sid', sessionId);
+  }
+
+  var queue = [];
+  var flushTimer = null;
+  var ENABLED = true;
+
+  function scheduleFlush() {
+    if (flushTimer || !ENABLED) return;
+    flushTimer = window.setTimeout(function() {
+      flushTimer = null;
+      flushQueue('timer');
+    }, FLUSH_MS);
+  }
+
+  function track(name, props) {
+    if (!ENABLED) return;
+    var ev = {
+      name: String(name),
+      ts: new Date().toISOString(),
+      anonId: anonId,
+      sessionId: sessionId
+    };
+    if (props && typeof props === 'object') ev.props = props;
+    queue.push(ev);
+    if (queue.length >= BATCH_MAX) {
+      flushQueue('full');
+    } else {
+      scheduleFlush();
+    }
+  }
+
+  function flushQueue(reason) {
+    if (queue.length === 0) return;
+    var batch = queue.splice(0, BATCH_MAX);
+    var payload = JSON.stringify({ events: batch });
+    var sent = false;
+
+    if (reason === 'pagehide' || reason === 'visibilitychange') {
+      try {
+        if (navigator.sendBeacon) {
+          var blob = new Blob([payload], { type: 'application/json' });
+          sent = navigator.sendBeacon(ENDPOINT, blob);
+        }
+      } catch (e) {}
+    }
+
+    if (!sent) {
+      try {
+        fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: payload,
+          credentials: 'omit',
+          keepalive: true
+        }).catch(function(err) {
+          console.warn('[maskin] landing-events flush failed', err);
+        });
+      } catch (err) {
+        ENABLED = false;
+        console.warn('[maskin] landing-events disabled after fetch error', err);
+      }
+    }
+  }
+
+  var referrer = document.referrer || null;
+  track('page_view', {
+    path: window.location.pathname + window.location.search,
+    referrer: referrer,
+    viewportW: window.innerWidth || null,
+    viewportH: window.innerHeight || null
+  });
+
+  document.addEventListener('maskin:prompt-submit', function(e) {
+    var d = (e && e.detail) || {};
+    track('prompt_submit', {
+      kind: d.kind || null,
+      promptChars: d.text ? d.text.length : null
+    });
+  });
+  document.addEventListener('maskin:draft-complete', function(e) {
+    var d = (e && e.detail) || {};
+    track('draft_complete', { chars: typeof d.chars === 'number' ? d.chars : null });
+  });
+  document.addEventListener('maskin:draft-malformed', function(e) {
+    var d = (e && e.detail) || {};
+    track('draft_malformed', {
+      receivedAnyDelta: !!d.receivedAnyDelta,
+      hasBuffer: !!d.buffer
+    });
+  });
+  document.addEventListener('maskin:draft-error', function(e) {
+    var d = (e && e.detail) || {};
+    track('draft_error', {
+      kind: d.kind || null,
+      status: typeof d.status === 'number' ? d.status : null
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    var t = e.target;
+    while (t && t !== document) {
+      if (t.tagName === 'A' && t.getAttribute('href')) {
+        var href = t.getAttribute('href');
+        if (SIGNUP_HREF_RE.test(href)) {
+          track('signup_cta_click', {
+            href: href,
+            label: (t.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80)
+          });
+          flushQueue('cta_click');
+          return;
+        }
+      }
+      t = t.parentNode;
+    }
+  }, true);
+
+  function onVisibility() {
+    if (document.visibilityState === 'hidden') flushQueue('visibilitychange');
+  }
+  document.addEventListener('visibilitychange', onVisibility);
+  window.addEventListener('pagehide', function() { flushQueue('pagehide'); });
+
+  window.__maskinFunnel = {
+    track: track,
+    flush: function() { flushQueue('manual'); },
+    queueLength: function() { return queue.length; },
+    anonId: anonId,
+    sessionId: sessionId,
+    endpoint: ENDPOINT
+  };
+})();
+</script>
 </body>
 </html>
+

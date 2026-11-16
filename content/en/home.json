@@ -130,6 +130,7 @@
     "footer.l8": "Contact",
     "footer.copy_pre": "© 2026 ",
     "footer.copy_post": "· Apache 2.0",
-    "footer.theme": "Toggle dark mode"
+    "footer.theme": "Toggle dark mode",
+    "extra.after_faq": ""
   }
 }

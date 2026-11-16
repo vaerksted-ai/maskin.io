@@ -91,6 +91,7 @@
   ],
   "external_paths": [
     "/bookseb",
+    "/login",
     "/signup"
   ]
 }

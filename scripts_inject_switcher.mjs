@@ -174,7 +174,7 @@ export function injectDist(distDir, manifest) {
     const rel = path.relative(distDir, file).split(path.sep).join('/');
     if (skip.has(pageKey(rel))) { skipped++; continue; }
     const html = fs.readFileSync(file, 'utf8');
-    const kind = rel === 'index.html' ? 'home' : /<nav\b[^>]*class="[^"]*\bdocnav\b/.test(html) ? 'docs' : null;
+    const kind = rel === 'index.html' || (/^[a-z]{2}\/index\.html$/.test(rel) && /<ul\b[^>]*class="[^"]*\bnav__links\b/.test(html)) ? 'home' : /<nav\b[^>]*class="[^"]*\bdocnav\b/.test(html) ? 'docs' : null;
     if (!kind) { errors.push(`${rel}: no docnav and not in switcher_skip, add the page to switcher_skip or give it a nav`); continue; }
     try {
       const r = injectPage(html, kind, manifest);
