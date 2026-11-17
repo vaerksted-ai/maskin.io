@@ -99,7 +99,7 @@
 
     <h2>Authorization &amp; tenant isolation</h2>
     <p>Workspace-scoped requests carry an <code>X-Workspace-Id</code> header. Workspace isolation is enforced in the API, route by route, not by database-level row security, so it depends on each route checking the workspace. Memberships carry a role (<code>owner</code>, <code>admin</code>, <code>member</code>, <code>viewer</code>). Owner and admin roles gate member management, invites, billing and workspace settings. Viewers are read-only in the app by design, and the server refuses writes from viewers except a short list of their own settings and account actions. This is enforced by a route list checked in CI.</p>
-    <p>Agents cannot send LinkedIn messages, invitations, posts, comments or edits, or post or edit Slack messages, until a person approves the exact text. Editing the text withdraws the approval.</p>
+    <p>Agents with read and write access to Slack or LinkedIn send directly by default. A person can set any agent to ask first or to be blocked, per agent and per kind of send. Agents with read-only access cannot send.</p>
 
     <h2>Credential encryption at rest</h2>
     <p>Integration credentials, including OAuth tokens, are encrypted with <strong>AES-256-GCM</strong> using <code>INTEGRATION_ENCRYPTION_KEY</code> (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as <code>iv:authTag:ciphertext</code>.</p>
