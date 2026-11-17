@@ -6288,7 +6288,6 @@ Giv kunderne hurtigere svar, uden at sidde i indbakken hele dagen.
 Kundeservice med AI: delt indbakke eller Slack?
 Få hjælp til at håndtere kundehenvendelser, besvare de typiske spørgsmål og holde styr på dialogen. Så kan du give kunderne en god oplevelse, samtidig med at du får mere ro til andre opgaver.
 Se to måder at bruge en AI-agent til kundeservice på, i en delt indbakke og i Slack, vist side om side.
-Tilmelding åbner snart. [Tilmeld dig serien](#tilmeld-serien), så får du besked.
 
 ## Tilmeld dig hele serien
 Vælg de webinarer, der passer til de opgaver, du gerne vil have hjælp til i din virksomhed. Hvert webinar kræver sin egen tilmelding på Luma, så du får linket til hvert webinar, du vil deltage i.
