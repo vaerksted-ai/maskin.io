@@ -1,4 +1,4 @@
-// page-context.js: adds page_type and language to every PostHog event.
+// page-context.js: adds page_type, language and site_area to every PostHog event.
 // Injected as the first script in <head> of every built page by build.sh, so
 // window.maskinBeforeSend exists when posthog.init runs. build.sh also adds
 // before_send: window.maskinBeforeSend to each init config.
@@ -6,6 +6,8 @@
 // language  : the page's own <html lang>, reduced to the language code (en, da, sv).
 // page_type : one fixed list. <meta name="page-type" content="..."> on the page wins.
 //             Without the meta tag the type is derived from the URL path (rules below).
+// site_area : always "landing". These built pages are the public site; the signed-in app sends
+//             "app" from its own build, and both share one host and one PostHog project.
 //
 // Page types: home, hub, article, guide, documentation, landing_page, case,
 //             comparison, changelog, legal, other
@@ -55,6 +57,7 @@
     if (event && event.properties) {
       if (event.properties.page_type == null) event.properties.page_type = pageType();
       if (event.properties.language == null) event.properties.language = language();
+      if (event.properties.site_area == null) event.properties.site_area = "landing";
     }
     return event;
   };
