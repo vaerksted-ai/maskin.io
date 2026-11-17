@@ -12,8 +12,8 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0f13" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://maskin.io/small-business/">
@@ -50,14 +50,16 @@
 <style>
 /* ─── TOKENS (mirror the site) ───────────────────────────── */
 :root {
-  --ink:        #111110;
-  --ink-2:      #5A5751;
-  --ink-3:      #9B958F;
-  --surface:    #FAFAF8;
-  --linen:      #F0EDE7;
-  --rule:       #E2DDD7;
-  --accent:     #2563EB;
-  --accent-dim: rgba(37,99,235,0.12);
+  --ink:        #10131a;
+  --ink-2:      #5a6372;
+  --ink-3:      #5a6372;
+  --surface:    #ffffff;
+  --linen:      #f6f7f9;
+  --rule:       #e5e8ec;
+  --accent:     #2545c8;
+  --accent-dim: #e8edfb;
+  --accent-hover: #1b36a0;
+  --accent-ink: #1b36a0;
 
   --ff-display: 'Schibsted Grotesk', sans-serif;
   --ff-serif:   'Newsreader', Georgia, serif;
@@ -71,55 +73,61 @@
 
   --max-w: 1280px;
   --content-w: 720px;
-  --nav-bg-scrolled: rgba(250,250,248,.92);
+  --nav-bg-scrolled: rgba(255,255,255,.92);
   --gap: clamp(1rem, 3vw, 2.5rem);
   --section-py: clamp(4rem, 9vw, 8rem);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --nav-bg-scrolled: rgba(20,20,18,.92);
-    --ink:        #ECEAE4;
-    --ink-2:      #A09A93;
-    --ink-3:      #6B6560;
-    --surface:    #141412;
-    --linen:      #1C1B18;
-    --rule:       #2A2925;
-    --accent:     #3B74F2;
-    --accent-dim: rgba(59,116,242,0.15);
+    --nav-bg-scrolled: rgba(13,15,19,.92);
+    --ink:        #e8eaee;
+    --ink-2:      #8a93a0;
+    --ink-3:      #8a93a0;
+    --surface:    #0d0f13;
+    --linen:      #12151a;
+    --rule:       #23272e;
+    --accent:     #6a8cff;
+    --accent-dim: #1c2339;
+    --accent-hover: #8da9ff;
+    --accent-ink: #a9bcff;
   }
 }
 [data-theme="dark"] {
-  --nav-bg-scrolled: rgba(20,20,18,.92);
-  --ink:        #ECEAE4;
-  --ink-2:      #A09A93;
-  --ink-3:      #6B6560;
-  --surface:    #141412;
-  --linen:      #1C1B18;
-  --rule:       #2A2925;
-  --accent:     #3B74F2;
-  --accent-dim: rgba(59,116,242,0.15);
+  --nav-bg-scrolled: rgba(13,15,19,.92);
+  --ink:        #e8eaee;
+  --ink-2:      #8a93a0;
+  --ink-3:      #8a93a0;
+  --surface:    #0d0f13;
+  --linen:      #12151a;
+  --rule:       #23272e;
+  --accent:     #6a8cff;
+  --accent-dim: #1c2339;
+  --accent-hover: #8da9ff;
+  --accent-ink: #a9bcff;
 }
 [data-theme="light"] {
-  --nav-bg-scrolled: rgba(250,250,248,.92);
-  --ink:        #111110;
-  --ink-2:      #5A5751;
-  --ink-3:      #9B958F;
-  --surface:    #FAFAF8;
-  --linen:      #F0EDE7;
-  --rule:       #E2DDD7;
-  --accent:     #2563EB;
-  --accent-dim: rgba(37,99,235,0.1);
+  --nav-bg-scrolled: rgba(255,255,255,.92);
+  --ink:        #10131a;
+  --ink-2:      #5a6372;
+  --ink-3:      #5a6372;
+  --surface:    #ffffff;
+  --linen:      #f6f7f9;
+  --rule:       #e5e8ec;
+  --accent:     #2545c8;
+  --accent-dim: #e8edfb;
+  --accent-hover: #1b36a0;
+  --accent-ink: #1b36a0;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .footer__logo-svg-bg  { fill: #1C1B18; }
-  :root:not([data-theme="light"]) .footer__logo-svg-path { stroke: #ECEAE4; }
-  :root:not([data-theme="light"]) .hero__trace { background: #1C1B18; }
+  :root:not([data-theme="light"]) .footer__logo-svg-bg  { fill: #12151a; }
+  :root:not([data-theme="light"]) .footer__logo-svg-path { stroke: #e8eaee; }
+  :root:not([data-theme="light"]) .hero__trace { background: #12151a; }
 }
-[data-theme="dark"] .footer__logo-svg-bg  { fill: #1C1B18; }
-[data-theme="dark"] .footer__logo-svg-path { stroke: #ECEAE4; }
-[data-theme="dark"] .hero__trace { background: #1C1B18; }
+[data-theme="dark"] .footer__logo-svg-bg  { fill: #12151a; }
+[data-theme="dark"] .footer__logo-svg-path { stroke: #e8eaee; }
+[data-theme="dark"] .hero__trace { background: #12151a; }
 
 /* ─── RESET ──────────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -165,7 +173,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .nav__login:hover{color:var(--ink)!important}
 .nav__signup{
   display:inline-flex;align-items:center;gap:.4rem;
-  padding:.4rem .9rem;background:var(--accent);color:#fff!important;
+  padding:.4rem .9rem;background:var(--ink);color:var(--surface)!important;
   border-radius:6px;font-size:.875rem!important;font-weight:600!important;
   transition:background .15s,transform .1s,opacity .15s;
 }
@@ -173,7 +181,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .nav__mobile-actions{display:none;align-items:center;gap:.5rem}
 .nav__mobile-signup{
   display:inline-flex;align-items:center;
-  padding:.375rem .75rem;background:var(--accent);color:#fff;
+  padding:.375rem .75rem;background:var(--ink);color:var(--surface);
   border-radius:6px;font-size:.8125rem;font-weight:600;text-decoration:none;
   transition:opacity .15s;
 }
@@ -222,7 +230,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   border:1.5px solid var(--ink);
   transition:background .15s,transform .1s,box-shadow .15s;
 }
-.btn-primary:hover{background:#2a2925;transform:translateY(-1px);box-shadow:0 4px 16px rgba(17,17,16,.18)}
+.btn-primary:hover{background:#23272e;transform:translateY(-1px);box-shadow:0 4px 16px rgba(16,19,26,.18)}
 .btn-secondary{
   display:inline-flex;align-items:center;gap:.5rem;
   padding:.75rem 1.5rem;background:transparent;color:var(--ink);
@@ -242,7 +250,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 .hero__glow{
   position:absolute;top:-10%;right:-5%;width:55%;height:80%;
-  background:radial-gradient(ellipse 70% 70% at 70% 40%,rgba(37,99,235,.09) 0%,transparent 70%);
+  background:radial-gradient(ellipse 70% 70% at 70% 40%,rgba(37,69,200,.09) 0%,transparent 70%);
   pointer-events:none;
 }
 .hero__eyebrow{
@@ -427,8 +435,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 /* ─── FOOTER (mirrors the site) ──────────────────────────── */
 .footer{padding-block:1.75rem;border-top:1px solid var(--rule)}
-.footer__logo-svg-bg  { fill: #FAFAF8; }
-.footer__logo-svg-path { stroke: #111110; }
+.footer__logo-svg-bg  { fill: #ffffff; }
+.footer__logo-svg-path { stroke: #10131a; }
 .footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.875rem}
 .footer__logo{font-weight:700;letter-spacing:-.02em;font-size:.875rem}
 .footer__links{display:flex;align-items:center;gap:1.5rem;list-style:none;flex-wrap:wrap}
@@ -599,8 +607,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   <div class="nav__inner">
     <a class="nav__logo" href="/" style="display:flex;align-items:center;gap:.5rem">
       <svg width="28" height="28" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="80" height="80" rx="14" fill="#111110"/>
-        <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+        <rect width="80" height="80" rx="14" fill="#10131a"/>
+        <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#ffffff" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
       </svg>
       Maskin
     </a>
@@ -824,8 +832,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       <div class="footer__brand">
         <span class="footer__logo" style="display:flex;align-items:center;gap:.5rem">
           <svg width="22" height="22" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect class="footer__logo-svg-bg" width="80" height="80" rx="14" fill="#FAFAF8"/>
-            <path class="footer__logo-svg-path" d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#111110" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+            <rect class="footer__logo-svg-bg" width="80" height="80" rx="14" fill="#ffffff"/>
+            <path class="footer__logo-svg-path" d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#10131a" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
           </svg>
           Maskin
         </span>
