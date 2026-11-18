@@ -6161,8 +6161,9 @@ A packaged capability you attach to an agent — *draft a follow-up in our voice
 
 > Source: https://maskin.io/marketplace/competitive-intelligence/
 
-# Know what changed in your market every Monday.
+# Know what changed in your market every week.
 Run a weekly market watch in Maskin so your team keeps product, positioning and pricing decisions grounded while Maskin scans for changes and writes a sourced briefing.
+![Know what changed in your market every week. The competitor watch flow.](/og-image-market-watch.png)
 
 ## The job
 Every Sunday, one page is rewritten with a quick read, what needs action, recent storylines, this week’s moves, what matters for the long view, what to watch, and the last four weeks at a glance. Each move has a source link, date and confidence rating, so you can check a price change, such as a new free tier, at its source.
