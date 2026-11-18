@@ -1,6 +1,7 @@
 > Source: https://maskin.io/marketplace/content-calendar/
 
 # A content calendar template for a month of posts
+![](/og-image-content-calendar.png)
 Run your content calendar in Maskin so your team decides what to say while Maskin plans the month, drafts to the plan and keeps every post’s status in one place.
 [Want the posts written too?](/marketplace/linkedin-content/)
 ![A month calendar with posts marked published, owner’s go, checked and draft, and empty slots left empty.](/marketplace/content-calendar/content-calendar-hero.png)
@@ -25,9 +26,10 @@ The topics, real stories and the go on every post stay human.
 2. Maskin plans the month around what the team can really approve.
 3. Maskin drafts to the plan.
 4. Choose or add a picture.
-5. **Check (human gate):** a team member checks the draft.
-6. **Owner’s go (human gate):** the owner approves the post.
+5. **Check (human gate)** a team member checks the draft.
+6. **Owner’s go (human gate)** the owner approves the post.
 7. Publish the post, read weekly reach and visits, then bring the result into the next idea.
+Amber steps are human approvals. The blue step is the close condition.
 ![The seven steps of the content calendar flow in a row: idea, plan, draft, picture, check, owner’s go, publish and read. Check and owner’s go are marked as the two gates, and an arrow runs from step 7 back to step 1.](/marketplace/content-calendar/content-calendar-flow.png)
 
 ## Trust
@@ -82,4 +84,8 @@ Reach and visits by channel.
 
 ### What should a content calendar include?
 Include buyer, topics, channels and the posts the team can review, sourced ideas, a weekly day to plan, review and publish, a team check then the owner’s go, and a weekly read of reach and visits by channel. The list above shows all seven for a made-up coffee roaster.
-Related flows on the marketplace
+
+## Read next
+- [The LinkedIn content flow](/marketplace/linkedin-content/): The posts themselves: interview, draft, editor check and your approval on every one.
+- [The product discovery flow](/marketplace/product-discovery/): Shipped work and customer signal become the ideas worth putting on the calendar.
+- [The SEO publishing flow](/marketplace/seo-publishing/): For the web pages on your calendar: one keyword per page, written, approved and published.

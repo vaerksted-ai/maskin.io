@@ -40,6 +40,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/docs/docs.css">
+<link rel="stylesheet" href="/marketplace/marketplace.css">
 
 <!-- lite-youtube-embed facade: thumbnail on load, iframe on click. Zero-cost until user clicks. -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.css">
@@ -129,62 +130,47 @@
 <nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Marketplace</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
 
 <noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
-<div class="wrap doc-layout">
-<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All flows</a></li><li><a class="" href="/marketplace/seo-publishing/">The SEO publishing flow</a></li><li><a class="" href="/marketplace/outbound/">The outbound flow</a></li><li><a class="" href="/marketplace/lead-qualification/">The lead qualification flow</a></li><li><a class="" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki flow</a></li><li><a class="" href="/marketplace/linkedin-content/">The LinkedIn content flow</a></li><li><a class="" href="/marketplace/product-delivery/">The product delivery flow</a></li><li><a class="" href="/marketplace/accounting/">Månedens bilag (dansk)</a></li><li><a class="" href="/loops/ai-customer-feedback-loop/">AI customer feedback loop</a></li><li><a class="" href="/marketplace/competitive-intelligence/">The competitive intelligence flow</a></li><li><a class="is-nested" href="/loops/competitive-intelligence/">Competitive intelligence flow: how it works</a></li><li><a class="is-nested" href="/loops/loops-that-graduate/">Flows that graduate: the trust ladder</a></li><!-- TEMP-SWAP (task 9bf88671): revert to href="/marketplace/product-discovery/" + "The product discovery loop" (with is-active + aria-current="page") when the loop flips live. Mirrors commits 512b1f1 / 2a327bd. --><li><a class="" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="" href="/docs/bet-based-product-planning/">Bet-based product planning</a></li><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li></ul></nav></aside>
-  <main class="doc-content">
-    <p class="doc-breadcrumb"><a href="/marketplace/">Marketplace</a> / The product discovery flow</p>
-    <p class="eyebrow">Flow &middot; Product</p>
-
+<main class="wrap mp" id="mp">
+  
+  <nav class="mp-crumb" aria-label="Breadcrumb"><a href="/marketplace/">Marketplace</a><span aria-hidden="true">/</span><a href="/marketplace/#product">Product</a><span aria-hidden="true">/</span><span>The product discovery flow</span></nav>
+  <header class="mp-hero">
+    <div class="mp-hero__text">
+      <div class="mp-kind"><span class="mp-ico" aria-hidden="true">PD</span><span>Flow &middot; Product</span></div>
+      <h1>Close the loop from customer signal to shipped bet.</h1>
+      <p class="mp-lead">Maskin reads customer calls, requests and market news against your strategy, so you know what to build next, with evidence behind every opportunity.</p>
+      <div class="mp-actions" data-loop-install="product-discovery" data-install-position="top"><a class="mp-btn" href="/install/product-discovery-loop" data-install-link data-install-slug="product-discovery">Install this flow</a><a class="mp-btn mp-btn--ghost" href="#video"><svg width="12" height="14" viewBox="0 0 12 14" aria-hidden="true"><path d="M1 1l10 6-10 6z" fill="currentColor"/></svg>Watch the video</a></div>
+      
+    </div>
+    <figure class="mp-hero__img"><img src="/og-image-product-discovery.png" width="1200" height="630" alt="The product discovery flow &mdash; customer signal, typed insight, shaped bet." fetchpriority="high"></figure>
+  </header>
+  <div class="mp-body">
+    <nav class="mp-toc" aria-label="On this page"><span class="mp-toc__title">On this page</span><a href="#video">See it run</a><a href="#steps">The 4-step flow</a><a href="#what-you-need-to-run-it">What you need to run it</a><a href="#example-week">Example week</a><a href="#what-this-flow-is-built-with">What this flow is built with</a></nav>
+    <div class="mp-main doc-content">
+  <section class="mp-sec mp-intro">
     <!-- HERO: H1 + subhead + hero visual -->
-    <h1>Close the loop from customer signal to shipped bet.</h1>
-    <p class="lead">Maskin reads customer calls, requests and market news against your strategy, so you know what to build next, with evidence behind every opportunity.</p>
-    <style id="loop-install-css">
-    .loop-install { margin: 1rem 0 1.75rem; }
-    .loop-install__note { font-size: .9rem; color: var(--ink-2); margin: .6rem 0 0; }
-    .loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 1.5rem; }
-    .loop-install-lead a { color: inherit; text-decoration: underline; }
-    </style>
-    <div class="loop-install" data-loop-install="product-discovery" data-install-position="top">
-      <a class="btn-primary" href="/install/product-discovery-loop" data-install-link data-install-slug="product-discovery">Install this flow</a>
-      <p class="loop-install__note">Sign in or sign up, then confirm the flow in the Maskin app.</p>
-    </div>
     <!-- STORY STRIP (4 Nov 2026, PMM positioning draft 087902d6): only shipped behaviour is written as done; step 4 is the team's own step -->
-    <div class="primitives">
-      <div class="primitive">
-        <p class="primitive__name">1. Build your strategy</p>
-        <p class="primitive__def">Write down what matters to your team. Maskin uses it to check everything it hears.</p>
-      </div>
-      <div class="primitive">
-        <p class="primitive__name">2. Find the right opportunities</p>
-        <p class="primitive__def">Maskin reads customer calls and sales meetings, watches competitors and the market, and groups what it hears into opportunities with the evidence behind each.</p>
-      </div>
-      <div class="primitive">
-        <p class="primitive__name">3. Turn them into bets</p>
-        <p class="primitive__def">Strong opportunities become bets staged at the opportunity status in your workspace.</p>
-      </div>
-      <div class="primitive">
-        <p class="primitive__name">4. Test them with customers</p>
-        <p class="primitive__def">Your team runs the customer tests, using the evidence Maskin brings.</p>
-      </div>
-    </div>
     <p>You decide which opportunities to take on. Nothing moves forward without your call.</p>
     <p class="waitlist__fallback"><em>Where this is going:</em> opportunities shown sized and ranked, and a product brief and prototype before you commit. Neither is available yet.</p>
-    <img class="hero-visual" src="/og-image-product-discovery.png" alt="The product discovery flow &mdash; customer signal, typed insight, shaped bet." width="1200" height="630">
-
     <!-- HERO BODY (rewritten 4 Nov 2026 for the product discovery story; only shipped behaviour written as done) -->
     <p>The goal is a shipped bet tied back to what customers said, not an interview scheduled. Maskin continuously takes in customer calls, sales meetings, and customer and community feedback, and watches competitors and the market. An agent keeps your written-down strategy up to date. Maskin checks what it hears against that strategy, then groups it into opportunities with the evidence behind each one. Strong opportunities become bets staged at the opportunity status in your workspace, and custom views let you shape how results look for your team. A person decides what moves forward. Checking, after a bet ships, whether it eased the problem is where this flow is heading. The same approach applies on the retention side, with <a href="/docs/at-risk-account-alerts/">the same signal-to-bet pattern applied to churn</a>. Shipped bets are also the raw material for the <a href="/marketplace/linkedin-content/">LinkedIn content flow</a>, which turns what shipped this fortnight into posts the account owner approves, and for the <a href="/marketplace/content-calendar/">content calendar</a>, where every idea comes with its source. Once a bet is shaped, the <a href="/marketplace/product-delivery/">product delivery flow</a> can take it from there: it plans the work, builds and reviews every change, and checks the result against the success criteria you wrote first. If you synthesize research in Claude Code today, <a href="/docs/learn/claude-code-for-product-managers/">Claude Code for product managers</a> covers what that setup does well and where a team record takes over.</p>
-
     <!-- POSITIONING LINE (verbatim from PMM copy deck section 4) -->
     <p class="positioning-line">For product teams whose research folder never quite makes it into the roadmap.</p>
-
     <!-- VIDEO SLOT (lite-youtube facade on Video 2, pairing confirmed by PMM 2026-10-14) -->
-    <div class="video-embed" role="figure" aria-label="Video: Product discovery as a flow">
-      <lite-youtube videoid="FBs2yA1IdtM" playlabel="Play: Product discovery as a loop"></lite-youtube>
-    </div>
-
-
     <!-- ADD-ON SECTIONS (18 Nov 2026, approved draft 77db951f, wording drafted with openai/gpt-6-luna) -->
-    <h2>What you need to run it</h2>
+  </section>
+  <section class="mp-sec" id="video-sec"><h2 id="video">See it run</h2>
+    <div class="mp-video"><lite-youtube videoid="FBs2yA1IdtM" playlabel="Play: Product discovery as a loop"></lite-youtube></div></section>
+  <section class="mp-sec"><h2 id="steps">The 4-step flow</h2>
+      <ol class="mp-steps">
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body"><strong class="mp-step__title">Build your strategy</strong> Write down what matters to your team. Maskin uses it to check everything it hears.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body"><strong class="mp-step__title">Find the right opportunities</strong> Maskin reads customer calls and sales meetings, watches competitors and the market, and groups what it hears into opportunities with the evidence behind each.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body"><strong class="mp-step__title">Turn them into bets</strong> Strong opportunities become bets staged at the opportunity status in your workspace.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body"><strong class="mp-step__title">Test them with customers</strong> Your team runs the customer tests, using the evidence Maskin brings.</div></li>
+      </ol>
+      <div class="mp-strip" aria-hidden="true"><div class="mp-strip__item"><div class="mp-strip__node"><span class="mp-step__n"></span><span>Build your strategy</span></div></div><div class="mp-strip__item"><div class="mp-strip__node"><span class="mp-step__n"></span><span>Find the right opportunities</span></div></div><div class="mp-strip__item"><div class="mp-strip__node"><span class="mp-step__n"></span><span>Turn them into bets</span></div></div><div class="mp-strip__item"><div class="mp-strip__node"><span class="mp-step__n"></span><span>Test them with customers</span></div></div></div>
+  </section>
+  <section class="mp-sec">
+    <h2 id="what-you-need-to-run-it">What you need to run it</h2>
     <ul>
       <li>Install the flow, then add a short strategy page about who you sell to and what you believe. The flow compares feedback with this page.</li>
       <li>Optional: connect sources you already use, such as product analytics, meeting transcripts, team chat or email. No outside account is needed.</li>
@@ -192,15 +178,17 @@
       <li>Every Sunday, two living pages are updated and checked: what the team understands about customers, and what that means for each opportunity. A Monday briefing tells one connected story of what was learned and what is worth a look.</li>
       <li>A person moves an opportunity forward. The flow does not yet show opportunities sized and ranked, or create a product brief and prototype before you commit.</li>
     </ul>
-
-    <h2>Example week</h2>
+  </section>
+  <section class="mp-sec">
+    <h2 id="example-week">Example week</h2>
     <p>Example Monday briefing for a fictional company, Brightlane (project software for architects).</p>
     <blockquote>
       <p>&ldquo;This week&rsquo;s story: small studios keep asking for offline site-visit notes. Four notes from three sources point to the same gap: two calls, one support request and one forum thread. One note from a larger firm points the other way. One opportunity, &lsquo;offline site notes&rsquo;, moved from new to worth shaping. Weakest link: no one has said they would pay for it. Next step for a person: decide whether to shape it this week. Also this week: two stale opportunities were paused for lack of evidence.&rdquo;</p>
     </blockquote>
-
     <!-- PRIMITIVES BELOW THE FOLD: identical on every loop page (from PMM copy deck section 6) -->
-    <h2>What this flow is built with</h2>
+  </section>
+  <section class="mp-sec">
+    <h2 id="what-this-flow-is-built-with">What this flow is built with</h2>
     <p>Named the same on every flow page so the shape is portable. Below the fold on purpose &mdash; the flow is what closes; the primitives are just the parts. Inside a flow listing, agents / MCPs / skills appear as &ldquo;built with&rdquo; components of the flow, never as top-level marketplace sections of their own.</p>
     <div class="primitives">
       <div class="primitive">
@@ -220,12 +208,15 @@
         <p class="primitive__def">A packaged capability you attach to an agent &mdash; <em>draft a follow-up in our voice</em>, <em>summarize a customer call against our discovery template</em>. Skills are the reusable pieces of judgment your team is already building without realising it.</p>
       </div>
     </div>
-    <div class="loop-install" data-loop-install="product-discovery" data-install-position="bottom">
-      <a class="btn-primary" href="/install/product-discovery-loop" data-install-link data-install-slug="product-discovery">Install this flow</a>
-      <p class="loop-install__note">Sign in or sign up, then confirm the flow in the Maskin app.</p>
+  </section>
+  <section class="mp-sec"><div class="mp-cta">
+      <div class="mp-cta__text"><h2 class="mp-cta__title">Install this flow in your workspace</h2><p class="mp-cta__note">Sign in or sign up, then confirm the flow in the Maskin app.</p></div>
+      <p class="mp-actions" data-loop-install="product-discovery" data-install-position="bottom"><a class="mp-btn" href="/install/product-discovery-loop" data-install-link data-install-slug="product-discovery">Install this flow</a></p>
+    </div></section>
+  
     </div>
-  </main>
-</div>
+  </div>
+</main>
 
 <script src="/docs/docs.js"></script>
 <script src="/marketplace-events.js" defer></script>

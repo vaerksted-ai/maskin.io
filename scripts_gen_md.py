@@ -72,6 +72,7 @@ ORDER = [
   "marketplace/content-calendar/index.html",
   "marketplace/product-delivery/index.html",
   "marketplace/competitive-intelligence/index.html",
+  "marketplace/meeting-loop/index.html",
   "marketplace/accounting/index.html",
   "da/saet-stroem/index.html",
 ]
