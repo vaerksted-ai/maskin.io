@@ -17,6 +17,17 @@ You decide which opportunities to take on. Nothing moves forward without your ca
 The goal is a shipped bet tied back to what customers said, not an interview scheduled. Maskin continuously takes in customer calls, sales meetings, and customer and community feedback, and watches competitors and the market. An agent keeps your written-down strategy up to date. Maskin checks what it hears against that strategy, then groups it into opportunities with the evidence behind each one. Strong opportunities become bets staged at the opportunity status in your workspace, and custom views let you shape how results look for your team. A person decides what moves forward. Checking, after a bet ships, whether it eased the problem is where this flow is heading. The same approach applies on the retention side, with [the same signal-to-bet pattern applied to churn](/docs/at-risk-account-alerts/). Shipped bets are also the raw material for the [LinkedIn content flow](/marketplace/linkedin-content/), which turns what shipped this fortnight into posts the account owner approves, and for the [content calendar](/marketplace/content-calendar/), where every idea comes with its source. Once a bet is shaped, the [product delivery flow](/marketplace/product-delivery/) can take it from there: it plans the work, builds and reviews every change, and checks the result against the success criteria you wrote first. If you synthesize research in Claude Code today, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers what that setup does well and where a team record takes over.
 For product teams whose research folder never quite makes it into the roadmap.
 
+## What you need to run it
+- Install the flow, then add a short strategy page about who you sell to and what you believe. The flow compares feedback with this page.
+- Optional: connect sources you already use, such as product analytics, meeting transcripts, team chat or email. No outside account is needed.
+- The flow reviews new notes every weekday, groups repeated themes three mornings a week, and rechecks stale opportunities on a schedule. Weak ones can be paused.
+- Every Sunday, two living pages are updated and checked: what the team understands about customers, and what that means for each opportunity. A Monday briefing tells one connected story of what was learned and what is worth a look.
+- A person moves an opportunity forward. The flow does not yet show opportunities sized and ranked, or create a product brief and prototype before you commit.
+
+## Example week
+Example Monday briefing for a fictional company, Brightlane (project software for architects).
+“This week’s story: small studios keep asking for offline site-visit notes. Four notes from three sources point to the same gap: two calls, one support request and one forum thread. One note from a larger firm points the other way. One opportunity, ‘offline site notes’, moved from new to worth shaping. Weakest link: no one has said they would pay for it. Next step for a person: decide whether to shape it this week. Also this week: two stale opportunities were paused for lack of evidence.”
+
 ## What this flow is built with
 Named the same on every flow page so the shape is portable. Below the fold on purpose — the flow is what closes; the primitives are just the parts. Inside a flow listing, agents / MCPs / skills appear as “built with” components of the flow, never as top-level marketplace sections of their own.
 Flow
