@@ -18,36 +18,36 @@ A chatbot answers a question. An agentic workspace runs a loop: it observes, rea
 In Maskin, work enters through **triggers** — a Slack message, a new customer complaint, a scheduled morning scan. Agents with defined roles — not just prompts — pick it up. The Feedback Monitor reads signals, the Bet Strategist shapes them into a bet, the Developer ships, and an agent validates whether the bet hit its target.
 
 ## The closed loop: insight → bet → task → shipped → repeat
-Maskin’s core loop has four moves:
+Maskin’s core Flow has four moves:
 1. **Insight** — raw signal enters the workspace (from Slack, Intercom, PostHog, HubSpot, Reddit, X, LinkedIn, [competitor changelogs](/marketplace/competitive-intelligence/)).
 2. **Bet** — the signal is shaped into a testable bet with a clear win condition.
 3. **Task** — the bet breaks into work the team and agents execute.
 4. **Shipped + validated** — when it goes live the loop closes: outcomes are measured and the customer or requester who prompted it is notified.
-The loop repeats. Nothing is a one-shot session. Teams that want to stand this loop up on their own work start with [a free 60 minute onboarding](/onboarding/) — we set up your first self-learning loop with you, live, on your own stack.
+The Flow repeats. Nothing is a one-shot session. Teams that want to stand this Flow up on their own work start with [a free 60 minute onboarding](/onboarding/) — we set up your first self-learning Flow with you, live, on your own stack.
 
 ## The object model: humans and agents share the same objects
 Insights, bets, and tasks are first-class typed objects owned jointly by humans and agents — not chat history. Memory persists across sessions, threads attach to the work (not to a Slack channel), and an agent’s blocker sits next to the approval needed on the same object.
 This is the structural difference from a task tracker with a summariser bolted on: the **object of work** is shared, so everyone — human or agent — sees the same state.
 
 ## How it fits a product team
-Small teams operate many agents through an abstraction layer and get pulled in only for decisions that need a human. Pre-built closed loops handle the rest (see [AI product management tool](/docs/ai-product-management-tool/) and [Bet-based product planning](/docs/bet-based-product-planning/)):
+Small teams operate many agents through an abstraction layer and get pulled in only for decisions that need a human. Pre-built Flows handle the rest (see [AI product management tool](/docs/ai-product-management-tool/) and [Bet-based product planning](/docs/bet-based-product-planning/)):
 - **[Customer feedback](/loops/ai-customer-feedback-loop/)** — feedback from Slack/Intercom becomes an insight, then a bet, then a shipped change, with the customer notified.
 - **Market signals** — Reddit, X, LinkedIn and forums are monitored, synthesised into insights and turned into bets.
 - **Churn & expansion** — usage drops and error spikes are watched; [at-risk account alerts](/docs/at-risk-account-alerts/) arrive with full context and a prepared recovery plan.
 - **Lost deals → roadmap** — closed-lost reasons are weighted by ARR and shaped into roadmap bets.
 - **Competitive intelligence** — vendor changelogs and pricing pages [route battlecards to sales and feature gaps to product](/loops/competitive-intelligence/).
 - **Team knowledge** — [a wiki your agents read before they answer](/marketplace/knowledge-wiki/) compiles closed bets and shipped decisions into a living record every future agent picks up on the same graph (see [LLM wiki vs RAG](/docs/llm-wiki-vs-rag/) for how that compiled layer differs from query-time retrieval).
-- **Product discovery** — [the product discovery loop — signal to shipped bet](/marketplace/product-discovery/) keeps interviews, tickets, and reviews on the same typed graph as the bets you’re already shipping, so the loop closes on a validated bet instead of an opportunity board.
+- **Product discovery** — [the product discovery Flow — signal to shipped bet](/marketplace/product-discovery/) keeps interviews, tickets, and reviews on the same typed graph as the bets you’re already shipping, so the loop closes on a validated bet instead of an opportunity board.
 
 ## Agentic workspaces vs. what came before
 The field splits into three tiers:
 - **Agent-native platforms** — big-model vendor workspaces turned the agent loop into a platform feature.
 - **Incumbent task suites** — Notion, Asana, Jira, Linear, monday bolt AI onto trackers; the object stays a task. Looking for a [Jira open source alternative](/alternatives/open-source-jira-alternative/)? Plane, OpenProject and Taiga keep the same ticket model.
 - **Knowledge spaces** — Obsidian, Mem, Confluence, Raft hold notes but stop before the decision.
-Maskin’s edge is the loop itself on one shared object model — MCP-native, Apache-2.0, self-hostable. Inside the field there is a second cut, between products that make a persona the unit of work and products that make a typed object the unit of work; [the two camps of AI employees and composable agents](/docs/composable-ai-agents-vs-ai-employees/) are compared in full. Buyers who start from a vendor product often search for an [open-source alternative to Claude Cowork](/alternatives/claude-cowork/) or an [open-source alternative to Codex](/alternatives/open-source-alternative-to-codex/); those pages compare the options directly.
+Maskin’s edge is the Flow itself on one shared object model — MCP-native, Apache-2.0, self-hostable. Inside the field there is a second cut, between products that make a persona the unit of work and products that make a typed object the unit of work; [the two camps of AI employees and composable agents](/docs/composable-ai-agents-vs-ai-employees/) are compared in full. Buyers who start from a vendor product often search for an [open-source alternative to Claude Cowork](/alternatives/claude-cowork/) or an [open-source alternative to Codex](/alternatives/open-source-alternative-to-codex/); those pages compare the options directly.
 
 ## Getting started
-Self-host the open-source repo or go managed — either way the loop runs on the same object model. The [get-started guide](/docs/get-started/) walks through it end to end, and the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) guide covers running the closed loop on your own infrastructure with bring-your-own-model. Product teams can also start with the [product-team getting-started sequence](/solutions/product-teams/), which walks through what day one in the workspace looks like for a PM or CPO.
+Self-host the open-source repo or go managed — either way the Flow runs on the same object model. The [get-started guide](/docs/get-started/) walks through it end to end, and the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) guide covers running the closed loop on your own infrastructure with bring-your-own-model. Product teams can also start with the [product-team getting-started sequence](/solutions/product-teams/), which walks through what day one in the workspace looks like for a PM or CPO.
 
 ## FAQ
 
