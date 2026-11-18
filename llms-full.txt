@@ -5850,7 +5850,7 @@ Maskin reads customer calls, requests and market news against your strategy, so 
 ![The product discovery flow — customer signal, typed insight, shaped bet.](/og-image-product-discovery.png)
 You decide which opportunities to take on. Nothing moves forward without your call.
 *Where this is going:* opportunities shown sized and ranked, and a product brief and prototype before you commit. Neither is available yet.
-The goal is a shipped bet tied back to what customers said, not an interview scheduled. Maskin takes in customer calls, sales meetings, and customer and community feedback, and watches competitors and the market, on a set schedule rather than in real time. An agent keeps your written-down strategy up to date. Maskin checks what it hears against that strategy, then groups it into opportunities with the evidence behind each one. Strong opportunities become bets staged at the opportunity status in your workspace, and custom views let you shape how results look for your team. A person decides what moves forward. Checking, after a bet ships, whether it eased the problem is where this flow is heading. The same approach applies on the retention side, with [the same signal-to-bet pattern applied to churn](/docs/at-risk-account-alerts/). Shipped bets are also the raw material for the [LinkedIn content flow](/marketplace/linkedin-content/), which turns what shipped this fortnight into posts the account owner approves, and for the [content calendar](/marketplace/content-calendar/), where every idea comes with its source. Once a bet is shaped, the [product delivery flow](/marketplace/product-delivery/) can take it from there: it plans the work, builds and reviews every change, and checks the result against the success criteria you wrote first. If you synthesize research in Claude Code today, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers what that setup does well and where a team record takes over. One more read feeds the same opportunities: the [customer voice flow](/marketplace/customer-voice/) files what customers write as findings.
+The goal is a shipped bet tied back to what customers said, not an interview scheduled. Maskin takes in customer calls, sales meetings, and customer and community feedback, and watches competitors and the market, on a set schedule rather than in real time. An agent keeps your written-down strategy up to date. Maskin checks what it hears against that strategy, then groups it into opportunities with the evidence behind each one. Strong opportunities become bets staged at the opportunity status in your workspace, and custom views let you shape how results look for your team. A person decides what moves forward. Checking, after a bet ships, whether it eased the problem is where this flow is heading. For the usage side, the [product usage flow](/marketplace/product-usage/) reads real human usage each Monday and files findings that challenge what your team believes. The same approach applies on the retention side, with [the same signal-to-bet pattern applied to churn](/docs/at-risk-account-alerts/). Shipped bets are also the raw material for the [LinkedIn content flow](/marketplace/linkedin-content/), which turns what shipped this fortnight into posts the account owner approves, and for the [content calendar](/marketplace/content-calendar/), where every idea comes with its source. Once a bet is shaped, the [product delivery flow](/marketplace/product-delivery/) can take it from there: it plans the work, builds and reviews every change, and checks the result against the success criteria you wrote first. If you synthesize research in Claude Code today, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers what that setup does well and where a team record takes over. One more read feeds the same opportunities: the [customer voice flow](/marketplace/customer-voice/) files what customers write as findings.
 For product teams whose research folder never quite makes it into the roadmap.
 
 ## See it run
@@ -6061,7 +6061,7 @@ A shaped bet goes in, code checked against the bet’s own success criteria come
 
 ## The job
 A bet is only done when the change is live and the numbers say it worked. Most teams lose that second half. The ticket closes when the code merges, nobody goes back to check the result, and the next planning meeting starts from memory.
-This flow keeps both halves attached. Success criteria are written and checked for measurability before any work starts. The work is planned into tasks with an owner each. Every change gets reviewed against its task. The release gets a final check before it can reach main. After it ships, the flow reads your product data and your customer feedback and posts a verdict on the bet. Your team keeps the shaping taste, the merge approval, and the last word on whether the bet won. The six stages and the three decisions a person keeps are laid out in [agentic SDLC explained](/docs/learn/agentic-sdlc/).
+This flow keeps both halves attached. Success criteria are written and checked for measurability before any work starts. The work is planned into tasks with an owner each. Every change gets reviewed against its task. The release gets a final check before it can reach main. After it ships, the flow reads your product data and your customer feedback and posts a verdict on the bet. If you also want a weekly read of how people use the product, outside any one bet, the [product usage flow](/marketplace/product-usage/) files what changed or contradicts what your team believes. Your team keeps the shaping taste, the merge approval, and the last word on whether the bet won. The six stages and the three decisions a person keeps are laid out in [agentic SDLC explained](/docs/learn/agentic-sdlc/).
 It is the output side of the [product discovery flow](/marketplace/product-discovery/): discovery turns customer signal into a shaped bet, delivery turns that bet into shipped, verified code. The [bet-based planning](/docs/bet-based-product-planning/) method sits underneath both. Once a change is merged, the [product release flow](/marketplace/product-release/) bundles it into a release, prepares the notes and reads back that they are really live.
 **Replaces:** sprint-planning ceremonies · a delivery lead chasing status across tickets and pull requests · hand-run release checklists · close-out reviews nobody gets round to.
 **Stays human:** which bets are worth shaping · approving the merge to main · the final call on every bet (succeeded, failed, paused, archived).
@@ -6170,6 +6170,7 @@ Every Sunday, one page is rewritten with a quick read, what needs action, recent
 6. Every Monday, Maskin checks that the scan ran and the page was rewritten. If not, it restarts the scan once, then once more, and tells the workspace owner if it still has not run.
 7. Each month, Maskin proposes competitor list changes for a person to confirm, and prepares a longer view of where the market and customers are heading, whether the plan is right, and what to do one year ahead.
 Amber steps are human approvals.
+![Market watch flow in seven steps, from searching the last 7 days to the briefing page and the Monday restart check, then it runs again.](/marketplace/competitive-intelligence/flow.png)
 
 ## What you need to run it
 - Install the flow.
@@ -6277,6 +6278,7 @@ Sign in or sign up, then confirm the flow in the Maskin app.
 
 # Hear your customers without reading every inbox.
 Run Customer voice in Maskin so your team can make product decisions from customer feedback while Maskin reads and files messages without replying.
+![Hear your customers without reading every inbox. The customer voice flow.](/og-image-customer-voice.png)
 
 ## The job
 After a week, distinct customer requests, complaints, objections, and praise are filed as written findings with evidence for product decisions. Each finding includes the customer’s words, a source link, whether it was first-hand or second-hand, and a link to the company or contact. Each Monday, the Results tab shows up to three briefs backed by linked evidence, or says which sources were read and when.
@@ -6301,6 +6303,7 @@ After a week, distinct customer requests, complaints, objections, and praise are
 6. On weekdays, Maskin checks the sweep against its targets and runs the sweep itself if it missed the last 26 hours. If sources go quiet for a week, it says so once and names a source you could add.
 7. Each Monday, the Results tab shows up to three briefs with what was found, why it matters, how many independent voices, what is unknown, and a suggested next step. A brief appears only if Maskin has read its linked evidence. Otherwise, the tab says which sources were read and when.
 The blue step is the close condition.
+![Customer voice flow in seven steps, from reading recent customer messages to the Monday briefs for your team, then it runs again.](/marketplace/customer-voice/flow.png)
 
 ## What you need to run it
 - Install the Flow.
@@ -6331,6 +6334,7 @@ Sign in or sign up, then confirm the flow in the Maskin app.
 ## Read next
 - [Product discovery flow](/marketplace/product-discovery/): What customers and the market say, grouped into opportunities with the evidence behind each.
 - [Meeting insights flow](/marketplace/meeting-loop/): Every meeting turned into filed tasks, decisions and findings.
+- [Product usage flow](/marketplace/product-usage/): A weekly read of real usage, filing what changes what your team believes.
 - [Market watch flow](/marketplace/competitive-intelligence/): A weekly sourced briefing on what changed in your market.
 - [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.
 
@@ -6341,6 +6345,7 @@ Sign in or sign up, then confirm the flow in the Maskin app.
 
 # Get merged work to customers with notes that are really live.
 Run Product release in Maskin so your team gets merged work out to customers with notes that are really live while Maskin bundles changes and checks release status.
+![Get merged work to customers with notes that are really live. The product release flow.](/og-image-product-release.png)
 
 ## The job
 Your release is live on every surface it covers, its change log is written, and notable releases have their in-app note and public entry live and read back.
@@ -6366,6 +6371,7 @@ Your release is live on every surface it covers, its change log is written, and 
 6. If you connect a store, an optional weekday check at 08:00 UTC reports each app version's state and who takes the next step. It comments only when the state changes, retries a temporary submission failure once, and asks a person only for a store rejection or a store-only screen.
 7. When a release moves to "in review" (meaning live), Maskin reads back the notes, records the live date and note date, and adds a customer date to each listed feature or goal. It marks the release done or names what is missing and who owns it.
 Amber steps are human approvals. The blue step is the close condition.
+![Product release flow in seven steps, from reading newly merged work to reading back the notes and marking the release done, then it runs again.](/marketplace/product-release/flow.png)
 
 ## What you need to run it
 - Install the Flow.
@@ -6398,6 +6404,73 @@ Sign in or sign up, then confirm the flow in the Maskin app.
 - [Product delivery flow](/marketplace/product-delivery/): Bets in, verified code out.
 - [Customer voice flow](/marketplace/customer-voice/): Customer messages filed as written findings, never replied to.
 - [Product discovery flow](/marketplace/product-discovery/): What customers and the market say, grouped into opportunities with the evidence behind each.
+- [Product usage flow](/marketplace/product-usage/): A weekly read of real usage, filing what changes what your team believes.
+- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.
+
+
+---
+
+> Source: https://maskin.io/marketplace/product-usage/
+
+# Read your product usage every week without opening analytics.
+Run Product usage in Maskin so your team can decide what to improve while Maskin checks the feed and files findings that challenge what you believe.
+![Read your product usage every week without opening analytics. The product usage flow.](/og-image-product-usage.png)
+
+## The job
+Your team gets a written finding when product usage changes what it believes, and no update when nothing changed. Each Monday, Maskin reads the last 7 days of real human usage from the analytics tool you connect and files each result that changed or contradicts what your team believes, with the count behind every number.
+**Replaces:** A person opening the analytics tool each week to scan usage by hand.
+**Stays with your team:** Deciding whether a finding should change a product decision.
+
+## What your team keeps, what Maskin runs
+| Your team keeps | Maskin runs |
+| --- | --- |
+| Deciding which product beliefs to revisit | Finds usage that changed or contradicts what your team believes |
+| Deciding what the numbers mean for a feature or goal | Includes the count behind every number and links the finding to the feature or goal |
+| Choosing what to investigate when tracking is missing | Files a finding tagged gap when missing tracking blocks a question |
+| Deciding whether a finding merits action | Shows only briefs that would change a decision |
+| Deciding whether to change events or dashboards | Leaves events and dashboards unchanged |
+
+## How the Flow runs
+1. On Monday at 07:00 UTC, Maskin checks that daily volume looks normal and that there is no gap over 24 hours.
+2. If the feed is unhealthy, Maskin says so once on the Flow and stops without filing anything. If access is refused, it says so once and names who can grant it.
+3. If the feed is healthy, Maskin reads the last 7 days of real human usage, excluding internal and test accounts.
+4. It checks activation from sign-up to a first meaningful action, whether a second person was invited, repeat use, drop-off by product area, and mobile events if you track them.
+5. Maskin files one finding for each result that changed or contradicts what your team believes, with the count behind every number and a link to the relevant feature or goal. If missing tracking blocks a question, it files one finding tagged gap.
+6. After each Monday read, Maskin refreshes the Results tab with up to three short briefs that deserve a person’s decision, or a quiet state. Each brief says what was found, why it matters, the evidence with counts, what is unknown, and a next step.
+7. Tuesday to Friday at 07:56 UTC, an owner check checks the feed, updates the Flow’s target for weekly reads, and runs the Monday read if it did not run. A read with nothing new stays silent.
+The blue step is the close condition.
+![Product usage flow in seven steps: check the feed is healthy, say so and stop if it is not, read 7 days of real usage, check activation and drop-off, file what changes your beliefs, up to three briefs to decide on, then a Tuesday to Friday owner check before it runs again.](/marketplace/product-usage/flow.png)
+
+## What you need to run it
+- Install the Flow.
+- Connect a product analytics tool, such as PostHog, Mixpanel or Amplitude.
+- If no analytics tool is connected, the Monday read says so once and stops. If access is refused, Maskin names who can grant it.
+- You will first see the Results tab, with qualifying briefs or a quiet state.
+- Product discovery is optional. The Flow works without it.
+
+## Trust surface
+- **Human gates:** Your team decides whether a finding should change a product decision. Maskin sends nothing.
+- **Your data stays yours:** Maskin reads the analytics feed you connect and never changes events or dashboards.
+- **Fails safely:** If the feed is unhealthy or unavailable, Maskin says so once and stops without filing findings.
+
+## Example first week
+Example for fictional Brightlane, project software for architects.
+Monday: The analytics feed is healthy. Maskin reads the last 7 days, excluding Brightlane’s own team.
+Monday: The team’s meeting note says, “Mobile is where people abandon setup.”
+Monday: No mobile events are tracked, so Maskin files one finding tagged gap instead of claiming where people drop off.
+Tuesday: The Results tab shows the finding and what the team could investigate next.
+Wednesday: The owner check runs and finds nothing new.
+Thursday: The read stays silent.
+Friday: Brightlane’s team decides whether to add mobile tracking.
+
+## Install this flow in your workspace
+Sign in or sign up, then confirm the flow in the Maskin app.
+[Install this flow](/install/product-usage-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
+
+## Read next
+- [Product discovery flow](/marketplace/product-discovery/): What customers and the market say, grouped into opportunities with the evidence behind each.
+- [Customer voice flow](/marketplace/customer-voice/): Customer messages filed as written findings, never replied to.
+- [Product release flow](/marketplace/product-release/): Merged work bundled into a release with notes confirmed live.
 - [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.
 
 
