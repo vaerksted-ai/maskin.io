@@ -43,11 +43,11 @@ Amber steps are human approvals.
 
 ## Example week
 Example briefing, week of 9 March, for a fictional company, Brightlane (project software for architects).
-**Quick read:** Threat level Medium (since 2 March). A rival, Plotwise, cut its entry price by 30% and launched a free tier. Two prospects mentioned it this week. Nothing forces a change yet, but the pricing page claim “cheapest for small studios” is now weak.
-**Act now:** Head of marketing reviews the “cheapest for small studios” line by Friday.
+**Quick read:** Threat level Medium (since 2 March). A rival, Plotwise, cut its entry price by 30% and launched a free tier. Two prospects mentioned it this week. Nothing forces a change yet, but the pricing page claim “cheapest for studios” is now weak.
+**Act now:** Head of marketing reviews the “cheapest for studios” line by Friday.
 **Competitors:** Plotwise, 4 March, new free tier (source link, confidence High). Studiolane, 6 March, hired a head of partnerships from a large CAD vendor (source link, confidence Medium).
 **Learn from:** a consumer sketching app launched voice notes that turn into tasks. What to borrow: first-run setup takes one minute.
-**Customers and prospects:** small studios say they are cutting software spend this quarter (2 sources, confidence Medium).
+**Customers and prospects:** studios say they are cutting software spend this quarter (2 sources, confidence Medium).
 **Watch next:** whether Plotwise’s free tier has a seat limit. Whether Studiolane announces a partner programme.
 
 ## Install this flow in your workspace
