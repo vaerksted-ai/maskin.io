@@ -28,6 +28,7 @@ Every Sunday, one page is rewritten with a quick read, what needs action, recent
 6. Every Monday, Maskin checks that the scan ran and the page was rewritten. If not, it restarts the scan once, then once more, and tells the workspace owner if it still has not run.
 7. Each month, Maskin proposes competitor list changes for a person to confirm, and prepares a longer view of where the market and customers are heading, whether the plan is right, and what to do one year ahead.
 Amber steps are human approvals.
+![Market watch flow in seven steps, from searching the last 7 days to the briefing page and the Monday restart check, then it runs again.](/marketplace/competitive-intelligence/flow.png)
 
 ## What you need to run it
 - Install the flow.

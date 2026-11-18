@@ -2,6 +2,7 @@
 
 # Hear your customers without reading every inbox.
 Run Customer voice in Maskin so your team can make product decisions from customer feedback while Maskin reads and files messages without replying.
+![Hear your customers without reading every inbox. The customer voice flow.](/og-image-customer-voice.png)
 
 ## The job
 After a week, distinct customer requests, complaints, objections, and praise are filed as written findings with evidence for product decisions. Each finding includes the customer’s words, a source link, whether it was first-hand or second-hand, and a link to the company or contact. Each Monday, the Results tab shows up to three briefs backed by linked evidence, or says which sources were read and when.
@@ -26,6 +27,7 @@ After a week, distinct customer requests, complaints, objections, and praise are
 6. On weekdays, Maskin checks the sweep against its targets and runs the sweep itself if it missed the last 26 hours. If sources go quiet for a week, it says so once and names a source you could add.
 7. Each Monday, the Results tab shows up to three briefs with what was found, why it matters, how many independent voices, what is unknown, and a suggested next step. A brief appears only if Maskin has read its linked evidence. Otherwise, the tab says which sources were read and when.
 The blue step is the close condition.
+![Customer voice flow in seven steps, from reading recent customer messages to the Monday briefs for your team, then it runs again.](/marketplace/customer-voice/flow.png)
 
 ## What you need to run it
 - Install the Flow.
@@ -56,5 +58,6 @@ Sign in or sign up, then confirm the flow in the Maskin app.
 ## Read next
 - [Product discovery flow](/marketplace/product-discovery/): What customers and the market say, grouped into opportunities with the evidence behind each.
 - [Meeting insights flow](/marketplace/meeting-loop/): Every meeting turned into filed tasks, decisions and findings.
+- [Product usage flow](/marketplace/product-usage/): A weekly read of real usage, filing what changes what your team believes.
 - [Market watch flow](/marketplace/competitive-intelligence/): A weekly sourced briefing on what changed in your market.
 - [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.

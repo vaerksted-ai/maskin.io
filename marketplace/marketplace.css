@@ -13,6 +13,8 @@
 .mp-hero__text { flex: 1 1 300px; min-width: 0; }
 .mp-hero__img { flex: 1 1 260px; margin: 0; }
 .mp-hero__img img { display: block; width: 100%; height: auto; aspect-ratio: 1200 / 630; object-fit: cover; border-radius: 20px; border: 1px solid var(--rule); background: var(--linen); }
+.mp-flow { margin: 1.5rem 0 0; }
+.mp-flow img { display: block; width: 100%; height: auto; aspect-ratio: 1600 / 1000; border-radius: 16px; border: 1px solid var(--rule); background: var(--linen); }
 .mp-kind { display: flex; align-items: center; gap: .65rem; font-size: .875rem; color: var(--ink-3); }
 .mp-ico { display: flex; flex: none; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 10px; background: var(--linen); font-size: .8rem; font-weight: 700; color: var(--ink); }
 .mp h1 { margin: 1rem 0 0; font-size: clamp(1.75rem, 6vw, 2.5rem); font-weight: 800; letter-spacing: -.04em; line-height: 1.1; text-wrap: balance; }

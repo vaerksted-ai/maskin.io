@@ -75,6 +75,7 @@ ORDER = [
   "marketplace/meeting-loop/index.html",
   "marketplace/customer-voice/index.html",
   "marketplace/product-release/index.html",
+  "marketplace/product-usage/index.html",
   "marketplace/accounting/index.html",
   "da/saet-stroem/index.html",
 ]
