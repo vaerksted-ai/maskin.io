@@ -6436,9 +6436,8 @@ Your team gets a written finding when product usage changes what it believes, an
 3. If the feed is healthy, Maskin reads the last 7 days of real human usage, excluding internal and test accounts.
 4. It checks activation from sign-up to a first meaningful action, whether a second person was invited, repeat use, drop-off by product area, and mobile events if you track them.
 5. Maskin files one finding for each result that changed or contradicts what your team believes, with the count behind every number and a link to the relevant feature or goal. If missing tracking blocks a question, it files one finding tagged gap.
-6. After each Monday read, Maskin refreshes the Results tab with up to three short briefs that deserve a person’s decision, or a quiet state. Each brief says what was found, why it matters, the evidence with counts, what is unknown, and a next step.
+6. After each Monday read, Maskin refreshes the Results tab with up to three short briefs that deserve a person’s decision, or a quiet state.
 7. Tuesday to Friday at 07:56 UTC, an owner check checks the feed, updates the Flow’s target for weekly reads, and runs the Monday read if it did not run. A read with nothing new stays silent.
-The blue step is the close condition.
 ![Product usage flow in seven steps: check the feed is healthy, say so and stop if it is not, read 7 days of real usage, check activation and drop-off, file what changes your beliefs, up to three briefs to decide on, then a Tuesday to Friday owner check before it runs again.](/marketplace/product-usage/flow.png)
 
 ## What you need to run it
