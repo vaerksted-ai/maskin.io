@@ -179,7 +179,7 @@
         <li><strong>The win is the last step:</strong> the customer learns their feedback produced a shipped change, which builds trust and repeated signal.</li>
         <li>The loop runs on <a href="/docs/concepts/">typed objects</a> (feedback, bet, task), so an agent can carry it from signal to shipped change and close it.</li>
         <li>The differentiator vs a feedback-inbox or ticketing tool is closure. A tool that queues is not a loop.</li>
-        <li>Feedback &rarr; bet &rarr; shipped &rarr; notified is one of Maskin&rsquo;s five <a href="/marketplace/">marketplace loops</a>, alongside <a href="/docs/at-risk-account-alerts/">churn &amp; expansion</a>.</li>
+        <li>Feedback &rarr; bet &rarr; shipped &rarr; notified is one of Maskin&rsquo;s five <a href="/marketplace/">marketplace Flows</a>, alongside <a href="/docs/at-risk-account-alerts/">churn &amp; expansion</a>.</li>
       </ul>
     </div>
   </div>
@@ -189,18 +189,18 @@
   <p>Almost every product team already has feedback tools: a support inbox, an idea board, a ticketing system. What those tools have in common is that they are intake and storage. They capture feedback, maybe sort and prioritise it, and then hand it to a human to remember to do something about. The loop is missing at two points: nobody turns feedback into a shaped, time-bounded bet the team actually commits to, and nobody notifies the customer when it ships. An AI feedback loop replaces both gaps with automation over a shared object model (<a href="/docs/architecture/">Maskin architecture</a>, 2026).</p>
 
   <h2>The four moments that make it a loop</h2>
-  <p><strong>Feedback becomes a bet.</strong> Raw feedback (a support ticket, an Intercom chat, a product review) arrives as a signal. The first automated step is synthesis: group the signal, judge its weight, and shape it into a bet with a win condition. Crucially, the feedback is not parked in an inbox; it is converted into a concrete piece of work with a definition of success (Maskin architecture, 2026). For the same step run on interviews and reviews, see the <a href="/marketplace/product-discovery/">product discovery loop</a>.</p>
+  <p><strong>Feedback becomes a bet.</strong> Raw feedback (a support ticket, an Intercom chat, a product review) arrives as a signal. The first automated step is synthesis: group the signal, judge its weight, and shape it into a bet with a win condition. Crucially, the feedback is not parked in an inbox; it is converted into a concrete piece of work with a definition of success (Maskin architecture, 2026). For the same step run on interviews and reviews, see the <a href="/marketplace/product-discovery/">product discovery Flow</a>.</p>
   <p><strong>The bet ships.</strong> A shaped bet carries a driver and a win condition, so the work can be executed and validated. A human and an agent jointly own the bet: the agent runs it and gathers evidence, the human judges the outcome. When it ships, the result is measured against the win condition, not against anyone&rsquo;s memory of what was intended (<a href="/docs/what-is-loop-engineering/">loop engineering</a>, 2026).</p>
   <p><strong>The customer is notified.</strong> The step that makes this a loop rather than a pipeline is closing with the customer. When the bet ships, the person or segment that raised the feedback is told the change they asked for is live. This is what makes it a loop: a customer who is told their input produced a shipped change is more likely to keep giving high-signal feedback, and less likely to feel like they are shouting into a tool.</p>
-  <p><strong>The loop repeats.</strong> The shipped change and its outcome feed the next cycle. Patterns accumulate across loops (repeated requests, recurring themes), which sharpens the next shaping step. The learning is recorded on the objects, so the loop gets better every revolution instead of starting from scratch. Customers are not the only source: the <a href="/marketplace/competitive-intelligence/">competitive intelligence loop</a> feeds competitor changes into the same shaping step.</p>
+  <p><strong>The loop repeats.</strong> The shipped change and its outcome feed the next cycle. Patterns accumulate across loops (repeated requests, recurring themes), which sharpens the next shaping step. The learning is recorded on the objects, so the loop gets better every revolution instead of starting from scratch. Customers are not the only source: the <a href="/marketplace/competitive-intelligence/">competitive intelligence Flow</a> feeds competitor changes into the same shaping step.</p>
 
   <h2>Why a closed loop beats a feedback inbox</h2>
   <p>A feedback-inbox or ticketing tool is organised around capture; a feedback loop is organised around closure. The inbox&rsquo;s mental model is a queue to be drained, and drained queues rarely get fully drained. Feedback lands, gets triaged, and competes for attention with everything else, and the customer never learns what happened. The queue grows toward aspiration until it stops meaning anything, the same decay that breaks product backlogs (Shape Up, Basecamp, 2019). <a href="/docs/bet-vs-backlog/">Bet vs backlog</a> covers that decay in detail.</p>
   <p>Two properties separate the loop from a fancier inbox. The first is that feedback is converted into a bet, so it is not just stored; it is committed to with a time-box and a win condition. The second is that the loop notifies the customer on shipping, so it does not rely on a human to remember to close the loop. An inbox optimises for capturing everything; a loop optimises for shipping the few things that matter and telling the person who asked.</p>
 
   <h2>The object model that makes the loop automatable</h2>
-  <p>A feedback loop that finishes on its own needs the underlying work to be machine-readable. Maskin runs the loop on typed objects in a unified model (feedback, bets, and tasks are all objects connected by typed relationships), driven by triggers that fire an agent when the relevant object changes state (Maskin architecture, 2026).</p>
-  <p>Concretely: a trigger sees a piece of feedback meet a threshold, an agent shapes it into a bet with a win condition, a human approves the bet, the agent executes it, and a notification goes out through a connected channel when it ships. Inputs and notifications can cross connectors such as Slack, Intercom, PostHog, HubSpot, or GitHub, so the loop runs inside the tools the team already lives in (Maskin architecture, 2026; see the <a href="/docs/integrations/">integrations reference</a>).</p>
+  <p>A feedback loop that finishes on its own needs the underlying work to be machine-readable. Maskin runs the Flow on typed objects in a unified model (feedback, bets, and tasks are all objects connected by typed relationships), driven by triggers that fire an agent when the relevant object changes state (Maskin architecture, 2026).</p>
+  <p>Concretely: a trigger sees a piece of feedback meet a threshold, an agent shapes it into a bet with a win condition, a human approves the bet, the agent executes it, and a notification goes out through a connected channel when it ships. Inputs and notifications can cross connectors such as Slack, Intercom, PostHog, HubSpot, or GitHub, so the Flow runs inside the tools the team already lives in (Maskin architecture, 2026; see the <a href="/docs/integrations/">integrations reference</a>).</p>
   <p>The human stays on the taste decisions (which feedback deserves a bet, and whether the outcome counts as a win) while the mechanical steps run on their own. That is the same division the industry is lining up behind: agents run the loop, humans judge the outcome. Big tooling players are converging on it in 2026, with Atlassian opening its Teamwork Graph as an agent layer and reporting agentic automations up 7x in six months (Atlassian, Team &rsquo;26, 2026; Notion, 2026; Linear, 2026). The <a href="/docs/what-is-an-agentic-workspace/">agentic workspace</a> is the category this sits in.</p>
 
   <h2>The honest case for making feedback a loop</h2>
@@ -223,12 +223,12 @@
       <p class="related__title">Read next</p>
       <div class="doc-cards">
 <a class="doc-card" href="/marketplace/product-discovery/">
-        <div class="doc-card__title">The product discovery loop</div>
+        <div class="doc-card__title">The product discovery Flow</div>
         <div class="doc-card__desc">Customer signal to shipped bet: interviews, tickets and reviews clustered into candidate bets.</div>
         <div class="doc-card__arrow">Read &rarr;</div>
       </a><a class="doc-card" href="/docs/at-risk-account-alerts/">
         <div class="doc-card__title">At-risk account alerts</div>
-        <div class="doc-card__desc">The churn &amp; expansion loop, the sibling that turns usage signals into recovery bets.</div>
+        <div class="doc-card__desc">The churn &amp; expansion Flow, the sibling that turns usage signals into recovery bets.</div>
         <div class="doc-card__arrow">Read &rarr;</div>
       </a><a class="doc-card" href="/docs/bet-based-product-planning/">
         <div class="doc-card__title">Bet-based product planning</div>
@@ -243,7 +243,7 @@
     </div>
     <div class="post-cta">
       <h2>Close the loop on what customers tell you</h2>
-      <p>If a feedback queue is quietly growing and customers never hear back, that is not a feedback strategy; it is a filter for losing signal. Stand up the loop where feedback becomes a shaped bet and customers are notified when it ships. Maskin self-hosts free or runs a hosted trial for a paid team, and the feedback-to-notification loop runs on typed objects with human taste gates. Browse the <a href="/docs/">full docs</a> for the object-model spec.</p>
+      <p>If a feedback queue is quietly growing and customers never hear back, that is not a feedback strategy; it is a filter for losing signal. Stand up the Flow where feedback becomes a shaped bet and customers are notified when it ships. Maskin self-hosts free or runs a hosted trial for a paid team, and the feedback-to-notification Flow runs on typed objects with human taste gates. Browse the <a href="/docs/">full docs</a> for the object-model spec.</p>
       <div class="post-cta__actions">
         <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
         <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
