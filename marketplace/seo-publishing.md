@@ -2,10 +2,12 @@
 
 # Ship SEO pages that end when they rank, not when they publish.
 One flow from keyword bracket to indexed rank — human gates the intent read and the send-to-publish.
+This flow can't be installed yet. In the meantime, [try Maskin](/signup).
 ![A SERP for ‘seo publishing loop’: two generic AI-content results bracket a featured Maskin result whose voice is recognisably the team’s — not a generic paste. Editorial hero: ‘Rank on your voice, not a generic paste.’](/hero-seo-publishing.png)
 The SEO publishing flow closes on the outcome (a page in the target rank range), not the activity (a Notion doc marked done). Research fires the flow against a query bracket; agents draft to the winning intent; a human gates the intent read and the publish; agents track index and rank until the close condition is met. Every artifact — the query bracket, the draft, the published URL, the rank checks — lives on the same typed graph, so the next page inherits everything the last one learned.
 For product teams who own their own growth pages and are done losing weeks to *draft in Notion, publish somewhere else, forget who owns rank checks*.
-This flow can't be installed yet. In the meantime, [try Maskin](/signup).
+
+## See it run
 
 ## What an SEO content flow gets you
 The SEO publishing flow closes the gap between “we should write about X” and “X is a live, indexed, snippet-eligible page on our site.” It runs continuously, so weekly audit findings, keyword whitespace, and shipped-in-public changelog entries all end up as real pages without a human touching HTML.
@@ -16,13 +18,14 @@ The SEO publishing flow closes the gap between “we should write about X” and
 The result: pages ship on a cadence a human editor can supervise but not personally execute. The wedge over “prompt ChatGPT for a blog post” is the flow shape — approval gate, live registration checklist, measured close — not the generation. If the pages are one part of a wider month of posts, the [content calendar](/marketplace/content-calendar/) keeps every post’s status in one place.
 
 ## The seven-step SEO content flow the video walks through
-1. **Signal.** A keyword-whitespace insight or a weekly Ubersuggest audit finding fires. The insight becomes a typed object with a testable frame.
-2. **Research.** An agent walks the top 10-20 SERP results, extracts the anti-frame, and drafts a brief. A human approves the brief before writing starts.
-3. **Draft.** An agent writes the markdown content object against the approved brief, in the site’s voice.
-4. **Human approval.** An editor reads the draft, edits inline, and moves status to `published`. Override rate is the honest metric that the approval gate is real.
-5. **Publish.** An agent builds the HTML page with the correct docs shell, JSON-LD, canonical, per-page OG image, interlinking, and registers it in sitemap.xml, docs.js nav, llms.txt, and llms-full.txt in a single commit.
-6. **Measure.** An analyst tracks indexation, snippet eligibility, and traffic against the bet’s checkpoints; flagged audit issues fire as tasks routed back to the publisher.
-7. **Close.** A page counts as shipped only once it is indexed, snippet-eligible, AND being tracked. Publishing without measurement is noise.
+1. **Signal** A keyword-whitespace insight or a weekly Ubersuggest audit finding fires. The insight becomes a typed object with a testable frame.
+2. **Research** An agent walks the top 10-20 SERP results, extracts the anti-frame, and drafts a brief. A human approves the brief before writing starts.
+3. **Draft** An agent writes the markdown content object against the approved brief, in the site’s voice.
+4. **Human approval** An editor reads the draft, edits inline, and moves status to `published`. Override rate is the honest metric that the approval gate is real.
+5. **Publish** An agent builds the HTML page with the correct docs shell, JSON-LD, canonical, per-page OG image, interlinking, and registers it in sitemap.xml, docs.js nav, llms.txt, and llms-full.txt in a single commit.
+6. **Measure** An analyst tracks indexation, snippet eligibility, and traffic against the bet’s checkpoints; flagged audit issues fire as tasks routed back to the publisher.
+7. **Close** A page counts as shipped only once it is indexed, snippet-eligible, AND being tracked. Publishing without measurement is noise.
+Amber steps are human approvals. The blue step is the close condition.
 ![Flow diagram of the seven-step SEO publishing flow. Seven nodes across a single row: 01 Topic lands in queue, 02 Maskin pulls SERP + your existing pages, 03 Drafts to searcher intent in your voice, 04 Editor approves (marked as a human gate with a rounded amber square), 05 Ships to your CMS, 06 Rank tracked; refresh if it slips, 07 Every page teaches the next (marked as the close condition in blue). A dashed loop-back arc from 07 back to 01 with the caption ‘closes back to the queue — next topic reads sharper’.](/loop-flow-seo-publishing.png)
 The flow — not a pipeline that ends at publish.
 
@@ -44,4 +47,8 @@ One naming note: HubSpot's *Loop Marketing* is a framework for marketing teams. 
 
 ## Programmatic SEO and content operations: why publish this way instead of prompting ChatGPT
 Prompting a chat model for a blog post gets you a page. Running the flow gets you a page that’s indexed, snippet-eligible, tracked, and re-audited weekly by an agent that already knows the site’s conventions. The gap between the two shows up around week six, when the chat-model pages are quietly de-indexed for thin content and the flow-shaped pages are pulling traffic that compounds. The [override rate](/docs/learn/human-in-the-loop-ai/) at the approval gate is the only honest signal that the flow is real and not theatre.
-Read next
+
+## Read next
+- [The outbound flow](/marketplace/outbound/): Signal → research → draft → approval → send → reply routing → close, on your own keys.
+- [The LLM knowledge wiki flow](/marketplace/knowledge-wiki/): Turn scattered team knowledge into an LLM-native wiki agents cite instead of hallucinate.
+- [Ambient agent workspace](/docs/ambient-agent-workspace/): The workspace-graph substrate every Maskin flow runs on.

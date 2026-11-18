@@ -2,7 +2,6 @@
 
 # Get merged work to customers with notes that are really live.
 Run Product release in Maskin so your team gets merged work out to customers with notes that are really live while Maskin bundles changes and checks release status.
-Sign in or sign up, then confirm the flow in the Maskin app.
 
 ## The job
 Your release is live on every surface it covers, its change log is written, and notable releases have their in-app note and public entry live and read back.
@@ -27,6 +26,7 @@ Your release is live on every surface it covers, its change log is written, and 
 5. If Maskin is unsure whether a change is notable, it asks the product lead, then records its decision. A person is needed for a positioning shift or if product and tech leads cannot settle the release type.
 6. If you connect a store, an optional weekday check at 08:00 UTC reports each app version's state and who takes the next step. It comments only when the state changes, retries a temporary submission failure once, and asks a person only for a store rejection or a store-only screen.
 7. When a release moves to "in review" (meaning live), Maskin reads back the notes, records the live date and note date, and adds a customer date to each listed feature or goal. It marks the release done or names what is missing and who owns it.
+Amber steps are human approvals. The blue step is the close condition.
 
 ## What you need to run it
 - Install the Flow.
@@ -40,9 +40,6 @@ Your release is live on every surface it covers, its change log is written, and 
 - **Your data stays yours:** You connect your own code host and optional store. Maskin never merges code and does not publish to your website.
 - **Fails safely:** Without a code host, bundling stops. A temporary store submission failure gets one retry. Missing release items are named with an owner.
 
-## Get it
-[Install this flow](/install/product-release-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
-
 ## Example first week
 Example for fictional Brightlane, project software for architects.
 - Day 1, Monday: Maskin finds two user-facing changes merged since the last release.
@@ -54,10 +51,13 @@ Example for fictional Brightlane, project software for architects.
 - Day 4: The release moves to "in review," meaning live.
 - Day 4: Maskin reads back the notes, records the dates, adds a customer date to the feature or goal, and marks the release done.
 
-## Related flows on the marketplace
-- [Product delivery flow](/marketplace/product-delivery/): bets in, verified code out.
-- [Product usage flow](/marketplace/product-usage/): a weekly read of what product usage says about what your team believes.
-- [Customer voice flow](/marketplace/customer-voice/): customer messages filed as written findings, never replied to.
-- [Product discovery flow](/marketplace/product-discovery/): what customers and the market say, grouped into opportunities with the evidence behind each.
-- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): the cornerstone read on the workspace these flows run in.
+## Install this flow in your workspace
 Sign in or sign up, then confirm the flow in the Maskin app.
+[Install this flow](/install/product-release-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
+
+## Read next
+- [Product delivery flow](/marketplace/product-delivery/): Bets in, verified code out.
+- [Product usage flow](/marketplace/product-usage/): A weekly read of what product usage says about what your team believes.
+- [Customer voice flow](/marketplace/customer-voice/): Customer messages filed as written findings, never replied to.
+- [Product discovery flow](/marketplace/product-discovery/): What customers and the market say, grouped into opportunities with the evidence behind each.
+- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.

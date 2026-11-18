@@ -41,6 +41,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,300;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/docs/docs.css">
+<link rel="stylesheet" href="/marketplace/marketplace.css">
 
 <!-- VIDEO SLOT, head part: uncomment with the video block below once a video exists. Also add a VideoObject to the JSON-LD.
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.css">
@@ -192,26 +193,38 @@
 <nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Marketplace</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
 
 <noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
-<div class="wrap doc-layout">
-<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All flows</a></li><li><a class="" href="/marketplace/seo-publishing/">The SEO publishing flow</a></li><li><a class="" href="/marketplace/outbound/">The outbound flow</a></li><li><a class="" href="/marketplace/lead-qualification/">The lead qualification flow</a></li><li><a class="" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki flow</a></li><li><a class="" href="/marketplace/linkedin-content/">The LinkedIn content flow</a></li><li><a class="is-active" href="/marketplace/content-calendar/" aria-current="page">The content calendar</a></li><li><a class="" href="/marketplace/product-delivery/">The product delivery flow</a></li><li><a class="" href="/loops/ai-customer-feedback-loop/">AI customer feedback loop</a></li><li><a class="" href="/marketplace/competitive-intelligence/">The competitive intelligence flow</a></li><li><a class="" href="/marketplace/meeting-loop/">The meeting insights flow</a></li><li><a class="" href="/marketplace/customer-voice/">The customer voice flow</a></li><li><a class="" href="/marketplace/product-usage/">The product usage flow</a></li><li><a class="" href="/marketplace/product-release/">The product release flow</a></li><li><a class="is-nested" href="/loops/competitive-intelligence/">Competitive intelligence flow: how it works</a></li><li><a class="is-nested" href="/loops/loops-that-graduate/">Flows that graduate: the trust ladder</a></li><!-- TEMP-SWAP (task 9bf88671): revert to href="/marketplace/product-discovery/" + "The product discovery loop" when the loop flips live. Mirrors commits 512b1f1 / 2a327bd. --><li><a class="" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li></ul></nav></aside>
-  <main class="doc-content">
-    <p class="doc-breadcrumb"><a href="/marketplace/">Marketplace</a> / The content calendar</p>
-    <p class="eyebrow">Flow &middot; Content</p>
-
-    <h1>A content calendar template for a month of posts</h1>
+<main class="wrap mp" id="mp">
+  
+  <nav class="mp-crumb" aria-label="Breadcrumb"><a href="/marketplace/">Marketplace</a><span aria-hidden="true">/</span><a href="/marketplace/#marketing">Marketing</a><span aria-hidden="true">/</span><span>The content calendar</span></nav>
+  <header class="mp-hero">
+    <div class="mp-hero__text">
+      <div class="mp-kind"><span class="mp-ico" aria-hidden="true">CC</span><span>Flow &middot; Content</span></div>
+      <h1>A content calendar template for a month of posts</h1>
+      
+      
+      
+    </div>
+    <figure class="mp-hero__img"><img src="/og-image-content-calendar.png" width="1200" height="630" alt="" fetchpriority="high"></figure>
+  </header>
+  <div class="mp-body">
+    <nav class="mp-toc" aria-label="On this page"><span class="mp-toc__title">On this page</span><a href="#the-job">The job</a><a href="#your-team-keeps-maskin-runs">Your team keeps / Maskin runs</a><a href="#how-the-flow-runs">How the flow runs</a><a href="#trust">Trust</a><a href="#run-it">Run it</a><a href="#what-a-content-plan-needs">What a content plan needs</a><a href="#what-this-flow-is-built-with">What this flow is built with</a><a href="#faq">FAQ</a><a href="#next">Read next</a></nav>
+    <div class="mp-main doc-content">
+  <section class="mp-sec mp-intro">
     <p class="message-line">Run your content calendar in Maskin so your team decides what to say while Maskin plans the month, drafts to the plan and keeps every post&rsquo;s status in one place.</p>
     <p><a href="/marketplace/linkedin-content/">Want the posts written too?</a></p>
     <img class="hero-visual" src="/marketplace/content-calendar/content-calendar-hero.png" alt="A month calendar with posts marked published, owner&rsquo;s go, checked and draft, and empty slots left empty." width="1600" height="1000" fetchpriority="high" decoding="async">
-
-    <h2>The job</h2>
+  </section>
+  <section class="mp-sec">
+    <h2 id="the-job">The job</h2>
     <div class="job-lines">
       <p>Plan a month of posts in one calendar. Check and approve each post before it goes out. On a set day each week, read reach and visits by channel to see what each one did.</p>
       <p><strong>Replaces:</strong> a spreadsheet, a scheduling tool&rsquo;s calendar, a planning retainer.</p>
       <p>The topics, real stories and the go on every post stay human.</p>
     </div>
-
-    <h2>Your team keeps / Maskin runs</h2>
-    <div class="doc-table-wrap">
+  </section>
+  <section class="mp-sec">
+    <h2 id="your-team-keeps-maskin-runs">Your team keeps / Maskin runs</h2>
+    <div class="mp-scroll"><div class="doc-table-wrap">
       <table class="doc-table">
         <thead>
           <tr><th>Your team keeps</th><th>Maskin runs</th></tr>
@@ -225,41 +238,45 @@
           <tr><td></td><td>The weekly read</td></tr>
         </tbody>
       </table>
-    </div>
-
-    <h2>How the flow runs</h2>
-    <ol>
-      <li>Bring an idea and its source.</li>
-      <li>Maskin plans the month around what the team can really approve.</li>
-      <li>Maskin drafts to the plan.</li>
-      <li>Choose or add a picture.</li>
-      <li><strong>Check (human gate):</strong> a team member checks the draft.</li>
-      <li><strong>Owner&rsquo;s go (human gate):</strong> the owner approves the post.</li>
-      <li>Publish the post, read weekly reach and visits, then bring the result into the next idea.</li>
-    </ol>
+    </div></div>
+  </section>
+  <section class="mp-sec">
+    <h2 id="how-the-flow-runs">How the flow runs</h2>
+    <ol class="mp-steps">
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Bring an idea and its source.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Maskin plans the month around what the team can really approve.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Maskin drafts to the plan.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Choose or add a picture.</div></li>
+      <li class="mp-step mp-step--approval"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body"><strong class="mp-step__title">Check (human gate)</strong> a team member checks the draft.</div></li>
+      <li class="mp-step mp-step--approval"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body"><strong class="mp-step__title">Owner’s go (human gate)</strong> the owner approves the post.</div></li>
+      <li class="mp-step mp-step--close"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Publish the post, read weekly reach and visits, then bring the result into the next idea.</div></li>
+      </ol>
+      <p class="mp-legend">Amber steps are human approvals. The blue step is the close condition.</p>
     <img class="hero-visual" src="/marketplace/content-calendar/content-calendar-flow.png" alt="The seven steps of the content calendar flow in a row: idea, plan, draft, picture, check, owner&rsquo;s go, publish and read. Check and owner&rsquo;s go are marked as the two gates, and an arrow runs from step 7 back to step 1." width="1600" height="1000" loading="lazy" decoding="async">
-
     <!-- VIDEO SLOT (hidden until a video exists, Content Lead 9 Nov 2026). Uncomment this block and the two head lines above, set the real video id:
     <div class="video-embed" role="figure" aria-label="Video: the content calendar loop">
       <lite-youtube videoid="VIDEO_ID" playlabel="Play: the content calendar loop"></lite-youtube>
     </div>
     -->
-
-    <h2>Trust</h2>
+  </section>
+  <section class="mp-sec">
+    <h2 id="trust">Trust</h2>
     <ul>
       <li>A post without the owner&rsquo;s go does not go out.</li>
       <li>Maskin works from your ideas and calendar and writes back only statuses and links.</li>
       <li>If there is no good idea for a slot, the slot stays empty.</li>
     </ul>
-
-    <h2>Run it</h2>
+  </section>
+  <section class="mp-sec">
+    <h2 id="run-it">Run it</h2>
     <div class="post-cta__actions">
       <a class="btn-primary" href="https://maskin.io/bookseb">Book a walkthrough</a>
     </div>
     <p class="template-link"><a href="/marketplace/content-calendar/content-calendar-template.html" data-template-link>Get the calendar template</a></p>
     <p class="template-note">Start with made-up coffee-roaster example data or a blank calendar; changes stay in your browser, and Export keeps a copy.</p>
-
-    <h2>What a content plan needs</h2>
+  </section>
+  <section class="mp-sec">
+    <h2 id="what-a-content-plan-needs">What a content plan needs</h2>
     <ul>
       <li><strong>Buyer:</strong> people choosing coffee to brew at home.</li>
       <li><strong>Topics:</strong> roast choices, brewing tips and the people behind the roaster.</li>
@@ -269,8 +286,9 @@
       <li><strong>Gates:</strong> a team check, then the owner&rsquo;s go.</li>
       <li><strong>Measures:</strong> a set weekly read of reach and visits by channel.</li>
     </ul>
-
-    <h2>What this flow is built with</h2>
+  </section>
+  <section class="mp-sec">
+    <h2 id="what-this-flow-is-built-with">What this flow is built with</h2>
     <div class="primitives">
       <div class="primitive">
         <p class="primitive__name">Flow</p>
@@ -291,44 +309,29 @@
       </div>
     </div>
     <p>Inside a flow listing, agents / MCPs / skills appear as &ldquo;built with&rdquo; components of the flow, never as top-level marketplace sections of their own.</p>
-
-    <h2>FAQ</h2>
-    <h3>What views does the calendar file have?</h3>
-    <p>Month, week, list and board views.</p>
-    <h3>Can I change a post&rsquo;s date?</h3>
-    <p>Yes. Drag it to reschedule.</p>
-    <h3>Can I set a weekly goal?</h3>
-    <p>Yes. The calendar file supports a weekly goal per account.</p>
-    <h3>What marks can the calendar file show?</h3>
-    <p>Two marks: Checked (shown as E) and Owner&rsquo;s go (shown as Go).</p>
-    <h3>Can I start blank or use a CSV?</h3>
-    <p>Yes. The calendar file has a blank start and supports CSV in and out.</p>
-    <h3>What does the weekly read cover?</h3>
-    <p>Reach and visits by channel.</p>
-    <h3>What should a content calendar include?</h3>
-    <p>Include buyer, topics, channels and the posts the team can review, sourced ideas, a weekly day to plan, review and publish, a team check then the owner&rsquo;s go, and a weekly read of reach and visits by channel. The list above shows all seven for a made-up coffee roaster.</p>
-    <div class="related">
-      <p class="related__title">Related flows on the marketplace</p>
-      <div class="doc-cards">
-        <a class="doc-card" href="/marketplace/linkedin-content/">
-          <div class="doc-card__title">The LinkedIn content flow</div>
-          <div class="doc-card__desc">The posts themselves: interview, draft, editor check and your approval on every one.</div>
-          <div class="doc-card__arrow">Read &rarr;</div>
-        </a>
-        <a class="doc-card" href="/marketplace/product-discovery/">
-          <div class="doc-card__title">The product discovery flow</div>
-          <div class="doc-card__desc">Shipped work and customer signal become the ideas worth putting on the calendar.</div>
-          <div class="doc-card__arrow">Read &rarr;</div>
-        </a>
-        <a class="doc-card" href="/marketplace/seo-publishing/">
-          <div class="doc-card__title">The SEO publishing flow</div>
-          <div class="doc-card__desc">For the web pages on your calendar: one keyword per page, written, approved and published.</div>
-          <div class="doc-card__arrow">Read &rarr;</div>
-        </a>
+  </section>
+  <section class="mp-sec">
+    <h2 id="faq">FAQ</h2>
+    <div class="mp-faq">
+      <details><summary><h3>What views does the calendar file have?</h3></summary><p>Month, week, list and board views.</p></details>
+      <details><summary><h3>Can I change a post&rsquo;s date?</h3></summary><p>Yes. Drag it to reschedule.</p></details>
+      <details><summary><h3>Can I set a weekly goal?</h3></summary><p>Yes. The calendar file supports a weekly goal per account.</p></details>
+      <details><summary><h3>What marks can the calendar file show?</h3></summary><p>Two marks: Checked (shown as E) and Owner&rsquo;s go (shown as Go).</p></details>
+      <details><summary><h3>Can I start blank or use a CSV?</h3></summary><p>Yes. The calendar file has a blank start and supports CSV in and out.</p></details>
+      <details><summary><h3>What does the weekly read cover?</h3></summary><p>Reach and visits by channel.</p></details>
+      <details><summary><h3>What should a content calendar include?</h3></summary><p>Include buyer, topics, channels and the posts the team can review, sourced ideas, a weekly day to plan, review and publish, a team check then the owner&rsquo;s go, and a weekly read of reach and visits by channel. The list above shows all seven for a made-up coffee roaster.</p></details>
       </div>
+  </section>
+  
+  <section class="mp-sec"><h2 id="next">Read next</h2>
+    <ul class="mp-next" style="--mp-read:'Read \2192'">
+      <li><a class="mp-next__name" href="/marketplace/linkedin-content/">The LinkedIn content flow</a><span class="mp-next__short">: The posts themselves: interview, draft, editor check and your approval on every one.</span></li>
+      <li><a class="mp-next__name" href="/marketplace/product-discovery/">The product discovery flow</a><span class="mp-next__short">: Shipped work and customer signal become the ideas worth putting on the calendar.</span></li>
+      <li><a class="mp-next__name" href="/marketplace/seo-publishing/">The SEO publishing flow</a><span class="mp-next__short">: For the web pages on your calendar: one keyword per page, written, approved and published.</span></li>
+    </ul></section>
     </div>
-  </main>
-</div>
+  </div>
+</main>
 
 <script>
 // template_link_clicked: counts clicks on the calendar template link from day one (Content Lead, 9 Nov 2026).

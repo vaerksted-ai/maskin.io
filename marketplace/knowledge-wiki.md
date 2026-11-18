@@ -2,7 +2,6 @@
 
 # Know the pages your team reads are current.
 Run Knowledge Wiki in Maskin so your team can make decisions with confidence while Maskin keeps your knowledge pages current.
-Sign in or sign up, then confirm the flow in the Maskin app.
 
 ## The job
 A new note about pricing lands on the page that already covers pricing instead of becoming a near-duplicate, and old drafts get merged or retired, so what people read is current. The Flow keeps the wiki current.
@@ -26,6 +25,7 @@ A new note about pricing lands on the page that already covers pricing instead o
 5. Tuesday at 06:00 UTC, the Curator reviews up to 40 pages, oldest first. It checks drafts untouched for at least 14 days and validated pages untouched for at least 60 days.
 6. For each page, it chooses to keep it and set a review date, merge it into a page that covers the topic, shorten it, or deprecate it. Before deprecating a page, it checks whether an open item links to it.
 7. A pass ends with a digest posted and Home and Status refreshed. Deprecation is reversible, and the Flow keeps running.
+The blue step is the close condition.
 
 ## What you need to run it
 - Install the Flow.
@@ -38,9 +38,6 @@ A new note about pricing lands on the page that already covers pricing instead o
 - **Your data stays yours:** The Flow works on knowledge pages in your workspace and sends nothing outside it.
 - **Fails safely:** It never permanently deletes pages. Before deprecating a page, it checks for open items that link to it.
 
-## Get it
-[Install this flow](/install/knowledge-wiki-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
-
 ## Example first week
 Example for fictional Brightlane, project software for architects.
 Monday: A new pricing decision is written up. The Curator finds the existing Pricing page and updates it.
@@ -52,10 +49,13 @@ An LLM wiki is a knowledge base an LLM compiles from your own material into inte
 It is worth separating the wiki from its neighbours. A RAG index embeds your sources and retrieves pieces at query time; an LLM wiki compiles the sources into pages once and links them, so the same question tends to return the same answer. A Notion or Confluence space is written for humans and searched by humans; an LLM wiki is written to be read by an agent, and it cites the object each claim came from. Both are a durable, interlinked record, but the reader is different, and that changes how the record has to be maintained — and for the storage-engine side of the same distinction, [wiki-style knowledge vs an embedding store](/docs/knowledge-wiki-vs-vector-database/) walks through why one is content and the other is infrastructure.
 The failure mode is not the compile step. It is the upkeep. A wiki that only gets written when someone remembers to write it decays into a folder of half-true pages inside a quarter.
 
-## Related flows on the marketplace
-- [Product discovery flow](/marketplace/product-discovery/): what customers and the market say, grouped into opportunities with the evidence behind each.
-- [Meeting insights flow](/marketplace/meeting-loop/): every meeting turned into filed tasks, decisions and findings.
-- [Customer voice flow](/marketplace/customer-voice/): customer messages filed as written findings, never replied to.
-- [Market watch flow](/marketplace/competitive-intelligence/): a weekly sourced briefing on what changed in your market.
-- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): the cornerstone read on the workspace these flows run in.
+## Install this flow in your workspace
 Sign in or sign up, then confirm the flow in the Maskin app.
+[Install this flow](/install/knowledge-wiki-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
+
+## Read next
+- [Product discovery flow](/marketplace/product-discovery/): What customers and the market say, grouped into opportunities with the evidence behind each.
+- [Meeting insights flow](/marketplace/meeting-loop/): Every meeting turned into filed tasks, decisions and findings.
+- [Customer voice flow](/marketplace/customer-voice/): Customer messages filed as written findings, never replied to.
+- [Market watch flow](/marketplace/competitive-intelligence/): A weekly sourced briefing on what changed in your market.
+- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.

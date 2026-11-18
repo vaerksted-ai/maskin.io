@@ -2,10 +2,11 @@
 
 # Lead qualification on a flow, not a spreadsheet
 Run lead qualification in Maskin so your team owns your ICP and the rep conversations — while Maskin reads every inbound lead, gates the noise, and hands only the ones worth working to your team.
+This flow can't be installed yet. In the meantime, [try Maskin](/signup).
+![](/og-image-lead-qualification.png)
 Stop burning SDR hours on inbound leads that never convert. Every form-fill, demo request, and pricing-page bounce is read the moment it lands and cleared against what your team has learned from every deal that closed and every one that didn’t — so your reps only ever work leads a human has confirmed. Every rejection stamps a reason on the record, and next week’s leads are read against a sharper definition than last week’s.
 **Replaces:** third-party lead-scoring SaaS · manual SDR triage on inbound queues · custom CRM scoring that rots between quarters · agency-run BDR retainers
 **Stays human:** what your ICP actually is · which leads are worth a rep’s time · the read on why a lead was wrong · the change to how future leads are read
-This flow can't be installed yet. In the meantime, [try Maskin](/signup).
 
 ## What your team keeps, what Maskin runs
 | Your team keeps | Maskin runs |
@@ -24,6 +25,7 @@ This flow can't be installed yet. In the meantime, [try Maskin](/signup).
 5. Your rep confirms and promotes, or rejects with a reason.
 6. Every rejection stamps the reason on the record; the qualifier clusters those reasons weekly and drafts an ICP update.
 7. Your team approves the ICP change — the next lead is read against the sharper definition.
+Amber steps are human approvals. The blue step is the close condition.
 
 ## Trust surface
 - **Human gates:** every promote-to-rep and every reject-with-reason is a human call; the ICP definition only changes when your team says so.
@@ -101,4 +103,8 @@ MCP
 The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
 Skill
 A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
-Read next
+
+## Read next
+- [What is an agentic workspace?](/docs/what-is-an-agentic-workspace/): The shared object model this flow sits on.
+- [The outbound flow](/marketplace/outbound/): Where a qualified lead goes next when the sales motion is founder- or PM-run outbound.
+- [Open source AI SDR: the honest map](/alternatives/open-source-ai-sdr/): How OSS AI-SDR stacks compare to the closed SaaS incumbents, and where the flow framing fits into the top-of-funnel stack.

@@ -2,7 +2,6 @@
 
 # Read your product usage every week without opening analytics.
 Run Product usage in Maskin so your team can decide what to improve while Maskin checks the feed and files findings that challenge what you believe.
-Sign in or sign up, then confirm the flow in the Maskin app.
 
 ## The job
 Your team gets a written finding when product usage changes what it believes, and no update when nothing changed.
@@ -26,6 +25,7 @@ Your team gets a written finding when product usage changes what it believes, an
 5. Maskin files one finding for each result that changed or contradicts what your team believes, with the count behind every number and a link to the relevant feature or goal. If missing tracking blocks a question, it files one finding tagged gap.
 6. After each Monday read, Maskin refreshes the Results tab with up to three short briefs that deserve a person’s decision, or a quiet state. Each brief says what was found, why, the evidence with counts, what is unknown, and a next step.
 7. Tuesday to Friday, a daily owner check checks the feed, updates the Flow’s targets, and runs the Monday read if it did not run. A read with nothing new stays silent.
+The blue step is the close condition.
 
 ## What you need to run it
 - Install the Flow.
@@ -39,9 +39,6 @@ Your team gets a written finding when product usage changes what it believes, an
 - **Your data stays yours:** Maskin reads the analytics feed you connect and never changes events or dashboards.
 - **Fails safely:** If the feed is unhealthy or unavailable, Maskin says so once and stops without filing findings.
 
-## Get it
-[Install this flow](/install/product-usage-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
-
 ## Example first week
 Example for fictional Brightlane, project software for architects.
 Monday: The analytics feed is healthy. Maskin reads the last 7 days, excluding Brightlane’s own team.
@@ -52,10 +49,13 @@ Wednesday: The owner check runs and finds nothing new.
 Thursday: The read stays silent.
 Friday: Brightlane’s team decides whether to add mobile tracking.
 
-## Related flows on the marketplace
-- [Customer voice flow](/marketplace/customer-voice/): customer messages filed as written findings, never replied to.
-- [Product discovery flow](/marketplace/product-discovery/): what customers and the market say, grouped into opportunities with the evidence behind each.
-- [Product release flow](/marketplace/product-release/): merged work bundled into a release with notes confirmed live.
-- [Meeting insights flow](/marketplace/meeting-loop/): every meeting turned into filed tasks, decisions and findings.
-- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): the cornerstone read on the workspace these flows run in.
+## Install this flow in your workspace
 Sign in or sign up, then confirm the flow in the Maskin app.
+[Install this flow](/install/product-usage-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
+
+## Read next
+- [Customer voice flow](/marketplace/customer-voice/): Customer messages filed as written findings, never replied to.
+- [Product discovery flow](/marketplace/product-discovery/): What customers and the market say, grouped into opportunities with the evidence behind each.
+- [Product release flow](/marketplace/product-release/): Merged work bundled into a release with notes confirmed live.
+- [Meeting insights flow](/marketplace/meeting-loop/): Every meeting turned into filed tasks, decisions and findings.
+- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.

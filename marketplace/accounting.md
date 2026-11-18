@@ -23,6 +23,7 @@ Det er stadig dig og din bogholder, der svarer på spørgsmål og træffer beslu
 3. Maskin laver én liste over det, der ser forkert ud, fx en manglende kvittering, moms der ikke stemmer, en dobbelt betaling, en privat udgift eller et mærkeligt beløb. Hvert punkt får en kort forklaring.
 4. Forløbet er indrettet sådan, at en bogholder fra en samarbejdspartner gennemgår udkastet og listen. Først derefter kan noget bogføres, og det gør et menneske.
 5. Du får én side for måneden med, hvad der er samlet, hvad du skal svare på, og hvilke punkter der mangler afklaring.
+Gule trin er menneskelig godkendelse. Det blå trin er det, der afslutter forløbet.
 ![Fem trin: du afleverer kvitteringer og bankudtræk, Maskin laver et udkast, det der ser forkert ud samles på en liste, en bogholder gennemgår, og du får én side. Næste måned starter forfra.](/marketplace/accounting/accounting-flow-1600x1000-v2.png)
 
 ## Tryghed

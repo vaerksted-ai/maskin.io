@@ -2,7 +2,6 @@
 
 # Hear your customers without reading every inbox.
 Run Customer voice in Maskin so your team can make product decisions from customer feedback while Maskin reads and files messages without replying.
-Sign in or sign up, then confirm the flow in the Maskin app.
 
 ## The job
 After a week, distinct customer requests, complaints, objections, and praise are filed as written findings with evidence for product decisions. Each finding includes the customer’s words, a source link, whether it was first-hand or second-hand, and a link to the company or contact. Each Monday, the Results tab shows up to three briefs backed by linked evidence, or says which sources were read and when.
@@ -26,6 +25,7 @@ After a week, distinct customer requests, complaints, objections, and praise are
 5. Maskin never replies or sends anything. Bugs and requests that need fixing are also marked for a separate customer feedback Flow.
 6. On weekdays, Maskin checks the sweep against its targets and runs the sweep itself if it missed the last 26 hours. If sources go quiet for a week, it says so once and names a source you could add.
 7. Each Monday, the Results tab shows up to three briefs with what was found, why it matters, how many independent voices, what is unknown, and a suggested next step. A brief appears only if Maskin has read its linked evidence. Otherwise, the tab says which sources were read and when.
+The blue step is the close condition.
 
 ## What you need to run it
 - Install the Flow.
@@ -40,9 +40,6 @@ After a week, distinct customer requests, complaints, objections, and praise are
 - **Your data stays yours:** Maskin reads only connected sources. Email is read only and limited to customer threads.
 - **Fails safely:** With no sources connected, Maskin says so once and stops. It checks for duplicates, skips noise, and never replies or sends anything.
 
-## Get it
-[Install this flow](/install/customer-voice-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
-
 ## Example first week
 Example for fictional Brightlane, project software for architects.
 Monday: Brightlane connects a shared support inbox and one chat channel.
@@ -52,10 +49,13 @@ Thursday: A duplicate request is not filed again.
 Friday: A customer reports a bug. Maskin marks it for a separate customer feedback Flow.
 Monday: The Results tab shows a brief based on linked evidence, with what is unknown and a suggested next step.
 
-## Related flows on the marketplace
-- [Product discovery flow](/marketplace/product-discovery/): what customers and the market say, grouped into opportunities with the evidence behind each.
-- [Product usage flow](/marketplace/product-usage/): a weekly read of what product usage says about what your team believes.
-- [Meeting insights flow](/marketplace/meeting-loop/): every meeting turned into filed tasks, decisions and findings.
-- [Market watch flow](/marketplace/competitive-intelligence/): a weekly sourced briefing on what changed in your market.
-- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): the cornerstone read on the workspace these flows run in.
+## Install this flow in your workspace
 Sign in or sign up, then confirm the flow in the Maskin app.
+[Install this flow](/install/customer-voice-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
+
+## Read next
+- [Product discovery flow](/marketplace/product-discovery/): What customers and the market say, grouped into opportunities with the evidence behind each.
+- [Product usage flow](/marketplace/product-usage/): A weekly read of what product usage says about what your team believes.
+- [Meeting insights flow](/marketplace/meeting-loop/): Every meeting turned into filed tasks, decisions and findings.
+- [Market watch flow](/marketplace/competitive-intelligence/): A weekly sourced briefing on what changed in your market.
+- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.

@@ -41,6 +41,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,300;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/docs/docs.css">
+<link rel="stylesheet" href="/marketplace/marketplace.css">
 
 <script type="application/ld+json">
 {
@@ -107,31 +108,31 @@
 <nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Marketplace</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
 
 <noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
-<div class="wrap doc-layout">
-<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All flows</a></li><li><a class="" href="/marketplace/seo-publishing/">The SEO publishing flow</a></li><li><a class="" href="/marketplace/outbound/">The outbound flow</a></li><li><a class="" href="/marketplace/lead-qualification/">The lead qualification flow</a></li><li><a class="" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki flow</a></li><li><a class="" href="/marketplace/linkedin-content/">The LinkedIn content flow</a></li><li><a class="" href="/marketplace/product-delivery/">The product delivery flow</a></li><li><a class="" href="/marketplace/accounting/">Månedens bilag (dansk)</a></li><li><a class="" href="/loops/ai-customer-feedback-loop/">AI customer feedback loop</a></li><li><a class="" href="/marketplace/competitive-intelligence/">The competitive intelligence flow</a></li><li><a class="" href="/marketplace/meeting-loop/">The meeting insights flow</a></li><li><a class="" href="/marketplace/customer-voice/">The customer voice flow</a></li><li><a class="" href="/marketplace/product-usage/">The product usage flow</a></li><li><a class="is-active" href="/marketplace/product-release/" aria-current="page">The product release flow</a></li><li><a class="is-nested" href="/loops/competitive-intelligence/">Competitive intelligence flow: how it works</a></li><li><a class="is-nested" href="/loops/loops-that-graduate/">Flows that graduate: the trust ladder</a></li><!-- TEMP-SWAP (task 9bf88671): revert to href="/marketplace/product-discovery/" + "The product discovery loop" when the loop flips live. Mirrors commits 512b1f1 / 2a327bd. --><li><a class="" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li><li><a class="" href="/docs/ai-product-management-tool/">AI product management tool</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li></ul></nav></aside>
-  <main class="doc-content">
-    <p class="doc-breadcrumb"><a href="/marketplace/">Marketplace</a> / The product release flow</p>
-    <p class="eyebrow">Flow &middot; Product</p>
-    <h1>Get merged work to customers with notes that are really live.</h1>
-    <p class="lead">Run Product release in Maskin so your team gets merged work out to customers with notes that are really live while Maskin bundles changes and checks release status.</p>
-    <style id="loop-install-css">
-    .loop-install { margin: 1rem 0 1.75rem; }
-    .loop-install__note { font-size: .9rem; color: var(--ink-2); margin: .6rem 0 0; }
-    .loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 1.5rem; }
-    .loop-install-lead a { color: inherit; text-decoration: underline; }
-    </style>
-    <div class="loop-install" data-loop-install="product-release" data-install-position="top">
-      <a class="btn-primary" href="/install/product-release-loop" data-install-link data-install-slug="product-release">Install this flow</a>
-      <p class="loop-install__note">Sign in or sign up, then confirm the flow in the Maskin app.</p>
+<main class="wrap mp" id="mp">
+  
+  <nav class="mp-crumb" aria-label="Breadcrumb"><a href="/marketplace/">Marketplace</a><span aria-hidden="true">/</span><a href="/marketplace/#product">Product</a><span aria-hidden="true">/</span><span>The product release flow</span></nav>
+  <header class="mp-hero">
+    <div class="mp-hero__text">
+      <div class="mp-kind"><span class="mp-ico" aria-hidden="true">PR</span><span>Flow &middot; Product</span></div>
+      <h1>Get merged work to customers with notes that are really live.</h1>
+      <p class="mp-lead">Run Product release in Maskin so your team gets merged work out to customers with notes that are really live while Maskin bundles changes and checks release status.</p>
+      <div class="mp-actions" data-loop-install="product-release" data-install-position="top"><a class="mp-btn" href="/install/product-release-loop" data-install-link data-install-slug="product-release">Install this flow</a></div>
+      
     </div>
-
-    <h2>The job</h2>
+    
+  </header>
+  <div class="mp-body">
+    <nav class="mp-toc" aria-label="On this page"><span class="mp-toc__title">On this page</span><a href="#the-job">The job</a><a href="#what-your-team-keeps-what-maskin-runs">What your team keeps, what Maskin runs</a><a href="#how-the-flow-runs">How the Flow runs</a><a href="#what-you-need-to-run-it">What you need to run it</a><a href="#trust-surface">Trust surface</a><a href="#example-first-week">Example first week</a><a href="#next">Read next</a></nav>
+    <div class="mp-main doc-content">
+  <section class="mp-sec">
+    <h2 id="the-job">The job</h2>
     <p>Your release is live on every surface it covers, its change log is written, and notable releases have their in-app note and public entry live and read back.</p>
     <p><strong>Replaces:</strong> Manual release bundling, note writing, and status chasing.</p>
     <p><strong>Stays with your team:</strong> Merging code, publishing the public entry, and handling positioning shifts or release-type disagreements.</p>
-
-    <h2>What your team keeps, what Maskin runs</h2>
-    <table>
+  </section>
+  <section class="mp-sec">
+    <h2 id="what-your-team-keeps-what-maskin-runs">What your team keeps, what Maskin runs</h2>
+    <div class="mp-scroll"><table>
       <thead><tr><th>Your team keeps</th><th>Maskin runs</th></tr></thead>
       <tbody>
         <tr><td>Merging code</td><td>Reads merged work from your main branch, but never merges code</td></tr>
@@ -141,20 +142,23 @@
         <tr><td>Handling store rejections or requests for a store-only screen</td><td>Reports the issue and asks a person to take the next step</td></tr>
         <tr><td>Owning the release outcome</td><td>Reads back notes, records dates, and marks the release done or names what is missing and who owns it</td></tr>
       </tbody>
-    </table>
-
-    <h2>How the Flow runs</h2>
-    <ol>
-      <li>On Monday and Thursday at 08:00 UTC, Maskin reads work merged to your main branch since the last release.</li>
-      <li>It groups every user-facing change into an open release bundle for that release, and proposes one version number for web and apps.</li>
-      <li>It proposes a major release type for breaking or large changes, minor for a new capability, or patch for fixes only. It lists customer-facing features or goals, leaving out internal plumbing.</li>
-      <li>For a notable release, Maskin prepares What's New text, an in-app announcement note, and a public release-log entry. For a patch, it prepares one short change-log line and no announcement.</li>
-      <li>If Maskin is unsure whether a change is notable, it asks the product lead, then records its decision. A person is needed for a positioning shift or if product and tech leads cannot settle the release type.</li>
-      <li>If you connect a store, an optional weekday check at 08:00 UTC reports each app version's state and who takes the next step. It comments only when the state changes, retries a temporary submission failure once, and asks a person only for a store rejection or a store-only screen.</li>
-      <li>When a release moves to "in review" (meaning live), Maskin reads back the notes, records the live date and note date, and adds a customer date to each listed feature or goal. It marks the release done or names what is missing and who owns it.</li>
-    </ol>
-
-    <h2>What you need to run it</h2>
+    </table></div>
+  </section>
+  <section class="mp-sec">
+    <h2 id="how-the-flow-runs">How the Flow runs</h2>
+    <ol class="mp-steps">
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">On Monday and Thursday at 08:00 UTC, Maskin reads work merged to your main branch since the last release.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">It groups every user-facing change into an open release bundle for that release, and proposes one version number for web and apps.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">It proposes a major release type for breaking or large changes, minor for a new capability, or patch for fixes only. It lists customer-facing features or goals, leaving out internal plumbing.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">For a notable release, Maskin prepares What's New text, an in-app announcement note, and a public release-log entry. For a patch, it prepares one short change-log line and no announcement.</div></li>
+      <li class="mp-step mp-step--approval"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">If Maskin is unsure whether a change is notable, it asks the product lead, then records its decision. A person is needed for a positioning shift or if product and tech leads cannot settle the release type.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">If you connect a store, an optional weekday check at 08:00 UTC reports each app version's state and who takes the next step. It comments only when the state changes, retries a temporary submission failure once, and asks a person only for a store rejection or a store-only screen.</div></li>
+      <li class="mp-step mp-step--close"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">When a release moves to "in review" (meaning live), Maskin reads back the notes, records the live date and note date, and adds a customer date to each listed feature or goal. It marks the release done or names what is missing and who owns it.</div></li>
+      </ol>
+      <p class="mp-legend">Amber steps are human approvals. The blue step is the close condition.</p>
+  </section>
+  <section class="mp-sec">
+    <h2 id="what-you-need-to-run-it">What you need to run it</h2>
     <ul>
       <li>Install the Flow.</li>
       <li>Connect your code host. This is required for release bundling.</li>
@@ -162,18 +166,17 @@
       <li>Connect your store for the optional app version check. If no store is connected, that step switches itself off.</li>
       <li>At the first scheduled check, you will see a release bundle with grouped changes and a proposed version and release type.</li>
     </ul>
-
-    <h2>Trust surface</h2>
+  </section>
+  <section class="mp-sec">
+    <h2 id="trust-surface">Trust surface</h2>
     <ul>
       <li><strong>Human gates:</strong> A person is needed for a positioning shift, a store rejection, a store-only screen, or when product and tech leads cannot settle whether a change is notable.</li>
       <li><strong>Your data stays yours:</strong> You connect your own code host and optional store. Maskin never merges code and does not publish to your website.</li>
       <li><strong>Fails safely:</strong> Without a code host, bundling stops. A temporary store submission failure gets one retry. Missing release items are named with an owner.</li>
     </ul>
-
-    <h2>Get it</h2>
-    <p><a class="btn-primary" href="/install/product-release-loop" data-install-link data-install-slug="product-release">Install this flow</a> <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></p>
-
-    <h2>Example first week</h2>
+  </section>
+  <section class="mp-sec">
+    <h2 id="example-first-week">Example first week</h2>
     <p>Example for fictional Brightlane, project software for architects.</p>
     <ul>
       <li>Day 1, Monday: Maskin finds two user-facing changes merged since the last release.</li>
@@ -185,21 +188,22 @@
       <li>Day 4: The release moves to "in review," meaning live.</li>
       <li>Day 4: Maskin reads back the notes, records the dates, adds a customer date to the feature or goal, and marks the release done.</li>
     </ul>
-
-    <h2>Related flows on the marketplace</h2>
-    <ul>
-      <li><a href="/marketplace/product-delivery/">Product delivery flow</a>: bets in, verified code out.</li>
-      <li><a href="/marketplace/product-usage/">Product usage flow</a>: a weekly read of what product usage says about what your team believes.</li>
-      <li><a href="/marketplace/customer-voice/">Customer voice flow</a>: customer messages filed as written findings, never replied to.</li>
-      <li><a href="/marketplace/product-discovery/">Product discovery flow</a>: what customers and the market say, grouped into opportunities with the evidence behind each.</li>
-      <li><a href="/docs/what-is-an-agentic-workspace/">What is an AI-native agentic workspace?</a>: the cornerstone read on the workspace these flows run in.</li>
-    </ul>
-    <div class="loop-install" data-loop-install="product-release" data-install-position="bottom">
-      <a class="btn-primary" href="/install/product-release-loop" data-install-link data-install-slug="product-release">Install this flow</a>
-      <p class="loop-install__note">Sign in or sign up, then confirm the flow in the Maskin app.</p>
+  </section>
+  <section class="mp-sec"><div class="mp-cta">
+      <div class="mp-cta__text"><h2 class="mp-cta__title">Install this flow in your workspace</h2><p class="mp-cta__note">Sign in or sign up, then confirm the flow in the Maskin app.</p></div>
+      <p class="mp-actions" data-loop-install="product-release" data-install-position="bottom"><a class="mp-btn" href="/install/product-release-loop" data-install-link data-install-slug="product-release">Install this flow</a> <a class="mp-btn mp-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></p>
+    </div></section>
+  <section class="mp-sec"><h2 id="next">Read next</h2>
+    <ul class="mp-next" style="--mp-read:'Read \2192'">
+      <li><a class="mp-next__name" href="/marketplace/product-delivery/">Product delivery flow</a><span class="mp-next__short">: Bets in, verified code out.</span></li>
+      <li><a class="mp-next__name" href="/marketplace/product-usage/">Product usage flow</a><span class="mp-next__short">: A weekly read of what product usage says about what your team believes.</span></li>
+      <li><a class="mp-next__name" href="/marketplace/customer-voice/">Customer voice flow</a><span class="mp-next__short">: Customer messages filed as written findings, never replied to.</span></li>
+      <li><a class="mp-next__name" href="/marketplace/product-discovery/">Product discovery flow</a><span class="mp-next__short">: What customers and the market say, grouped into opportunities with the evidence behind each.</span></li>
+      <li><a class="mp-next__name" href="/docs/what-is-an-agentic-workspace/">What is an AI-native agentic workspace?</a><span class="mp-next__short">: The cornerstone read on the workspace these flows run in.</span></li>
+    </ul></section>
     </div>
-  </main>
-</div>
+  </div>
+</main>
 
 <script src="/docs/docs.js"></script>
 <script src="/marketplace-events.js" defer></script>

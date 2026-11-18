@@ -2,7 +2,6 @@
 
 # Know what changed in your market every Monday.
 Run a weekly market watch in Maskin so your team keeps product, positioning and pricing decisions grounded while Maskin scans for changes and writes a sourced briefing.
-Sign in or sign up, then confirm the flow in the Maskin app.
 
 ## The job
 Every Sunday, one page is rewritten with a quick read, what needs action, recent storylines, this week’s moves, what matters for the long view, what to watch, and the last four weeks at a glance. Each move has a source link, date and confidence rating, so you can check a price change, such as a new free tier, at its source.
@@ -27,6 +26,7 @@ Every Sunday, one page is rewritten with a quick read, what needs action, recent
 5. The page shows a Low, Medium or High threat level and the date it last changed, and answers whether a move changed who you sell to, what you claim, or what you price.
 6. Every Monday, Maskin checks that the scan ran and the page was rewritten. If not, it restarts the scan once, then once more, and tells the workspace owner if it still has not run.
 7. Each month, Maskin proposes competitor list changes for a person to confirm, and prepares a longer view of where the market and customers are heading, whether the plan is right, and what to do one year ahead.
+Amber steps are human approvals.
 
 ## What you need to run it
 - Install the flow.
@@ -40,9 +40,6 @@ Every Sunday, one page is rewritten with a quick read, what needs action, recent
 - **Your data stays yours:** nothing is sent outside the workspace. Maskin does not email competitors or post anywhere.
 - **Fails safely:** if the Monday check finds a missed scan or rewrite, Maskin retries twice, then tells the workspace owner.
 
-## Get it
-[Install this flow](/install/market-competitor-watch-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
-
 ## Example week
 Example briefing, week of 9 March, for a fictional company, Brightlane (project software for architects).
 **Quick read:** Threat level Medium (since 2 March). A rival, Plotwise, cut its entry price by 30% and launched a free tier. Two prospects mentioned it this week. Nothing forces a change yet, but the pricing page claim “cheapest for small studios” is now weak.
@@ -52,10 +49,13 @@ Example briefing, week of 9 March, for a fictional company, Brightlane (project 
 **Customers and prospects:** small studios say they are cutting software spend this quarter (2 sources, confidence Medium).
 **Watch next:** whether Plotwise’s free tier has a seat limit. Whether Studiolane announces a partner programme.
 
-## Related flows on the marketplace
-- [Product discovery flow](/marketplace/product-discovery/): interviews, tickets, and reviews land as typed insight, and the flow closes when a shaped bet ships against them.
-- [Knowledge wiki flow](/marketplace/knowledge-wiki/): team memory that new hires and new agents bootstrap from.
-- [SEO publishing flow](/marketplace/seo-publishing/): one flow from keyword bracket to indexed rank, with humans gating the intent read and the send-to-publish.
-- [Outbound flow](/marketplace/outbound/): prospect research, personalized draft, and reply-handling as one flow, with humans gating the send.
-- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): the cornerstone read on the workspace these flows run in.
+## Install this flow in your workspace
 Sign in or sign up, then confirm the flow in the Maskin app.
+[Install this flow](/install/market-competitor-watch-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
+
+## Read next
+- [Product discovery flow](/marketplace/product-discovery/): Interviews, tickets, and reviews land as typed insight, and the flow closes when a shaped bet ships against them.
+- [Knowledge wiki flow](/marketplace/knowledge-wiki/): Team memory that new hires and new agents bootstrap from.
+- [SEO publishing flow](/marketplace/seo-publishing/): One flow from keyword bracket to indexed rank, with humans gating the intent read and the send-to-publish.
+- [Outbound flow](/marketplace/outbound/): Prospect research, personalized draft, and reply-handling as one flow, with humans gating the send.
+- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.

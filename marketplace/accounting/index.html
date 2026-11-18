@@ -41,6 +41,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,300;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/docs/docs.css">
+<link rel="stylesheet" href="/marketplace/marketplace.css">
 
 <script type="application/ld+json">
 {
@@ -86,22 +87,31 @@
 <nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Marketplace</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
 
 <noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
-<div class="wrap doc-layout">
-<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All flows</a></li><li><a class="" href="/marketplace/seo-publishing/">The SEO publishing flow</a></li><li><a class="" href="/marketplace/outbound/">The outbound flow</a></li><li><a class="" href="/marketplace/lead-qualification/">The lead qualification flow</a></li><li><a class="" href="/marketplace/knowledge-wiki/">The LLM knowledge wiki flow</a></li><li><a class="" href="/marketplace/linkedin-content/">The LinkedIn content flow</a></li><li><a class="" href="/marketplace/product-delivery/">The product delivery flow</a></li><li><a class="is-active" href="/marketplace/accounting/" aria-current="page">Månedens bilag (dansk)</a></li><li><a class="" href="/loops/ai-customer-feedback-loop/">AI customer feedback loop</a></li><li><a class="" href="/marketplace/competitive-intelligence/">The competitive intelligence flow</a></li><li><a class="" href="/marketplace/meeting-loop/">The meeting insights flow</a></li><li><a class="" href="/marketplace/customer-voice/">The customer voice flow</a></li><li><a class="" href="/marketplace/product-usage/">The product usage flow</a></li><li><a class="" href="/marketplace/product-release/">The product release flow</a></li><li><a class="is-nested" href="/loops/competitive-intelligence/">Competitive intelligence flow: how it works</a></li><li><a class="is-nested" href="/loops/loops-that-graduate/">Flows that graduate: the trust ladder</a></li><!-- TEMP-SWAP (task 9bf88671): revert to href="/marketplace/product-discovery/" + "The product discovery loop" when the loop flips live. Mirrors commits 512b1f1 / 2a327bd. --><li><a class="" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/learn/agent-skills/">What are agent skills?</a></li><li><a class="" href="/docs/learn/human-in-the-loop-ai/">Human in the loop AI</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li><li><a class="" href="/docs/what-is-an-agentic-workspace/">What is an agentic workspace?</a></li></ul></nav></aside>
-  <main class="doc-content">
-    <p class="doc-breadcrumb"><a href="/marketplace/">Marketplace</a> / Månedens bilag</p>
-    <p class="eyebrow">Tilbud &middot; Bogføring</p>
-
-    <h1>Lad månedens bilag køre i Maskin, så du ved, hvad der skal afklares, mens Maskin laver et udkast og peger på poster, der ser forkerte ud.</h1>
-    <img class="hero-visual" src="/marketplace/accounting/accounting-hero-1200x628.png" alt="Kvitteringer går fra rod til orden, og én er markeret i blå." width="1200" height="628">
-
-    <h2>Opgaven</h2>
+<main class="wrap mp" id="mp">
+  
+  <nav class="mp-crumb" aria-label="Breadcrumb"><a href="/marketplace/">Marketplace</a><span aria-hidden="true">/</span><a href="/marketplace/#finance">Finance</a><span aria-hidden="true">/</span><span>Månedens bilag</span></nav>
+  <header class="mp-hero">
+    <div class="mp-hero__text">
+      <div class="mp-kind"><span class="mp-ico" aria-hidden="true">MB</span><span>Tilbud &middot; Bogføring</span></div>
+      <h1>Lad månedens bilag køre i Maskin, så du ved, hvad der skal afklares, mens Maskin laver et udkast og peger på poster, der ser forkerte ud.</h1>
+      
+      
+      
+    </div>
+    <figure class="mp-hero__img"><img src="/marketplace/accounting/accounting-hero-1200x628.png" width="1200" height="630" alt="Kvitteringer går fra rod til orden, og én er markeret i blå." fetchpriority="high"></figure>
+  </header>
+  <div class="mp-body">
+    <nav class="mp-toc" aria-label="På denne side"><span class="mp-toc__title">På denne side</span><a href="#opgaven">Opgaven</a><a href="#hvem-gr-hvad">Hvem gør hvad</a><a href="#sadan-krer-det">Sådan kører det</a><a href="#tryghed">Tryghed</a><a href="#pris-og-timer">Pris og timer</a><a href="#tag-fat">Tag fat</a></nav>
+    <div class="mp-main doc-content">
+  <section class="mp-sec">
+    <h2 id="opgaven">Opgaven</h2>
     <p>Månedens kvitteringer og bankposter samles i et udkast og en liste over punkter, der skal afklares, fx en manglende kvittering eller en betaling, der står to gange. Når tilbuddet starter, gennemgår en bogholder fra en samarbejdspartner udkastet og listen. Du beholder dit eget bogføringssystem, og Maskin bygger ovenpå det. Vil du se forarbejdet til årsafslutningen vist live, før du beslutter dig, er der et gratis webinar på dansk den 25. november i serien <a href="/da/saet-stroem/">Sæt strøm til din forretning</a>.</p>
     <p>Tilbuddet er bygget til at mindske kassen med kvitteringer, jagten på en bogholder og bilagsrod, der først opdages sent.</p>
     <p>Det er stadig dig og din bogholder, der svarer på spørgsmål og træffer beslutninger.</p>
-
-    <h2>Hvem gør hvad</h2>
-    <div class="doc-table-wrap">
+  </section>
+  <section class="mp-sec">
+    <h2 id="hvem-gr-hvad">Hvem gør hvad</h2>
+    <div class="mp-scroll"><div class="doc-table-wrap">
       <table class="doc-table">
         <thead>
           <tr><th>Du og bogholderen fra en samarbejdspartner står for</th><th>Maskin hjælper med</th></tr>
@@ -114,36 +124,45 @@
           <tr><td>Beslutningen om, hvad der kan bogføres</td><td>Samler månedens arbejde og spørgsmål på én side</td></tr>
         </tbody>
       </table>
-    </div>
-
-    <h2>Sådan kører det</h2>
-    <ol>
-      <li>Månedens kvitteringer og et bankudtræk indgår i forløbet.</li>
-      <li>Maskin læser hver kvittering og bankpost og samler et udkast med dato, beløb, moms, konto og tilhørende kvittering.</li>
-      <li>Maskin laver én liste over det, der ser forkert ud, fx en manglende kvittering, moms der ikke stemmer, en dobbelt betaling, en privat udgift eller et mærkeligt beløb. Hvert punkt får en kort forklaring.</li>
-      <li>Forløbet er indrettet sådan, at en bogholder fra en samarbejdspartner gennemgår udkastet og listen. Først derefter kan noget bogføres, og det gør et menneske.</li>
-      <li>Du får én side for måneden med, hvad der er samlet, hvad du skal svare på, og hvilke punkter der mangler afklaring.</li>
-    </ol>
+    </div></div>
+  </section>
+  <section class="mp-sec">
+    <h2 id="sadan-krer-det">Sådan kører det</h2>
+    <ol class="mp-steps">
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Månedens kvitteringer og et bankudtræk indgår i forløbet.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Maskin læser hver kvittering og bankpost og samler et udkast med dato, beløb, moms, konto og tilhørende kvittering.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Maskin laver én liste over det, der ser forkert ud, fx en manglende kvittering, moms der ikke stemmer, en dobbelt betaling, en privat udgift eller et mærkeligt beløb. Hvert punkt får en kort forklaring.</div></li>
+      <li class="mp-step mp-step--approval"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Forløbet er indrettet sådan, at en bogholder fra en samarbejdspartner gennemgår udkastet og listen. Først derefter kan noget bogføres, og det gør et menneske.</div></li>
+      <li class="mp-step mp-step--close"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Du får én side for måneden med, hvad der er samlet, hvad du skal svare på, og hvilke punkter der mangler afklaring.</div></li>
+      </ol>
+      <p class="mp-legend">Gule trin er menneskelig godkendelse. Det blå trin er det, der afslutter forløbet.</p>
     <img class="flow-visual" src="/marketplace/accounting/accounting-flow-1600x1000-v2.png" alt="Fem trin: du afleverer kvitteringer og bankudtræk, Maskin laver et udkast, det der ser forkert ud samles på en liste, en bogholder gennemgår, og du får én side. Næste måned starter forfra." width="1600" height="1000" loading="lazy">
-
-    <h2>Tryghed</h2>
+  </section>
+  <section class="mp-sec">
+    <h2 id="tryghed">Tryghed</h2>
     <p class="trust-item"><strong>Menneskelig gennemgang:</strong> Når tilbuddet starter, gennemgår en bogholder fra en samarbejdspartner udkastet og listen før eventuel bogføring.</p>
     <p class="trust-item"><strong>Dine data er dine:</strong> Du beholder dit eget bogføringssystem, og Maskin bygger ovenpå det. Maskin bogfører ikke noget i dit system uden et menneske.</p>
     <p class="trust-item"><strong>Fejler sikkert:</strong> En kvittering, der ikke kan læses, eller en post, der ikke passer, kommer på listen i stedet for at blive gættet.</p>
-
-    <h2>Pris og timer</h2>
+  </section>
+  <section class="mp-sec">
+    <h2 id="pris-og-timer">Pris og timer</h2>
     <p class="price-line">995 kr om måneden ekskl. moms</p>
     <p>Hjælp fra din bogholder inden for et fast månedligt timebudget.</p>
     <p>Tilbuddet starter, når en samarbejdspartner er på plads.</p>
-
-    <h2>Tag fat</h2>
+  </section>
+  <section class="mp-sec">
+    <h2 id="tag-fat">Tag fat</h2>
     <p>Tag en snak med Maskin-teamet om, hvordan en måned kan se ud.</p>
     <div class="post-cta__actions">
       <a class="btn-primary" href="https://maskin.io/bookseb">Book et møde</a>
       <a class="btn-secondary" href="mailto:ai@maskin.io">Skriv til os</a>
     </div>
-  </main>
-</div>
+  </section>
+  
+  
+    </div>
+  </div>
+</main>
 
 <script src="/docs/docs.js"></script>
 </body>

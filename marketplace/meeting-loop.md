@@ -2,7 +2,6 @@
 
 # Turn every meeting into work that gets done.
 Run Meeting insights in Maskin so your team gets meeting promises done while Maskin tracks commitments and checks follow-through.
-Sign in or sign up, then confirm the flow in the Maskin app.
 
 ## The job
 After a week, meeting promises are either done or have an owner and a date.
@@ -26,6 +25,7 @@ After a week, meeting promises are either done or have an owner and a date.
 5. At 14:00 UTC each weekday, and in a review on Mondays, Maskin checks promises from the last 14 days and checks agreed next steps with outside parties against what happened. Before a meeting with the same company or people, it posts open commitments, objections, and decisions from the earlier meeting.
 6. A daily health check confirms the sweep ran, finds stale meetings, and fixes written findings that are not linked to their meeting.
 7. For scheduled internal meetings, Maskin drafts an agenda from the template and adds open actions from the last related meeting.
+The blue step is the close condition.
 For each meeting, Maskin writes an analysis based on meeting type, files tasks, decisions, objections, and written findings, and records a follow-up date and a “My confidence” section. Missing information appears under “What is NOT captured.” Maskin does not invent names or look up attendees on social networks.
 
 ## What you need to run it
@@ -41,9 +41,6 @@ For each meeting, Maskin writes an analysis based on meeting type, files tasks, 
 - **Your data stays yours:** You connect your own tools after install. Nothing ships connected.
 - **Fails safely:** Maskin does not mark a meeting processed without a transcript, recording, or written reflection. It notes missing information instead of inventing names, and never overwrites an agenda written by hand.
 
-## Get it
-[Install this flow](/install/meeting-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
-
 ## Example first week
 Example for fictional Brightlane, project software for architects.
 Day 1: Brightlane connects Google Meet and Google Calendar.
@@ -54,10 +51,13 @@ Day 2: The team reviews the task and sets its follow-up date.
 Before the next meeting with that customer, Maskin posts the open commitment and objection.
 The team sends the room schedule and marks the commitment done.
 
-## Related flows on the marketplace
-- [Customer voice flow](/marketplace/customer-voice/): customer messages filed as written findings, never replied to.
-- [Product discovery flow](/marketplace/product-discovery/): what customers and the market say, grouped into opportunities with the evidence behind each.
-- [Knowledge wiki flow](/marketplace/knowledge-wiki/): knowledge pages kept current, merged or retired.
-- [Product release flow](/marketplace/product-release/): merged work bundled into a release with notes confirmed live.
-- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): the cornerstone read on the workspace these flows run in.
+## Install this flow in your workspace
 Sign in or sign up, then confirm the flow in the Maskin app.
+[Install this flow](/install/meeting-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
+
+## Read next
+- [Customer voice flow](/marketplace/customer-voice/): Customer messages filed as written findings, never replied to.
+- [Product discovery flow](/marketplace/product-discovery/): What customers and the market say, grouped into opportunities with the evidence behind each.
+- [Knowledge wiki flow](/marketplace/knowledge-wiki/): Knowledge pages kept current, merged or retired.
+- [Product release flow](/marketplace/product-release/): Merged work bundled into a release with notes confirmed live.
+- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.
