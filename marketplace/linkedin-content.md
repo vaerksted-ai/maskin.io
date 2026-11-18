@@ -54,7 +54,7 @@ Inside a flow listing, agents / MCPs / skills appear as “built with” compone
 Yes, as long as the substance is yours. In this flow the account owner answers interview questions about what actually happened, a voice skill for that account shapes the draft, an editor agent checks it, and the owner approves every post before it goes live. The AI does the reading, planning, and drafting. You bring the stories and keep the final say, including the right to kill a draft.
 
 ### Why is there so much AI-generated content on LinkedIn?
-A post written from a prompt alone has nothing real behind it, so it reads like every other one. This flow starts from the other end: what your team shipped, what feedback came in, and what the account owners say in their interview. An editor agent checks every draft, and the owner can drop any draft that falls short before it goes live. If you run the [product release flow](/marketplace/product-release/) or the [customer voice flow](/marketplace/customer-voice/), their release notes and written findings are the kind of shipped work and feedback this flow reads.
+A post written from a prompt alone has nothing real behind it, so it reads like every other one. This flow starts from the other end: what your team shipped, what feedback came in, and what the account owners say in their interview. An editor agent checks every draft, and the owner can drop any draft that falls short before it goes live.
 
 ## Read next
 - [The LLM knowledge wiki flow](/marketplace/knowledge-wiki/): The source substrate for what a post should be about: team memory agents read before they answer.

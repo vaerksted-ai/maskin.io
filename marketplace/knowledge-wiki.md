@@ -1,61 +1,80 @@
 > Source: https://maskin.io/marketplace/knowledge-wiki/
 
-# Know the pages your team reads are current.
-Run Knowledge Wiki in Maskin so your team can make decisions with confidence while Maskin keeps your knowledge pages current.
+# A wiki your agents read before they answer.
+Team memory that new hires and new agents bootstrap from — indexed, typed, MCP-native.
+![The LLM knowledge wiki flow — a closed bet becomes a typed, interlinked wiki page that agents read before they answer.](/og-image-knowledge-wiki.png)
+The knowledge wiki flow keeps a living, agent-readable record of every decision your team ships. A closed bet (one that has run through the [product delivery flow](/marketplace/product-delivery/), for instance) fires the flow; agents write the verdict, index the artifacts, and link them to the object they came from; a human gates the taste-sensitive summaries. Every future agent your team spawns reads from the same graph before it answers — so the wiki isn’t a Notion side-project that rots the moment its author changes roles, it’s the same substrate the rest of your team already operates on.
+For product teams tired of re-answering the same question because the last answer lived in someone’s DMs.
+There is no walkthrough video for this flow yet.
+This flow can't be installed yet. In the meantime, [try Maskin](/signup).
 
-## The job
-A new note about pricing lands on the page that already covers pricing instead of becoming a near-duplicate, and old drafts get merged or retired, so what people read is current. The Flow keeps the wiki current.
-**Replaces:** Manual wiki cleanup, searching for duplicate notes, and checking for stale pages.
-**Stays with your team:** Decisions about what the business claims and anything Maskin cannot verify.
-
-## What your team keeps, what Maskin runs
-| Your team keeps | Maskin runs |
-| --- | --- |
-| Deciding what the business says about itself | Checks pages for contradictions and outdated facts, fixes them or marks an older page superseded |
-| Naming who owns a page | Adds a missing owner to each page it touches |
-| Deciding who needs to read a page | Adds a missing reader to each page it touches |
-| Setting when a page should be reviewed | Adds a missing review date to each page it touches |
-| Choosing which pages are key | Keeps Home, Status, and key pages out of weekly deprecation |
-
-## How the Flow runs
-1. When a knowledge page is created, the Knowledge Curator reads it and looks for an existing page that covers the topic.
-2. If a page already covers the topic, the Curator updates it. If the knowledge is new, it files the page with its source and links it to anything it replaces or contradicts. A replaced page is marked deprecated, and the Flow gets a short note about where the page landed.
-3. Monday and Thursday at 05:45 UTC, the Curator refreshes Home and Status with recent changes, coverage, freshness, and what needs checking. It posts one digest under 250 words covering what is new, changed, stale, and worth looking at next.
-4. A daily check compares the Flow’s targets with its current state and picks up anything stuck. It runs the digest early if Home or Status is more than 4 days old.
-5. Tuesday at 06:00 UTC, the Curator reviews up to 40 pages, oldest first. It checks drafts untouched for at least 14 days and validated pages untouched for at least 60 days.
-6. For each page, it chooses to keep it and set a review date, merge it into a page that covers the topic, shorten it, or deprecate it. Before deprecating a page, it checks whether an open item links to it.
-7. A pass ends with a digest posted and Home and Status refreshed. Deprecation is reversible, and the Flow keeps running.
-The blue step is the close condition.
-
-## What you need to run it
-- Install the Flow.
-- Nothing needs to be connected. It works on knowledge pages in your workspace and uses no outside accounts.
-- If nothing is connected, it still works, and it sends nothing outside your workspace.
-- When a new page is handled, you will see a short note on the Flow saying where it landed. After a pass, you will see the digest and refreshed Home and Status pages.
-
-## Trust surface
-- **Human gates:** Your team decides what the business claims and handles anything Maskin cannot verify.
-- **Your data stays yours:** The Flow works on knowledge pages in your workspace and sends nothing outside it.
-- **Fails safely:** It never permanently deletes pages. Before deprecating a page, it checks for open items that link to it.
-
-## Example first week
-Example for fictional Brightlane, project software for architects.
-Monday: A new pricing decision is written up. The Curator finds the existing Pricing page and updates it.
-Tuesday: The weekly clean-up merges a three-week-old pricing draft into the Pricing page and sets a review date.
-Thursday: The digest lists one page updated, one draft merged, and two pages to check.
+## Key takeaways
+- An LLM wiki is a knowledge base an LLM compiles from your own sources into interlinked pages that agents read before they answer. Andrej Karpathy named the pattern in April 2026 as the alternative to per-agent memory files and query-time RAG.
+- This flow keeps that base alive: a closed bet fires it, agents write the verdict and index the artifact, and a human gates the taste-sensitive summaries.
+- Team memory is the unit here, not personal memory. Most of the head volume on the search term is Karpathy-navigational; the unclaimed slice is how a team actually runs one.
+- Every entry is typed and linked to the bet, insight, or decision it came from, so a reader walks back to the source instead of trusting a summary.
+- New hires and new agents bootstrap from the same graph, so onboarding stops being a separate doc that drifts from the work.
 
 ## What an LLM wiki is, and what it is not
 An LLM wiki is a knowledge base an LLM compiles from your own material into interlinked pages that other agents read before they answer. Andrej Karpathy published the pattern in April 2026 as a public gist, framing it as the alternative to two things teams were already doing: stuffing per-agent memory files, and bolting a retrieval layer onto raw documents. The wiki is compiled ahead of time, so the agent reads a stable artifact a human can audit, rather than a fresh pile of retrieved fragments.
 It is worth separating the wiki from its neighbours. A RAG index embeds your sources and retrieves pieces at query time; an LLM wiki compiles the sources into pages once and links them, so the same question tends to return the same answer. A Notion or Confluence space is written for humans and searched by humans; an LLM wiki is written to be read by an agent, and it cites the object each claim came from. Both are a durable, interlinked record, but the reader is different, and that changes how the record has to be maintained — and for the storage-engine side of the same distinction, [wiki-style knowledge vs an embedding store](/docs/knowledge-wiki-vs-vector-database/) walks through why one is content and the other is infrastructure.
 The failure mode is not the compile step. It is the upkeep. A wiki that only gets written when someone remembers to write it decays into a folder of half-true pages inside a quarter.
 
-## Install this flow in your workspace
-Sign in or sign up, then confirm the flow in the Maskin app.
-[Install this flow](/install/knowledge-wiki-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
+## How the flow closes
+- **Fires when** a bet closes, a decision ships, or a piece of work ends with a verdict worth keeping.
+- **Writes the verdict** — an agent captures what was decided, why, and what it displaced, in the voice and format the team already reads.
+- **Indexes and links** — the entry is attached to the bet, insight, or object it came from, so the graph stays walkable in both directions.
+- **Human gates** the taste-sensitive summaries: positioning, customer-facing language, anything that states a fact about the company rather than about the work.
+- **Closes on** a page a new hire or a new agent can read to answer a question without asking a person.
+That last line is the close condition. The flow is not done when the page is written. It is done when someone, or something, reads it and stops needing to ask.
 
-## Read next
-- [Product discovery flow](/marketplace/product-discovery/): What customers and the market say, grouped into opportunities with the evidence behind each.
-- [Meeting insights flow](/marketplace/meeting-loop/): Every meeting turned into filed tasks, decisions and findings.
-- [Customer voice flow](/marketplace/customer-voice/): Customer messages filed as written findings, never replied to.
-- [Market watch flow](/marketplace/competitive-intelligence/): A weekly sourced briefing on what changed in your market.
-- [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.
+## Why team wikis rot, and why this one does not
+Every team has tried the shared wiki. The pattern is always the same: a burst of writing at the start, a slow drift, and a final state where the newest pages are the least accurate and nobody trusts any of it. The cause is not laziness. It is that writing to the wiki is a separate job from doing the work, and separate jobs lose.
+This flow removes the separate job. Writing to the wiki is a byproduct of closing a bet, which the team is already doing. Reading from the wiki is a byproduct of starting work, because the agent reads it before it answers. Nobody has to remember the wiki exists, because it sits on the path of work the team already runs.
+The typed graph is what makes that possible. A page is not a floating document; it is attached to the object it describes. When the object changes, the link tells you which page to revisit. When a new agent joins, it does not read a stale onboarding doc. It reads the same graph the rest of the team operates on. Other flows read from that graph too: the [LinkedIn content flow](/marketplace/linkedin-content/) starts each fortnight from the shipped work, feedback, and signals already recorded there.
+
+## Built with
+- **Signal sources** — closed bets, shipped decisions, customer calls, and the object graph the team already works on.
+- **Agents** — verdict writer, artifact indexer, link resolver, staleness checker.
+- **MCPs** — the docs tool, the chat tool, the repo, and the analytics your team already logs into.
+- **Skills** — *write the verdict in our voice*, *summarize a decision against our template*.
+- **Human gates** — the person who owns the summary when it states something customer-facing or company-level.
+
+## What’s inside the flow
+Flow
+A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome — not on *done for now*. Every listing on the Marketplace is a flow.
+**Maskin flows carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.**
+Agent
+A named role a model performs — an SEO analyst, a discovery synthesizer, an outbound writer. Not an *AI teammate*: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.
+MCP
+The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
+Skill
+A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
+Inside a flow listing, agents / MCPs / skills appear as “built with” components of the flow, never as top-level marketplace sections of their own.
+
+## FAQ
+
+### What is an LLM wiki?
+An LLM wiki is a knowledge base an LLM compiles from your own sources into interlinked pages that agents read before they answer. Andrej Karpathy named the pattern in April 2026 as an alternative to per-agent memory and query-time RAG. The point is a compiled, human-auditable artifact: the agent reads a stable page instead of retrieving a fresh set of fragments for every question.
+
+### Is an LLM wiki a RAG?
+No — a RAG system embeds raw sources and retrieves fragments at query time, while an LLM wiki compiles those sources into interlinked pages ahead of time; [LLM wiki vs RAG](/docs/llm-wiki-vs-rag/) covers the full comparison.
+
+### Is an LLM wiki better than RAG?
+They solve different problems, so most teams end up running both; [here is how to choose between them](/docs/llm-wiki-vs-rag/).
+
+### How does an LLM wiki work?
+An LLM reads your sources, extracts the durable claims, and writes them into interlinked pages with links back to the object each claim came from. Agents then read those pages before they answer, instead of searching raw documents. The compile runs on a schedule or when a source changes, so the wiki stays a maintained artifact rather than a one-time export.
+
+### How do you run an LLM wiki for a team?
+Running one for a team is an upkeep problem more than a build problem. The build is straightforward: point an LLM at your sources, compile interlinked pages, let agents read them. The hard part is keeping pages current once the person who wrote them changes roles. The fix is to make writing a byproduct of work that already closes, and reading a byproduct of work that already starts.
+
+### How do you scale an LLM wiki?
+Scaling is a linking and ownership problem, not a storage problem. Past a few hundred pages the failure is orphaned and stale entries, not volume. Give every page a type, an owner, and a link to the object it describes, and re-check the ones whose source object changed. That is what keeps a large wiki trustworthy where a flat folder of markdown stops being.
+
+### Is an LLM wiki open source?
+Karpathy published the pattern as a public gist, so the approach itself is open, and implementations range from a personal Obsidian vault to a cross-platform desktop app to a shared substrate inside a workspace. What differs is who reads it. A personal vault serves one person; a team wiki has to serve every agent the team spawns, which changes how it is indexed and linked.
+
+### How does an LLM wiki connect to MCP?
+MCP is the wire. The wiki lives in one place and agents reach it through an MCP server, the same way they reach the CRM or the repo. That matters because it keeps the wiki out of any single tool. A coding agent, a research agent, and a support agent can all read the same pages under the same gates, without anyone copying the content between products.
+Related flows on the marketplace

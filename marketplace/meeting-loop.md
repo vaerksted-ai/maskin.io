@@ -56,8 +56,6 @@ Sign in or sign up, then confirm the flow in the Maskin app.
 [Install this flow](/install/meeting-loop) [Book a walkthrough](https://meshfirm.com/bookmagnus)
 
 ## Read next
-- [Customer voice flow](/marketplace/customer-voice/): Customer messages filed as written findings, never replied to.
 - [Product discovery flow](/marketplace/product-discovery/): What customers and the market say, grouped into opportunities with the evidence behind each.
 - [Knowledge wiki flow](/marketplace/knowledge-wiki/): Knowledge pages kept current, merged or retired.
-- [Product release flow](/marketplace/product-release/): Merged work bundled into a release with notes confirmed live.
 - [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.
