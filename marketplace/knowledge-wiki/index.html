@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LLM wiki &mdash; a wiki your agents read before they answer</title>
-<meta name="description" content="Team memory that new hires and new agents bootstrap from &mdash; indexed, typed, MCP-native.">
+<title>LLM wiki: know the pages your team reads are current &mdash; Maskin</title>
+<meta name="description" content="Run Knowledge Wiki in Maskin so your team can make decisions with confidence while Maskin keeps your knowledge pages current.">
 
 <!-- Canonical -->
 <link rel="canonical" href="https://maskin.io/marketplace/knowledge-wiki/">
@@ -20,26 +20,28 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://maskin.io/marketplace/knowledge-wiki/">
-<meta property="og:title" content="A wiki your agents read before they answer.">
-<meta property="og:description" content="Team memory that new hires and new agents bootstrap from &mdash; indexed, typed, MCP-native.">
-<meta property="og:image" content="https://maskin.io/og-image-knowledge-wiki.png">
+<meta property="og:title" content="Know the pages your team reads are current.">
+<meta property="og:description" content="Run Knowledge Wiki in Maskin so your team can make decisions with confidence while Maskin keeps your knowledge pages current.">
+<meta property="og:image" content="https://maskin.io/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Maskin">
 <meta property="og:site_name" content="Maskin">
 <meta property="og:locale" content="en_US">
 
 <!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@maskin_io">
-<meta name="twitter:title" content="A wiki your agents read before they answer.">
-<meta name="twitter:description" content="Team memory that new hires and new agents bootstrap from &mdash; indexed, typed, MCP-native.">
-<meta name="twitter:image" content="https://maskin.io/og-image-knowledge-wiki.png">
+<meta name="twitter:title" content="Know the pages your team reads are current.">
+<meta name="twitter:description" content="Run Knowledge Wiki in Maskin so your team can make decisions with confidence while Maskin keeps your knowledge pages current.">
+<meta name="twitter:image" content="https://maskin.io/og-image.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,300;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/docs/docs.css">
+<link rel="stylesheet" href="/marketplace/marketplace.css">
 
 <script type="application/ld+json">
 {
@@ -47,14 +49,16 @@
   "@graph": [
     {
       "@type": "WebPage",
-      "name": "A wiki your agents read before they answer.",
-      "headline": "A wiki your agents read before they answer.",
-      "description": "Team memory that new hires and new agents bootstrap from — indexed, typed, MCP-native.",
+      "headline": "Know the pages your team reads are current.",
+      "name": "Know the pages your team reads are current.",
+      "description": "Run Knowledge Wiki in Maskin so your team can make decisions with confidence while Maskin keeps your knowledge pages current.",
       "url": "https://maskin.io/marketplace/knowledge-wiki/",
       "inLanguage": "en",
-      "datePublished": "2026-09-18T00:00:00Z",
-      "dateModified": "2026-09-25T00:00:00Z",
-      "image": ["https://maskin.io/og-image-knowledge-wiki.png"],
+      "datePublished": "2026-11-18T00:00:00Z",
+      "dateModified": "2026-11-18T00:00:00Z",
+      "image": [
+        "https://maskin.io/og-image.png"
+      ],
       "author": {
         "@type": "Organization",
         "name": "Maskin",
@@ -70,15 +74,29 @@
         "@type": "WebSite",
         "name": "Maskin",
         "url": "https://maskin.io/"
-      },
-      "keywords": "llm wiki, llm wiki for teams, llm wiki mcp, llm wiki vs rag, llm wiki pattern, llm wiki knowledge base"
+      }
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
-        { "@type": "ListItem", "position": 2, "name": "Marketplace", "item": "https://maskin.io/marketplace/" },
-        { "@type": "ListItem", "position": 3, "name": "The LLM knowledge wiki flow", "item": "https://maskin.io/marketplace/knowledge-wiki/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://maskin.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Marketplace",
+          "item": "https://maskin.io/marketplace/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The knowledge wiki flow",
+          "item": "https://maskin.io/marketplace/knowledge-wiki/"
+        }
       ]
     },
     {
@@ -153,169 +171,105 @@
   ]
 }
 </script>
-
-<style>
-  /* LLM knowledge wiki loop page: hero visual, non-clickable video placeholder, plain waitlist shell (matches shell used on seo-publishing / outbound / product-discovery), primitives grid, positioning line. */
-  .hero-visual { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--rule); margin: 1.5rem 0 2rem; }
-  .waitlist { display: flex; gap: .6rem; flex-wrap: wrap; padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin: 0 0 .5rem; }
-  .waitlist__input { flex: 1 1 240px; padding: .7rem .9rem; border: 1px solid var(--rule); border-radius: 8px; font: inherit; background: var(--linen); color: var(--ink); }
-  .waitlist__input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
-  .waitlist__submit { padding: .7rem 1.1rem; border-radius: 8px; border: 0; background: var(--ink); color: var(--linen); font-family: var(--ff-display); font-weight: 600; cursor: pointer; }
-  .waitlist__submit:hover { background: var(--ink-2); }
-  .waitlist__status { flex: 1 1 100%; margin: .5rem 0 0; font-family: var(--ff-mono); font-size: .82rem; color: var(--ink-3); min-height: 1.2em; }
-  .waitlist__fallback { font-size: .85rem; color: var(--ink-3); margin: 0 0 2rem; }
-  .waitlist__challenge { flex: 1 1 100%; margin: .25rem 0 0; min-height: 65px; }
-  .waitlist__consent { flex: 1 1 100%; display: flex; gap: .55rem; align-items: flex-start; font-size: .88rem; color: var(--ink-2); margin: .25rem 0 0; line-height: 1.4; }
-  .waitlist__consent input[type=checkbox] { margin-top: .25rem; accent-color: var(--accent); flex: 0 0 auto; }
-  .waitlist__consent a { color: inherit; text-decoration: underline; }
-  .waitlist__status[data-tone=error] { color: var(--accent, #b04747); }
-  .waitlist__status[data-tone=success] { color: var(--ink); }
-  .positioning-line { font-family: var(--ff-serif); font-size: 1.15rem; font-style: italic; color: var(--ink-2); margin: 1.75rem 0 2.5rem; border-left: 3px solid var(--accent); padding: .25rem 0 .25rem 1rem; }
-  .primitives { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.5rem 0 3rem; }
-  .primitive { padding: 1.25rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
-  .primitive__name { font-family: var(--ff-display); font-weight: 600; font-size: 1.05rem; margin: 0 0 .5rem; color: var(--ink); }
-  .primitive__def { font-size: .9rem; color: var(--ink-2); margin: 0; line-height: 1.55; }
-  .primitive__def + .primitive__def { margin-top: .6rem; }
-  .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
-</style>
 </head>
 <body>
 
 <nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#111110"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Marketplace</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
 
 <noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
-<div class="wrap doc-layout">
-<aside class="doc-sidebar" id="docsidebar"><nav class="doc-sidebar__group" aria-label="Marketplace"><p class="doc-sidebar__title">Marketplace</p><ul class="doc-sidebar__list"><li><a class="" href="/marketplace/">All flows</a></li><li><a class="" href="/marketplace/seo-publishing/">The SEO publishing flow</a></li><li><a class="" href="/marketplace/outbound/">The outbound flow</a></li><li><a class="" href="/marketplace/lead-qualification/">The lead qualification flow</a></li><li><a class="is-active" href="/marketplace/knowledge-wiki/" aria-current="page">The LLM knowledge wiki flow</a></li><li><a class="" href="/marketplace/linkedin-content/">The LinkedIn content flow</a></li><li><a class="" href="/marketplace/product-delivery/">The product delivery flow</a></li><li><a class="" href="/marketplace/accounting/">Månedens bilag (dansk)</a></li><li><a class="" href="/loops/ai-customer-feedback-loop/">AI customer feedback loop</a></li><li><a class="" href="/marketplace/competitive-intelligence/">The competitive intelligence flow</a></li><li><a class="is-nested" href="/loops/competitive-intelligence/">Competitive intelligence flow: how it works</a></li><li><a class="is-nested" href="/loops/loops-that-graduate/">Flows that graduate: the trust ladder</a></li><!-- TEMP-SWAP (task 9bf88671): revert to href="/marketplace/product-discovery/" + "The product discovery loop" when the loop flips live. Mirrors commits 512b1f1 / 2a327bd. --><li><a class="" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li></ul></nav><nav class="doc-sidebar__group" aria-label="Related"><p class="doc-sidebar__title">Related</p><ul class="doc-sidebar__list"><li><a class="" href="/docs/agentic-workspace-vs-knowledge-space/">Agentic workspace vs knowledge space</a></li><li><a class="" href="/docs/what-is-a-stateful-orchestration-substrate/">Stateful orchestration substrate</a></li><li><a class="" href="/docs/agent-observability/">Agent observability</a></li><li><a class="" href="/docs/ambient-agent-workspace/">Ambient agent workspace</a></li></ul></nav></aside>
-  <main class="doc-content">
-    <p class="doc-breadcrumb"><a href="/marketplace/">Marketplace</a> / The LLM knowledge wiki flow</p>
-    <p class="eyebrow">Flow &middot; Knowledge</p>
-
-    <!-- HERO: H1 + subhead + hero visual -->
-    <h1>A wiki your agents read before they answer.</h1>
-    <p class="lead">Team memory that new hires and new agents bootstrap from &mdash; indexed, typed, MCP-native.</p>
-    <img class="hero-visual" src="/og-image-knowledge-wiki.png" alt="The LLM knowledge wiki flow &mdash; a closed bet becomes a typed, interlinked wiki page that agents read before they answer." width="1200" height="630">
-
-    <!-- HERO BODY (verbatim from the approved content object) -->
-    <p>The knowledge wiki flow keeps a living, agent-readable record of every decision your team ships. A closed bet (one that has run through the <a href="/marketplace/product-delivery/">product delivery flow</a>, for instance) fires the flow; agents write the verdict, index the artifacts, and link them to the object they came from; a human gates the taste-sensitive summaries. Every future agent your team spawns reads from the same graph before it answers &mdash; so the wiki isn&rsquo;t a Notion side-project that rots the moment its author changes roles, it&rsquo;s the same substrate the rest of your team already operates on.</p>
-
-    <p class="positioning-line">For product teams tired of re-answering the same question because the last answer lived in someone&rsquo;s DMs.</p>
-
-    <p class="loop-video-note">There is no walkthrough video for this flow yet.</p>
-
-    <style id="loop-install-css">
-    .loop-install-lead { font-size: .95rem; color: var(--ink-2); margin: 0 0 1.5rem; }
-    .loop-install-lead a { color: inherit; text-decoration: underline; }
-    </style>
-    <p class="loop-install-lead">This flow can't be installed yet. In the meantime, <a href="/signup">try Maskin</a>.</p>
-
-    <h2>Key takeaways</h2>
+<main class="wrap mp" id="mp">
+  
+  <nav class="mp-crumb" aria-label="Breadcrumb"><a href="/marketplace/">Marketplace</a><span aria-hidden="true">/</span><a href="/marketplace/#knowledge">Knowledge</a><span aria-hidden="true">/</span><span>The knowledge wiki flow</span></nav>
+  <header class="mp-hero">
+    <div class="mp-hero__text">
+      <div class="mp-kind"><span class="mp-ico" aria-hidden="true">LK</span><span>Flow &middot; Knowledge</span></div>
+      <h1>Know the pages your team reads are current.</h1>
+      <p class="mp-lead">Run Knowledge Wiki in Maskin so your team can make decisions with confidence while Maskin keeps your knowledge pages current.</p>
+      <div class="mp-actions" data-loop-install="knowledge-wiki" data-install-position="top"><a class="mp-btn" href="/install/knowledge-wiki-loop" data-install-link data-install-slug="knowledge-wiki">Install this flow</a></div>
+      
+    </div>
+    
+  </header>
+  <div class="mp-body">
+    <nav class="mp-toc" aria-label="On this page"><span class="mp-toc__title">On this page</span><a href="#the-job">The job</a><a href="#what-your-team-keeps-what-maskin-runs">What your team keeps, what Maskin runs</a><a href="#how-the-flow-runs">How the Flow runs</a><a href="#what-you-need-to-run-it">What you need to run it</a><a href="#trust-surface">Trust surface</a><a href="#example-first-week">Example first week</a><a href="#what-an-llm-wiki-is-and-what-it-is-not">What an LLM wiki is, and what it is not</a><a href="#next">Read next</a></nav>
+    <div class="mp-main doc-content">
+  <section class="mp-sec">
+    <h2 id="the-job">The job</h2>
+    <p>A new note about pricing lands on the page that already covers pricing instead of becoming a near-duplicate, and old drafts get merged or retired, so what people read is current. The Flow keeps the wiki current.</p>
+    <p><strong>Replaces:</strong> Manual wiki cleanup, searching for duplicate notes, and checking for stale pages.</p>
+    <p><strong>Stays with your team:</strong> Decisions about what the business claims and anything Maskin cannot verify.</p>
+  </section>
+  <section class="mp-sec">
+    <h2 id="what-your-team-keeps-what-maskin-runs">What your team keeps, what Maskin runs</h2>
+    <div class="mp-scroll"><table>
+      <thead><tr><th>Your team keeps</th><th>Maskin runs</th></tr></thead>
+      <tbody>
+        <tr><td>Deciding what the business says about itself</td><td>Checks pages for contradictions and outdated facts, fixes them or marks an older page superseded</td></tr>
+        <tr><td>Naming who owns a page</td><td>Adds a missing owner to each page it touches</td></tr>
+        <tr><td>Deciding who needs to read a page</td><td>Adds a missing reader to each page it touches</td></tr>
+        <tr><td>Setting when a page should be reviewed</td><td>Adds a missing review date to each page it touches</td></tr>
+        <tr><td>Choosing which pages are key</td><td>Keeps Home, Status, and key pages out of weekly deprecation</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+  <section class="mp-sec">
+    <h2 id="how-the-flow-runs">How the Flow runs</h2>
+    <ol class="mp-steps">
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">When a knowledge page is created, the Knowledge Curator reads it and looks for an existing page that covers the topic.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">If a page already covers the topic, the Curator updates it. If the knowledge is new, it files the page with its source and links it to anything it replaces or contradicts. A replaced page is marked deprecated, and the Flow gets a short note about where the page landed.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Monday and Thursday at 05:45 UTC, the Curator refreshes Home and Status with recent changes, coverage, freshness, and what needs checking. It posts one digest under 250 words covering what is new, changed, stale, and worth looking at next.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">A daily check compares the Flow’s targets with its current state and picks up anything stuck. It runs the digest early if Home or Status is more than 4 days old.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Tuesday at 06:00 UTC, the Curator reviews up to 40 pages, oldest first. It checks drafts untouched for at least 14 days and validated pages untouched for at least 60 days.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">For each page, it chooses to keep it and set a review date, merge it into a page that covers the topic, shorten it, or deprecate it. Before deprecating a page, it checks whether an open item links to it.</div></li>
+      <li class="mp-step mp-step--close"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">A pass ends with a digest posted and Home and Status refreshed. Deprecation is reversible, and the Flow keeps running.</div></li>
+      </ol>
+      <p class="mp-legend">The blue step is the close condition.</p>
+  </section>
+  <section class="mp-sec">
+    <h2 id="what-you-need-to-run-it">What you need to run it</h2>
     <ul>
-      <li>An LLM wiki is a knowledge base an LLM compiles from your own sources into interlinked pages that agents read before they answer. Andrej Karpathy named the pattern in April 2026 as the alternative to per-agent memory files and query-time RAG.</li>
-      <li>This flow keeps that base alive: a closed bet fires it, agents write the verdict and index the artifact, and a human gates the taste-sensitive summaries.</li>
-      <li>Team memory is the unit here, not personal memory. Most of the head volume on the search term is Karpathy-navigational; the unclaimed slice is how a team actually runs one.</li>
-      <li>Every entry is typed and linked to the bet, insight, or decision it came from, so a reader walks back to the source instead of trusting a summary.</li>
-      <li>New hires and new agents bootstrap from the same graph, so onboarding stops being a separate doc that drifts from the work.</li>
+      <li>Install the Flow.</li>
+      <li>Nothing needs to be connected. It works on knowledge pages in your workspace and uses no outside accounts.</li>
+      <li>If nothing is connected, it still works, and it sends nothing outside your workspace.</li>
+      <li>When a new page is handled, you will see a short note on the Flow saying where it landed. After a pass, you will see the digest and refreshed Home and Status pages.</li>
     </ul>
-
-    <h2>What an LLM wiki is, and what it is not</h2>
+  </section>
+  <section class="mp-sec">
+    <h2 id="trust-surface">Trust surface</h2>
+    <ul>
+      <li><strong>Human gates:</strong> Your team decides what the business claims and handles anything Maskin cannot verify.</li>
+      <li><strong>Your data stays yours:</strong> The Flow works on knowledge pages in your workspace and sends nothing outside it.</li>
+      <li><strong>Fails safely:</strong> It never permanently deletes pages. Before deprecating a page, it checks for open items that link to it.</li>
+    </ul>
+  </section>
+  <section class="mp-sec">
+    <h2 id="example-first-week">Example first week</h2>
+    <p>Example for fictional Brightlane, project software for architects.</p>
+    <p>Monday: A new pricing decision is written up. The Curator finds the existing Pricing page and updates it.</p>
+    <p>Tuesday: The weekly clean-up merges a three-week-old pricing draft into the Pricing page and sets a review date.</p>
+    <p>Thursday: The digest lists one page updated, one draft merged, and two pages to check.</p>
+  </section>
+  <section class="mp-sec">
+    <h2 id="what-an-llm-wiki-is-and-what-it-is-not">What an LLM wiki is, and what it is not</h2>
     <p>An LLM wiki is a knowledge base an LLM compiles from your own material into interlinked pages that other agents read before they answer. Andrej Karpathy published the pattern in April 2026 as a public gist, framing it as the alternative to two things teams were already doing: stuffing per-agent memory files, and bolting a retrieval layer onto raw documents. The wiki is compiled ahead of time, so the agent reads a stable artifact a human can audit, rather than a fresh pile of retrieved fragments.</p>
     <p>It is worth separating the wiki from its neighbours. A RAG index embeds your sources and retrieves pieces at query time; an LLM wiki compiles the sources into pages once and links them, so the same question tends to return the same answer. A Notion or Confluence space is written for humans and searched by humans; an LLM wiki is written to be read by an agent, and it cites the object each claim came from. Both are a durable, interlinked record, but the reader is different, and that changes how the record has to be maintained &mdash; and for the storage-engine side of the same distinction, <a href="/docs/knowledge-wiki-vs-vector-database/">wiki-style knowledge vs an embedding store</a> walks through why one is content and the other is infrastructure.</p>
     <p>The failure mode is not the compile step. It is the upkeep. A wiki that only gets written when someone remembers to write it decays into a folder of half-true pages inside a quarter.</p>
-
-    <h2>How the flow closes</h2>
-    <ul>
-      <li><strong>Fires when</strong> a bet closes, a decision ships, or a piece of work ends with a verdict worth keeping.</li>
-      <li><strong>Writes the verdict</strong> &mdash; an agent captures what was decided, why, and what it displaced, in the voice and format the team already reads.</li>
-      <li><strong>Indexes and links</strong> &mdash; the entry is attached to the bet, insight, or object it came from, so the graph stays walkable in both directions.</li>
-      <li><strong>Human gates</strong> the taste-sensitive summaries: positioning, customer-facing language, anything that states a fact about the company rather than about the work.</li>
-      <li><strong>Closes on</strong> a page a new hire or a new agent can read to answer a question without asking a person.</li>
-    </ul>
-    <p>That last line is the close condition. The flow is not done when the page is written. It is done when someone, or something, reads it and stops needing to ask.</p>
-
-    <h2>Why team wikis rot, and why this one does not</h2>
-    <p>Every team has tried the shared wiki. The pattern is always the same: a burst of writing at the start, a slow drift, and a final state where the newest pages are the least accurate and nobody trusts any of it. The cause is not laziness. It is that writing to the wiki is a separate job from doing the work, and separate jobs lose.</p>
-    <p>This flow removes the separate job. Writing to the wiki is a byproduct of closing a bet, which the team is already doing. Reading from the wiki is a byproduct of starting work, because the agent reads it before it answers. Nobody has to remember the wiki exists, because it sits on the path of work the team already runs.</p>
-    <p>The typed graph is what makes that possible. A page is not a floating document; it is attached to the object it describes. When the object changes, the link tells you which page to revisit. When a new agent joins, it does not read a stale onboarding doc. It reads the same graph the rest of the team operates on. Other flows read from that graph too: the <a href="/marketplace/linkedin-content/">LinkedIn content flow</a> starts each fortnight from the shipped work, feedback, and signals already recorded there.</p>
-
-    <h2>Built with</h2>
-    <ul>
-      <li><strong>Signal sources</strong> &mdash; closed bets, shipped decisions, customer calls, and the object graph the team already works on.</li>
-      <li><strong>Agents</strong> &mdash; verdict writer, artifact indexer, link resolver, staleness checker.</li>
-      <li><strong>MCPs</strong> &mdash; the docs tool, the chat tool, the repo, and the analytics your team already logs into.</li>
-      <li><strong>Skills</strong> &mdash; <em>write the verdict in our voice</em>, <em>summarize a decision against our template</em>.</li>
-      <li><strong>Human gates</strong> &mdash; the person who owns the summary when it states something customer-facing or company-level.</li>
-    </ul>
-
-    <h2>What&rsquo;s inside the flow</h2>
-    <div class="primitives">
-      <div class="primitive">
-        <p class="primitive__name">Flow</p>
-        <p class="primitive__def">A closed cycle: something fires it (a signal, a schedule, a click), agents do the work, a human gates the taste-sensitive parts, and it ends on a concrete outcome &mdash; not on <em>done for now</em>. Every listing on the Marketplace is a flow.</p>
-        <p class="primitive__def"><strong>Maskin flows carry typed outcomes and verdicts that persist across tools, not a scheduled run inside one product.</strong></p>
-      </div>
-      <div class="primitive">
-        <p class="primitive__name">Agent</p>
-        <p class="primitive__def">A named role a model performs &mdash; an SEO analyst, a discovery synthesizer, an outbound writer. Not an <em>AI teammate</em>: a role with a job description, tools it can use, and gates it has to pass before its work leaves the workspace.</p>
-      </div>
-      <div class="primitive">
-        <p class="primitive__name">MCP</p>
-        <p class="primitive__def">The wire an agent uses to reach the tools your team already uses &mdash; the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.</p>
-      </div>
-      <div class="primitive">
-        <p class="primitive__name">Skill</p>
-        <p class="primitive__def">A packaged capability you attach to an agent &mdash; <em>draft a follow-up in our voice</em>, <em>summarize a customer call against our discovery template</em>. Skills are the reusable pieces of judgment your team is already building without realising it.</p>
-      </div>
+  </section>
+  <section class="mp-sec"><div class="mp-cta">
+      <div class="mp-cta__text"><h2 class="mp-cta__title">Install this flow in your workspace</h2><p class="mp-cta__note">Sign in or sign up, then confirm the flow in the Maskin app.</p></div>
+      <p class="mp-actions" data-loop-install="knowledge-wiki" data-install-position="bottom"><a class="mp-btn" href="/install/knowledge-wiki-loop" data-install-link data-install-slug="knowledge-wiki">Install this flow</a> <a class="mp-btn mp-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></p>
+    </div></section>
+  <section class="mp-sec"><h2 id="next">Read next</h2>
+    <ul class="mp-next" style="--mp-read:'Read \2192'">
+      <li><a class="mp-next__name" href="/marketplace/product-discovery/">Product discovery flow</a><span class="mp-next__short">: What customers and the market say, grouped into opportunities with the evidence behind each.</span></li>
+      <li><a class="mp-next__name" href="/marketplace/meeting-loop/">Meeting insights flow</a><span class="mp-next__short">: Every meeting turned into filed tasks, decisions and findings.</span></li>
+      <li><a class="mp-next__name" href="/marketplace/customer-voice/">Customer voice flow</a><span class="mp-next__short">: Customer messages filed as written findings, never replied to.</span></li>
+      <li><a class="mp-next__name" href="/marketplace/competitive-intelligence/">Market watch flow</a><span class="mp-next__short">: A weekly sourced briefing on what changed in your market.</span></li>
+      <li><a class="mp-next__name" href="/docs/what-is-an-agentic-workspace/">What is an AI-native agentic workspace?</a><span class="mp-next__short">: The cornerstone read on the workspace these flows run in.</span></li>
+    </ul></section>
     </div>
-    <p>Inside a flow listing, agents / MCPs / skills appear as &ldquo;built with&rdquo; components of the flow, never as top-level marketplace sections of their own.</p>
-
-    <h2>FAQ</h2>
-
-    <h3>What is an LLM wiki?</h3>
-    <p>An LLM wiki is a knowledge base an LLM compiles from your own sources into interlinked pages that agents read before they answer. Andrej Karpathy named the pattern in April 2026 as an alternative to per-agent memory and query-time RAG. The point is a compiled, human-auditable artifact: the agent reads a stable page instead of retrieving a fresh set of fragments for every question.</p>
-
-    <h3>Is an LLM wiki a RAG?</h3>
-    <p>No &mdash; a RAG system embeds raw sources and retrieves fragments at query time, while an LLM wiki compiles those sources into interlinked pages ahead of time; <a href="/docs/llm-wiki-vs-rag/">LLM wiki vs RAG</a> covers the full comparison.</p>
-
-    <h3>Is an LLM wiki better than RAG?</h3>
-    <p>They solve different problems, so most teams end up running both; <a href="/docs/llm-wiki-vs-rag/">here is how to choose between them</a>.</p>
-
-    <h3>How does an LLM wiki work?</h3>
-    <p>An LLM reads your sources, extracts the durable claims, and writes them into interlinked pages with links back to the object each claim came from. Agents then read those pages before they answer, instead of searching raw documents. The compile runs on a schedule or when a source changes, so the wiki stays a maintained artifact rather than a one-time export.</p>
-
-    <h3>How do you run an LLM wiki for a team?</h3>
-    <p>Running one for a team is an upkeep problem more than a build problem. The build is straightforward: point an LLM at your sources, compile interlinked pages, let agents read them. The hard part is keeping pages current once the person who wrote them changes roles. The fix is to make writing a byproduct of work that already closes, and reading a byproduct of work that already starts.</p>
-
-    <h3>How do you scale an LLM wiki?</h3>
-    <p>Scaling is a linking and ownership problem, not a storage problem. Past a few hundred pages the failure is orphaned and stale entries, not volume. Give every page a type, an owner, and a link to the object it describes, and re-check the ones whose source object changed. That is what keeps a large wiki trustworthy where a flat folder of markdown stops being.</p>
-
-    <h3>Is an LLM wiki open source?</h3>
-    <p>Karpathy published the pattern as a public gist, so the approach itself is open, and implementations range from a personal Obsidian vault to a cross-platform desktop app to a shared substrate inside a workspace. What differs is who reads it. A personal vault serves one person; a team wiki has to serve every agent the team spawns, which changes how it is indexed and linked.</p>
-
-    <h3>How does an LLM wiki connect to MCP?</h3>
-    <p>MCP is the wire. The wiki lives in one place and agents reach it through an MCP server, the same way they reach the CRM or the repo. That matters because it keeps the wiki out of any single tool. A coding agent, a research agent, and a support agent can all read the same pages under the same gates, without anyone copying the content between products.</p>
-
-    <div class="related">
-      <p class="related__title">Related flows on the marketplace</p>
-      <div class="doc-cards">
-        <a class="doc-card" href="/docs/agentic-workspace-vs-knowledge-space/">
-          <div class="doc-card__title">Agentic workspace vs knowledge space</div>
-          <div class="doc-card__desc">Team memory vs personal knowledge &mdash; the tier where the flow closes and this wiki gets its verdicts.</div>
-          <div class="doc-card__arrow">Read &rarr;</div>
-        </a>
-        <a class="doc-card" href="/marketplace/seo-publishing/">
-          <div class="doc-card__title">Ship an indexed, snippet-eligible page from one shaped bet</div>
-          <div class="doc-card__desc">The sibling artifact-shipping flow &mdash; a bet closes into a page agents and crawlers both read.</div>
-          <div class="doc-card__arrow">Read &rarr;</div>
-        </a>
-        <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
-          <div class="doc-card__title">What is an agentic workspace?</div>
-          <div class="doc-card__desc">The cornerstone read on how the flows fit together.</div>
-          <div class="doc-card__arrow">Read &rarr;</div>
-        </a>
-      </div>
-    </div>
-  </main>
-</div>
+  </div>
+</main>
 
 <script src="/docs/docs.js"></script>
 <script src="/marketplace-events.js" defer></script>
