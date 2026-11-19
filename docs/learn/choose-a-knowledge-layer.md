@@ -137,4 +137,4 @@ A packaged capability you attach to an agent — *draft a follow-up in our voice
 Read next
 
 ## Pick the substrate, compose the rest
-Maskin is the typed workspace graph — the shared substrate humans and agents both read and write, with decisions, corrections, and artifacts as first-class objects. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin is the typed workspace graph — the shared substrate humans and agents both read and write, with decisions, corrections, and artifacts as first-class objects. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.

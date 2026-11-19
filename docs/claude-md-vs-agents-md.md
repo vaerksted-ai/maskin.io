@@ -115,4 +115,4 @@ There is no `skills.md`. Skills use a `SKILL.md` file inside a skill folder. The
 Read next
 
 ## Write the role rules once
-In Maskin, an agent’s system prompt and skills apply in every session it runs, with no repo involved. Open source, MCP-native. Self-host free, bring your own model.
+In Maskin, an agent’s system prompt and skills apply in every session it runs, with no repo involved. Open source, MCP-native. Technical teams can run it on their own infrastructure.

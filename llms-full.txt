@@ -501,7 +501,7 @@ MCP tools are verbs; object types are nouns. The tool declares the operation (`c
 The platform tools are server-defined; extensions can add more per workspace. What you can customise most directly is what those verbs operate on. Object types, their custom metadata fields, valid statuses per type, and relationship types are workspace-configurable through the extension system (`create_extension`, `create_workspace_field`). Once configured, a custom `stakeholder` or `experiment` type behaves identically to a built-in: the same `create_objects`, `get_objects`, `update_objects` verbs apply, and `get_workspace_schema` reflects the live configuration.
 
 ## Drive the workspace over the wire
-Every Maskin object, relationship, trigger, and loop is reachable through the MCP server. Open source under Apache 2.0. Self-host free, bring your own model.
+Every Maskin object, relationship, trigger, and loop is reachable through the MCP server. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.
 
 
 ---
@@ -788,7 +788,7 @@ Yes. Reads your Search Console data, with sitemap changes only if you grant writ
 You bring your own Resend account and API key. Tools for Resend are available to every agent once Resend is connected, and when an email arrives, Maskin emits an email-received event that can trigger an automation.
 
 ## Twelve first-party providers, no middleware
-Maskin wires auth, MCP servers, and object-graph emissions directly — agents call provider tools with no Zapier in between. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin wires auth, MCP servers, and object-graph emissions directly — agents call provider tools with no Zapier in between. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.
 
 
 ---
@@ -2023,7 +2023,7 @@ The canonical framing assumes a developer-typed-prompt trigger. The extension th
 Read next
 
 ## Build skills against typed state, not just repos
-Maskin runs the same `SKILL.md` format Anthropic ships — against a typed workspace graph instead of a filesystem. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin runs the same `SKILL.md` format Anthropic ships — against a typed workspace graph instead of a filesystem. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.
 
 
 ---
@@ -2145,7 +2145,7 @@ There is no `skills.md`. Skills use a `SKILL.md` file inside a skill folder. The
 Read next
 
 ## Write the role rules once
-In Maskin, an agent’s system prompt and skills apply in every session it runs, with no repo involved. Open source, MCP-native. Self-host free, bring your own model.
+In Maskin, an agent’s system prompt and skills apply in every session it runs, with no repo involved. Open source, MCP-native. Technical teams can run it on their own infrastructure.
 
 
 ---
@@ -2779,7 +2779,7 @@ It can be safer than human-*in*-the-loop for background work, because the altern
 Three signals: your AI feature takes longer than the user will politely wait for; the trigger for the feature is an event (a message, a metric, a schedule) rather than a keystroke; the outcome needs a human’s taste before it ships. If two of those three are true, the shape of the UX is ambient, not chat — and the specific question then is which of the five patterns fits the object of work. If the work is one artefact per invocation, delegated-agent is likely right; if the work spans multiple hand-offs and needs to carry state, workspace-graph is probably the shape.
 
 ## Own the loop, not the chat
-If chat is the wrong default and your team’s work spans more than one hand-off, the shape of the UX is a workspace graph — a typed object model humans and agents share, with ambient agents running on triggers and the human on-the-loop. Maskin is the open-source, MCP-native, self-hostable version of that shape. Self-host free forever under Apache 2.0, or start a hosted trial.
+If chat is the wrong default and your team’s work spans more than one hand-off, the shape of the UX is a workspace graph — a typed object model humans and agents share, with ambient agents running on triggers and the human on-the-loop. Maskin is the open-source, MCP-native, self-hostable version of that shape. Open source under Apache 2.0. Technical teams can run it on their own infrastructure, or start a hosted trial.
 
 ## Sources
 1. **Tianpan**, *Async Agents Need an Inbox, Not a Chat* (2026-04-23) and *Ambient AI Design: When the Chat Interface Is the Wrong Abstraction* (2026-04-15). [tianpan.co/blog/2026-04-23-async-agents-inbox-not-chat](https://tianpan.co/blog/2026-04-23-async-agents-inbox-not-chat) and [tianpan.co/blog/2026-04-15-ambient-ai-design-chat-interface](https://tianpan.co/blog/2026-04-15-ambient-ai-design-chat-interface). Named the ~30s / ~2min UX-inversion numbers and the four failure modes of ambient agents. [↩](#fnref1)
@@ -3248,7 +3248,7 @@ Structurally, yes — a loop is a directed graph with cycles (retry, revise, wai
 Read next
 
 ## Run the loop, not just the workflow
-Maskin is the MCP-native workspace where a workflow-shaped container carries typed objects, human-taste gates, and a close condition — with agent execution inside the shape. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin is the MCP-native workspace where a workflow-shaped container carries typed objects, human-taste gates, and a close condition — with agent execution inside the shape. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.
 
 
 ---
@@ -3486,7 +3486,7 @@ The frame we start from at Maskin: **a prompt is not a job — work is a loop.**
 Read next
 
 ## Model the loop first
-Maskin is loop-first by design: every unit of work is a typed object, agents run bounded loops against it, humans gate the calls that need taste, and the workspace is the audit trail. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin is loop-first by design: every unit of work is a typed object, agents run bounded loops against it, humans gate the calls that need taste, and the workspace is the audit trail. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.
 
 
 ---
@@ -3615,7 +3615,7 @@ Skip it when success is a judgment rather than a check, when you're working in a
 Read next
 
 ## End agent work in a verdict, not just a stop
-Maskin is the open-source, MCP-native workspace where a loop carries a close condition, an owner and a recorded verdict. Apache 2.0. Self-host free, bring your own model.
+Maskin is the open-source, MCP-native workspace where a loop carries a close condition, an owner and a recorded verdict. Apache 2.0. Technical teams can run it on their own infrastructure.
 
 
 ---
@@ -3704,7 +3704,7 @@ Yes, at the outcome. The human approves the result and the verdict, not every st
 Read next
 
 ## Give your loop a finish line
-Maskin is the open-source, MCP-native workspace where a loop carries a close condition, an owner and a recorded verdict. Apache 2.0. Self-host free, bring your own model.
+Maskin is the open-source, MCP-native workspace where a loop carries a close condition, an owner and a recorded verdict. Apache 2.0. Technical teams can run it on their own infrastructure.
 
 
 ---
@@ -3824,7 +3824,7 @@ No. Loop Marketing is a go-to-market framework HubSpot introduced in September 2
 The phrase surfaced in independent places within weeks of each other in mid-2026. Marily Nika's June–July 2026 posts ("Prompt Engineering Is Dead" → "Loop engineering is your new job") named the shift from the PM side.[1](#fn1) Addy Osmani's ["Loop Engineering"](https://addyosmani.com/blog/loop-engineering/) essay named it from the coding-agent side, with quotes from Peter Steinberger and Boris Cherny that carried it into practitioner discourse.[2](#fn2) LangChain and Prefect then wired it into the graph-engineering literature.[4](#fn4)[5](#fn5)
 
 ## Own the loop, not the prompt
-If the frame lands — the human's job is the system that prompts the agent, not the prompt itself — the shape of the tool you want is a workspace where the loop, the tools, the memory, the stopping condition, and the human gate all live as typed objects you can inspect, swap, and hand off. That is what Maskin is: an open-source, MCP-native, self-hostable workspace where loops are first-class objects a team configures rather than code an engineer writes. Self-host free forever under Apache 2.0, or start a hosted trial.
+If the frame lands — the human's job is the system that prompts the agent, not the prompt itself — the shape of the tool you want is a workspace where the loop, the tools, the memory, the stopping condition, and the human gate all live as typed objects you can inspect, swap, and hand off. That is what Maskin is: an open-source, MCP-native, self-hostable workspace where loops are first-class objects a team configures rather than code an engineer writes. Open source under Apache 2.0. Technical teams can run it on their own infrastructure, or start a hosted trial.
 
 ## Sources
 1. Marily Nika, *[Prompt Engineering Is Dead](https://marily.substack.com/p/prompt-engineering-is-dead-good)* (2026-06-22) and *[Loop engineering is your new job: how to design for silence](https://marily.substack.com/p/loop-engineering-is-your-new-job)* (2026-07-01), AI Product Academy on Substack. The PM-side framing of the shift from prompt to loop and the "design for silence" thesis on stopping conditions.
@@ -3907,7 +3907,7 @@ Persistence is not a feature you buy and bolt on at the end. It is a property of
 If you are a product manager starting with Claude Code, [Claude Code for product managers](/docs/learn/claude-code-for-product-managers/) covers where its memory ends and a team record takes over. If your team splits sessions across two tools, [when a team uses both Claude Code and Codex](/docs/claude-code-vs-codex/) shows why each tool's session history stays separate. The same is true for [Claude Code and Cursor used side by side](/docs/claude-code-vs-cursor/): neither keeps a timeline a colleague can open, so the decisions need a record outside both. If several people on one team each keep their own Claude Code notes, [running Claude Code as a team](/docs/learn/claude-code-team/) covers what travels through git and where the shared record of owners and decisions lives.
 
 ## Persistence is where the agent runs
-Maskin carries decisions, corrections, and artifacts on a typed object graph every run reads and writes — so Monday starts where Friday stopped. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin carries decisions, corrections, and artifacts on a typed object graph every run reads and writes — so Monday starts where Friday stopped. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.
 
 
 ---
@@ -4553,7 +4553,7 @@ A packaged capability you attach to an agent — *draft a follow-up in our voice
 Read next
 
 ## Pick the substrate, compose the rest
-Maskin is the typed workspace graph — the shared substrate humans and agents both read and write, with decisions, corrections, and artifacts as first-class objects. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin is the typed workspace graph — the shared substrate humans and agents both read and write, with decisions, corrections, and artifacts as first-class objects. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.
 
 
 ---
@@ -4752,7 +4752,7 @@ The format itself is free: a skill is a folder you can read, and there is no bui
 Run the six checks above, in order, and stop at the trigger model. Provenance, versioning, reach, maintenance, and spec conformance tell you whether a skill is safe to adopt. The trigger model tells you whether it will actually run. A listing that passes the first five and fails the sixth is a well-documented snippet.
 
 ## Skills that run where the work happens
-Maskin is the MCP-native workspace where a skill is a packaged capability attached to a named agent inside a closed loop — not a snippet in a directory. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin is the MCP-native workspace where a skill is a packaged capability attached to a named agent inside a closed loop — not a snippet in a directory. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.
 
 
 ---
@@ -4850,7 +4850,7 @@ For semantic search over a corpus too large or too varied to pre-write answers f
 Read next
 
 ## Compile the artifact, then index it
-Maskin compiles closed bets into typed pages agents read before they answer — an artifact you can point any retrieval pipeline at. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin compiles closed bets into typed pages agents read before they answer — an artifact you can point any retrieval pipeline at. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.
 
 
 ---
@@ -4974,7 +4974,7 @@ A packaged capability you attach to an agent — *draft a follow-up in our voice
 Read next
 
 ## The wire, the mechanism, and the substrate
-Maskin is the MCP-native workspace where a typed object graph — not a protocol or a retrieval index — carries decisions, corrections, and artifacts across runs. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin is the MCP-native workspace where a typed object graph — not a protocol or a retrieval index — carries decisions, corrections, and artifacts across runs. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.
 
 
 ---
@@ -5322,7 +5322,7 @@ Often yes — for quick synchronous questions, verb-surface commands, and solo-o
 Stable enough that renaming is a mistake. Every 2026 piece on ambient-agent UX cites Chase’s LangChain post as the definitional source, and downstream implementations — including Superhuman’s shipped features[2](#fn2) and the reference UI on GitHub — use the same three names.
 
 ## Own the interrupts, not the chat
-If your agents run on events and your team supervises more than one loop at a time, the shape of the UX is an inbox, a workspace-graph, or both — not a chat window. [Maskin](/) is the open-source, [MCP-native](/docs/mcp-native-workspace/), self-hostable workspace-graph. If Claude Cowork is the vendor-hosted answer, Maskin is the open-source alternative where the object model, the model, and the loop all live inside your own boundary. Self-host free forever under Apache 2.0, or start a hosted trial.
+If your agents run on events and your team supervises more than one loop at a time, the shape of the UX is an inbox, a workspace-graph, or both — not a chat window. [Maskin](/) is the open-source, [MCP-native](/docs/mcp-native-workspace/), self-hostable workspace-graph. If Claude Cowork is the vendor-hosted answer, Maskin is the open-source alternative where the object model, the model, and the loop all live inside your own boundary. Open source under Apache 2.0. Technical teams can run it on their own infrastructure, or start a hosted trial.
 
 ## Sources
 1. **Harrison Chase / LangChain**, *Introducing Ambient Agents* (Jan 2025). [langchain.com/blog/introducing-ambient-agents](https://www.langchain.com/blog/introducing-ambient-agents). Plus the Sequoia *Training Data* podcast appearance on *Ambient Agents and the Agent Inbox*, [sequoiacap.com/podcast/training-data-harrison-chase-2](https://sequoiacap.com/podcast/training-data-harrison-chase-2). Definitional citations for the Agent Inbox, the three interrupt types (`notify`, `question`, `review`), and the human-on-the-loop vs human-in-the-loop shift. [↩](#fnref1)
@@ -5429,7 +5429,7 @@ They are sibling arguments. The [ambient agent workspace](/docs/ambient-agent-wo
 Composable, and the reason is the audit obligation. Maskin is built for teams putting agents on real product work — insights, bets, tasks, validated outcomes on a shared typed backend — where “what did the agent do, on what trigger, at what state?” is a question you have to be able to answer without reconstructing a chat log. The [cornerstone](/docs/what-is-an-agentic-workspace/) covers the full object model; the [MCP-native](/docs/what-is-mcp-native/) piece covers why the protocol layer matters; the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) piece covers the deployment side. Composable is the substrate all three of those rest on.
 
 ## Own the substrate, not the org chart
-If the audit obligation, the multi-team coordination, and the multi-hour loop are all real for your team, the shape of the workspace is composable — typed objects under the personas, event triggers under the meetings, per-action gates under the persona-level trust. Maskin is the open-source, MCP-native, self-hostable version of that shape. Self-host free forever under Apache 2.0, or start a hosted trial.
+If the audit obligation, the multi-team coordination, and the multi-hour loop are all real for your team, the shape of the workspace is composable — typed objects under the personas, event triggers under the meetings, per-action gates under the persona-level trust. Maskin is the open-source, MCP-native, self-hostable version of that shape. Open source under Apache 2.0. Technical teams can run it on their own infrastructure, or start a hosted trial.
 
 ## Sources
 1. Sebastian Krumhausen, “The AI agent workspace market is splitting” — LinkedIn post, 10 April 2026. [linkedin.com/posts/krumhausen — market-camps post](https://www.linkedin.com/posts/krumhausen_the-ai-agent-workspace-market-is-splitting-activity-7448474897564975104-O7Nq). [↩](#fnref1)
@@ -5551,7 +5551,7 @@ The companion page, [Open source AI SDR: the honest map](/alternatives/open-sour
 Read next
 
 ## Run the loop on your own object graph
-An AI SDR is a loop, not a product. If you want the loop — signal, research, draft, human approval, send, reply, close — on typed objects you can audit end-to-end, running on your own model keys and your own sender lane, that’s what Maskin is aimed at. Self-host free forever under Apache 2.0, or start a hosted trial.
+An AI SDR is a loop, not a product. If you want the loop — signal, research, draft, human approval, send, reply, close — on typed objects you can audit end-to-end, running on your own model keys and your own sender lane, that’s what Maskin is aimed at. Open source under Apache 2.0. Technical teams can run it on their own infrastructure, or start a hosted trial.
 
 
 ---

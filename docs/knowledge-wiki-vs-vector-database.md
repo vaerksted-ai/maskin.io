@@ -91,4 +91,4 @@ For semantic search over a corpus too large or too varied to pre-write answers f
 Read next
 
 ## Compile the artifact, then index it
-Maskin compiles closed bets into typed pages agents read before they answer — an artifact you can point any retrieval pipeline at. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin compiles closed bets into typed pages agents read before they answer — an artifact you can point any retrieval pipeline at. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.

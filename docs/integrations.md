@@ -129,4 +129,4 @@ Yes. Reads your Search Console data, with sitemap changes only if you grant writ
 You bring your own Resend account and API key. Tools for Resend are available to every agent once Resend is connected, and when an email arrives, Maskin emits an email-received event that can trigger an automation.
 
 ## Twelve first-party providers, no middleware
-Maskin wires auth, MCP servers, and object-graph emissions directly — agents call provider tools with no Zapier in between. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin wires auth, MCP servers, and object-graph emissions directly — agents call provider tools with no Zapier in between. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.

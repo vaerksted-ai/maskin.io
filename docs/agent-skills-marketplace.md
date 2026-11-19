@@ -72,4 +72,4 @@ The format itself is free: a skill is a folder you can read, and there is no bui
 Run the six checks above, in order, and stop at the trigger model. Provenance, versioning, reach, maintenance, and spec conformance tell you whether a skill is safe to adopt. The trigger model tells you whether it will actually run. A listing that passes the first five and fails the sixth is a well-documented snippet.
 
 ## Skills that run where the work happens
-Maskin is the MCP-native workspace where a skill is a packaged capability attached to a named agent inside a closed loop — not a snippet in a directory. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin is the MCP-native workspace where a skill is a packaged capability attached to a named agent inside a closed loop — not a snippet in a directory. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.

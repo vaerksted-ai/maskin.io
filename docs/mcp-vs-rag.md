@@ -117,4 +117,4 @@ A packaged capability you attach to an agent — *draft a follow-up in our voice
 Read next
 
 ## The wire, the mechanism, and the substrate
-Maskin is the MCP-native workspace where a typed object graph — not a protocol or a retrieval index — carries decisions, corrections, and artifacts across runs. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin is the MCP-native workspace where a typed object graph — not a protocol or a retrieval index — carries decisions, corrections, and artifacts across runs. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.
