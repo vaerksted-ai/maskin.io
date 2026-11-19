@@ -126,7 +126,7 @@
           "name": "What is the best free alternative to n8n?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "For a free, self-hosted engine, start with Activepieces, Node-RED, or Windmill and read each license. For a free workspace where agents produce typed records, Maskin's self-hosted version is free under Apache 2.0, and you pay only for your own infrastructure and model usage."
+            "text": "For a free, self-hosted engine, start with Activepieces, Node-RED, or Windmill and read each license. For a workspace where agents produce typed records, Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure."
           }
         },
         {
@@ -180,7 +180,7 @@
         <li><strong>n8n is a good tool; most people who search for an alternative are missing one specific thing.</strong> Name it first: hosting, license terms, a friendlier agent builder, or a durable record of what the agent did.</li>
         <li><strong>n8n's own docs describe its license as fair-code and source-available</strong>, with limits on commercial use. That alone sends some teams to Activepieces, Node-RED, Kestra, or Windmill.</li>
         <li><strong>n8n stores executions, and prunes them by default.</strong> Finished executions are deleted after 336 hours (14 days) or past 10,000 stored runs, unless annotated. If you need a business record that outlives that, you build the schema yourself.</li>
-        <li><strong>Maskin sits at a different layer.</strong> It is an Apache 2.0, self-hostable workspace where a loop's output is a typed insight, bet, or task with an owner. It complements a workflow engine more than it replaces one.</li>
+        <li><strong>Maskin sits at a different layer.</strong> It is an open-source (Apache 2.0) workspace where a loop's output is a typed insight, bet, or task with an owner. It complements a workflow engine more than it replaces one.</li>
         <li><strong>Maskin has fewer integrations than n8n and no visual canvas.</strong> The honest counter-case is further down.</li>
       </ul>
     </div>
@@ -252,7 +252,7 @@
       <tr><td><strong>How you build</strong></td><td>Visual canvas</td><td>Visual canvas, YAML, or code</td><td>Visual configuration</td><td>Configure loops against a typed schema</td></tr>
       <tr><td><strong>Unit of work</strong></td><td>A zap or scenario run</td><td>A workflow run</td><td>An agent run</td><td>A loop that produces insights, bets, and tasks</td></tr>
       <tr><td><strong>Where the result lives</strong></td><td>Run history in the tool</td><td>Execution log, pruned by default in n8n</td><td>Run history in the tool</td><td>Typed objects with an owner</td></tr>
-      <tr><td><strong>Self-host</strong></td><td>Generally no</td><td>Yes</td><td>Generally no</td><td>Yes, Apache 2.0</td></tr>
+      <tr><td><strong>Run it yourself</strong></td><td>Generally no</td><td>Yes</td><td>Generally no</td><td>Open source (Apache 2.0); technical teams can run it on their own infrastructure</td></tr>
       <tr><td><strong>Integration breadth</strong></td><td>Very broad</td><td>Broad</td><td>Varies</td><td>Narrower; MCP-native</td></tr>
       <tr><td><strong>Best for</strong></td><td>Non-technical teams, no ops</td><td>Teams that want control of the runtime</td><td>First agent in an afternoon</td><td>Agent work that needs owners and outcomes</td></tr>
     </tbody>
@@ -270,17 +270,17 @@
     <li><strong>You want a visual canvas your team can read.</strong> Maskin has no node canvas. Loops are configured against a schema. If a teammate who does not write code needs to see and edit the flow as a diagram, n8n, Make, or a no-code AI agent platform serves them better.</li>
     <li><strong>The job is plumbing.</strong> Sync a form to a CRM, post a digest to Slack, resize images, call an API on a timer. That is what an engine is for, and a typed object graph around it is overhead. (A Danish-language rule of thumb for when fixed rules beat an agent: <a href="/da/ai-automatisering/" hreflang="da" lang="da">AI-automatisering: de første opgaver at automatisere</a>.)</li>
     <li><strong>A log is enough.</strong> If "the run succeeded or failed, and I can look at it for two weeks" answers your questions, you do not need a persistent record. Tune the pruning settings in the table above and move on.</li>
-    <li><strong>You want to run it yourself with little setup.</strong> n8n's Community edition is free and mature. Maskin's self-hosted version needs an agent server running microsandbox and libkrun for agent sessions (Docker is for local development only).</li>
+    <li><strong>You want a mature engine to run yourself.</strong> n8n's Community edition is free and mature.</li>
   </ul>
   <p>And a plain restatement of the wedge: if what you want is a drag-and-drop no-code builder, Maskin is the wrong tab. Maskin is for teams who would rather define a schema once and have every agent and every person work against it.</p>
   <h2>Using n8n and Maskin together</h2>
   <p>These are not mutually exclusive. Maskin exposes its objects over MCP, and n8n documents connecting MCP servers as tools for its AI Agent node (<a href="https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent" target="_blank" rel="noopener">n8n AI Agent node</a>). So a design where n8n keeps doing the plumbing and writes outcomes into Maskin objects is technically plausible. We have not published a tested recipe for it, so treat it as an option to prototype, not a documented integration. The tool surface is in the <a href="/docs/mcp-tools/">MCP tools reference</a>.</p>
   <h2>Maskin in one pass</h2>
-  <p>Maskin is open source under Apache 2.0, MCP-native, and built for team knowledge work. Agents run in isolated, sandboxed container sessions. You bring the model; the workspace is model-agnostic at the MCP layer. Self-hosting is free, with no open-core gate on the software. The longer versions of this picture live in <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a> and <a href="/docs/three-tiers-ai-native-work/">the three tiers of AI-native work</a>. Maskin is early, so evaluate the architecture rather than a long vendor track record. If you are comparing against other open-source options for different jobs, the <a href="/alternatives/">alternatives hub</a> covers Jira, Notion, Codex, and AI SDR tools, and the <a href="/alternatives/open-source-alternative-to-codex/">open source alternative to Codex</a> page is the closest sibling to this one. If the agent work you manage is an org chart of AI employees rather than a workflow, the <a href="/alternatives/paperclip/">Paperclip alternative</a> page applies the same method to that shape.</p>
+  <p>Maskin is open source under Apache 2.0, MCP-native, and built for team knowledge work. Technical teams can run it on their own infrastructure. Agents run on Claude by default, and Enterprise teams can bring their own Claude subscription, API key or model endpoint. The longer versions of this picture live in <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a> and <a href="/docs/three-tiers-ai-native-work/">the three tiers of AI-native work</a>. Maskin is early, so evaluate the architecture rather than a long vendor track record. If you are comparing against other open-source options for different jobs, the <a href="/alternatives/">alternatives hub</a> covers Jira, Notion, Codex, and AI SDR tools, and the <a href="/alternatives/open-source-alternative-to-codex/">open source alternative to Codex</a> page is the closest sibling to this one. If the agent work you manage is an org chart of AI employees rather than a workflow, the <a href="/alternatives/paperclip/">Paperclip alternative</a> page applies the same method to that shape.</p>
   <h2>Getting started</h2>
   <ul>
-    <li><strong><a href="/docs/self-hosted-ai-workspace/">Self-host</a> free forever.</strong> Clone the repo (Apache 2.0), follow the onboarding, and run agents in sandboxed microVM sessions on an agent server you run (microsandbox and libkrun). Docker is for local development only.</li>
-    <li><strong>Start a hosted trial.</strong> Managed plans start at Pro 249 kr/month per workspace, with Starter at 649 kr/month (both excluding VAT); Enterprise brings its own Anthropic or OpenAI access and runs on your infrastructure.</li>
+    <li><strong><a href="/docs/self-hosted-ai-workspace/">Run it on your own infrastructure</a>.</strong> Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure.</li>
+    <li><strong>Start a hosted trial.</strong> Managed plans start at Pro 249 kr/month per workspace, with Starter at 649 kr/month (both excluding VAT); Enterprise teams can bring their own Claude subscription, API key or model endpoint.</li>
   </ul>
   <h2>FAQ</h2>
   <h3>What is the best n8n alternative?</h3>
@@ -288,7 +288,7 @@
   <h3>Is n8n open source?</h3>
   <p>n8n's own docs describe it as fair-code and source-available under the Sustainable Use License, not an OSI-approved open source license. You can use and modify it for your own internal business purposes or non-commercial use; other uses need a commercial agreement. Fully open-source alternatives include Node-RED and Kestra (Apache 2.0) and Huginn (MIT), per their repositories.</p>
   <h3>What is the best free alternative to n8n?</h3>
-  <p>For a free, self-hosted engine, start with Activepieces, Node-RED, or Windmill and read each license. For a free workspace where agents produce typed records, Maskin's self-hosted version is free under Apache 2.0, and you pay only for your own infrastructure and model usage.</p>
+  <p>For a free, self-hosted engine, start with Activepieces, Node-RED, or Windmill and read each license. For a workspace where agents produce typed records, Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure.</p>
   <h3>Is there a no-code AI agent alternative to n8n?</h3>
   <p>Yes. Lindy, Gumloop, Pickaxe, MindStudio, and Dust let non-programmers configure agents visually. Maskin is not in this group: it is code-optional and schema-first, with no drag-and-drop canvas. Choose a no-code AI agent platform for the fastest first agent. Choose Maskin when agents need owners, approval points, and measured outcomes.</p>
   <h3>Can Maskin replace n8n?</h3>
@@ -320,9 +320,9 @@
     </div>
     <div class="post-cta">
       <h2>Keep the record, not just the log</h2>
-      <p>n8n is a strong engine for plumbing. If every run has to leave a typed record with an owner and a measured outcome, Maskin is the open-source, MCP-native workspace where that lives. Self-host free forever under Apache 2.0, or start a hosted trial. Browse the <a href="/docs/">full docs</a> for the object-model spec.</p>
+      <p>n8n is a strong engine for plumbing. If every run has to leave a typed record with an owner and a measured outcome, Maskin is the open-source, MCP-native workspace where that lives. Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure. Or start a hosted trial. Browse the <a href="/docs/">full docs</a> for the object-model spec.</p>
       <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">View on GitHub</a>
         <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
       </div>
     </div>

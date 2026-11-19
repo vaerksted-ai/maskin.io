@@ -126,7 +126,7 @@
           "name": "Is Paperclip AI open source?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The repository at github.com/paperclipai/paperclip carries an MIT license, copyright Paperclip Labs, Inc. It had about 95.5K GitHub stars when we read it on 1 October 2026. MIT is permissive, so you can self-host, modify, and embed it. Maskin is Apache 2.0, which is also permissive and self-hostable."
+            "text": "Yes. The repository at github.com/paperclipai/paperclip carries an MIT license, copyright Paperclip Labs, Inc. It had about 95.5K GitHub stars when we read it on 1 October 2026. MIT is permissive, so you can self-host, modify, and embed it. Maskin is Apache 2.0, which is also permissive."
           }
         },
         {
@@ -150,7 +150,7 @@
           "name": "Is there a hosted Paperclip alternative?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, with trade-offs. Hosted AI workforce platforms such as Relevance AI and Lindy skip the self-hosting work, and Paperclip's own cloud offering is a waitlist in its README. Hosted tools usually trade away control of the runtime and self-hosting. Maskin offers a hosted trial and a free self-hosted version under Apache 2.0."
+            "text": "Yes, with trade-offs. Hosted AI workforce platforms such as Relevance AI and Lindy skip the self-hosting work, and Paperclip's own cloud offering is a waitlist in its README. Hosted tools usually trade away control of the runtime and self-hosting. Maskin offers a hosted trial, and maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure."
           }
         },
         {
@@ -189,7 +189,7 @@
         <li><strong>OpenClaw, Claude Code, and Codex are what Paperclip hires, not what replaces it.</strong> Several "alternatives" lists mix agents with the thing that manages agents.</li>
         <li><strong>Real reasons to leave are specific:</strong> you don't want to run Node and Postgres, you need memory or a tracker on-ramp that is still on Paperclip's roadmap, or the org-chart metaphor is overhead for work that is really a decision.</li>
         <li><strong>Paperclip does keep a durable record</strong> (activity log, task threads, run history). The difference from Maskin is what the record is about, not whether one exists.</li>
-        <li><strong>Maskin is the alternative for decision-shaped work.</strong> Apache 2.0, self-hostable, MCP-native, with insights, bets, and tasks as typed objects. It has no org chart and no heartbeat, and it is early.</li>
+        <li><strong>Maskin is the alternative for decision-shaped work.</strong> Open source (Apache 2.0), MCP-native, with insights, bets, and tasks as typed objects. It has no org chart and no heartbeat, and it is early.</li>
       </ul>
     </div>
   </div>
@@ -245,10 +245,10 @@
       <tr><td><strong>Unit of work</strong></td><td>An issue inside an org with goals, projects, and titled agents</td><td>A typed object: insight, bet, or task, linked by relationships</td></tr>
       <tr><td><strong>What wakes an agent</strong></td><td>Assigned work, follow-up messages, optional timer heartbeats, routines</td><td>A trigger: a schedule, a one-shot reminder, or an event on the object graph. No heartbeat</td></tr>
       <tr><td><strong>Who owns the outcome</strong></td><td>The human board approves hires and review stages</td><td>A named driver, human or agent, owns each bet and its win condition</td></tr>
-      <tr><td><strong>Runtime</strong></td><td>Adapters run agents you already have; optional sandbox providers</td><td>A fresh sandboxed microVM per agent session</td></tr>
+      <tr><td><strong>Runtime</strong></td><td>Adapters run agents you already have; optional sandbox providers</td><td>A fresh sandboxed session per agent</td></tr>
       <tr><td><strong>Cost control</strong></td><td>Budgets by company, agent, and project with hard stops</td><td>Workspace-level plan limits; no per-agent hard stop in the docs we reviewed</td></tr>
       <tr><td><strong>The record</strong></td><td>Activity log, task threads, run history, documents, work products</td><td>Typed objects and their event history; the objects are the work</td></tr>
-      <tr><td><strong>Install</strong></td><td>One npx command, Node.js 24.11+, embedded Postgres locally</td><td>Self-host with an agent server running microsandbox and libkrun</td></tr>
+      <tr><td><strong>Running it</strong></td><td>One npx command, Node.js 24.11+, embedded Postgres locally</td><td>Open source (Apache 2.0); technical teams can run it on their own infrastructure</td></tr>
       <tr><td><strong>License</strong></td><td>MIT</td><td>Apache 2.0</td></tr>
       <tr><td><strong>Maturity</strong></td><td>About 95.5K stars, repository created March 2026</td><td>Early; evaluate the architecture, not a long track record</td></tr>
     </tbody>
@@ -266,7 +266,7 @@
   <p>Three situations tip the decision toward Maskin.</p>
   <p><strong>The work is a decision with a life of weeks.</strong> A customer signal becomes an insight, the insight is shaped into a bet with a win condition and an owner, the bet breaks into tasks, and it closes with a measured outcome. The bet is the thing you query later, and it stays put when you swap the agent or the model. <a href="/docs/closed-loop-workspace/">The closed-loop workspace</a> describes that loop.</p>
   <p><strong>More than one human edits the same state.</strong> In Maskin, people and agents read and write the same objects over the same API, and a human gate attaches to the object: you decide where a person promotes, approves, or closes. See <a href="/docs/learn/human-in-the-loop-ai/">human in the loop AI</a>.</p>
-  <p><strong>You want agents bounded by triggers, not wake-ups.</strong> Maskin agents fire on schedules, reminders, or events, run in an isolated microVM, and exit. That is deliberate and it has a cost: polling has to be modeled as a schedule. The longer architectural argument is in <a href="/docs/composable-ai-agents-vs-ai-employees/">composable AI agents vs AI employees</a>.</p>
+  <p><strong>You want agents bounded by triggers, not wake-ups.</strong> Maskin agents fire on schedules, reminders, or events, run in an isolated sandbox, and exit. That is deliberate and it has a cost: polling has to be modeled as a schedule. The longer architectural argument is in <a href="/docs/composable-ai-agents-vs-ai-employees/">composable AI agents vs AI employees</a>.</p>
   <h3>A worked example: customer feedback to a shipped fix</h3>
   <p>Take onboarding complaints arriving in Slack and Intercom.</p>
   <p>On Paperclip you would set a goal such as "reduce onboarding drop-off," hire an analyst agent and a PM agent under a CEO agent, and add a daily routine that creates a tracked issue to triage new feedback. The agents comment in threads, write documents, and the board approves a review stage. Everything lands in the activity log, organized by project and goal.</p>
@@ -285,10 +285,10 @@
   <h2>Using Paperclip and Maskin together</h2>
   <p>These are not mutually exclusive. Paperclip's README says you can connect your own MCP server as a connection, and Maskin exposes its objects over MCP (see the <a href="/docs/mcp-tools/">MCP tools reference</a>). So a design where Paperclip keeps managing the agent fleet and writes outcomes into Maskin bets is technically plausible. We have not published a tested recipe, so treat it as something to prototype, not a documented integration.</p>
   <h2>Maskin in one pass</h2>
-  <p>Maskin is open source under Apache 2.0, MCP-native, and built for team knowledge work. Agents run in isolated, sandboxed microVM sessions. Insights, bets, and tasks live in one schema linked by typed relationships, and the UI and the agents read the same objects. Self-hosting is free with no open-core gate on the software, and self-hosting needs an agent server running microsandbox and libkrun (Docker is for local development only). Maskin is early, so evaluate the architecture rather than a long vendor track record. For the self-hosted setup see <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a>. For other open-source comparisons by job, see the <a href="/alternatives/">alternatives hub</a>.</p>
+  <p>Maskin is open source under Apache 2.0, MCP-native, and built for team knowledge work. Agents run in isolated, sandboxed sessions. Insights, bets, and tasks live in one schema linked by typed relationships, and the UI and the agents read the same objects. Technical teams can run it on their own infrastructure. Maskin is early, so evaluate the architecture rather than a long vendor track record. For more on running it yourself, see <a href="/docs/self-hosted-ai-workspace/">running Maskin on your own infrastructure</a>. For other open-source comparisons by job, see the <a href="/alternatives/">alternatives hub</a>.</p>
   <h2>Getting started</h2>
   <ul>
-    <li><strong><a href="/docs/self-hosted-ai-workspace/">Self-host</a> free forever.</strong> Clone the repo (Apache 2.0), follow the onboarding, and run agents in sandboxed sessions on your own infrastructure.</li>
+    <li><strong><a href="/docs/self-hosted-ai-workspace/">Run it on your own infrastructure</a>.</strong> Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure.</li>
     <li><strong><a href="/">Start a hosted trial</a>.</strong> Managed plans are available if you would rather not run it yourself; see maskin.io for current tiers.</li>
   </ul>
   <h2>FAQ</h2>
@@ -297,13 +297,13 @@
   <h3>Is Paperclip AI free?</h3>
   <p>The software is. Paperclip is MIT licensed and self-hosted, and its README says no Paperclip account is required. You still pay for the infrastructure you run it on and for the model usage of the agents you connect. The README lists a hosted Paperclip Cloud as a waitlist, so we can't quote a hosted price.</p>
   <h3>Is Paperclip AI open source?</h3>
-  <p>Yes. The repository at github.com/paperclipai/paperclip carries an MIT license, copyright Paperclip Labs, Inc. It had about 95.5K GitHub stars when we read it on 1 October 2026. MIT is permissive, so you can self-host, modify, and embed it. Maskin is Apache 2.0, which is also permissive and self-hostable.</p>
+  <p>Yes. The repository at github.com/paperclipai/paperclip carries an MIT license, copyright Paperclip Labs, Inc. It had about 95.5K GitHub stars when we read it on 1 October 2026. MIT is permissive, so you can self-host, modify, and embed it. Maskin is Apache 2.0, which is also permissive.</p>
   <h3>Who owns Paperclip AI?</h3>
   <p>The repository's license line reads copyright 2026 Paperclip Labs, Inc, and the README says the Paperclip team maintains the project. The repository was created on 2 March 2026. We found no other ownership detail in the sources we read, so check the company's own site for funding or corporate structure.</p>
   <h3>What is the difference between Paperclip and OpenClaw?</h3>
   <p>They sit at different layers. The Paperclip README puts it as "If OpenClaw is an employee, Paperclip is the company." OpenClaw is an agent runtime. Paperclip orchestrates it, along with Claude Code, Codex, and others, through an org chart, budgets, and approvals. That is why OpenClaw is a component you pair with Paperclip, not a drop-in replacement for it.</p>
   <h3>Is there a hosted Paperclip alternative?</h3>
-  <p>Yes, with trade-offs. Hosted AI workforce platforms such as Relevance AI and Lindy skip the self-hosting work, and Paperclip's own cloud offering is a waitlist in its README. Hosted tools usually trade away control of the runtime and self-hosting. Maskin offers a hosted trial and a free self-hosted version under Apache 2.0.</p>
+  <p>Yes, with trade-offs. Hosted AI workforce platforms such as Relevance AI and Lindy skip the self-hosting work, and Paperclip's own cloud offering is a waitlist in its README. Hosted tools usually trade away control of the runtime and self-hosting. Maskin offers a hosted trial, and maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure.</p>
   <h3>Can I use Paperclip and Maskin together?</h3>
   <p>Possibly, but it is untested. Paperclip's README lets agents connect to your own MCP server, and Maskin exposes its objects over MCP, so a Paperclip agent could write outcomes into Maskin objects. We have not published a tested recipe, so treat it as something to prototype rather than a documented integration.</p>
 
@@ -331,9 +331,9 @@
     </div>
     <div class="post-cta">
       <h2>Keep the decision, not just the activity log</h2>
-      <p>Paperclip is a strong choice for running AI agents as a company. If agent work has to leave a typed record of the signal, the bet, the owner, and the outcome, Maskin is the open-source, MCP-native workspace where that lives. Self-host free forever under Apache 2.0, or start a hosted trial. Browse the <a href="/docs/">full docs</a> for the object-model spec.</p>
+      <p>Paperclip is a strong choice for running AI agents as a company. If agent work has to leave a typed record of the signal, the bet, the owner, and the outcome, Maskin is the open-source, MCP-native workspace where that lives. Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure. Or start a hosted trial. Browse the <a href="/docs/">full docs</a> for the object-model spec.</p>
       <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">View on GitHub</a>
         <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
       </div>
     </div>

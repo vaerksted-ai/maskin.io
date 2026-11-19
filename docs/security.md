@@ -1,7 +1,7 @@
 > Source: https://maskin.io/docs/security/
 
 # Security
-How Maskin protects credentials, separates workspaces in the API, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.
+How Maskin protects credentials, separates workspaces in the API, and contains agent execution — and how to report a vulnerability. If you run Maskin on your own infrastructure, you own the deployment surface; this page covers both the built-in model and what's yours to harden.
 
 ## Authentication
 Every request authenticates with a bearer API key (prefixed `ank_`). Keys are **stored as issued**, not hashed; hashing is planned. Auth is **stateless**: no cookies or server sessions. Keys are per-actor and can be rotated with `regenerate_api_key`, which immediately invalidates the old value.
@@ -15,8 +15,8 @@ Integration credentials, including OAuth tokens, are encrypted with **AES-256-GC
 > Set `INTEGRATION_ENCRYPTION_KEY` explicitly in production and keep it stable — rotating it makes previously stored credentials undecryptable, so connections must be re-established.
 
 ## Sandboxed agent execution
-Each agent session runs in its own **ephemeral microVM** (libkrun, managed through microsandbox) on a dedicated [agent server](/docs/agents/), started from the `agent-base` image, one per run and stopped and removed when the session completes. The app hands sessions to the agent server over HTTPS and does not launch them through a Docker socket.
-Docker is for local development only. There is no fallback that runs agents without the microVM runtime, so a self-host needs an agent server running microsandbox and libkrun. Locally, treat access to the host Docker socket (`/var/run/docker.sock`) as root-equivalent and restrict it to the app. For the policy layer above the sandbox — who signs off on agent actions, and how those approvals get recorded — see the [governance framework for AI agents](/docs/learn/ai-agent-governance/).
+Each agent session runs in its own **ephemeral sandbox** on a dedicated [agent server](/docs/agents/), started from the `agent-base` image, one per run and stopped and removed when the session completes. The app hands sessions to the agent server over HTTPS and does not launch them through a Docker socket.
+Locally, treat access to the host Docker socket (`/var/run/docker.sock`) as root-equivalent and restrict it to the app. For the policy layer above the sandbox — who signs off on agent actions, and how those approvals get recorded — see the [governance framework for AI agents](/docs/learn/ai-agent-governance/).
 
 ## Webhook verification
 Inbound webhooks are signature-verified per provider before processing:

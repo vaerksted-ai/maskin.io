@@ -52,4 +52,4 @@ Yes. The churn & expansion loop runs both directions. At-risk detection keeps ac
 Read next
 
 ## Make churn a decision, not a surprise
-You already have the usage and error data. The question is whether it reaches you as a blinking dashboard or as a prepared bet you can act on in the seconds it takes to read it. Stand the churn & expansion loop up on Maskin, where signals become bets with full context and human taste gates. [Self-host free](https://maskin.io/), or run a hosted trial for a team, and get the next at-risk account alert as a plan, not a ping.
+You already have the usage and error data. The question is whether it reaches you as a blinking dashboard or as a prepared bet you can act on in the seconds it takes to read it. Stand the churn & expansion loop up on Maskin, where signals become bets with full context and human taste gates. [Maskin is open source under Apache 2.0](https://maskin.io/), and technical teams can run it on their own infrastructure. You can also run a hosted trial for a team. Get the next at-risk account alert as a plan, not a ping.

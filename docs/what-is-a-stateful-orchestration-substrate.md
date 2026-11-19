@@ -120,5 +120,5 @@ That is the anti-pattern Empirical named on Aug 25. Return values are a compress
 Same primitive, different angle. The cornerstone describes the shared typed-object graph as a workspace where humans and agents co-operate on the same objects. This page describes the same graph as the substrate a pipeline of stateless agents reads and writes. See also [MCP-native](/docs/what-is-mcp-native/), [MCP-native workspace](/docs/mcp-native-workspace/), and [ambient agent workspace](/docs/ambient-agent-workspace/) for adjacent shapes.
 Read next
 
-## Self-host the substrate, bring your own model
-Maskin is the typed-object graph shape of the substrate — Apache 2.0, MCP-native, bring-your-own-model. Run it yourself, or take a hosted trial.
+## Run it on your own infrastructure
+Maskin is the typed-object graph shape of the substrate — Apache 2.0 and MCP-native. Technical teams can run it on their own infrastructure, or take a hosted trial.

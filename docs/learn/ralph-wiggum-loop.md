@@ -118,7 +118,7 @@ Skip it when success is a judgment rather than a check, when you're working in a
 - [What is loop engineering in AI](/docs/what-is-loop-engineering/): designing the system that prompts the agent, not just the prompt.
 - [Agentic workflow vs the closed loop](/docs/learn/agentic-workflow-vs-closed-loop/): the five parts of a closed loop and when each pattern fits.
 - [Human in the loop AI](/docs/learn/human-in-the-loop-ai/): where a person's judgment belongs in agent work.
-**Want your agents' work to end in a verdict, not just a stop?** [See how loops close in Maskin](/docs/learn/agentic-workflow-vs-closed-loop/), or [self-host it](/docs/self-hosted-ai-workspace/) and run your first loop.
+**Want your agents' work to end in a verdict, not just a stop?** [See how loops close in Maskin](/docs/learn/agentic-workflow-vs-closed-loop/), or see [how technical teams can run it on their own infrastructure](/docs/self-hosted-ai-workspace/).
 Read next
 
 ## End agent work in a verdict, not just a stop

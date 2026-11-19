@@ -76,7 +76,7 @@ Often yes — for quick synchronous questions, verb-surface commands, and solo-o
 Stable enough that renaming is a mistake. Every 2026 piece on ambient-agent UX cites Chase’s LangChain post as the definitional source, and downstream implementations — including Superhuman’s shipped features[2](#fn2) and the reference UI on GitHub — use the same three names.
 
 ## Own the interrupts, not the chat
-If your agents run on events and your team supervises more than one loop at a time, the shape of the UX is an inbox, a workspace-graph, or both — not a chat window. [Maskin](/) is the open-source, [MCP-native](/docs/mcp-native-workspace/), self-hostable workspace-graph. If Claude Cowork is the vendor-hosted answer, Maskin is the open-source alternative where the object model, the model, and the loop all live inside your own boundary. Open source under Apache 2.0. Technical teams can run it on their own infrastructure, or start a hosted trial.
+If your agents run on events and your team supervises more than one loop at a time, the shape of the UX is an inbox, a workspace-graph, or both — not a chat window. [Maskin](/) is the open-source, [MCP-native](/docs/mcp-native-workspace/), workspace-graph. If Claude Cowork is the vendor-hosted answer, Maskin is the open-source alternative where the object model and the loop live in a typed workspace graph. Open source under Apache 2.0. Technical teams can run it on their own infrastructure, or start a hosted trial.
 
 ## Sources
 1. **Harrison Chase / LangChain**, *Introducing Ambient Agents* (Jan 2025). [langchain.com/blog/introducing-ambient-agents](https://www.langchain.com/blog/introducing-ambient-agents). Plus the Sequoia *Training Data* podcast appearance on *Ambient Agents and the Agent Inbox*, [sequoiacap.com/podcast/training-data-harrison-chase-2](https://sequoiacap.com/podcast/training-data-harrison-chase-2). Definitional citations for the Agent Inbox, the three interrupt types (`notify`, `question`, `review`), and the human-on-the-loop vs human-in-the-loop shift. [↩](#fnref1)
@@ -84,5 +84,5 @@ If your agents run on events and your team supervises more than one loop at a ti
 3. **Tianpan**, *Async Agents Need an Inbox, Not a Chat* (2026-04-23) and *Ambient AI Design: When the Chat Interface Is the Wrong Abstraction* (2026-04-15). [tianpan.co/blog/2026-04-23-async-agents-inbox-not-chat](https://tianpan.co/blog/2026-04-23-async-agents-inbox-not-chat) and [tianpan.co/blog/2026-04-15-ambient-ai-design-chat-interface](https://tianpan.co/blog/2026-04-15-ambient-ai-design-chat-interface). Names the four failure modes of ambient agents, including “invisible failures,” which motivates the `notify` interrupt channel. [↩](#fnref3)
 Read next
 
-## Self-host the ambient loop
-Own the object graph, own the model, own the loop. Apache 2.0, MCP-native.
+## Open source under Apache 2.0
+Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure.

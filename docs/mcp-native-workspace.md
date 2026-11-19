@@ -20,7 +20,7 @@ Not every product that advertises MCP support is MCP-native at the workspace lev
 - **The entire object model is exposed as MCP tools.** Not a subset — every object type the product knows about, every operation on it, every relationship type. A workspace with fifty typed objects and three exposed over MCP is MCP-integrated; all fifty exposed is MCP-native. Justin Poehnelt’s argument that *the audience for your application’s API is not just other programmers, it’s AI agents*[2](#fn2) is the individual-app version of this claim; the workspace version applies it at object-graph scale. The [full list of MCP tools Maskin exposes](/docs/mcp-tools/) shows what that looks like in practice.
 - **The workspace-graph is the human-review surface.** The same typed objects agents read and write are what the human opens, inspects, and reshapes. There is not a separate “AI dashboard” grafted on top of the “real” product; the graph *is* the product, and the review UI is the graph. That co-location is what makes the workspace-graph legible to both sides of the collaboration without translation.
 - **Triggers are event-driven, not just chat-driven.** Work enters the workspace when the state changes — a new signal arrives, a bet reaches a decision gate, an object hits a threshold — and an agent runs against the change. A chat prompt is one legitimate trigger, but only one. Cron and object-transition triggers are equal citizens.
-- **Agent sessions are sandboxed.** Each agent runs in an isolated execution context — an ephemeral microVM — with its own scoped credentials and its own bounded lifetime, so an agent that misbehaves can only mutate the graph through the same typed operations any actor uses. The sandbox is not a hardening afterthought; it is what makes the judgment loop safe to run in production.
+- **Agent sessions are sandboxed.** Each agent runs in an isolated execution context with its own scoped credentials and its own bounded lifetime, so an agent that misbehaves can only mutate the graph through the same typed operations any actor uses. The sandbox is not a hardening afterthought; it is what makes the judgment loop safe to run in production.
 Any one of these on its own is a feature. All four together, wired to the same object model, are the category.
 Exposing the graph as MCP tools is the reach half of the category (and [tools are only one of three MCP primitives](/docs/mcp-tools-vs-resources/)), and it is worth naming what it is not. A tool is what an agent calls; the reusable judgment about how and when to call it is a different primitive — one a team authors once and carries between agents. That is where [agent skills](/docs/learn/agent-skills/) sit: not an MCP server and not a tool, but packaged repeatable behaviour that an agent loads when a task, or a change in workspace state, matches its description.
 
@@ -43,7 +43,7 @@ Different object models, same category. Adjacent adopters (Jade Note, MCPlato) a
 
 ## The judgment loop: what makes a workspace, and not a fleet
 A workspace-shaped product is not the same thing as an autonomous multi-agent fleet; the difference is the judgment loop. In a fleet, agents run to a terminal outcome and the human sees the result. In an MCP-native workspace, agents propose changes to the graph, humans read-approve-reshape those changes, and the workspace-graph carries the state of that judgment across many parallel loops.
-The judgment loop is the moat, not the stack. MCP-native, self-hostable, Apache-2.0 are table stakes across a growing set of open-source entrants — the [self-hosted AI agent control plane](/alternatives/self-hosted-ai-agents/) comparison walks the twelve 2026 coding-agent entrants that stack against a workspace-shaped product on exactly that vocabulary. What a workspace-shaped product owns is the surface on which humans stay on-the-loop rather than in-it.
+The judgment loop is the moat, not the stack. MCP-native, open-source, Apache-2.0 are table stakes across a growing set of open-source entrants — the [self-hosted AI agent control plane](/alternatives/self-hosted-ai-agents/) comparison walks the twelve 2026 coding-agent entrants that stack against a workspace-shaped product on exactly that vocabulary. What a workspace-shaped product owns is the surface on which humans stay on-the-loop rather than in-it.
 
 ## MCP workspace vs MCP client — one more terminology tangle
 An MCP client (Claude Desktop, Cursor, Windsurf) connects to MCP servers and issues tool calls. An MCP-native workspace is a product that *runs* an MCP server as its primary integration surface — the server exposes the workspace’s own object graph. A client consumes MCP; a workspace produces MCP. Some products are both, but the roles answer different questions: a client asks “what tools can I reach?”; a workspace answers “what is the shape of the graph you can now reach?”
@@ -68,8 +68,8 @@ No. A marketplace catalogs individual servers as the unit of discovery; a worksp
 ### How can I tell if a product is genuinely MCP-native versus “MCP integration bolted on”?
 Check the four markers: is the *entire* object model exposed, or a subset? Is the workspace-graph the human-review surface, or is MCP a side-channel? Are triggers event-driven, or chat-only? Do agents run in isolated sessions? A product that fails any of the four is MCP-integrated, not MCP-native.
 
-### Does an MCP-native workspace have to be self-hosted?
-No — self-hosting is orthogonal to being MCP-native. What matters is where the MCP surface sits in the architecture, not where the compute runs. Most open-source examples today (Maskin, Remnus) happen to be self-hostable because the audience for the category leans that way.
+### Does an MCP-native workspace have to run on your own infrastructure?
+No. Where it runs is separate from being MCP-native. What matters is where the MCP surface sits in the architecture, not where the compute runs. Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure.
 
 ### What’s the difference between an MCP-native workspace and an MCP client?
 An MCP client (Claude Desktop, Cursor, Windsurf) *consumes* MCP — it connects to servers and issues tool calls. An MCP-native workspace *produces* MCP — it runs one or more MCP servers that expose its own object graph. A product can be both; the roles are distinct.
@@ -82,5 +82,5 @@ An MCP client (Claude Desktop, Cursor, Windsurf) *consumes* MCP — it connects 
 5. **agent-sh**, `agent-workspace-linux` GitHub repo. [github.com/agent-sh/agent-workspace-linux](https://github.com/agent-sh/agent-workspace-linux). Community-side use of “workspace” as an isolated X11 sandbox for agents. [↩](#fnref5)
 Read next
 
-## Self-host the MCP-native workspace
-The full object graph, the whole MCP surface, in your own boundary. Apache 2.0, MCP-native.
+## Open source under Apache 2.0
+Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure.

@@ -1,7 +1,7 @@
 > Source: https://maskin.io/docs/deployment/
 
 # Production deployment
-The [self-hosted setup](/docs/get-started/self-hosted/) gets you running locally. This page covers the differences for a real deployment — the production stack, durable data, agent execution, and networking.
+The [setup page](/docs/get-started/self-hosted/) covers running Maskin locally. This page covers the differences for a production deployment — the production stack, durable data, agent execution, and networking.
 > The repo's `docker-compose.prod.yml` is the source of truth. Treat the commands here as orientation and adapt to your platform (a managed Postgres + object store is recommended over in-cluster containers).
 
 ## The production stack
@@ -13,7 +13,7 @@ docker compose -f docker-compose.prod.yml up -d --build
 - **postgres** — PostgreSQL 16 (use a managed instance in production where possible).
 - **seaweedfs** — S3-compatible storage (or point `S3_*` at AWS S3 / MinIO).
 - **agent-base** — the image used for agent sessions; built from `docker/agent-base/`.
-Production sessions run in microVMs on a dedicated agent server, not through the app host's Docker socket. If you mount `/var/run/docker.sock` for local development, restrict access to it.
+Production sessions run on a dedicated agent server, not through the app host's Docker socket. If you mount `/var/run/docker.sock` for local development, restrict access to it.
 
 ## Essentials to set
 - `NODE_ENV=production`
@@ -24,7 +24,7 @@ Production sessions run in microVMs on a dedicated agent server, not through the
 Migrations run automatically on app start; you can also run `pnpm db:migrate` out of band.
 
 ## Agent execution at scale
-Production sessions run in ephemeral microVMs (microsandbox and libkrun) on dedicated [agent servers](/docs/agents/). Docker on the app host is for local development only, and there is no fallback that runs agents without the microVM runtime. Point the app at your agent servers:
+Production sessions run on dedicated [agent servers](/docs/agents/). Point the app at your agent servers:
 - `AGENT_BASE_IMAGE` — a full registry path (e.g. `yourorg/agent-base:latest`), not the local tag.
 - `AGENT_SERVERS` — comma-separated `url|secret` entries; sessions are dispatched to the least-loaded server.
 - `AGENT_SERVER_SECRET`, `MASKIN_AGENT_SERVER_PUBLIC_HOST`, `AGENT_SERVER_MAX_SESSIONS` — agent-server auth, public host, and concurrency.

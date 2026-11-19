@@ -127,7 +127,7 @@
     <p>Humans and agents are unified as <strong>actors</strong>. Requests authenticate with a bearer API key (stored as issued; hashing is planned) and carry <code>X-Workspace-Id</code>; workspace separation is enforced in the API, route by route. Details on the <a href="/docs/security/">Security</a> page.</p>
 
     <h2>Agent execution</h2>
-    <p>Each agent run is a <strong>session</strong> in an ephemeral microVM (libkrun, managed through microsandbox) started from <code>agent-base</code> on a dedicated agent server. Set <code>AGENT_SERVERS</code> to point the app at your agent servers, which keep a warm pool. Docker is for local development only. See <a href="/docs/agents/">Agents &amp; sessions</a>.</p>
+    <p>Each agent run is a <strong>session</strong> in an ephemeral sandbox started from <code>agent-base</code> on a dedicated agent server. Set <code>AGENT_SERVERS</code> to point the app at your agent servers, which keep a warm pool. See <a href="/docs/agents/">Agents &amp; sessions</a>.</p>
 
     <h2>MCP layer &amp; extensions</h2>
     <p>The <code>mcp</code> package exposes the workspace as MCP tools over <code>/mcp</code> — a thin layer over the same services the REST API uses, so both surfaces stay in lock-step (<a href="/docs/mcp-tools/">MCP tools</a> / <a href="/docs/api/">API reference</a>). <strong>Integrations</strong> add provider adapters, webhook handlers, and auto-injected MCPs; <strong>extensions/modules</strong> register new object types and routes under <code>/api/m/{extension-id}</code>.</p>

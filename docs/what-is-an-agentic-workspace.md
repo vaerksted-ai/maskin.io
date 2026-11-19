@@ -7,7 +7,7 @@ An **agentic workspace** is a shared, persistent environment where humans and AI
 > An agentic workspace is a shared surface where people and agents co-operate on persistent, typed objects — not chatbots bolted onto a document.
 > Maskin runs a closed loop — insight → bet → task → shipped → repeat — on one shared object model.
 > Agents act autonomously and are pulled in only when a decision needs human taste.
-> Open source (Apache 2.0), MCP-native, self-host or managed.
+> Open source (Apache 2.0), MCP-native, run on your own infrastructure or managed.
 
 ## The problem it solves
 Ten people, ten AI chats, none of them visible to the rest of the team. Decisions are made in DMs, context is trapped in chat history, and every session starts from zero. That is the default AI workflow for many product teams in 2026 — and it is why teams adopt agentic workspaces.
@@ -44,10 +44,10 @@ The field splits into three tiers:
 - **Agent-native platforms** — big-model vendor workspaces turned the agent loop into a platform feature.
 - **Incumbent task suites** — Notion, Asana, Jira, Linear, monday bolt AI onto trackers; the object stays a task. Looking for a [Jira open source alternative](/alternatives/open-source-jira-alternative/)? Plane, OpenProject and Taiga keep the same ticket model.
 - **Knowledge spaces** — Obsidian, Mem, Confluence, Raft hold notes but stop before the decision.
-Maskin’s edge is the loop itself on one shared object model — MCP-native, Apache-2.0, self-hostable. Inside the field there is a second cut, between products that make a persona the unit of work and products that make a typed object the unit of work; [the two camps of AI employees and composable agents](/docs/composable-ai-agents-vs-ai-employees/) are compared in full. Buyers who start from a vendor product often search for an [open-source alternative to Claude Cowork](/alternatives/claude-cowork/) or an [open-source alternative to Codex](/alternatives/open-source-alternative-to-codex/); those pages compare the options directly.
+Maskin’s edge is the loop itself on one shared object model — MCP-native, Apache-2.0, open source. Inside the field there is a second cut, between products that make a persona the unit of work and products that make a typed object the unit of work; [the two camps of AI employees and composable agents](/docs/composable-ai-agents-vs-ai-employees/) are compared in full. Buyers who start from a vendor product often search for an [open-source alternative to Claude Cowork](/alternatives/claude-cowork/) or an [open-source alternative to Codex](/alternatives/open-source-alternative-to-codex/); those pages compare the options directly.
 
 ## Getting started
-Self-host the open-source repo or go managed — either way the loop runs on the same object model. The [get-started guide](/docs/get-started/) walks through it end to end, and the [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) guide covers running the closed loop on your own infrastructure with bring-your-own-model. Product teams can also start with the [product-team getting-started sequence](/solutions/product-teams/), which walks through what day one in the workspace looks like for a PM or CPO.
+Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure or go managed — either way the loop runs on the same object model. The [get-started guide](/docs/get-started/) covers the first steps, and the [open-source AI workspace](/docs/self-hosted-ai-workspace/) page covers the closed loop on your own infrastructure. Product teams can also start with the [product-team getting-started sequence](/solutions/product-teams/), which walks through what day one in the workspace looks like for a PM or CPO.
 
 ## FAQ
 
@@ -58,8 +58,8 @@ No — a chatbot answers a question; an agentic workspace runs work to completio
 It replaces the parts where progress evaporates — the ad-hoc AI chats and disconnected trackers — and keeps the integrations (Slack, Linear, GitHub, Intercom, PostHog, HubSpot).
 
 ### Do I need to run agents myself?
-No — hosted plans run them for you; self-host keeps everything on your infrastructure.
+No. Technical teams can run Maskin on their own infrastructure, or you can take a hosted trial.
 Read next
 
-## Getting started is free
-Self-host today, or take a hosted trial and read the [MCP-native guide](/docs/what-is-mcp-native/) while you decide.
+## Open source under Apache 2.0
+Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure. You can also take a hosted trial. Read the [MCP-native guide](/docs/what-is-mcp-native/) while you decide.

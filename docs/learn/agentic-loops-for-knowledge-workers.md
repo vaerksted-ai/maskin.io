@@ -10,7 +10,7 @@ Five things to know:
 - The referee has three parts: close condition, verdict, human gate.
 - A verdict stuck in a chat thread dies there, so store it with the work.
 - You do not need engineers; you need a written definition of done.
-Ready to run a loop with a written finish line on your own work? [Self-host Maskin free or start a hosted trial](https://maskin.io/?utm_source=maskin.io&utm_medium=article&utm_campaign=agentic-loops-for-knowledge-workers&utm_content=cta-top).
+Ready to run a loop with a written finish line on your own work? [Try Maskin or start a hosted trial](https://maskin.io/?utm_source=maskin.io&utm_medium=article&utm_campaign=agentic-loops-for-knowledge-workers&utm_content=cta-top).
 
 ## Coders got verification for free. The rest of us have to manufacture the referee.
 When a developer hands work to an agent, verification is built in. A test either passes or it does not. The compiler either accepts the code or refuses it. The build is green or red. The developer never has to ask "how do I know this is right?" The environment answers immediately and without argument.
@@ -61,7 +61,7 @@ You do not need engineers to do this. You need four things written down.
 4. **Put the human gate at the outcome, not the steps.** Let the loop run; have the person approve the result and its verdict, not every action along the way.
 Then store the verdict where the work lives. A verdict that stays inside the agent's chat thread is lost the moment the thread scrolls away. A verdict attached to the record it describes becomes [team memory](/docs/closed-loop-workspace/): the next agent, the next reviewer, and the next hire all start from proof instead of guesswork.
 In Maskin, a loop's close condition is written in plain language when the loop is created, work items carry an owner, and closed bets carry a verdict. Loop-level verdicts are not shipped yet: today a person reads and judges a loop's close condition.
-If you want to try this on one recurring task, [self-host Maskin free or start a hosted trial](https://maskin.io/?utm_source=maskin.io&utm_medium=article&utm_campaign=agentic-loops-for-knowledge-workers&utm_content=cta-mid) and write the close condition first.
+If you want to try this on one recurring task, [try Maskin or start a hosted trial](https://maskin.io/?utm_source=maskin.io&utm_medium=article&utm_campaign=agentic-loops-for-knowledge-workers&utm_content=cta-mid) and write the close condition first.
 
 ## Frequently asked questions
 

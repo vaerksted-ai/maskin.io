@@ -166,7 +166,7 @@ shell.tail: t1
           "name": "How is this different from a closed AI SDR SaaS?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The loop shape is the same &mdash; signal, research, draft, approval, send, reply, close. What Maskin gives you is the loop as typed objects on a shared graph you own, running on your own model keys, with an audit trail that is the graph's own history. A closed AI SDR bundles deliverability, prompt-tuning-as-a-service, and CRM plumbing into a 2,000-5,000 USD per month bill; running the loop on Maskin puts you on the OSS side of that split (roughly 50-200 USD per month in API costs) but pushes deliverability and sender-reputation work onto your team. The honest map of the six OSS AI SDR repos and where each fits is in the companion piece on open-source AI SDR."
+            "text": "The loop shape is the same &mdash; signal, research, draft, approval, send, reply, close. What Maskin gives you is the loop as typed objects on a shared graph you own, with an audit trail that is the graph's own history. A closed AI SDR bundles deliverability, prompt-tuning-as-a-service, and CRM plumbing into a 2,000-5,000 USD per month bill; running the loop on Maskin puts you on the OSS side of that split but pushes deliverability and sender-reputation work onto your team. The honest map of the six OSS AI SDR repos and where each fits is in the companion piece on open-source AI SDR."
           }
         },
         {
@@ -182,7 +182,7 @@ shell.tail: t1
           "name": "What model should I use for the drafting step?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Whichever your team can hold taste on. Draft quality is a prompt-and-voice problem more than a raw-capability problem; a well-prompted mid-tier model with the sender's writing samples in context outperforms a frontier model prompted generically. Because Maskin is MCP-native, the model call is a workspace configuration, not a code change: swap Anthropic for OpenAI without touching the loop shape. Keep the override rate as the honest evaluation metric &mdash; the model that produces the healthiest middle-band override rate in your reviewer's hands is the right one, regardless of the leaderboard."
+            "text": "Agents run on Claude by default, and Enterprise teams can bring their own Claude subscription, API key or model endpoint. Draft quality is a prompt-and-voice problem more than a raw-capability problem; a well-prompted mid-tier model with the sender's writing samples in context outperforms a frontier model prompted generically. Keep the override rate as the honest evaluation metric &mdash; the model that produces the healthiest middle-band override rate in your reviewer's hands is the right one, regardless of the leaderboard."
           }
         },
         {
@@ -225,8 +225,8 @@ shell.tail: t1
 
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
-  <li>A running Maskin instance (self-hosted under Apache 2.0 or a hosted trial &mdash; <a href="/docs/get-started/">Get started</a>).</li>
-  <li>A model key configured on the workspace (your own Anthropic or OpenAI access &mdash; see <a href="/docs/llm/">LLM &amp; models</a>).</li>
+  <li>A running Maskin instance (open source under Apache 2.0, which technical teams can run on their own infrastructure, or a hosted trial &mdash; <a href="/docs/get-started/">Get started</a>).</li>
+  <li>Model access configured on the workspace (Claude by default; Enterprise teams can bring their own Claude subscription, API key or model endpoint &mdash; see <a href="/docs/llm/">LLM &amp; models</a>).</li>
   <li>A Unipile account for the LinkedIn sender lane, or a Postmark/Resend account plus a warmed email domain for email.</li>
   <li>An enrichment provider your account already uses (Apollo, Clay, or Tavily are the common shapes) &mdash; wired in as an MCP tool the research step can call.</li>
   <li>A human on-call for the approval gate until the override rate settles.</li>
@@ -301,11 +301,11 @@ shell.tail: t1
 <h3>Why Unipile for the sender lane?</h3>
 <p>Unipile exposes LinkedIn, email, WhatsApp and Slack behind a single API and ships an MCP surface, which means the outbound sender is a swappable tool call rather than hard-coded plumbing. For LinkedIn specifically the alternative is a fragile scrape or a paid platform lock-in; a compliant, MCP-shaped API is the difference between an SDR loop you can trust in production and one that will silently drop messages. Email can go through the same MCP or through a warmed domain via Postmark/Resend &mdash; the loop shape does not change, only the tool the send step calls.</p>
 <h3>How is this different from a closed AI SDR SaaS?</h3>
-<p>The loop shape is the same &mdash; signal, research, draft, approval, send, reply, close. What Maskin gives you is the loop as typed objects on a shared graph you own, running on your own model keys, with an audit trail that is the graph&rsquo;s own history. A closed AI SDR (11x, Artisan, Qualified, SalesForge, AiSDR) bundles deliverability, prompt-tuning-as-a-service, and CRM plumbing into a $2,000-$5,000/mo bill; running the loop on Maskin puts you on the OSS side of that cost split (roughly $50-$200/mo in API costs) but pushes deliverability and sender-reputation work onto your team. The honest map of the six OSS AI SDR repos and where each one fits is in the companion piece, <a href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a>.</p>
+<p>The loop shape is the same &mdash; signal, research, draft, approval, send, reply, close. What Maskin gives you is the loop as typed objects on a shared graph you own, with an audit trail that is the graph&rsquo;s own history. A closed AI SDR (11x, Artisan, Qualified, SalesForge, AiSDR) bundles deliverability, prompt-tuning-as-a-service, and CRM plumbing into a $2,000-$5,000/mo bill; running the loop on Maskin puts you on the OSS side of that cost split but pushes deliverability and sender-reputation work onto your team. The honest map of the six OSS AI SDR repos and where each one fits is in the companion piece, <a href="/alternatives/open-source-ai-sdr/">Open source AI SDR</a>.</p>
 <h3>Where does the loop actually live in Maskin?</h3>
 <p>As typed objects and relationships. The signal is an insight object created by a trigger; the draft is a task in <code>needs_approval</code> linked to the insight; the send is a task transition to <code>sending</code>; the reply is an event on the parent insight; the outcome is a status write on the insight itself. All of it lives on the same object graph as the rest of the workspace, so an agent can walk from insight to task to reply to outcome without leaving the substrate, and a human can review any step of any loop without opening a separate tool. The <a href="/docs/concepts/">Core concepts</a> page has the full object-model reference.</p>
 <h3>What model should I use for the drafting step?</h3>
-<p>Whichever your team can hold taste on. Draft quality is a prompt-and-voice problem more than a raw-capability problem; a well-prompted mid-tier model with the sender&rsquo;s writing samples in context outperforms a frontier model prompted generically. Because Maskin is <a href="/docs/what-is-mcp-native/">MCP-native</a>, the model call is a workspace configuration, not a code change: swap Anthropic for OpenAI without touching the loop shape. Keep the override rate as the honest evaluation metric &mdash; the model that produces the healthiest middle-band override rate in your reviewer&rsquo;s hands is the right one, regardless of the leaderboard.</p>
+<p>Agents run on Claude by default, and Enterprise teams can bring their own Claude subscription, API key or model endpoint. Draft quality is a prompt-and-voice problem more than a raw-capability problem; a well-prompted mid-tier model with the sender&rsquo;s writing samples in context outperforms a frontier model prompted generically. Keep the override rate as the honest evaluation metric &mdash; the model that produces the healthiest middle-band override rate in your reviewer&rsquo;s hands is the right one, regardless of the leaderboard.</p>
 <h3>How does this connect to the open-source AI SDR comparison?</h3>
 <p>The companion page, <a href="/alternatives/open-source-ai-sdr/">Open source AI SDR: the honest map</a>, covers the six OSS AI SDR repos on GitHub in 2026 (MatthewDailey/open-sdr, OpenOutreach, ZeroGTM, Signal, personizeai/revenue-os, kandksolvefast/ai-sdr-agent), the $50-200/mo vs $2k-5k/mo cost split against closed SaaS, and the failure modes of running outbound without a real approval gate. This page is the concrete build side: given you have accepted the loop framing and want to run it on your own object graph, this is how the seven steps get wired inside Maskin.</p>
 
@@ -331,9 +331,9 @@ shell.tail: t1
     </div>
     <div class="post-cta">
       <h2>Run the loop on your own object graph</h2>
-      <p>An AI SDR is a loop, not a product. If you want the loop &mdash; signal, research, draft, human approval, send, reply, close &mdash; on typed objects you can audit end-to-end, running on your own model keys and your own sender lane, that&rsquo;s what Maskin is aimed at. Open source under Apache 2.0. Technical teams can run it on their own infrastructure, or start a hosted trial.</p>
+      <p>An AI SDR is a loop, not a product. If you want the loop &mdash; signal, research, draft, human approval, send, reply, close &mdash; on typed objects you can audit end-to-end, running on your own sender lane, that&rsquo;s what Maskin is aimed at. Open source under Apache 2.0. Technical teams can run it on their own infrastructure, or start a hosted trial.</p>
       <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">View on GitHub</a>
         <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
       </div>
     </div>

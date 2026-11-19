@@ -17,7 +17,7 @@ Pick the path that fits how you want to operate.
 
 ## Next steps
 - Set up your own instance → [Self-hosted setup](/docs/get-started/self-hosted/) (on managed hosting, [book a meeting](https://meshfirm.com/bookmagnus) instead)
-- Then try it hands-on → [Quickstart tutorial](/docs/quickstart/): empty instance to an agent doing real work in about ten minutes, all driven from Claude
+- Then try it hands-on → [Quickstart tutorial](/docs/quickstart/): from an empty instance to an agent doing real work, all driven from Claude
 - Understand the model → [Core concepts](/docs/concepts/)
 - See what agents can do → [MCP tools](/docs/mcp-tools/) and [Agents & sessions](/docs/agents/)
 - Browse the code → [GitHub](https://github.com/sindre-ai/maskin)

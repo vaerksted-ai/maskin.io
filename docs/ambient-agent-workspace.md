@@ -61,7 +61,7 @@ If the anti-chat frame lands and the workspace-graph pattern fits the shape of y
 - **Pick the object model before the model.** The typed objects (insight, bet, task, loop) and the typed relationships between them are the durable layer; the model call is swappable. The [MCP-native](/docs/what-is-mcp-native/) architecture we built Maskin on is the concrete version of this — the object model is the substrate, the model is a configuration. For the workspace-scale definitional companion to that argument, [MCP-native workspace: a category, not a checkbox](/docs/mcp-native-workspace/) names the four architectural markers that separate the category from an app with an MCP integration.
 - **Wire triggers on state, not on time.** The most common ambient-agent bug is a cron loop that fires whether the state changed or not. Trigger on the object transition — a new insight, a bet reaching `signal`, a task closing — and let the graph do the work of remembering.
 - **Make close conditions load-bearing.** A loop without a close condition is a cost leak. A loop with one is the ambient equivalent of a well-scoped bet. Silence, stopping, and gates are the real design frontier — the same question this page is answering, one abstraction layer down, and the subject of [what is loop engineering](/docs/what-is-loop-engineering/).
-For the vendor-hosted answer to the shape, Claude Cowork is the reference agent-native platform. For the open, self-hostable answer where the object model, the model, and the loop all live inside your own boundary, that’s what Maskin is aimed at — the piece on [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) covers the operational side (including the Claude Cowork comparison), and [bet vs backlog](/docs/bet-vs-backlog/) covers the shift in the object model itself.
+For the vendor-hosted answer to the shape, Claude Cowork is the reference agent-native platform. For the open-source answer where the object model and the loop live in a typed workspace graph, that’s what Maskin is aimed at — the piece on [the open-source AI workspace](/docs/self-hosted-ai-workspace/) covers the operational side (including the Claude Cowork comparison), and [bet vs backlog](/docs/bet-vs-backlog/) covers the shift in the object model itself.
 
 ## FAQ
 
@@ -84,7 +84,7 @@ It can be safer than human-*in*-the-loop for background work, because the altern
 Three signals: your AI feature takes longer than the user will politely wait for; the trigger for the feature is an event (a message, a metric, a schedule) rather than a keystroke; the outcome needs a human’s taste before it ships. If two of those three are true, the shape of the UX is ambient, not chat — and the specific question then is which of the five patterns fits the object of work. If the work is one artefact per invocation, delegated-agent is likely right; if the work spans multiple hand-offs and needs to carry state, workspace-graph is probably the shape.
 
 ## Own the loop, not the chat
-If chat is the wrong default and your team’s work spans more than one hand-off, the shape of the UX is a workspace graph — a typed object model humans and agents share, with ambient agents running on triggers and the human on-the-loop. Maskin is the open-source, MCP-native, self-hostable version of that shape. Open source under Apache 2.0. Technical teams can run it on their own infrastructure, or start a hosted trial.
+If chat is the wrong default and your team’s work spans more than one hand-off, the shape of the UX is a workspace graph — a typed object model humans and agents share, with ambient agents running on triggers and the human on-the-loop. Maskin is the open-source, MCP-native version of that shape. Open source under Apache 2.0. Technical teams can run it on their own infrastructure, or start a hosted trial.
 
 ## Sources
 1. **Tianpan**, *Async Agents Need an Inbox, Not a Chat* (2026-04-23) and *Ambient AI Design: When the Chat Interface Is the Wrong Abstraction* (2026-04-15). [tianpan.co/blog/2026-04-23-async-agents-inbox-not-chat](https://tianpan.co/blog/2026-04-23-async-agents-inbox-not-chat) and [tianpan.co/blog/2026-04-15-ambient-ai-design-chat-interface](https://tianpan.co/blog/2026-04-15-ambient-ai-design-chat-interface). Named the ~30s / ~2min UX-inversion numbers and the four failure modes of ambient agents. [↩](#fnref1)
@@ -93,5 +93,5 @@ If chat is the wrong default and your team’s work spans more than one hand-off
 4. **DreamingPress**, *Background vs Synchronous Agents* (2026-07-12). [dreaming.press/posts/background-vs-synchronous-agents-product-decision.html](https://dreaming.press/posts/background-vs-synchronous-agents-product-decision.html). The dependency-not-duration decision rule and the four pieces of plumbing (durable runtime, persistent state, return address, review surface) a background-agent product has to build. [↩](#fnref4)
 Read next
 
-## Self-host the ambient loop
-Own the object graph, own the model, own the loop. Apache 2.0, MCP-native.
+## Open source under Apache 2.0
+Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure.

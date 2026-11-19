@@ -58,8 +58,8 @@ Often. A coding agent on the code, a tracker for the queue of coding tasks, a kn
 
 ### Does Maskin replace any of the three tiers?
 No, and it usually shouldn’t. Maskin is a fourth tier: an agentic workspace where the object of work is a shaped bet with a win condition. It sits above the coding-agent tier, alongside the tracker tier for the queue of tasks under a bet, and downstream of the knowledge space where prior context lives. The common stack is one of each, wired together, with the decision loop running in the workspace that models a decision.
-*Maskin is open source under Apache 2.0. Self-hosting is free; hosted Pro is $20/seat/month; Team is $200/workspace/month with unlimited seats.*
+*Maskin is open source under Apache 2.0. Technical teams can run it on their own infrastructure. Hosted Pro is $20/seat/month; Team is $200/workspace/month with unlimited seats.*
 Read next
 
-## Getting started is free
-Self-host Maskin today, or take a hosted trial. The three tier-comparison spokes — [tier 1](/docs/ai-product-workspace-vs-coding-agent/), [tier 2](/docs/ai-product-management-tool/), [tier 3](/docs/agentic-workspace-vs-knowledge-space/) — run the diagnostic in detail against each incumbent stack. The [agentic-workspace cornerstone](/docs/what-is-an-agentic-workspace/) and the [bet-based product planning](/docs/bet-based-product-planning/) guide walk the positive shape end to end.
+## Open source under Apache 2.0
+Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure. You can also take a hosted trial. The three tier-comparison spokes — [tier 1](/docs/ai-product-workspace-vs-coding-agent/), [tier 2](/docs/ai-product-management-tool/), [tier 3](/docs/agentic-workspace-vs-knowledge-space/) — run the diagnostic in detail against each incumbent stack. The [agentic-workspace cornerstone](/docs/what-is-an-agentic-workspace/) and the [bet-based product planning](/docs/bet-based-product-planning/) guide walk the positive shape end to end.
