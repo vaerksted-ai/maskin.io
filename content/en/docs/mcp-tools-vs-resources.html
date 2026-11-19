@@ -137,7 +137,7 @@ shell.tail: t1
           "name": "Does Maskin’s MCP server expose resources and prompts?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Resources, yes: three templates for objects, actors and triggers, plus ten interactive app cards. The template listing only appears when the server has a web app address configured, so a self-hosted setup without one lists none. Prompts, no: the server registers none, so the prompts capability is not offered."
+            "text": "Resources, yes: three templates for objects, actors and triggers, plus ten interactive app cards. The template listing only appears when the server has a web app address configured, so a setup without one lists none. Prompts, no: the server registers none, so the prompts capability is not offered."
           }
         }
       ]
@@ -165,7 +165,7 @@ shell.tail: t1
         </ul>
       </div>
     </div>
-    <p><strong>Want to try this on a server you control?</strong> <a href="/docs/self-hosted-ai-workspace/?utm_source=maskin.io&amp;utm_medium=organic&amp;utm_campaign=mcp-tools-vs-resources&amp;utm_content=early-cta">Self-host Maskin</a> and connect any MCP client to see all three primitives in practice.</p>
+    <p><strong>Want to try this on a server you control?</strong> Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure. See the <a href="/docs/self-hosted-ai-workspace/?utm_source=maskin.io&amp;utm_medium=organic&amp;utm_campaign=mcp-tools-vs-resources&amp;utm_content=early-cta">open-source AI workspace</a> page.</p>
     <h2>The three primitives in one table</h2>
     <table>
       <thead><tr><th></th><th>Tool</th><th>Resource</th><th>Prompt</th></tr></thead>
@@ -211,7 +211,7 @@ shell.tail: t1
     <p>Three choices follow from that, and they generalize:</p>
     <ol>
       <li><strong>Resources are a picker, not a data layer.</strong> A summary that leaves out the body cannot replace a tool, and it is not meant to. Its job is to let a person drop a link to a specific object into a conversation.</li>
-      <li><strong>The picker is configuration-dependent.</strong> The three templates only register when the server knows the web app&rsquo;s base URL. A self-hosted setup without that setting lists none. Ship resources only if you can say what turns them on.</li>
+      <li><strong>The picker is configuration-dependent.</strong> The three templates only register when the server knows the web app&rsquo;s base URL. A setup without that setting lists none. Ship resources only if you can say what turns them on.</li>
       <li><strong>Prompts matter for manual jobs.</strong> Nothing here is started by a person typing a command: Maskin&rsquo;s loops start from events and schedules, so a prompt would only matter for a manual job. If that changes, prompts become worth adding.</li>
     </ol>
     <h2>How to choose: a four-question rule</h2>
@@ -235,7 +235,7 @@ shell.tail: t1
     <h3>Can a tool return a resource?</h3>
     <p>Yes. A tool can return a resource link or embed the resource contents in its result. The spec says links returned this way are not guaranteed to appear in the server&rsquo;s resource list, so they work as pointers, not as a catalogue.</p>
     <h3>Does Maskin&rsquo;s MCP server expose resources and prompts?</h3>
-    <p>Resources, yes: three templates for objects, actors and triggers, plus ten interactive app cards. The template listing only appears when the server has a web app address configured, so a self-hosted setup without one lists none. Prompts, no: the server registers none, so the prompts capability is not offered.</p>
+    <p>Resources, yes: three templates for objects, actors and triggers, plus ten interactive app cards. The template listing only appears when the server has a web app address configured, so a setup without one lists none. Prompts, no: the server registers none, so the prompts capability is not offered.</p>
     <div class="related">
       <p class="related__title">Where to go next</p>
       <div class="doc-cards">
@@ -262,10 +262,10 @@ shell.tail: t1
       </div>
     </div>
     <div class="post-cta">
-      <h2>Want an agent workspace you can connect any MCP client to?</h2>
-      <p>Self-host Maskin and point your harness at it.</p>
+      <h2>Want an agent workspace you can connect an MCP client to?</h2>
+      <p>Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure.</p>
       <div class="post-cta__actions">
-        <a class="btn-primary" href="/docs/self-hosted-ai-workspace/?utm_source=maskin.io&amp;utm_medium=organic&amp;utm_campaign=mcp-tools-vs-resources&amp;utm_content=closing-cta">Self-host Maskin</a>
+        <a class="btn-primary" href="/docs/self-hosted-ai-workspace/?utm_source=maskin.io&amp;utm_medium=organic&amp;utm_campaign=mcp-tools-vs-resources&amp;utm_content=closing-cta">Open-source AI workspace</a>
       </div>
     </div>
   

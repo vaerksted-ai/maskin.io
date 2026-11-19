@@ -64,7 +64,7 @@ A record this small is enough to start:
 Where it lives is a real choice, and none of these is wrong:
 - **A decisions folder in the repo.** Good for code-shaped calls. Reviewable, versioned, next to the code. Weak for people who do not live in git.
 - **The tracker you already use.** Works if you add fields or a template for the reason and the check date. Without them, an issue says what was done but not why.
-- **A workspace built for it.** Maskin is one option. It is an open-source, MCP-native workspace where people and agents work on typed objects. A signal comes in as an insight, becomes a bet with a stated win condition, and runs as tasks. Each object has a driver, the owner, and a comment thread. A bet closes with an outcome measured against its condition. Read [the closed-loop workspace](/docs/closed-loop-workspace/) for the longer argument, or [self-host it](/docs/self-hosted-ai-workspace/). It is early, so judge the design, not a long track record.
+- **A workspace built for it.** Maskin is one option. It is an open-source, MCP-native workspace where people and agents work on typed objects. A signal comes in as an insight, becomes a bet with a stated win condition, and runs as tasks. Each object has a driver, the owner, and a comment thread. A bet closes with an outcome measured against its condition. Read [the closed-loop workspace](/docs/closed-loop-workspace/) for the longer argument, or see [how technical teams can run it on their own infrastructure](/docs/self-hosted-ai-workspace/). It is early, so judge the design, not a long track record.
 The choice matters less than having one and saying where it is.
 
 ### An illustrative week

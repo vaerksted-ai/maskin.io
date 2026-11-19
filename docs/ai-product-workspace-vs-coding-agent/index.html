@@ -216,13 +216,13 @@
 <tr><td>Terminal event</td><td>&ldquo;Done&rdquo; = merged</td><td>&ldquo;Done&rdquo; = validated</td></tr>
 <tr><td>Runtime scope</td><td>Code changes only</td><td>Code, decisions, research, writing: anything with an outcome</td></tr>
 <tr><td>Human role</td><td>Reviewer of the diff</td><td>Judge of the outcome</td></tr>
-<tr><td>Open source</td><td>Sometimes (many entrants Apache-2.0 or AGPL)</td><td>Apache 2.0, self-hostable</td></tr>
+<tr><td>Open source</td><td>Sometimes (many entrants Apache-2.0 or AGPL)</td><td>Apache 2.0</td></tr>
 </tbody>
 </table></div>
 <p>Read the two columns as tiers, not as a scoreboard. The coding-agent column is correct for what a coding agent is for. The AI product workspace column is what the tier above the code looks like when the object of work carries a win condition instead of a task description.</p>
 
 <h2>Where the two tiers overlap and where they don&rsquo;t</h2>
-<p>The two tiers overlap on infrastructure. Self-hosting, MCP support, approval queues, audit logs and cost governance are shared assumptions across both tiers now, and any tool at either tier that does not ship them is behind. Comparing an AI coding agent to an AI product workspace on &ldquo;is it self-hostable&rdquo; or &ldquo;does it speak MCP&rdquo; is comparing on rows where both columns already say yes.</p>
+<p>The two tiers overlap on infrastructure. Self-hosting, MCP support, approval queues, audit logs and cost governance are shared assumptions across both tiers now, and any tool at either tier that does not ship them is behind. Comparing an AI coding agent to an AI product workspace on &ldquo;is it open source&rdquo; or &ldquo;does it speak MCP&rdquo; is comparing on rows where both columns already say yes.</p>
 <p>The instruction layer is the same kind of shared ground, but it lands differently at each tier. Both a coding agent and an AI product workspace load <a href="/docs/learn/agent-skills/">agent skills</a> (portable folders that package the judgment for one job). What differs is the state a skill can read: a repository in one case, typed objects such as a bet and its win condition in the other.</p>
 <p>The two tiers do not overlap on the object of work. A coding agent&rsquo;s kanban of tasks cannot carry a bet&rsquo;s win condition because a task description was never designed to. A control plane above a coding-agent fleet inherits the same limit: the dashboard is one level higher, but the object underneath is still a task and the terminal event is still a merge. Nothing in the vertical stack of coding-agent runtime plus coding-agent control plane models an insight becoming a bet becoming a validated outcome, because that model is not what those tools are for.</p>
 <p>The practical implication for a team choosing between them: if the pain is &ldquo;I have five coding agents and no dashboard to run the fleet,&rdquo; a coding-agent control plane is the right tool. If the pain is &ldquo;we ship a lot and nobody can tell whether any of it moved anything,&rdquo; a coding-agent control plane will not fix that. The object of work has to change tier for the loop to close on an outcome.</p>
@@ -253,7 +253,7 @@
 
 <h2>Where to go next</h2>
 <p>If you are evaluating the tier above the code, the companion wedge pieces are worth reading side by side. The <a href="/docs/ai-product-management-tool/">tracker-tier companion</a> runs the same diagnostic against Jira, Linear, and Notion. The <a href="/docs/what-is-an-agentic-workspace/">cornerstone on agentic workspaces</a> walks the full shape end to end.</p>
-<p>Maskin is open source under Apache 2.0, and you can self-host it or use it hosted. The coding agent ships the PR; the workspace is where the shipped change gets its outcome check. A meeting is a useful next step for mapping the two tiers to your team's decisions.</p>
+<p>Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure or use it hosted. The coding agent ships the PR; the workspace is where the shipped change gets its outcome check. A meeting is a useful next step for mapping the two tiers to your team's decisions.</p>
 
     <div class="related">
       <p class="related__title">Read next</p>

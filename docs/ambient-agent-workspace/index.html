@@ -226,7 +226,7 @@
       <li><strong>Wire triggers on state, not on time.</strong> The most common ambient-agent bug is a cron loop that fires whether the state changed or not. Trigger on the object transition &mdash; a new insight, a bet reaching <code>signal</code>, a task closing &mdash; and let the graph do the work of remembering.</li>
       <li><strong>Make close conditions load-bearing.</strong> A loop without a close condition is a cost leak. A loop with one is the ambient equivalent of a well-scoped bet. Silence, stopping, and gates are the real design frontier &mdash; the same question this page is answering, one abstraction layer down, and the subject of <a href="/docs/what-is-loop-engineering/">what is loop engineering</a>.</li>
     </ul>
-    <p>For the vendor-hosted answer to the shape, Claude Cowork is the reference agent-native platform. For the open, self-hostable answer where the object model, the model, and the loop all live inside your own boundary, that&rsquo;s what Maskin is aimed at &mdash; the piece on <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a> covers the operational side (including the Claude Cowork comparison), and <a href="/docs/bet-vs-backlog/">bet vs backlog</a> covers the shift in the object model itself.</p>
+    <p>For the vendor-hosted answer to the shape, Claude Cowork is the reference agent-native platform. For the open-source answer where the object model and the loop live in a typed workspace graph, that&rsquo;s what Maskin is aimed at &mdash; the piece on <a href="/docs/self-hosted-ai-workspace/">the open-source AI workspace</a> covers the operational side (including the Claude Cowork comparison), and <a href="/docs/bet-vs-backlog/">bet vs backlog</a> covers the shift in the object model itself.</p>
 
     <h2>FAQ</h2>
     <h3>What is an ambient agent workspace?</h3>
@@ -243,7 +243,7 @@
     <p>Three signals: your AI feature takes longer than the user will politely wait for; the trigger for the feature is an event (a message, a metric, a schedule) rather than a keystroke; the outcome needs a human&rsquo;s taste before it ships. If two of those three are true, the shape of the UX is ambient, not chat &mdash; and the specific question then is which of the five patterns fits the object of work. If the work is one artefact per invocation, delegated-agent is likely right; if the work spans multiple hand-offs and needs to carry state, workspace-graph is probably the shape.</p>
 
     <h2>Own the loop, not the chat</h2>
-    <p>If chat is the wrong default and your team&rsquo;s work spans more than one hand-off, the shape of the UX is a workspace graph &mdash; a typed object model humans and agents share, with ambient agents running on triggers and the human on-the-loop. Maskin is the open-source, MCP-native, self-hostable version of that shape. Open source under Apache 2.0. Technical teams can run it on their own infrastructure, or start a hosted trial.</p>
+    <p>If chat is the wrong default and your team&rsquo;s work spans more than one hand-off, the shape of the UX is a workspace graph &mdash; a typed object model humans and agents share, with ambient agents running on triggers and the human on-the-loop. Maskin is the open-source, MCP-native version of that shape. Open source under Apache 2.0. Technical teams can run it on their own infrastructure, or start a hosted trial.</p>
 
     <h2 id="sources">Sources</h2>
     <ol class="sources">
@@ -263,7 +263,7 @@
         </a>
         <a class="doc-card" href="/docs/what-is-mcp-native/">
           <div class="doc-card__title">What is MCP-native?</div>
-          <div class="doc-card__desc">The protocol layer under the object graph &mdash; and why bring-your-own-model is real.</div>
+          <div class="doc-card__desc">The protocol layer under the object graph and why it matters.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
         <a class="doc-card" href="/docs/mcp-native-workspace/">
@@ -272,8 +272,8 @@
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
         <a class="doc-card" href="/docs/self-hosted-ai-workspace/">
-          <div class="doc-card__title">Self-hosted AI workspace</div>
-          <div class="doc-card__desc">Technical teams can run the full ambient loop on their own infrastructure.</div>
+          <div class="doc-card__title">Open-source AI workspace</div>
+          <div class="doc-card__desc">Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure.</div>
           <div class="doc-card__arrow">Read &rarr;</div>
         </a>
         <a class="doc-card" href="/docs/what-is-a-stateful-orchestration-substrate/">
@@ -284,10 +284,10 @@
       </div>
     </div>
     <div class="post-cta">
-      <h2>Self-host the ambient loop</h2>
-      <p>Own the object graph, own the model, own the loop. Apache 2.0, MCP-native.</p>
+      <h2>Open source under Apache 2.0</h2>
+      <p>Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure.</p>
       <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">View on GitHub</a>
         <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
       </div>
     </div>

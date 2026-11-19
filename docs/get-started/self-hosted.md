@@ -6,7 +6,7 @@ Run your own Maskin instance and connect Claude — Code or Desktop — to it ov
 
 ## Prerequisites
 - **Claude Code** or **Claude Desktop** installed.
-- An **Anthropic API key** — Maskin runs Claude Code in sandboxes and uses this key. A fresh instance only accepts it after you set one environment variable (Step 2).
+- An **Anthropic API key** — Maskin agents run on Claude by default and use this key. A fresh instance only accepts it after you set one environment variable (Step 2).
 - A **running Maskin instance** (set one up below).
 
 ## Run your Maskin server

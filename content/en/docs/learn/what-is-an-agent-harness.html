@@ -247,7 +247,7 @@ shell.tail: t1
 <p>That&rsquo;s why it helps to keep the record of the work in a shared place your harnesses write to, rather than inside any single one of them.</p>
 <h2>Where the harness&rsquo;s work lands in Maskin</h2>
 <p>Maskin is an open-source workspace built for this. It&rsquo;s the shared record where the harness&rsquo;s work lands: bets, tasks, owners and outcomes, which last longer than any one harness.</p>
-<p>Work in Maskin is held as typed objects. A signal comes in as an insight, becomes a bet with a stated success condition, and breaks into tasks. Every object has a driver, the person or agent who owns it, and a comment thread where agents report back and people decide. When a bet ends, its outcome is recorded against the condition it started with. Agents reach all of this over MCP, so any MCP-capable harness can read the context before it starts and write back what it did. Maskin&rsquo;s own agent sessions run the Claude Code and Codex command-line tools in isolated microVMs.</p>
+<p>Work in Maskin is held as typed objects. A signal comes in as an insight, becomes a bet with a stated success condition, and breaks into tasks. Every object has a driver, the person or agent who owns it, and a comment thread where agents report back and people decide. When a bet ends, its outcome is recorded against the condition it started with. Agents reach all of this over MCP, so any MCP-capable harness can read the context before it starts and write back what it did. Maskin&rsquo;s own agent sessions run on Claude by default.</p>
 <p>The harness does the work. The record says why it was done, who owns it, and whether it worked. If you swap the harness next quarter, the record stays.</p>
 <h2>FAQ</h2>
 <h3>What is an agent harness in simple words?</h3>
@@ -270,5 +270,5 @@ shell.tail: t1
 <li><a href="/docs/learn/agent-orchestration/">Agent orchestration, agentic loops and control planes</a>: what coordinates several agents, and which a small team needs.</li>
 <li><a href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a>: why the coding agent and the record of the work are different jobs.</li>
 </ul>
-<p><strong>Want your harnesses&rsquo; work to land somewhere the whole team can see?</strong> <a href="/docs/self-hosted-ai-workspace/" id="cta-self-host" data-cta="self-host" data-ph-capture-attribute-cta="self-host" data-ph-capture-attribute-source-page="what-is-an-agent-harness">Self-host Maskin</a> and keep bets, owners and outcomes in one shared record.</p>
+<p><strong>Want your harnesses&rsquo; work to land somewhere the whole team can see?</strong> <a href="/docs/self-hosted-ai-workspace/" id="cta-self-host" data-cta="self-host" data-ph-capture-attribute-cta="self-host" data-ph-capture-attribute-source-page="what-is-an-agent-harness">Maskin</a> is open source under Apache 2.0, and technical teams can run it on their own infrastructure. Keep bets, owners and outcomes in one shared record.</p>
   

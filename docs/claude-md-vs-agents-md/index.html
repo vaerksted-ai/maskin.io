@@ -302,7 +302,7 @@ Use plan mode for changes under src/billing/.</code></pre>
 
     <h3>A home above the repo</h3>
     <p>Rules about how a role behaves, rather than how one repo builds, need to be written once and reach every agent. You can build that with a shared rules repository and a sync script. Or you can keep it in the system where the agents already run.</p>
-    <p>In Maskin, an open-source workspace where humans and agents share typed records, each agent is an actor with a system prompt that defines its role. When a session starts, an ephemeral microVM launches the Claude Code CLI by default, or the Codex CLI as an alternative, with that system prompt and a scoped API key injected. Workspace skills are managed through the same tool surface (<code>create_workspace_skill</code>, <code>update_workspace_skill</code> and the rest). So a rule such as &ldquo;no agent marks work done before the checks pass&rdquo; is written once on the agent or its skill and applies in every session, with no repo involved. The <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">agent skills comparison</a> covers how that layer differs from rule files, and <a href="/docs/learn/agent-skills/">what are agent skills</a> explains the <code>SKILL.md</code> format.</p>
+    <p>In Maskin, an open-source workspace where humans and agents share typed records, each agent is an actor with a system prompt that defines its role. When a session starts, an ephemeral sandbox launches the Claude Code CLI with that system prompt and a scoped API key injected. Workspace skills are managed through the same tool surface (<code>create_workspace_skill</code>, <code>update_workspace_skill</code> and the rest). So a rule such as &ldquo;no agent marks work done before the checks pass&rdquo; is written once on the agent or its skill and applies in every session, with no repo involved. The <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">agent skills comparison</a> covers how that layer differs from rule files, and <a href="/docs/learn/agent-skills/">what are agent skills</a> explains the <code>SKILL.md</code> format.</p>
     <p>Be clear about the limits. Maskin does not replace <code>AGENTS.md</code> or <code>CLAUDE.md</code>. Build commands and code style belong next to the code, in the repo file. A system prompt in Maskin governs agents that run in Maskin sessions, not a teammate&rsquo;s Cursor window on their laptop. And it is a prompt, so it carries the same limit as every file above: it guides, it does not enforce.</p>
 
     <h2>A 20-minute cleanup</h2>
@@ -362,7 +362,7 @@ Use plan mode for changes under src/billing/.</code></pre>
       <h2>Write the role rules once</h2>
       <p>In Maskin, an agent&rsquo;s system prompt and skills apply in every session it runs, with no repo involved. Open source, MCP-native. Technical teams can run it on their own infrastructure.</p>
       <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">View on GitHub</a>
         <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
       </div>
     </div>

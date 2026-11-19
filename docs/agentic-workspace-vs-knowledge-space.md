@@ -36,7 +36,7 @@ The difference is the object model, and the row spine below is the one the tier-
 | Execution | Humans, on their own, in other tools | Humans and agents on shared typed objects |
 | Validation | The note is edited, or not | Outcome measured against win condition |
 | Who owns work | A human, sometimes | Jointly owned human + agent, human keeps taste |
-| Open source | Sometimes (Obsidian’s file format is open; others closed) | Apache 2.0, auditable and self-hostable |
+| Open source | Sometimes (Obsidian’s file format is open; others closed) | Apache 2.0, open source and auditable |
 Read the two columns as tiers, not as a scoreboard, and read the Validation row as where the closure diagnostic lives: “the note is edited, or not” closes on an artifact; “outcome measured against win condition” closes on an outcome. The knowledge space’s column is correct for the tier it serves. The agentic workspace’s column is what the tier past capture looks like when the object of work carries a win condition instead of a link count.
 
 ## A five-minute check for heads of product

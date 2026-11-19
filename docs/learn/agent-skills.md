@@ -112,4 +112,4 @@ They are different layers, and the two are often confused. MCP is the protocol t
 Read next
 
 ## Author the skill once, attach it to a loop
-Maskin is the open-source, MCP-native workspace where skills are components of a loop, not a surface of their own — attached to an agent, firing on typed workspace state, with the output landing back on the object graph. Apache 2.0, self-hostable.
+Maskin is the open-source, MCP-native workspace where skills are components of a loop, not a surface of their own — attached to an agent, firing on typed workspace state, with the output landing back on the object graph. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.

@@ -156,7 +156,7 @@ shell.mainopen: m1
           "name": "Does Maskin run GitHub Copilot?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Maskin runs its agent sessions on the Claude Code CLI or the Codex CLI. This page compares Copilot because many teams use it next to Claude Code, and the record argument applies whichever agent does the work. Book a meeting to talk through how your team could keep one record across coding agents."
+            "text": "No. Maskin runs its agent sessions on Claude by default. This page compares Copilot because many teams use it next to Claude Code, and the record argument applies whichever agent does the work. Book a meeting to talk through how your team could keep one record across coding agents."
           }
         }
       ]
@@ -259,9 +259,9 @@ shell.mainopen: m1
 <p>Take a team of four. Two developers use Copilot in their editors and two use Claude Code in the terminal. In March one of them decides to pin a major version of a library because the upgrade breaks a plugin. The reasoning sits in one editor chat. In May a recurring dependency job, running on Claude Code, proposes the upgrade again. Nobody can say why it was pinned, so someone repeats the investigation.</p>
 <p>With a record that holds the pin as a decision with a reason and an outcome condition (&ldquo;revisit when the plugin supports the new major&rdquo;), whichever tool runs the job reads the same entry and skips the upgrade. This scenario is made up to show the gap. It is not a Maskin customer story.</p>
 <h2>How Maskin keeps the record</h2>
-<p>Maskin is an open-source (Apache 2.0), MCP-native, self-hostable workspace where people and agents work on shared typed objects. A signal enters as an insight, gets shaped into a bet with a win condition, and breaks into tasks. Each object has a driver (an owner, person or agent) and a comment thread, and a bet closes against its stated condition. The objects are the work, not a log of it.</p>
-<p>Maskin runs its agent sessions on the Claude Code CLI by default, or on the Codex CLI, each inside an isolated microVM. Maskin does not run GitHub Copilot. GitHub&rsquo;s documentation says the Copilot cloud agent supports MCP servers, so it can in principle connect to any MCP server, but we have not tested Copilot against Maskin and do not make that claim for you. Some honest limits: you bring your own Anthropic or OpenAI access, local models are not a path we have validated, and Maskin is early, so evaluate the architecture rather than a long track record.</p>
-<p>If you run a product team on coding agents and want to see the record in practice, <a href="https://calendar.app.google/r4v9xQp9S2p3TVFq5" data-track="docs_book_meeting_click" data-position="mid">book a meeting</a> or read how Maskin works for <a href="/solutions/product-teams/">product teams</a>. To try it yourself, you can <a href="/docs/self-hosted-ai-workspace/">self-host it</a>. For the longer argument, read <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a>.</p>
+<p>Maskin is an open-source (Apache 2.0), MCP-native workspace where people and agents work on shared typed objects. A signal enters as an insight, gets shaped into a bet with a win condition, and breaks into tasks. Each object has a driver (an owner, person or agent) and a comment thread, and a bet closes against its stated condition. The objects are the work, not a log of it.</p>
+<p>Maskin&rsquo;s agent sessions run on Claude by default. Maskin does not run GitHub Copilot. GitHub&rsquo;s documentation says the Copilot cloud agent supports MCP servers, so it can in principle connect to any MCP server, but we have not tested Copilot against Maskin and do not make that claim for you. Enterprise teams can bring their own Claude subscription, API key or model endpoint. One honest limit: Maskin is early, so evaluate the architecture rather than a long track record.</p>
+<p>If you run a product team on coding agents and want to see the record in practice, <a href="https://calendar.app.google/r4v9xQp9S2p3TVFq5" data-track="docs_book_meeting_click" data-position="mid">book a meeting</a> or read how Maskin works for <a href="/solutions/product-teams/">product teams</a>. To try it yourself, technical teams can <a href="/docs/self-hosted-ai-workspace/">run it on their own infrastructure</a>. For the longer argument, read <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a>.</p>
 <p>Related comparisons: <a href="/docs/claude-code-vs-cursor/">Claude Code vs Cursor</a> covers the editor-first alternative, and <a href="/docs/claude-code-vs-codex/">Claude Code vs Codex</a> covers the closest terminal agent. <a href="/docs/agent-skills-vs-mcp-vs-cursor-rules-vs-workflows/">Agent skills vs MCP vs Cursor rules vs workflows</a> covers where shared instructions live, <a href="/docs/learn/agent-memory-across-sessions/">agent memory across sessions</a> covers what survives between runs, and <a href="/docs/learn/claude-code-for-product-managers/">Claude Code for product managers</a> is the start for a PM deciding how much of this to learn. For a wider look at open-source coding agents, see the <a href="/alternatives/open-source-ai-coding-agent/">open source AI coding agent alternatives</a>.</p>
 <h2>A quick decision rule</h2>
 <ul>
@@ -287,7 +287,7 @@ shell.mainopen: m1
 <h3>Do Claude Code and Copilot have usage limits?</h3>
 <p>Both are gated by the plan or account you sign in with. We print no usage numbers because limits change often and the pages we read do not give one figure that holds for everyone. GitHub does document session limits for the Copilot cloud agent: 59 minutes per session, one pull request per task and a single repository. If a limit blocks a long job, that is one reason teams end up on both, and a reason to record which job ran on which account.</p>
 <h3>Does Maskin run GitHub Copilot?</h3>
-<p>No. Maskin runs its agent sessions on the Claude Code CLI or the Codex CLI. This page compares Copilot because many teams use it next to Claude Code, and the record argument applies whichever agent does the work.</p>
+<p>No. Maskin runs its agent sessions on Claude by default. This page compares Copilot because many teams use it next to Claude Code, and the record argument applies whichever agent does the work.</p>
 <p><a href="https://calendar.app.google/r4v9xQp9S2p3TVFq5" data-track="docs_book_meeting_click" data-position="bottom">Book a meeting</a> to talk through how your team could keep one record across coding agents.</p>
 
     <div class="related">
@@ -309,10 +309,10 @@ shell.mainopen: m1
       </div>
     </div>
     <div class="post-cta">
-      <h2>Getting started is free</h2>
-      <p>Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of what was decided. The <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace cornerstone</a> and the <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a> guide are the two best next reads.</p>
+      <h2>Open source under Apache 2.0</h2>
+      <p>Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure. You can also take a hosted trial. Keep one record of what was decided, whichever coding agent does the work. The <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace cornerstone</a> and the <a href="/docs/self-hosted-ai-workspace/">open-source AI workspace</a> guide are the two best next reads.</p>
       <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">View on GitHub</a>
         <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
       </div>
     </div>

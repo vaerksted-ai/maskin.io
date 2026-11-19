@@ -10,7 +10,7 @@ This piece is the tier-2 leg of the [three tiers of AI-native work](/docs/three-
 > **Incumbent suites bolt generative-AI summaries onto task trackers; the object model never changes.** Atlassian, Notion, and [Linear](/alternatives/open-source-linear-alternative/) have all pivoted toward agent orchestration, but the tracker-with-narrator pattern still dominates what most tools ship.
 > **Maskin’s unit of work is the bet** — a testable hypothesis with a clear win condition, shaped from raw insight and jointly owned by a human and agents.
 > **The category is a small, fast-forming wedge:** ~60 native-AI-in-product-management companies, ~$500M raised, one unicorn, with 2026 funding up ~170% year-over-year.
-> **Maskin is open source under Apache 2.0**, self-host free, with hosted Pro at $20/seat.
+> **Maskin is open source under Apache 2.0**, technical teams can run it on their own infrastructure, and hosted Pro is $20/seat.
 
 ## What product teams actually need
 Product management is a learning loop, not a list of tasks. A team captures signal, decides what matters, does the work, and measures whether it worked. That loop has four stages, and an AI product management tool should cover all four:
@@ -50,10 +50,10 @@ The incumbents’ pivot is the clearest validation of the thesis. In 2026, Atlas
 | Execution | Humans, with AI co-pilot | Humans and agents on the same object model |
 | Validation | Ticket moved to done | Outcome measured against win condition |
 | Who owns work | A human owner | Jointly owned human + agent, human keeps taste |
-| Open source | Rarely | Apache 2.0, auditable and self-hostable |
+| Open source | Rarely | Apache 2.0, open source and auditable |
 
 ## Why open source matters here
-An AI product management tool is a tool of record for how your team decides and works, so it should not be a black box you cannot inspect or leave. Maskin is open source under the Apache 2.0 license, so the improvement path is auditable and testable rather than a vendor you have to trust on faith. Self-hosting is always free — your data, your infra, your model choice. Hosted Pro starts at $20/seat/month (agent credits included) and Team at $200/workspace/month with unlimited seats. The positioning is straightforward: a small team can run many agents and get pulled in only for the decisions that need a human.
+An AI product management tool is a tool of record for how your team decides and works, so it should not be a black box you cannot inspect or leave. Maskin is open source under the Apache 2.0 license, so the improvement path is auditable and testable rather than a vendor you have to trust on faith. Technical teams can run it on their own infrastructure. Hosted Pro starts at $20/seat/month (agent credits included) and Team at $200/workspace/month with unlimited seats. The positioning is straightforward: a small team can run many agents and get pulled in only for the decisions that need a human.
 
 ## FAQ
 
@@ -70,7 +70,7 @@ Structurally. A tracker with AI changes the prose around tasks — it writes sum
 Yes. The bet object is the operational expression of the anti-backlog doctrine popularised by Shape Up — a bounded piece of work with a clear win condition, planned in a loop rather than a queue. Maskin makes that doctrine’s bet a first-class, machine-readable object that agents can work, which is what lets the loop close automatically. See our companion piece, [Bet-based product planning: the anti-backlog doctrine](/docs/bet-based-product-planning/), for the full story.
 
 ### Can I try Maskin without a commitment?
-Yes. Self-hosting is always free, and a hosted trial is available if you do not want to run infrastructure. Hosted Pro is $20/seat/month with agent credits included; Team is $200/workspace/month with unlimited seats. There is no lock-in beyond your own data, because the core is Apache 2.0 and runs on your infrastructure if you want it to.
+Yes. A hosted trial is available if you do not want to run infrastructure, and Maskin is open source under Apache 2.0, so technical teams can run it on their own infrastructure. Hosted Pro is $20/seat/month with agent credits included; Team is $200/workspace/month with unlimited seats. There is no lock-in beyond your own data, because the core is Apache 2.0 and technical teams can run it on their own infrastructure.
 
 ### What does Maskin’s AI actually do?
 The AI runs the mechanical parts of the loop so humans do not have to. It captures signal from your connected sources via triggers, synthesises raw insight, drafts shaped bets, executes the work with agents, and gathers evidence for validation. Humans keep the taste decisions — which bets deserve the cycle, which outcomes actually matter, which moves get approved. The split is deliberate: agents do the closing, humans keep the judgement.
@@ -81,4 +81,4 @@ The two sibling spokes run the closure diagnostic against the other tiers. The t
 Read next
 
 ## Getting started is free
-Self-host Maskin today, or take a hosted trial — and read the [bet-based product planning guide](/docs/bet-based-product-planning/) or the [agentic-workspace walkthrough](/docs/what-is-an-agentic-workspace/) while you decide. The loop is the product, and you can run it on your own infrastructure in minutes.
+Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure. Or take a hosted trial, and read the [bet-based product planning guide](/docs/bet-based-product-planning/) or the [agentic-workspace walkthrough](/docs/what-is-an-agentic-workspace/) while you decide. The loop is the product.

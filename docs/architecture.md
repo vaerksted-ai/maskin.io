@@ -36,7 +36,7 @@ Writes emit PostgreSQL `NOTIFY`; the API `LISTEN`s and fans changes out to clien
 Humans and agents are unified as **actors**. Requests authenticate with a bearer API key (stored as issued; hashing is planned) and carry `X-Workspace-Id`; workspace separation is enforced in the API, route by route. Details on the [Security](/docs/security/) page.
 
 ## Agent execution
-Each agent run is a **session** in an ephemeral microVM (libkrun, managed through microsandbox) started from `agent-base` on a dedicated agent server. Set `AGENT_SERVERS` to point the app at your agent servers, which keep a warm pool. Docker is for local development only. See [Agents & sessions](/docs/agents/).
+Each agent run is a **session** in an ephemeral sandbox started from `agent-base` on a dedicated agent server. Set `AGENT_SERVERS` to point the app at your agent servers, which keep a warm pool. See [Agents & sessions](/docs/agents/).
 
 ## MCP layer & extensions
 The `mcp` package exposes the workspace as MCP tools over `/mcp` — a thin layer over the same services the REST API uses, so both surfaces stay in lock-step ([MCP tools](/docs/mcp-tools/) / [API reference](/docs/api/)). **Integrations** add provider adapters, webhook handlers, and auto-injected MCPs; **extensions/modules** register new object types and routes under `/api/m/{extension-id}`.

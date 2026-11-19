@@ -54,9 +54,9 @@ shell.tail: t1
 
     <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Production deployment</p>
 
-    <p class="eyebrow">Self-hosting</p>
+    <p class="eyebrow">Reference</p>
     <h1>Production deployment</h1>
-    <p class="lead">The <a href="/docs/get-started/self-hosted/">self-hosted setup</a> gets you running locally. This page covers the differences for a real deployment — the production stack, durable data, agent execution, and networking.</p>
+    <p class="lead">The <a href="/docs/get-started/self-hosted/">setup page</a> covers running Maskin locally. This page covers the differences for a production deployment — the production stack, durable data, agent execution, and networking.</p>
 
     <div class="callout callout--muted">
       <span class="callout__icon">i</span>
@@ -72,7 +72,7 @@ shell.tail: t1
       <li><strong>seaweedfs</strong> — S3-compatible storage (or point <code>S3_*</code> at AWS S3 / MinIO).</li>
       <li><strong>agent-base</strong> — the image used for agent sessions; built from <code>docker/agent-base/</code>.</li>
     </ul>
-    <p>Production sessions run in microVMs on a dedicated agent server, not through the app host's Docker socket. If you mount <code>/var/run/docker.sock</code> for local development, restrict access to it.</p>
+    <p>Production sessions run on a dedicated agent server, not through the app host's Docker socket. If you mount <code>/var/run/docker.sock</code> for local development, restrict access to it.</p>
 
     <h2>Essentials to set</h2>
     <ul>
@@ -85,7 +85,7 @@ shell.tail: t1
     <p>Migrations run automatically on app start; you can also run <code>pnpm db:migrate</code> out of band.</p>
 
     <h2>Agent execution at scale</h2>
-    <p>Production sessions run in ephemeral microVMs (microsandbox and libkrun) on dedicated <a href="/docs/agents/">agent servers</a>. Docker on the app host is for local development only, and there is no fallback that runs agents without the microVM runtime. Point the app at your agent servers:</p>
+    <p>Production sessions run on dedicated <a href="/docs/agents/">agent servers</a>. Point the app at your agent servers:</p>
     <ul>
       <li><code>AGENT_BASE_IMAGE</code> — a full registry path (e.g. <code>yourorg/agent-base:latest</code>), not the local tag.</li>
       <li><code>AGENT_SERVERS</code> — comma-separated <code>url|secret</code> entries; sessions are dispatched to the least-loaded server.</li>

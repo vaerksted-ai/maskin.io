@@ -46,11 +46,11 @@ The difference is the object model. The row spine below is the same one the [tra
 | Terminal event | “Done” = merged | “Done” = validated |
 | Runtime scope | Code changes only | Code, decisions, research, writing: anything with an outcome |
 | Human role | Reviewer of the diff | Judge of the outcome |
-| Open source | Sometimes (many entrants Apache-2.0 or AGPL) | Apache 2.0, self-hostable |
+| Open source | Sometimes (many entrants Apache-2.0 or AGPL) | Apache 2.0 |
 Read the two columns as tiers, not as a scoreboard. The coding-agent column is correct for what a coding agent is for. The AI product workspace column is what the tier above the code looks like when the object of work carries a win condition instead of a task description.
 
 ## Where the two tiers overlap and where they don’t
-The two tiers overlap on infrastructure. Self-hosting, MCP support, approval queues, audit logs and cost governance are shared assumptions across both tiers now, and any tool at either tier that does not ship them is behind. Comparing an AI coding agent to an AI product workspace on “is it self-hostable” or “does it speak MCP” is comparing on rows where both columns already say yes.
+The two tiers overlap on infrastructure. Self-hosting, MCP support, approval queues, audit logs and cost governance are shared assumptions across both tiers now, and any tool at either tier that does not ship them is behind. Comparing an AI coding agent to an AI product workspace on “is it open source” or “does it speak MCP” is comparing on rows where both columns already say yes.
 The instruction layer is the same kind of shared ground, but it lands differently at each tier. Both a coding agent and an AI product workspace load [agent skills](/docs/learn/agent-skills/) (portable folders that package the judgment for one job). What differs is the state a skill can read: a repository in one case, typed objects such as a bet and its win condition in the other.
 The two tiers do not overlap on the object of work. A coding agent’s kanban of tasks cannot carry a bet’s win condition because a task description was never designed to. A control plane above a coding-agent fleet inherits the same limit: the dashboard is one level higher, but the object underneath is still a task and the terminal event is still a merge. Nothing in the vertical stack of coding-agent runtime plus coding-agent control plane models an insight becoming a bet becoming a validated outcome, because that model is not what those tools are for.
 The practical implication for a team choosing between them: if the pain is “I have five coding agents and no dashboard to run the fleet,” a coding-agent control plane is the right tool. If the pain is “we ship a lot and nobody can tell whether any of it moved anything,” a coding-agent control plane will not fix that. The object of work has to change tier for the loop to close on an outcome.
@@ -82,7 +82,7 @@ Not in the head-to-head sense. Cursor and Claude Code are coding-agent runtimes;
 
 ## Where to go next
 If you are evaluating the tier above the code, the companion wedge pieces are worth reading side by side. The [tracker-tier companion](/docs/ai-product-management-tool/) runs the same diagnostic against Jira, Linear, and Notion. The [cornerstone on agentic workspaces](/docs/what-is-an-agentic-workspace/) walks the full shape end to end.
-Maskin is open source under Apache 2.0, and you can self-host it or use it hosted. The coding agent ships the PR; the workspace is where the shipped change gets its outcome check. A meeting is a useful next step for mapping the two tiers to your team's decisions.
+Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure or use it hosted. The coding agent ships the PR; the workspace is where the shipped change gets its outcome check. A meeting is a useful next step for mapping the two tiers to your team's decisions.
 Read next
 
 ## CTOs and heads of product: check outcomes

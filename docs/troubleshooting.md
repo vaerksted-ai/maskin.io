@@ -1,20 +1,20 @@
 > Source: https://maskin.io/docs/troubleshooting/
 
 # Troubleshooting & FAQ
-The issues people hit most when self-hosting Maskin, and how to fix them. Most come down to one missing environment variable — see the [configuration reference](/docs/configuration/) for the full list.
+The issues people hit most when running Maskin on their own infrastructure, and how to fix them. Most come down to one missing environment variable — see the [configuration reference](/docs/configuration/) for the full list.
 
 ## The UI or session logs don't update live
 Real-time updates use PostgreSQL `LISTEN/NOTIFY` streamed over SSE. Connection poolers (PgBouncer, Supabase's pooled port, etc.) break LISTEN/NOTIFY. Set `DATABASE_URL_DIRECT` to a **non-pooled** connection in addition to `DATABASE_URL`. Also make sure your proxy isn't buffering `/api/events` responses.
 
 ## Agent sessions fail to start
-- **Runtime:** sessions run in microVMs (microsandbox and libkrun) on an agent server, and there is no fallback without that runtime, so confirm the agent server is up and running it. In local development only, sessions start through `/var/run/docker.sock`, so confirm it's mounted into the app container.
+- **Runtime:** sessions run on an agent server, so confirm the agent server is up.
 - **Image missing:** the `agent-base` image must be built/pulled. In production, set `AGENT_BASE_IMAGE` to a full registry path (e.g. `yourorg/agent-base:latest`), not the local `:latest` tag.
 - **Scaling out:** if you use `AGENT_SERVERS`, check each server is reachable and its `AGENT_SERVER_SECRET` matches.
 
 ## MCP calls return 401, or Claude sees no tools
 - Check both headers: `Authorization: Bearer ank_…` and `X-Workspace-Id: <uuid>`.
 - Confirm the URL ends in `/mcp` and points at your instance.
-- In Claude Code, run `/reload-plugins` after adding the server. See [Self-hosted setup](/docs/get-started/self-hosted/).
+- In Claude Code, run `/reload-plugins` after adding the server. See [Run it on your own infrastructure](/docs/get-started/self-hosted/).
 
 ## Integrations won't connect, or stop working
 - `INTEGRATION_ENCRYPTION_KEY` must be set. If it was **changed**, previously stored tokens can no longer be decrypted — reconnect the affected integrations.
@@ -38,7 +38,7 @@ On a self-hosted instance, saving your own Anthropic key fails with *"This works
 
 ## FAQ
 **Is Maskin open source?** Yes — Apache 2.0, on [GitHub](https://github.com/sindre-ai/maskin).
-**Can I use models other than Claude?** Agent sessions run Claude Code by default, or Codex, on your own Anthropic or OpenAI access. Enterprise workspaces can also point sessions at their own Anthropic-compatible endpoint, using their own key. Local models are not a path we have validated. See [LLM & models](/docs/llm/).
+**Can I use models other than Claude?** Agent sessions run on Claude by default. Enterprise teams can bring their own Claude subscription, API key or model endpoint. See [LLM & models](/docs/llm/).
 **Where do I see what a run cost?** Each session records token usage and `totalCostUsd` — see [Agents & sessions](/docs/agents/).
-**Do I have to self-host?** No — managed hosting is available. [Book a meeting](https://meshfirm.com/bookmagnus).
+**Do I have to run it on my own infrastructure?** No, managed hosting is available. [Book a meeting](https://meshfirm.com/bookmagnus).
 **Still stuck?** Open an issue on [GitHub](https://github.com/sindre-ai/maskin), or [contact Maskin support](/support/). For security reports, email the contact on the [Security](/docs/security/) page instead.

@@ -10,7 +10,7 @@ Maskin’s own MCP server is a worked example. It has dozens of tools, three res
 > **A resource is not a cheaper tool.** It is a URI the host can list, attach and cache. If the model has to be the one to fetch it, write a tool.
 > **Resource lists can differ per caller.** The spec lets a server vary the list by authorization, and Maskin’s does: what you see depends on workspace and key scope.
 > **Maskin runs tools plus a resource picker, zero prompts.** Resources hold a summary and a link, not the body. The full body always comes from a tool.
-**Want to try this on a server you control?** [Self-host Maskin](/docs/self-hosted-ai-workspace/?utm_source=maskin.io&utm_medium=organic&utm_campaign=mcp-tools-vs-resources&utm_content=early-cta) and connect any MCP client to see all three primitives in practice.
+**Want to try this on a server you control?** Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure. See the [open-source AI workspace](/docs/self-hosted-ai-workspace/?utm_source=maskin.io&utm_medium=organic&utm_campaign=mcp-tools-vs-resources&utm_content=early-cta) page.
 
 ## The three primitives in one table
 |  | Tool | Resource | Prompt |
@@ -51,7 +51,7 @@ This part is read from the server’s source and confirmed by the team that owns
 - **Prompts: none.** Nothing in the server registers one, so the prompts capability is not offered.
 Three choices follow from that, and they generalize:
 1. **Resources are a picker, not a data layer.** A summary that leaves out the body cannot replace a tool, and it is not meant to. Its job is to let a person drop a link to a specific object into a conversation.
-2. **The picker is configuration-dependent.** The three templates only register when the server knows the web app’s base URL. A self-hosted setup without that setting lists none. Ship resources only if you can say what turns them on.
+2. **The picker is configuration-dependent.** The three templates only register when the server knows the web app’s base URL. A setup without that setting lists none. Ship resources only if you can say what turns them on.
 3. **Prompts matter for manual jobs.** Nothing here is started by a person typing a command: Maskin’s loops start from events and schedules, so a prompt would only matter for a manual job. If that changes, prompts become worth adding.
 
 ## How to choose: a four-question rule
@@ -80,8 +80,8 @@ No. An MCP prompt is a named template a server publishes with arguments, and a p
 Yes. A tool can return a resource link or embed the resource contents in its result. The spec says links returned this way are not guaranteed to appear in the server’s resource list, so they work as pointers, not as a catalogue.
 
 ### Does Maskin’s MCP server expose resources and prompts?
-Resources, yes: three templates for objects, actors and triggers, plus ten interactive app cards. The template listing only appears when the server has a web app address configured, so a self-hosted setup without one lists none. Prompts, no: the server registers none, so the prompts capability is not offered.
+Resources, yes: three templates for objects, actors and triggers, plus ten interactive app cards. The template listing only appears when the server has a web app address configured, so a setup without one lists none. Prompts, no: the server registers none, so the prompts capability is not offered.
 Where to go next
 
-## Want an agent workspace you can connect any MCP client to?
-Self-host Maskin and point your harness at it.
+## Want an agent workspace you can connect an MCP client to?
+Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure.

@@ -91,7 +91,7 @@ A CLAUDE.md line saying “never touch the billing migrations” is a request. A
 The last layer is the one Claude Code doesn’t try to be. You need somewhere your team and its agents can read and write that holds a decision, its reason, its owner and its outcome. Options that work:
 - **A decisions folder in the repo.** Reviewable and versioned next to the code. Hard for people who don’t work in git.
 - **Your issue tracker,** with a template for the reason and a check-by date. Without the template, issues say what was done but not why.
-- **A shared workspace built for it.** Maskin is one. It’s an open-source workspace where people and agents work on the same typed objects: an insight, a bet with a stated success condition, the tasks under it, and the knowledge the team has validated. Each has a driver, the person or agent who owns it, and a comment thread. It gives your team and its agents a shared record they read and write, separate from what any one Claude Code session remembers. Its agent sessions run the Claude Code and Codex command-line tools in isolated microVMs. It’s early, so judge the design rather than a track record.
+- **A shared workspace built for it.** Maskin is one. It’s an open-source workspace where people and agents work on the same typed objects: an insight, a bet with a stated success condition, the tasks under it, and the knowledge the team has validated. Each has a driver, the person or agent who owns it, and a comment thread. It gives your team and its agents a shared record they read and write, separate from what any one Claude Code session remembers. Its agent sessions run on Claude by default. It’s early, so judge the design rather than a track record.
 Whichever you pick, add one line to CLAUDE.md saying where decisions live, so every teammate’s Claude knows where to look.
 For how a team shares settings, skills and onboarding in Claude Code, see [Claude Code team](“/docs/learn/claude-code-team/”). For memory across sessions with any agent, not just Claude Code, see [agent memory across sessions](“/docs/learn/agent-memory-across-sessions/”).
 
@@ -120,4 +120,4 @@ Usually because the file is long, vague or contradicts itself. Anthropic’s doc
 Read next
 
 ## Want a record your whole team and its agents read and write?
-Self-host Maskin and give decisions and owners a home outside any one laptop. The [self-hosted AI workspace](/docs/self-hosted-ai-workspace/) guide covers the setup, and the [agentic-workspace cornerstone](/docs/what-is-an-agentic-workspace/) explains the model.
+Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure. Give decisions and owners a home outside any one laptop. The [open-source AI workspace](/docs/self-hosted-ai-workspace/) page has more, and the [agentic-workspace cornerstone](/docs/what-is-an-agentic-workspace/) explains the model.

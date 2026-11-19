@@ -91,7 +91,7 @@ Maskin's implementation of the primitives above:
 - **Permissions:** attached to actors, granted per surface (MCP servers), per object-type transition and per admin action. Revocations are events themselves, so you can see "the permission was removed at 14:22 by user X".
 - **Audit trail:** the events table on every object. `get_events` queries it directly; the event feed on every object renders it inline.
 - **Loop pause:** every `loop` has a status, and `paused` disables all attached triggers. Read the runtime set with `get_workspace_schema`.
-The governance surface is Apache-2.0 and [self-hostable](/docs/get-started/self-hosted/), so the audit trail runs where your other data does. That matters if compliance ever escalates to procurement altitude: you did not build the operator answer on a substrate that has to be replaced when the enterprise checklist arrives.
+The governance surface is Apache-2.0 and open source. That matters if compliance ever escalates to procurement altitude: you did not build the operator answer on a substrate that has to be replaced when the enterprise checklist arrives.
 
 ## FAQ
 

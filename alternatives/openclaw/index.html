@@ -133,7 +133,7 @@
           "name": "Is there a free, open-source OpenClaw alternative?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, several. Hermes Agent, NanoClaw and PicoClaw are MIT licensed, and ZeroClaw and OpenFang are Apache 2.0. OpenClaw itself is MIT. Free software still costs you the model usage and the machine it runs on. Maskin is also free to self-host under Apache 2.0."
+            "text": "Yes, several. Hermes Agent, NanoClaw and PicoClaw are MIT licensed, and ZeroClaw and OpenFang are Apache 2.0. OpenClaw itself is MIT. Free software still costs you the model usage and the machine it runs on. Maskin is also open source under Apache 2.0."
           }
         },
         {
@@ -171,7 +171,7 @@
 <li><strong>Most &quot;OpenClaw alternative&quot; lists are lists of other personal agents.</strong> The ones we read mostly rank Hermes, NanoClaw, ZeroClaw and similar runtimes. That is the right answer if the job is &quot;one capable agent for me&quot;.</li>
 <li><strong>Hermes Agent is the honest pick if you want one agent with memory.</strong> It is MIT licensed, had about 257K GitHub stars when we checked on 26 October 2026, and ships a command to import OpenClaw memories, skills and settings.</li>
 <li><strong>OpenClaw is not only single-user any more.</strong> Its docs describe a shared team gateway. The catch is stated in its own words: everyone who can message a tool-enabled agent shares that agent&#39;s tool authority.</li>
-<li><strong>Maskin is a different shape.</strong> It is an Apache 2.0, self-hostable workspace where people and agents read and write the same typed records (insights, bets, tasks). It does not match OpenClaw or Hermes on cross-conversation memory, and we say so below.</li>
+<li><strong>Maskin is a different shape.</strong> It is an open-source (Apache 2.0) workspace where people and agents read and write the same typed records (insights, bets, tasks). It does not match OpenClaw or Hermes on cross-conversation memory, and we say so below.</li>
 <li><strong>Check the repo before you install any &quot;Claw&quot;.</strong> The name family mixes serious projects with look-alikes, including two unrelated repositories both called GoClaw.</li>
 </ul>
 
@@ -285,7 +285,7 @@
 <h3>Hosted assistants</h3>
 <p>If the real complaint is &quot;I do not want to run this,&quot; a hosted assistant solves it, usually by giving up self-hosting and some control of the runtime. The roundups that rank for this phrase cover that group in detail. We have not tested them, so we do not rank them here.</p>
 <h2>Where Maskin fits, and where it does not</h2>
-<p>Maskin is not an agent you talk to in Telegram. It is a workspace where people and agents share the same state. Insights, bets and tasks are typed objects linked by relationships. Every bet has a named driver (a person or an agent) and a win condition. Agents are started by triggers (a schedule, a one-shot reminder, or an event on an object), run in a fresh isolated sandbox, write their results back to the objects, and exit. Under the hood they run Claude Code in that sandbox, with a configurable model endpoint.</p>
+<p>Maskin is not an agent you talk to in Telegram. It is a workspace where people and agents share the same state. Insights, bets and tasks are typed objects linked by relationships. Every bet has a named driver (a person or an agent) and a win condition. Agents are started by triggers (a schedule, a one-shot reminder, or an event on an object), run in a fresh isolated sandbox, write their results back to the objects, and exit. Agents run on Claude by default. Enterprise teams can bring their own Claude subscription, API key or model endpoint.</p>
 <p>That makes it a fit for one specific situation: several people and several agents working on the same decisions over weeks. Take a founder who tells an assistant on Monday, &quot;we&#39;re dropping the annual discount.&quot; On a personal agent, that is a message and perhaps a memory entry. In a team workspace it can be an insight that gets promoted to a bet with an owner and a close condition, with tasks hanging off it, so on Friday anyone can find out whether it is still open, who owns it and how it ended. OpenClaw&#39;s team gateway can share the conversation. Maskin&#39;s bet is that the thing worth sharing is the record. We have not run this comparison head to head. It maps the two designs, it is not a test result.</p>
 <p>Here is how the two compare:</p>
 <div class="doc-table-wrap"><table>
@@ -362,7 +362,7 @@
 <p>These are not exclusive. Hermes documents MCP integration, and Maskin exposes its objects over MCP (see the <a href="/docs/mcp-tools/">MCP tools reference</a>). A Hermes agent reading and writing Maskin bets is technically plausible. We have not tested that recipe, so treat it as something to prototype. We did not find MCP client support in the OpenClaw docs pages we read, so check before assuming it for OpenClaw.</p>
 <h2>Try Maskin</h2>
 <ul>
-<li><strong><a href="/docs/self-hosted-ai-workspace/">Self-host it</a>.</strong> The software is Apache 2.0 and free. Model usage is billed by whoever holds the key. The current implementation needs Docker on the host.</li>
+<li><strong><a href="/docs/self-hosted-ai-workspace/">Run it on your own infrastructure</a>.</strong> Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure.</li>
 <li><strong><a href="/">Start a hosted trial</a>.</strong> See the site for current plans.</li>
 <li><strong>Not sure it fits?</strong> The <a href="/alternatives/">alternatives hub</a> sorts options by what you are missing, and the <a href="/docs/closed-loop-workspace/">closed-loop workspace</a> page explains the loop Maskin is built around.</li>
 </ul>
@@ -376,7 +376,7 @@
 <h3>What is a lightweight OpenClaw alternative?</h3>
 <p>NanoClaw (TypeScript), ZeroClaw (Rust) and PicoClaw (Go) all position themselves as smaller than OpenClaw. We have not benchmarked them, so check each one&#39;s repository, license and recent activity. Be careful with names: more than one unrelated project is called GoClaw.</p>
 <h3>Is there a free, open-source OpenClaw alternative?</h3>
-<p>Yes, several. Hermes Agent, NanoClaw and PicoClaw are MIT licensed, and ZeroClaw and OpenFang are Apache 2.0. OpenClaw itself is MIT. Free software still costs you the model usage and the machine it runs on. Maskin is also free to self-host under Apache 2.0. For the other lanes (frameworks, visual builders, team workspaces) and the license of each, see <a href="/alternatives/open-source-ai-agents/">open source AI agents in 2026</a>.</p>
+<p>Yes, several. Hermes Agent, NanoClaw and PicoClaw are MIT licensed, and ZeroClaw and OpenFang are Apache 2.0. OpenClaw itself is MIT. Free software still costs you the model usage and the machine it runs on. Maskin is also open source under Apache 2.0. For the other lanes (frameworks, visual builders, team workspaces) and the license of each, see <a href="/alternatives/open-source-ai-agents/">open source AI agents in 2026</a>.</p>
 <h3>Can a team use OpenClaw?</h3>
 <p>Yes. Its docs describe a shared gateway where teammates have their own identities and can open and take over each other&#39;s sessions. The limit is trust: everyone who can message a tool-enabled agent shares its tool authority, so it assumes a team that already trusts each other.</p>
 
@@ -404,9 +404,9 @@
     </div>
     <div class="post-cta">
       <h2>Keep the decision, not just the conversation</h2>
-      <p>OpenClaw and Hermes are strong personal agents. If a team's agent work has to leave a typed record of the signal, the bet, the owner and the outcome, Maskin is the open-source, MCP-native workspace where that lives. Self-host free under Apache 2.0, or start a hosted trial.</p>
+      <p>OpenClaw and Hermes are strong personal agents. If a team's agent work has to leave a typed record of the signal, the bet, the owner and the outcome, Maskin is the open-source, MCP-native workspace where that lives. Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure. Or start a hosted trial.</p>
       <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">View on GitHub</a>
         <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
       </div>
     </div>

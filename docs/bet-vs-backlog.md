@@ -60,7 +60,7 @@ The time-box is what forces the trade-off between scope and commitment. If a bet
 Agents can run the mechanical and continuous parts of the bet loop — collecting signal, shaping a draft, executing the work, and checking the win condition — while humans keep the taste decisions about which bets deserve the cycle and whether an outcome counts as a win. That is only possible because a bet is a typed object an agent can read and validate; a free-text ticket offers an agent nothing to act on. In Maskin, human and agent jointly own the bet, which is what makes the split operational.
 
 ## Which one do you want running your week?
-Here is the decision in one question: do you want a system that holds everything, or a system that commits to a little and proves it? If your planning is a queue that never empties, the queue is likely doing the planning for you. Try the bet model on the Maskin object layer — self-host free, or a hosted trial for a paid team — and let a fixed cycle surface what is actually worth building. If you want to [run this with your product team](/solutions/product-teams/), the product-team getting-started sequence walks the loop end-to-end. Start with the [bet-based product planning guide](/docs/bet-based-product-planning/) if you want the doctrine before the tool.
+Here is the decision in one question: do you want a system that holds everything, or a system that commits to a little and proves it? If your planning is a queue that never empties, the queue is likely doing the planning for you. Try the bet model on the Maskin object layer — open source under Apache 2.0, or a hosted trial for a paid team — and let a fixed cycle surface what is actually worth building. If you want to [run this with your product team](/solutions/product-teams/), the product-team getting-started sequence walks the loop end-to-end. Start with the [bet-based product planning guide](/docs/bet-based-product-planning/) if you want the doctrine before the tool.
 
 ## Sources
 - **Shape Up** — Basecamp / Ryan Singer, *Shape Up: Stop Running in Circles and Ship Work That Matters* (Basecamp, 2019). Origin of the bets-not-backlogs doctrine, the appetite, and the fixed cycle.
@@ -71,5 +71,5 @@ Here is the decision in one question: do you want a system that holds everything
 - **Maskin** — product model and architecture: bets, tasks, insights as typed objects in a unified graph, Apache 2.0 ([maskin.io](/)).
 Read next
 
-## Getting started is free
-Self-host today, or take a hosted trial and read the [bet-based planning guide](/docs/bet-based-product-planning/) while you decide.
+## Open source under Apache 2.0
+Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure. You can also take a hosted trial. Read the [bet-based planning guide](/docs/bet-based-product-planning/) while you decide.

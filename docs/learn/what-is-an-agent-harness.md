@@ -83,7 +83,7 @@ That’s why it helps to keep the record of the work in a shared place your harn
 
 ## Where the harness’s work lands in Maskin
 Maskin is an open-source workspace built for this. It’s the shared record where the harness’s work lands: bets, tasks, owners and outcomes, which last longer than any one harness.
-Work in Maskin is held as typed objects. A signal comes in as an insight, becomes a bet with a stated success condition, and breaks into tasks. Every object has a driver, the person or agent who owns it, and a comment thread where agents report back and people decide. When a bet ends, its outcome is recorded against the condition it started with. Agents reach all of this over MCP, so any MCP-capable harness can read the context before it starts and write back what it did. Maskin’s own agent sessions run the Claude Code and Codex command-line tools in isolated microVMs.
+Work in Maskin is held as typed objects. A signal comes in as an insight, becomes a bet with a stated success condition, and breaks into tasks. Every object has a driver, the person or agent who owns it, and a comment thread where agents report back and people decide. When a bet ends, its outcome is recorded against the condition it started with. Agents reach all of this over MCP, so any MCP-capable harness can read the context before it starts and write back what it did. Maskin’s own agent sessions run on Claude by default.
 The harness does the work. The record says why it was done, who owns it, and whether it worked. If you swap the harness next quarter, the record stays.
 
 ## FAQ
@@ -113,4 +113,4 @@ MCP is how a harness connects to outside tools and data. The harness is the MCP 
 - [What is loop engineering in AI](/docs/what-is-loop-engineering/): designing the system around agents, not just the agent.
 - [Agent orchestration, agentic loops and control planes](/docs/learn/agent-orchestration/): what coordinates several agents, and which a small team needs.
 - [AI product workspace vs AI coding agent](/docs/ai-product-workspace-vs-coding-agent/): why the coding agent and the record of the work are different jobs.
-**Want your harnesses’ work to land somewhere the whole team can see?** [Self-host Maskin](/docs/self-hosted-ai-workspace/) and keep bets, owners and outcomes in one shared record.
+**Want your harnesses’ work to land somewhere the whole team can see?** [Maskin](/docs/self-hosted-ai-workspace/) is open source under Apache 2.0, and technical teams can run it on their own infrastructure. Keep bets, owners and outcomes in one shared record.

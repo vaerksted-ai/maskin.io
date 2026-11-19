@@ -429,16 +429,15 @@
 <li><strong>Who owns what the agent produces?</strong> A framework gives you an agent loop and leaves the record to you. An assistant keeps its own memory. If a decision, an owner and an outcome have to outlive any one agent or model, you need a workspace layer on top of whichever agent you pick.</li>
 </ol>
 <h2>Where Maskin fits, honestly</h2>
-<p>Maskin is not an agent framework in the LangChain or CrewAI sense, and it is not a chat assistant. It is an open source workspace (Apache 2.0, checked in the repo) where agents work on typed objects: insights, bets, tasks and the relationships between them. Agents run in ephemeral sandboxed sessions, and the default agent is the Claude Code CLI, with Codex as an alternative. They read and write the workspace through Maskin&#39;s MCP server, the same API the web UI uses.</p>
+<p>Maskin is not an agent framework in the LangChain or CrewAI sense, and it is not a chat assistant. It is an open source workspace (Apache 2.0, checked in the repo) where agents work on typed objects: insights, bets, tasks and the relationships between them. Agents run on Claude by default, and Enterprise teams can bring their own Claude subscription, API key or model endpoint. They read and write the workspace through Maskin&#39;s MCP server, the same API the web UI uses.</p>
 <p>What that means for the lanes above:</p>
 <ul>
-<li><strong>It complements frameworks and assistants.</strong> The MCP server has an HTTP variant for agents that run outside Maskin&#39;s own containers, so an MCP-capable agent can in principle read and write the same objects. We have not published a tested recipe for connecting the projects above, so treat that as something to prototype, not a documented integration.</li>
+<li><strong>It complements frameworks and assistants.</strong> The MCP server has an HTTP variant for agents that run outside Maskin, so an MCP-capable agent can in principle read and write the same objects. We have not published a tested recipe for connecting the projects above, so treat that as something to prototype, not a documented integration.</li>
 <li><strong>It is early.</strong> Maskin has single-digit GitHub stars at the time of writing, against tens or hundreds of thousands for most of this page. Evaluate the architecture, not a track record.</li>
-<li><strong>Local models are not a validated path today.</strong> If running a local model is a hard requirement, OpenClaw (local models are plugins) or Hermes Agent (any model endpoint) fit better.</li>
-<li><strong>Self-hosting requires Docker and Docker Compose on the host</strong>, per the repo README.</li>
+<li><strong>Agents run on Claude by default.</strong> If running a local model is a hard requirement, OpenClaw (local models are plugins) or Hermes Agent (any model endpoint) fit better.</li>
 </ul>
 <p>Choose Maskin when the pain is not &quot;which agent&quot; but &quot;where does the work live, who owns it, and did it work&quot;. The <a href="/docs/closed-loop-workspace/">closed-loop workspace</a> explains the model, and the <a href="/docs/mcp-tools/">MCP tools reference</a> lists what agents can do inside it. For hosting guides, see <a href="/alternatives/self-hosted-ai-agents/">self-hosted AI agents</a>; for coding-agent control planes, the <a href="/alternatives/self-hosted-ai-agents/">self-hosted control plane page</a>.</p>
-<p><strong>Try it:</strong> <a href="/docs/self-hosted-ai-workspace/">self-host Maskin</a> under Apache 2.0, or read the source at <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">github.com/sindre-ai/maskin</a>.</p>
+<p><strong>Try it:</strong> Maskin is open source under Apache 2.0, and technical teams can <a href="/docs/self-hosted-ai-workspace/">run it on their own infrastructure</a>. Read the source at <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">github.com/sindre-ai/maskin</a>.</p>
 <h2>FAQ</h2>
 <h3>What are open source AI agents?</h3>
 <p>Open source AI agents are agent software with public source code under a license that lets you run it yourself. That covers libraries such as LangChain, ready-made assistants such as OpenClaw and visual builders such as n8n. Licenses differ: n8n and Dify are source-available with commercial limits, while most of the field is plain MIT or Apache 2.0.</p>
@@ -476,10 +475,10 @@
       </div>
     </div>
     <div class="post-cta">
-      <h2>Self-host Maskin free</h2>
-      <p>Apache 2.0, Docker Compose on your own hardware. If the pain is where the work lives and who owns it, not which agent to run, Maskin is the workspace layer.</p>
+      <h2>Open source under Apache 2.0</h2>
+      <p>Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure. If the pain is where the work lives and who owns it, not which agent to run, Maskin is the workspace layer.</p>
       <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">View on GitHub</a>
         <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
       </div>
     </div>

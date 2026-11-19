@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Security — self-hosted, AES-256 — Maskin</title>
+<title>Security — AES-256 — Maskin</title>
 <meta name="description" content="Maskin's security model: API-key authentication, workspace isolation and roles, AES-256-GCM credential encryption, sandboxed agent execution, webhook verification, the audit log, and responsible disclosure.">
 
 <!-- Canonical -->
@@ -20,7 +20,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://maskin.io/docs/security/">
-<meta property="og:title" content="Security — self-hosted, AES-256 — Maskin">
+<meta property="og:title" content="Security — AES-256 — Maskin">
 <meta property="og:description" content="Authentication, workspace isolation, encrypted credentials, sandboxed agents, and responsible disclosure.">
 <meta property="og:image" content="https://maskin.io/og-image.png?v=2">
 <meta property="og:image:width" content="1200">
@@ -31,7 +31,7 @@
 <!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@maskin_io">
-<meta name="twitter:title" content="Security — self-hosted, AES-256 — Maskin">
+<meta name="twitter:title" content="Security — AES-256 — Maskin">
 <meta name="twitter:description" content="Authentication, workspace isolation, encrypted credentials, sandboxed agents, and responsible disclosure.">
 <meta name="twitter:image" content="https://maskin.io/og-image.png?v=2">
 
@@ -90,9 +90,9 @@
   <main class="doc-content">
     <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Security</p>
 
-    <p class="eyebrow">Self-hosting</p>
+    <p class="eyebrow">Reference</p>
     <h1>Security</h1>
-    <p class="lead">How Maskin protects credentials, separates workspaces in the API, and contains agent execution — and how to report a vulnerability. Because you self-host, you own the deployment surface; this page covers both the built-in model and what's yours to harden.</p>
+    <p class="lead">How Maskin protects credentials, separates workspaces in the API, and contains agent execution — and how to report a vulnerability. If you run Maskin on your own infrastructure, you own the deployment surface; this page covers both the built-in model and what's yours to harden.</p>
 
     <h2>Authentication</h2>
     <p>Every request authenticates with a bearer API key (prefixed <code>ank_</code>). Keys are <strong>stored as issued</strong>, not hashed; hashing is planned. Auth is <strong>stateless</strong>: no cookies or server sessions. Keys are per-actor and can be rotated with <code>regenerate_api_key</code>, which immediately invalidates the old value.</p>
@@ -109,8 +109,8 @@
     </div>
 
     <h2>Sandboxed agent execution</h2>
-    <p>Each agent session runs in its own <strong>ephemeral microVM</strong> (libkrun, managed through microsandbox) on a dedicated <a href="/docs/agents/">agent server</a>, started from the <code>agent-base</code> image, one per run and stopped and removed when the session completes. The app hands sessions to the agent server over HTTPS and does not launch them through a Docker socket.</p>
-    <p>Docker is for local development only. There is no fallback that runs agents without the microVM runtime, so a self-host needs an agent server running microsandbox and libkrun. Locally, treat access to the host Docker socket (<code>/var/run/docker.sock</code>) as root-equivalent and restrict it to the app. For the policy layer above the sandbox &mdash; who signs off on agent actions, and how those approvals get recorded &mdash; see the <a href="/docs/learn/ai-agent-governance/">governance framework for AI agents</a>.</p>
+    <p>Each agent session runs in its own <strong>ephemeral sandbox</strong> on a dedicated <a href="/docs/agents/">agent server</a>, started from the <code>agent-base</code> image, one per run and stopped and removed when the session completes. The app hands sessions to the agent server over HTTPS and does not launch them through a Docker socket.</p>
+    <p>Locally, treat access to the host Docker socket (<code>/var/run/docker.sock</code>) as root-equivalent and restrict it to the app. For the policy layer above the sandbox &mdash; who signs off on agent actions, and how those approvals get recorded &mdash; see the <a href="/docs/learn/ai-agent-governance/">governance framework for AI agents</a>.</p>
 
     <h2>Webhook verification</h2>
     <p>Inbound webhooks are signature-verified per provider before processing:</p>

@@ -155,7 +155,7 @@ shell.tail: t1
           "name": "Does Maskin run Cursor?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Maskin runs its agent sessions on the Claude Code CLI or the Codex CLI. This page compares Cursor because many teams use it next to Claude Code, and the record argument applies whichever agent does the work."
+            "text": "No. Maskin runs its agent sessions on Claude by default. This page compares Cursor because many teams use it next to Claude Code, and the record argument applies whichever agent does the work."
           }
         }
       ]
@@ -242,9 +242,9 @@ shell.tail: t1
 <p>With a record that holds the pin as a decision with a reason and an outcome condition (&ldquo;revisit when the plugin supports the new major&rdquo;), whichever tool runs the job reads the same entry and skips the upgrade. This scenario is made up to show the gap. It is not a Maskin customer story.</p>
 
 <h2>How Maskin keeps the record</h2>
-<p>Maskin is an open-source (Apache 2.0), MCP-native, self-hostable <a href="/docs/what-is-an-agentic-workspace/">agentic workspace</a> where people and agents work on shared typed objects. A signal enters as an insight, gets shaped into a bet with a win condition, and breaks into tasks. Each object has a driver (an owner, person or agent) and a comment thread, and a bet closes against its stated condition. The objects are the work, not a log of it.</p>
-<p>Maskin runs its agent sessions on the Claude Code CLI by default, or on the Codex CLI, each inside an isolated microVM. Maskin does not run Cursor. Cursor&rsquo;s documentation says it supports MCP servers, so it can in principle connect to any MCP server, but we have not tested Cursor against Maskin and do not make that claim for you. Some honest limits: you bring your own Anthropic or OpenAI access, local models are not a path we have validated, and Maskin is early, so evaluate the architecture rather than a long track record.</p>
-<p>If you want to try it, you can <a href="/docs/self-hosted-ai-workspace/">self-host it</a>. For the longer argument, read <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a>. Related decisions: <a href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a> covers the instructions file, and <a href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a> covers where a workspace sits next to your editor. If you are a product manager deciding how much of this to learn, start with <a href="/docs/learn/claude-code-for-product-managers/">Claude Code for product managers</a>. For a wider look at open-source coding agents, see the <a href="/alternatives/open-source-ai-coding-agent/">open source AI coding agent alternatives</a>.</p>
+<p>Maskin is an open-source (Apache 2.0), MCP-native <a href="/docs/what-is-an-agentic-workspace/">agentic workspace</a> where people and agents work on shared typed objects. A signal enters as an insight, gets shaped into a bet with a win condition, and breaks into tasks. Each object has a driver (an owner, person or agent) and a comment thread, and a bet closes against its stated condition. The objects are the work, not a log of it.</p>
+<p>Maskin&rsquo;s agent sessions run on Claude by default. Maskin does not run Cursor. Cursor&rsquo;s documentation says it supports MCP servers, so it can in principle connect to any MCP server, but we have not tested Cursor against Maskin and do not make that claim for you. Enterprise teams can bring their own Claude subscription, API key or model endpoint. One honest limit: Maskin is early, so evaluate the architecture rather than a long track record.</p>
+<p>If you want to try it, technical teams can <a href="/docs/self-hosted-ai-workspace/">run it on their own infrastructure</a>. For the longer argument, read <a href="/docs/closed-loop-workspace/">the closed-loop workspace</a>. Related decisions: <a href="/docs/claude-md-vs-agents-md/">CLAUDE.md vs AGENTS.md</a> covers the instructions file, and <a href="/docs/ai-product-workspace-vs-coding-agent/">AI product workspace vs AI coding agent</a> covers where a workspace sits next to your editor. If you are a product manager deciding how much of this to learn, start with <a href="/docs/learn/claude-code-for-product-managers/">Claude Code for product managers</a>. For a wider look at open-source coding agents, see the <a href="/alternatives/open-source-ai-coding-agent/">open source AI coding agent alternatives</a>.</p>
 
 <h2>A quick decision rule</h2>
 <ul>
@@ -278,7 +278,7 @@ shell.tail: t1
 <p>Anthropic&rsquo;s pricing page lists Team and Enterprise plans that include Claude Code. Cursor&rsquo;s cloud agents page refers to Enterprise plans with team hooks; check Cursor&rsquo;s own pricing page for its plan tiers. Which fits matters less than how your team already works, editor-first or terminal-first. Neither gives a team a shared record of decisions, owners and outcomes, so plan for that separately. For running Claude Code across a team, see <a href="/docs/learn/claude-code-team/">Claude Code team: share context, not six setups</a>.</p>
 
 <h3>Does Maskin run Cursor?</h3>
-<p>No. Maskin runs its agent sessions on the Claude Code CLI or the Codex CLI. This page compares Cursor because many teams use it next to Claude Code, and the record argument applies whichever agent does the work.</p>
+<p>No. Maskin runs its agent sessions on Claude by default. This page compares Cursor because many teams use it next to Claude Code, and the record argument applies whichever agent does the work.</p>
 
     <div class="related">
       <p class="related__title">Read next</p>
@@ -299,10 +299,10 @@ shell.tail: t1
       </div>
     </div>
     <div class="post-cta">
-      <h2>Getting started is free</h2>
-      <p>Self-host Maskin today, or take a hosted trial. Run Claude Code, Codex or both on the work, and keep one record of what was decided. The <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace cornerstone</a> and the <a href="/docs/self-hosted-ai-workspace/">self-hosted AI workspace</a> guide are the two best next reads.</p>
+      <h2>Open source under Apache 2.0</h2>
+      <p>Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure. You can also take a hosted trial. Keep one record of what was decided, whichever coding agent does the work. The <a href="/docs/what-is-an-agentic-workspace/">agentic-workspace cornerstone</a> and the <a href="/docs/self-hosted-ai-workspace/">open-source AI workspace</a> guide are the two best next reads.</p>
       <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
+        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">View on GitHub</a>
         <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a hosted trial</a>
       </div>
     </div>
