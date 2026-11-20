@@ -68,7 +68,8 @@ curl -s http://localhost:3000/api/actors \
 ```
 MASKIN_ENTERPRISE_ACTOR_IDS=<your-user-id>
 ```
-3. Open **Settings → LLM keys**, paste your Anthropic API key and **Save**.
+3. Listing your id only lets you grant enterprise; it does not make your workspace enterprise. Also grant your workspace (its ID is in Step 3) with `PATCH /api/workspaces/admin/<workspace-id>` and the body `{"enterprise_granted": true}`, using your API key.
+4. Open **Settings → LLM keys**, paste your Anthropic API key and **Save**.
 Without this setting, agent sessions need `MASKIN_FALLBACK_OPENROUTER_KEY` instead and run on the default Maskin-funded model.
 
 ## Step 3 — Get your Maskin API key and workspace ID
