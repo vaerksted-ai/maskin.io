@@ -6,55 +6,55 @@
   </defs>
 
   <!-- Warm-dark canvas + subtle grid -->
-  <rect width="1200" height="630" fill="#111110"/>
+  <rect width="1200" height="630" fill="#0d0f13"/>
   <rect width="1200" height="630" fill="url(#grid)"/>
 
   <!-- Title band -->
-  <text x="80" y="98" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#8B8781" letter-spacing="4">OPEN SOURCE AI SDR</text>
-  <text x="80" y="170" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="56" font-weight="700" fill="#FAFAF8">Six GitHub repos,</text>
-  <text x="80" y="240" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="56" font-weight="700" fill="#FAFAF8">compared.</text>
-  <text x="80" y="296" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="26" fill="#8B8781">Licence, last push and stars,</text>
-  <text x="80" y="330" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="26" fill="#8B8781">checked on GitHub on 11 Nov 2026.</text>
-  <rect x="80" y="372" width="64" height="4" fill="#2563EB"/>
-  <text x="80" y="420" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#FAFAF8">Which one fits a 20-account test?</text>
+  <text x="80" y="98" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#8a93a0" letter-spacing="4">OPEN SOURCE AI SDR</text>
+  <text x="80" y="170" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="56" font-weight="700" fill="#e8eaee">Six GitHub repos,</text>
+  <text x="80" y="240" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="56" font-weight="700" fill="#e8eaee">compared.</text>
+  <text x="80" y="296" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="26" fill="#8a93a0">Licence, last push and stars,</text>
+  <text x="80" y="330" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="26" fill="#8a93a0">checked on GitHub on 11 Nov 2026.</text>
+  <rect x="80" y="372" width="64" height="4" fill="#6a8cff"/>
+  <text x="80" y="420" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="22" fill="#e8eaee">Which one fits a 20-account test?</text>
 
   <!-- Right panel: repo table -->
   <g transform="translate(560, 80)">
-    <rect x="0" y="0" width="560" height="440" rx="12" fill="#141311" stroke="#2A2825" stroke-width="1.2"/>
-    <text x="24" y="40" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="14" fill="#8B8781" letter-spacing="2">REPO</text>
-    <text x="330" y="40" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="14" fill="#8B8781" letter-spacing="2">LICENCE</text>
-    <text x="536" y="40" text-anchor="end" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="14" fill="#8B8781" letter-spacing="2">STARS</text>
-    <line x1="24" y1="56" x2="536" y2="56" stroke="#2A2825" stroke-width="1.2"/>
-    <text x="24" y="100" font-family="JetBrains Mono, monospace" font-size="15" fill="#FAFAF8">eracle/OpenOutreach</text>
-    <text x="330" y="100" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="15" fill="#8B8781">GPL-3.0</text>
-    <text x="536" y="100" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="15" fill="#FAFAF8">3,625</text>
-    <line x1="24" y1="122" x2="536" y2="122" stroke="#2A2825" stroke-width="0.8"/>
-    <text x="24" y="162" font-family="JetBrains Mono, monospace" font-size="15" fill="#FAFAF8">jay-sahnan/signal</text>
-    <text x="330" y="162" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="15" fill="#8B8781">AGPL-3.0 (README)</text>
-    <text x="536" y="162" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="15" fill="#FAFAF8">318</text>
-    <line x1="24" y1="184" x2="536" y2="184" stroke="#2A2825" stroke-width="0.8"/>
-    <text x="24" y="224" font-family="JetBrains Mono, monospace" font-size="15" fill="#FAFAF8">man0l/zero-gtm</text>
-    <text x="330" y="224" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="15" fill="#8B8781">MIT</text>
-    <text x="536" y="224" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="15" fill="#FAFAF8">40</text>
-    <line x1="24" y1="246" x2="536" y2="246" stroke="#2A2825" stroke-width="0.8"/>
-    <text x="24" y="286" font-family="JetBrains Mono, monospace" font-size="15" fill="#FAFAF8">personizeai/revenue-os</text>
-    <text x="330" y="286" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="15" fill="#8B8781">MIT</text>
-    <text x="536" y="286" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="15" fill="#FAFAF8">14</text>
-    <line x1="24" y1="308" x2="536" y2="308" stroke="#2A2825" stroke-width="0.8"/>
-    <text x="24" y="348" font-family="JetBrains Mono, monospace" font-size="15" fill="#FAFAF8">kandksolvefast/ai-sdr-agent</text>
-    <text x="330" y="348" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="15" fill="#8B8781">MIT</text>
-    <text x="536" y="348" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="15" fill="#FAFAF8">2</text>
-    <line x1="24" y1="370" x2="536" y2="370" stroke="#2A2825" stroke-width="0.8"/>
-    <text x="24" y="410" font-family="JetBrains Mono, monospace" font-size="15" fill="#FAFAF8">MatthewDailey/open-sdr</text>
-    <text x="330" y="410" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="15" fill="#8B8781">No licence file</text>
-    <text x="536" y="410" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="15" fill="#FAFAF8">28</text>
+    <rect x="0" y="0" width="560" height="440" rx="12" fill="#12151a" stroke="#23272e" stroke-width="1.2"/>
+    <text x="24" y="40" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="14" fill="#8a93a0" letter-spacing="2">REPO</text>
+    <text x="330" y="40" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="14" fill="#8a93a0" letter-spacing="2">LICENCE</text>
+    <text x="536" y="40" text-anchor="end" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="14" fill="#8a93a0" letter-spacing="2">STARS</text>
+    <line x1="24" y1="56" x2="536" y2="56" stroke="#23272e" stroke-width="1.2"/>
+    <text x="24" y="100" font-family="JetBrains Mono, monospace" font-size="15" fill="#e8eaee">eracle/OpenOutreach</text>
+    <text x="330" y="100" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="15" fill="#8a93a0">GPL-3.0</text>
+    <text x="536" y="100" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="15" fill="#e8eaee">3,625</text>
+    <line x1="24" y1="122" x2="536" y2="122" stroke="#23272e" stroke-width="0.8"/>
+    <text x="24" y="162" font-family="JetBrains Mono, monospace" font-size="15" fill="#e8eaee">jay-sahnan/signal</text>
+    <text x="330" y="162" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="15" fill="#8a93a0">AGPL-3.0 (README)</text>
+    <text x="536" y="162" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="15" fill="#e8eaee">318</text>
+    <line x1="24" y1="184" x2="536" y2="184" stroke="#23272e" stroke-width="0.8"/>
+    <text x="24" y="224" font-family="JetBrains Mono, monospace" font-size="15" fill="#e8eaee">man0l/zero-gtm</text>
+    <text x="330" y="224" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="15" fill="#8a93a0">MIT</text>
+    <text x="536" y="224" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="15" fill="#e8eaee">40</text>
+    <line x1="24" y1="246" x2="536" y2="246" stroke="#23272e" stroke-width="0.8"/>
+    <text x="24" y="286" font-family="JetBrains Mono, monospace" font-size="15" fill="#e8eaee">personizeai/revenue-os</text>
+    <text x="330" y="286" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="15" fill="#8a93a0">MIT</text>
+    <text x="536" y="286" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="15" fill="#e8eaee">14</text>
+    <line x1="24" y1="308" x2="536" y2="308" stroke="#23272e" stroke-width="0.8"/>
+    <text x="24" y="348" font-family="JetBrains Mono, monospace" font-size="15" fill="#e8eaee">kandksolvefast/ai-sdr-agent</text>
+    <text x="330" y="348" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="15" fill="#8a93a0">MIT</text>
+    <text x="536" y="348" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="15" fill="#e8eaee">2</text>
+    <line x1="24" y1="370" x2="536" y2="370" stroke="#23272e" stroke-width="0.8"/>
+    <text x="24" y="410" font-family="JetBrains Mono, monospace" font-size="15" fill="#e8eaee">MatthewDailey/open-sdr</text>
+    <text x="330" y="410" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="15" fill="#8a93a0">No licence file</text>
+    <text x="536" y="410" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="15" fill="#e8eaee">28</text>
   </g>
 
   <!-- Footer strip: maskin wordmark + URL -->
   <g transform="translate(80, 550)">
-    <rect x="0" y="0" width="34" height="34" rx="7" fill="#1C1B18"/>
-    <path d="M7 26 L7 9 L17 19 L27 9 L27 26" stroke="#FAFAF8" stroke-width="3.6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
-    <text x="46" y="24" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#FAFAF8">Maskin</text>
-    <text x="46" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="#8B8781">maskin.io/alternatives/open-source-ai-sdr</text>
+    <rect x="0" y="0" width="34" height="34" rx="7" fill="#12151a"/>
+    <path d="M7 26 L7 9 L17 19 L27 9 L27 26" stroke="#e8eaee" stroke-width="3.6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+    <text x="46" y="24" font-family="Schibsted Grotesk, Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#e8eaee">Maskin</text>
+    <text x="46" y="46" font-family="JetBrains Mono, monospace" font-size="12" fill="#8a93a0">maskin.io/alternatives/open-source-ai-sdr</text>
   </g>
 </svg>

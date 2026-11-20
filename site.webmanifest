@@ -4,8 +4,8 @@
   "description": "Build the loops that make your company AI-native. From customer signal to shipped bet to measured outcome — automatically. Open source.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#111110",
-  "theme_color": "#111110",
+  "background_color": "#0d0f13",
+  "theme_color": "#0d0f13",
   "icons": [
     {
       "src": "/icon-192.png",

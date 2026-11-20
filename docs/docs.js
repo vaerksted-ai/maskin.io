@@ -120,8 +120,8 @@
   ];
 
   var LOGO = '<svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-    '<rect width="80" height="80" rx="14" fill="#111110"/>' +
-    '<path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#FAFAF8" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>' +
+    '<rect width="80" height="80" rx="14" fill="#10131a"/>' +
+    '<path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#ffffff" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>' +
     '</svg>';
 
   var TOGGLE = '<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">' +
