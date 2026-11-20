@@ -378,17 +378,31 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════ PRICING
-     PRICES LIVE HERE ONLY. Pricing is in flux: change the two amounts, the setup line and the currency note
-     in this block and nowhere else (the FAQ answer points back to this block and repeats no numbers). -->
+     PRICES LIVE HERE AND IN THE COST FAQ ANSWER. Pricing is in flux: change the amounts, the setup line and the currency note
+     in this block, and keep the cost FAQ answer (visible text and JSON-LD) saying the same. -->
 <section class="section" id="pricing">
   <div class="wrap">
     <div class="reveal" style="text-align:center">
       <div class="section-tag">Pricing</div>
-      <h2 class="section-title">Two plans. One price for the whole team.</h2>
+      <h2 class="section-title">Five ways to start. One price for the whole team.</h2>
       <p class="section-sub" style="margin:.875rem auto 0">Prices are per workspace, not per person, in kroner and excluding VAT. Billed monthly.</p>
     </div>
 
-    <div class="pricing-grid pricing-grid--2 reveal" style="margin-top:3rem">
+    <div class="pricing-grid pricing-grid--5 reveal" style="margin-top:3rem">
+      <div class="pricing-card">
+        <div class="pricing-card__header">
+          <div class="pricing-card__name">Free trial</div>
+          <div class="pricing-card__price"><span class="pricing-card__amount">7 days</span><span class="pricing-card__per">card required</span></div>
+        </div>
+        <a class="pricing-card__cta btn-primary" href="/signup">Sign up free</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card__header">
+          <div class="pricing-card__name">Starter</div>
+          <div class="pricing-card__price"><span class="pricing-card__amount">99 kr</span><span class="pricing-card__per">a month</span></div>
+        </div>
+        <a class="pricing-card__cta btn-secondary" href="https://maskin.io/bookseb">Book a call</a>
+      </div>
       <div class="pricing-card">
         <div class="pricing-card__header">
           <div class="pricing-card__name">Pro</div>
@@ -398,8 +412,15 @@
       </div>
       <div class="pricing-card">
         <div class="pricing-card__header">
-          <div class="pricing-card__name">Starter</div>
-          <div class="pricing-card__price"><span class="pricing-card__amount">649 kr</span><span class="pricing-card__per">a month</span></div>
+          <div class="pricing-card__name">Team</div>
+          <div class="pricing-card__price"><span class="pricing-card__amount">549 kr</span><span class="pricing-card__per">a month</span></div>
+        </div>
+        <a class="pricing-card__cta btn-secondary" href="https://maskin.io/bookseb">Book a call</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card__header">
+          <div class="pricing-card__name">Ultra</div>
+          <div class="pricing-card__price"><span class="pricing-card__amount">1,499 kr</span><span class="pricing-card__per">a month</span></div>
         </div>
         <a class="pricing-card__cta btn-secondary" href="https://maskin.io/bookseb">Book a call</a>
       </div>
