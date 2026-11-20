@@ -15,9 +15,8 @@ Slip for noget af det manuelle arbejde med bilag, fakturaer og bogføring. Se, h
 Agenten finder manglende kvitteringer, afstemmer banken, peger på ubetalte fakturaer og samler spørgsmålene til din bogholder. Du eller din bogholder godkender. Agenten bogfører ikke selv og giver ingen skatte- eller juridisk rådgivning.
 Onsdag 2. december 2026, 15.00 til 16.00
 
-### Sæt strøm til dit indhold
+### Ugentligt indhold med AI-agenter i din virksomhed
 Bliv mere synlig uden at bruge hele dagen på sociale medier.
-Ugentligt indhold med AI-agenter i din virksomhed.
 Få hjælp til at finde på idéer, skrive opslag og planlægge indhold. Så bliver det nemmere at holde din virksomhed synlig og være top of mind hos dine kunder.
 En AI-agent skriver et udkast til opslaget, og du siger ja eller nej, før det bliver udgivet.
 Tilmelding åbner snart. [Tilmeld dig serien](#tilmeld-serien), så får du besked.
