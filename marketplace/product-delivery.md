@@ -2,14 +2,14 @@
 
 # Bets in. Verified code out.
 Run agentic software development in Maskin so your team owns the bet and the final call, while Maskin plans the work, builds it, reviews every change, and checks the result against the success criteria you wrote first.
+This flow can't be installed yet. In the meantime, [try Maskin](/signup).
 ![The product delivery flow — bets in, verified code out.](/og-image-product-delivery.png)
 A shaped bet goes in, code checked against the bet’s own success criteria comes out, and a human approves the one step that deploys.
-This flow can't be installed yet. In the meantime, [try Maskin](/signup).
 
 ## The job
 A bet is only done when the change is live and the numbers say it worked. Most teams lose that second half. The ticket closes when the code merges, nobody goes back to check the result, and the next planning meeting starts from memory.
-This flow keeps both halves attached. Success criteria are written and checked for measurability before any work starts. The work is planned into tasks with an owner each. Every change gets reviewed against its task. The release gets a final check before it can reach main. After it ships, the flow reads your product data and your customer feedback and posts a verdict on the bet. Your team keeps the shaping taste, the merge approval, and the last word on whether the bet won. The six stages and the three decisions a person keeps are laid out in [agentic SDLC explained](/docs/learn/agentic-sdlc/).
-It is the output side of the [product discovery flow](/marketplace/product-discovery/): discovery turns customer signal into a shaped bet, delivery turns that bet into shipped, verified code. The [bet-based planning](/docs/bet-based-product-planning/) method sits underneath both.
+This flow keeps both halves attached. Success criteria are written and checked for measurability before any work starts. The work is planned into tasks with an owner each. Every change gets reviewed against its task. The release gets a final check before it can reach main. After it ships, the flow reads your product data and your customer feedback and posts a verdict on the bet. If you also want a weekly read of how people use the product, outside any one bet, the [product usage flow](/marketplace/product-usage/) files what changed or contradicts what your team believes. Your team keeps the shaping taste, the merge approval, and the last word on whether the bet won. The six stages and the three decisions a person keeps are laid out in [agentic SDLC explained](/docs/learn/agentic-sdlc/).
+It is the output side of the [product discovery flow](/marketplace/product-discovery/): discovery turns customer signal into a shaped bet, delivery turns that bet into shipped, verified code. The [bet-based planning](/docs/bet-based-product-planning/) method sits underneath both. Once a change is merged, the [product release flow](/marketplace/product-release/) bundles it into a release, prepares the notes and reads back that they are really live.
 **Replaces:** sprint-planning ceremonies · a delivery lead chasing status across tickets and pull requests · hand-run release checklists · close-out reviews nobody gets round to.
 **Stays human:** which bets are worth shaping · approving the merge to main · the final call on every bet (succeeded, failed, paused, archived).
 
@@ -32,6 +32,7 @@ It is the output side of the [product discovery flow](/marketplace/product-disco
 7. After it is live, Maskin reads your product data and posts a Won, Lost or Inconclusive verdict on the bet.
 8. It then reads what customers and your own team said and posts a second verdict next to the first.
 9. You make the final call. Anything that came up outside the bet’s scope goes back into discovery as a new signal, so the next bet starts from what this one learned.
+Amber steps are human approvals. The blue step is the close condition.
 
 ## What you can rely on
 - **Human gates:** you approve the merge to main, and you make the final call on every bet. Agents never close a bet themselves.
@@ -67,11 +68,6 @@ The Maskin Team ships Maskin through this flow. Shaping, planning, building, rev
 ## Run it
 See the flow run, then decide whether to run it on your repo. Or [start your workspace](https://maskin.io/signup).
 
-## Related flows
-- [The product discovery flow](/marketplace/product-discovery/): what feeds this flow.
-- [The LLM knowledge wiki flow](/marketplace/knowledge-wiki/): the context agents read before they plan.
-- [The SEO publishing flow](/marketplace/seo-publishing/): another shaped bet turned into a shipped page.
-
 ## What this flow is built with
 Named the same on every flow page so the shape is portable. Below the fold on purpose — the flow is what closes; the primitives are just the parts. Inside a flow listing, agents / MCPs / skills appear as “built with” components of the flow, never as top-level marketplace sections of their own.
 Flow
@@ -82,3 +78,8 @@ MCP
 The wire an agent uses to reach the tools your team already uses — the CRM, the docs, the inbox, the analytics. If a human on your team can log in and click, an MCP-native agent can be given the same access under the same gates.
 Skill
 A packaged capability you attach to an agent — *draft a follow-up in our voice*, *summarize a customer call against our discovery template*. Skills are the reusable pieces of judgment your team is already building without realising it.
+
+## Read next
+- [The product discovery flow](/marketplace/product-discovery/): What feeds this flow.
+- [The LLM knowledge wiki flow](/marketplace/knowledge-wiki/): The context agents read before they plan.
+- [The SEO publishing flow](/marketplace/seo-publishing/): Another shaped bet turned into a shipped page.

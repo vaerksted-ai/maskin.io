@@ -1,8 +1,8 @@
 > Source: https://maskin.io/marketplace/linkedin-content/
 
 # Run LinkedIn content in Maskin so your team keeps its voice and the final say while Maskin reads what happened this week, plans the calendar, drafts every post, and keeps a steady posting rhythm going.
-![The LinkedIn content flow: a seven-step cycle from interview to approved post to retro.](/og-image-linkedin-content.png)
 This flow can't be installed yet. In the meantime, [try Maskin](/signup).
+![The LinkedIn content flow: a seven-step cycle from interview to approved post to retro.](/og-image-linkedin-content.png)
 
 ## The job
 Keep a founder-voice LinkedIn presence going from the moments already happening inside your business: a shipped feature, a customer win, a competitor move, a hard lesson. The result is a steady posting rhythm, planned two weeks at a time, and founder time back for the work only founders can do, instead of writing posts cold at 11pm on Sunday. The work is done when the post is live on LinkedIn and the next retro has read how it did, not when a draft is generated.
@@ -26,6 +26,7 @@ Keep a founder-voice LinkedIn presence going from the moments already happening 
 5. An editor agent reads every draft the way a busy follower would and sends weak ones back for rework. Then the account owner reads each post, tweaks or kills it, and approves it.
 6. Approved posts go live on their scheduled day. On some accounts Maskin posts for you, and on others the owner pastes the approved text into LinkedIn.
 7. Two weeks later, the retro reads how the posts did and files what to do more and less of, and the next plan starts from it.
+Amber steps are human approvals. The blue step is the close condition.
 
 ## Trust surface
 - **Voice is a [workspace skill](/docs/learn/agent-skills/), not a prompt.** Each account (a founder’s personal profile, a teammate’s, the company page) has a voice skill the flow applies. If an account has no voice skill yet, one is drafted and approved by its owner first. Nobody posts in a voice its owner hasn’t signed off.
@@ -53,5 +54,9 @@ Inside a flow listing, agents / MCPs / skills appear as “built with” compone
 Yes, as long as the substance is yours. In this flow the account owner answers interview questions about what actually happened, a voice skill for that account shapes the draft, an editor agent checks it, and the owner approves every post before it goes live. The AI does the reading, planning, and drafting. You bring the stories and keep the final say, including the right to kill a draft.
 
 ### Why is there so much AI-generated content on LinkedIn?
-A post written from a prompt alone has nothing real behind it, so it reads like every other one. This flow starts from the other end: what your team shipped, what feedback came in, and what the account owners say in their interview. An editor agent checks every draft, and the owner can drop any draft that falls short before it goes live.
-Related flows on the marketplace
+A post written from a prompt alone has nothing real behind it, so it reads like every other one. This flow starts from the other end: what your team shipped, what feedback came in, and what the account owners say in their interview. An editor agent checks every draft, and the owner can drop any draft that falls short before it goes live. If you run the [product release flow](/marketplace/product-release/) or the [customer voice flow](/marketplace/customer-voice/), their release notes and written findings are the kind of shipped work and feedback this flow reads.
+
+## Read next
+- [The LLM knowledge wiki flow](/marketplace/knowledge-wiki/): The source substrate for what a post should be about: team memory agents read before they answer.
+- [The product discovery flow](/marketplace/product-discovery/): Shipped bets become post-worthy moments: customer signal to shipped bet, on one graph.
+- [The outbound flow](/marketplace/outbound/): LinkedIn presence and outreach run in the same workspace: approved sends, routed replies.

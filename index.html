@@ -378,17 +378,31 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════ PRICING
-     PRICES LIVE HERE ONLY. Pricing is in flux: change the two amounts, the setup line and the currency note
-     in this block and nowhere else (the FAQ answer points back to this block and repeats no numbers). -->
+     PRICES LIVE HERE AND IN THE COST FAQ ANSWER. Pricing is in flux: change the amounts, the setup line and the currency note
+     in this block, and keep the cost FAQ answer (visible text and JSON-LD) saying the same. -->
 <section class="section" id="pricing">
   <div class="wrap">
     <div class="reveal" style="text-align:center">
       <div class="section-tag">Pricing</div>
-      <h2 class="section-title">Two plans. One price for the whole team.</h2>
+      <h2 class="section-title">Five ways to start. One price for the whole team.</h2>
       <p class="section-sub" style="margin:.875rem auto 0">Prices are per workspace, not per person, in kroner and excluding VAT. Billed monthly.</p>
     </div>
 
-    <div class="pricing-grid pricing-grid--2 reveal" style="margin-top:3rem">
+    <div class="pricing-grid pricing-grid--5 reveal" style="margin-top:3rem">
+      <div class="pricing-card">
+        <div class="pricing-card__header">
+          <div class="pricing-card__name">Free trial</div>
+          <div class="pricing-card__price"><span class="pricing-card__amount">7 days</span><span class="pricing-card__per">card required</span></div>
+        </div>
+        <a class="pricing-card__cta btn-primary" href="/signup">Sign up free</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card__header">
+          <div class="pricing-card__name">Starter</div>
+          <div class="pricing-card__price"><span class="pricing-card__amount">99 kr</span><span class="pricing-card__per">a month</span></div>
+        </div>
+        <a class="pricing-card__cta btn-secondary" href="https://maskin.io/bookseb">Book a call</a>
+      </div>
       <div class="pricing-card">
         <div class="pricing-card__header">
           <div class="pricing-card__name">Pro</div>
@@ -398,8 +412,15 @@
       </div>
       <div class="pricing-card">
         <div class="pricing-card__header">
-          <div class="pricing-card__name">Starter</div>
-          <div class="pricing-card__price"><span class="pricing-card__amount">649 kr</span><span class="pricing-card__per">a month</span></div>
+          <div class="pricing-card__name">Team</div>
+          <div class="pricing-card__price"><span class="pricing-card__amount">549 kr</span><span class="pricing-card__per">a month</span></div>
+        </div>
+        <a class="pricing-card__cta btn-secondary" href="https://maskin.io/bookseb">Book a call</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card__header">
+          <div class="pricing-card__name">Ultra</div>
+          <div class="pricing-card__price"><span class="pricing-card__amount">1,499 kr</span><span class="pricing-card__per">a month</span></div>
         </div>
         <a class="pricing-card__cta btn-secondary" href="https://maskin.io/bookseb">Book a call</a>
       </div>
@@ -418,7 +439,7 @@
     </div>
     <ul class="tech-list reveal">
       <li><strong>Open source.</strong> Apache 2.0. Every line is on <a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a>.</li>
-      <li><strong>Self-host.</strong> Run it on your own infrastructure, or use the managed version. <a href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a>. Comparing options? See the <a href="/alternatives/self-hosted-ai-agents/">self-hosted AI agents landscape for 2026</a>.</li>
+      <li><strong>Run it yourself.</strong> Technical teams can run the open-source version on their own infrastructure, or use the managed version. <a href="/docs/self-hosted-ai-workspace/">Self-hosted AI workspace</a>. Comparing options? See the <a href="/alternatives/self-hosted-ai-agents/">self-hosted AI agents landscape for 2026</a>.</li>
       <li><strong>Bring your own model.</strong> Self-hosted and Enterprise workspaces run on your own Anthropic or OpenAI access, with no markup on AI spend.</li>
       <li><strong>Flows and the marketplace.</strong> Build your own Flows, or start from a listing in the <a href="/marketplace/">marketplace</a>, such as the <a href="/marketplace/product-discovery/">product discovery listing</a> that turns customer signal into shipped bets. New to the vocabulary? Read the <a href="/docs/concepts/">concepts</a>.</li>
       <li><strong>Agent-readable.</strong> Agents drive every Item through the <a href="/docs/mcp-tools/">MCP tools</a>, load <a href="/docs/learn/agent-skills/">agent skills</a>, and read an <a href="/marketplace/knowledge-wiki/">LLM wiki</a> before they answer.</li>
