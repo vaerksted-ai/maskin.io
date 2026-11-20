@@ -136,6 +136,7 @@ pnpm dev</code></pre>
       <li>Add it to the <code>.env</code> file in the repo root (several ids can be comma-separated), then restart the server:
         <pre><code>MASKIN_ENTERPRISE_ACTOR_IDS=&lt;your-user-id&gt;</code></pre>
       </li>
+      <li>Listing your id only lets you grant enterprise; it does not make your workspace enterprise. Also grant your workspace (its ID is in Step 3) with <code>PATCH /api/workspaces/admin/&lt;workspace-id&gt;</code> and the body <code>{"enterprise_granted": true}</code>, using your API key.</li>
       <li>Open <strong>Settings → LLM keys</strong>, paste your Anthropic API key and <strong>Save</strong>.</li>
     </ol>
     <p>Without this setting, agent sessions need <code>MASKIN_FALLBACK_OPENROUTER_KEY</code> instead and run on the default Maskin-funded model.</p>
