@@ -82,4 +82,4 @@ Yes, at the outcome. The human approves the result and the verdict, not every st
 Read next
 
 ## Give your loop a finish line
-Maskin is the open-source, MCP-native workspace where a loop carries a close condition, an owner and a recorded verdict. Apache 2.0. Self-host free, bring your own model.
+Maskin is the open-source, MCP-native workspace where a loop carries a close condition, an owner and a recorded verdict. Apache 2.0. Technical teams can run it on their own infrastructure.

@@ -90,4 +90,4 @@ Structurally, yes — a loop is a directed graph with cycles (retry, revise, wai
 Read next
 
 ## Run the loop, not just the workflow
-Maskin is the MCP-native workspace where a workflow-shaped container carries typed objects, human-taste gates, and a close condition — with agent execution inside the shape. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin is the MCP-native workspace where a workflow-shaped container carries typed objects, human-taste gates, and a close condition — with agent execution inside the shape. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.

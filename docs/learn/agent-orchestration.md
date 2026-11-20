@@ -103,4 +103,4 @@ The frame we start from at Maskin: **a prompt is not a job — work is a loop.**
 Read next
 
 ## Model the loop first
-Maskin is loop-first by design: every unit of work is a typed object, agents run bounded loops against it, humans gate the calls that need taste, and the workspace is the audit trail. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin is loop-first by design: every unit of work is a typed object, agents run bounded loops against it, humans gate the calls that need taste, and the workspace is the audit trail. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.

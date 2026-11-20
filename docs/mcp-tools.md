@@ -182,4 +182,4 @@ MCP tools are verbs; object types are nouns. The tool declares the operation (`c
 The platform tools are server-defined; extensions can add more per workspace. What you can customise most directly is what those verbs operate on. Object types, their custom metadata fields, valid statuses per type, and relationship types are workspace-configurable through the extension system (`create_extension`, `create_workspace_field`). Once configured, a custom `stakeholder` or `experiment` type behaves identically to a built-in: the same `create_objects`, `get_objects`, `update_objects` verbs apply, and `get_workspace_schema` reflects the live configuration.
 
 ## Drive the workspace over the wire
-Every Maskin object, relationship, trigger, and loop is reachable through the MCP server. Open source under Apache 2.0. Self-host free, bring your own model.
+Every Maskin object, relationship, trigger, and loop is reachable through the MCP server. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.

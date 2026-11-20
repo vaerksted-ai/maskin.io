@@ -111,4 +111,4 @@ The canonical framing assumes a developer-typed-prompt trigger. The extension th
 Read next
 
 ## Build skills against typed state, not just repos
-Maskin runs the same `SKILL.md` format Anthropic ships — against a typed workspace graph instead of a filesystem. Open source under Apache 2.0. Self-host free, bring your own model.
+Maskin runs the same `SKILL.md` format Anthropic ships — against a typed workspace graph instead of a filesystem. Open source under Apache 2.0. Technical teams can run it on their own infrastructure.
