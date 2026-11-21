@@ -6,28 +6,15 @@ Allow: /
 Disallow: /login
 Disallow: /signup
 
-# Explicitly welcome known AI crawlers.
-User-agent: GPTBot
-Allow: /
-Disallow: /login
-Disallow: /signup
-
+# Explicitly welcome known AI answer and search crawlers.
+# AI training bots (GPTBot, ClaudeBot, Claude-Web, Applebot-Extended) are
+# managed by the Cloudflare robots.txt block at the edge, so no groups here.
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /login
 Disallow: /signup
 
 User-agent: ChatGPT-User
-Allow: /
-Disallow: /login
-Disallow: /signup
-
-User-agent: ClaudeBot
-Allow: /
-Disallow: /login
-Disallow: /signup
-
-User-agent: Claude-Web
 Allow: /
 Disallow: /login
 Disallow: /signup
@@ -43,11 +30,6 @@ Disallow: /login
 Disallow: /signup
 
 User-agent: Google-Extended
-Allow: /
-Disallow: /login
-Disallow: /signup
-
-User-agent: Applebot-Extended
 Allow: /
 Disallow: /login
 Disallow: /signup
