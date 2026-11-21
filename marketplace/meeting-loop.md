@@ -18,9 +18,9 @@ After a week, meeting promises are either done or have an owner and a date.
 | Writing agendas by hand | Drafts internal meeting agendas from a template and adds open actions without overwriting a hand-written agenda |
 
 ## How the Flow runs
-1. When a Google Meet transcript is ready, Maskin processes the meeting straight away.
+1. Every two hours on weekdays, Maskin checks which meeting and notetaker tools you have connected and reads transcripts from whichever it finds. If you use Google Meet, Maskin also processes the meeting as soon as the transcript is ready.
 2. Maskin creates one meeting record per meeting, even if there are multiple transcript sources. It links attendees to existing contacts and companies, and creates contacts only for outside attendees.
-3. A weekday sweep of your notetaker tool every two hours from 07:15 to 19:15 UTC picks up meetings with transcripts.
+3. The weekday sweep runs every two hours from 07:15 to 19:15 UTC. It covers every connected tool, and it names the tools it used each run.
 4. At 07:17 UTC on weekdays, Maskin catches up on meetings marked “happened” that have a written reflection or attached transcript file.
 5. At 14:00 UTC each weekday, and in a review on Mondays, Maskin checks promises from the last 14 days and checks agreed next steps with outside parties against what happened. Before a meeting with the same company or people, it posts open commitments, objections, and decisions from the earlier meeting.
 6. A daily health check confirms the sweep ran, finds stale meetings, and fixes written findings that are not linked to their meeting.
@@ -30,10 +30,10 @@ For each meeting, Maskin writes an analysis based on meeting type, files tasks, 
 
 ## What you need to run it
 - Install the Flow. Nothing is connected when you install it.
-- Google Meet is optional. Connect it for processing when a transcript is ready.
+- Connect the meeting tool you use. Google Meet and Microsoft Teams give Maskin a transcript directly: Google Meet transcripts are read as soon as they are ready, and Teams meetings on your calendar that had transcription on are picked up by the sweep (work or school accounts only, and your IT admin must allow transcript access). Zoom and other tools need a notetaker tool in between, or a tool server you add yourself.
 - Google Calendar is optional. Connect it for agenda drafts based on scheduled internal meetings.
-- A notetaker tool is optional. Connect it for the weekday transcript sweep.
-- Connect whichever of those tools you use. If you connect none, you can add a written reflection to a meeting. Without a transcript, recording, or reflection, the meeting stays at “happened” and says it has no recording.
+- A notetaker tool is optional. Connect it if your meeting tool does not hand over transcripts, such as Zoom.
+- Connect whichever of those tools you use. None is required. If you connect none, you can add a written reflection to a meeting. Without a transcript, recording, or reflection, the meeting stays at “happened” and says it has no recording.
 - First, you will see a meeting record with its analysis, attendees, tasks, decisions, written findings, follow-up date, and confidence section.
 
 ## Trust surface
@@ -43,7 +43,7 @@ For each meeting, Maskin writes an analysis based on meeting type, files tasks, 
 
 ## Example first week
 Example for fictional Brightlane, project software for architects.
-Day 1: Brightlane connects Google Meet and Google Calendar.
+Day 1: Brightlane connects its meeting tool and Google Calendar.
 A customer says, “We need the room schedule before we can approve the plan.”
 Maskin records the customer’s objection and quotes the speaker.
 Maskin files the promised room schedule follow-up as a task and suggests an owner.

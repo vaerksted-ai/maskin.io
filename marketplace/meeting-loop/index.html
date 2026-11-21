@@ -146,9 +146,9 @@
   <section class="mp-sec">
     <h2 id="how-the-flow-runs">How the Flow runs</h2>
     <ol class="mp-steps">
-      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">When a Google Meet transcript is ready, Maskin processes the meeting straight away.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Every two hours on weekdays, Maskin checks which meeting and notetaker tools you have connected and reads transcripts from whichever it finds. If you use Google Meet, Maskin also processes the meeting as soon as the transcript is ready.</div></li>
       <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Maskin creates one meeting record per meeting, even if there are multiple transcript sources. It links attendees to existing contacts and companies, and creates contacts only for outside attendees.</div></li>
-      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">A weekday sweep of your notetaker tool every two hours from 07:15 to 19:15 UTC picks up meetings with transcripts.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">The weekday sweep runs every two hours from 07:15 to 19:15 UTC. It covers every connected tool, and it names the tools it used each run.</div></li>
       <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">At 07:17 UTC on weekdays, Maskin catches up on meetings marked “happened” that have a written reflection or attached transcript file.</div></li>
       <li class="mp-step mp-step--close"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">At 14:00 UTC each weekday, and in a review on Mondays, Maskin checks promises from the last 14 days and checks agreed next steps with outside parties against what happened. Before a meeting with the same company or people, it posts open commitments, objections, and decisions from the earlier meeting.</div></li>
       <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">A daily health check confirms the sweep ran, finds stale meetings, and fixes written findings that are not linked to their meeting.</div></li>
@@ -161,10 +161,10 @@
     <h2 id="what-you-need-to-run-it">What you need to run it</h2>
     <ul>
       <li>Install the Flow. Nothing is connected when you install it.</li>
-      <li>Google Meet is optional. Connect it for processing when a transcript is ready.</li>
+      <li>Connect the meeting tool you use. Google Meet and Microsoft Teams give Maskin a transcript directly: Google Meet transcripts are read as soon as they are ready, and Teams meetings on your calendar that had transcription on are picked up by the sweep (work or school accounts only, and your IT admin must allow transcript access). Zoom and other tools need a notetaker tool in between, or a tool server you add yourself.</li>
       <li>Google Calendar is optional. Connect it for agenda drafts based on scheduled internal meetings.</li>
-      <li>A notetaker tool is optional. Connect it for the weekday transcript sweep.</li>
-      <li>Connect whichever of those tools you use. If you connect none, you can add a written reflection to a meeting. Without a transcript, recording, or reflection, the meeting stays at “happened” and says it has no recording.</li>
+      <li>A notetaker tool is optional. Connect it if your meeting tool does not hand over transcripts, such as Zoom.</li>
+      <li>Connect whichever of those tools you use. None is required. If you connect none, you can add a written reflection to a meeting. Without a transcript, recording, or reflection, the meeting stays at “happened” and says it has no recording.</li>
       <li>First, you will see a meeting record with its analysis, attendees, tasks, decisions, written findings, follow-up date, and confidence section.</li>
     </ul>
   </section>
@@ -179,7 +179,7 @@
   <section class="mp-sec">
     <h2 id="example-first-week">Example first week</h2>
     <p>Example for fictional Brightlane, project software for architects.</p>
-    <p>Day 1: Brightlane connects Google Meet and Google Calendar.</p>
+    <p>Day 1: Brightlane connects its meeting tool and Google Calendar.</p>
     <p>A customer says, “We need the room schedule before we can approve the plan.”</p>
     <p>Maskin records the customer’s objection and quotes the speaker.</p>
     <p>Maskin files the promised room schedule follow-up as a task and suggests an owner.</p>
