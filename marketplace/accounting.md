@@ -32,13 +32,13 @@ Gule trin er menneskelig godkendelse. Det blå trin er det, der afslutter forlø
 **Fejler sikkert:** En kvittering, der ikke kan læses, eller en post, der ikke passer, kommer på listen i stedet for at blive gættet.
 
 ## Forbind Dinero
-Når du installerer forløbet, er der ikke koblet noget til. Du forbinder Dinero selv, og det tager få minutter.
-1. Tilføj Dineros adresse `https://mcp.dinero.dk/` som server i forløbet. Brug ingen nøgle og ingen Authorization-header. En gemt header slår browserlogin fra og giver fejlen 401.
-2. Log ind én gang i browseren med dit eget Dinero-login. Derefter kører forløbet videre uden nyt login.
-3. Loginet giver adgang til alle virksomheder på den bruger. Brug en bruger, der kun har den rigtige virksomhed, og prøv først på en testvirksomhed.
+Når du installerer forløbet, er der ikke koblet noget til. Du forbinder Dinero selv med nøglerne fra din egen Dinero-integration, og det tager få minutter.
+1. Opret en integration i Dinero (kræver Pro- eller Total-abonnement) for den ene virksomhed, forløbet skal se. Kopiér klient-id, klienthemmelighed og API-nøgle. Prøv først på en testvirksomhed.
+2. Gem de tre værdier én gang i Dinero-formularen i indstillingerne. Der er intet browserlogin og ingen serveradresse at indsætte, og forløbet kører videre uden nyt login.
+3. Giv Bookkeeper læse- og skriveadgang til Dinero. Med læseadgang alene kan den se, men ikke gemme en kladde.
 4. Første kørsel tjekker forbindelsen og siger, hvad der skal rettes.
 5. Upload kvitteringer som foto eller PDF i forløbets chat. De gemmes som kladder i Dinero, og det, Maskin er i tvivl om, kommer på listen til din bogholder.
-Kvitteringer, der kommer på mail eller direkte fra telefonen, er ikke med endnu. Maskin bogfører, ændrer eller sletter intet i Dinero: kun kladder.
+Nøglerne hører til én virksomhed, og forløbet ser kun den. Kvitteringer, der kommer på mail eller direkte fra telefonen, er ikke med endnu. Maskin bogfører, ændrer eller sletter intet i Dinero: kun kladder.
 
 ## Pris og timer
 995 kr om måneden ekskl. moms
