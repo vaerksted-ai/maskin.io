@@ -32,13 +32,14 @@ Gule trin er menneskelig godkendelse. Det blå trin er det, der afslutter forlø
 **Fejler sikkert:** En kvittering, der ikke kan læses, eller en post, der ikke passer, kommer på listen i stedet for at blive gættet.
 
 ## Forbind Dinero
-Når du installerer forløbet, er der ikke koblet noget til. Du forbinder Dinero selv med nøglerne fra din egen Dinero-integration, og det tager få minutter.
-1. Opret en integration i Dinero (kræver Pro- eller Total-abonnement) for den ene virksomhed, forløbet skal se. Kopiér Client ID, Client Secret og API-nøgle. Prøv først på en testvirksomhed.
-2. Gem de tre værdier i Maskin én gang, i formularen Connect Dinero under Integrations. Der er intet browserlogin og ingen serveradresse at indsætte, og forløbet kører videre uden nyt login.
-3. Giv Bookkeeper læse- og skriveadgang til Dinero.
-4. Første kørsel tjekker forbindelsen og siger, hvad der skal rettes.
-5. Upload kvitteringer som foto eller PDF i forløbets chat. Maskin laver et udkast til hver, og det, Maskin er i tvivl om, kommer på listen til din bogholder.
-Nøglerne hører til én virksomhed, og forløbet ser kun den. Kvitteringer, der kommer på mail eller direkte fra telefonen, er ikke med endnu. Maskin bogfører ikke noget i Dinero uden et menneske.
+Når du installerer forløbet, er der ikke koblet noget til. Du tilføjer Dinero selv som et værktøj, og det tager få minutter. Dineros login kan forløbet ikke holde i live, så det udløber efter omkring en time.
+1. Tilføj Dineros egen server som et brugerdefineret værktøj under Integrations i Maskin, og log ind i Dinero med en bruger, der kun ser den ene virksomhed, forløbet skal se. Prøv først på en testvirksomhed.
+2. Indsæt det adgangstoken, Dinero udsteder ved login, som Authorization-header på værktøjet. Indsæt det aldrig i chatten.
+3. Begræns værktøjet til at læse og gemme udkast, så de værktøjer, der bogfører, ændrer, sletter, betaler eller sender, ikke er med. Dineros server tilbyder dem alle.
+4. Giv Bookkeeper læse- og skriveadgang til værktøjet.
+5. Første kørsel tjekker forbindelsen og siger, hvad der skal rettes.
+6. Upload kvitteringer som foto eller PDF i forløbets chat. Maskin laver et udkast til hver, og det, Maskin er i tvivl om, kommer på listen til din bogholder.
+Dineros login udløber efter omkring en time, og forløbet kan ikke forny det. Når det sker, siger forløbet det, og en person skal logge ind igen og skifte adgangstokenet ud. Forløbet ser kun den ene virksomhed, du loggede ind på. Kvitteringer, der kommer på mail eller direkte fra telefonen, er ikke med endnu. Maskin bogfører ikke noget i Dinero uden et menneske.
 
 ## Pris og timer
 995 kr om måneden ekskl. moms

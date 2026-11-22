@@ -144,15 +144,16 @@
   </section>
   <section class="mp-sec">
     <h2 id="forbind-dinero">Forbind Dinero</h2>
-    <p>Når du installerer forløbet, er der ikke koblet noget til. Du forbinder Dinero selv med nøglerne fra din egen Dinero-integration, og det tager få minutter.</p>
+    <p>Når du installerer forløbet, er der ikke koblet noget til. Du tilføjer Dinero selv som et værktøj, og det tager få minutter. Dineros login kan forløbet ikke holde i live, så det udløber efter omkring en time.</p>
     <ol class="mp-steps">
-      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Opret en integration i Dinero (kræver Pro- eller Total-abonnement) for den ene virksomhed, forløbet skal se. Kopiér Client ID, Client Secret og API-nøgle. Prøv først på en testvirksomhed.</div></li>
-      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Gem de tre værdier i Maskin én gang, i formularen Connect Dinero under Integrations. Der er intet browserlogin og ingen serveradresse at indsætte, og forløbet kører videre uden nyt login.</div></li>
-      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Giv Bookkeeper læse- og skriveadgang til Dinero.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Tilføj Dineros egen server som et brugerdefineret værktøj under Integrations i Maskin, og log ind i Dinero med en bruger, der kun ser den ene virksomhed, forløbet skal se. Prøv først på en testvirksomhed.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Indsæt det adgangstoken, Dinero udsteder ved login, som Authorization-header på værktøjet. Indsæt det aldrig i chatten.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Begræns værktøjet til at læse og gemme udkast, så de værktøjer, der bogfører, ændrer, sletter, betaler eller sender, ikke er med. Dineros server tilbyder dem alle.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Giv Bookkeeper læse- og skriveadgang til værktøjet.</div></li>
       <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Første kørsel tjekker forbindelsen og siger, hvad der skal rettes.</div></li>
       <li class="mp-step mp-step--close"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Upload kvitteringer som foto eller PDF i forløbets chat. Maskin laver et udkast til hver, og det, Maskin er i tvivl om, kommer på listen til din bogholder.</div></li>
     </ol>
-    <p>Nøglerne hører til én virksomhed, og forløbet ser kun den. Kvitteringer, der kommer på mail eller direkte fra telefonen, er ikke med endnu. Maskin bogfører ikke noget i Dinero uden et menneske.</p>
+    <p>Dineros login udløber efter omkring en time, og forløbet kan ikke forny det. Når det sker, siger forløbet det, og en person skal logge ind igen og skifte adgangstokenet ud. Forløbet ser kun den ene virksomhed, du loggede ind på. Kvitteringer, der kommer på mail eller direkte fra telefonen, er ikke med endnu. Maskin bogfører ikke noget i Dinero uden et menneske.</p>
   </section>
   <section class="mp-sec">
     <h2 id="pris-og-timer">Pris og timer</h2>
