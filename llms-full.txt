@@ -6448,7 +6448,7 @@ Your team gets a written finding when product usage changes what it believes, an
 6. Every day at 06:30 UTC, Maskin compares yesterday with the same weekday over the last four weeks and files an anomaly once, only when a count of 10 or more stands behind it.
 7. After each Monday read, Maskin refreshes the Results tab with up to three short briefs that deserve a person’s decision, or a quiet state, and the Lifecycle tab with a stage-by-stage snapshot.
 8. Tuesday to Friday at 07:56 UTC, an owner check checks the feed, updates the Flow’s target for weekly reads, keeps both tabs fresh, and runs the Monday read if it did not run. A read with nothing new stays silent.
-![Product Analytics flow in seven steps: check the feed is healthy, say so and stop if it is not, read 7 days of real usage, check activation and drop-off, file what changes your beliefs, up to three briefs to decide on, then a Tuesday to Friday owner check before it runs again.](/marketplace/product-usage/flow.png)
+![Product Analytics flow in eight steps: Monday check that the feed is healthy, say so and stop if it is not, read 7 days of real usage, check activation and drop-off, file findings with a recommended action, a daily 06:30 UTC anomaly check, up to three briefs to decide on, then a Tuesday to Friday owner check before it runs again.](/marketplace/product-usage/flow.png)
 
 ## What you need to run it
 - Install the Flow.
