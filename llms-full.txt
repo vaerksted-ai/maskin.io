@@ -321,11 +321,11 @@ Common commands: `pnpm dev` (Docker + migrations + servers), `pnpm build`, `pnpm
 > Source: https://maskin.io/docs/mcp-tools/
 
 # MCP tools in Maskin: verbs, object types, and the typed workspace graph
-MCP tools are the callable operations a Model Context Protocol server exposes to AI agents, each one a verb with a typed input schema, such as `create_objects` or `get_objects`. Maskin's MCP server has about 100 tools, 12 of them for an agent's own computer, extension tools extra. Those 12 tools drive an agent's own computer. This reference groups the verbs by cluster and documents two core object types they operate on: `knowledge` and `loop`.
+MCP tools are the callable operations a Model Context Protocol server exposes to AI agents, each one a verb with a typed input schema, such as `create_objects` or `get_objects`. Maskin's MCP server has over 100 tools, extension tools extra. This reference groups the verbs by cluster and documents two core object types they operate on: `knowledge` and `loop`.
 > ✓
 > **Key takeaways**
 > MCP tools are verbs; object types are nouns. A tool call names both — the tool declares the operation, the type declares the shape being written or read.
-> Maskin's MCP server has about 100 tools, 12 of them for an agent's own computer, extension tools extra. Those 12 tools drive an agent's own computer and are gated by a workspace flag, so not every workspace gets them. The main clusters are: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup.
+> Maskin's MCP server has over 100 tools, extension tools extra. The main clusters are: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup.
 > Edges have three write paths: `create_objects` and `update_objects` take an `edges` parameter for object-to-object links, and `create_relationship` writes one edge at a time between objects or files.
 > Conversations (chats with participants) and comments (events on an object) are different channels with different length limits: 8,000 characters for a conversation message, 2,000 for a comment.
 > Object types (`insight`, `bet`, `task`, `knowledge`, `loop`, `content`, plus custom types) are workspace-configurable — call `get_workspace_schema` to see the live list, valid statuses, and metadata fields.
@@ -392,7 +392,9 @@ To talk to a human about an object, use `create_comment`. To leave a note inside
 The conversation tools are mostly useful inside chat sessions.
 - `list_unread` — a page of objects with unread activity for the caller (`limit` 1 to 100, default 25, plus a `cursor`). Each row carries the unread count, mention count, highest attention score, latest event id and the latest mention. It covers objects only (not conversations) and shows only the caller's own feed.
 - `mark_read` — takes `entity_type` (`object`), `entity_id` and `last_event_id`, the latest event id you have seen, as returned by `list_unread`. The stored read position only ever moves forward. There is no tool to mark something unread again.
-- `get_started` — orientation for a fresh workspace. With no `loop_id` it lists the marketplace loops you can install; with a `loop_id` and `confirm` it optionally renames the workspace and installs that loop. It returns plain text and is a setup step, not part of everyday work.
+- `list_marketplace` — browse the marketplace loops you can install.
+- `install_loop` — install a marketplace loop into your workspace.
+- `fork_loop` — detach a marketplace loop so the workspace owns its own copy. It cannot be undone.
 - `create_workspace` — takes a `name` and optional `settings`, and has no `workspace_id`. The caller becomes owner.
 - `update_workspace` — takes the workspace `id`, a `name` and `settings`. Settings are merged into the existing ones.
 A full call names both a verb and a type: e.g. `create_objects` with a node of `type: "knowledge"` and a `metadata` payload validated against the `knowledge` schema. The next section documents two of the object types those tools operate on in depth.
@@ -487,7 +489,7 @@ This call stands up the loop container, its descriptive entry/close prose, and i
 ## FAQ
 
 ### What are MCP tools?
-MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed JSONSchema-defined input and a documented output. A tool call names both the verb and the shape it operates on: e.g. `create_objects` with a node of `type: "knowledge"`. Maskin's MCP server has about 100 tools, 12 of them for an agent's own computer, extension tools extra. Those 12 tools drive an agent's own computer and are gated by a workspace flag, so not every workspace gets them. The main clusters are: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup. Every read or write against the workspace graph flows through one of them.
+MCP tools are the callable operations a Model Context Protocol server exposes to AI agents and clients — each one a verb with a typed JSONSchema-defined input and a documented output. A tool call names both the verb and the shape it operates on: e.g. `create_objects` with a node of `type: "knowledge"`. Maskin's MCP server has over 100 tools, extension tools extra. The main clusters are: object operations, relationship operations, schema and discovery, triggers and loops, comments/events/actors, files and integrations, extensions/sessions/fields/skills, and conversations/inbox/workspace setup. Every read or write against the workspace graph flows through one of them.
 
 ### What is the difference between MCP tools and MCP resources?
 Tools are verbs — write-path actions with side effects. Resources are read-only URIs a server exposes for context lookup without invoking an action. In Maskin, first-class typed rows (`knowledge`, `loop`, `insight`, `bet`, `task`, and custom types) are operated on by tools like `create_objects` and `update_objects`; opaque blobs (uploads, generated files, screenshots) are stored via `create_file` and attached to objects. Prefer a typed `knowledge` object when the content is human-readable reference material; prefer a file when it is a raw artifact. For the full decision rule across tools, resources and prompts, and what Maskin’s server registers for each, see [MCP tools vs resources vs prompts](/docs/mcp-tools-vs-resources/).
@@ -898,7 +900,7 @@ Every request authenticates with a bearer API key (prefixed `ank_`). Keys are **
 
 ## Authorization & tenant isolation
 Workspace-scoped requests carry an `X-Workspace-Id` header. Workspace isolation is enforced in the API, route by route, not by database-level row security, so it depends on each route checking the workspace. Memberships carry a role (`owner`, `admin`, `member`, `viewer`). Owner and admin roles gate member management, invites, billing and workspace settings. Viewers are read-only in the app by design, and the server refuses writes from viewers except a short list of their own settings and account actions. This is enforced by a route list checked in CI.
-Agents with read and write access to Slack or LinkedIn send directly by default. A person can set any agent to ask first or to be blocked, per agent and per kind of send. Agents with read-only access cannot send.
+Agents with read and write access to Slack or LinkedIn send directly by default. Email sent from an agent's own address asks first by default. A person can set any agent to ask first or to be blocked, per agent and per kind of send. Agents with read-only access cannot send.
 
 ## Credential encryption at rest
 Integration credentials, including OAuth tokens, are encrypted with **AES-256-GCM** using `INTEGRATION_ENCRYPTION_KEY` (a 32-byte hex key). Each value gets a random 12-byte IV and a 16-byte authentication tag, stored as `iv:authTag:ciphertext`.
