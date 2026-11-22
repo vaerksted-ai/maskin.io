@@ -31,6 +31,15 @@ Gule trin er menneskelig godkendelse. Det blå trin er det, der afslutter forlø
 **Dine data er dine:** Du beholder dit eget bogføringssystem, og Maskin bygger ovenpå det. Maskin bogfører ikke noget i dit system uden et menneske.
 **Fejler sikkert:** En kvittering, der ikke kan læses, eller en post, der ikke passer, kommer på listen i stedet for at blive gættet.
 
+## Forbind Dinero
+Når du installerer forløbet, er der ikke koblet noget til. Du forbinder Dinero selv, og det tager få minutter.
+1. Tilføj Dineros adresse `https://mcp.dinero.dk/` som server i forløbet. Brug ingen nøgle og ingen Authorization-header. En gemt header slår browserlogin fra og giver fejlen 401.
+2. Log ind én gang i browseren med dit eget Dinero-login. Derefter kører forløbet videre uden nyt login.
+3. Loginet giver adgang til alle virksomheder på den bruger. Brug en bruger, der kun har den rigtige virksomhed, og prøv først på en testvirksomhed.
+4. Første kørsel tjekker forbindelsen og siger, hvad der skal rettes.
+5. Upload kvitteringer som foto eller PDF i forløbets chat. De gemmes som kladder i Dinero, og det, Maskin er i tvivl om, kommer på listen til din bogholder.
+Kvitteringer, der kommer på mail eller direkte fra telefonen, er ikke med endnu. Maskin bogfører, ændrer eller sletter intet i Dinero: kun kladder.
+
 ## Pris og timer
 995 kr om måneden ekskl. moms
 Hjælp fra din bogholder inden for et fast månedligt timebudget.
