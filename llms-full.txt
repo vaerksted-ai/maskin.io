@@ -6522,14 +6522,14 @@ Gule trin er menneskelig godkendelse. Det blå trin er det, der afslutter forlø
 **Fejler sikkert:** En kvittering, der ikke kan læses, eller en post, der ikke passer, kommer på listen i stedet for at blive gættet.
 
 ## Forbind Dinero
-Når du installerer forløbet, er der ikke koblet noget til. Du tilføjer Dinero selv som et værktøj, og det tager få minutter. Dineros login kan forløbet ikke holde i live, så det udløber efter omkring en time.
-1. Tilføj Dineros egen server som et brugerdefineret værktøj under Integrations i Maskin, og log ind i Dinero med en bruger, der kun ser den ene virksomhed, forløbet skal se. Prøv først på en testvirksomhed.
-2. Indsæt det adgangstoken, Dinero udsteder ved login, som Authorization-header på værktøjet. Indsæt det aldrig i chatten.
+Når du installerer forløbet, er der ikke koblet noget til. Dineros egen server kræver et login hos Visma, som forløbet endnu ikke kan holde i live. Det er en tidlig version: forløbet virker kun, så længe en person giver det et friskt adgangstoken, og første kørsel siger, hvornår du skal forbinde igen.
+1. Tilføj Dineros egen server som et brugerdefineret værktøj under Integrations i Maskin. Adressen er mcp.dinero.dk, uden en sti bagefter. Prøv først på en testvirksomhed.
+2. Log ind i Dinero via Visma med en bruger, der kun ser den ene virksomhed, forløbet skal se. Adgangstokenet kommer fra det login og findes ikke på en side i Dinero, så det kræver en teknisk person. Sæt det på værktøjet som Authorization-header, og indsæt det aldrig i chatten.
 3. Begræns værktøjet til at læse og gemme udkast, så de værktøjer, der bogfører, ændrer, sletter, betaler eller sender, ikke er med. Dineros server tilbyder dem alle.
 4. Giv Bookkeeper læse- og skriveadgang til værktøjet.
 5. Første kørsel tjekker forbindelsen og siger, hvad der skal rettes.
 6. Upload kvitteringer som foto eller PDF i forløbets chat. Maskin laver et udkast til hver, og det, Maskin er i tvivl om, kommer på listen til din bogholder.
-Dineros login udløber efter omkring en time, og forløbet kan ikke forny det. Når det sker, siger forløbet det, og en person skal logge ind igen og skifte adgangstokenet ud. Forløbet ser kun den ene virksomhed, du loggede ind på. Kvitteringer, der kommer på mail eller direkte fra telefonen, er ikke med endnu. Maskin bogfører ikke noget i Dinero uden et menneske.
+Adgangstokenet gælder omkring en time, og forløbet kan ikke forny det. Når det udløber, siger forløbet det, og en person skal skaffe et nyt og skifte det ud. Forløbet ser kun den ene virksomhed, du loggede ind på. Kvitteringer, der kommer på mail eller direkte fra telefonen, er ikke med endnu. Maskin bogfører ikke noget i Dinero uden et menneske.
 
 ## Pris og timer
 995 kr om måneden ekskl. moms
