@@ -212,7 +212,7 @@
   f.addEventListener('submit',function(ev){
     ev.preventDefault(); m.textContent='';
     if(!f.email.value.trim()){m.textContent='Enter your email.';return;}
-    if(!f.consent.checked){m.textContent='Tick the box if you want us to email you. Without it, nothing is sent and nothing is stored.';return;}
+    if(!f.consent.checked){m.textContent='Tick the box to get the email. Without it, nothing is sent and nothing is stored.';return;}
     var tok=f.querySelector('[name=cf-turnstile-response]');
     fetch('/capture/signal-intake-waitlist',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:f.email.value.trim(),consent:true,consent_version:f.consent.getAttribute('data-consent-version'),turnstile_token:tok?tok.value:''})})
       .then(function(r){return r.json().then(function(j){return {ok:r.ok&&j.ok};});})
