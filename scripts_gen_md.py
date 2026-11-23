@@ -8,6 +8,7 @@ from html.parser import HTMLParser
 ORDER = [
   "docs/get-started/index.html",
   "docs/get-started/self-hosted/index.html",
+  "docs/connect-ai-tools/index.html",
   "docs/quickstart/index.html",
   "docs/concepts/index.html",
   "docs/agents/index.html",
