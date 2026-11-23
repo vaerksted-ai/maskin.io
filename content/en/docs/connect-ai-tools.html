@@ -61,10 +61,10 @@ shell.tail: t1
     <h2>Before you start</h2>
     <p>All four tools connect to the same MCP server and sign in with a Maskin key. You need two things from your Maskin workspace:</p>
     <ol>
-      <li>Open <strong>Settings → API keys</strong>, click <strong>Create key</strong>, and copy the <code>ank_…</code> value. Keep it private: anyone with it can act in your workspace.</li>
-      <li>Open <strong>Settings → Workspace</strong> and copy the <strong>Workspace ID</strong> (a UUID).</li>
+      <li>In Maskin, open <strong>Settings → MCP</strong> and choose the <strong>Other</strong> tab. Under <strong>Headers</strong> it shows an <code>Authorization: Bearer ank_…</code> line with your Maskin key already filled in. Copy the key (the part after <code>Bearer</code>). Keep it private: anyone with it can act in your workspace.</li>
+      <li>On the same tab, the <strong>X-Workspace-Id</strong> line holds your workspace ID (a UUID). Copy that too.</li>
     </ol>
-    <p>The server address is <code>https://maskin.io/mcp</code>. If you run Maskin yourself, use <code>https://&lt;your-maskin-host&gt;/mcp</code> instead (see <a href="/docs/get-started/self-hosted/">Self-hosted setup</a>). <strong>Settings → MCP</strong> in Maskin shows the Claude Code command already filled in with your key.</p>
+    <p>The same tab shows the server address, <code>https://maskin.io/mcp</code>. If you run Maskin yourself, use <code>https://&lt;your-maskin-host&gt;/mcp</code> instead (see <a href="/docs/get-started/self-hosted/">Self-hosted setup</a>). The <strong>Claude Code</strong> tab on that page shows the Claude Code command already filled in with your key.</p>
     <div class="callout">
       <span class="callout__icon">!</span>
       <span class="callout__body"><strong>Why a key, not a browser sign-in?</strong> Maskin's browser sign-in only accepts the Claude and ChatGPT apps, by design. Any other tool is turned away, so these four use a key. Each section says what we tried and what we did not.</span>
@@ -123,7 +123,7 @@ http_headers = { "X-Workspace-Id" = "&lt;YOUR_WORKSPACE_ID&gt;" }</code></pre>
 
     <h2>If it does not connect</h2>
     <ul>
-      <li><strong>401 or no tools:</strong> the key is missing, mistyped or revoked. Create a new one in <strong>Settings → API keys</strong>.</li>
+      <li><strong>401 or no tools:</strong> the key is missing, mistyped or revoked. Copy the key again from <strong>Settings → MCP → Other</strong>.</li>
       <li><strong>"No workspace specified":</strong> the workspace ID is missing. Add the header or the <code>?workspace=</code> part of the address.</li>
       <li>More fixes: <a href="/docs/troubleshooting/">Troubleshooting &amp; FAQ</a>. All the tools you can ask for: <a href="/docs/mcp-tools/">MCP tools</a>.</li>
     </ul>
