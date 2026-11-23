@@ -94,14 +94,12 @@
     <div class="mp-hero__text">
       <div class="mp-kind"><span class="mp-ico" aria-hidden="true">MB</span><span>Tilbud &middot; Bogføring</span></div>
       <h1>Lad månedens bilag køre i Maskin, så du ved, hvad der skal afklares, mens Maskin laver et udkast og peger på poster, der ser forkerte ud.</h1>
-      
-      
-      
+      <div class="mp-actions" data-loop-install="accounting-loop" data-install-position="top"><a class="mp-btn" href="/install/accounting-loop" data-install-link data-install-slug="accounting-loop">Installér forløbet</a></div>
     </div>
     <figure class="mp-hero__img"><img src="/marketplace/accounting/accounting-hero-1200x628.png" width="1200" height="630" alt="Kvitteringer går fra rod til orden, og én er markeret i blå." fetchpriority="high"></figure>
   </header>
   <div class="mp-body">
-    <nav class="mp-toc" aria-label="På denne side"><span class="mp-toc__title">På denne side</span><a href="#opgaven">Opgaven</a><a href="#hvem-gr-hvad">Hvem gør hvad</a><a href="#sadan-krer-det">Sådan kører det</a><a href="#tryghed">Tryghed</a><a href="#pris-og-timer">Pris og timer</a><a href="#tag-fat">Tag fat</a></nav>
+    <nav class="mp-toc" aria-label="På denne side"><span class="mp-toc__title">På denne side</span><a href="#opgaven">Opgaven</a><a href="#hvem-gr-hvad">Hvem gør hvad</a><a href="#sadan-krer-det">Sådan kører det</a><a href="#tryghed">Tryghed</a><a href="#forbind-dinero">Forbind Dinero</a><a href="#pris-og-timer">Pris og timer</a><a href="#tag-fat">Tag fat</a></nav>
     <div class="mp-main doc-content">
   <section class="mp-sec">
     <h2 id="opgaven">Opgaven</h2>
@@ -145,6 +143,19 @@
     <p class="trust-item"><strong>Fejler sikkert:</strong> En kvittering, der ikke kan læses, eller en post, der ikke passer, kommer på listen i stedet for at blive gættet.</p>
   </section>
   <section class="mp-sec">
+    <h2 id="forbind-dinero">Forbind Dinero</h2>
+    <p>Når du installerer forløbet, er der ikke koblet noget til. Dineros egen server kræver et login hos Visma, som forløbet endnu ikke kan holde i live. Det er en tidlig version: forløbet virker kun, så længe en person giver det et friskt adgangstoken, og første kørsel siger, hvornår du skal forbinde igen.</p>
+    <ol class="mp-steps">
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Tilføj Dineros egen server som et brugerdefineret værktøj under Integrations i Maskin. Adressen er mcp.dinero.dk, uden en sti bagefter. Prøv først på en testvirksomhed.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Log ind i Dinero via Visma med en bruger, der kun ser den ene virksomhed, forløbet skal se. Adgangstokenet kommer fra det login og findes ikke på en side i Dinero, så det kræver en teknisk person. Sæt det på værktøjet som Authorization-header, og indsæt det aldrig i chatten.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Begræns værktøjet til at læse og gemme udkast, så de værktøjer, der bogfører, ændrer, sletter, betaler eller sender, ikke er med. Dineros server tilbyder dem alle.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Giv Bookkeeper læse- og skriveadgang til værktøjet.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Første kørsel tjekker forbindelsen og siger, hvad der skal rettes.</div></li>
+      <li class="mp-step mp-step--close"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Upload kvitteringer som foto eller PDF i forløbets chat. Maskin laver et udkast til hver, og det, Maskin er i tvivl om, kommer på listen til din bogholder.</div></li>
+    </ol>
+    <p>Adgangstokenet gælder omkring en time, og forløbet kan ikke forny det. Når det udløber, siger forløbet det, og en person skal skaffe et nyt og skifte det ud. Forløbet ser kun den ene virksomhed, du loggede ind på. Kvitteringer, der kommer på mail eller direkte fra telefonen, er ikke med endnu. Maskin bogfører ikke noget i Dinero uden et menneske.</p>
+  </section>
+  <section class="mp-sec">
     <h2 id="pris-og-timer">Pris og timer</h2>
     <p class="price-line">995 kr om måneden ekskl. moms</p>
     <p>Hjælp fra din bogholder inden for et fast månedligt timebudget.</p>
@@ -154,7 +165,8 @@
     <h2 id="tag-fat">Tag fat</h2>
     <p>Tag en snak med Maskin-teamet om, hvordan en måned kan se ud.</p>
     <div class="post-cta__actions">
-      <a class="btn-primary" href="https://maskin.io/bookseb">Book et møde</a>
+      <span data-loop-install="accounting-loop" data-install-position="bottom"><a class="btn-primary" href="/install/accounting-loop" data-install-link data-install-slug="accounting-loop">Installér forløbet</a></span>
+      <a class="btn-secondary" href="https://maskin.io/bookseb">Book et møde</a>
       <a class="btn-secondary" href="mailto:ai@maskin.io">Skriv til os</a>
     </div>
   </section>
