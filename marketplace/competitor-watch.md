@@ -1,7 +1,7 @@
-> Source: https://maskin.io/marketplace/competitive-intelligence/
+> Source: https://maskin.io/marketplace/competitor-watch/
 
 # Know what changed in your market every week.
-Run a weekly market watch in Maskin so your team keeps product, positioning and pricing decisions grounded while Maskin scans for changes and writes a sourced briefing.
+Competitor watch scans the competitors you name, plus personal agents and your wider category, every Sunday and rewrites one sourced briefing.
 ![Know what changed in your market every week. The competitor watch flow.](/og-image-market-watch.png)
 
 ## The job
@@ -12,7 +12,7 @@ Every Sunday, one page is rewritten with a quick read, what needs action, recent
 ## What your team keeps, what Maskin runs
 | Your team keeps | Maskin runs |
 | --- | --- |
-| Deciding whether a market move needs a response | Scans the last 7 days for competitor, personal agent and category moves |
+| Deciding whether a market move needs a response | Scans the last 7 days for moves by the competitors you name, personal agents and the wider category |
 | Choosing which companies to watch | Checks competitors and proposes list updates for a person to confirm |
 | Judging what matters to your business | Reads your positioning and strategy pages to understand what is relevant |
 | Checking the evidence behind a move | Adds a source link, date and confidence rating to each note |
@@ -28,7 +28,7 @@ Every Sunday, one page is rewritten with a quick read, what needs action, recent
 6. Every Monday, Maskin checks that the scan ran and the page was rewritten. If not, it restarts the scan once, then once more, and tells the workspace owner if it still has not run.
 7. Each month, Maskin proposes competitor list changes for a person to confirm, and prepares a longer view of where the market is heading, whether the plan is right, and what to do one year ahead.
 Amber steps are human approvals.
-![Market watch flow in seven steps, from searching the last 7 days to the briefing page and the Monday restart check, then it runs again.](/marketplace/competitive-intelligence/flow.png)
+![Competitor watch flow in seven steps, from searching the last 7 days to the briefing page and the Monday restart check, then it runs again.](/marketplace/competitor-watch/flow.png)
 
 ## What ships
 - **3 agents:** a Market Researcher that runs the weekly sweep, a Market Strategist that writes the monthly long view, and a Briefing Owner that checks every Monday.
@@ -38,7 +38,7 @@ Amber steps are human approvals.
 
 ## What you need to run it
 - Install the flow.
-- Add the 5 to 10 competitors you care about, or review and confirm a proposed starting list.
+- Add the 5 to 10 companies and web pages you care about, or review and confirm a proposed starting list.
 - Keep your positioning and strategy pages in the workspace so Maskin can tell what is relevant.
 - Connect no outside accounts and no search tool: the flow ships none, and the agents use the built-in web search and page reading. If your workspace runs on Maskin-funded models, built-in search is switched off and the agents read pages directly.
 - See one living briefing page with sourced moves, this week’s priorities and the current threat level.
