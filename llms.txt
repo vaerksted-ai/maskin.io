@@ -137,6 +137,7 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 - [Get started](https://maskin.io/docs/get-started/): What Maskin is, the unified pipeline, and the two ways to run it.
 - [Quickstart tutorial](https://maskin.io/docs/quickstart/): Empty instance to an agent doing real work in ~10 minutes, driven from Claude.
 - [Self-hosted setup](https://maskin.io/docs/get-started/self-hosted/): Clone the open-source repo, install with pnpm, run pnpm dev, and connect Claude over MCP.
+- [Connect your AI tool](https://maskin.io/docs/connect-ai-tools/): Add Maskin to Claude Code, Codex, Copilot Studio or Grok: the command or address to copy, how to sign in with a Maskin key, and one first thing to try.
 
 ## Concepts
 
