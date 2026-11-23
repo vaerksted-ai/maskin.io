@@ -1095,7 +1095,7 @@ This is where the loop closes. Nightly automation and event-driven triggers brin
 ## How an AI product management tool runs the loop
 Here is what closing the loop looks like in practice rather than in a demo. Maskin’s loop is its product core: insight — bet — task — feedback, driven by triggers and closed by validation, with human-promote gates that keep a human in control of the decisions that need judgement.
 - **Triggers bring work in.** Connect sources — Slack, Intercom, PostHog, HubSpot, Reddit, X, LinkedIn, and [competitor changelogs](/loops/competitive-intelligence/) — and the loop reacts when the data changes, instead of waiting for a meeting.
-- **Marketplace loops wire the agents.** Ready-made loops cover [customer feedback](/loops/ai-customer-feedback-loop/), market signals, churn and expansion, lost deals, roadmaps (through the [product discovery loop](/marketplace/product-discovery/)), and [competitive intelligence](/marketplace/competitive-intelligence/), so the agents run the capture and synthesis you would otherwise do manually.
+- **Marketplace loops wire the agents.** Ready-made loops cover [customer feedback](/loops/ai-customer-feedback-loop/), market signals, churn and expansion, lost deals, roadmaps (through the [product discovery loop](/marketplace/product-discovery/)), and [competitive intelligence](/marketplace/competitor-watch/), so the agents run the capture and synthesis you would otherwise do manually.
 - **Validation is built in.** When a bet ships, its outcome is measured against the win condition and the requester is notified. The loop stops when it is done rather than running until someone notices.
 The point is the shape, not the feature list. Every stage of the learning loop — capture, decision, execution, validation — is modelled as a real object and a real relationship, so agents and humans work the same data. That is the difference between an AI product management tool and a task tracker with a narrator.
 
@@ -1169,7 +1169,7 @@ In Maskin, work enters through **triggers** — a Slack message, a new customer 
 
 ## The closed loop: insight → bet → task → shipped → repeat
 Maskin’s core loop has four moves:
-1. **Insight** — raw signal enters the workspace (from Slack, Intercom, PostHog, HubSpot, Reddit, X, LinkedIn, [competitor changelogs](/marketplace/competitive-intelligence/)).
+1. **Insight** — raw signal enters the workspace (from Slack, Intercom, PostHog, HubSpot, Reddit, X, LinkedIn, [competitor changelogs](/marketplace/competitor-watch/)).
 2. **Bet** — the signal is shaped into a testable bet with a clear win condition.
 3. **Task** — the bet breaks into work the team and agents execute.
 4. **Shipped + validated** — when it goes live the loop closes: outcomes are measured and the customer or requester who prompted it is notified.
@@ -2495,7 +2495,7 @@ For work that cuts across product boundaries, a mission team can bring together 
 | Experiment design | Product and Design | Data, Engineering |
 | Regulatory interpretation | Legal and Compliance | Product, Engineering |
 | Commercial model | Product and Business | Finance, Sales, Marketing |
-**Discovery:** Curation means selecting and connecting evidence that can inform a decision. Teams assess each signal for its usefulness and evaluate each new idea against priorities. They still need to test whether a problem is worth solving and whether an option addresses it. The three gap tests make that work inspectable: check the signals, compare the evidence and trace the reason into delivery. Two marketplace loops show the shape: the [product discovery loop](/marketplace/product-discovery/) for customer signal and the [competitive intelligence loop](/marketplace/competitive-intelligence/) for market signal.
+**Discovery:** Curation means selecting and connecting evidence that can inform a decision. Teams assess each signal for its usefulness and evaluate each new idea against priorities. They still need to test whether a problem is worth solving and whether an option addresses it. The three gap tests make that work inspectable: check the signals, compare the evidence and trace the reason into delivery. Two marketplace loops show the shape: the [product discovery loop](/marketplace/product-discovery/) for customer signal and the [competitive intelligence loop](/marketplace/competitor-watch/) for market signal.
 **Cadence:** A recurring agent loop is bounded work that repeats. Marily Nika’s July 2026 [loop engineering essay](https://marily.substack.com/p/loop-engineering-is-your-new-job) sets the rule: an agent loop needs a stopping condition before it runs. See [how a loop earns autonomy](/loops/loops-that-graduate/) and [permissions and audit trail](/docs/learn/ai-agent-governance/). The operating model should make the boundary of recurring work clear before the loop begins.
 
 ## Where AI makes the old model worse
@@ -3286,7 +3286,7 @@ An illustrative example: a support team's refund-review loop. The same five part
 - **Agent-execution slot:** an agent pulls the order history, checks the request against the policy and drafts the decision and the customer reply. It chooses which records to check and in what order. It does not choose which requests enter the loop.
 - **Human-taste gate:** a team lead approves every decision above a set amount, and any decision the agent marks as a policy exception. The gate is enforced: nothing is sent to the customer until it clears. If the lead rejects the draft, it goes back with the reason.
 - **Close condition:** the refund is issued or declined, the reason is recorded on the decision record, and the customer reply is sent. Not "the agent said it was handled." A request in a final state that anyone can inspect later.
-Run that shape against a different trigger and it produces a discovery loop, a [competitor-intel loop](/marketplace/competitive-intelligence/), a signal-triage loop, a churn-recovery loop ([at-risk account alerts](/docs/at-risk-account-alerts/)). The primitives don't change; the trigger and typed objects do. That is what "[loop engineering](https://addyosmani.com/blog/loop-engineering/)" (Addy Osmani, Jun 2026) points at when it says the job shifted from *prompting the agent* to *designing the system that prompts the agent* — but productized as first-class objects a team configures, not code a developer writes.
+Run that shape against a different trigger and it produces a discovery loop, a [competitor-intel loop](/marketplace/competitor-watch/), a signal-triage loop, a churn-recovery loop ([at-risk account alerts](/docs/at-risk-account-alerts/)). The primitives don't change; the trigger and typed objects do. That is what "[loop engineering](https://addyosmani.com/blog/loop-engineering/)" (Addy Osmani, Jun 2026) points at when it says the job shifted from *prompting the agent* to *designing the system that prompts the agent* — but productized as first-class objects a team configures, not code a developer writes.
 **Maskin loops carry typed outcomes and verdicts that persist across tools, not recurring workflow execution inside one product.**
 The important word is *across*. A workflow inside a ticket tracker terminates when a ticket closes. A loop terminates when the typed outcome it exists to produce — the shipped bet, the approved content, the qualified pipeline — reaches a state a human can inspect, regardless of which tool the underlying work happened in. Software delivery as a closed loop is a concrete case: the [product delivery loop](/marketplace/product-delivery/) has named human gates (the merge to main and the final call on the bet) and closes on a verdict against the success criteria written first. The [product discovery loop](/marketplace/product-discovery/) follows the same shape, and the outbound version is mapped in [open source AI SDR: the six real repos and the loop shape that works](/alternatives/open-source-ai-sdr/).
 
@@ -3716,7 +3716,7 @@ Ready to run a loop with a written finish line on your own work? [Self-host Mask
 
 ## Coders got verification for free. The rest of us have to manufacture the referee.
 When a developer hands work to an agent, verification is built in. A test either passes or it does not. The compiler either accepts the code or refuses it. The build is green or red. The developer never has to ask "how do I know this is right?" The environment answers immediately and without argument.
-Knowledge work has none of that. When a product manager, an analyst, or an ops lead hands a recurring task to an agent, the output lands in prose. There is no compiler for a weekly churn summary, a [competitive brief](/marketplace/competitive-intelligence/), a support-triage digest, or a first-pass onboarding doc. The work is judged by reading it, and reading it is the human's job.
+Knowledge work has none of that. When a product manager, an analyst, or an ops lead hands a recurring task to an agent, the output lands in prose. There is no compiler for a weekly churn summary, a [competitive brief](/marketplace/competitor-watch/), a support-triage digest, or a first-pass onboarding doc. The work is judged by reading it, and reading it is the human's job.
 This is the gap the [loop frame](/docs/what-is-loop-engineering/) names. In late summer 2026 the idea moved from engineering blogs into the wider market. Tobias Weiss's essay "Loop Engineering" (2 August 2026) anchored the vocabulary on Boris Cherny's line that his job is no longer to prompt the model but to write loops, and The AI Daily Brief ran an episode titled "Agentic Loops for Knowledge Workers" on 3 September 2026. Two independent voices, about a month apart, landed the same claim: the loop, not the prompt, is the unit of delegated work, and a loop only counts as closed when something decides the output is good enough.
 That decision-maker is what knowledge work is missing. Call it the referee.
 
@@ -4074,7 +4074,7 @@ claude mcp add --transport http maskin \
 ```
 Create the API key (the `ank_` value) under Settings, API keys, and copy the workspace ID from the Workspace settings page. Run `/reload-plugins`, then ask Claude to call `get_started`. This is checked against Anthropic's MCP docs and Maskin's server code, not a connect from a fresh Claude Code install. The [self-hosted setup guide](/docs/get-started/self-hosted/) has the full steps, and the [MCP tools reference](/docs/mcp-tools/) lists what is exposed. Once connected, Claude Code can read and write the same bets and decisions the rest of your team sees, rather than keeping them in a private folder.
 As head of product, you can keep one team record even when your engineers use other tools. The tool each person runs stays their choice; what changes is where the result is kept. The comparisons: [what changes when your team runs both Claude Code and Codex](/docs/claude-code-vs-codex/), [Claude Code vs Cursor](/docs/claude-code-vs-cursor/) and [Claude Code vs GitHub Copilot](/docs/claude-code-vs-github-copilot/).
-The [product discovery loop](/marketplace/product-discovery/) page walks through the PM job described above: interviews, tickets and reviews are recorded as insights, a person reviews and shapes each bet before it is approved, and after it ships the outcome is checked against the signal that started it. For the market-watching part of the job, the [competitive intelligence loop](/marketplace/competitive-intelligence/) reads competitor changelogs and pricing pages and routes each change to sales and to a bet. See [what an agentic workspace is](/docs/what-is-an-agentic-workspace/) for the full lifecycle and [the closed-loop workspace](/docs/closed-loop-workspace/) for the longer argument.
+The [product discovery loop](/marketplace/product-discovery/) page walks through the PM job described above: interviews, tickets and reviews are recorded as insights, a person reviews and shapes each bet before it is approved, and after it ships the outcome is checked against the signal that started it. For the market-watching part of the job, the [competitive intelligence loop](/marketplace/competitor-watch/) reads competitor changelogs and pricing pages and routes each change to sales and to a bet. See [what an agentic workspace is](/docs/what-is-an-agentic-workspace/) for the full lifecycle and [the closed-loop workspace](/docs/closed-loop-workspace/) for the longer argument.
 Where Maskin is the wrong pick:
 - **You work alone.** A folder and a good CLAUDE.md are lighter and cost nothing.
 - **You need a model other than Claude or Codex.** Maskin works with Claude Code and Codex today, and we have not validated local models.
@@ -4098,7 +4098,7 @@ Install Claude Code, put your research, specs and roadmap in one folder, and wri
 No. Anthropic's write-up of its own teams says legal, growth marketing and product design staff use Claude Code without being engineers: lawyers prototyped a phone tree, and a growth team built a workflow that processes spreadsheets of ads. You do need to be comfortable giving instructions in text and, on some surfaces, opening a terminal. The desktop app's Code tab avoids that.
 
 ### What are the best Claude Code skills for product managers?
-Start with the seven in Anthropic's product-management plugin: feature specs, roadmap management, stakeholder communications, user research synthesis, competitive analysis, metrics tracking and product brainstorming. Then write your own. ProductCompass's beginner guide suggests building a skill from a task you already do twice, which is a good filter: skills for one-off work cost more to maintain than they save. If competitive analysis is a standing job rather than a one-off, the [competitive intelligence loop](/marketplace/competitive-intelligence/) runs it on a schedule against competitor changelogs and pricing pages.
+Start with the seven in Anthropic's product-management plugin: feature specs, roadmap management, stakeholder communications, user research synthesis, competitive analysis, metrics tracking and product brainstorming. Then write your own. ProductCompass's beginner guide suggests building a skill from a task you already do twice, which is a good filter: skills for one-off work cost more to maintain than they save. If competitive analysis is a standing job rather than a one-off, the [competitive intelligence loop](/marketplace/competitor-watch/) runs it on a schedule against competitor changelogs and pricing pages.
 
 ### Can Claude Code connect to Jira, Slack or Linear?
 Yes, through MCP, the open standard for connecting AI tools to outside data. Anthropic's overview lists reading Google Drive docs, updating Jira tickets and pulling Slack data. The product-management plugin's README also names Linear, Asana, monday.com, ClickUp, Notion, Figma, Amplitude, Pendo, Intercom and Fireflies.
@@ -5554,7 +5554,7 @@ Pick a single, observable event that starts the loop. “All prospects that matc
 Keeping the trigger observable is what stops *polling-loop hell* — the ambient-agent failure mode where an SDR runs every 30 seconds and floods the reviewer with drafts nobody asked for. Trigger on state changes, not on time.
 
 ## Step 2 — Run the research step
-The trigger spawns an agent session against the new insight. The session’s job is to enrich the account and contact, pull the last 90 days of public signal (funding, hiring, product changes, [competitor moves](/marketplace/competitive-intelligence/)), and write a *why-now* hypothesis onto the insight’s metadata. Enrichment MCPs (Apollo, Clay, Tavily) are the tools the session calls; the findings become typed fields on the object, not a paragraph in a chat log.
+The trigger spawns an agent session against the new insight. The session’s job is to enrich the account and contact, pull the last 90 days of public signal (funding, hiring, product changes, [competitor moves](/marketplace/competitor-watch/)), and write a *why-now* hypothesis onto the insight’s metadata. Enrichment MCPs (Apollo, Clay, Tavily) are the tools the session calls; the findings become typed fields on the object, not a paragraph in a chat log.
 Writing structured findings back to the object matters because the draft step in Step 3 needs machine-readable inputs to produce a message that actually cites the research. A blob of text is a prompt; a typed field is context the agent can reason over. Recording the enrichment sources and timestamps on the insight also gives compliance a trail without extra work.
 
 ## Step 3 — Draft the first-touch message
@@ -5917,7 +5917,7 @@ Sign in or sign up, then confirm the flow in the Maskin app.
 - [Product discovery flow](/marketplace/product-discovery/): What customers and the market say, grouped into opportunities with the evidence behind each.
 - [Meeting insights flow](/marketplace/meeting-loop/): Every meeting turned into filed tasks, decisions and findings.
 - [Customer voice flow](/marketplace/customer-voice/): Customer messages filed as written findings, never replied to.
-- [Market watch flow](/marketplace/competitive-intelligence/): A weekly sourced briefing on what changed in your market.
+- [Competitor watch flow](/marketplace/competitor-watch/): A weekly sourced briefing on what changed in your market.
 - [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.
 
 
@@ -6223,10 +6223,10 @@ A packaged capability you attach to an agent — *draft a follow-up in our voice
 
 ---
 
-> Source: https://maskin.io/marketplace/competitive-intelligence/
+> Source: https://maskin.io/marketplace/competitor-watch/
 
 # Know what changed in your market every week.
-Run a weekly market watch in Maskin so your team keeps product, positioning and pricing decisions grounded while Maskin scans for changes and writes a sourced briefing.
+Competitor watch is a weekly watch that scans the companies, pages and documents you name, then rewrites one sourced briefing.
 ![Know what changed in your market every week. The competitor watch flow.](/og-image-market-watch.png)
 
 ## The job
@@ -6237,7 +6237,7 @@ Every Sunday, one page is rewritten with a quick read, what needs action, recent
 ## What your team keeps, what Maskin runs
 | Your team keeps | Maskin runs |
 | --- | --- |
-| Deciding whether a market move needs a response | Scans the last 7 days for competitor, personal agent and category moves |
+| Deciding whether a market move needs a response | Scans the last 7 days for changes in the competitors, suppliers, public pages and documents you name, plus personal agents and the wider category |
 | Choosing which companies to watch | Checks competitors and proposes list updates for a person to confirm |
 | Judging what matters to your business | Reads your positioning and strategy pages to understand what is relevant |
 | Checking the evidence behind a move | Adds a source link, date and confidence rating to each note |
@@ -6253,7 +6253,7 @@ Every Sunday, one page is rewritten with a quick read, what needs action, recent
 6. Every Monday, Maskin checks that the scan ran and the page was rewritten. If not, it restarts the scan once, then once more, and tells the workspace owner if it still has not run.
 7. Each month, Maskin proposes competitor list changes for a person to confirm, and prepares a longer view of where the market is heading, whether the plan is right, and what to do one year ahead.
 Amber steps are human approvals.
-![Market watch flow in seven steps, from searching the last 7 days to the briefing page and the Monday restart check, then it runs again.](/marketplace/competitive-intelligence/flow.png)
+![Competitor watch flow in seven steps, from searching the last 7 days to the briefing page and the Monday restart check, then it runs again.](/marketplace/competitor-watch/flow.png)
 
 ## What ships
 - **3 agents:** a Market Researcher that runs the weekly sweep, a Market Strategist that writes the monthly long view, and a Briefing Owner that checks every Monday.
@@ -6263,7 +6263,7 @@ Amber steps are human approvals.
 
 ## What you need to run it
 - Install the flow.
-- Add the 5 to 10 competitors you care about, or review and confirm a proposed starting list.
+- Add the 5 to 10 companies, pages or documents you care about, or review and confirm a proposed starting list.
 - Keep your positioning and strategy pages in the workspace so Maskin can tell what is relevant.
 - Connect no outside accounts and no search tool: the flow ships none, and the agents use the built-in web search and page reading. If your workspace runs on Maskin-funded models, built-in search is switched off and the agents read pages directly.
 - See one living briefing page with sourced moves, this week’s priorities and the current threat level.
@@ -6425,7 +6425,7 @@ Sign in or sign up, then confirm the flow in the Maskin app.
 - [Product discovery flow](/marketplace/product-discovery/): What customers and the market say, grouped into opportunities with the evidence behind each.
 - [Meeting insights flow](/marketplace/meeting-loop/): Every meeting turned into filed tasks, decisions and findings.
 - [Product Analytics flow](/marketplace/product-usage/): A weekly read and a daily check of real usage, filing what changes what your team believes.
-- [Market watch flow](/marketplace/competitive-intelligence/): A weekly sourced briefing on what changed in your market.
+- [Competitor watch flow](/marketplace/competitor-watch/): A weekly sourced briefing on what changed in your market.
 - [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.
 
 

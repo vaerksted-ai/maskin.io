@@ -55,3 +55,7 @@
 # Merged 2026-11-10: how-to page folded into the bet-based product planning page.
 /docs/how-to-run-bet-based-planning/  /docs/bet-based-product-planning/#how-to-run  301
 /docs/how-to-run-bet-based-planning   /docs/bet-based-product-planning/#how-to-run  301
+# Renamed 2026-11-23: competitive intelligence flow is now Competitor watch (install slug unchanged).
+/marketplace/competitive-intelligence/  /marketplace/competitor-watch/  301
+/marketplace/competitive-intelligence   /marketplace/competitor-watch/  301
+/marketplace/competitive-intelligence.md  /marketplace/competitor-watch.md  301

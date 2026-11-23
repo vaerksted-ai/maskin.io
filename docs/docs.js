@@ -25,7 +25,7 @@
       { label: "The product delivery loop", href: "/marketplace/product-delivery/", nested: true },
       { label: "Månedens bilag (dansk)", href: "/marketplace/accounting/", nested: true },
       { label: "AI customer feedback loop", href: "/loops/ai-customer-feedback-loop/", nested: true },
-      { label: "The competitive intelligence loop", href: "/marketplace/competitive-intelligence/", nested: true },
+      { label: "Competitor watch", href: "/marketplace/competitor-watch/", nested: true },
       { label: "Competitive intelligence loop: how it works", href: "/loops/competitive-intelligence/", nested: true },
       { label: "Loops that graduate: the trust ladder", href: "/loops/loops-that-graduate/", nested: true },
       // TEMP-SWAP (task 9bf88671): /marketplace/product-discovery/ + "The product discovery loop"

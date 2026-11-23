@@ -57,5 +57,5 @@ Sign in or sign up, then confirm the flow in the Maskin app.
 - [Product discovery flow](/marketplace/product-discovery/): What customers and the market say, grouped into opportunities with the evidence behind each.
 - [Meeting insights flow](/marketplace/meeting-loop/): Every meeting turned into filed tasks, decisions and findings.
 - [Customer voice flow](/marketplace/customer-voice/): Customer messages filed as written findings, never replied to.
-- [Market watch flow](/marketplace/competitive-intelligence/): A weekly sourced briefing on what changed in your market.
+- [Competitor watch flow](/marketplace/competitor-watch/): A weekly sourced briefing on what changed in your market.
 - [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.
