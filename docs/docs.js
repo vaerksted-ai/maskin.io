@@ -7,6 +7,7 @@
   var NAV = [
     { title: "Getting started", items: [
       { label: "Get started", href: "/docs/get-started/" },
+      { label: "Connect your AI tool", href: "/docs/connect-ai-tools/", nested: true },
       { label: "Self-hosted setup", href: "/docs/get-started/self-hosted/", nested: true },
       { label: "Quickstart tutorial", href: "/docs/quickstart/" }
     ]},
