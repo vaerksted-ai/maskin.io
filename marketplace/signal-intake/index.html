@@ -22,7 +22,7 @@
 <meta property="og:url" content="https://maskin.io/marketplace/signal-intake/">
 <meta property="og:title" content="Hear what customers are saying before it gets forwarded.">
 <meta property="og:description" content="Signal Intake reads public discussions, public posts from people you name, and open-source projects in your area, then files one short note per notable idea with a source link, date and confidence.">
-<meta property="og:image" content="https://maskin.io/og-image-marketplace.png">
+<meta property="og:image" content="https://maskin.io/og-image-signal-intake.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Hear what customers are saying before it gets forwarded. The Signal Intake flow.">
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@maskin_io">
 <meta name="twitter:title" content="Hear what customers are saying before it gets forwarded.">
 <meta name="twitter:description" content="Signal Intake reads public discussions, public posts from people you name, and open-source projects in your area, then files one short note per notable idea with a source link, date and confidence.">
-<meta name="twitter:image" content="https://maskin.io/og-image-marketplace.png">
+<meta name="twitter:image" content="https://maskin.io/og-image-signal-intake.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,7 +68,7 @@
       "datePublished": "2026-11-23T00:00:00Z",
       "dateModified": "2026-11-23T00:00:00Z",
       "image": [
-        "https://maskin.io/og-image-marketplace.png"
+        "https://maskin.io/og-image-signal-intake.png"
       ],
       "author": {
         "@type": "Organization",
@@ -172,11 +172,11 @@
   </section>
   <section class="mp-sec">
     <h2 id="get-it">Get it</h2>
-    <p>Signal Intake is not installable yet. Leave your email and we will write to you when it ships, or book a walkthrough.</p>
+    <p>Signal Intake is not installable yet. Leave your email to hear when it ships, or book a walkthrough.</p>
     <form class="mp-signup" id="si-signup" method="post" action="/capture/signal-intake-waitlist" novalidate>
       <label class="mp-signup__label" for="si-email">Email</label>
       <input class="mp-signup__input" type="email" id="si-email" name="email" autocomplete="email" required>
-      <label class="mp-signup__consent"><input type="checkbox" name="consent" id="si-consent" value="1" data-consent-version="consent-signal-intake-v1-2026-11-23"> <span>Yes, email me when Signal Intake is ready to install. The emails come from Mesh Firm ApS (CVR 41245271), which runs Maskin. I can withdraw my consent at any time by replying STOP to any email. Read how we use your details in the <a href="/privacy/" target="_blank" rel="noopener">privacy policy</a>.</span></label>
+      <label class="mp-signup__consent"><input type="checkbox" name="consent" id="si-consent" value="1" data-consent-version="consent-signal-intake-v2-2026-11-23"> <span>Yes, email me when Signal Intake is ready to install. The emails come from Mesh Firm ApS (CVR 41245271), which runs Maskin. I can withdraw my consent at any time by replying STOP to any email. Read the <a href="/privacy/" target="_blank" rel="noopener">privacy policy</a>.</span></label>
       <div class="mp-signup__challenge cf-turnstile" data-sitekey="0x4AAAAAAE7u04BI31PIQGYS"></div>
       <p class="mp-actions"><button class="mp-btn" type="submit">Get the flow when it ships</button> <a class="mp-btn mp-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></p>
       <p class="mp-signup__msg" id="si-msg" role="status" aria-live="polite"></p>
@@ -212,12 +212,12 @@
   f.addEventListener('submit',function(ev){
     ev.preventDefault(); m.textContent='';
     if(!f.email.value.trim()){m.textContent='Enter your email.';return;}
-    if(!f.consent.checked){m.textContent='Tick the box if you want us to email you. Without it we send nothing and keep nothing.';return;}
+    if(!f.consent.checked){m.textContent='Tick the box if you want us to email you. Without it, nothing is sent and nothing is stored.';return;}
     var tok=f.querySelector('[name=cf-turnstile-response]');
     fetch('/capture/signal-intake-waitlist',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:f.email.value.trim(),consent:true,consent_version:f.consent.getAttribute('data-consent-version'),turnstile_token:tok?tok.value:''})})
       .then(function(r){return r.json().then(function(j){return {ok:r.ok&&j.ok};});})
       .then(function(x){
-        if(x.ok){ m.textContent='Thanks. We will write to you when Signal Intake ships.'; f.reset(); if(window.turnstile) window.turnstile.reset(); }
+        if(x.ok){ m.textContent='Thanks. You will get an email when Signal Intake ships.'; f.reset(); if(window.turnstile) window.turnstile.reset(); }
         else { m.textContent='That did not work. Try again in a moment.'; if(window.turnstile) window.turnstile.reset(); }
       }).catch(function(){ m.textContent='That did not work. Try again in a moment.'; });
   });

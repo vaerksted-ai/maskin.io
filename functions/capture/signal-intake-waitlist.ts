@@ -6,7 +6,7 @@
 // The contact is not added to a segment: the Resend plan has 3 segments, all in use. Filter on consent_source to find the list.
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const CONSENT_VERSIONS = new Set(["consent-signal-intake-v1-2026-11-23"]);
+const CONSENT_VERSIONS = new Set(["consent-signal-intake-v2-2026-11-23"]);
 const CONSENT_SOURCE = "signal-intake-waitlist";
 
 interface Env {

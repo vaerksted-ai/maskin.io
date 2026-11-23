@@ -6341,7 +6341,7 @@ Amber steps are human approvals.
 - **Fails safely:** if a source is blocked or unreachable, Maskin names it and says why instead of treating it as a quiet week. Some sites cannot be read.
 
 ## Get it
-Signal Intake is not installable yet. Leave your email and we will write to you when it ships, or book a walkthrough.
+Signal Intake is not installable yet. Leave your email to hear when it ships, or book a walkthrough.
 Get the flow when it ships [Book a walkthrough](https://meshfirm.com/bookmagnus)
 
 ## Example week
