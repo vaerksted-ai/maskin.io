@@ -5872,7 +5872,7 @@ For product teams whose research folder never quite makes it into the roadmap.
 - A person moves an opportunity forward. The flow does not yet show opportunities sized and ranked, or create a product brief and prototype before you commit.
 
 ## Opportunity backlog
-The opportunities waiting at opportunity status are your team’s opportunity backlog. A person shapes one into a bet before it moves on. See [how a bet differs from a backlog ticket](/docs/bet-vs-backlog/).
+The opportunities waiting at opportunity status are your team’s opportunity backlog. A person decides which ones move on to shaping. See [how a bet differs from a backlog ticket](/docs/bet-vs-backlog/).
 
 ## Example week
 Example Monday briefing for a fictional company, Brightlane (project software for architects).
