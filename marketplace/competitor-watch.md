@@ -1,7 +1,7 @@
 > Source: https://maskin.io/marketplace/competitor-watch/
 
 # Know what changed in your market every week.
-Competitor watch is a weekly watch that scans the companies and web pages you name, then rewrites one sourced briefing.
+Competitor watch scans the competitors you name, plus personal agents and your wider category, every Sunday and rewrites one sourced briefing.
 ![Know what changed in your market every week. The competitor watch flow.](/og-image-market-watch.png)
 
 ## The job
@@ -12,7 +12,7 @@ Every Sunday, one page is rewritten with a quick read, what needs action, recent
 ## What your team keeps, what Maskin runs
 | Your team keeps | Maskin runs |
 | --- | --- |
-| Deciding whether a market move needs a response | Scans the last 7 days for changes in the companies and web pages you name, plus personal agents and the wider category |
+| Deciding whether a market move needs a response | Scans the last 7 days for moves by the competitors you name, personal agents and the wider category |
 | Choosing which companies to watch | Checks competitors and proposes list updates for a person to confirm |
 | Judging what matters to your business | Reads your positioning and strategy pages to understand what is relevant |
 | Checking the evidence behind a move | Adds a source link, date and confidence rating to each note |
