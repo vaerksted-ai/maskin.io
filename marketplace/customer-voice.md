@@ -6,7 +6,7 @@ Run Customer voice in Maskin so your team can make product decisions from custom
 
 ## The job
 After a week, distinct customer requests, complaints, objections, and praise are filed as written findings with evidence for product decisions. Each finding includes the customer’s words, a source link, whether it was first-hand or second-hand, and a link to the company or contact. Each Monday, the Results tab shows up to three briefs backed by linked evidence, or says which sources were read and when.
-**Replaces:** Manually sorting customer messages or tracking requests in a spreadsheet.
+**Replaces:** Manually sorting customer messages or tracking requests in a spreadsheet. It reads what customers write to you; for what people say about your area in public, see [Signal Intake](/marketplace/signal-intake/).
 **Stays with your team:** Deciding what to build, fixing bugs, and replying to customers.
 
 ## What your team keeps, what Maskin runs
