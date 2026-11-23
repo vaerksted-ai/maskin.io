@@ -134,9 +134,9 @@ Add Maskin to Claude Code, Codex, Copilot Studio or Grok in a few minutes. Each 
 
 ## Before you start
 All four tools connect to the same MCP server and sign in with a Maskin key. You need two things from your Maskin workspace:
-1. Open **Settings → API keys**, click **Create key**, and copy the `ank_…` value. Keep it private: anyone with it can act in your workspace.
-2. Open **Settings → Workspace** and copy the **Workspace ID** (a UUID).
-The server address is `https://maskin.io/mcp`. If you run Maskin yourself, use `https://<your-maskin-host>/mcp` instead (see [Self-hosted setup](/docs/get-started/self-hosted/)). **Settings → MCP** in Maskin shows the Claude Code command already filled in with your key.
+1. In Maskin, open **Settings → MCP** and choose the **Other** tab. Under **Headers** it shows an `Authorization: Bearer ank_…` line with your Maskin key already filled in. Copy the key (the part after `Bearer`). Keep it private: anyone with it can act in your workspace.
+2. On the same tab, the **X-Workspace-Id** line holds your workspace ID (a UUID). Copy that too.
+The same tab shows the server address, `https://maskin.io/mcp`. If you run Maskin yourself, use `https://<your-maskin-host>/mcp` instead (see [Self-hosted setup](/docs/get-started/self-hosted/)). The **Claude Code** tab on that page shows the Claude Code command already filled in with your key.
 > **Why a key, not a browser sign-in?** Maskin's browser sign-in only accepts the Claude and ChatGPT apps, by design. Any other tool is turned away, so these four use a key. Each section says what we tried and what we did not.
 
 ## Claude Code
@@ -197,7 +197,7 @@ On Grok Business and Enterprise, a team admin has to provision the connector fir
 **Checked:** not tried in Grok, because we had no account for it. We do not know yet whether the connection works.
 
 ## If it does not connect
-- **401 or no tools:** the key is missing, mistyped or revoked. Create a new one in **Settings → API keys**.
+- **401 or no tools:** the key is missing, mistyped or revoked. Copy the key again from **Settings → MCP → Other**.
 - **"No workspace specified":** the workspace ID is missing. Add the header or the `?workspace=` part of the address.
 - More fixes: [Troubleshooting & FAQ](/docs/troubleshooting/). All the tools you can ask for: [MCP tools](/docs/mcp-tools/).
 
