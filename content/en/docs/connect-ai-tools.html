@@ -1,0 +1,134 @@
+@@ meta
+title: Connect Maskin to your AI tool | Maskin Docs
+canonical: https://maskin.io/docs/connect-ai-tools/
+description: Copy-paste steps to connect Maskin to Claude Code, Codex, Copilot Studio and Grok: the command or address, how to sign in with a Maskin key, and one first thing to try.
+og:type: article
+og:url: https://maskin.io/docs/connect-ai-tools/
+og:title: Connect Maskin to your AI tool | Maskin
+og:description: Steps for Claude Code, Codex, Copilot Studio and Grok, with one command or address each.
+og:image: https://maskin.io/og-image.png?v=2
+active: /docs/connect-ai-tools/
+shell.pre: p2
+shell.mainopen: m2
+shell.tail: t1
+@@ jsonld 0
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "Connect Maskin to your AI tool",
+      "name": "Connect Maskin to your AI tool",
+      "description": "Copy-paste steps to connect Maskin to Claude Code, Codex, Copilot Studio and Grok: the command or address, how to sign in with a Maskin key, and one first thing to try.",
+      "inLanguage": "en",
+      "url": "https://maskin.io/docs/connect-ai-tools/",
+      "isPartOf": "https://maskin.io/docs/",
+      "author": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Docs",
+          "item": "https://maskin.io/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Connect your AI tool",
+          "item": "https://maskin.io/docs/connect-ai-tools/"
+        }
+      ]
+    }
+  ]
+}
+
+@@ body
+
+    <p class="doc-breadcrumb"><a href="/docs/">Docs</a> / Connect your AI tool</p>
+
+    <p class="eyebrow">Getting started</p>
+    <h1>Connect Maskin to your AI tool</h1>
+    <p class="lead">Add Maskin to Claude Code, Codex, Copilot Studio or Grok in a few minutes. Each section has one command or one address to copy, the sign-in that works today, and one first thing to try.</p>
+
+    <h2>Before you start</h2>
+    <p>All four tools connect to the same MCP server and sign in with a Maskin key. You need two things from your Maskin workspace:</p>
+    <ol>
+      <li>In Maskin, open <strong>Settings → MCP</strong> and choose the <strong>Other</strong> tab. Under <strong>Headers</strong> it shows an <code>Authorization: Bearer ank_…</code> line with your Maskin key already filled in. Copy the key (the part after <code>Bearer</code>). Keep it private: anyone with it can act in your workspace.</li>
+      <li>On the same tab, the <strong>X-Workspace-Id</strong> line holds your workspace ID (a UUID). Copy that too.</li>
+    </ol>
+    <p>The same tab shows the server address, <code>https://maskin.io/mcp</code>. If you run Maskin yourself, use <code>https://&lt;your-maskin-host&gt;/mcp</code> instead (see <a href="/docs/get-started/self-hosted/">Self-hosted setup</a>). The <strong>Claude Code</strong> tab on that page shows the Claude Code command already filled in with your key.</p>
+    <div class="callout">
+      <span class="callout__icon">!</span>
+      <span class="callout__body"><strong>Why a key, not a browser sign-in?</strong> Maskin's browser sign-in only accepts the Claude and ChatGPT apps, by design. Any other tool is turned away, so these four use a key. Each section says what we tried and what we did not.</span>
+    </div>
+
+    <h2>Claude Code</h2>
+    <p>Add the server with one command. Replace the two values in angle brackets:</p>
+    <pre><code>claude mcp add --transport http maskin https://maskin.io/mcp \
+  --header "Authorization: Bearer &lt;YOUR_MASKIN_API_KEY&gt;" \
+  --header "X-Workspace-Id: &lt;YOUR_WORKSPACE_ID&gt;"</code></pre>
+    <p>Add <code>--scope user</code> to make it available in every project. Then run <code>claude mcp list</code>, or <code>/mcp</code> inside Claude Code, and check that <code>maskin</code> says Connected.</p>
+    <p><strong>Sign-in:</strong> the Maskin key above. Do not choose the browser sign-in in <code>/mcp</code>: Claude Code returns to a local address that Maskin does not accept.</p>
+    <p><strong>First thing to try:</strong> ask Claude Code, <em>"Use the maskin MCP to list my workspaces, then show me what is active."</em></p>
+    <p><strong>Checked:</strong> on 23 November 2026 we ran the command above against maskin.io with a real key, and Claude Code reported <code>maskin</code> as connected. We did not run the browser sign-in.</p>
+
+    <h2>Codex</h2>
+    <p>Put your key in an environment variable, then add the server:</p>
+    <pre><code>export MASKIN_API_KEY=&lt;YOUR_MASKIN_API_KEY&gt;
+codex mcp add maskin --url https://maskin.io/mcp --bearer-token-env-var MASKIN_API_KEY</code></pre>
+    <p>The command writes this to <code>~/.codex/config.toml</code>. Add the workspace line under it:</p>
+    <pre><code>[mcp_servers.maskin]
+url = "https://maskin.io/mcp"
+bearer_token_env_var = "MASKIN_API_KEY"
+http_headers = { "X-Workspace-Id" = "&lt;YOUR_WORKSPACE_ID&gt;" }</code></pre>
+    <p>Run <code>codex mcp list</code> to see it. Start Codex from a shell where <code>MASKIN_API_KEY</code> is set.</p>
+    <p><strong>Sign-in:</strong> the Maskin key, read from the environment variable. Do not run <code>codex mcp login</code>: it starts a browser sign-in that Maskin does not accept for Codex.</p>
+    <p><strong>First thing to try:</strong> ask Codex, <em>"Use the maskin MCP to list my workspaces, then show me what is active."</em></p>
+    <p><strong>Checked:</strong> on 23 November 2026 Codex CLI 0.171.0 accepted the add command and read this config, and the same key and header, sent straight to maskin.io, returned the workspace list. We did not run a full Codex session, because we had no OpenAI sign-in to run it with.</p>
+
+    <h2>Copilot Studio</h2>
+    <p>Copilot Studio lets any maker add an MCP server by address, with no review. Your organisation's data policies can still block it, so ask your admin if the option is missing.</p>
+    <ol>
+      <li>Open your agent, go to <strong>Tools</strong>, select <strong>Add a tool</strong>, then <strong>New tool</strong>, then <strong>Model Context Protocol</strong>.</li>
+      <li><strong>Server name:</strong> <code>Maskin</code>. <strong>Server description:</strong> <code>Read and update bets, tasks and insights in a Maskin workspace.</code></li>
+      <li><strong>Server URL:</strong> <pre><code>https://maskin.io/mcp?workspace=&lt;YOUR_WORKSPACE_ID&gt;</code></pre> The workspace goes in the address because this form has room for only one header.</li>
+      <li><strong>Authentication:</strong> choose <strong>API key</strong>, type <strong>Header</strong>, header name <code>Authorization</code>. Select <strong>Create</strong>.</li>
+      <li>When it asks for a connection, paste <code>Bearer &lt;YOUR_MASKIN_API_KEY&gt;</code> as the key (the word <code>Bearer</code>, a space, then the key), then select <strong>Add to agent</strong>.</li>
+    </ol>
+    <p><strong>Sign-in:</strong> the Maskin key. Do not choose OAuth 2.0: Copilot Studio's automatic sign-in registers itself as a new app, and Maskin turns that away.</p>
+    <p><strong>First thing to try:</strong> in the agent's test chat, ask <em>"List my Maskin workspaces, then show me what is active."</em></p>
+    <p><strong>Checked:</strong> not tried in Copilot Studio, because we had no account for it. The steps follow Microsoft's page of 18 November 2026. The address with the workspace in it, and the key sent as an <code>Authorization</code> header, were checked against maskin.io with a plain request and worked. Whether Copilot Studio sends the key exactly as typed is unconfirmed.</p>
+
+    <h2>Grok</h2>
+    <p>Grok has no directory for outside tools. You add Maskin yourself as a custom connector, and the address must be reachable from the internet (maskin.io is).</p>
+    <ol>
+      <li>Open <a href="https://grok.com/connectors" target="_blank" rel="noopener">grok.com/connectors</a>, select <strong>New Connector</strong>, then <strong>Custom</strong>.</li>
+      <li>Paste the server address:
+        <pre><code>https://maskin.io/mcp?workspace=&lt;YOUR_WORKSPACE_ID&gt;</code></pre>
+      </li>
+      <li>Complete the sign-in step if Grok shows one (see below).</li>
+    </ol>
+    <p>On Grok Business and Enterprise, a team admin has to provision the connector first.</p>
+    <p><strong>Sign-in:</strong> not confirmed. xAI's page says only "complete any required authentication" and does not say which methods it supports. Maskin accepts a key sent as an <code>Authorization: Bearer &lt;YOUR_MASKIN_API_KEY&gt;</code> header. It does not accept Grok's browser sign-in. If Grok gives you no place to send a header, Maskin cannot be connected to Grok today.</p>
+    <p><strong>First thing to try:</strong> if it connects, ask <em>"List my Maskin workspaces, then show me what is active."</em></p>
+    <p><strong>Checked:</strong> not tried in Grok, because we had no account for it. We do not know yet whether the connection works.</p>
+
+    <h2>If it does not connect</h2>
+    <ul>
+      <li><strong>401 or no tools:</strong> the key is missing, mistyped or revoked. Copy the key again from <strong>Settings → MCP → Other</strong>.</li>
+      <li><strong>"No workspace specified":</strong> the workspace ID is missing. Add the header or the <code>?workspace=</code> part of the address.</li>
+      <li>More fixes: <a href="/docs/troubleshooting/">Troubleshooting &amp; FAQ</a>. All the tools you can ask for: <a href="/docs/mcp-tools/">MCP tools</a>.</li>
+    </ul>
+
+    <nav class="doc-pagenav" aria-label="Page navigation">
+      <a href="/docs/get-started/">← Get started</a>
+      <a href="/docs/get-started/self-hosted/">Self-hosted setup →</a>
+    </nav>

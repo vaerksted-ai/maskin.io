@@ -109,6 +109,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://maskin.io/docs/connect-ai-tools/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://maskin.io/docs/quickstart/</loc>
     <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
