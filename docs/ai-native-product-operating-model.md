@@ -31,7 +31,7 @@ A shiny new idea can arrive with a persuasive demo or senior sponsor. Existing r
 ### The CONTINUITY gap: the why disappears at handoffs
 Discovery may establish a customer problem, but the reason for a bet can get reduced to a ticket, then detached from the delivery work and the outcome review. In a larger organization, product, design, engineering and other specialists may each inherit a different slice of the context. The team can complete the requested work without being able to explain which customer evidence prompted it.
 **Test it this week:** Pick the last feature you shipped and try to trace it back to customer evidence in under fifteen minutes. Count how many handoffs lost the reason and how often you had to rely on somebody’s memory.
-These are connected tests of whether the team can gather relevant signals, compare options and retain intent as work changes hands. AI can summarize or move information, while the team curates what is relevant and makes the decision explicit.
+These are connected tests of whether the team can gather relevant signals ([Signal Intake](/marketplace/signal-intake/) is one flow that files sourced notes from public discussions), compare options and retain intent as work changes hands. AI can summarize or move information, while the team curates what is relevant and makes the decision explicit.
 > ✓
 > **Run the three tests on one of your own bets**
 > Bring one current bet to a meeting and we will trace its signal, evidence and continuity with you, and show you where the trail breaks.
