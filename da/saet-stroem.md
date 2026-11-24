@@ -11,21 +11,21 @@ Onsdag 25. november 2026, 15.00 til 16.00
 ### Lad din AI-bogholder gøre regnskabet klar: bilag, moms, årsrapport
 Få AI til at gøre dit regnskab klart, fra bilag til moms og årsrapport.
 Slip for noget af det manuelle arbejde med bilag, fakturaer og bogføring. Se, hvordan du kan gøre bogføringen lettere at håndtere og få mere tid til at drive din virksomhed.
-Agenten finder manglende kvitteringer, afstemmer banken, peger på ubetalte fakturaer og samler spørgsmålene til din bogholder. Du eller din bogholder godkender. Agenten bogfører ikke selv og giver ingen skatte- eller juridisk rådgivning.
+Agenten finder manglende kvitteringer, afstemmer banken, peger på ubetalte fakturaer og samler spørgsmålene til din bogholder. AI-bogholderen gør bilag og spørgsmål klar til bogholderen, så bogføringen er klar til årsafslutningen. Agenten bogfører ikke selv og giver ingen skatte- eller juridisk rådgivning.
 Onsdag 2. december 2026, 15.00 til 16.00
 
 ### Ugentligt indhold med AI-agenter i din virksomhed
 Bliv mere synlig uden at bruge hele dagen på sociale medier.
 Få hjælp til at finde på idéer, skrive opslag og planlægge indhold. Så bliver det nemmere at holde din virksomhed synlig og være top of mind hos dine kunder.
-En AI-agent skriver et udkast til opslaget, og du siger ja eller nej, før det bliver udgivet.
+En digital medarbejder står for indholdsopgaven: idéer, udkast og plan for ugens opslag.
 Tilmelding åbner snart. [Tilmeld dig serien](#tilmeld-serien), så får du besked.
 Onsdag 9. december 2026, 15.00 til 16.00
 
 ### Sæt strøm til salget
 Find nye kunder og kom hurtigere i dialog med dem.
-Find kunder med AI, hvor du godkender hver besked.
+En digital medarbejder finder relevante kunder.
 Se, hvordan du kan finde relevante virksomheder og blive klogere på dem. Agenterne hjælper med kontakt til mulige kunder.
-Du godkender hver besked, før den sendes. Agenterne sender ikke noget uden dit ja.
+Den digitale medarbejder har salgsopgaven: at finde kunder og forberede kontakten. Den har ansvaret for, at beskeden til kunden er skrevet og klar.
 Tilmelding åbner snart. [Tilmeld dig serien](#tilmeld-serien), så får du besked.
 Onsdag 16. december 2026, 15.00 til 16.00
 
@@ -46,7 +46,7 @@ Du får webinarlinket og din bekræftelse, også uden kryds. Begge kommer fra Lu
 Ja. Alle fire webinarer er gratis, foregår online og er på dansk. Du vælger selv, hvilke emner du vil følge. Hvert webinar har sin egen tilmelding på Luma, så tilmeld dig de enkelte webinarer, du vil deltage i. Der er ingen betaling for at tilmelde dig.
 
 ### Skal jeg kunne noget med AI?
-Nej. Du behøver ikke have erfaring med AI eller kende tekniske begreber. Webinarerne tager udgangspunkt i opgaver fra arbejdsdagen og viser, hvordan en AI-agent kan hjælpe med dem. Du kan følge med uden særlige forudsætninger. Når noget skal sendes, godkender et menneske det først.
+Nej. Du behøver ikke have erfaring med AI eller kende tekniske begreber. Webinarerne tager udgangspunkt i opgaver fra arbejdsdagen og viser, hvordan en AI-agent kan hjælpe med dem. Du kan følge med uden særlige forudsætninger. Start med en konkret opgave og en digital medarbejder, der har ansvaret for den.
 
 ### Hvem præsenterer?
 Maskin-teamet præsenterer webinarerne. Navnet på den, der præsenterer det enkelte webinar, står på webinarets tilmeldingsside på Luma. Hvert webinar tager udgangspunkt i én konkret opgave fra arbejdsdagen og varer en time, onsdag kl. 15.00 til 16.00. Alle webinarer er på dansk og foregår online.
