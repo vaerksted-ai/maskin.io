@@ -12,7 +12,7 @@ For product teams whose research folder never quite makes it into the roadmap.
 
 ## The 4-step flow
 1. **Build your strategy** Write down what matters to your team. Maskin uses it to check everything it hears.
-2. **Find the right opportunities** Maskin reads [customer calls and sales meetings](/loops/ai-customer-feedback-loop/), [watches competitors](/loops/competitive-intelligence/) and the market, and groups what it hears into opportunities with the evidence behind each.
+2. **Find the right opportunities** Maskin reads [customer calls and sales meetings](/loops/ai-customer-feedback-loop/), [watches competitors](/marketplace/competitor-watch/) and the market, and groups what it hears into opportunities with the evidence behind each.
 3. **Turn them into bets** Strong opportunities become bets staged at the opportunity status in your workspace.
 4. **Test them with customers** Your team runs the customer tests, using the evidence Maskin brings.
 
