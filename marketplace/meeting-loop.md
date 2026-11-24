@@ -30,7 +30,7 @@ For each meeting, Maskin writes an analysis based on meeting type, files tasks, 
 
 ## What you need to run it
 - Install the Flow. Nothing is connected when you install it.
-- Connect the meeting tool you use. Google Meet and Microsoft Teams give Maskin a transcript directly: Google Meet transcripts are read as soon as they are ready, and Teams meetings on your calendar that had transcription on are picked up by the sweep (work or school accounts only, and your IT admin must allow transcript access). Zoom and other tools need a notetaker tool in between, or a tool server you add yourself.
+- Connect the meeting tool you use. Google Meet and Microsoft Teams give Maskin a transcript directly: Google Meet transcripts are read as soon as they are ready, and Teams meetings on your calendar that had transcription on are picked up by the sweep (work or school accounts only, and some companies need an IT admin to approve transcript access). Zoom and other tools need a notetaker tool in between, or a tool server you add yourself.
 - Google Calendar is optional. Connect it for agenda drafts based on scheduled internal meetings.
 - A notetaker tool is optional. Connect it if your meeting tool does not hand over transcripts, such as Zoom.
 - Connect whichever of those tools you use. None is required. If you connect none, you can add a written reflection to a meeting. Without a transcript, recording, or reflection, the meeting stays at “happened” and says it has no recording.
