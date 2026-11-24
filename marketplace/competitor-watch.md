@@ -1,7 +1,7 @@
 > Source: https://maskin.io/marketplace/competitor-watch/
 
 # Know what changed in your market every week.
-Competitor watch scans the competitors you name, plus personal agents and your wider category, every Sunday and rewrites one sourced briefing.
+Competitor watch runs competitor monitoring every Sunday across the competitors you name, personal agents and your wider category, then rewrites one sourced briefing.
 ![Know what changed in your market every week. The competitor watch flow.](/og-image-market-watch.png)
 
 ## The job
@@ -28,6 +28,7 @@ Every Sunday, one page is rewritten with a quick read, what needs action, recent
 6. Every Monday, Maskin checks that the scan ran and the page was rewritten. If not, it restarts the scan once, then once more, and tells the workspace owner if it still has not run.
 7. Each month, Maskin proposes competitor list changes for a person to confirm, and prepares a longer view of where the market is heading, whether the plan is right, and what to do one year ahead.
 Amber steps are human approvals.
+For the pattern behind this flow, read [competitive intelligence loop: how it works](/loops/competitive-intelligence/).
 ![Competitor watch flow in seven steps, from searching the last 7 days to the briefing page and the Monday restart check, then it runs again.](/marketplace/competitor-watch/flow.png)
 
 ## What ships
@@ -35,6 +36,15 @@ Amber steps are human approvals.
 - **4 triggers:** the weekly sweep (Sunday, 07:00 UTC), the monthly list review (20th, 09:00 UTC), the monthly long view (3rd, 08:00 UTC) and the Monday check (05:30 UTC).
 - **4 skills:** one each for the sweep, the briefing page, the competitor list review and the long-view page.
 - **No custom tabs:** the briefing and the long view are pages in your workspace, created on the first run.
+
+## Example week of competitor monitoring
+Example briefing, week of 9 March, for a fictional company, Brightlane (project software for architects).
+**Quick read:** Threat level Medium (since 2 March). A rival, Plotwise, cut its entry price by 30% and launched a free tier. Nothing forces a change yet, but the pricing page claim “cheapest for studios” is now weak.
+**Act now:** Head of marketing reviews the “cheapest for studios” line by Friday.
+**Competitors:** Plotwise, 4 March, new free tier (source link, confidence High). Studiolane, 6 March, hired a head of partnerships from a large CAD vendor (source link, confidence Medium).
+**Personal agents:** a personal sketching assistant launched voice notes that turn into tasks. What we can learn: first-run setup takes one minute.
+**Category:** two large design-tool vendors added AI search to their base plans (2 sources, confidence Medium).
+**Watch next:** whether Plotwise’s free tier has a seat limit. Whether Studiolane announces a partner programme.
 
 ## What you need to run it
 - Install the flow.
@@ -48,15 +58,6 @@ Amber steps are human approvals.
 - **Your data stays yours:** nothing is sent outside the workspace. Maskin does not email competitors or post anywhere.
 - **Fails safely:** if the Monday check finds a missed scan or rewrite, Maskin retries twice, then tells the workspace owner.
 - **How you are told:** Maskin posts a comment on the flow that mentions the workspace owner for each Act now item and each material move, and when the Monday check cannot get the scan to run. The flow sends no Slack message or email.
-
-## Example week
-Example briefing, week of 9 March, for a fictional company, Brightlane (project software for architects).
-**Quick read:** Threat level Medium (since 2 March). A rival, Plotwise, cut its entry price by 30% and launched a free tier. Nothing forces a change yet, but the pricing page claim “cheapest for studios” is now weak.
-**Act now:** Head of marketing reviews the “cheapest for studios” line by Friday.
-**Competitors:** Plotwise, 4 March, new free tier (source link, confidence High). Studiolane, 6 March, hired a head of partnerships from a large CAD vendor (source link, confidence Medium).
-**Personal agents:** a personal sketching assistant launched voice notes that turn into tasks. What we can learn: first-run setup takes one minute.
-**Category:** two large design-tool vendors added AI search to their base plans (2 sources, confidence Medium).
-**Watch next:** whether Plotwise’s free tier has a seat limit. Whether Studiolane announces a partner programme.
 
 ## Install this flow in your workspace
 Sign in or sign up, then confirm the flow in the Maskin app.

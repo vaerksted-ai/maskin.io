@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Competitor watch: know what changed in your market every week | Maskin</title>
+<title>Competitor watch: weekly competitor monitoring | Maskin</title>
 <meta name="description" content="Competitor watch scans the competitors you name, personal agents and the wider category every Sunday and rewrites one briefing, with a source link, date and confidence on each change.">
 
 <!-- Canonical -->
@@ -55,7 +55,7 @@
       "url": "https://maskin.io/marketplace/competitor-watch/",
       "inLanguage": "en",
       "datePublished": "2026-10-23T00:00:00Z",
-      "dateModified": "2026-11-23T00:00:00Z",
+      "dateModified": "2026-11-24T00:00:00Z",
       "image": [
         "https://maskin.io/og-image-market-watch.png"
       ],
@@ -116,14 +116,14 @@
     <div class="mp-hero__text">
       <div class="mp-kind"><span class="mp-ico" aria-hidden="true">CW</span><span>Flow &middot; Product</span></div>
       <h1>Know what changed in your market every week.</h1>
-      <p class="mp-lead">Competitor watch scans the competitors you name, plus personal agents and your wider category, every Sunday and rewrites one sourced briefing.</p>
+      <p class="mp-lead">Competitor watch runs competitor monitoring every Sunday across the competitors you name, personal agents and your wider category, then rewrites one sourced briefing.</p>
       <div class="mp-actions" data-loop-install="competitive-intelligence" data-install-position="top"><a class="mp-btn" href="/install/market-competitor-watch-loop" data-install-link data-install-slug="competitive-intelligence">Install this flow</a></div>
       
     </div>
     <figure class="mp-hero__img"><img src="/og-image-market-watch.png" width="1200" height="630" alt="Know what changed in your market every week. The competitor watch flow." fetchpriority="high"></figure>
   </header>
   <div class="mp-body">
-    <nav class="mp-toc" aria-label="On this page"><span class="mp-toc__title">On this page</span><a href="#the-job">The job</a><a href="#what-your-team-keeps-what-maskin-runs">What your team keeps, what Maskin runs</a><a href="#how-the-flow-runs">How the flow runs</a><a href="#what-ships">What ships</a><a href="#what-you-need-to-run-it">What you need to run it</a><a href="#trust-surface">Trust surface</a><a href="#example-week">Example week</a><a href="#next">Read next</a></nav>
+    <nav class="mp-toc" aria-label="On this page"><span class="mp-toc__title">On this page</span><a href="#the-job">The job</a><a href="#what-your-team-keeps-what-maskin-runs">What your team keeps, what Maskin runs</a><a href="#how-the-flow-runs">How the flow runs</a><a href="#what-ships">What ships</a><a href="#example-week">Example week of competitor monitoring</a><a href="#what-you-need-to-run-it">What you need to run it</a><a href="#trust-surface">Trust surface</a><a href="#next">Read next</a></nav>
     <div class="mp-main doc-content">
   <section class="mp-sec">
     <h2 id="the-job">The job</h2>
@@ -157,6 +157,7 @@
       <li class="mp-step mp-step--approval"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Each month, Maskin proposes competitor list changes for a person to confirm, and prepares a longer view of where the market is heading, whether the plan is right, and what to do one year ahead.</div></li>
       </ol>
       <p class="mp-legend">Amber steps are human approvals.</p>
+      <p>For the pattern behind this flow, read <a href="/loops/competitive-intelligence/">competitive intelligence loop: how it works</a>.</p>
   
       <figure class="mp-flow"><img src="/marketplace/competitor-watch/flow.png" width="1600" height="1000" alt="Competitor watch flow in seven steps, from searching the last 7 days to the briefing page and the Monday restart check, then it runs again." loading="lazy"></figure>
   </section>
@@ -168,6 +169,16 @@
       <li><strong>4 skills:</strong> one each for the sweep, the briefing page, the competitor list review and the long-view page.</li>
       <li><strong>No custom tabs:</strong> the briefing and the long view are pages in your workspace, created on the first run.</li>
     </ul>
+  </section>
+  <section class="mp-sec">
+    <h2 id="example-week">Example week of competitor monitoring</h2>
+    <p>Example briefing, week of 9 March, for a fictional company, Brightlane (project software for architects).</p>
+    <p><strong>Quick read:</strong> Threat level Medium (since 2 March). A rival, Plotwise, cut its entry price by 30% and launched a free tier. Nothing forces a change yet, but the pricing page claim &ldquo;cheapest for studios&rdquo; is now weak.</p>
+    <p><strong>Act now:</strong> Head of marketing reviews the &ldquo;cheapest for studios&rdquo; line by Friday.</p>
+    <p><strong>Competitors:</strong> Plotwise, 4 March, new free tier (source link, confidence High). Studiolane, 6 March, hired a head of partnerships from a large CAD vendor (source link, confidence Medium).</p>
+    <p><strong>Personal agents:</strong> a personal sketching assistant launched voice notes that turn into tasks. What we can learn: first-run setup takes one minute.</p>
+    <p><strong>Category:</strong> two large design-tool vendors added AI search to their base plans (2 sources, confidence Medium).</p>
+    <p><strong>Watch next:</strong> whether Plotwise&rsquo;s free tier has a seat limit. Whether Studiolane announces a partner programme.</p>
   </section>
   <section class="mp-sec">
     <h2 id="what-you-need-to-run-it">What you need to run it</h2>
@@ -187,16 +198,6 @@
       <li><strong>Fails safely:</strong> if the Monday check finds a missed scan or rewrite, Maskin retries twice, then tells the workspace owner.</li>
       <li><strong>How you are told:</strong> Maskin posts a comment on the flow that mentions the workspace owner for each Act now item and each material move, and when the Monday check cannot get the scan to run. The flow sends no Slack message or email.</li>
     </ul>
-  </section>
-  <section class="mp-sec">
-    <h2 id="example-week">Example week</h2>
-    <p>Example briefing, week of 9 March, for a fictional company, Brightlane (project software for architects).</p>
-    <p><strong>Quick read:</strong> Threat level Medium (since 2 March). A rival, Plotwise, cut its entry price by 30% and launched a free tier. Nothing forces a change yet, but the pricing page claim &ldquo;cheapest for studios&rdquo; is now weak.</p>
-    <p><strong>Act now:</strong> Head of marketing reviews the &ldquo;cheapest for studios&rdquo; line by Friday.</p>
-    <p><strong>Competitors:</strong> Plotwise, 4 March, new free tier (source link, confidence High). Studiolane, 6 March, hired a head of partnerships from a large CAD vendor (source link, confidence Medium).</p>
-    <p><strong>Personal agents:</strong> a personal sketching assistant launched voice notes that turn into tasks. What we can learn: first-run setup takes one minute.</p>
-    <p><strong>Category:</strong> two large design-tool vendors added AI search to their base plans (2 sources, confidence Medium).</p>
-    <p><strong>Watch next:</strong> whether Plotwise&rsquo;s free tier has a seat limit. Whether Studiolane announces a partner programme.</p>
   </section>
   <section class="mp-sec"><div class="mp-cta">
       <div class="mp-cta__text"><h2 class="mp-cta__title">Install this flow in your workspace</h2><p class="mp-cta__note">Sign in or sign up, then confirm the flow in the Maskin app.</p></div>
