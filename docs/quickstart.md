@@ -9,16 +9,16 @@ You need a running Maskin instance with Claude connected to it over MCP. Which s
 - **Self-hosted:** run your own instance with your Anthropic key saved and Claude connected. A fresh instance only accepts your own key once your user id is listed in `MASKIN_ENTERPRISE_ACTOR_IDS`; without it, set `MASKIN_FALLBACK_OPENROUTER_KEY` instead. Both are covered in [Self-hosted setup](/docs/get-started/self-hosted/) (see Step 2). Finish that first, then come back here.
 Quick check: ask Claude *"List the maskin MCP tools"* and confirm you get a list back.
 
-## Step 1 — Seed your workspace
+## Step 1 — Install a flow
 Ask Claude:
 ```
-Use the maskin MCP to call get_started and show me the preview.
+Use the maskin MCP to call list_marketplace and show me the flows I can install.
 ```
-`get_started` runs in two phases. The first call returns a **preview** of a template (**development**, **growth**, or **custom**) plus a few tailoring questions — object types, statuses, custom fields, starter agents, and triggers. When it looks right, confirm:
+`list_marketplace` only reads. It returns the ready-made flows with their ids, descriptions and use cases. To install one, tell Claude which you want:
 ```
-Apply the development template — call get_started again with confirm: true.
+Install the flow I picked with install_loop.
 ```
-Your workspace now has its schema and a starter set of objects and agents.
+Calling `install_loop` is the confirmation, so name the flow before you ask. It creates the flow's agents, triggers and skills and the running flow itself.
 
 ## Step 2 — Capture an insight and a bet
 Create two linked objects in one go:
