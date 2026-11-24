@@ -112,12 +112,12 @@ Save and restart Claude Desktop.
 ## Step 5 — Make your first MCP call
 Ask Claude:
 ```
-Use the maskin MCP to call get_started.
+Use the maskin MCP to call list_marketplace.
 ```
-The `get_started` tool previews and applies a workspace template — **development**, **growth**, or **custom** — seeding your workspace with object types, statuses, custom fields, and an initial set of objects. See the full tool set in the [MCP tools reference](/docs/mcp-tools/).
+To see the ready-made flows, call `list_marketplace`. To install one, ask Claude which you want, then it calls `install_loop` with that flow's id. See the full tool set in the [MCP tools reference](/docs/mcp-tools/).
 
 ## What's next
-- Take the tour → [Quickstart tutorial](/docs/quickstart/) — seed a workspace, create your first insight and bet, and put an agent to work end-to-end.
+- Take the tour → [Quickstart tutorial](/docs/quickstart/) — install a flow, create your first insight and bet, and put an agent to work end-to-end.
 - Invite teammates from **Settings → Members**.
 - Wire up integrations (Slack, GitHub, Linear, Gmail, PostHog) — see [Integrations setup](/docs/integrations/).
 - Tune your deployment with the [configuration reference](/docs/configuration/).
@@ -215,16 +215,16 @@ You need a running Maskin instance with Claude connected to it over MCP. Which s
 - **Self-hosted:** run your own instance with your Anthropic key saved and Claude connected. A fresh instance only accepts your own key once your user id is listed in `MASKIN_ENTERPRISE_ACTOR_IDS`; without it, set `MASKIN_FALLBACK_OPENROUTER_KEY` instead. Both are covered in [Self-hosted setup](/docs/get-started/self-hosted/) (see Step 2). Finish that first, then come back here.
 Quick check: ask Claude *"List the maskin MCP tools"* and confirm you get a list back.
 
-## Step 1 — Seed your workspace
+## Step 1 — Install a flow
 Ask Claude:
 ```
-Use the maskin MCP to call get_started and show me the preview.
+Use the maskin MCP to call list_marketplace and show me the flows I can install.
 ```
-`get_started` runs in two phases. The first call returns a **preview** of a template (**development**, **growth**, or **custom**) plus a few tailoring questions — object types, statuses, custom fields, starter agents, and triggers. When it looks right, confirm:
+`list_marketplace` only reads. It returns the ready-made flows with their ids, descriptions and use cases. To install one, tell Claude which you want:
 ```
-Apply the development template — call get_started again with confirm: true.
+Install the flow I picked with install_loop.
 ```
-Your workspace now has its schema and a starter set of objects and agents.
+Calling `install_loop` is the confirmation, so name the flow before you ask. It creates the flow's agents, triggers and skills and the running flow itself.
 
 ## Step 2 — Capture an insight and a bet
 Create two linked objects in one go:
@@ -412,6 +412,7 @@ MCP tools are the callable operations a Model Context Protocol server exposes to
 ## The MCP tools Maskin exposes
 Maskin's MCP server surfaces its verbs under the `mcp__maskin__` namespace. Each tool has a JSONSchema-defined parameter shape and validates its input server-side; type-specific validity (statuses, required fields, enum values) is enforced on the write path against `settings.statuses.<type>` and workspace-configured field schemas.
 Coding agents are MCP clients too. On [the open-source AI coding agent shortlist](/alternatives/open-source-ai-coding-agent/), Cline is MCP-native and Goose builds its tool use on MCP, so either can call the verbs below.
+Maskin is listed in the official MCP Registry as io.github.sindre-ai/maskin.
 The main clusters are:
 - Object operations — create, read, update, delete typed rows in the graph.
 - Relationship operations — write, enumerate, traverse, and delete edges.
@@ -4072,7 +4073,7 @@ claude mcp add --transport http maskin \
   --header "Authorization: Bearer <MASKIN_API_KEY>" \
   --header "X-Workspace-Id: <WORKSPACE_ID>"
 ```
-Create the API key (the `ank_` value) under Settings, API keys, and copy the workspace ID from the Workspace settings page. Run `/reload-plugins`, then ask Claude to call `get_started`. This is checked against Anthropic's MCP docs and Maskin's server code, not a connect from a fresh Claude Code install. The [self-hosted setup guide](/docs/get-started/self-hosted/) has the full steps, and the [MCP tools reference](/docs/mcp-tools/) lists what is exposed. Once connected, Claude Code can read and write the same bets and decisions the rest of your team sees, rather than keeping them in a private folder.
+Create the API key (the `ank_` value) under Settings, API keys, and copy the workspace ID from the Workspace settings page. Run `/reload-plugins`, then ask Claude to call `list_marketplace` to see the ready-made flows. This is checked against Anthropic's MCP docs and Maskin's server code, not a connect from a fresh Claude Code install. The [self-hosted setup guide](/docs/get-started/self-hosted/) has the full steps, and the [MCP tools reference](/docs/mcp-tools/) lists what is exposed. Once connected, Claude Code can read and write the same bets and decisions the rest of your team sees, rather than keeping them in a private folder.
 As head of product, you can keep one team record even when your engineers use other tools. The tool each person runs stays their choice; what changes is where the result is kept. The comparisons: [what changes when your team runs both Claude Code and Codex](/docs/claude-code-vs-codex/), [Claude Code vs Cursor](/docs/claude-code-vs-cursor/) and [Claude Code vs GitHub Copilot](/docs/claude-code-vs-github-copilot/).
 The [product discovery loop](/marketplace/product-discovery/) page walks through the PM job described above: interviews, tickets and reviews are recorded as insights, a person reviews and shapes each bet before it is approved, and after it ships the outcome is checked against the signal that started it. For the market-watching part of the job, the [competitive intelligence loop](/marketplace/competitor-watch/) reads competitor changelogs and pricing pages and routes each change to sales and to a bet. See [what an agentic workspace is](/docs/what-is-an-agentic-workspace/) for the full lifecycle and [the closed-loop workspace](/docs/closed-loop-workspace/) for the longer argument.
 Where Maskin is the wrong pick:

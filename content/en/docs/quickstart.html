@@ -1,11 +1,11 @@
 @@ meta
 title: Maskin quickstart tutorial: your first agent in 10 minutes — Docs
 canonical: https://maskin.io/docs/quickstart/
-description: Hands-on Maskin quickstart: connect Claude, seed a workspace, create an insight and a bet, and run your first agent session in about ten minutes.
+description: Hands-on Maskin quickstart: connect Claude, install a flow, create an insight and a bet, and run your first agent session in about ten minutes.
 og:type: article
 og:url: https://maskin.io/docs/quickstart/
 og:title: Maskin quickstart tutorial
-og:description: Hands-on Maskin quickstart: connect Claude, seed a workspace, create an insight and a bet, and run your first agent session in about ten minutes.
+og:description: Hands-on Maskin quickstart: connect Claude, install a flow, create an insight and a bet, and run your first agent session in about ten minutes.
 og:image: https://maskin.io/og-image.png?v=2
 active: /docs/quickstart/
 shell.pre: p2
@@ -20,7 +20,7 @@ shell.tail: t1
       "@type": "TechArticle",
       "headline": "Maskin quickstart tutorial",
       "name": "Maskin quickstart tutorial",
-      "description": "Hands-on Maskin quickstart: connect Claude, seed a workspace, create an insight and a bet, and run your first agent session in about ten minutes.",
+      "description": "Hands-on Maskin quickstart: connect Claude, install a flow, create an insight and a bet, and run your first agent session in about ten minutes.",
       "inLanguage": "en",
       "url": "https://maskin.io/docs/quickstart/",
       "isPartOf": "https://maskin.io/docs/",
@@ -66,12 +66,12 @@ shell.tail: t1
     </ul>
     <p>Quick check: ask Claude <em>"List the maskin MCP tools"</em> and confirm you get a list back.</p>
 
-    <h2>Step 1 — Seed your workspace</h2>
+    <h2>Step 1 — Install a flow</h2>
     <p>Ask Claude:</p>
-    <pre><code>Use the maskin MCP to call get_started and show me the preview.</code></pre>
-    <p><code>get_started</code> runs in two phases. The first call returns a <strong>preview</strong> of a template (<strong>development</strong>, <strong>growth</strong>, or <strong>custom</strong>) plus a few tailoring questions — object types, statuses, custom fields, starter agents, and triggers. When it looks right, confirm:</p>
-    <pre><code>Apply the development template — call get_started again with confirm: true.</code></pre>
-    <p>Your workspace now has its schema and a starter set of objects and agents.</p>
+    <pre><code>Use the maskin MCP to call list_marketplace and show me the flows I can install.</code></pre>
+    <p><code>list_marketplace</code> only reads. It returns the ready-made flows with their ids, descriptions and use cases. To install one, tell Claude which you want:</p>
+    <pre><code>Install the flow I picked with install_loop.</code></pre>
+    <p>Calling <code>install_loop</code> is the confirmation, so name the flow before you ask. It creates the flow's agents, triggers and skills and the running flow itself.</p>
 
     <h2>Step 2 — Capture an insight and a bet</h2>
     <p>Create two linked objects in one go:</p>

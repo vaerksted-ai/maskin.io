@@ -6,7 +6,7 @@ Maskin gives humans and AI agents one shared place to work. Everything flows thr
 
 Run it two ways: **self-hosted** (clone the open-source repo, install with pnpm, run pnpm dev; free under Apache 2.0) or **managed**. Agent sessions run Claude Code or Codex: self-hosted and Enterprise workspaces use your own Anthropic or OpenAI access, while trial, Pro and Team use a Maskin-funded route.
 
-Setup in one line — connect Claude to a Maskin instance over MCP, then ask Claude to call `get_started`:
+Setup in one line — connect Claude to a Maskin instance over MCP, then ask Claude to call `list_marketplace` to see the ready-made flows (install one with `install_loop`):
 `claude mcp add --transport http maskin https://<your-maskin-host>/mcp --header "Authorization: Bearer <MASKIN_API_KEY>" --header "X-Workspace-Id: <WORKSPACE_ID>"`
 
 ## How to use this site (for agents)

@@ -78,12 +78,12 @@ Save and restart Claude Desktop.
 ## Step 5 — Make your first MCP call
 Ask Claude:
 ```
-Use the maskin MCP to call get_started.
+Use the maskin MCP to call list_marketplace.
 ```
-The `get_started` tool previews and applies a workspace template — **development**, **growth**, or **custom** — seeding your workspace with object types, statuses, custom fields, and an initial set of objects. See the full tool set in the [MCP tools reference](/docs/mcp-tools/).
+To see the ready-made flows, call `list_marketplace`. To install one, ask Claude which you want, then it calls `install_loop` with that flow's id. See the full tool set in the [MCP tools reference](/docs/mcp-tools/).
 
 ## What's next
-- Take the tour → [Quickstart tutorial](/docs/quickstart/) — seed a workspace, create your first insight and bet, and put an agent to work end-to-end.
+- Take the tour → [Quickstart tutorial](/docs/quickstart/) — install a flow, create your first insight and bet, and put an agent to work end-to-end.
 - Invite teammates from **Settings → Members**.
 - Wire up integrations (Slack, GitHub, Linear, Gmail, PostHog) — see [Integrations setup](/docs/integrations/).
 - Tune your deployment with the [configuration reference](/docs/configuration/).
