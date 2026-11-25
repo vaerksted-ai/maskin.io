@@ -80,6 +80,7 @@ ORDER = [
   "marketplace/product-usage/index.html",
   "marketplace/accounting/index.html",
   "da/saet-stroem/index.html",
+  "da/bogforing/index.html",
 ]
 
 class MD(HTMLParser):
@@ -208,7 +209,7 @@ def md_path(path):
     return d+".md"
 
 made=[]
-for pattern in ("docs/**/index.html", "marketplace/**/index.html", "da/saet-stroem/index.html"):
+for pattern in ("docs/**/index.html", "marketplace/**/index.html", "da/saet-stroem/index.html", "da/bogforing/index.html"):
     for path in glob.glob(pattern, recursive=True):
         if path in ("docs/index.html", "marketplace/index.html"): continue
         text=convert(path)

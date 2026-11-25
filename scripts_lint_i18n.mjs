@@ -451,7 +451,8 @@ export function lint(opts = {}) {
     const text = visibleText(html.get(p.path));
     for (const [b, re] of bannedRes) if (re.test(text)) err('L12', p.path, `contains banned string "${b}"`);
     const price = text.match(PRICE_RE);
-    if (price) err('L12', p.path, `contains a price pattern "${price[0]}"`);
+    // allow_price: true in the manifest is a per-page opt-in for a listing whose price is part of the offer.
+    if (price && p.allow_price !== true) err('L12', p.path, `contains a price pattern "${price[0]}"`);
   }
 
   // ---- L13 draft leftovers

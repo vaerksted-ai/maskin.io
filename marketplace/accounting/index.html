@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Månedens bilag samlet i et udkast | Maskin</title>
-<meta name="description" content="Månedens kvitteringer og bankposter samles i et udkast og en liste over punkter, der skal afklares. En bogholder gennemgår udkastet, før noget bogføres.">
+<title>Get receipts in as drafts | Maskin</title>
+<meta name="description" content="Choose your own bookkeeping system, upload receipts in the chat, and see drafts with uncertain entries marked.">
 
-<!-- Canonical (self-referential, trailing slash). Danish page, no hreflang, no English twin. -->
+<!-- Canonical (self-referential, trailing slash). English and Danish twins, hreflang both ways. -->
 <link rel="canonical" href="https://maskin.io/marketplace/accounting/">
+<link rel="alternate" hreflang="en" href="https://maskin.io/marketplace/accounting/">
+<link rel="alternate" hreflang="da" href="https://maskin.io/da/bogforing/">
+<link rel="alternate" hreflang="x-default" href="https://maskin.io/">
 
 <!-- Favicons -->
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -20,20 +23,20 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://maskin.io/marketplace/accounting/">
-<meta property="og:title" content="Månedens bilag samlet i et udkast | Maskin">
-<meta property="og:description" content="Månedens kvitteringer og bankposter samles i et udkast og en liste over punkter, der skal afklares. En bogholder gennemgår udkastet, før noget bogføres.">
+<meta property="og:title" content="Get receipts in as drafts | Maskin">
+<meta property="og:description" content="Choose your own bookkeeping system, upload receipts in the chat, and see drafts with uncertain entries marked.">
 <meta property="og:image" content="https://maskin.io/marketplace/accounting/accounting-hero-1200x628.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="628">
-<meta property="og:image:alt" content="Kvitteringer går fra rod til orden, og én er markeret i blå.">
+<meta property="og:image:alt" content="Receipts go from a messy pile to an orderly set, and one is marked in blue.">
 <meta property="og:site_name" content="Maskin">
-<meta property="og:locale" content="da_DK">
+<meta property="og:locale" content="en_US">
 
 <!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@maskin_io">
-<meta name="twitter:title" content="Månedens bilag samlet i et udkast | Maskin">
-<meta name="twitter:description" content="Månedens kvitteringer og bankposter samles i et udkast og en liste over punkter, der skal afklares. En bogholder gennemgår udkastet, før noget bogføres.">
+<meta name="twitter:title" content="Get receipts in as drafts | Maskin">
+<meta name="twitter:description" content="Choose your own bookkeeping system, upload receipts in the chat, and see drafts with uncertain entries marked.">
 <meta name="twitter:image" content="https://maskin.io/marketplace/accounting/accounting-hero-1200x628.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,13 +52,13 @@
   "@graph": [
     {
       "@type": "WebPage",
-      "headline": "Månedens bilag samlet i et udkast | Maskin",
-      "name": "Månedens bilag samlet i et udkast | Maskin",
-      "description": "Månedens kvitteringer og bankposter samles i et udkast og en liste over punkter, der skal afklares. En bogholder gennemgår udkastet, før noget bogføres.",
+      "headline": "Get receipts in as drafts | Maskin",
+      "name": "Get receipts in as drafts | Maskin",
+      "description": "Choose your own bookkeeping system, upload receipts in the chat, and see drafts with uncertain entries marked.",
       "url": "https://maskin.io/marketplace/accounting/",
-      "inLanguage": "da",
+      "inLanguage": "en",
       "datePublished": "2026-11-09T00:00:00Z",
-      "dateModified": "2026-11-09T00:00:00Z",
+      "dateModified": "2026-11-25T00:00:00Z",
       "image": ["https://maskin.io/marketplace/accounting/accounting-hero-1200x628.png"],
       "author": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" },
       "publisher": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" },
@@ -65,9 +68,9 @@
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Hjem", "item": "https://maskin.io/" },
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maskin.io/" },
         { "@type": "ListItem", "position": 2, "name": "Marketplace", "item": "https://maskin.io/marketplace/" },
-        { "@type": "ListItem", "position": 3, "name": "Månedens bilag", "item": "https://maskin.io/marketplace/accounting/" }
+        { "@type": "ListItem", "position": 3, "name": "Receipts as drafts", "item": "https://maskin.io/marketplace/accounting/" }
       ]
     }
   ]
@@ -77,9 +80,11 @@
 <style>
   /* Accounting listing: shares the shell used on the other /marketplace/ loop pages. */
   .hero-visual { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--rule); margin: 1.5rem 0 2rem; }
-  .flow-visual { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--rule); margin: 1.5rem 0 2rem; }
   .price-line { font-family: var(--ff-display); font-weight: 600; font-size: 1.5rem; color: var(--ink); margin: 0 0 .75rem; }
   .trust-item { margin: 0 0 .9rem; }
+  .job { margin: 0 0 1rem; }
+  .job-status { font-style: normal; display: inline-block; font-family: var(--ff-mono); font-size: .72rem; font-weight: 500; letter-spacing: .02em; padding: .05rem .5rem; border: 1px solid var(--rule); border-radius: 999px; color: var(--ink-2); white-space: nowrap; }
+  .job-status--available { color: var(--ink); border-color: var(--ink); }
 </style>
 </head>
 <body>
@@ -89,89 +94,95 @@
 <noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
 <main class="wrap mp" id="mp">
   
-  <nav class="mp-crumb" aria-label="Breadcrumb"><a href="/marketplace/">Marketplace</a><span aria-hidden="true">/</span><a href="/marketplace/#finance">Finance</a><span aria-hidden="true">/</span><span>Månedens bilag</span></nav>
+  <nav class="mp-crumb" aria-label="Breadcrumb"><a href="/marketplace/">Marketplace</a><span aria-hidden="true">/</span><a href="/marketplace/#finance">Finance</a><span aria-hidden="true">/</span><span>Receipts as drafts</span></nav>
   <header class="mp-hero">
     <div class="mp-hero__text">
-      <div class="mp-kind"><span class="mp-ico" aria-hidden="true">MB</span><span>Tilbud &middot; Bogføring</span></div>
-      <h1>Lad månedens bilag køre i Maskin, så du ved, hvad der skal afklares, mens Maskin laver et udkast og peger på poster, der ser forkerte ud.</h1>
-      <div class="mp-actions" data-loop-install="accounting-loop" data-install-position="top"><a class="mp-btn" href="/install/accounting-loop" data-install-link data-install-slug="accounting-loop">Installér forløbet</a></div>
+      <div class="mp-kind"><span class="mp-ico" aria-hidden="true">MB</span><span>Flow &middot; Bookkeeping</span></div>
+      <h1>Run this month&#x27;s receipts through Maskin so you know what needs clarification while Maskin creates a draft and points out entries that look wrong.</h1>
+      <div class="mp-actions" data-loop-install="accounting-loop" data-install-position="top"><a class="mp-btn" href="/install/accounting-loop" data-install-link data-install-slug="accounting-loop">Install the flow</a></div>
     </div>
-    <figure class="mp-hero__img"><img src="/marketplace/accounting/accounting-hero-1200x628.png" width="1200" height="630" alt="Kvitteringer går fra rod til orden, og én er markeret i blå." fetchpriority="high"></figure>
+    <figure class="mp-hero__img"><img src="/marketplace/accounting/accounting-hero-1200x628.png" width="1200" height="630" alt="Receipts go from a messy pile to an orderly set, and one is marked in blue." fetchpriority="high"></figure>
   </header>
   <div class="mp-body">
-    <nav class="mp-toc" aria-label="På denne side"><span class="mp-toc__title">På denne side</span><a href="#opgaven">Opgaven</a><a href="#hvem-gr-hvad">Hvem gør hvad</a><a href="#sadan-krer-det">Sådan kører det</a><a href="#tryghed">Tryghed</a><a href="#forbind-dinero">Forbind Dinero</a><a href="#pris-og-timer">Pris og timer</a><a href="#tag-fat">Tag fat</a></nav>
+    <nav class="mp-toc" aria-label="On this page"><span class="mp-toc__title">On this page</span><a href="#task">The task</a><a href="#system">Choose your system</a><a href="#how">How it works</a><a href="#does">What the flow does</a><a href="#safety">Safety</a><a href="#price">Price</a><a href="#contact">Get in touch</a></nav>
     <div class="mp-main doc-content">
   <section class="mp-sec">
-    <h2 id="opgaven">Opgaven</h2>
-    <p>Månedens kvitteringer og bankposter samles i et udkast og en liste over punkter, der skal afklares, fx en manglende kvittering eller en betaling, der står to gange. Når tilbuddet starter, gennemgår en bogholder fra en samarbejdspartner udkastet og listen. Du beholder dit eget bogføringssystem, og Maskin bygger ovenpå det. Vil du se forarbejdet til årsafslutningen vist live, før du beslutter dig, er der et gratis webinar på dansk den 25. november i serien <a href="/da/saet-stroem/">Sæt strøm til din forretning</a>.</p>
-    <p>Tilbuddet er bygget til at mindske kassen med kvitteringer, jagten på en bogholder og bilagsrod, der først opdages sent.</p>
-    <p>Det er stadig dig og din bogholder, der svarer på spørgsmål og træffer beslutninger.</p>
+    <h2 id="task">The task</h2>
+    <p>Skip sorting receipts by hand. Upload them, and Maskin saves them as drafts in your own bookkeeping system. You keep your system and choose it in the first chat in the flow. Maskin marks anything it is unsure about.</p>
   </section>
   <section class="mp-sec">
-    <h2 id="hvem-gr-hvad">Hvem gør hvad</h2>
+    <h2 id="system">Choose your system</h2>
+    <p>You use one flow and choose your own bookkeeping system in the first chat. Here you can see the status of each system and what setup is required.</p>
     <div class="mp-scroll"><div class="doc-table-wrap">
       <table class="doc-table">
         <thead>
-          <tr><th>Du og bogholderen fra en samarbejdspartner står for</th><th>Maskin hjælper med</th></tr>
+          <tr><th>System</th><th>Status</th><th>What you do</th></tr>
         </thead>
         <tbody>
-          <tr><td>Dit eget bogføringssystem</td><td>Læser kvitteringer og bankposter</td></tr>
-          <tr><td>Gennemgang af udkast og liste</td><td>Samler posteringer i et udkast</td></tr>
-          <tr><td>Svar på spørgsmål om bilag</td><td>Finder fx en manglende kvittering</td></tr>
-          <tr><td>Beslutningen om en udgift er privat eller erhverv</td><td>Kobler hver post til en kvittering</td></tr>
-          <tr><td>Beslutningen om, hvad der kan bogføres</td><td>Samler månedens arbejde og spørgsmål på én side</td></tr>
+          <tr><td>Dinero</td><td>Needs setup</td><td>You need Pro or Total and sign in to Dinero once with your own Dinero user. It takes a few minutes. The first run tests the connection and tells you what to fix.</td></tr>
+          <tr><td>Numina</td><td>Not yet</td><td>Connection is not possible yet.</td></tr>
+          <tr><td>Uniconta</td><td>Not yet</td><td>Connection is not possible yet.</td></tr>
+          <tr><td>Odoo 20</td><td>Not yet</td><td>Connection is not possible yet.</td></tr>
+          <tr><td>Business Central</td><td>Not yet</td><td>Connection is not possible yet.</td></tr>
+          <tr><td>e-conomic</td><td>Not yet</td><td>Connection is not possible yet.</td></tr>
+          <tr><td>Billy</td><td>Not yet</td><td>Connection is not possible yet.</td></tr>
+          <tr><td>Zenegy</td><td>Not yet</td><td>Connection is not possible yet.</td></tr>
+          <tr><td>Appelsin</td><td>Not yet</td><td>There is no open connection to build on.</td></tr>
         </tbody>
       </table>
     </div></div>
-  </section>
-  <section class="mp-sec">
-    <h2 id="sadan-krer-det">Sådan kører det</h2>
-    <ol class="mp-steps">
-      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Månedens kvitteringer og et bankudtræk indgår i forløbet.</div></li>
-      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Maskin læser hver kvittering og bankpost og samler et udkast med dato, beløb, moms, konto og tilhørende kvittering.</div></li>
-      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Maskin laver én liste over det, der ser forkert ud, fx en manglende kvittering, moms der ikke stemmer, en dobbelt betaling, en privat udgift eller et mærkeligt beløb. Hvert punkt får en kort forklaring.</div></li>
-      <li class="mp-step mp-step--approval"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Forløbet er indrettet sådan, at en bogholder fra en samarbejdspartner gennemgår udkastet og listen. Først derefter kan noget bogføres, og det gør et menneske.</div></li>
-      <li class="mp-step mp-step--close"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Du får én side for måneden med, hvad der er samlet, hvad du skal svare på, og hvilke punkter der mangler afklaring.</div></li>
-      </ol>
-      <p class="mp-legend">Gule trin er menneskelig godkendelse. Det blå trin er det, der afslutter forløbet.</p>
-    <img class="flow-visual" src="/marketplace/accounting/accounting-flow-1600x1000-v2.png" alt="Fem trin: du afleverer kvitteringer og bankudtræk, Maskin laver et udkast, det der ser forkert ud samles på en liste, en bogholder gennemgår, og du får én side. Næste måned starter forfra." width="1600" height="1000" loading="lazy">
-  </section>
-  <section class="mp-sec">
-    <h2 id="tryghed">Tryghed</h2>
-    <p class="trust-item"><strong>Menneskelig gennemgang:</strong> Når tilbuddet starter, gennemgår en bogholder fra en samarbejdspartner udkastet og listen før eventuel bogføring.</p>
-    <p class="trust-item"><strong>Dine data er dine:</strong> Du beholder dit eget bogføringssystem, og Maskin bygger ovenpå det. Maskin bogfører ikke noget i dit system uden et menneske.</p>
-    <p class="trust-item"><strong>Fejler sikkert:</strong> En kvittering, der ikke kan læses, eller en post, der ikke passer, kommer på listen i stedet for at blive gættet.</p>
-  </section>
-  <section class="mp-sec">
-    <h2 id="forbind-dinero">Forbind Dinero</h2>
-    <p>Når du installerer forløbet, er der ikke koblet noget til. Dineros egen server kræver et login hos Visma, som forløbet endnu ikke kan holde i live. Det er en tidlig version: forløbet virker kun, så længe en person giver det et friskt adgangstoken, og første kørsel siger, hvornår du skal forbinde igen.</p>
-    <ol class="mp-steps">
-      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Tilføj Dineros egen server som et brugerdefineret værktøj under Integrations i Maskin. Adressen er mcp.dinero.dk, uden en sti bagefter. Prøv først på en testvirksomhed.</div></li>
-      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Log ind i Dinero via Visma med en bruger, der kun ser den ene virksomhed, forløbet skal se. Adgangstokenet kommer fra det login og findes ikke på en side i Dinero, så det kræver en teknisk person. Sæt det på værktøjet som Authorization-header, og indsæt det aldrig i chatten.</div></li>
-      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Begræns værktøjet til at læse og gemme udkast, så de værktøjer, der bogfører, ændrer, sletter, betaler eller sender, ikke er med. Dineros server tilbyder dem alle.</div></li>
-      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Giv Bookkeeper læse- og skriveadgang til værktøjet.</div></li>
-      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Første kørsel tjekker forbindelsen og siger, hvad der skal rettes.</div></li>
-      <li class="mp-step mp-step--close"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Upload kvitteringer som foto eller PDF i forløbets chat. Maskin laver et udkast til hver, og det, Maskin er i tvivl om, kommer på listen til din bogholder.</div></li>
-    </ol>
-    <p>Adgangstokenet gælder omkring en time, og forløbet kan ikke forny det. Når det udløber, siger forløbet det, og en person skal skaffe et nyt og skifte det ud. Forløbet ser kun den ene virksomhed, du loggede ind på. Kvitteringer, der kommer på mail eller direkte fra telefonen, er ikke med endnu. Maskin bogfører ikke noget i Dinero uden et menneske.</p>
-  </section>
-  <section class="mp-sec">
-    <h2 id="pris-og-timer">Pris og timer</h2>
-    <p class="price-line">995 kr om måneden ekskl. moms</p>
-    <p>Hjælp fra din bogholder inden for et fast månedligt timebudget.</p>
-    <p>Tilbuddet starter, når en samarbejdspartner er på plads.</p>
-  </section>
-  <section class="mp-sec">
-    <h2 id="tag-fat">Tag fat</h2>
-    <p>Tag en snak med Maskin-teamet om, hvordan en måned kan se ud.</p>
+    <p>Needs setup means you take the step shown in your own system. Not yet means nothing can be connected yet. The list in the first chat always shows the current status.</p>
+    <p>The button opens the setup for your flow.</p>
     <div class="post-cta__actions">
-      <span data-loop-install="accounting-loop" data-install-position="bottom"><a class="btn-primary" href="/install/accounting-loop" data-install-link data-install-slug="accounting-loop">Installér forløbet</a></span>
-      <a class="btn-secondary" href="https://maskin.io/bookseb">Book et møde</a>
-      <a class="btn-secondary" href="mailto:ai@maskin.io">Skriv til os</a>
+      <span data-loop-install="accounting-loop" data-install-position="bottom"><a class="btn-primary" href="/install/accounting-loop" data-install-link data-install-slug="accounting-loop">Install the flow</a></span>
     </div>
   </section>
-  
-  
+  <section class="mp-sec">
+    <h2 id="how">How it works</h2>
+    <ol class="mp-steps">
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Choose your own bookkeeping system in the first chat in the flow.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Connect the system. In Dinero, sign in once with your own Dinero user.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Upload receipts as photos or PDFs in the chat. For now, receipts can only be uploaded in the chat.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Maskin saves each receipt as a draft in your system and marks anything that needs a closer look.</div></li>
+      <li class="mp-step"><span class="mp-step__n" aria-hidden="true"></span><div class="mp-step__body">Find the drafts in your system, review the marked items, and book them yourself.</div></li>
+    </ol>
+  </section>
+  <section class="mp-sec">
+    <h2 id="does">What the flow does</h2>
+    <p>The flow is built to handle the full finance job for any owner and bookkeeping system; today, only Dinero connects with setup, while the table above marks others Not yet. Today only Dinero returns bank lines and reports, so the jobs that need them (daily receipt check, monthly close, VAT report, tax instalment check and weekly money briefing) work with Dinero only until other systems connect. Some jobs work today. Others are in build and do not work yet. Available means it works today. In build means we are building it and it does not work yet.</p>
+    <p class="job"><strong>Receipts: send by chat.</strong> Upload a photo or PDF of a receipt in the flow's chat. The flow saves it as a draft in your own accounting system and flags anything that looks wrong. <em class="job-status job-status--available">Available</em></p>
+    <p class="job"><strong>Receipts: send by email.</strong> Forward receipts to an email address that belongs to the flow. <em class="job-status job-status--in-build">In build</em></p>
+    <p class="job"><strong>Receipts: daily check.</strong> Every day, the flow looks for new receipts, drafts them, and lists bank payments that still have no receipt. It stays quiet when nothing is new. <em class="job-status job-status--in-build">In build</em></p>
+    <p class="job"><strong>Rule check.</strong> Every draft is checked against Danish bookkeeping and VAT rules before you see it. If a draft fails a rule, the flow flags the rule and gives one plain line why. <em class="job-status job-status--in-build">In build</em></p>
+    <p class="job"><strong>Monthly close.</strong> Each month, the flow matches bank lines to receipts, lists missing receipts, flags doubles and private costs, drafts accruals, checks the VAT draft, and makes one close note with open items. <em class="job-status job-status--in-build">In build</em></p>
+    <p class="job"><strong>VAT report and VAT return check.</strong> For a period, the flow prepares a VAT report and an export file, and checks the VAT figures before the return is due. These are drafts for checking. <em class="job-status job-status--in-build">In build</em></p>
+    <p class="job"><strong>Deadline watch.</strong> Every Monday, the flow checks the next VAT, payroll tax, corporate tax and annual report dates on the pages of Skat and the Danish Business Authority, with the source for each date. It tells you when a date is within 30 days. <em class="job-status job-status--in-build">In build</em></p>
+    <p class="job"><strong>Tax instalment check.</strong> In the months when corporate tax on account is due, the flow compares it with the year so far and drafts a recommendation in kroner. <em class="job-status job-status--in-build">In build</em></p>
+    <p class="job"><strong>Year-end.</strong> The flow prepares a year-end draft pack: closing the year, a draft annual report, and a corporate tax calculation. <em class="job-status job-status--in-build">In build</em></p>
+    <p class="job"><strong>Weekly money briefing.</strong> Every Monday, the flow makes one short page with cash and runway, margin against last week, books status, deadlines in 30 days, and questions only you can answer. <em class="job-status job-status--in-build">In build</em></p>
+    <p class="job"><strong>One review screen.</strong> One screen shows everything the flow did and what it flagged. <em class="job-status job-status--available">Available</em></p>
+    <p>You sign, file and pay VAT, the annual report and corporate tax yourself with the authorities. The flow only prepares drafts.</p>
+  </section>
+  <section class="mp-sec">
+    <h2 id="safety">Safety</h2>
+    <p class="trust-item"><strong>Drafts by default:</strong> Maskin saves drafts, and you book them yourself in your own system. Booking stays off until you switch it on yourself in Settings.</p>
+    <p class="trust-item"><strong>Drafts only while booking is off:</strong> In Dinero, Maskin saves receipts as drafts.</p>
+    <p class="trust-item"><strong>Fails safely:</strong> If a receipt cannot be read or an entry does not match, it goes on the list instead of being guessed.</p>
+  </section>
+  <section class="mp-sec">
+    <h2 id="price">Price</h2>
+    <p class="price-line">995 kr per month, excluding VAT</p>
+    <p>Covers the whole flow: every job listed above, in your own system.</p>
+    <p>Jobs marked In build are added at no extra charge when they ship.</p>
+  </section>
+  <section class="mp-sec">
+    <h2 id="contact">Get in touch</h2>
+    <p>Talk to the Maskin team about how the flow fits into your day-to-day work.</p>
+    <div class="post-cta__actions">
+      <a class="btn-secondary" href="https://maskin.io/bookseb">Book a meeting</a>
+      <a class="btn-secondary" href="mailto:ai@maskin.io">Write to us</a>
+    </div>
+  </section>
     </div>
   </div>
 </main>

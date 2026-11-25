@@ -96,6 +96,23 @@ test('cli: exit 1 and the error id on a failing site', () => {
   }
 });
 
+test('L12: allow_price on a manifest page lets that page carry a price, without it the price fails L12 only', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'i18n-lint-'));
+  copyDir(path.join(fixtures, 'pass'), dir);
+  try {
+    const pageFile = path.join(dir, 'da', 'ai-agenter', 'index.html');
+    fs.writeFileSync(pageFile, fs.readFileSync(pageFile, 'utf8').replace('</main>', '<p>995 kr om måneden</p>\n</main>'));
+    assert.deepEqual(ids(run(dir)), ['L12']);
+    const manifestFile = path.join(dir, 'i18n.json');
+    const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+    manifest.pages.find((pg) => pg.path === '/da/ai-agenter/').allow_price = true;
+    fs.writeFileSync(manifestFile, JSON.stringify(manifest));
+    assert.deepEqual(run(dir).errors, []);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
 test('self-check: the real repo passes the source lint', () => {
   const result = lint({ root: here, git: false });
   assert.deepEqual(result.errors, []);
