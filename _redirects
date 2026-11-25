@@ -52,6 +52,11 @@
 
 # Danish intro deck v5 for prospects: short link (added 2026-11-04). Page is noindex and not in the sitemap.
 /intro  /deck/virksomheder/  302
+
+# Free Danish guide for prospects: short link (added 2026-11-25). Page is noindex and not in the sitemap.
+/guide  /guide/virksomheder/  302
+/guide/  /guide/virksomheder/  302
+
 # Merged 2026-11-10: how-to page folded into the bet-based product planning page.
 /docs/how-to-run-bet-based-planning/  /docs/bet-based-product-planning/#how-to-run  301
 /docs/how-to-run-bet-based-planning   /docs/bet-based-product-planning/#how-to-run  301
