@@ -1,7 +1,7 @@
 > Source: https://maskin.io/da/bogforing/
 
 # Lad månedens bilag køre i Maskin, så du ved, hvad der skal afklares, mens Maskin laver et udkast og peger på poster, der ser forkerte ud.
-![Kvitteringer går fra rod til orden, og én er markeret i blå.](/marketplace/accounting/accounting-hero-1200x628.png)
+![Én kvittering forbundet med en tynd blå linje til én banklinje, et foreslået match, mens to kvitteringer og to banklinjer venter nedenunder.](/marketplace/accounting/accounting-marketplace-1200x628.png)
 
 ## Opgaven
 Drop sorteringen af kvitteringer i hånden. Upload dem, og Maskin gemmer dem som udkast i dit eget bogføringssystem. Du beholder dit system og vælger det i den første chat med forløbet. Det, Maskin er usikker på, bliver markeret til dig.
