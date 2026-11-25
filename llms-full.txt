@@ -6639,7 +6639,7 @@ Sign in or sign up, then confirm the flow in the Maskin app.
 > Source: https://maskin.io/marketplace/accounting/
 
 # Run this month's receipts through Maskin so you know what needs clarification while Maskin creates a draft and points out entries that look wrong.
-![Receipts go from a messy pile to an orderly set, and one is marked in blue.](/marketplace/accounting/accounting-hero-1200x628.png)
+![One receipt joined by a thin blue line to one bank line, a proposed match, with two unmatched receipts and two bank lines waiting below.](/marketplace/accounting/accounting-marketplace-1200x628.png)
 
 ## The task
 Skip sorting receipts by hand. Upload them, and Maskin saves them as drafts in your own bookkeeping system. You keep your system and choose it in the first chat in the flow. Maskin marks anything it is unsure about.
@@ -6764,7 +6764,7 @@ Vil du vide mere om, hvad en AI-agent er, før du vælger? Læs [AI-automatiseri
 > Source: https://maskin.io/da/bogforing/
 
 # Lad månedens bilag køre i Maskin, så du ved, hvad der skal afklares, mens Maskin laver et udkast og peger på poster, der ser forkerte ud.
-![Kvitteringer går fra rod til orden, og én er markeret i blå.](/marketplace/accounting/accounting-hero-1200x628.png)
+![Én kvittering forbundet med en tynd blå linje til én banklinje, et foreslået match, mens to kvitteringer og to banklinjer venter nedenunder.](/marketplace/accounting/accounting-marketplace-1200x628.png)
 
 ## Opgaven
 Drop sorteringen af kvitteringer i hånden. Upload dem, og Maskin gemmer dem som udkast i dit eget bogføringssystem. Du beholder dit system og vælger det i den første chat med forløbet. Det, Maskin er usikker på, bliver markeret til dig.

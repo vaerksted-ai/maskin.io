@@ -1,7 +1,7 @@
 > Source: https://maskin.io/marketplace/accounting/
 
 # Run this month's receipts through Maskin so you know what needs clarification while Maskin creates a draft and points out entries that look wrong.
-![Receipts go from a messy pile to an orderly set, and one is marked in blue.](/marketplace/accounting/accounting-hero-1200x628.png)
+![One receipt joined by a thin blue line to one bank line, a proposed match, with two unmatched receipts and two bank lines waiting below.](/marketplace/accounting/accounting-marketplace-1200x628.png)
 
 ## The task
 Skip sorting receipts by hand. Upload them, and Maskin saves them as drafts in your own bookkeeping system. You keep your system and choose it in the first chat in the flow. Maskin marks anything it is unsure about.
