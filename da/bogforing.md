@@ -10,7 +10,7 @@ Drop sorteringen af kvitteringer i hånden. Upload dem, og Maskin gemmer dem som
 Du bruger ét forløb og vælger dit eget bogføringssystem i den første chat. Her kan du se status for hvert system og den opsætning, der kræves.
 | System | Status | Hvad du gør |
 | --- | --- | --- |
-| Dinero | Kræver opsætning | Du skal have Pro eller Total, oprette en integration i Dinero og gemme de tre nøgler i Maskin én gang. Det tager få minutter. Første kørsel tester forbindelsen og fortæller, hvad du skal rette. |
+| Dinero | Kræver opsætning | Du skal have Pro eller Total og logge ind i Dinero én gang med din egen Dinero-bruger. Det tager få minutter. Første kørsel tester forbindelsen og fortæller, hvad du skal rette. |
 | Numina | Ikke endnu | Forbindelse er ikke mulig endnu. |
 | Uniconta | Ikke endnu | Forbindelse er ikke mulig endnu. |
 | Odoo 20 | Ikke endnu | Forbindelse er ikke mulig endnu. |
@@ -24,7 +24,7 @@ Knappen åbner opsætningen af dit forløb.
 
 ## Sådan kører det
 1. Vælg dit eget bogføringssystem i den første chat med forløbet.
-2. Forbind systemet. I Dinero opretter du en integration og gemmer de tre nøgler i Maskin én gang.
+2. Forbind systemet. I Dinero logger du ind én gang med din egen Dinero-bruger.
 3. Upload kvitteringer som foto eller PDF i chatten. Kvitteringer uploades i chatten for nu.
 4. Maskin gemmer hver kvittering som et udkast i dit system og markerer det, der kræver et ekstra blik.
 5. Du finder udkastene i dit system, ser på de markerede punkter og bogfører selv.
@@ -45,8 +45,8 @@ Forløbet er lavet til hele økonomiopgaven for enhver ejer og ethvert bogførin
 Du underskriver, indberetter og betaler selv moms, årets afsluttende dokumenter og selskabsskat til myndighederne. Forløbet forbereder kun udkast.
 
 ## Tryghed
-**Maskin bogfører ikke:** I denne version gemmer Maskin udkast, og du bogfører selv i dit eget system.
-**Kun udkast:** I Dinero gemmer Maskin kvitteringer som udkast. Maskin har ingen knap til at bogføre eller slette dér.
+**Udkast som standard:** Maskin gemmer udkast, og du bogfører selv i dit eget system. Bogføring er slået fra, til du selv slår den til i Settings.
+**Kun udkast, mens bogføring er slået fra:** I Dinero gemmer Maskin kvitteringer som udkast.
 **Fejler sikkert:** Kan en kvittering ikke læses, eller passer en postering ikke, kommer den på listen i stedet for at blive gættet.
 
 ## Pris

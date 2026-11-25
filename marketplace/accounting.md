@@ -10,7 +10,7 @@ Skip sorting receipts by hand. Upload them, and Maskin saves them as drafts in y
 You use one flow and choose your own bookkeeping system in the first chat. Here you can see the status of each system and what setup is required.
 | System | Status | What you do |
 | --- | --- | --- |
-| Dinero | Needs setup | You need Pro or Total, create an integration in Dinero and save the three keys in Maskin once. It takes a few minutes. The first run tests the connection and tells you what to fix. |
+| Dinero | Needs setup | You need Pro or Total and sign in to Dinero once with your own Dinero user. It takes a few minutes. The first run tests the connection and tells you what to fix. |
 | Numina | Not yet | Connection is not possible yet. |
 | Uniconta | Not yet | Connection is not possible yet. |
 | Odoo 20 | Not yet | Connection is not possible yet. |
@@ -24,7 +24,7 @@ The button opens the setup for your flow.
 
 ## How it works
 1. Choose your own bookkeeping system in the first chat in the flow.
-2. Connect the system. In Dinero, create an integration and save the three keys in Maskin once.
+2. Connect the system. In Dinero, sign in once with your own Dinero user.
 3. Upload receipts as photos or PDFs in the chat. For now, receipts can only be uploaded in the chat.
 4. Maskin saves each receipt as a draft in your system and marks anything that needs a closer look.
 5. Find the drafts in your system, review the marked items, and book them yourself.
@@ -45,8 +45,8 @@ The flow is built to handle the full finance job for any owner and bookkeeping s
 You sign, file and pay VAT, the annual report and corporate tax yourself with the authorities. The flow only prepares drafts.
 
 ## Safety
-**Maskin does not book:** In this version, Maskin saves drafts, and you book them yourself in your own system.
-**Drafts only:** In Dinero, Maskin saves receipts as drafts. Maskin has no button there to book or delete.
+**Drafts by default:** Maskin saves drafts, and you book them yourself in your own system. Booking stays off until you switch it on yourself in Settings.
+**Drafts only while booking is off:** In Dinero, Maskin saves receipts as drafts.
 **Fails safely:** If a receipt cannot be read or an entry does not match, it goes on the list instead of being guessed.
 
 ## Price
