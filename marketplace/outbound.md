@@ -10,7 +10,6 @@ There is no walkthrough video for this flow yet.
 
 ## What a cold email flow gets you
 The outbound flow closes the gap between “this account matched our ICP” and “a warm reply is in the account owner’s inbox.” It runs continuously against a signal feed, drafts personalised messages, sends only what a human has approved, and routes replies back to the humans who can close them. The wedge over closed AI SDR SaaS isn’t the model — it’s the flow shape and the audit trail. The same workspace also runs the [LinkedIn content flow](/marketplace/linkedin-content/), which keeps a founder-voice LinkedIn presence going alongside outreach.
-- **Direct API costs run $50–200/mo** at typical OSS-stack volume; the closed SaaS bill is $2,000–5,000/mo per seat, and the honest split is roughly 10–15% API markup, 40% activation-and-plumbing services, 45% brand insulation.
 - **Every prospect, message, and reply is a queryable row.** The state lives on Maskin’s typed object graph, not a vendor dashboard. That’s the audit trail your GTM leader wants.
 - **Human-on-the-loop with a measured [override rate](/docs/learn/human-in-the-loop-ai/)** is the operational difference between a working flow and a demo. Stuck at 0% is rubber-stamping; above 20% is a broken model; the real gate sits in the middle band.
 - **The sender lane is your own.** LinkedIn via Unipile’s MCP, or a warmed email domain via Postmark or Resend — not a shared pool that gets your primary domain blacklisted when one prompt regression fires.

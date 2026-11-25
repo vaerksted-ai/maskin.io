@@ -40,8 +40,7 @@
       "lang": "da",
       "kind": "twin",
       "keyword": "bilag som udkast",
-      "lang_group": "accounting",
-      "allow_price": true
+      "lang_group": "accounting"
     },
     {
       "path": "/da/ai-agenter/",

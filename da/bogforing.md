@@ -49,10 +49,5 @@ Du underskriver, indberetter og betaler selv moms, årets afsluttende dokumenter
 **Kun udkast, mens bogføring er slået fra:** I Dinero gemmer Maskin kvitteringer som udkast.
 **Fejler sikkert:** Kan en kvittering ikke læses, eller passer en postering ikke, kommer den på listen i stedet for at blive gættet.
 
-## Pris
-995 kr om måneden ekskl. moms
-Dækker hele forløbet: alle opgaverne på listen ovenfor, i dit eget system.
-Opgaver, der står som Under bygning, kommer til uden ekstra betaling, når de er klar.
-
 ## Tag fat
 Tal med Maskin-teamet om, hvordan forløbet passer til din hverdag.
