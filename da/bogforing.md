@@ -10,7 +10,7 @@ Drop sorteringen af kvitteringer i hånden. Upload dem, og Maskin gemmer dem som
 Du bruger ét forløb og vælger dit eget bogføringssystem i den første chat. Her kan du se status for hvert system og den opsætning, der kræves.
 | System | Status | Hvad du gør |
 | --- | --- | --- |
-| Dinero | Kræver opsætning | Du skal have Pro eller Total og logge ind i Dinero én gang med din egen Dinero-bruger. Det tager få minutter. Første kørsel tester forbindelsen og fortæller, hvad du skal rette. |
+| Dinero | Kræver opsætning | Du skal have Pro eller Total. En teknisk person tilføjer Dineros egen server som et brugerdefineret værktøj i Maskin og indsætter et adgangstoken fra et login hos Visma. Adgangstokenet gælder omkring en time, og forløbet kan ikke forny det, så du forbinder igen, når det udløber. Det er en tidlig version. Første kørsel tester forbindelsen og fortæller, hvad du skal rette. |
 | Numina | Ikke endnu | Forbindelse er ikke mulig endnu. |
 | Uniconta | Ikke endnu | Forbindelse er ikke mulig endnu. |
 | Odoo 20 | Ikke endnu | Forbindelse er ikke mulig endnu. |
@@ -24,7 +24,7 @@ Knappen åbner opsætningen af dit forløb.
 
 ## Sådan kører det
 1. Vælg dit eget bogføringssystem i den første chat med forløbet.
-2. Forbind systemet. I Dinero logger du ind én gang med din egen Dinero-bruger.
+2. Forbind systemet. I Dinero tilføjer du Dineros egen server som et brugerdefineret værktøj under Integrations og sætter adgangstokenet på værktøjet. Det kræver en teknisk person, og tokenet må aldrig indsættes i chatten. Det gælder omkring en time, så du forbinder igen, når det udløber.
 3. Upload kvitteringer som foto eller PDF i chatten. Kvitteringer uploades i chatten for nu.
 4. Maskin gemmer hver kvittering som et udkast i dit system og markerer det, der kræver et ekstra blik.
 5. Du finder udkastene i dit system, ser på de markerede punkter og bogfører selv.

@@ -10,7 +10,7 @@ Skip sorting receipts by hand. Upload them, and Maskin saves them as drafts in y
 You use one flow and choose your own bookkeeping system in the first chat. Here you can see the status of each system and what setup is required.
 | System | Status | What you do |
 | --- | --- | --- |
-| Dinero | Needs setup | You need Pro or Total and sign in to Dinero once with your own Dinero user. It takes a few minutes. The first run tests the connection and tells you what to fix. |
+| Dinero | Needs setup | You need Pro or Total. Someone technical adds Dinero's own server as a custom tool in Maskin and pastes in a sign-in token from a Dinero login through Visma. The token lasts about an hour and the flow cannot renew it, so you reconnect when it runs out. This is an early version. The first run tests the connection and tells you what to fix. |
 | Numina | Not yet | Connection is not possible yet. |
 | Uniconta | Not yet | Connection is not possible yet. |
 | Odoo 20 | Not yet | Connection is not possible yet. |
@@ -24,7 +24,7 @@ The button opens the setup for your flow.
 
 ## How it works
 1. Choose your own bookkeeping system in the first chat in the flow.
-2. Connect the system. In Dinero, sign in once with your own Dinero user.
+2. Connect the system. In Dinero, add Dinero's own server as a custom tool under Integrations and put the sign-in token on the tool. This needs someone technical, and the token must never be pasted into the chat. It lasts about an hour, so you reconnect when it runs out.
 3. Upload receipts as photos or PDFs in the chat. For now, receipts can only be uploaded in the chat.
 4. Maskin saves each receipt as a draft in your system and marks anything that needs a closer look.
 5. Find the drafts in your system, review the marked items, and book them yourself.
