@@ -332,7 +332,7 @@
   </url>
   <url>
     <loc>https://maskin.io/marketplace/accounting/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -442,6 +442,12 @@
     <loc>https://maskin.io/da/saet-stroem/</loc>
     <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maskin.io/da/bogforing/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
