@@ -61,7 +61,7 @@ cp partials/seo-cta.js dist/seo-cta.js
 
 # Top-level content subtrees. Add a new SEO cluster hub here (one line) and every
 # page under it ships automatically — no other build.sh edits required.
-CONTENT_DIRS=(docs changelog privacy terms support alternatives marketplace loops onboarding small-business deck solutions da sv)
+CONTENT_DIRS=(docs changelog privacy terms support alternatives marketplace loops onboarding small-business deck guide solutions da sv)
 for dir in "${CONTENT_DIRS[@]}"; do
   if [ -d "$dir" ]; then
     cp -r "$dir" "dist/$dir"
