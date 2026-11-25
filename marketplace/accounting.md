@@ -49,10 +49,5 @@ You sign, file and pay VAT, the annual report and corporate tax yourself with th
 **Drafts only while booking is off:** In Dinero, Maskin saves receipts as drafts.
 **Fails safely:** If a receipt cannot be read or an entry does not match, it goes on the list instead of being guessed.
 
-## Price
-995 kr per month, excluding VAT
-Covers the whole flow: every job listed above, in your own system.
-Jobs marked In build are added at no extra charge when they ship.
-
 ## Get in touch
 Talk to the Maskin team about how the flow fits into your day-to-day work.
