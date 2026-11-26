@@ -40,8 +40,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Newsreader:ital,wght@0,400;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/docs/docs.css">
+<link rel="stylesheet" href="/marketplace/hub.css">
 
-<script type="application/ld+json">
+
+<!-- hub:ld:start -->
+<script type="application/ld+json" id="hub-ld">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -68,92 +71,92 @@
           {
             "@type": "ListItem",
             "position": 1,
-            "url": "https://maskin.io/marketplace/seo-publishing/",
-            "name": "The SEO publishing flow"
+            "url": "https://maskin.io/marketplace/competitor-watch/",
+            "name": "Competitor Watch"
           },
           {
             "@type": "ListItem",
             "position": 2,
-            "url": "https://maskin.io/marketplace/linkedin-content/",
-            "name": "The LinkedIn content flow"
+            "url": "https://maskin.io/marketplace/customer-voice/",
+            "name": "Customer Voice"
           },
           {
             "@type": "ListItem",
             "position": 3,
-            "url": "https://maskin.io/marketplace/outbound/",
-            "name": "The outbound flow"
+            "url": "https://maskin.io/marketplace/product-release/",
+            "name": "Product Release"
           },
           {
             "@type": "ListItem",
             "position": 4,
-            "url": "https://maskin.io/marketplace/lead-qualification/",
-            "name": "The lead qualification flow"
+            "url": "https://maskin.io/marketplace/product-usage/",
+            "name": "Product Analytics"
           },
           {
             "@type": "ListItem",
             "position": 5,
             "url": "https://maskin.io/marketplace/product-discovery/",
-            "name": "The product discovery flow"
+            "name": "Product Discovery"
           },
           {
             "@type": "ListItem",
             "position": 6,
-            "url": "https://maskin.io/marketplace/product-delivery/",
-            "name": "The product delivery flow"
+            "url": "https://maskin.io/marketplace/meeting-loop/",
+            "name": "Meeting Insights"
           },
           {
             "@type": "ListItem",
             "position": 7,
-            "url": "https://maskin.io/marketplace/competitor-watch/",
-            "name": "The competitor watch flow"
+            "url": "https://maskin.io/marketplace/knowledge-wiki/",
+            "name": "Knowledge Wiki"
           },
           {
             "@type": "ListItem",
             "position": 8,
-            "url": "https://maskin.io/marketplace/knowledge-wiki/",
-            "name": "The LLM knowledge wiki flow"
-          },
-          {
-            "@type": "ListItem",
-            "position": 9,
             "url": "https://maskin.io/marketplace/accounting/",
             "name": "Get receipts in as drafts"
           },
           {
             "@type": "ListItem",
+            "position": 9,
+            "url": "https://maskin.io/marketplace/seo-publishing/",
+            "name": "SEO Publishing"
+          },
+          {
+            "@type": "ListItem",
             "position": 10,
-            "url": "https://maskin.io/marketplace/meeting-loop/",
-            "name": "Meeting insights"
+            "url": "https://maskin.io/marketplace/linkedin-content/",
+            "name": "LinkedIn Content"
           },
           {
             "@type": "ListItem",
             "position": 11,
             "url": "https://maskin.io/marketplace/content-calendar/",
-            "name": "The content calendar"
+            "name": "Content Calendar"
           },
           {
             "@type": "ListItem",
             "position": 12,
-            "url": "https://maskin.io/marketplace/customer-voice/",
-            "name": "The customer voice flow"
+            "url": "https://maskin.io/marketplace/outbound/",
+            "name": "Outbound"
           },
           {
             "@type": "ListItem",
             "position": 13,
-            "url": "https://maskin.io/marketplace/product-release/",
-            "name": "The product release flow"
+            "url": "https://maskin.io/marketplace/lead-qualification/",
+            "name": "Lead Qualification"
           },
           {
             "@type": "ListItem",
             "position": 14,
-            "url": "https://maskin.io/marketplace/product-usage/",
-            "name": "The Product Analytics flow"
+            "url": "https://maskin.io/marketplace/product-delivery/",
+            "name": "Product Delivery"
           },
           {
             "@type": "ListItem",
             "position": 15,
             "url": "https://maskin.io/marketplace/signal-intake/",
-            "name": "The Signal Intake flow"
+            "name": "Signal Intake"
           }
         ]
       }
@@ -178,251 +181,183 @@
   ]
 }
 </script>
+<!-- hub:ld:end -->
 </head>
 <body>
 
 <nav class="docnav" id="docnav"><div class="wrap docnav__inner"><a class="docnav__logo" href="/"><svg width="26" height="26" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="80" height="80" rx="14" fill="#10131a"/><path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#ffffff" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter" fill="none"/></svg>Maskin</a><span class="docnav__tag">Marketplace</span><span class="docnav__spacer"></span><ul class="docnav__links"><li class="docnav__hide-sm"><a href="/">Home</a></li><li><a href="/docs/">Docs</a></li><li><a href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">GitHub</a></li><li class="docnav__hide-sm"><a href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a meeting</a></li><li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="theme-toggle__sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-toggle__moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li></ul></div></nav>
 
 <noscript><div class="wrap" style="padding:1rem 0"><a href="/">&larr; Maskin home</a> &middot; <a href="https://github.com/sindre-ai/maskin">GitHub</a></div></noscript>
-<main class="wrap mkt">
+<main class="wrap hub" id="main">
     <p class="doc-breadcrumb"><a href="/">Home</a> / Marketplace</p>
-    <p class="eyebrow">Marketplace</p>
-    <h1>Run the work your team keeps dropping, with a person approving the steps that matter</h1>
-    <p class="lead">Install a ready-made flow. It runs until the result is in, like a page that ranks or a meeting booked, and you approve the steps that matter.</p>
-    <p class="mkt-small">Running a business rather than a software team? See how to <a href="/small-business/">hire AI agents for your back office</a>.</p>
-
-    <style>
-      .mkt { padding-block: clamp(1.5rem, 4vw, 2.5rem) 5rem; }
-      .mkt .eyebrow { font-family: var(--ff-mono); font-size: .7rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-      .mkt h1 { font-size: clamp(1.75rem, 6vw, 2.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -.04em; max-width: 46rem; margin-bottom: .75rem; text-wrap: balance; }
-      .mkt .lead { font-size: clamp(.95rem, 2.4vw, 1.0625rem); color: var(--ink-2); line-height: 1.5; max-width: 40rem; margin-bottom: 1.25rem; text-wrap: pretty; }
-      .mkt-small { color: var(--ink-2); margin: 0 0 1.5rem; }
-      .mkt-tools { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1.5rem 0 0; }
-      .mkt-tools[hidden] { display: none; }
-      .mkt-search { display: flex; align-items: center; gap: .6rem; height: 44px; width: 520px; max-width: 100%; padding: 0 1.25rem; border-radius: 22px; background: var(--linen); color: var(--ink-3); box-sizing: border-box; }
-      .mkt-search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: inherit; font-size: .95rem; color: var(--ink); }
-      .mkt-search:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
-      .mkt-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 0; }
-      .mkt-chips a { display: inline-flex; align-items: center; height: 30px; padding: 0 .8rem; border-radius: 15px; background: var(--linen); color: var(--ink); font-size: .8125rem; font-weight: 600; }
-      .mkt-chips a:hover { text-decoration: none; background: var(--rule); }
-      .mkt-chips a.is-on { background: var(--ink); color: var(--surface); }
-      .mkt-group { margin: 2.5rem 0 0; scroll-margin-top: 5rem; }
-      .mkt-group[hidden] { display: none; }
-      .mkt-group__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .125rem .875rem; }
-      .mkt-group h2 { margin: 0; font-size: clamp(1.2rem, 3.4vw, 1.375rem); font-weight: 700; line-height: 1.2; letter-spacing: -.03em; }
-      .mkt-group__blurb { margin: 0; color: var(--ink-2); font-size: .875rem; }
-      .mkt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: .75rem; margin-top: .875rem; }
-      .mkt-card { position: relative; display: flex; flex-direction: column; gap: .65rem; padding: 1rem; border-radius: 18px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--rule); transition: box-shadow .15s; }
-      .mkt-card:hover, .mkt-card:focus-within { box-shadow: inset 0 0 0 1px var(--ink); }
-      .mkt-card[hidden] { display: none; }
-      .mkt-card__top { display: flex; align-items: center; gap: .875rem; }
-      .mkt-ico { display: flex; flex: none; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 10px; background: var(--linen); font-size: .875rem; font-weight: 700; color: var(--ink); }
-      .mkt-card__title { margin: 0; font-size: 1rem; font-weight: 700; line-height: 1.25; letter-spacing: -.02em; }
-      .mkt-card__title a { color: var(--ink); }
-      .mkt-card__title a::after { content: ""; position: absolute; inset: 0; border-radius: 18px; }
-      .mkt-card__title a:hover { text-decoration: none; }
-      .mkt-card__area { margin: .1rem 0 0; font-size: .75rem; color: var(--ink-3); }
-      .mkt-card__desc { margin: 0; font-size: .875rem; line-height: 1.5; color: var(--ink-2); flex: 1; text-wrap: pretty; }
-      .mkt-card__video { margin: 0; font-size: .8125rem; font-weight: 600; color: var(--ink); }
-      .mkt-card__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .625rem; margin-top: auto; }
-      .mkt-card__closes { flex: 1 1 10rem; margin: 0; font-size: .8125rem; line-height: 1.4; color: var(--ink-3); }
-      .mkt-card__closes strong { color: var(--ink-2); }
-      .mkt-card .loop-install { position: relative; z-index: 1; margin: 0; }
-      .mkt-card .mkt-btn { height: 30px; padding: 0 .875rem; border-radius: 15px; font-size: .8125rem; font-weight: 600; }
-      .mkt-na { display: inline-flex; align-items: center; height: 28px; padding: 0 .75rem; border-radius: 14px; background: #FBEBC4; color: #6B4A0B; font-size: .75rem; font-weight: 700; white-space: nowrap; }
-      .mkt-empty { margin-top: 3rem; font-size: 1rem; color: var(--ink-3); }
-      .mkt-prose { margin-top: 3.5rem; }
-      @media (max-width: 560px) {
-        .mkt-card { padding: .9rem; }
-      }
-    </style>
-
-    <div class="mkt-tools" id="mkt-tools" hidden>
-      <label class="mkt-search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4"/></svg><input id="mkt-q" type="search" placeholder="Search flows" aria-label="Search flows" autocomplete="off"></label>
+    <div class="hub-head">
+      <h1>Hire a digital employee for the job that keeps slipping</h1>
+      <p class="hub-sub">Each flow is one job with one outcome and one owner. Pick the job, install the flow, and it runs until the result is in.</p>
     </div>
-    <nav class="mkt-chips" id="mkt-chips" aria-label="Categories"><a class="is-on" href="/marketplace/" data-cat="">All flows</a><a href="#marketing" data-cat="marketing">Marketing</a><a href="#sales" data-cat="sales">Sales</a><a href="#product" data-cat="product">Product</a><a href="#knowledge" data-cat="knowledge">Knowledge</a><a href="#finance" data-cat="finance">Finance</a><a href="#operations" data-cat="operations">Operations</a></nav>
 
-    <div id="mkt-groups">
-    <section class="mkt-group" id="marketing" aria-labelledby="marketing-h">
-      <div class="mkt-group__head"><h2 id="marketing-h">Marketing</h2><p class="mkt-group__blurb">Get a search-ranking page or a LinkedIn post live after the account owner approves it.</p></div>
-      <div class="mkt-grid">
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">SP</span><div><h3 class="mkt-card__title"><a href="/marketplace/seo-publishing/">The SEO publishing flow</a></h3><p class="mkt-card__area">Flow &middot; Marketing</p></div></div>
-        <p class="mkt-card__desc">Keyword insight to indexed page on maskin.io &mdash; without a human writing HTML or hand-registering sitemap entries.</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> a page in the target rank range</p><span class="mkt-na">Not available yet</span></div>
-      </article>
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">LC</span><div><h3 class="mkt-card__title"><a href="/marketplace/linkedin-content/">The LinkedIn content flow</a></h3><p class="mkt-card__area">Flow &middot; Marketing</p></div></div>
-        <p class="mkt-card__desc">A steady, founder-voice LinkedIn presence planned two weeks at a time &mdash; your team answers the interview and approves every post, Maskin does the rest.</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> the post is live on LinkedIn and the next retro has read how it did</p><span class="mkt-na">Not available yet</span></div>
-      </article>
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">CC</span><div><h3 class="mkt-card__title"><a href="/marketplace/content-calendar/">The content calendar</a></h3><p class="mkt-card__area">Flow &middot; Marketing</p></div></div>
-        <p class="mkt-card__desc">Plan a month of posts in one calendar, check and approve each post before it goes out, and read weekly reach and visits by channel.</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> each post has the owner&rsquo;s go and the weekly read is in</p></div>
-      </article>
-      </div>
-    </section>
-    <section class="mkt-group" id="sales" aria-labelledby="sales-h">
-      <div class="mkt-group__head"><h2 id="sales-h">Sales</h2><p class="mkt-group__blurb">Book a call from a reply, or leave a rep a lead to work or a rejection with its reason on record.</p></div>
-      <div class="mkt-grid">
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">OU</span><div><h3 class="mkt-card__title"><a href="/marketplace/outbound/">The outbound flow</a></h3><p class="mkt-card__area">Flow &middot; Sales</p></div></div>
-        <p class="mkt-card__desc">Outbound as a flow: signal, research, draft, human approval, send, reply routing, close &mdash; without a closed AI SDR SaaS.</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> a call booked, or a clean disqualify</p><span class="mkt-na">Not available yet</span></div>
-      </article>
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">LQ</span><div><h3 class="mkt-card__title"><a href="/marketplace/lead-qualification/">The lead qualification flow</a></h3><p class="mkt-card__area">Flow &middot; Sales</p></div></div>
-        <p class="mkt-card__desc">Every inbound lead is read the moment it lands and gated by a human before a rep spends an hour on it &mdash; every rejection stamps a reason that sharpens the next read.</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> a lead marked qualified or rejected, with the reason on the record</p><span class="mkt-na">Not available yet</span></div>
-      </article>
-      </div>
-    </section>
-    <section class="mkt-group" id="product" aria-labelledby="product-h">
-      <div class="mkt-group__head"><h2 id="product-h">Product</h2><p class="mkt-group__blurb">Ship a bet tied to customer feedback, verified code after merge approval, a weekly competitor watch, customer voice and product usage reads, or a release with notes confirmed live.</p></div>
-      <div class="mkt-grid">
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">PD</span><div><h3 class="mkt-card__title"><a href="/marketplace/product-discovery/">The product discovery flow</a></h3><p class="mkt-card__area">Flow &middot; Product</p></div></div>
-        <p class="mkt-card__desc">Customer signal to shipped bet &mdash; interviews, tickets, and reviews land as typed insight on the same graph as the bets you&rsquo;re already shipping.</p>
-        <p class="mkt-card__video">Watch: Continuous Product Discovery, as a flow</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> customer signal turned into a shipped bet</p><div class="loop-install" data-loop-install="product-discovery" data-install-position="index"><a class="btn-primary mkt-btn" href="/install/product-discovery-loop" data-install-link data-install-slug="product-discovery">Install</a></div></div>
-      </article>
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">PD</span><div><h3 class="mkt-card__title"><a href="/marketplace/product-delivery/">The product delivery flow</a></h3><p class="mkt-card__area">Flow &middot; Product</p></div></div>
-        <p class="mkt-card__desc">Bets in, verified code out &mdash; Maskin plans the work, builds it, reviews every change and checks the result against the success criteria you wrote first. You approve the merge.</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> the change is live and the numbers say it worked</p><span class="mkt-na">Not available yet</span></div>
-      </article>
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">CW</span><div><h3 class="mkt-card__title"><a href="/marketplace/competitor-watch/">The competitor watch flow</a></h3><p class="mkt-card__area">Flow &middot; Product</p></div></div>
-        <p class="mkt-card__desc">Know what changed in your market every week: Maskin scans each week and rewrites one briefing, with a source link, date and confidence on every move.</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> one sourced briefing page rewritten every week</p><div class="loop-install" data-loop-install="competitive-intelligence" data-install-position="index"><a class="btn-primary mkt-btn" href="/install/market-competitor-watch-loop" data-install-link data-install-slug="competitive-intelligence">Install</a></div></div>
-      </article>
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">CV</span><div><h3 class="mkt-card__title"><a href="/marketplace/customer-voice/">The customer voice flow</a></h3><p class="mkt-card__area">Flow &middot; Product</p></div></div>
-        <p class="mkt-card__desc">Hear your customers without reading every inbox: requests, complaints, objections and praise filed once each as written findings, never replied to.</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> findings filed with the customer&rsquo;s words and a source link</p><div class="loop-install" data-loop-install="customer-voice" data-install-position="index"><a class="btn-primary mkt-btn" href="/install/customer-voice-loop" data-install-link data-install-slug="customer-voice">Install</a></div></div>
-      </article>
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">PR</span><div><h3 class="mkt-card__title"><a href="/marketplace/product-release/">The product release flow</a></h3><p class="mkt-card__area">Flow &middot; Product</p></div></div>
-        <p class="mkt-card__desc">Get merged work to customers with notes that are really live: Maskin bundles changes, prepares notes and reads them back.</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> the release is live and its notes are read back</p><div class="loop-install" data-loop-install="product-release" data-install-position="index"><a class="btn-primary mkt-btn" href="/install/product-release-loop" data-install-link data-install-slug="product-release">Install</a></div></div>
-      </article>
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">PU</span><div><h3 class="mkt-card__title"><a href="/marketplace/product-usage/">The Product Analytics flow</a></h3><p class="mkt-card__area">Flow &middot; Product</p></div></div>
-        <p class="mkt-card__desc">Read your product usage every week without opening analytics: Maskin checks daily and files findings that change or contradict what your team believes, each with the count behind every number and a recommended action.</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> each finding filed once, with its count, a recommended action and a link to the feature or goal</p><div class="loop-install" data-loop-install="product-usage" data-install-position="index"><a class="btn-primary mkt-btn" href="/install/product-usage-loop" data-install-link data-install-slug="product-usage">Install</a></div></div>
-      </article>
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">SI</span><div><h3 class="mkt-card__title"><a href="/marketplace/signal-intake/">The Signal Intake flow</a></h3><p class="mkt-card__area">Flow &middot; Product</p></div></div>
-        <p class="mkt-card__desc">Hear what customers are saying before it gets forwarded: Maskin reads public discussions, public posts from people you name and open-source releases, and files short notes with sources.</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> one short sourced note per notable idea</p><span class="mkt-na">Not available yet</span></div>
-      </article>
-      </div>
-    </section>
-    <section class="mkt-group" id="knowledge" aria-labelledby="knowledge-h">
-      <div class="mkt-group__head"><h2 id="knowledge-h">Knowledge</h2><p class="mkt-group__blurb">Make a wiki page a new hire or agent can use to answer a question without asking a person.</p></div>
-      <div class="mkt-grid">
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">LK</span><div><h3 class="mkt-card__title"><a href="/marketplace/knowledge-wiki/">The LLM knowledge wiki flow</a></h3><p class="mkt-card__area">Flow &middot; Knowledge</p></div></div>
-        <p class="mkt-card__desc">Know the pages your team reads are current: a new note lands on the page that already covers the topic, and old drafts are merged or retired.</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> knowledge pages kept current, with a digest after each pass</p><div class="loop-install" data-loop-install="knowledge-wiki" data-install-position="index"><a class="btn-primary mkt-btn" href="/install/knowledge-wiki-loop" data-install-link data-install-slug="knowledge-wiki">Install</a></div></div>
-      </article>
-      </div>
-    </section>
-    <section class="mkt-group" id="finance" aria-labelledby="finance-h">
-      <div class="mkt-group__head"><h2 id="finance-h">Finance</h2><p class="mkt-group__blurb">Get receipts into drafts in your own bookkeeping system, with uncertain entries marked, before anything is booked.</p></div>
-      <div class="mkt-grid">
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">MB</span><div><h3 class="mkt-card__title"><a href="/marketplace/accounting/">Get receipts in as drafts</a></h3><p class="mkt-card__area">Flow &middot; Finance</p></div></div>
-        <p class="mkt-card__desc">Choose your own bookkeeping system, upload receipts in the chat, and see drafts with uncertain entries marked. Drafts only: you book and file yourself.</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> receipts saved as drafts in your own system, with uncertain entries marked</p><div class="loop-install" data-loop-install="accounting-loop" data-install-position="index"><a class="btn-primary mkt-btn" href="/install/accounting-loop" data-install-link data-install-slug="accounting-loop">Install</a></div></div>
-      </article>
-      </div>
-    </section>
-    <section class="mkt-group" id="operations" aria-labelledby="operations-h">
-      <div class="mkt-group__head"><h2 id="operations-h">Operations</h2><p class="mkt-group__blurb">Turn a finished meeting into tasks that are handed out and followed up until they are done.</p></div>
-      <div class="mkt-grid">
-      <article class="mkt-card">
-        <div class="mkt-card__top"><span class="mkt-ico" aria-hidden="true">ML</span><div><h3 class="mkt-card__title"><a href="/marketplace/meeting-loop/">Meeting insights</a></h3><p class="mkt-card__area">Flow &middot; Operations</p></div></div>
-        <p class="mkt-card__desc">Turn every meeting into work that gets done: Maskin files tasks, decisions and findings from each meeting and checks that promises end up done or with an owner and a date.</p>
-        <div class="mkt-card__foot"><p class="mkt-card__closes"><strong>Closes on</strong> each promise done, or with an owner and a date</p><div class="loop-install" data-loop-install="meeting-loop" data-install-position="index"><a class="btn-primary mkt-btn" href="/install/meeting-loop" data-install-link data-install-slug="meeting-loop">Install</a></div></div>
-      </article>
-      </div>
-    </section>
+    <div class="hub-jobs" id="hub-jobs" role="group" aria-label="Start with your job" hidden>
+      <span class="hub-lbl" aria-hidden="true">Start with your job</span>
+      <button class="hub-job" type="button" data-job="know" aria-pressed="false"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>Know your competitors</button>
+      <button class="hub-job" type="button" data-job="hear" aria-pressed="false"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>Hear your customers</button>
+      <button class="hub-job" type="button" data-job="ship" aria-pressed="false"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17V4"/><path d="M6 10l6-6 6 6"/><path d="M5 21h14"/></svg></span>Ship releases</button>
+      <button class="hub-job" type="button" data-job="meet" aria-pressed="false"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2.5.7 4 2.5 4 5.5"/></svg></span>Run your meetings</button>
     </div>
-    <p class="mkt-empty" id="mkt-empty" hidden>Nothing matches your search.</p>
+
+    <div class="hub-teams" id="hub-teams" role="group" aria-label="Filter by team" hidden>
+      <span class="hub-lbl">Show flows for</span>
+      <span class="hub-teams__p">
+        <button class="hub-pill" type="button" data-team="All" aria-pressed="true">All</button>
+        <button class="hub-pill" type="button" data-team="Product" aria-pressed="false">Product</button>
+        <button class="hub-pill" type="button" data-team="Marketing" aria-pressed="false">Marketing</button>
+        <button class="hub-pill" type="button" data-team="Sales" aria-pressed="false">Sales</button>
+        <button class="hub-pill" type="button" data-team="Founder" aria-pressed="false">Founder</button>
+        <button class="hub-pill" type="button" data-team="Operations" aria-pressed="false">Operations</button>
+        <button class="hub-pill" type="button" data-team="Finance" aria-pressed="false">Finance</button>
+      </span>
+      <span class="hub-count" id="hub-count" role="status" aria-live="polite"></span>
+    </div>
+
+    <section id="all" aria-label="All flows">
+      <div class="hub-grid" id="hub-grid">
+<!-- hub:grid:start -->
+      <article class="hub-card" data-flow="competitor-watch" data-status="ready" data-group="Product" data-jobs="know" data-teams="Product|Marketing|Founder" data-rank="1">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/competitor-watch/">Competitor Watch</a></h3>
+        <p class="hub-card__desc">One sourced briefing every week on what your competitors did.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Product">Product</a><div class="loop-install" data-loop-install="competitive-intelligence" data-install-position="index"><a class="hub-btn" href="/install/market-competitor-watch-loop" data-install-link data-install-slug="competitive-intelligence" aria-label="Install Competitor Watch">Install</a></div></div>
+      </article>
+      <article class="hub-card" data-flow="customer-voice" data-status="ready" data-group="Product" data-jobs="hear" data-teams="Product|Founder" data-rank="2">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/customer-voice/">Customer Voice</a></h3>
+        <p class="hub-card__desc">Customer requests, complaints and praise, filed with a source.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Product">Product</a><div class="loop-install" data-loop-install="customer-voice" data-install-position="index"><a class="hub-btn" href="/install/customer-voice-loop" data-install-link data-install-slug="customer-voice" aria-label="Install Customer Voice">Install</a></div></div>
+      </article>
+      <article class="hub-card" data-flow="product-release" data-status="ready" data-group="Product" data-jobs="ship" data-teams="Product|Operations" data-rank="3">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17V4"/><path d="M6 10l6-6 6 6"/><path d="M5 21h14"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/product-release/">Product Release</a></h3>
+        <p class="hub-card__desc">Get work to customers with release notes confirmed live.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Product">Product</a><div class="loop-install" data-loop-install="product-release" data-install-position="index"><a class="hub-btn" href="/install/product-release-loop" data-install-link data-install-slug="product-release" aria-label="Install Product Release">Install</a></div></div>
+      </article>
+      <article class="hub-card" data-flow="product-analytics" data-status="ready" data-group="Product" data-jobs="" data-teams="Product|Founder" data-rank="4">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/product-usage/">Product Analytics</a></h3>
+        <p class="hub-card__desc">A weekly read of your product usage, with counts behind it.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Product">Product</a><div class="loop-install" data-loop-install="product-usage" data-install-position="index"><a class="hub-btn" href="/install/product-usage-loop" data-install-link data-install-slug="product-usage" aria-label="Install Product Analytics">Install</a></div></div>
+      </article>
+      <article class="hub-card" data-flow="product-discovery" data-status="ready" data-group="Product" data-jobs="hear" data-teams="Product" data-rank="5">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/product-discovery/">Product Discovery</a></h3>
+        <p class="hub-card__desc">Turn interviews, tickets and reviews into work that ships.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Product">Product</a><div class="loop-install" data-loop-install="product-discovery" data-install-position="index"><a class="hub-btn" href="/install/product-discovery-loop" data-install-link data-install-slug="product-discovery" aria-label="Install Product Discovery">Install</a></div></div>
+      </article>
+      <article class="hub-card" data-flow="meeting-insights" data-status="ready" data-group="Operations" data-jobs="meet" data-teams="Operations|Founder" data-rank="6">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2.5.7 4 2.5 4 5.5"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/meeting-loop/">Meeting Insights</a></h3>
+        <p class="hub-card__desc">Turn meetings into tasks and decisions, followed up to done.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Operations">Operations</a><div class="loop-install" data-loop-install="meeting-loop" data-install-position="index"><a class="hub-btn" href="/install/meeting-loop" data-install-link data-install-slug="meeting-loop" aria-label="Install Meeting Insights">Install</a></div></div>
+      </article>
+      <article class="hub-card" data-flow="knowledge-wiki" data-status="ready" data-group="Knowledge" data-jobs="meet" data-teams="Operations|Product" data-rank="7">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v14a2 2 0 0 1 2-2h8z"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/knowledge-wiki/">Knowledge Wiki</a></h3>
+        <p class="hub-card__desc">Keep team pages current, with old drafts merged or retired.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Knowledge">Knowledge</a><div class="loop-install" data-loop-install="knowledge-wiki" data-install-position="index"><a class="hub-btn" href="/install/knowledge-wiki-loop" data-install-link data-install-slug="knowledge-wiki" aria-label="Install Knowledge Wiki">Install</a></div></div>
+      </article>
+      <article class="hub-card" data-flow="accounting" data-status="ready" data-group="Finance" data-jobs="" data-teams="Finance|Operations|Founder" data-rank="8">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/accounting/">Get receipts in as drafts</a></h3>
+        <p class="hub-card__desc">Upload receipts and get drafts in your own bookkeeping system, uncertain entries marked.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Finance">Finance</a><div class="loop-install" data-loop-install="accounting-loop" data-install-position="index"><a class="hub-btn" href="/install/accounting-loop" data-install-link data-install-slug="accounting-loop" aria-label="Install Get receipts in as drafts">Install</a></div></div>
+      </article>
+      <div class="hub-div" id="hub-div"><h2>Coming soon <span id="hub-div-n">7</span></h2><p>Not installable yet. Book a walkthrough to see how each one would run for your team.</p></div>
+      <article class="hub-card hub-card--soon" data-flow="seo-publishing" data-status="soon" data-group="Marketing" data-jobs="" data-teams="Marketing" data-rank="9">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span class="hub-label hub-label--soon">Coming soon</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/seo-publishing/">SEO Publishing</a></h3>
+        <p class="hub-card__desc">From keyword to an indexed page, without hand-writing HTML.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Marketing">Marketing</a><a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></div>
+      </article>
+      <article class="hub-card hub-card--soon" data-flow="linkedin-content" data-status="soon" data-group="Marketing" data-jobs="" data-teams="Marketing|Founder" data-rank="10">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><span class="hub-label hub-label--soon">Coming soon</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/linkedin-content/">LinkedIn Content</a></h3>
+        <p class="hub-card__desc">Founder-voice LinkedIn posts, planned two weeks ahead.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Marketing">Marketing</a><a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></div>
+      </article>
+      <article class="hub-card hub-card--soon" data-flow="content-calendar" data-status="soon" data-group="Marketing" data-jobs="" data-teams="Marketing" data-rank="11">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span><span class="hub-label hub-label--soon">Coming soon</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/content-calendar/">Content Calendar</a></h3>
+        <p class="hub-card__desc">Plan a month of posts and read weekly reach by channel.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Marketing">Marketing</a><a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></div>
+      </article>
+      <article class="hub-card hub-card--soon" data-flow="outbound" data-status="soon" data-group="Sales" data-jobs="" data-teams="Sales|Founder" data-rank="12">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></span><span class="hub-label hub-label--soon">Coming soon</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/outbound/">Outbound</a></h3>
+        <p class="hub-card__desc">Signal, research, draft, send and reply routing as one flow.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Sales">Sales</a><a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></div>
+      </article>
+      <article class="hub-card hub-card--soon" data-flow="lead-qualification" data-status="soon" data-group="Sales" data-jobs="" data-teams="Sales" data-rank="13">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18l-7 9v6l-4 2v-8z"/></svg></span><span class="hub-label hub-label--soon">Coming soon</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/lead-qualification/">Lead Qualification</a></h3>
+        <p class="hub-card__desc">Read each inbound lead on arrival and record why it was rejected.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Sales">Sales</a><a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></div>
+      </article>
+      <article class="hub-card hub-card--soon" data-flow="product-delivery" data-status="soon" data-group="Product" data-jobs="ship" data-teams="Product" data-rank="14">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M6 8.5v3a4 4 0 0 0 4 4h5.5"/></svg></span><span class="hub-label hub-label--soon">Coming soon</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/product-delivery/">Product Delivery</a></h3>
+        <p class="hub-card__desc">From plan to code that is built, reviewed and checked.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Product">Product</a><a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></div>
+      </article>
+      <article class="hub-card hub-card--soon" data-flow="signal-intake" data-status="soon" data-group="Product" data-jobs="hear" data-teams="Product|Marketing" data-rank="15">
+        <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.5"/></svg></span><span class="hub-label hub-label--soon">Coming soon</span></div>
+        <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/signal-intake/">Signal Intake</a></h3>
+        <p class="hub-card__desc">Public discussions and posts filed as short notes, with sources.</p>
+        <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Product">Product</a><a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></div>
+      </article>
+<!-- hub:grid:end -->
+        <div class="hub-empty" id="hub-empty" hidden></div>
+      </div>
+    </section>
+
+    <section class="hub-sec" aria-labelledby="hub-grp-h">
+      <h2 id="hub-grp-h">Browse by group</h2>
+      <div class="hub-cats">
+<!-- hub:groups:start -->
+      <a class="hub-pill" href="/marketplace/?group=Marketing" data-group-link="Marketing">Marketing <span class="hub-pill__n">3</span></a>
+      <a class="hub-pill" href="/marketplace/?group=Sales" data-group-link="Sales">Sales <span class="hub-pill__n">2</span></a>
+      <a class="hub-pill" href="/marketplace/?group=Product" data-group-link="Product">Product <span class="hub-pill__n">7</span></a>
+      <a class="hub-pill" href="/marketplace/?group=Knowledge" data-group-link="Knowledge">Knowledge <span class="hub-pill__n">1</span></a>
+      <a class="hub-pill" href="/marketplace/?group=Finance" data-group-link="Finance">Finance <span class="hub-pill__n">1</span></a>
+      <a class="hub-pill" href="/marketplace/?group=Operations" data-group-link="Operations">Operations <span class="hub-pill__n">1</span></a>
+<!-- hub:groups:end -->
+      </div>
+    </section>
+
+    <section class="hub-sec" aria-labelledby="hub-pair-h">
+      <h2 id="hub-pair-h">Flows that work well together</h2>
+      <div class="hub-pairs">
+        <a class="hub-pair" href="/marketplace/customer-voice/"><b>Customer Voice and Product Discovery</b><span>Hear what customers say, then turn it into work that ships.</span></a>
+        <a class="hub-pair" href="/marketplace/competitor-watch/"><b>Competitor Watch and Product Analytics</b><span>See what changed outside your product and what changed in it.</span></a>
+        <a class="hub-pair" href="/marketplace/meeting-loop/"><b>Meeting Insights and Knowledge Wiki</b><span>Turn meetings into tasks, and keep what you learn in one wiki.</span></a>
+      </div>
+    </section>
+
+    <section class="hub-sec">
+      <div class="hub-band">
+        <div><h2>Not sure which flow fits?</h2><p>Book a walkthrough and we will shape a flow around your team. Maskin is open source and self-hostable under Apache 2.0.</p></div>
+        <div class="hub-band__a"><a class="hub-btn hub-btn--lg" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a><a class="hub-btn hub-btn--ghost hub-btn--lg" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a></div>
+      </div>
+    </section>
 
     <div class="doc-content mkt-prose">
+    <div class="doc-content hub-prose">
     <h2>What a flow is on Maskin</h2>
-    <p>A flow is an <em>outcome</em>, not a feature. Each of the pages above walks through a real closed cycle that produces a real result &mdash; a live SEO page, a booked meeting, a <a href="/marketplace/lead-qualification/">qualified lead with the rejection reason on record</a>, a cited wiki answer, <a href="/marketplace/accounting/">a month of receipts gathered into one reviewed draft</a> (page in Danish), a shipped bet mapped back to the signal that motivated it &mdash; on Maskin&rsquo;s typed object graph. The flow is what closes; the agents, MCPs, and skills behind it are named honestly on each flow page so you can copy the shape &mdash; see <a href="/docs/agent-skills-marketplace/">how agent skills work in Maskin</a> for the packaged-judgment layer these flows attach to their agents.</p>
+    <p>A flow is an <em>outcome</em>, not a feature. Each of the pages above walks through a real closed cycle that produces a real result: a live SEO page, a booked meeting, a <a href="/marketplace/lead-qualification/">qualified lead with the rejection reason on record</a>, a cited wiki answer, <a href="/marketplace/accounting/">a month of receipts gathered into one reviewed draft</a> (page in Danish), a shipped bet mapped back to the signal that motivated it, on Maskin&rsquo;s typed object graph. The flow is what closes; the agents, MCPs, and skills behind it are named honestly on each flow page so you can copy the shape. See <a href="/docs/agent-skills-marketplace/">how agent skills work in Maskin</a> for the packaged-judgment layer these flows attach to their agents.</p>
     <p>The <a href="/docs/ambient-agent-workspace/">ambient agent workspace</a> is the substrate all of these flows run on. If you want to understand the object model beneath before picking a flow, start there.</p>
-    <p>To follow the shipping cadence behind these flows &mdash; every new flow, integration, and MCP surface &mdash; <a href="/changelog/">see what we&rsquo;ve shipped</a>.</p>
+    <p>To follow the shipping cadence behind these flows (every new flow, integration and MCP surface), <a href="/changelog/">see what we&rsquo;ve shipped</a>.</p>
 
-    <div class="related">
-      <p class="related__title">Read next</p>
-      <div class="doc-cards">
-        <a class="doc-card" href="/docs/ambient-agent-workspace/">
-          <div class="doc-card__title">Ambient agent workspace</div>
-          <div class="doc-card__desc">The substrate every flow on this page runs on &mdash; the always-on workspace agents and humans share.</div>
-          <div class="doc-card__arrow">Read &rarr;</div>
-        </a>
-        <a class="doc-card" href="/docs/how-to-build-ai-sdr-loop/">
-          <div class="doc-card__title">How to build an AI SDR flow</div>
-          <div class="doc-card__desc">The step-by-step build behind the outbound flow &mdash; signals, research, drafting, human approval, and reply routing.</div>
-          <div class="doc-card__arrow">Read &rarr;</div>
-        </a>
-        <a class="doc-card" href="/docs/what-is-an-agentic-workspace/">
-          <div class="doc-card__title">What is an agentic workspace?</div>
-          <div class="doc-card__desc">Why the object graph, not the feature list, is what makes these flows close.</div>
-          <div class="doc-card__arrow">Read &rarr;</div>
-        </a>
-      </div>
-    </div>
-
-    <div class="post-cta">
-      <h2>Run one of these flows on your own workspace</h2>
-      <p>Maskin is open-source, MCP-native, and self-hostable under Apache 2.0. Copy one of the flows above into your own workspace, or book a walkthrough and we&rsquo;ll help you shape it around your team&rsquo;s actual outcome.</p>
-      <div class="post-cta__actions">
-        <a class="btn-primary" href="https://github.com/sindre-ai/maskin" target="_blank" rel="noopener">Self-host on GitHub</a>
-        <a class="btn-secondary" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a>
-      </div>
-    </div>
     </div>
   </main>
 
 <script src="/docs/docs.js"></script>
 <script src="/marketplace-events.js" defer></script>
-<script>
-(function () {
-  var tools = document.getElementById("mkt-tools");
-  var q = document.getElementById("mkt-q");
-  var empty = document.getElementById("mkt-empty");
-  var chips = [].slice.call(document.querySelectorAll("#mkt-chips a"));
-  var cards = [].slice.call(document.querySelectorAll(".mkt-card"));
-  var groups = [].slice.call(document.querySelectorAll(".mkt-group"));
-  var cat = "";
-  tools.hidden = false;
-  function apply() {
-    var term = q.value.trim().toLowerCase(), shown = 0;
-    cards.forEach(function (c) {
-      var g = c.closest(".mkt-group");
-      var ok = (!cat || g.id === cat) && (!term || c.textContent.toLowerCase().indexOf(term) >= 0);
-      c.hidden = !ok;
-      if (ok) shown++;
-    });
-    groups.forEach(function (g) { g.hidden = !g.querySelector(".mkt-card:not([hidden])"); });
-    empty.hidden = shown > 0;
-  }
-  chips.forEach(function (a) {
-    a.addEventListener("click", function (e) {
-      e.preventDefault();
-      cat = a.getAttribute("data-cat") || "";
-      chips.forEach(function (x) { x.classList.toggle("is-on", x === a); });
-      apply();
-    });
-  });
-  q.addEventListener("input", apply);
-})();
-</script>
+<script src="/marketplace/hub.js" defer></script>
 </body>
 </html>
