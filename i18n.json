@@ -4,7 +4,8 @@
     "sv": { "locale": "sv_SE", "hub": "/sv/", "enabled": true, "nav": false }
   },
   "groups": {
-    "home": { "en": "/", "da": "/da/", "sv": "/sv/" }
+    "home": { "en": "/", "da": "/da/", "sv": "/sv/" },
+    "accounting": { "en": "/marketplace/accounting/", "da": "/da/bogforing/" }
   },
   "pages": [
     {
@@ -39,6 +40,13 @@
       "lang": "da",
       "kind": "native",
       "keyword": "konkurrentanalyse"
+    },
+    {
+      "path": "/da/bogforing/",
+      "lang": "da",
+      "kind": "twin",
+      "keyword": "bilag som udkast",
+      "lang_group": "accounting"
     },
     {
       "path": "/da/ai-agenter/",
@@ -77,6 +85,8 @@
     "small-business",
     "deck",
     "deck/virksomheder",
+    "guide",
+    "guide/virksomheder",
     "docs/open-source-jira-alternative",
     "marketplace/content-calendar/content-calendar-template.html",
     "404.html",
@@ -98,6 +108,7 @@
   "external_paths": [
     "/bookseb",
     "/login",
-    "/signup"
+    "/signup",
+    "/install/accounting-loop"
   ]
 }

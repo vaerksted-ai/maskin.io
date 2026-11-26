@@ -117,7 +117,8 @@
     ]},
     { title: "Dansk", items: [
       { label: "AI-automatisering", href: "/da/ai-automatisering/" },
-      { label: "Sæt strøm til din forretning", href: "/da/saet-stroem/" }
+      { label: "Sæt strøm til din forretning", href: "/da/saet-stroem/" },
+      { label: "Få kvitteringer ind som udkast", href: "/da/bogforing/" }
     ]}
   ];
 
