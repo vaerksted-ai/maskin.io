@@ -434,7 +434,7 @@
   </url>
   <url>
     <loc>https://maskin.io/da/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -452,13 +452,19 @@
   </url>
   <url>
     <loc>https://maskin.io/da/ai-automatisering/</loc>
-    <lastmod>2026-11-08</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://maskin.io/da/ai-agenter/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maskin.io/da/konkurrentanalyse/</loc>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

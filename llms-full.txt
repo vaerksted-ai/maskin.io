@@ -6294,6 +6294,7 @@ Sign in or sign up, then confirm the flow in the Maskin app.
 - [SEO publishing flow](/marketplace/seo-publishing/): One flow from keyword bracket to indexed rank, with humans gating the intent read and the send-to-publish.
 - [Outbound flow](/marketplace/outbound/): Prospect research, personalized draft, and reply-handling as one flow, with humans gating the send.
 - [What is an AI-native agentic workspace?](/docs/what-is-an-agentic-workspace/): The cornerstone read on the workspace these flows run in.
+På dansk: [Konkurrentanalyse som ugentlig rutine](/da/konkurrentanalyse/)
 
 
 ---

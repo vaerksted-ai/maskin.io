@@ -36,6 +36,12 @@
       "keyword": "webinar for virksomheder"
     },
     {
+      "path": "/da/konkurrentanalyse/",
+      "lang": "da",
+      "kind": "native",
+      "keyword": "konkurrentanalyse"
+    },
+    {
       "path": "/da/bogforing/",
       "lang": "da",
       "kind": "twin",
