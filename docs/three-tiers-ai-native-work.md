@@ -58,7 +58,7 @@ Often. A coding agent on the code, a tracker for the queue of coding tasks, a kn
 
 ### Does Maskin replace any of the three tiers?
 No, and it usually shouldn’t. Maskin is a fourth tier: an agentic workspace where the object of work is a shaped bet with a win condition. It sits above the coding-agent tier, alongside the tracker tier for the queue of tasks under a bet, and downstream of the knowledge space where prior context lives. The common stack is one of each, wired together, with the decision loop running in the workspace that models a decision.
-*Maskin is open source under Apache 2.0. Self-hosting is free; hosted Pro is $20/seat/month; Team is $200/workspace/month with unlimited seats.*
+*Maskin is open source under Apache 2.0. Self-hosting is free; hosted pricing is per user, with a free plan for up to 3 users, Starter at 349 kr and Pro at 995 kr per user a month, excluding VAT.*
 Read next
 
 ## Getting started is free

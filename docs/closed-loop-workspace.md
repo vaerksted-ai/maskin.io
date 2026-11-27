@@ -65,7 +65,7 @@ Almost always yes. Most product teams that run a closed-loop workspace also run 
 ## Where to go next
 The full shape of a closed-loop workspace — the loop mechanics, the bounded-and-human-gated safety model, the shared typed object graph agents and humans work, the pricing — is in the [cornerstone on agentic workspaces](/docs/what-is-an-agentic-workspace/). This spoke is the diagnostic-frame entry point; the cornerstone is the end-to-end walk.
 The three sibling spokes complete the trilogy: [tier 1 on coding agents](/docs/ai-product-workspace-vs-coding-agent/), [tier 2 on task trackers](/docs/ai-product-management-tool/), [tier 3 on knowledge spaces](/docs/agentic-workspace-vs-knowledge-space/). Read together, they run the closure diagnostic in both directions across the full stack.
-*Maskin is open source under Apache 2.0. Self-hosting is free; hosted Pro is $20/seat/month; Team is $200/workspace/month with unlimited seats.*
+*Maskin is open source under Apache 2.0. Self-hosting is free; hosted pricing is per user, with a free plan for up to 3 users, Starter at 349 kr and Pro at 995 kr per user a month, excluding VAT.*
 Read next
 
 ## Close the loop on your work

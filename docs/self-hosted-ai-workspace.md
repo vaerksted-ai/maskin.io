@@ -48,7 +48,7 @@ The engineering is the same either way — the same unified object model, the sa
 | Agents | Sandboxed microVM sessions on your agent-server host | Sandboxed microVM sessions, operated for you |
 | Infrastructure | You run it | We run it |
 | Cost | Always free (you pay infra + model usage) | Free for up to 3 users, then from 349 kr per user a month, excluding VAT |
-Self-host keeps everything inside your walls and costs nothing for software; managed gets you running without provisioning agent-server hosts. Moving data between the two is a manual copy that has not been tested, so decide where the workspace should live before you fill it. If you want the same loops without running infrastructure, [book a hosted trial](https://meshfirm.com/bookmagnus).
+Self-host keeps everything inside your walls and costs nothing for software; managed gets you running without provisioning agent-server hosts. Moving data between the two is a manual copy that has not been tested, so decide where the workspace should live before you fill it. If you want the same loops without running infrastructure, [book a walkthrough](https://meshfirm.com/bookmagnus).
 
 ## Pricing
 - **Self-host** — always free. You pay only for your own infrastructure and model usage.
@@ -67,7 +67,7 @@ If you’re watching the market, the incumbents are also making data portability
 
 ## Self-host it yourself
 Cloning and running Maskin is the fastest way to see whether a self-hosted workspace fits. The source is on GitHub under Apache 2.0 — fork it, run it on your own infrastructure, connect your own Claude or Codex access, and keep your data on your side of the line. No software license, no seat fee.
-Start at **[github.com/sindre-ai/maskin](https://github.com/sindre-ai/maskin)** — clone, run the onboarding guide, connect your Anthropic or OpenAI access. The [self-hosted setup guide](/docs/get-started/self-hosted/) and the [get-started guide](/docs/get-started/) walk through it. Or, if you’d rather not provision agent-server hosts, start on a [managed workspace](/) from $20/seat so you can move to full self-host later.
+Start at **[github.com/sindre-ai/maskin](https://github.com/sindre-ai/maskin)** — clone, run the onboarding guide, connect your Anthropic or OpenAI access. The [self-hosted setup guide](/docs/get-started/self-hosted/) and the [get-started guide](/docs/get-started/) walk through it. Or, if you’d rather not provision agent-server hosts, start on a [managed workspace](/) free for up to 3 users, so you can move to full self-host later.
 
 ## FAQ
 

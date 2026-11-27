@@ -1,7 +1,7 @@
 > Source: https://maskin.io/docs/llm/
 
 # LLM & models
-Maskin defaults to Claude. On the hosted service, trial, Pro and Team workspaces run on a Maskin-funded route, and Enterprise workspaces supply their own credential. For every agent run it resolves a model through a fixed priority order, so you can set a default and override it where you need to.
+Maskin defaults to Claude. On the hosted service, Free, Starter, Pro and Ultra workspaces run on a Maskin-funded route, and Enterprise workspaces supply their own credential. For every agent run it resolves a model through a fixed priority order, so you can set a default and override it where you need to.
 
 ## Routing priority
 When a session starts, Maskin picks the first option that's configured, in this order:
