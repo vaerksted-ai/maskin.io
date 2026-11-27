@@ -65,7 +65,7 @@ export function sorted(d) {
 
 function card(f) {
   const ready = f.status === 'ready';
-  const attrs = `data-flow="${esc(f.id)}" data-status="${f.status}" data-group="${esc(f.group)}" data-jobs="${f.jobs.join(' ')}" data-teams="${esc(f.teams.join('|'))}" data-rank="${f.rank}"`;
+  const attrs = `data-flow="${esc(f.id)}" data-status="${f.status}" data-group="${esc(f.group)}" data-jobs="${f.jobs.join(' ')}" data-teams="${esc(f.teams.join('|'))}" data-kind="${f.kind ? 'agent' : 'flow'}" data-rank="${f.rank}"`;
   const action = ready
     ? `<div class="loop-install" data-loop-install="${esc(f.install.slug)}" data-install-position="index"><a class="hub-btn" href="${esc(f.install.href)}" data-install-link data-install-slug="${esc(f.install.slug)}" aria-label="Install ${esc(f.title)}">Install</a></div>`
     : `<a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a>`;

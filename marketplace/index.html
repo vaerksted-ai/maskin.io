@@ -209,8 +209,17 @@
       <button class="hub-job" type="button" data-job="meet" aria-pressed="false"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2.5.7 4 2.5 4 5.5"/></svg></span>Run your meetings</button>
     </div>
 
+    <div class="hub-kinds" id="hub-kinds" role="group" aria-label="Filter by type" hidden>
+      <span class="hub-lbl">Show</span>
+      <span class="hub-teams__p">
+        <button class="hub-pill" type="button" data-kind-filter="" aria-pressed="true">All</button>
+        <button class="hub-pill" type="button" data-kind-filter="flow" aria-pressed="false">Flows</button>
+        <button class="hub-pill" type="button" data-kind-filter="agent" aria-pressed="false">Agents</button>
+      </span>
+    </div>
+
     <div class="hub-teams" id="hub-teams" role="group" aria-label="Filter by team" hidden>
-      <span class="hub-lbl">Show flows for</span>
+      <span class="hub-lbl">For team</span>
       <span class="hub-teams__p">
         <button class="hub-pill" type="button" data-team="All" aria-pressed="true">All</button>
         <button class="hub-pill" type="button" data-team="Product" aria-pressed="false">Product</button>
@@ -226,98 +235,98 @@
     <section id="all" aria-label="All flows">
       <div class="hub-grid" id="hub-grid">
 <!-- hub:grid:start -->
-      <article class="hub-card" data-flow="competitor-watch" data-status="ready" data-group="Product" data-jobs="know" data-teams="Product|Marketing|Founder" data-rank="1">
+      <article class="hub-card" data-flow="competitor-watch" data-status="ready" data-group="Product" data-jobs="know" data-teams="Product|Marketing|Founder" data-kind="flow" data-rank="1">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/competitor-watch/">Competitor Watch</a></h3>
         <p class="hub-card__desc">One sourced briefing every week on what your competitors did.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Product">Product</a><div class="loop-install" data-loop-install="competitive-intelligence" data-install-position="index"><a class="hub-btn" href="/install/market-competitor-watch-loop" data-install-link data-install-slug="competitive-intelligence" aria-label="Install Competitor Watch">Install</a></div></div>
       </article>
-      <article class="hub-card" data-flow="customer-voice" data-status="ready" data-group="Product" data-jobs="hear" data-teams="Product|Marketing|Founder" data-rank="2">
+      <article class="hub-card" data-flow="customer-voice" data-status="ready" data-group="Product" data-jobs="hear" data-teams="Product|Marketing|Founder" data-kind="flow" data-rank="2">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/customer-voice/">Customer Voice</a></h3>
         <p class="hub-card__desc">Customer requests, complaints and praise, filed with a source.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Product">Product</a><div class="loop-install" data-loop-install="customer-voice" data-install-position="index"><a class="hub-btn" href="/install/customer-voice-loop" data-install-link data-install-slug="customer-voice" aria-label="Install Customer Voice">Install</a></div></div>
       </article>
-      <article class="hub-card" data-flow="product-release" data-status="ready" data-group="Product" data-jobs="ship" data-teams="Product|Operations" data-rank="3">
+      <article class="hub-card" data-flow="product-release" data-status="ready" data-group="Product" data-jobs="ship" data-teams="Product|Operations" data-kind="flow" data-rank="3">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17V4"/><path d="M6 10l6-6 6 6"/><path d="M5 21h14"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/product-release/">Product Release</a></h3>
         <p class="hub-card__desc">Get work to customers with release notes confirmed live.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Product">Product</a><div class="loop-install" data-loop-install="product-release" data-install-position="index"><a class="hub-btn" href="/install/product-release-loop" data-install-link data-install-slug="product-release" aria-label="Install Product Release">Install</a></div></div>
       </article>
-      <article class="hub-card" data-flow="product-analytics" data-status="ready" data-group="Product" data-jobs="" data-teams="Product|Founder" data-rank="4">
+      <article class="hub-card" data-flow="product-analytics" data-status="ready" data-group="Product" data-jobs="" data-teams="Product|Founder" data-kind="flow" data-rank="4">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/product-usage/">Product Analytics</a></h3>
         <p class="hub-card__desc">A weekly read of your product usage, with counts behind it.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Product">Product</a><div class="loop-install" data-loop-install="product-usage" data-install-position="index"><a class="hub-btn" href="/install/product-usage-loop" data-install-link data-install-slug="product-usage" aria-label="Install Product Analytics">Install</a></div></div>
       </article>
-      <article class="hub-card" data-flow="product-discovery" data-status="ready" data-group="Product" data-jobs="hear" data-teams="Product" data-rank="5">
+      <article class="hub-card" data-flow="product-discovery" data-status="ready" data-group="Product" data-jobs="hear" data-teams="Product" data-kind="flow" data-rank="5">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/product-discovery/">Product Discovery</a></h3>
         <p class="hub-card__desc">Turn interviews, tickets and reviews into work that ships.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Product">Product</a><div class="loop-install" data-loop-install="product-discovery" data-install-position="index"><a class="hub-btn" href="/install/product-discovery-loop" data-install-link data-install-slug="product-discovery" aria-label="Install Product Discovery">Install</a></div></div>
       </article>
-      <article class="hub-card" data-flow="meeting-insights" data-status="ready" data-group="Operations" data-jobs="meet" data-teams="Operations|Founder" data-rank="6">
+      <article class="hub-card" data-flow="meeting-insights" data-status="ready" data-group="Operations" data-jobs="meet" data-teams="Operations|Founder" data-kind="flow" data-rank="6">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2.5.7 4 2.5 4 5.5"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/meeting-loop/">Meeting Insights</a></h3>
         <p class="hub-card__desc">Turn meetings into tasks and decisions, followed up to done.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Operations">Operations</a><div class="loop-install" data-loop-install="meeting-loop" data-install-position="index"><a class="hub-btn" href="/install/meeting-loop" data-install-link data-install-slug="meeting-loop" aria-label="Install Meeting Insights">Install</a></div></div>
       </article>
-      <article class="hub-card" data-flow="knowledge-wiki" data-status="ready" data-group="Knowledge" data-jobs="" data-teams="Operations|Product" data-rank="7">
+      <article class="hub-card" data-flow="knowledge-wiki" data-status="ready" data-group="Knowledge" data-jobs="" data-teams="Operations|Product" data-kind="flow" data-rank="7">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v14a2 2 0 0 1 2-2h8z"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/knowledge-wiki/">Knowledge Wiki</a></h3>
         <p class="hub-card__desc">Keep team pages current, with old drafts merged or retired.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Knowledge">Knowledge</a><div class="loop-install" data-loop-install="knowledge-wiki" data-install-position="index"><a class="hub-btn" href="/install/knowledge-wiki-loop" data-install-link data-install-slug="knowledge-wiki" aria-label="Install Knowledge Wiki">Install</a></div></div>
       </article>
-      <article class="hub-card" data-flow="accounting" data-status="ready" data-group="Finance" data-jobs="" data-teams="Finance|Operations|Founder" data-rank="8">
+      <article class="hub-card" data-flow="accounting" data-status="ready" data-group="Finance" data-jobs="" data-teams="Finance|Operations|Founder" data-kind="flow" data-rank="8">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span><span class="hub-label hub-label--on">Available</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/accounting/">Get receipts in as drafts</a></h3>
         <p class="hub-card__desc">Upload receipts and get drafts in your own bookkeeping system, uncertain entries marked.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Finance">Finance</a><div class="loop-install" data-loop-install="accounting-loop" data-install-position="index"><a class="hub-btn" href="/install/accounting-loop" data-install-link data-install-slug="accounting-loop" aria-label="Install Get receipts in as drafts">Install</a></div></div>
       </article>
-      <article class="hub-card" data-flow="presentation-designer" data-status="ready" data-group="Marketing" data-jobs="" data-teams="Marketing" data-rank="16">
+      <article class="hub-card" data-flow="presentation-designer" data-status="ready" data-group="Marketing" data-jobs="" data-teams="Marketing" data-kind="agent" data-rank="16">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v5M8 21h8"/></svg></span><span class="hub-card__labels"><span class="hub-label hub-label--agent">Agent</span><span class="hub-label hub-label--on">Available</span></span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/presentation-designer/">Presentation Designer</a></h3>
         <p class="hub-card__desc">Finished decks as one HTML file that fits laptop, tablet and phone screens.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Marketing">Marketing</a><div class="loop-install" data-loop-install="presentation-designer" data-install-position="index"><a class="hub-btn" href="/install/presentation-designer" data-install-link data-install-slug="presentation-designer" aria-label="Install Presentation Designer">Install</a></div></div>
       </article>
       <div class="hub-div" id="hub-div"><h2>Coming soon <span id="hub-div-n">7</span></h2><p>Not installable yet. Book a walkthrough to see how each one would run for your team.</p></div>
-      <article class="hub-card hub-card--soon" data-flow="seo-publishing" data-status="soon" data-group="Marketing" data-jobs="" data-teams="Marketing" data-rank="9">
+      <article class="hub-card hub-card--soon" data-flow="seo-publishing" data-status="soon" data-group="Marketing" data-jobs="" data-teams="Marketing" data-kind="flow" data-rank="9">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span class="hub-label hub-label--soon">Coming soon</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/seo-publishing/">SEO Publishing</a></h3>
         <p class="hub-card__desc">From keyword to an indexed page, without hand-writing HTML.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Marketing">Marketing</a><a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></div>
       </article>
-      <article class="hub-card hub-card--soon" data-flow="linkedin-content" data-status="soon" data-group="Marketing" data-jobs="" data-teams="Marketing|Founder" data-rank="10">
+      <article class="hub-card hub-card--soon" data-flow="linkedin-content" data-status="soon" data-group="Marketing" data-jobs="" data-teams="Marketing|Founder" data-kind="flow" data-rank="10">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><span class="hub-label hub-label--soon">Coming soon</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/linkedin-content/">LinkedIn Content</a></h3>
         <p class="hub-card__desc">Founder-voice LinkedIn posts, planned two weeks ahead.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Marketing">Marketing</a><a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></div>
       </article>
-      <article class="hub-card hub-card--soon" data-flow="content-calendar" data-status="soon" data-group="Marketing" data-jobs="" data-teams="Marketing" data-rank="11">
+      <article class="hub-card hub-card--soon" data-flow="content-calendar" data-status="soon" data-group="Marketing" data-jobs="" data-teams="Marketing" data-kind="flow" data-rank="11">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span><span class="hub-label hub-label--soon">Coming soon</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/content-calendar/">Content Calendar</a></h3>
         <p class="hub-card__desc">Plan a month of posts and read weekly reach by channel.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Marketing">Marketing</a><a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></div>
       </article>
-      <article class="hub-card hub-card--soon" data-flow="outbound" data-status="soon" data-group="Sales" data-jobs="" data-teams="Sales|Founder" data-rank="12">
+      <article class="hub-card hub-card--soon" data-flow="outbound" data-status="soon" data-group="Sales" data-jobs="" data-teams="Sales|Founder" data-kind="flow" data-rank="12">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></span><span class="hub-label hub-label--soon">Coming soon</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/outbound/">Outbound</a></h3>
         <p class="hub-card__desc">Signal, research, draft, send and reply routing as one flow.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Sales">Sales</a><a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></div>
       </article>
-      <article class="hub-card hub-card--soon" data-flow="lead-qualification" data-status="soon" data-group="Sales" data-jobs="" data-teams="Sales" data-rank="13">
+      <article class="hub-card hub-card--soon" data-flow="lead-qualification" data-status="soon" data-group="Sales" data-jobs="" data-teams="Sales" data-kind="flow" data-rank="13">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18l-7 9v6l-4 2v-8z"/></svg></span><span class="hub-label hub-label--soon">Coming soon</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/lead-qualification/">Lead Qualification</a></h3>
         <p class="hub-card__desc">Read each inbound lead on arrival and record why it was rejected.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Sales">Sales</a><a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></div>
       </article>
-      <article class="hub-card hub-card--soon" data-flow="product-delivery" data-status="soon" data-group="Product" data-jobs="ship" data-teams="Product" data-rank="14">
+      <article class="hub-card hub-card--soon" data-flow="product-delivery" data-status="soon" data-group="Product" data-jobs="ship" data-teams="Product" data-kind="flow" data-rank="14">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M6 8.5v3a4 4 0 0 0 4 4h5.5"/></svg></span><span class="hub-label hub-label--soon">Coming soon</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/product-delivery/">Product Delivery</a></h3>
         <p class="hub-card__desc">From plan to code that is built, reviewed and checked.</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="/marketplace/?group=Product">Product</a><a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a></div>
       </article>
-      <article class="hub-card hub-card--soon" data-flow="signal-intake" data-status="soon" data-group="Product" data-jobs="hear" data-teams="Product|Marketing" data-rank="15">
+      <article class="hub-card hub-card--soon" data-flow="signal-intake" data-status="soon" data-group="Product" data-jobs="hear" data-teams="Product|Marketing" data-kind="flow" data-rank="15">
         <div class="hub-card__top"><span class="hub-ico"><svg class="hub-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.5"/></svg></span><span class="hub-label hub-label--soon">Coming soon</span></div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="/marketplace/signal-intake/">Signal Intake</a></h3>
         <p class="hub-card__desc">Public discussions and posts filed as short notes, with sources.</p>
