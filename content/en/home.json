@@ -9,7 +9,7 @@
   "strings": {
     "meta.description": "Hire digital employees accountable for outcomes, like sales follow-up to quiet leads, in Flows. Free for up to 3 users, then from 349 kr per user a month, excl. VAT. Book a call.",
     "meta.og_title": "Hire AI agents. Get the work done.",
-    "ld.description": "Owners and managers hand routine work, such as sales follow-up, customer replies, late invoices and a weekly summary, to AI agents that run it as Flows. A person approves every result before it goes out. Maskin is open source under Apache 2.0, and technical teams can run it on their own infrastructure or use the managed service.",
+    "ld.description": "Maskin lets a business hire digital employees for specific jobs, such as sales follow-up, customer replies and late invoices, each accountable for the outcome in a Flow and doing the work in the tools the business already uses, on a platform that is open source under Apache 2.0 and can run on a team's own infrastructure or as a managed service.",
     "meta.title": "Maskin: hire AI agents and get the work done",
     "ld.os": "Web, Docker (self-hosted), Linux, macOS, Windows",
     "ld.feature1": "MCP-native — drive the workspace from Claude Code or Claude Desktop",
