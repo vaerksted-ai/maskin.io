@@ -122,7 +122,7 @@ Setup in one line — connect Claude to a Maskin instance over MCP, then ask Cla
 
 ## Dansk (Danish)
 
-- [Sæt strøm til din forretning: fire gratis webinarer](https://maskin.io/da/saet-stroem/): Fire gratis danske webinarer for virksomhedsejere om bogføring, synlighed, salg og kundeservice, hvor et menneske godkender, og en samlet tilmelding til serien.
+- [Sæt strøm til din forretning: tre gratis webinarer tilbage](https://maskin.io/da/saet-stroem/): Tre gratis danske webinarer tilbage for virksomhedsejere om synlighed, salg og kundeservice (2, 9 og 16 december 2026), og en samlet tilmelding til serien.
 - [Få kvitteringer ind som udkast](https://maskin.io/da/bogforing/): Forløbet for bogføring på dansk. Vælg dit eget bogføringssystem i den første chat, upload kvitteringer, og Maskin gemmer hver som et udkast i dit system og markerer det, der ser forkert ud. Hver opgave står som Tilgængelig eller Under bygning, og hvert system som Kræver opsætning eller Ikke endnu. Kun udkast: du bogfører selv.
 - [Hvad er en AI-agent?](https://maskin.io/da/hvad-er-en-ai-agent/): Forklaring af AI-agenter, forskellen på agent, chatbot og assistent, og hvad en agent koster at drive.
 - [AI-agenter: guide for danske virksomheder](https://maskin.io/da/ai-agenter/): Hvilke opgaver en dansk virksomhed kan give til en AI-agent, hvor grænsen går, og hvordan godkendelser fordeles.

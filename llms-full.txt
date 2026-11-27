@@ -6696,17 +6696,11 @@ Talk to the Maskin team about how the flow fits into your day-to-day work.
 > Source: https://maskin.io/da/saet-stroem/
 
 # Webinar: Sæt strøm til din forretning
-Fire webinarer. Fire måder at få mere ud af arbejdsdagen.
+Tre webinarer tilbage. Tre måder at få mere ud af arbejdsdagen.
 Fra bogføring og kundeservice til markedsføring og salg. Vi viser dig, hvordan du kan gøre hverdagen lettere, få mere fra hånden og skabe mere værdi i din virksomhed.
-**Næste webinar: onsdag 25. november 2026, 15.00.** [Tilmeld dig på Luma](https://luma.com/92hrh644?utm_campaign=accounting-25nov&utm_source=hub)
+**Næste webinar: onsdag 2. december 2026, 15.00.** [Tilmeld dig serien](#tilmeld-serien)
 
-## De fire webinarer
-Onsdag 25. november 2026, 15.00 til 16.00
-
-### Lad din AI-bogholder gøre regnskabet klar: bilag, moms, årsrapport
-Få AI til at gøre dit regnskab klart, fra bilag til moms og årsrapport.
-Slip for noget af det manuelle arbejde med bilag, fakturaer og bogføring. Se, hvordan du kan gøre bogføringen lettere at håndtere og få mere tid til at drive din virksomhed.
-Agenten finder manglende kvitteringer, afstemmer banken, peger på ubetalte fakturaer og samler spørgsmålene til din bogholder. Den digitale bogholder har ansvaret for, at bilag og spørgsmål er klare til din bogholder. Agenten bogfører ikke selv og giver ingen skatte- eller juridisk rådgivning.
+## De tre kommende webinarer
 Onsdag 2. december 2026, 15.00 til 16.00
 
 ### Ugentligt indhold med AI-agenter i din virksomhed
@@ -6730,6 +6724,14 @@ Kundeservice med AI: delt indbakke eller Slack?
 Få hjælp til at håndtere kundehenvendelser, besvare de typiske spørgsmål og holde styr på dialogen. Så kan du give kunderne en god oplevelse, samtidig med at du får mere ro til andre opgaver.
 Se to måder at bruge en AI-agent til kundeservice på, i en delt indbakke og i Slack, vist side om side.
 
+## Afholdt
+Afholdt onsdag 25. november 2026
+
+### Lad din AI-bogholder gøre regnskabet klar: bilag, moms, årsrapport
+Få AI til at gøre dit regnskab klart, fra bilag til moms og årsrapport.
+Slip for noget af det manuelle arbejde med bilag, fakturaer og bogføring. Se, hvordan du kan gøre bogføringen lettere at håndtere og få mere tid til at drive din virksomhed.
+Agenten finder manglende kvitteringer, afstemmer banken, peger på ubetalte fakturaer og samler spørgsmålene til din bogholder. Den digitale bogholder har ansvaret for, at bilag og spørgsmål er klare til din bogholder. Agenten bogfører ikke selv og giver ingen skatte- eller juridisk rådgivning.
+
 ## Tilmeld dig hele serien
 Vælg de webinarer, der passer til de opgaver, du gerne vil have hjælp til i din virksomhed. Hvert webinar kræver sin egen tilmelding på Luma, så du får linket til hvert webinar, du vil deltage i.
 Navn, e-mail, virksomhed og antal ansatte udfylder du kun, hvis du vil have e-mails fra os.
@@ -6738,7 +6740,7 @@ Du får webinarlinket og din bekræftelse, også uden kryds. Begge kommer fra Lu
 ## Spørgsmål og svar
 
 ### Er det gratis?
-Ja. Alle fire webinarer er gratis, foregår online og er på dansk. Du vælger selv, hvilke emner du vil følge. Hvert webinar har sin egen tilmelding på Luma, så tilmeld dig de enkelte webinarer, du vil deltage i. Der er ingen betaling for at tilmelde dig.
+Ja. Alle webinarerne i serien er gratis, foregår online og er på dansk. Du vælger selv, hvilke emner du vil følge. Hvert webinar har sin egen tilmelding på Luma, så tilmeld dig de enkelte webinarer, du vil deltage i. Der er ingen betaling for at tilmelde dig.
 
 ### Skal jeg kunne noget med AI?
 Nej. Du behøver ikke have erfaring med AI eller kende tekniske begreber. Webinarerne tager udgangspunkt i opgaver fra arbejdsdagen og viser, hvordan en AI-agent kan hjælpe med dem. Du kan følge med uden særlige forudsætninger. Start med en konkret opgave og en digital medarbejder, der har ansvaret for den.
