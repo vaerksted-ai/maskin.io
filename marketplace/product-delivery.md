@@ -1,47 +1,48 @@
 > Source: https://maskin.io/marketplace/product-delivery/
 
 # Bets in. Verified code out.
-Run agentic software development in Maskin so your team owns the bet and the final call, while Maskin plans the work, builds it, reviews every change, and checks the result against the success criteria you wrote first.
+Hire four digital employees for the job of taking a shaped bet to shipped, checked code. They plan the work, build it, review every change, prove the result against the bet’s own success criteria, and tell you whether it worked.
 ![The product delivery flow — bets in, verified code out.](/og-image-product-delivery.png)
 A shaped bet goes in. Code that has been built, reviewed and checked against the bet’s own success criteria comes out.
 
 ## The job
 A bet is only done when the change is live and the numbers say it worked. Most teams lose that second half. The ticket closes when the code merges, nobody goes back to check the result, and the next planning meeting starts from memory.
-This flow keeps both halves attached. Success criteria are written and checked for measurability before any work starts. The work is planned into tasks with an owner each. Every change gets reviewed against its task. The release gets a final check before it can reach main. After it ships, the flow reads your product data and your customer feedback and posts a verdict on the bet. If you also want a weekly read of how people use the product, outside any one bet, the [product usage flow](/marketplace/product-usage/) files what changed or contradicts what your team believes. Your team keeps the shaping taste, the product calls the flow cannot make, and the last word on whether the bet won. The six stages and the three decisions a person keeps are laid out in [agentic SDLC explained](/docs/learn/agentic-sdlc/).
+This flow keeps both halves attached. A bet moves to define and the Delivery Lead checks its Won and Lost criteria can be measured with the data you already collect, and proposes them in numbers. Each task has an owner and a branch. The Developer builds every change and opens the pull request, the Reviewer checks it against its task, and the Delivery Lead merges when the checks pass. After it ships, the flow reads your product data and your customer feedback and posts a verdict on the bet. If you also want a weekly read of how people use the product, outside any one bet, the [product usage flow](/marketplace/product-usage/) files what changed or contradicts what your team believes. The six stages are laid out in [agentic SDLC explained](/docs/learn/agentic-sdlc/).
 It is the output side of the [product discovery flow](/marketplace/product-discovery/): discovery turns customer signal into a shaped bet, delivery turns that bet into shipped, verified code. The [bet-based planning](/docs/bet-based-product-planning/) method sits underneath both. Once a change is merged, the [product release flow](/marketplace/product-release/) bundles it into a release, prepares the notes and reads back that they are really live.
 **Replaces:** sprint-planning ceremonies · a delivery lead chasing status across tickets and pull requests · hand-run release checklists · close-out reviews nobody gets round to.
-**Stays human:** which bets are worth shaping · the product calls the flow cannot make · the final call on every bet (succeeded, failed, paused, archived).
+**Your team owns:** which bets are worth shaping · the product calls the flow cannot make · what goes back into discovery · how the work fits the roadmap.
 
 ## Your team and Maskin: who does what
 | Your team keeps | Maskin runs |
 | --- | --- |
-| The taste on which bets are worth shaping | Checking the success criteria can actually be measured before work starts |
-| The product calls the flow cannot make | Breaking the bet into tasks, with an owner and a branch for each |
-| The final call on the bet | Building each task and opening the pull request |
-| What goes back into discovery | Reviewing every change against the task it came from |
-| The decision to pause or kill a bet | Checking the release, merging a change that passes, then reading product data and customer feedback after it ships |
+| The taste on which bets are worth shaping | The Delivery Lead sets measurable success criteria and owns the verdict after release |
+| The product calls the flow cannot make | The Developer builds each task, runs the change and opens the pull request |
+| What goes back into discovery | The Reviewer checks every change against the task it came from |
+| How the work fits the roadmap | The Coordinator keeps tasks moving and dispatches the final review when the last one passes |
+| Which bets you stop or reshape | The release check scores risk and the merge runs under the rules below |
 
 ## How the flow runs
-1. A bet is shaped and ready to build. Maskin checks that its Won and Lost criteria can be measured with the data you already collect, and flags any that can’t.
-2. Maskin locks the spec, breaks the bet into tasks, gives each task an owner and sets up the branch the work lands on.
-3. Each task goes to the agent that owns it. For code, a developer agent writes the change and opens a pull request.
-4. A reviewer agent checks each pull request against its task’s acceptance criteria and merges it into the bet’s branch.
-5. When the last task passes review, Maskin runs one review across the whole bet.
-6. A release check scores the risk of the bet’s pull request. The delivery lead merges it when the reviewer has passed it at the current commit, CI is green and the risk is low or medium. A high-risk change waits for the person who owns the repository.
-7. After it is live, Maskin reads your product data and posts a Won, Lost or Inconclusive verdict on the bet.
-8. It then reads what customers and your own team said and posts a second verdict next to the first.
-9. You make the final call. Anything that came up outside the bet’s scope goes back into discovery as a new signal, so the next bet starts from what this one learned.
+1. A bet moves to define. The Delivery Lead checks its Won and Lost criteria can be measured with the data you already collect, proposes them in numbers, and flags any that cannot be measured.
+2. A task under the bet is ready to build. The Developer reads the task and the bet’s spec, builds the change, runs it, and opens a pull request against the bet’s branch.
+3. The Reviewer checks the pull request against the task’s acceptance criteria at the current commit, runs the change, and posts a verdict with a risk level.
+4. A change that passes goes to the Delivery Lead, who merges it when CI is green and the risk is low or medium, or turns on auto-merge while CI finishes.
+5. A three-hourly sweep picks up any passed pull request left unmerged, and any bet branch already merged with open tasks behind it.
+6. When the last task under a bet passes review, the Coordinator dispatches the bet’s final review.
+7. The bet’s branch gets one review across the whole change, then the same merge check.
+8. When the bet reaches live, the Delivery Lead reads your product data and posts a Won, Lost or Inconclusive verdict.
+9. It then reads what customers and your own team said and posts a second verdict next to the first. The bet is live and its verdict is posted, which is where the flow closes.
+10. Outside any one bet, a daily sweep watches your analytics for error spikes and drop-offs, and a weekly briefing says what shipped and what is stuck.
 The blue step is the close condition.
 
 ## What you need to run it
-- **What you get:** four digital employees, a Delivery Lead, a Developer, a Reviewer and a Coordinator, ten steps, and two skills, the merge gate and the task handoff rules.
-- **Connect your code host.** The flow opens pull requests there, has them reviewed, and merges them under the rules on this page. Until it is connected, the steps that need it say so once and stop.
-- **Connect a product analytics tool** if you want the verdict after release read from real usage. That step switches itself off until it is connected.
-- **It starts when a bet moves to active** and closes when the bet is live and its verdict is posted. Shaping the bet, sizing it and the go to active stay in your own process.
+- **What you get:** four digital employees (a Delivery Lead, a Developer, a Reviewer and a Coordinator), ten automated steps, and two skills (the merge gate and the task handoff rules).
+- **Connect your own code host.** The flow opens pull requests there, has them reviewed, and merges them under the rules on this page. Until it is connected, the steps that need it say so once and stop.
+- **Connect your own product analytics tool** if you want the verdict after release read from real usage. The daily sweep and the verdict switch themselves off until it is connected.
+- **It starts when a bet moves to define or active, or when a task under an active bet is ready to build.** It closes when the bet is live and its verdict is posted. Shaping the bet and sizing it stay in your own process.
 - **No targets ship with it.** You add the ones you want to track in your own workspace.
 
 ## What you can rely on
-- **Merge rules you can read:** the delivery lead merges only when the reviewer has passed the change at its current commit, CI is green and the risk is low or medium. A high-risk change waits for the person who owns the repository. Agents never close a bet themselves.
+- **Merge rules you can read:** the Delivery Lead merges only when the Reviewer has passed the change at its current commit, CI is green and the risk is low or medium. A high-risk change goes to the person who owns the repository. Passed changes are swept up every three hours, so none sits waiting.
 - **Your code stays yours:** Maskin works through your repository and your pull requests. The history lives in your repo and on the bet, not in a shadow system.
 - **Fails safely:** if a change fails review or the release check, it stops there and goes back to the task. A safety-net sweep also catches any merged pull request whose bet was left open.
 
@@ -59,17 +60,20 @@ No. You hire the flow for the job of taking a bet to shipped, checked code. Your
 ### Do I have to leave Jira or Linear?
 No. Pick per bet. Run this flow on the bets that suit it and keep the rest in Jira or Linear. Both read from the same shaped bet and write the result back to the same place.
 
-### Can anything reach production without a person?
-The delivery lead merges only when the reviewer has passed the change at its current commit, CI is green and the risk is low or medium. A high-risk change waits for the person who owns the repository.
+### What happens when a change fails review?
+It goes back to the task with the reason, and the Developer picks it up again. A high-risk change is the one case that goes to the person who owns the repository.
+
+### What do I need to connect?
+Your own code host, and a product analytics tool if you want the verdict read from real usage. The steps that need one switch off until it is connected.
 
 ### Where does my code live?
 In your repository. Maskin works through your repo and your pull requests, so the history stays there and on the bet.
 
 ### How do I know the bet worked?
-You write the Won and Lost criteria first, and Maskin checks they can be measured with data you already collect. After release it reads your product data and posts a Won, Lost or Inconclusive verdict, then reads customer and team feedback and posts a second one. You make the final call.
+You write the Won and Lost criteria first, and Maskin checks they can be measured with data you already collect. After release it reads your product data and posts a Won, Lost or Inconclusive verdict, then reads customer and team feedback and posts a second one. Both verdicts sit on the bet with the evidence behind them.
 
 ## Proof
-The Maskin Team ships Maskin through this flow. Shaping, planning, building, review, release check and verdict all run inside the product described on this page.
+The Maskin Team runs its own product delivery on Maskin, live at maskin.io. Planning, building, review, release check and verdict all run inside the product described on this page.
 
 ## Run it
 See the flow run, then decide whether to run it on your repo. Or [start your workspace](https://maskin.io/signup).
