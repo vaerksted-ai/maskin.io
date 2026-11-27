@@ -148,6 +148,14 @@ test('L12 price exception: an amount that is not on the ladder inside the pricin
   try { assert.deepEqual(ids(run(dir)), ['L12']); } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
 
+// A typo that carries an approved amount as its ending must not read as approved: 1.349 kr is not 349 kr.
+for (const amount of ['1.349 kr', '1349 kr', '1995 kr', '14.995 kr']) {
+  test(`L12 price exception: ${amount} inside the pricing section fails L12`, () => {
+    const dir = pricingSite(`<section id="pricing"><p>${amount}</p></section>`);
+    try { assert.deepEqual(ids(run(dir)), ['L12']); } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+  });
+}
+
 function hiddenSite({ hidden = true, sitemap = true, noindex = true } = {}) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'i18n-lint-'));
   copyDir(path.join(fixtures, 'pass'), dir);

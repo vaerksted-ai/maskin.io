@@ -34,12 +34,14 @@ const PRICE_RE = /(\$|€|£)\s?\d|\d\s?(kr\.?|SEK|DKK|EUR|USD)(?![\p{L}\p{N}])/
 // Danish pages may use the Danish thousands separator (4.995 kr), so both forms are listed.
 const APPROVED_PLAN_PRICES = ['0 kr', '349 kr', '995 kr', '4,995 kr', '4.995 kr', '1,295 kr', '1.295 kr'];
 const PRICING_SECTION_RE = /<section\b[^>]*\bid\s*=\s*["']pricing["'][^>]*>[\s\S]*?<\/section>/i;
+// The lookbehind stops an approved amount from matching inside a longer number: without it "1.349 kr"
+// or "1995 kr" would be read as "349 kr" or "995 kr" and slip past the check that they are not on the ladder.
 const APPROVED_PRICE_RE = new RegExp(
-  APPROVED_PLAN_PRICES
+  '(?<![\\d.,])(?:' + APPROVED_PLAN_PRICES
     .slice()
     .sort((a, b) => b.length - a.length)
     .map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s?'))
-    .join('|'),
+    .join('|') + ')',
   'giu',
 );
 // Live pieces needed (besides the hub) before a language may show in header, nav or switcher.
