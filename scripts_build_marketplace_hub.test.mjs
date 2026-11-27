@@ -5,7 +5,7 @@ import { loadData, sorted, render, PAGE } from './scripts_build_marketplace_hub.
 
 test('flows.json is valid and every flow has its own icon and rank', () => {
   const d = loadData();
-  assert.equal(d.flows.length, 15);
+  assert.equal(d.flows.length, 16);
 });
 
 test('ready flows come first, each by rank, and ready flows have an install link', () => {

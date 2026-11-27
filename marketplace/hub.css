@@ -59,10 +59,13 @@
 .hub-card--soon { background: var(--linen); }
 .hub-card--soon .hub-ico { background: var(--rule); color: var(--ink-2); }
 .hub-card--soon:hover { box-shadow: none; }
+.hub-card__labels { display: inline-flex; align-items: center; gap: 6px; }
 .hub-label { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; border-radius: 12px; font-size: .78rem; font-weight: 600; white-space: nowrap; }
 .hub-label::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 .hub-label--on { background: var(--hub-ok-bg); color: var(--hub-ok-ink); }
 .hub-label--soon { background: var(--rule); color: var(--ink-2); }
+.hub-label--agent { background: var(--accent-dim); color: var(--accent-ink); }
+.hub-label--agent::before { display: none; }
 .hub .hub-card__title { margin: 0; font-size: 1.125rem; font-weight: 700; letter-spacing: -.02em; line-height: 1.25; }
 .hub-card__link { color: var(--ink); }
 .hub-card__link:hover { color: var(--ink); text-decoration: none; }

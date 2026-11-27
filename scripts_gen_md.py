@@ -75,6 +75,7 @@ ORDER = [
   "marketplace/competitor-watch/index.html",
   "marketplace/signal-intake/index.html",
   "marketplace/meeting-loop/index.html",
+  "marketplace/presentation-designer/index.html",
   "marketplace/customer-voice/index.html",
   "marketplace/product-release/index.html",
   "marketplace/product-usage/index.html",
