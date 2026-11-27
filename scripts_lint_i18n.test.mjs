@@ -120,6 +120,34 @@ test('L8: a link to an external_paths entry resolves, the same link without the 
 
 // A manifest page with "hidden": true keeps serving but is out of search: absent from the sitemap (L7),
 // noindex (L13). Every other page keeps the old rules.
+
+// L12 price exception (27 Nov 2026): the approved plan ladder is allowed inside id="pricing" only.
+function pricingSite(block) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'i18n-lint-'));
+  copyDir(path.join(fixtures, 'pass'), dir);
+  const hubFile = path.join(dir, 'da', 'index.html');
+  fs.writeFileSync(hubFile, fs.readFileSync(hubFile, 'utf8').replace('<p></p>', block));
+  return dir;
+}
+
+const LADDER = '<section id="pricing"><h2>Enkel pris pr. bruger.</h2>'
+  + '<p>0 kr</p><p>349 kr</p><p>995 kr</p><p>4.995 kr</p><p>1.295 kr</p></section>';
+
+test('L12 price exception: the approved ladder inside the pricing section passes', () => {
+  const dir = pricingSite(LADDER);
+  try { assert.deepEqual(run(dir).errors, []); } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+});
+
+test('L12 price exception: an approved amount outside the pricing section still fails L12', () => {
+  const dir = pricingSite(LADDER + '<p>Starter koster 349 kr.</p>');
+  try { assert.deepEqual(ids(run(dir)), ['L12']); } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+});
+
+test('L12 price exception: an amount that is not on the ladder inside the pricing section fails L12', () => {
+  const dir = pricingSite('<section id="pricing"><p>649 kr</p></section>');
+  try { assert.deepEqual(ids(run(dir)), ['L12']); } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+});
+
 function hiddenSite({ hidden = true, sitemap = true, noindex = true } = {}) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'i18n-lint-'));
   copyDir(path.join(fixtures, 'pass'), dir);

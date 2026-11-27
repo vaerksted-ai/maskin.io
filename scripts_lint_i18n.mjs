@@ -29,6 +29,19 @@ const SLUG_RE = /^\/(da|sv)\/([a-z0-9]+(-[a-z0-9]+)*\/)?$/;
 // Spec pattern, with the trailing word boundary made Unicode-aware: a plain \b treats the
 // Danish ae/oe/aa letters as non-word, so "§ 10 kræver" would read as a price in kr.
 const PRICE_RE = /(\$|€|£)\s?\d|\d\s?(kr\.?|SEK|DKK|EUR|USD)(?![\p{L}\p{N}])/u;
+// The approved plan ladder (27 Nov 2026) may appear in the pricing block only. The exception is
+// scoped to the section with id="pricing" and to these exact amounts, so prose elsewhere still fails.
+// Danish pages may use the Danish thousands separator (4.995 kr), so both forms are listed.
+const APPROVED_PLAN_PRICES = ['0 kr', '349 kr', '995 kr', '4,995 kr', '4.995 kr', '1,295 kr', '1.295 kr'];
+const PRICING_SECTION_RE = /<section\b[^>]*\bid\s*=\s*["']pricing["'][^>]*>[\s\S]*?<\/section>/i;
+const APPROVED_PRICE_RE = new RegExp(
+  APPROVED_PLAN_PRICES
+    .slice()
+    .sort((a, b) => b.length - a.length)
+    .map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s?'))
+    .join('|'),
+  'giu',
+);
 // Live pieces needed (besides the hub) before a language may show in header, nav or switcher.
 const NAV_MIN_PAGES = { da: 2, sv: 1 };
 // How llms.txt names each language section (heading must contain one of these words).
@@ -448,10 +461,19 @@ export function lint(opts = {}) {
   // ---- L12 banned strings and prices
   const bannedRes = banned.map((b) => [b, new RegExp(`(?<![\\p{L}\\p{N}])${b.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\p{L}\\p{N}])`, 'iu')]);
   for (const p of live) {
-    const text = visibleText(html.get(p.path));
+    const raw = html.get(p.path);
+    const text = visibleText(raw);
     for (const [b, re] of bannedRes) if (re.test(text)) err('L12', p.path, `contains banned string "${b}"`);
-    const price = text.match(PRICE_RE);
+    // The pricing block may carry the approved ladder; every other price is still an error.
+    const pricing = clean(raw).match(PRICING_SECTION_RE);
+    const rest = pricing ? visibleText(clean(raw).replace(pricing[0], ' ')) : text;
+    const price = rest.match(PRICE_RE);
     if (price) err('L12', p.path, `contains a price pattern "${price[0]}"`);
+    if (pricing) {
+      const sectionText = decodeEntities(pricing[0].replace(/<[^>]+>/g, ' '));
+      const unapproved = sectionText.replace(APPROVED_PRICE_RE, ' ').match(PRICE_RE);
+      if (unapproved) err('L12', p.path, `contains a price pattern "${unapproved[0]}" outside the approved plan ladder`);
+    }
   }
 
   // ---- L13 draft leftovers
