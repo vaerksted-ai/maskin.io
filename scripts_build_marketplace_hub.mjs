@@ -27,6 +27,7 @@ const ICONS = {
   branch: '<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M6 8.5v3a4 4 0 0 0 4 4h5.5"/>',
   signal: '<path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.5"/>',
   receipt: '<path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6"/>',
+  deck: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v5M8 21h8"/>',
 };
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -44,6 +45,7 @@ export function loadData() {
     ids.add(f.id);
     if (!['ready', 'soon'].includes(f.status)) throw new Error(`${f.id}: status must be ready or soon`);
     if (f.status === 'ready' && !f.install) throw new Error(`${f.id}: a ready flow needs install`);
+    if (f.kind !== undefined && f.kind !== 'Agent') throw new Error(`${f.id}: kind must be Agent when set`);
     if (!d.groups.includes(f.group)) throw new Error(`${f.id}: unknown group ${f.group}`);
     for (const t of f.teams) if (!d.teams.includes(t)) throw new Error(`${f.id}: unknown team ${t}`);
     for (const j of f.jobs) if (!d.jobs.some((x) => x.id === j)) throw new Error(`${f.id}: unknown job ${j}`);
@@ -63,12 +65,16 @@ export function sorted(d) {
 
 function card(f) {
   const ready = f.status === 'ready';
-  const attrs = `data-flow="${esc(f.id)}" data-status="${f.status}" data-group="${esc(f.group)}" data-jobs="${f.jobs.join(' ')}" data-teams="${esc(f.teams.join('|'))}" data-rank="${f.rank}"`;
+  const attrs = `data-flow="${esc(f.id)}" data-status="${f.status}" data-group="${esc(f.group)}" data-jobs="${f.jobs.join(' ')}" data-teams="${esc(f.teams.join('|'))}" data-kind="${f.kind ? 'agent' : 'flow'}" data-rank="${f.rank}"`;
   const action = ready
     ? `<div class="loop-install" data-loop-install="${esc(f.install.slug)}" data-install-position="index"><a class="hub-btn" href="${esc(f.install.href)}" data-install-link data-install-slug="${esc(f.install.slug)}" aria-label="Install ${esc(f.title)}">Install</a></div>`
     : `<a class="hub-btn hub-btn--ghost" href="https://meshfirm.com/bookmagnus" target="_blank" rel="noopener">Book a walkthrough</a>`;
+  const status = `<span class="hub-label ${ready ? 'hub-label--on' : 'hub-label--soon'}">${ready ? 'Available' : 'Coming soon'}</span>`;
+  const labels = f.kind
+    ? `<span class="hub-card__labels"><span class="hub-label hub-label--agent">${esc(f.kind)}</span>${status}</span>`
+    : status;
   return `      <article class="hub-card${ready ? '' : ' hub-card--soon'}" ${attrs}>
-        <div class="hub-card__top"><span class="hub-ico">${icon(f.icon)}</span><span class="hub-label ${ready ? 'hub-label--on' : 'hub-label--soon'}">${ready ? 'Available' : 'Coming soon'}</span></div>
+        <div class="hub-card__top"><span class="hub-ico">${icon(f.icon)}</span>${labels}</div>
         <h3 class="hub-card__title"><a class="hub-card__link" href="${esc(f.url)}">${esc(f.title)}</a></h3>
         <p class="hub-card__desc">${esc(f.desc)}</p>
         <div class="hub-card__foot"><a class="hub-card__group" href="${groupHref(f.group)}">${esc(f.group)}</a>${action}</div>

@@ -1,5 +1,5 @@
 {
-  "_note": "One data list for the marketplace hub grid. scripts_build_marketplace_hub.mjs turns it into the cards, the group pills and the JSON-LD list in marketplace/index.html (node scripts_build_marketplace_hub.mjs --write). rank: lower is first. status: ready (the listing page has an install link) or soon (it has none). jobs: know, hear, ship, meet. job and team tags confirmed by Product Marketing on 2026-11-26.",
+  "_note": "One data list for the marketplace hub grid. scripts_build_marketplace_hub.mjs turns it into the cards, the group pills and the JSON-LD list in marketplace/index.html (node scripts_build_marketplace_hub.mjs --write). rank: lower is first. status: ready (the listing page has an install link) or soon (it has none). kind: optional, Agent adds an Agent label beside the status label. jobs: know, hear, ship, meet. job and team tags confirmed by Product Marketing on 2026-11-26.",
   "jobs": [
     { "id": "know", "label": "Know your competitors", "icon": "eye" },
     { "id": "hear", "label": "Hear your customers", "icon": "chat" },
@@ -23,6 +23,7 @@
     { "id": "outbound", "title": "Outbound", "desc": "Signal, research, draft, send and reply routing as one flow.", "group": "Sales", "status": "soon", "icon": "send", "jobs": [], "teams": ["Sales", "Founder"], "rank": 12, "url": "/marketplace/outbound/" },
     { "id": "lead-qualification", "title": "Lead Qualification", "desc": "Read each inbound lead on arrival and record why it was rejected.", "group": "Sales", "status": "soon", "icon": "funnel", "jobs": [], "teams": ["Sales"], "rank": 13, "url": "/marketplace/lead-qualification/" },
     { "id": "product-delivery", "title": "Product Delivery", "desc": "From plan to code that is built, reviewed and checked.", "group": "Product", "status": "soon", "icon": "branch", "jobs": ["ship"], "teams": ["Product"], "rank": 14, "url": "/marketplace/product-delivery/" },
-    { "id": "signal-intake", "title": "Signal Intake", "desc": "Public discussions and posts filed as short notes, with sources.", "group": "Product", "status": "soon", "icon": "signal", "jobs": ["hear"], "teams": ["Product", "Marketing"], "rank": 15, "url": "/marketplace/signal-intake/" }
+    { "id": "signal-intake", "title": "Signal Intake", "desc": "Public discussions and posts filed as short notes, with sources.", "group": "Product", "status": "soon", "icon": "signal", "jobs": ["hear"], "teams": ["Product", "Marketing"], "rank": 15, "url": "/marketplace/signal-intake/" },
+    { "id": "presentation-designer", "title": "Presentation Designer", "desc": "Finished decks as one HTML file that fits laptop, tablet and phone screens.", "group": "Marketing", "kind": "Agent", "status": "ready", "icon": "deck", "jobs": [], "teams": ["Marketing"], "rank": 16, "url": "/marketplace/presentation-designer/", "install": { "slug": "presentation-designer", "href": "/install/presentation-designer" } }
   ]
 }

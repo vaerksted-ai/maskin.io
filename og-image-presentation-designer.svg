@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Presentation Designer, an agent in the Maskin Marketplace">
+  <defs>
+    <pattern id="grid-agent-pd" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e8eaee" stroke-width="1" opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#0d0f13"/>
+  <rect width="1200" height="630" fill="url(#grid-agent-pd)"/>
+  <text x="80" y="112" font-family="'JetBrains Mono'" font-size="20" font-weight="500" fill="#6a8cff" letter-spacing="0.18em">AGENT &#183; MARKETING</text>
+  <path d="M 80 150 L 660 150" stroke="#23272e" stroke-width="1"/>
+  <text x="80" y="250" font-family="'Schibsted Grotesk'" font-size="52" font-weight="600" fill="#e8eaee" letter-spacing="-0.015em">Hire a presentation</text>
+  <text x="80" y="310" font-family="'Schibsted Grotesk'" font-size="52" font-weight="600" fill="#e8eaee" letter-spacing="-0.015em">designer for decks</text>
+  <text x="80" y="370" font-family="'Schibsted Grotesk'" font-size="52" font-weight="600" fill="#e8eaee" letter-spacing="-0.015em">that come out finished.</text>
+  <text x="80" y="434" font-family="'Newsreader'" font-style="italic" font-size="27" fill="#8a93a0">One HTML file, checked at every screen size</text>
+  <g>
+    <rect x="760" y="220" width="340" height="214" rx="14" fill="none" stroke="#373d47" stroke-width="2.5"/>
+    <rect x="786" y="248" width="180" height="16" rx="4" fill="#6a8cff"/>
+    <rect x="786" y="282" width="288" height="10" rx="4" fill="#373d47"/>
+    <rect x="786" y="304" width="244" height="10" rx="4" fill="#373d47"/>
+    <rect x="786" y="326" width="264" height="10" rx="4" fill="#373d47"/>
+    <rect x="786" y="368" width="120" height="38" rx="8" fill="#23272e" stroke="#373d47" stroke-width="1.5"/>
+    <rect x="920" y="368" width="120" height="38" rx="8" fill="#23272e" stroke="#373d47" stroke-width="1.5"/>
+    <path d="M 930 470 L 930 492 L 1000 492 C 1030 492 1030 470 1000 470" fill="none" stroke="#8a93a0" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <text x="930" y="540" text-anchor="middle" font-family="'JetBrains Mono'" font-size="16" letter-spacing="0.16em" fill="#8a93a0">DECK &#183; ONE FILE</text>
+  <g transform="translate(1068 78) scale(0.65)">
+    <rect width="80" height="80" rx="14" fill="#e8eaee"/>
+    <path d="M17 60 L17 20 L40 46 L63 20 L63 60" stroke="#0d0f13" stroke-width="10" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+  </g>
+  <text x="80" y="582" text-anchor="start" font-family="'JetBrains Mono'" font-size="16" fill="#8a93a0">maskin.io/marketplace/presentation-designer</text>
+</svg>
