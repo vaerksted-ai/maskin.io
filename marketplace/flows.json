@@ -22,7 +22,7 @@
     { "id": "content-calendar", "title": "Content Calendar", "desc": "Plan a month of posts and read weekly reach by channel.", "group": "Marketing", "status": "soon", "icon": "cal", "jobs": [], "teams": ["Marketing"], "rank": 11, "url": "/marketplace/content-calendar/" },
     { "id": "outbound", "title": "Outbound", "desc": "Signal, research, draft, send and reply routing as one flow.", "group": "Sales", "status": "soon", "icon": "send", "jobs": [], "teams": ["Sales", "Founder"], "rank": 12, "url": "/marketplace/outbound/" },
     { "id": "lead-qualification", "title": "Lead Qualification", "desc": "Read each inbound lead on arrival and record why it was rejected.", "group": "Sales", "status": "soon", "icon": "funnel", "jobs": [], "teams": ["Sales"], "rank": 13, "url": "/marketplace/lead-qualification/" },
-    { "id": "product-delivery", "title": "Product Delivery", "desc": "From plan to code that is built, reviewed and checked.", "group": "Product", "status": "soon", "icon": "branch", "jobs": ["ship"], "teams": ["Product"], "rank": 14, "url": "/marketplace/product-delivery/" },
+    { "id": "product-delivery", "title": "Product Delivery", "desc": "From plan to code that is built, reviewed and checked.", "group": "Product", "status": "ready", "icon": "branch", "jobs": ["ship"], "teams": ["Product"], "rank": 14, "url": "/marketplace/product-delivery/", "install": { "slug": "product-delivery", "href": "/install/product-delivery-loop" } },
     { "id": "signal-intake", "title": "Signal Intake", "desc": "Public discussions and posts filed as short notes, with sources.", "group": "Product", "status": "soon", "icon": "signal", "jobs": ["hear"], "teams": ["Product", "Marketing"], "rank": 15, "url": "/marketplace/signal-intake/" }
   ]
 }
