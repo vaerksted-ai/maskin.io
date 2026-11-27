@@ -3,9 +3,12 @@ name: temp flow listing copy
 # One-use helper for the "a human gates the taste-sensitive parts" copy fix.
 # Runs the clause replacement and the twin regeneration on the branch, verifies, commits.
 # Deleted from the branch once the change is committed; it must never reach main.
+# Triggered by a push to this one branch, because workflow_dispatch needs the file on main.
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - pmm/value-frame-flow-block
 
 permissions:
   contents: write
@@ -25,9 +28,13 @@ jobs:
         run: |
           set -e
           files=$(grep -rl "a human gates the taste-sensitive parts" marketplace/*/index.html solutions/*/index.html)
-          echo "$files"
           count=$(printf "%s\n" "$files" | grep -c "index.html")
           echo "files matched: $count"
+          echo "$files"
+          if [ "$count" = "0" ]; then
+            echo "clause already replaced, nothing to do"
+            exit 0
+          fi
           test "$count" = "8"
           for f in $files; do
             sed -i 's/a human gates the taste-sensitive parts/each is accountable for its own job/g' "$f"
