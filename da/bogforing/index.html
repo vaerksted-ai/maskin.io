@@ -46,6 +46,10 @@
 <link rel="stylesheet" href="/docs/docs.css">
 <link rel="stylesheet" href="/marketplace/marketplace.css">
 
+<!-- lite-youtube-embed facade: thumbnail on load, iframe on click. Zero-cost until user clicks. -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.css">
+<script src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.js" defer></script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -64,6 +68,21 @@
       "publisher": { "@type": "Organization", "name": "Maskin", "url": "https://maskin.io/" },
       "mainEntityOfPage": "https://maskin.io/da/bogforing/",
       "isPartOf": { "@type": "WebSite", "name": "Maskin", "url": "https://maskin.io/" }
+    },
+    {
+      "@type": "VideoObject",
+      "name": "årsafslutning: bilag, moms og årsrapport i Maskin",
+      "description": "Optagelse af webinaret 25. november: en agent sat op i Maskin læser og matcher bilag, med moms og årsrapport i samme gennemløb.",
+      "thumbnailUrl": ["https://i.ytimg.com/vi/zhbD6ORkAgs/maxresdefault.jpg"],
+      "uploadDate": "2026-11-27",
+      "embedUrl": "https://www.youtube.com/embed/zhbD6ORkAgs",
+      "contentUrl": "https://www.youtube.com/watch?v=zhbD6ORkAgs",
+      "inLanguage": "da",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Maskin",
+        "url": "https://maskin.io/"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -103,11 +122,16 @@
     <figure class="mp-hero__img"><img src="/marketplace/accounting/accounting-marketplace-1200x628.png" width="1200" height="630" alt="Én kvittering forbundet med en tynd blå linje til én banklinje, et foreslået match, mens to kvitteringer og to banklinjer venter nedenunder." fetchpriority="high"></figure>
   </header>
   <div class="mp-body">
-    <nav class="mp-toc" aria-label="På denne side"><span class="mp-toc__title">På denne side</span><a href="#opgaven">Opgaven</a><a href="#system">Vælg dit system</a><a href="#saadan">Sådan kører det</a><a href="#forloebet">Det gør forløbet</a><a href="#tryghed">Tryghed</a><a href="#tag-fat">Tag fat</a></nav>
+    <nav class="mp-toc" aria-label="På denne side"><span class="mp-toc__title">På denne side</span><a href="#video">Se det køre</a><a href="#opgaven">Opgaven</a><a href="#system">Vælg dit system</a><a href="#saadan">Sådan kører det</a><a href="#forloebet">Det gør forløbet</a><a href="#tryghed">Tryghed</a><a href="#tag-fat">Tag fat</a></nav>
     <div class="mp-main doc-content">
   <section class="mp-sec">
     <h2 id="opgaven">Opgaven</h2>
     <p>Drop sorteringen af kvitteringer i hånden. Upload dem, og Maskin gemmer dem som udkast i dit eget bogføringssystem. Du beholder dit system og vælger det i den første chat med forløbet. Det, Maskin er usikker på, bliver markeret til dig.</p>
+  </section>
+  <section class="mp-sec" id="video-sec">
+    <h2 id="video">Se det køre</h2>
+    <div class="mp-video"><lite-youtube videoid="zhbD6ORkAgs" playlabel="Afspil: sådan kører forløbet"></lite-youtube></div>
+    <p>Optagelse af webinaret 25. november. På dansk, 15 minutter.</p>
   </section>
   <section class="mp-sec">
     <h2 id="system">Vælg dit system</h2>
