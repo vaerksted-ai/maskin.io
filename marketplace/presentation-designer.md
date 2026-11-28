@@ -19,22 +19,21 @@ Presentation Designer takes on the deck-building job inside your workspace. It o
 ## What it needs from you
 - A style, if it finds none: a link, a file, or a few words.
 - An answer on how dense the slides should be.
-- It needs a model key if your workspace has none (it says so in its first message) and a computer of its own to open the deck. Without one, the deck arrives marked “not visually checked”.
-- If it cannot open the deck at a screen size, it still delivers the deck, with that size marked “not visually checked”. The label tells you the visual check was not completed for that size.
+- It needs a model key if your workspace has none (it says so in its first message) and a computer of its own to open the deck. Without a computer, the deck arrives marked “not visually checked”.
 
 ## Key takeaways
 - A digital employee hired for one job: building decks.
-- The finished deck is one HTML file that fits laptop, tablet and phone screens.
+- The finished deck is one HTML file, opened and checked at each screen size.
 - It looks for your design style in knowledge pages, files and brand notes, and saves the one you give it.
 - It checks the deck by opening it at each screen size, and says so when it could not.
 
 ## FAQ
 
 ### What is an AI presentation designer?
-An AI presentation designer is an agent that builds presentation decks. Presentation Designer is a digital employee hired for that job. It works in your workspace, uses a design style found or provided there, checks the story before designing, and delivers the finished deck as one HTML file that fits laptop, tablet and phone screens.
+An AI presentation designer is an agent that builds presentation decks. Presentation Designer is a digital employee hired for that job. It works in your workspace, uses a design style found or provided there, checks the story before designing, and delivers the finished deck as one HTML file.
 
 ### What does Presentation Designer make?
-A deck as one HTML file that fits laptop, tablet and phone screens. Before designing, it asks how dense the slides should be and checks the story. It then checks the finished deck by opening it at each screen size.
+A deck as one HTML file. Before designing, it asks how dense the slides should be and checks the story. It then checks the finished deck by opening it at each screen size.
 
 ### What if it cannot open the deck?
 It still delivers the deck, with that screen size marked “not visually checked”. The label tells you the visual check was not completed for that size.
